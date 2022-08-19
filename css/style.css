@@ -459,6 +459,10 @@
   display: inline-block;
   margin: 0 10px;
 }
+.post .post-datetag .post-wordcount {
+  display: inline-block;
+  margin-left: 10px;
+}
 .post .post-word-count {
   margin-bottom: 0.25em;
 }

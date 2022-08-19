@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="我之心扉，早已蒙尘；幸有良人，辟尘生辉。">
+    <title>苍岚 - 风起</title>
+    
+      <link rel="icon" href="/img/favicon.ico">
+    
+    <meta name="keyword"  content="">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+      
+<link rel="stylesheet" href="/css/helpers.css">
+    
+    
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  <div class="loading-wrapper" data-loading="true">
+    <div class="loading">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <div class="page" data-filter="true">
+    <div class="head">
+      <header class="head-header">
+    <div class="head-author">
+        <a href="/" class="head-author-link">
+            苍岚
+        </a>
+    </div>
+    <div class="head-right">
+        <!-- <div class="head-search">
+      <input class="head-searchK"></input>
+      <span class="head-searchT">
+        Search</span>
+    </div> -->
+        <button class="bar-wrap" id="bar-wrap-toggle">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+        <div class="head-about" id="head-about">
+            
+                <a class="head-about-link" href="/about">
+                    关于
+                </a>
+                
+        </div>
+    </div>
+</header>
+    </div>
+    <div class="main">
+      <div class="menu-bar-head" id="menu-bar" data-show="false">
+  <ul class="menu-bar-ul">
+    
+      
+      <li class="menu-bar-item">
+          
+            <a href="/archives">
+          
+              <span>Archives</span>
+            </a>
+      </li>
+    
+      
+      <li class="menu-bar-item">
+          
+              <a href="/categories/Posts/">
+          
+              <span>Posts1</span>
+            </a>
+      </li>
+    
+      
+      <li class="menu-bar-item">
+          
+              <a href="/categories/Posts2/">
+          
+              <span>Posts2</span>
+            </a>
+      </li>
+    
+      
+      <li class="menu-bar-item">
+          
+            <a href="/tags">
+          
+              <span>Tags</span>
+            </a>
+      </li>
+    
+    
+      <li class="menu-bar-item">
+        <a href="/about">
+          <span>关于</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+      <article class="post" id="post">
+    <header class="post-head">
+        <h1 class="post-title">
+            <a class="title" href="/2022/08/19/Windows%E4%B8%8B%E5%AE%89%E8%A3%85WSL%202/">
+                Windows下安装WSL 2
+            </a>
+        </h1>
+    </header>
+    <div class="post-datetag">
+        <div class="post-date">
+            <time class="post-time" title="2022-08-19 20:59:05" datetime="2022-08-19T12:59:05.000Z" itemprop="datePublished">
+  2022-08-19</time>
+        </div>
+        |
+        <div class="post-tag">
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/" rel="tag">windows</a></li></ul>
+
+        </div>
+        |
+        
+
+<div class="post-visit">
+  <span id="busuanzi_container_page_pv">
+    <span id="busuanzi_value_page_pv"></span>
+    访问
+  </span>
+</div>
+
+
+
+            |
+            <div class="post-wordcount">
+                
+                    
+    共
+    362 字
+        
+                        
+            </div>
+    </div>
+
+    
+
+            
+    <div class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc" data-expand="true">
+            <h4>目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Windows%E4%B8%8B%E5%AE%89%E8%A3%85WSL-2"><span class="post-toc-number">1.</span> <span class="post-toc-text">Windows下安装WSL 2</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%89%88%E6%9C%AC%E8%A6%81%E6%B1%82"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">系统版本要求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9B%B4%E6%94%B9%E5%8F%91%E8%A1%8C%E7%89%88"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">更改发行版</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%B7%B2%E5%AE%89%E8%A3%85%E5%8F%91%E8%A1%8C%E7%89%88"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">查看已安装发行版</span></a></li></ol></li></ol>
+        </nav>
+        <a class="post-toc-toggle" onclick="toggleToc(this, expend, collapse);" href="javascript:;">
+            展开
+        </a>
+    </div>
+    
+
+                <div class="article-entry" itemprop="articleBody">
+                    <h1 id="Windows下安装WSL-2"><a href="#Windows下安装WSL-2" class="headerlink" title="Windows下安装WSL 2"></a>Windows下安装WSL 2</h1><h2 id="系统版本要求"><a href="#系统版本要求" class="headerlink" title="系统版本要求"></a>系统版本要求</h2><p>必须运行 Windows 10 版本 2004 及更高版本（内部版本 19041 及更高版本）或 Windows 11</p>
+<blockquote>
+<p>按住<strong>Windows徽标键+R</strong>，键入<strong>winver</strong>来查看电脑版本</p>
+</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>通过在<strong>管理员模式下</strong>PowerShell 或 Windows 命令提示符中输入以下命令，然后重新启动计算机来安装运行WSL</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--install</span></span><br></pre></td></tr></table></figure>
+
+<p>此命令将启用所需的可选组件，下载最新的Linux内核，<strong>将WSL 2设置为默认值</strong>，并为您安装Linux发行版（默认情况下为<strong>Ubuntu</strong>）。</p>
+<p>首次启动新安装的 Linux 发行版时，将打开一个控制台窗口，系统将要求您等待文件解压缩并存储在您的计算机上。</p>
+<h2 id="更改发行版"><a href="#更改发行版" class="headerlink" title="更改发行版"></a>更改发行版</h2><p>通过在<strong>管理员模式下</strong>PowerShell 或 Windows 命令提示符中输入以下命令查看可安装的有效分发</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-o</span></span><br><span class="line">wsl <span class="literal">--list</span> <span class="literal">--online</span></span><br></pre></td></tr></table></figure>
+
+<p>通过在<strong>管理员模式下</strong>PowerShell 或 Windows 命令提示符中输入以下命令安装新分发</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--install</span> <span class="literal">-d</span> &lt;Distribution Name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>通过在<strong>管理员模式下</strong>PowerShell 或 Windows 命令提示符中输入以下命令用新分发替换旧分发</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--install</span> <span class="literal">-d</span> &lt;Distribution Name&gt; &lt;Distribution Name&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看已安装发行版"><a href="#查看已安装发行版" class="headerlink" title="查看已安装发行版"></a>查看已安装发行版</h2><p>通过在<strong>管理员模式下</strong>PowerShell 或 Windows 命令提示符中输入以下命令查看已安装分发的状态和版本</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
+
+                </div>
+</article>
+
+    </div>
+    <footer class="footer-nav">
+      <div class="footer">
+        <div class="back-top" id="back-top" title="Back to top">
+          <i class="icon icon-chevron-bar-up"></i>
+        </div>
+        <span class="footer-msg">
+  
+
+  
+
+<div>
+  <span id="busuanzi_container_site_pv">
+    <span id="busuanzi_value_site_pv"></span> PV
+  </span>
+  <span id="busuanzi_container_site_uv">
+    <span id="busuanzi_value_site_uv"></span> UV
+  </span>
+</div>
+
+
+
+  2022
+  
+  
+  余湍.
+  Power by
+  <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>
+  and
+  <a href="https://github.com/Cerallin/hexo-theme-yuzu"
+      target="_blank" rel="external nofollow" title="v2.3">
+    Theme Yuzu</a>.
+</span>
+
+      </div>
+    </footer>
+    
+
+
+<script src="/js/clipboard/clipboard.min.js"></script>
+
+
+<script src="/js/theme.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+
+  
+  <script>
+      expend = "展开";
+      collapse = "收起";
+  </script>
+  
+  
+<script src="/js/toc.js"></script>
+
+
+
+
+
+  </div>
+</body>
