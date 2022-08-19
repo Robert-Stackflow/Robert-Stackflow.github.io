@@ -1,0 +1,150 @@
+html {
+  font-size: default-font-size;
+  font-family: default-font-family;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  padding: 0;
+  margin: 0;
+  vertical-align: baseline;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+@media (prefers-color-scheme: dark) {
+  img {
+    filter: brightness(0.8);
+  }
+}
+del,
+s {
+  text-decoration: line-through;
+}
+.page {
+  margin-top: 0px;
+}
+.page .head {
+  z-index: 9;
+  top: 0;
+  right: 0;
+  left: 0;
+  border-bottom: 1px solid;
+}
+@media screen and (max-width: 768px) {
+  .head {
+    position: fixed;
+  }
+  .about,
+  .post-item .post-item-head .post-item-title a,
+  .head-author-link {
+    font-weight: 400 !important;
+  }
+  .menu-nav,
+  #head-about {
+    display: none;
+  }
+  .post-widget {
+    width: 100%;
+  }
+  #bar-wrap-toggle {
+    display: inline-block;
+  }
+  #index-content {
+    width: 100%;
+  }
+  .main {
+    margin-top: 65px !important;
+  }
+  .menu-bar-head {
+    display: block !important;
+    position: fixed;
+    left: 0px;
+    top: 65px;
+    width: 100%;
+    border-top: 1px solid;
+    border-bottom: 2px solid;
+  }
+  #post {
+    width: 100%;
+  }
+}
+.page .main {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1000px;
+}
+.main > .post {
+  width: 85%;
+  float: left;
+}
+.main > .post .article-entry p {
+  line-height: 1.5em;
+}
+.article-tag-list-item {
+  display: inline;
+  margin-right: 0.5rem;
+}
+.article-tag-list-item:last-of-type {
+  margin-right: auto;
+}
+.article-entry li {
+  font-size: 20px;
+  line-height: 2rem;
+  text-indent: 2em;
+}
+.article-entry ul {
+  padding-bottom: 0.75em;
+}
+.article-entry ul li {
+  list-style: disc inside;
+}
+.article-entry ol {
+  padding-bottom: 0.75em;
+}
+.article-entry ol li {
+  list-style: decimal inside;
+}
+.page .footer-nav {
+  display: block;
+  margin: 30px auto 0px;
+  width: 100%;
+  float: left;
+}
+.page .footer-nav .footer {
+  margin: 0 auto;
+  padding: 20px 0;
+  border-top: 1px solid;
+  max-width: 1000px;
+  width: 90%;
+  overflow: hidden;
+}
+.page .footer-nav .footer .icp {
+  margin-bottom: 10px;
+}
+.page .footer-nav .footer .icp .icp-text {
+  vertical-align: middle;
+}
+.page .back-top {
+  margin-right: 40px;
+  cursor: pointer;
+}
+.page .back-top .icon {
+  float: right;
+  font-size: 20px;
+  font-weight: 600;
+}
+.nav-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
