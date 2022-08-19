@@ -1,9 +1,0 @@
-.csl-bib-body .csl-entry {
-  display: grid;
-  grid-template-columns: 60px auto;
-  margin-bottom: 1em;
-}
-.csl-bib-body .csl-entry .csl-right-inline {
-  text-align: justify;
-  word-break: break-word;
-}

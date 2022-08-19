@@ -1,257 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="我之心扉，早已蒙尘；幸有良人，辟尘生辉。">
-    <title>苍岚 - 风起</title>
-    
-      <link rel="icon" href="/img/favicon.ico">
-    
-    <meta name="keyword"  content="">
-    
-<link rel="stylesheet" href="/css/style.css">
+extends includes/layout.pug
 
-    
-      
-<link rel="stylesheet" href="/css/helpers.css">
-    
-    
+block content
+  #post
+    if top_img === false
+      include includes/header/post-info.pug
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-<meta name="generator" content="Hexo 6.2.0"></head>
-
-
-<body>
-  <div class="loading-wrapper" data-loading="true">
-    <div class="loading">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-  <div class="page" data-filter="true">
-    <div class="head">
-      <header class="head-header">
-    <div class="head-author">
-        <a href="/" class="head-author-link">
-            苍岚
-        </a>
-    </div>
-    <div class="head-right">
-        <!-- <div class="head-search">
-      <input class="head-searchK"></input>
-      <span class="head-searchT">
-        Search</span>
-    </div> -->
-        <button class="bar-wrap" id="bar-wrap-toggle">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
-        <div class="head-about" id="head-about">
-            
-                <a class="head-about-link" href="/about">
-                    关于
-                </a>
-                
-        </div>
-    </div>
-</header>
-    </div>
-    <div class="main">
-      <div class="menu-bar-head" id="menu-bar" data-show="false">
-  <ul class="menu-bar-ul">
-    
-      
-      <li class="menu-bar-item">
-          
-            <a href="/archives">
-          
-              <span>Archives</span>
-            </a>
-      </li>
-    
-      
-      <li class="menu-bar-item">
-          
-              <a href="/categories/Posts/">
-          
-              <span>Posts1</span>
-            </a>
-      </li>
-    
-      
-      <li class="menu-bar-item">
-          
-              <a href="/categories/Posts2/">
-          
-              <span>Posts2</span>
-            </a>
-      </li>
-    
-      
-      <li class="menu-bar-item">
-          
-            <a href="/tags">
-          
-              <span>Tags</span>
-            </a>
-      </li>
-    
-    
-      <li class="menu-bar-item">
-        <a href="/about">
-          <span>关于</span>
-        </a>
-      </li>
-    
-  </ul>
-</div>
-      <article class="post" id="post">
-    <header class="post-head">
-        <h1 class="post-title">
-            <a class="title" href="/2022/08/19/hello-world/">
-                Hello World
-            </a>
-        </h1>
-    </header>
-    <div class="post-datetag">
-        <div class="post-date">
-            <time class="post-time" title="2022-08-19 17:37:24" datetime="2022-08-19T09:37:24.163Z" itemprop="datePublished">
-  2022-08-19</time>
-        </div>
-        |
-        <div class="post-tag">
-            
-        </div>
-        |
+    article#article-container.post-content!=page.content
+    include includes/post/post-copyright.pug
+    .tag_share
+      if (theme.post_meta.post.tags)
+        .post-meta__tag-list
+          each item, index in page.tags.data
+            a(href=url_for(item.path)).post-meta__tags #[=item.name]
+      include includes/third-party/share/index.pug
         
+    if theme.reward.enable && theme.reward.QR_code
+      !=partial('includes/post/reward', {}, {cache: true})
 
-<div class="post-visit">
-  <span id="busuanzi_container_page_pv">
-    <span id="busuanzi_value_page_pv"></span>
-    访问
-  </span>
-</div>
+    //- ad
+    if theme.ad && theme.ad.post
+      .ads-wrap!=theme.ad.post
 
+    if theme.post_pagination
+      include includes/pagination.pug
+    if theme.related_post && theme.related_post.enable
+      != related_posts(page,site.posts)
 
-
-            |
-            <div class="post-wordcount">
-                
-                    
-    共
-    75 字
-        
-                        
-            </div>
-    </div>
-
-    
-
-            
-    <div class="post-widget">
-        <nav class="post-toc-wrap" id="post-toc" data-expand="true">
-            <h4>目录</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Quick-Start"><span class="post-toc-number">1.</span> <span class="post-toc-text">Quick Start</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Create-a-new-post"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Create a new post</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Run-server"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Run server</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Generate-static-files"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Generate static files</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Deploy-to-remote-sites"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
-        </nav>
-        <a class="post-toc-toggle" onclick="toggleToc(this, expend, collapse);" href="javascript:;">
-            展开
-        </a>
-    </div>
-    
-
-                <div class="article-entry" itemprop="articleBody">
-                    <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-                </div>
-</article>
-    
-        
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } }); MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i
-        < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
-            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-            
-            
-    </div>
-    <footer class="footer-nav">
-      <div class="footer">
-        <div class="back-top" id="back-top" title="Back to top">
-          <i class="icon icon-chevron-bar-up"></i>
-        </div>
-        <span class="footer-msg">
-  
-
-  
-
-<div>
-  <span id="busuanzi_container_site_pv">
-    <span id="busuanzi_value_site_pv"></span> PV
-  </span>
-  <span id="busuanzi_container_site_uv">
-    <span id="busuanzi_value_site_uv"></span> UV
-  </span>
-</div>
-
-
-
-  2022
-  
-  
-  余湍.
-  Power by
-  <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>
-  and
-  <a href="https://github.com/Cerallin/hexo-theme-yuzu"
-      target="_blank" rel="external nofollow" title="v2.3">
-    Theme Yuzu</a>.
-</span>
-
-      </div>
-    </footer>
-    
-
-
-<script src="/js/clipboard/clipboard.min.js"></script>
-
-
-<script src="/js/theme.js"></script>
-
-
-<script src="/js/index.js"></script>
-
-
-
-  
-  <script>
-      expend = "展开";
-      collapse = "收起";
-  </script>
-  
-  
-<script src="/js/toc.js"></script>
-
-
-
-
-
-  </div>
-</body>
+    if page.comments !== false && theme.comments && theme.comments.use
+      - var commentsJsLoad = true
+      !=partial('includes/third-party/comments/index', {}, {cache: true})
+      
