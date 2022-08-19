@@ -92,7 +92,7 @@
   transition: all linear 0.2s;
 }
 .archives-wrap .archives-year-cont .archive-item .archive-artDate {
-  font-size: 14px;
+  font-size: 12px;
   display: block;
   float: left;
   line-height: 25px;
@@ -155,12 +155,12 @@
 }
 .article-entry h4 {
   padding: 1.5em 0 0.75em 0;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 600;
 }
 .article-entry h5 {
   padding: 1em 0 0.5em 0;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 400;
   font-style: italic;
 }
@@ -247,12 +247,12 @@
   text-align: center;
 }
 .article-entry.condense .article-more-link {
-  font-size: 14px;
+  font-size: 12px;
 }
 .article-entry.condense h1,
 .article-entry.condense h2,
 .article-entry.condense h3 {
-  font-size: 20px;
+  font-size: 15px;
 }
 .article-entry.condense ul,
 .article-entry.condense li {
@@ -315,7 +315,7 @@
   line-height: 1.5em;
   text-indent: 2em;
   text-align: justify;
-  font-size: 20px;
+  font-size: 15px;
   font-family: 'Noto Serif', 'Noto Serif SC', sans-serif;
   font-weight: 400;
   word-break: break-word;
@@ -324,9 +324,9 @@
 }
 .post-item blockquote p {
   text-indent: 0;
-  font-size: 20px;
-  padding-left: 30px;
-  padding-right: 30px;
+  font-size: 15px;
+  padding-left: 22.5px;
+  padding-right: 22.5px;
 }
 @media (prefers-color-scheme: light) {
   .post-item blockquote p {
@@ -342,9 +342,9 @@
   content: '\e905';
   font-family: 'icon';
   font-style: normal;
-  font-size: 30px;
-  margin-left: -33px;
-  margin-right: 3px;
+  font-size: 22.5px;
+  margin-left: -24.750000000000004px;
+  margin-right: 2.25px;
 }
 @media (prefers-color-scheme: light) {
   .post-item blockquote p:before {
@@ -381,7 +381,7 @@
   font-size: 24px;
 }
 .post-item.condense .post-item-datetag {
-  font-size: 14px;
+  font-size: 12px;
 }
 .post-item.condense p {
   font-size: 16px;
@@ -418,7 +418,7 @@
   }
 }
 .post .post-datetag {
-  font-size: 14px;
+  font-size: 12px;
   margin-bottom: 10px;
 }
 @media (prefers-color-scheme: light) {
@@ -484,7 +484,7 @@
   line-height: 1.5em;
   text-indent: 2em;
   text-align: justify;
-  font-size: 20px;
+  font-size: 15px;
   font-family: 'Noto Serif', 'Noto Serif SC', sans-serif;
   font-weight: 400;
   word-break: break-word;
@@ -788,8 +788,8 @@ pre {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   padding: 0.25em;
   margin: 10px 1em;
   border-radius: 5px;
@@ -821,7 +821,7 @@ pre {
   }
 }
 .highlight table .clipboard-btn i {
-  font-size: 20px;
+  font-size: 15px;
 }
 @media (prefers-color-scheme: light) {
   .highlight table .clipboard-btn:hover {
@@ -1018,7 +1018,7 @@ pre {
   }
 }
 .menu-nav .menu-nav-item {
-  font-size: 14px;
+  font-size: 12px;
 }
 @media (prefers-color-scheme: light) {
   .menu-nav .menu-nav-item {
@@ -1133,7 +1133,7 @@ pre {
   }
 }
 .post-widget {
-  font-size: 14px;
+  font-size: 12px;
   padding-top: 1em;
   padding-bottom: 3em;
   width: 60%;
@@ -1150,7 +1150,7 @@ pre {
 }
 .post-widget .post-toc-toggle {
   font-size: 16px;
-  font-size: 14px;
+  font-size: 12px;
 }
 @media (prefers-color-scheme: light) {
   .post-widget .post-toc-toggle {
@@ -1518,7 +1518,7 @@ s {
   margin-right: auto;
 }
 .article-entry li {
-  font-size: 20px;
+  font-size: 15px;
   line-height: 2rem;
   text-indent: 2em;
 }
@@ -1541,7 +1541,7 @@ s {
   float: left;
 }
 .page .footer-nav .footer {
-  font-size: 14px;
+  font-size: 12px;
   margin: 0 auto;
   padding: 20px 0;
   border-top: 1px solid;
