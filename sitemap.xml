@@ -2,7 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://cloudchewie.com/tags/index.html</loc>
+    <loc>https://cloudchewie.com/about/index.html</loc>
+    
+    <lastmod>2022-08-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudchewie.com/tags/index.html</loc>
     
     <lastmod>2022-08-19</lastmod>
     
@@ -11,7 +20,7 @@
   </url>
   
   <url>
-    <loc>http://cloudchewie.com/categories/index.html</loc>
+    <loc>https://cloudchewie.com/categories/index.html</loc>
     
     <lastmod>2022-08-19</lastmod>
     
@@ -20,7 +29,7 @@
   </url>
   
   <url>
-    <loc>http://cloudchewie.com/2022/08/19/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/</loc>
+    <loc>https://cloudchewie.com/2022/08/19/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/</loc>
     
     <lastmod>2022-08-19</lastmod>
     
@@ -29,7 +38,7 @@
   </url>
   
   <url>
-    <loc>http://cloudchewie.com/2022/08/19/Windows%E4%B8%8B%E5%AE%89%E8%A3%85WSL%202/</loc>
+    <loc>https://cloudchewie.com/2022/08/19/Windows%E4%B8%8B%E5%AE%89%E8%A3%85WSL%202/</loc>
     
     <lastmod>2022-08-19</lastmod>
     
@@ -38,7 +47,7 @@
   </url>
   
   <url>
-    <loc>http://cloudchewie.com/2022/08/19/hello-world/</loc>
+    <loc>https://cloudchewie.com/2022/08/19/hello-world/</loc>
     
     <lastmod>2022-08-19</lastmod>
     
@@ -48,7 +57,7 @@
   
 
   <url>
-    <loc>http://cloudchewie.com/</loc>
+    <loc>https://cloudchewie.com/</loc>
     <lastmod>2022-08-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -56,28 +65,28 @@
 
   
   <url>
-    <loc>http://cloudchewie.com/tags/windows/</loc>
+    <loc>https://cloudchewie.com/tags/windows/</loc>
     <lastmod>2022-08-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://cloudchewie.com/tags/Linux/</loc>
+    <loc>https://cloudchewie.com/tags/Linux/</loc>
     <lastmod>2022-08-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://cloudchewie.com/tags/%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://cloudchewie.com/tags/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2022-08-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://cloudchewie.com/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%A8%8B/</loc>
+    <loc>https://cloudchewie.com/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%A8%8B/</loc>
     <lastmod>2022-08-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -86,14 +95,14 @@
 
   
   <url>
-    <loc>http://cloudchewie.com/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
+    <loc>https://cloudchewie.com/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2022-08-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://cloudchewie.com/categories/%E4%B8%93%E4%B8%9A%E6%A0%B8%E5%BF%83/</loc>
+    <loc>https://cloudchewie.com/categories/%E4%B8%93%E4%B8%9A%E6%A0%B8%E5%BF%83/</loc>
     <lastmod>2022-08-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
