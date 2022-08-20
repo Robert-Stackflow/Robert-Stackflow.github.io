@@ -2823,6 +2823,7 @@ h1.page-title + .tag-cloud-list {
   color: #a9a9a9;
   font-style: italic;
   font-size: 140%;
+  visibility: hidden;
 }
 #aside-content #card-toc .toc-content {
   overflow-y: scroll;
