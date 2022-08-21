@@ -274,3 +274,11 @@ a.catalog-more {
 a.catalog-more:hover {
     color: #1677b3;
 }
+
+#page-header.not-top-img #nav {
+    box-shadow: none;
+}
+
+#twikoo>div.tk-footer {
+    visibility: hidden;
+}

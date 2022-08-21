@@ -7369,13 +7369,13 @@ body:not(.read-mode) #post #article-container h6:hover {
   border-radius: 15px;
 }
 #article-container .tabs > .nav-tabs {
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
   background: var(--km-tab-border) !important;
 }
 #article-container .tabs > .nav-tabs > .tab button {
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
 }
 #article-container .tabs > .nav-tabs > .tab:not(.active) button {
   border-top-color: transparent;
