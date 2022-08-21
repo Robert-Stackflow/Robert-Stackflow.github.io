@@ -198,3 +198,7 @@ div.tk-submit>div.tk-row.actions>a {
 .algolia-poweredBy {
     visibility: hidden;
 }
+
+.el-textarea__inner {
+    min-height: 200px !important;
+}
