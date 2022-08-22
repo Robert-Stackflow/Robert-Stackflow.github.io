@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "LXGW WenKai Mono";
+    src: url("LXGWWenKaiMono-Regular.eot"); /* IE9 */
+    src: url("LXGWWenKaiMono-Regular.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("LXGWWenKaiMono-Regular.woff2") format("woff2"), /* chrome 36+, firefox 39+,iOS 10+, Android 67+ */
+    url("LXGWWenKaiMono-Regular.woff") format("woff"), /* chrome, firefox */
+    url("LXGWWenKaiMono-Regular.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url("LXGWWenKaiMono-Regular.svg#LXGW WenKai Mono") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+
