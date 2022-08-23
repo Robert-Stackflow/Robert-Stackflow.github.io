@@ -11,8 +11,8 @@ https://cloudchewie.com/2022/08/23/tree/
 https://cloudchewie.com/2022/08/23/probability/
 https://cloudchewie.com/2022/08/23/plug/
 https://cloudchewie.com/2022/08/23/memo/
-https://cloudchewie.com/2022/08/23/number/
 https://cloudchewie.com/2022/08/23/misc/
+https://cloudchewie.com/2022/08/23/number/
 https://cloudchewie.com/2022/08/23/knapsack/
 https://cloudchewie.com/2022/08/23/interval/
 https://cloudchewie.com/2022/08/23/index/
@@ -26,8 +26,8 @@ https://cloudchewie.com/2022/08/23/construction/
 https://cloudchewie.com/2022/08/23/complexity/
 https://cloudchewie.com/2022/08/23/bucket-sort/
 https://cloudchewie.com/2022/08/23/binary-lifting/
-https://cloudchewie.com/2022/08/23/bubble-sort/
 https://cloudchewie.com/2022/08/23/binary/
+https://cloudchewie.com/2022/08/23/bubble-sort/
 https://cloudchewie.com/
 https://cloudchewie.com/tags/windows/
 https://cloudchewie.com/tags/Linux/
