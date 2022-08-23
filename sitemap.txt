@@ -10,8 +10,8 @@ https://cloudchewie.com/2022/08/23/state/
 https://cloudchewie.com/2022/08/23/tree/
 https://cloudchewie.com/2022/08/23/plug/
 https://cloudchewie.com/2022/08/23/probability/
-https://cloudchewie.com/2022/08/23/misc/
 https://cloudchewie.com/2022/08/23/memo/
+https://cloudchewie.com/2022/08/23/misc/
 https://cloudchewie.com/2022/08/23/number/
 https://cloudchewie.com/2022/08/23/knapsack/
 https://cloudchewie.com/2022/08/23/interval/
