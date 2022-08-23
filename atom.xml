@@ -6,7 +6,7 @@
   <link href="https://cloudchewie.com/atom.xml" rel="self"/>
   
   <link href="https://cloudchewie.com/"/>
-  <updated>2022-08-22T05:08:49.574Z</updated>
+  <updated>2022-04-30T07:32:28.177Z</updated>
   <id>https://cloudchewie.com/</id>
   
   <author>
@@ -15,6 +15,185 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://cloudchewie.com/2022/08/23/divide-and-conquer/"/>
+    <id>https://cloudchewie.com/2022/08/23/divide-and-conquer/</id>
+    <published>2022-08-23T02:58:11.950Z</published>
+    <updated>2022-04-30T07:32:28.177Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;author: fudonglai, AngelKitty, labuladong&lt;/p&gt;
+&lt;p&gt;本页面将介绍递归与分治算法的区别与结合运用。&lt;/p&gt;
+&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://cloudchewie.com/2022/08/23/counting-sort/"/>
+    <id>https://cloudchewie.com/2022/08/23/counting-sort/</id>
+    <published>2022-08-23T02:58:11.941Z</published>
+    <updated>2022-04-30T07:32:28.177Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;???+ warning&lt;br&gt;    本页面要介绍的不是 &lt;a href=&quot;./radix-sort.md&quot;&gt;&lt;strong&gt;基数排序&lt;/strong&gt;&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;本页面将简要介绍计数排序。&lt;/p&gt;
+&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://cloudchewie.com/2022/08/23/construction/"/>
+    <id>https://cloudchewie.com/2022/08/23/construction/</id>
+    <published>2022-08-23T02:58:11.930Z</published>
+    <updated>2022-04-30T07:32:28.176Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;author: leoleoasd, yzxoi&lt;/p&gt;
+&lt;p&gt;本页面将简要介绍构造题这类题型。&lt;/p&gt;
+&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://cloudchewie.com/2022/08/23/complexity/"/>
+    <id>https://cloudchewie.com/2022/08/23/complexity/</id>
+    <published>2022-08-23T02:58:11.920Z</published>
+    <updated>2022-04-30T07:32:28.175Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;author: linehk&lt;/p&gt;
+&lt;p&gt;时间复杂度和空间复杂度是衡量一个算法效率的重要标准。&lt;/p&gt;
+&lt;h2 id=&quot;基本操作数&quot;&gt;&lt;a href=&quot;#基本操作数&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://cloudchewie.com/2022/08/23/bucket-sort/"/>
+    <id>https://cloudchewie.com/2022/08/23/bucket-sort/</id>
+    <published>2022-08-23T02:58:11.911Z</published>
+    <updated>2022-04-30T07:32:28.173Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本页面将简要介绍桶排序。&lt;/p&gt;
+&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;桶排序（英文：Bucket</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://cloudchewie.com/2022/08/23/bubble-sort/"/>
+    <id>https://cloudchewie.com/2022/08/23/bubble-sort/</id>
+    <published>2022-08-23T02:58:11.902Z</published>
+    <updated>2022-04-30T07:32:28.172Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本页面将简要介绍冒泡排序。&lt;/p&gt;
+&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;冒泡排序（英语：Bubble</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://cloudchewie.com/2022/08/23/binary-lifting/"/>
+    <id>https://cloudchewie.com/2022/08/23/binary-lifting/</id>
+    <published>2022-08-23T02:58:11.893Z</published>
+    <updated>2022-04-30T07:32:28.172Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;author: Ir1d, ShadowsEpic, Fomalhauthmj, siger-young, MingqiHuang, Xeonacid, hsfzLZH1, orzAtalod,</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://cloudchewie.com/2022/08/23/binary/"/>
+    <id>https://cloudchewie.com/2022/08/23/binary/</id>
+    <published>2022-08-23T02:58:11.884Z</published>
+    <updated>2022-04-30T07:32:28.172Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本页面将简要介绍二分查找，由二分法衍生的三分法以及二分答案。&lt;/p&gt;
+&lt;h2 id=&quot;二分法&quot;&gt;&lt;a href=&quot;#二分法&quot; class=&quot;headerlink&quot; title=&quot;二分法&quot;&gt;&lt;/a&gt;二分法&lt;/h2&gt;&lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>【教程】Windows下安装WSL 2</title>
