@@ -26,8 +26,8 @@ https://cloudchewie.com/2022/08/23/construction/
 https://cloudchewie.com/2022/08/23/complexity/
 https://cloudchewie.com/2022/08/23/bucket-sort/
 https://cloudchewie.com/2022/08/23/binary-lifting/
-https://cloudchewie.com/2022/08/23/binary/
 https://cloudchewie.com/2022/08/23/bubble-sort/
+https://cloudchewie.com/2022/08/23/binary/
 https://cloudchewie.com/
 https://cloudchewie.com/tags/windows/
 https://cloudchewie.com/tags/Linux/
