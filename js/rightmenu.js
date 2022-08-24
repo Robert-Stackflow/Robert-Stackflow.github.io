@@ -1,1 +1,309 @@
-function insertAtCursor(e,t){if(document.selection)e.focus(),sel=document.selection.createRange(),sel.text=t,sel.select();else if(e.selectionStart||"0"==e.selectionStart){var o=e.selectionStart,n=e.selectionEnd,i=e.scrollTop;e.value=e.value.substring(0,o)+t+e.value.substring(n,e.value.length),i>0&&(e.scrollTop=i),e.focus(),e.selectionStart=o+t.length,e.selectionEnd=o+t.length}else e.value+=t,e.focus()}let rmf={};function popupMenu(){window.oncontextmenu=function(e){document.querySelectorAll(".rightMenu-line").forEach((e=>{$(e).hide()})),document.getSelection().toString()&&$("#menu-text").show(),document.getElementById("post")&&(console.log("post"),$("#menu-post").show(),$("#menu-other").show());var t=window.document.body;t=e.target;/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\*\+,;=.]+$/.test(window.getSelection().toString())&&$("#menu-too").show(),"A"==t.tagName&&($("#menu-to").show(),rmf.open=function(){location.href=t.href},rmf.openWithNewTab=function(){window.open(t.href),window.location.reload()},rmf.copyLink=function(){let e=t.href,o=document.createElement("textarea");o.value=e,document.body.appendChild(o),o.select(),document.execCommand("Copy"),document.body.removeChild(o)}),"IMG"==t.tagName?($("#menu-img").show(),rmf.openWithNewTab=function(){window.open(t.src),window.location.reload()},rmf.click=function(){t.click()},rmf.copyLink=function(){let e=t.src,o=document.createElement("textarea");o.value=e,document.body.appendChild(o),o.select(),document.execCommand("Copy"),document.body.removeChild(o)}):"TEXTAREA"!=t.tagName&&"INPUT"!=t.tagName||($("#menu-paste").show(),rmf.paste=function(){navigator.permissions.query({name:"clipboard-read"}).then((e=>{"granted"==e.state||"prompt"==e.state?navigator.clipboard.readText().then((e=>{insertAtCursor(t,e)})):alert("请允许读取剪贴板！")}))});let o=e.clientX+10,n=e.clientY,i=$("#rightMenu").width(),a=$("#rightMenu").height();o+i>window.innerWidth&&(o-=i+10),n+a>window.innerHeight&&(n-=n+a-window.innerHeight);var c=!0;return document.querySelectorAll(".rightMenu-line").forEach((e=>{"none"!=$(e).css("display")&&(c=!1)})),c&&$("#menu-general").show(),rmf.isReadMode&&document.querySelectorAll(".rightMenu-line").forEach((e=>{$(e).hide()})),rmf.showRightMenu(!0,n,o),!1},window.addEventListener("click",(function(){rmf.showRightMenu(!1)}))}rmf.day_night_count=0,rmf.isReadMode=!1,rmf.setCookie=function(e,t,o=365){var n=new Date;n.setTime(n.getTime()+24*o*60*60*1e3);var i="expires="+n.toGMTString();document.cookie=e+"="+t+"; "+i},rmf.getCookie=function(e){for(var t=e+"=",o=document.cookie.split(";"),n=0;n<o.length;n++){var i=o[n].trim();if(0==i.indexOf(t))return i.substring(t.length,i.length)}return""},rmf.delCookie=function(e){var t=new Date;t.setTime(t.getTime()-1);var o=getCookie(e);null!=o&&(document.cookie=e+"="+o+";expires="+t.toGMTString())},rmf.showRightMenu=function(e,t=0,o=0){let n=$("#rightMenu");n.css("top",t+"px").css("left",o+"px"),e?n.show():n.hide()},rmf.switchDarkMode=function(){const e="dark"===document.documentElement.getAttribute("data-theme")?"dark":"light";let t=$("#menus > div.menus_items > div:nth-child(7) > a > span"),o=$("#sidebar-menus > div.menus_items > div:nth-child(7) > a > span");"light"===e?(t.html("浅色模式"),o.html("浅色模式"),activateDarkMode(),saveToLocal.set("theme","dark",2),void 0!==GLOBAL_CONFIG.Snackbar&&btf.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night)):(t.html("深色模式"),o.html("深色模式"),activateLightMode(),saveToLocal.set("theme","light",2),rmf.day_night_count++,void 0!==GLOBAL_CONFIG.Snackbar&&btf.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day)),"function"==typeof utterancesTheme&&utterancesTheme(),"object"==typeof FB&&window.loadFBComment(),window.DISQUS&&document.getElementById("disqus_thread").children.length&&setTimeout((()=>window.disqusReset()),200)},rmf.copyWordsLink=function(){let e=window.location.href,t=document.createElement("textarea");t.value=e,document.body.appendChild(t),t.select(),document.execCommand("Copy"),document.body.removeChild(t),void 0!==GLOBAL_CONFIG.Snackbar&&btf.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success)},rmf.switchReadMode=function(){const e=document.body;e.classList.add("read-mode"),document.getElementById("post").classList.add("read-mode");const t=document.createElement("button");t.type="button",t.className="fas fa-sign-out-alt exit-readmode",e.appendChild(t),$(document.getElementById("post-meta")).hide();var o=commentBarrageConfig.displayBarrage;rmf.isReadMode=!0,1==commentBarrageConfig.displayBarrage&&switchCommentBarrage(),console.log(commentBarrageConfig.displayBarrage),t.addEventListener("click",(function n(){e.classList.remove("read-mode"),document.getElementById("post").classList.remove("read-mode"),t.remove(),t.removeEventListener("click",n),rmf.isReadMode=!1,$(document.getElementById("post-meta")).show(),1==o&&0==commentBarrageConfig.displayBarrage&&switchCommentBarrage()}))},rmf.copySelect=function(){document.execCommand("Copy",!1,null),void 0!==GLOBAL_CONFIG.Snackbar&&btf.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success)},rmf.scrollToTop=function(){btf.scrollToDest(0,500)},rmf.translate=function(){document.getElementById("translateLink").click()},rmf.hideAsideBtn=function(){const e=document.documentElement.classList;e.contains("hide-aside")?saveToLocal.set("aside-status","show",2):saveToLocal.set("aside-status","hide",2),e.toggle("hide-aside")},document.onkeydown=function(e){17!=(e=e||window.event).keyCode||console.log("你知道的太多了")},navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)||popupMenu();const box=document.documentElement;function addLongtabListener(e,t){let o=0;e.ontouchstart=()=>{o=0,o=setTimeout((()=>{t(),o=0}),380)},e.ontouchmove=()=>{clearTimeout(o),o=0},e.ontouchend=()=>{o&&clearTimeout(o)}}addLongtabListener(box,popupMenu);
+// console.log(
+//     "Codes uses GPL Licence"
+// )
+
+function insertAtCursor(myField, myValue) {
+
+    //IE 浏览器
+    if (document.selection) {
+        myField.focus();
+        sel = document.selection.createRange();
+        sel.text = myValue;
+        sel.select();
+    }
+
+    //FireFox、Chrome等
+    else if (myField.selectionStart || myField.selectionStart == '0') {
+        var startPos = myField.selectionStart;
+        var endPos = myField.selectionEnd;
+
+        // 保存滚动条
+        var restoreTop = myField.scrollTop;
+        myField.value = myField.value.substring(0, startPos) + myValue + myField.value.substring(endPos, myField.value.length);
+
+        if (restoreTop > 0) {
+            myField.scrollTop = restoreTop;
+        }
+
+        myField.focus();
+        myField.selectionStart = startPos + myValue.length;
+        myField.selectionEnd = startPos + myValue.length;
+    } else {
+        myField.value += myValue;
+        myField.focus();
+    }
+}
+let rmf = {};
+rmf.day_night_count = 0;
+rmf.isReadMode = false;
+
+rmf.setCookie = function(cname, cvalue, exdays = 365) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
+//读cookies
+rmf.getCookie = function(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i].trim();
+        if (c.indexOf(name) == 0) { return c.substring(name.length, c.length); }
+    }
+    return "";
+}
+
+//删cookies
+rmf.delCookie = function(name) {
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval = getCookie(name);
+    if (cval != null)
+        document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+}
+rmf.showRightMenu = function(isTrue, x = 0, y = 0) {
+    let $rightMenu = $('#rightMenu');
+    $rightMenu.css('top', x + 'px').css('left', y + 'px');
+
+    if (isTrue) {
+        $rightMenu.show();
+    } else {
+        $rightMenu.hide();
+    }
+}
+rmf.switchDarkMode = function() {
+    const nowMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+    let $rightMenu = $('#menus > div.menus_items > div:nth-child(7) > a > span');
+    let $rightMenu_mobile = $('#sidebar-menus > div.menus_items > div:nth-child(7) > a > span');
+    if (nowMode === 'light') {
+        $rightMenu.html("浅色模式")
+        $rightMenu_mobile.html("浅色模式")
+        activateDarkMode()
+        saveToLocal.set('theme', 'dark', 2)
+        GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night)
+    } else {
+        $rightMenu.html("深色模式")
+        $rightMenu_mobile.html("深色模式")
+        activateLightMode()
+        saveToLocal.set('theme', 'light', 2)
+        rmf.day_night_count++;
+        GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day)
+    }
+    // handle some cases
+    typeof utterancesTheme === 'function' && utterancesTheme()
+    typeof FB === 'object' && window.loadFBComment()
+    window.DISQUS && document.getElementById('disqus_thread').children.length && setTimeout(() => window.disqusReset(), 200)
+};
+rmf.copyWordsLink = function() {
+    let url = window.location.href
+    let txa = document.createElement("textarea");
+    txa.value = url;
+    document.body.appendChild(txa)
+    txa.select();
+    document.execCommand("Copy");
+    document.body.removeChild(txa);
+    GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success)
+}
+rmf.switchReadMode = function() {
+    const $body = document.body
+    $body.classList.add('read-mode')
+    document.getElementById("post").classList.add('read-mode')
+    const newEle = document.createElement('button')
+    newEle.type = 'button'
+    newEle.className = 'fas fa-sign-out-alt exit-readmode'
+    $body.appendChild(newEle)
+    $(document.getElementById("post-meta")).hide()
+    var oldBarrage = commentBarrageConfig.displayBarrage
+    rmf.isReadMode = true;
+    if (commentBarrageConfig.displayBarrage == true)
+        switchCommentBarrage()
+
+    function clickFn() {
+        $body.classList.remove('read-mode')
+        document.getElementById("post").classList.remove('read-mode')
+        newEle.remove()
+        newEle.removeEventListener('click', clickFn)
+        rmf.isReadMode = false;
+        $(document.getElementById("post-meta")).show()
+        if (oldBarrage == true && commentBarrageConfig.displayBarrage == false)
+            switchCommentBarrage()
+    }
+    console.log(commentBarrageConfig.displayBarrage)
+    newEle.addEventListener('click', clickFn)
+}
+
+//复制选中文字
+rmf.copySelect = function() {
+    document.execCommand('Copy', false, null);
+    GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success)
+}
+
+//回到顶部
+rmf.scrollToTop = function() {
+    btf.scrollToDest(0, 500);
+}
+rmf.translate = function() {
+    document.getElementById("translateLink").click();
+}
+rmf.hideAsideBtn = function() { // Hide aside
+        const $htmlDom = document.documentElement.classList;
+        $htmlDom.contains('hide-aside') ?
+            saveToLocal.set('aside-status', 'show', 2) :
+            saveToLocal.set('aside-status', 'hide', 2);
+        $htmlDom.toggle('hide-aside');
+    }
+    // 右键菜单事件
+document.onkeydown = function(event) {
+    event = (event || window.event);
+    if (event.keyCode == 17) {
+        console.log("你知道的太多了");
+        return;
+    }
+}
+
+function popupMenu() {
+    //window.oncontextmenu=function(){return false;}
+    window.oncontextmenu = function(event) {
+        // console.log(event.keyCode)
+        //隐藏所有菜单项
+        document.querySelectorAll(".rightMenu-line").forEach(item => {
+            $(item).hide();
+        });
+        //如果有文字选中，则显示文字选中相关的菜单项
+        if (document.getSelection().toString()) {
+            $('#menu-text').show();
+        }
+        //如果是文章，则显示文章相关的菜单项
+        if (document.getElementById('post')) {
+            console.log("post")
+            $('#menu-post').show();
+            $('#menu-other').show();
+        }
+        var el = window.document.body;
+        el = event.target;
+        var a = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\*\+,;=.]+$/;
+        //如果是链接，则显示链接相关的菜单项
+        if (a.test(window.getSelection().toString())) {
+            $('#menu-too').show()
+        }
+        if (el.tagName == 'A') {
+            $('#menu-to').show()
+            rmf.open = function() {
+                location.href = el.href
+            }
+            rmf.openWithNewTab = function() {
+                window.open(el.href);
+                window.location.reload();
+            }
+            rmf.copyLink = function() {
+                let url = el.href
+                let txa = document.createElement("textarea");
+                txa.value = url;
+                document.body.appendChild(txa)
+                txa.select();
+                document.execCommand("Copy");
+                document.body.removeChild(txa);
+            }
+        }
+        //如果是图片
+        if (el.tagName == 'IMG') {
+            $('#menu-img').show()
+            rmf.openWithNewTab = function() {
+                window.open(el.src);
+                window.location.reload();
+            }
+            rmf.click = function() {
+                el.click()
+            }
+            rmf.copyLink = function() {
+                let url = el.src
+                let txa = document.createElement("textarea");
+                txa.value = url;
+                document.body.appendChild(txa)
+                txa.select();
+                document.execCommand("Copy");
+                document.body.removeChild(txa);
+            }
+        } else if (el.tagName == "TEXTAREA" || el.tagName == "INPUT") {
+            //如果是输入框/文本框
+            $('#menu-paste').show();
+            rmf.paste = function() {
+                navigator.permissions
+                    .query({
+                        name: 'clipboard-read'
+                    })
+                    .then(result => {
+                        if (result.state == 'granted' || result.state == 'prompt') {
+                            //读取剪贴板
+                            navigator.clipboard.readText().then(text => {
+                                // console.log(text)
+                                insertAtCursor(el, text)
+                            })
+                        } else {
+                            alert('请允许读取剪贴板！')
+                        }
+                    })
+            }
+        }
+        let pageX = event.clientX + 10;
+        let pageY = event.clientY;
+        let rmWidth = $('#rightMenu').width();
+        let rmHeight = $('#rightMenu').height();
+        if (pageX + rmWidth > window.innerWidth) {
+            pageX -= rmWidth + 10;
+        }
+        if (pageY + rmHeight > window.innerHeight) {
+            pageY -= pageY + rmHeight - window.innerHeight;
+        }
+        //判断是否只有小菜单，如果是则显示通用菜单项
+        var isOnlySmall = true;
+        document.querySelectorAll(".rightMenu-line").forEach(item => {
+            if ($(item).css("display") != "none")
+                isOnlySmall = false;
+        });
+        if (isOnlySmall)
+            $('#menu-general').show();
+        //如果是阅读模式，则隐藏所有菜单项
+        if (rmf.isReadMode)
+            document.querySelectorAll(".rightMenu-line").forEach(item => {
+                $(item).hide();
+            });
+        rmf.showRightMenu(true, pageY, pageX);
+        return false;
+    };
+
+    window.addEventListener('click', function() {
+        rmf.showRightMenu(false);
+    });
+}
+if (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+    popupMenu()
+}
+const box = document.documentElement
+
+function addLongtabListener(target, callback) {
+    let timer = 0 // 初始化timer
+
+    target.ontouchstart = () => {
+        timer = 0 // 重置timer
+        timer = setTimeout(() => {
+                callback();
+                timer = 0
+            }, 380) // 超时器能成功执行，说明是长按
+    }
+
+    target.ontouchmove = () => {
+        clearTimeout(timer) // 如果来到这里，说明是滑动
+        timer = 0
+    }
+
+    target.ontouchend = () => { // 到这里如果timer有值，说明此触摸时间不足380ms，是点击
+        if (timer) {
+            clearTimeout(timer)
+        }
+    }
+}
+
+addLongtabListener(box, popupMenu)
