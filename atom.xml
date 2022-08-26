@@ -6,7 +6,7 @@
   <link href="https://cloudchewie.com/atom.xml" rel="self"/>
   
   <link href="https://cloudchewie.com/"/>
-  <updated>2022-08-22T05:08:49.574Z</updated>
+  <updated>2022-08-22T10:12:36.200Z</updated>
   <id>https://cloudchewie.com/</id>
   
   <author>
@@ -15,27 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>【教程】Windows下安装WSL 2</title>
-    <link href="https://cloudchewie.com/2022/08/19/%E3%80%90%E6%95%99%E7%A8%8B%E3%80%91Windows%E4%B8%8B%E5%AE%89%E8%A3%85WSL%202/"/>
-    <id>https://cloudchewie.com/2022/08/19/%E3%80%90%E6%95%99%E7%A8%8B%E3%80%91Windows%E4%B8%8B%E5%AE%89%E8%A3%85WSL%202/</id>
-    <published>2022-08-19T12:59:05.000Z</published>
-    <updated>2022-08-22T05:08:49.574Z</updated>
-    
-    
-    <summary type="html">Windows下安装Linux子系统教程</summary>
-    
-    
-    
-    <category term="环境配置" scheme="https://cloudchewie.com/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
-    
-    
-    <category term="windows" scheme="https://cloudchewie.com/tags/windows/"/>
-    
-    <category term="Linux" scheme="https://cloudchewie.com/tags/Linux/"/>
-    
-  </entry>
   
   <entry>
     <title>【笔记】算法设计与分析笔记</title>
@@ -55,6 +34,27 @@
     <category term="算法" scheme="https://cloudchewie.com/tags/%E7%AE%97%E6%B3%95/"/>
     
     <category term="专业课程" scheme="https://cloudchewie.com/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【教程】Windows下安装WSL 2</title>
+    <link href="https://cloudchewie.com/2022/08/19/%E3%80%90%E6%95%99%E7%A8%8B%E3%80%91Windows%E4%B8%8B%E5%AE%89%E8%A3%85WSL%202/"/>
+    <id>https://cloudchewie.com/2022/08/19/%E3%80%90%E6%95%99%E7%A8%8B%E3%80%91Windows%E4%B8%8B%E5%AE%89%E8%A3%85WSL%202/</id>
+    <published>2022-08-19T12:59:05.000Z</published>
+    <updated>2022-08-22T05:08:49.574Z</updated>
+    
+    
+    <summary type="html">Windows下安装Linux子系统教程</summary>
+    
+    
+    
+    <category term="环境配置" scheme="https://cloudchewie.com/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    
+    
+    <category term="windows" scheme="https://cloudchewie.com/tags/windows/"/>
+    
+    <category term="Linux" scheme="https://cloudchewie.com/tags/Linux/"/>
     
   </entry>
   

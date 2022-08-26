@@ -4,33 +4,6 @@
   
     
     <entry>
-      <title>【教程】Windows下安装WSL 2</title>
-      <link href="/2022/08/19/%E3%80%90%E6%95%99%E7%A8%8B%E3%80%91Windows%E4%B8%8B%E5%AE%89%E8%A3%85WSL%202/"/>
-      <url>/2022/08/19/%E3%80%90%E6%95%99%E7%A8%8B%E3%80%91Windows%E4%B8%8B%E5%AE%89%E8%A3%85WSL%202/</url>
-      
-        <content type="html"><![CDATA[<h2 id="系统版本要求"><a href="#系统版本要求" class="headerlink" title="系统版本要求"></a>系统版本要求</h2><p>必须运行 Windows 10 版本 2004 及更高版本（内部版本 19041 及更高版本）或 Windows 11</p><blockquote><p>按住<strong>Windows徽标键+R</strong>，键入<strong>winver</strong>来查看电脑版本</p></blockquote><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>通过在<strong>管理员模式下</strong>PowerShell 或 Windows 命令提示符中输入以下命令，然后重新启动计算机来安装运行WSL</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--install</span></span><br></pre></td></tr></table></figure><p>此命令将启用所需的可选组件，下载最新的Linux内核，<strong>将WSL 2设置为默认值</strong>，并为您安装Linux发行版（默认情况下为<strong>Ubuntu</strong>）。</p><p>首次启动新安装的 Linux 发行版时，将打开一个控制台窗口，系统将要求您等待文件解压缩并存储在您的计算机上。</p><h2 id="更改发行版"><a href="#更改发行版" class="headerlink" title="更改发行版"></a>更改发行版</h2><p>通过在<strong>管理员模式下</strong>PowerShell 或 Windows 命令提示符中输入以下命令查看可安装的有效分发</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-o</span></span><br><span class="line">wsl <span class="literal">--list</span> <span class="literal">--online</span></span><br></pre></td></tr></table></figure><p>通过在<strong>管理员模式下</strong>PowerShell 或 Windows 命令提示符中输入以下命令安装新分发</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--install</span> <span class="literal">-d</span> &lt;Distribution Name&gt;</span><br></pre></td></tr></table></figure><p>通过在<strong>管理员模式下</strong>PowerShell 或 Windows 命令提示符中输入以下命令用新分发替换旧分发</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--install</span> <span class="literal">-d</span> &lt;Distribution Name&gt; &lt;Distribution Name&gt;</span><br></pre></td></tr></table></figure><h2 id="查看已安装发行版"><a href="#查看已安装发行版" class="headerlink" title="查看已安装发行版"></a>查看已安装发行版</h2><p>通过在<strong>管理员模式下</strong>PowerShell 或 Windows 命令提示符中输入以下命令查看已安装分发的状态和版本</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-v</span></span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> 环境配置 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> windows </tag>
-            
-            <tag> Linux </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>【笔记】算法设计与分析笔记</title>
       <link href="/2022/08/19/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0/"/>
       <url>/2022/08/19/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0/</url>
@@ -50,6 +23,33 @@
             <tag> 算法 </tag>
             
             <tag> 专业课程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【教程】Windows下安装WSL 2</title>
+      <link href="/2022/08/19/%E3%80%90%E6%95%99%E7%A8%8B%E3%80%91Windows%E4%B8%8B%E5%AE%89%E8%A3%85WSL%202/"/>
+      <url>/2022/08/19/%E3%80%90%E6%95%99%E7%A8%8B%E3%80%91Windows%E4%B8%8B%E5%AE%89%E8%A3%85WSL%202/</url>
+      
+        <content type="html"><![CDATA[<h2 id="系统版本要求"><a href="#系统版本要求" class="headerlink" title="系统版本要求"></a>系统版本要求</h2><p>必须运行 Windows 10 版本 2004 及更高版本（内部版本 19041 及更高版本）或 Windows 11</p><blockquote><p>按住<strong>Windows徽标键+R</strong>，键入<strong>winver</strong>来查看电脑版本</p></blockquote><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>通过在<strong>管理员模式下</strong>PowerShell 或 Windows 命令提示符中输入以下命令，然后重新启动计算机来安装运行WSL</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--install</span></span><br></pre></td></tr></table></figure><p>此命令将启用所需的可选组件，下载最新的Linux内核，<strong>将WSL 2设置为默认值</strong>，并为您安装Linux发行版（默认情况下为<strong>Ubuntu</strong>）。</p><p>首次启动新安装的 Linux 发行版时，将打开一个控制台窗口，系统将要求您等待文件解压缩并存储在您的计算机上。</p><h2 id="更改发行版"><a href="#更改发行版" class="headerlink" title="更改发行版"></a>更改发行版</h2><p>通过在<strong>管理员模式下</strong>PowerShell 或 Windows 命令提示符中输入以下命令查看可安装的有效分发</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-o</span></span><br><span class="line">wsl <span class="literal">--list</span> <span class="literal">--online</span></span><br></pre></td></tr></table></figure><p>通过在<strong>管理员模式下</strong>PowerShell 或 Windows 命令提示符中输入以下命令安装新分发</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--install</span> <span class="literal">-d</span> &lt;Distribution Name&gt;</span><br></pre></td></tr></table></figure><p>通过在<strong>管理员模式下</strong>PowerShell 或 Windows 命令提示符中输入以下命令用新分发替换旧分发</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--install</span> <span class="literal">-d</span> &lt;Distribution Name&gt; &lt;Distribution Name&gt;</span><br></pre></td></tr></table></figure><h2 id="查看已安装发行版"><a href="#查看已安装发行版" class="headerlink" title="查看已安装发行版"></a>查看已安装发行版</h2><p>通过在<strong>管理员模式下</strong>PowerShell 或 Windows 命令提示符中输入以下命令查看已安装分发的状态和版本</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-v</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 环境配置 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> windows </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
