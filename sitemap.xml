@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://cloudchewie.com/2022/09/16/%E3%80%90%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E3%80%91%E7%AB%8B%E9%A1%B9%E4%BC%9A%E8%AE%AE/</loc>
+    
+    <lastmod>2022-09-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudchewie.com/about/index.html</loc>
+    
+    <lastmod>2022-09-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://cloudchewie.com/2022/09/16/%E3%80%90%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E3%80%91NABCD%E6%A8%A1%E5%9E%8B/</loc>
     
     <lastmod>2022-09-16</lastmod>
@@ -29,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://cloudchewie.com/about/index.html</loc>
+    <loc>https://cloudchewie.com/about/index%20-%20%E5%89%AF%E6%9C%AC.html</loc>
     
     <lastmod>2022-08-24</lastmod>
     
@@ -106,6 +124,13 @@
   </url>
   
   <url>
+    <loc>https://cloudchewie.com/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</loc>
+    <lastmod>2022-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://cloudchewie.com/tags/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -120,7 +145,7 @@
   </url>
   
   <url>
-    <loc>https://cloudchewie.com/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</loc>
+    <loc>https://cloudchewie.com/tags/%E4%BC%9A%E8%AE%AE%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -136,14 +161,14 @@
   </url>
   
   <url>
-    <loc>https://cloudchewie.com/categories/%E4%B8%93%E4%B8%9A%E6%A0%B8%E5%BF%83/</loc>
+    <loc>https://cloudchewie.com/categories/%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://cloudchewie.com/categories/%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE/</loc>
+    <loc>https://cloudchewie.com/categories/%E4%B8%93%E4%B8%9A%E6%A0%B8%E5%BF%83/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
