@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>【软件工程】团队分工</title>
+      <link href="/2022/09/23/%E3%80%90%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E3%80%91%E5%9B%A2%E9%98%9F%E5%88%86%E5%B7%A5/"/>
+      <url>/2022/09/23/%E3%80%90%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E3%80%91%E5%9B%A2%E9%98%9F%E5%88%86%E5%B7%A5/</url>
+      
+        <content type="html"><![CDATA[<h2 id="会议介绍"><a href="#会议介绍" class="headerlink" title="会议介绍"></a>会议介绍</h2><ul><li><strong>会议主题</strong>：确定主要任务与团队分工</li><li><strong>参会者</strong>：徐瑞达，刘鉴之，谢林桦，张许恒</li><li><strong>会议时间</strong>：2022年9月23号周五 西华园</li></ul><h2 id="会议内容"><a href="#会议内容" class="headerlink" title="会议内容"></a>会议内容</h2><h3 id="预估的主要任务"><a href="#预估的主要任务" class="headerlink" title="预估的主要任务"></a>预估的主要任务</h3><img src="预估的主要任务.png" style="zoom: 45%;" /><h3 id="项目分工"><a href="#项目分工" class="headerlink" title="项目分工"></a>项目分工</h3><table><thead><tr><th align="center">分工内容</th><th align="center">技术栈</th><th align="center">分工对象</th><th align="center">备注</th></tr></thead><tbody><tr><td align="center">UI设计、文档撰写</td><td align="center">PhotoShop</td><td align="center">张许恒</td><td align="center">需要配合客户端完成界面设计</td></tr><tr><td align="center">客户端开发</td><td align="center">Android、SQLite</td><td align="center">谢林桦</td><td align="center"></td></tr><tr><td align="center">服务端开发</td><td align="center">MongoDB、SpringBoot、JavaWeb</td><td align="center">徐瑞达、刘鉴之</td><td align="center"></td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> 团队项目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 软件工程 </tag>
+            
+            <tag> 会议记录 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【软件工程】立项会议</title>
       <link href="/2022/09/16/%E3%80%90%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E3%80%91%E7%AB%8B%E9%A1%B9%E4%BC%9A%E8%AE%AE/"/>
       <url>/2022/09/16/%E3%80%90%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E3%80%91%E7%AB%8B%E9%A1%B9%E4%BC%9A%E8%AE%AE/</url>
