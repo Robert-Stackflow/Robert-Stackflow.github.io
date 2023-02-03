@@ -175,7 +175,7 @@ div.tk-submit>div.tk-row.actions>a {
 
 
 /* $main: #1677B3 $second: #fff $1px solid rgba(150, 150, 150, 0.2): 1px solid rgba(150, 150, 150, 0.2);
-$light-text: #ff7242 $border-radius: .5rem*/
+$light-text: #24B1FF $border-radius: .5rem*/
 
 
 /*单个分类*/
@@ -201,7 +201,7 @@ $light-text: #ff7242 $border-radius: .5rem*/
 
 .page #category .category-list-bar:hover,
 #tag .tag-list-bar:hover {
-    border: 1px solid #49B1F5;
+    border: 1px solid #0099FF;
     transition: 1s;
 }
 
@@ -296,10 +296,10 @@ $light-text: #ff7242 $border-radius: .5rem*/
     --tab-button-active-bg: #fff;
     --card-bg: #fff;
     --sidebar-bg: #f6f8fa;
-    --btn-hover-color: #ff7242;
+    --btn-hover-color: #24B1FF;
     --btn-color: #fff;
-    --btn-bg: #49b1f5;
-    --text-bg-hover: rgba(73, 177, 245, 0.7);
+    --btn-bg: #0099FF;
+    --text-bg-hover: #0099FF;
     --light-grey: #eee;
     --dark-grey: #cacaca;
     --white: #fff;
@@ -310,9 +310,9 @@ $light-text: #ff7242 $border-radius: .5rem*/
     --toc-link-color: #666261;
     --card-box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
     --card-hover-box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.09);
-    --pseudo-hover: #ff7242;
+    --pseudo-hover: #24B1FF;
     --headline-presudo: #a0a0a0;
-    --scrollbar-color: #49b1f5;
+    --scrollbar-color: #0099FF;
     --hl-color: #a6accd;
     --hl-bg: #292d3e;
     --hltools-bg: #252938;
@@ -375,10 +375,10 @@ $light-text: #ff7242 $border-radius: .5rem*/
     --tab-button-active-bg: #fff;
     --card-bg: #fff;
     --sidebar-bg: #f6f8fa;
-    --btn-hover-color: #ff7242;
+    --btn-hover-color: #24B1FF;
     --btn-color: #fff;
-    --btn-bg: #49b1f5;
-    --text-bg-hover: rgba(73, 177, 245, 0.7);
+    --btn-bg: #0099FF;
+    --text-bg-hover: #0099FF;
     --light-grey: #eee;
     --dark-grey: #cacaca;
     --white: #fff;
@@ -389,9 +389,9 @@ $light-text: #ff7242 $border-radius: .5rem*/
     --toc-link-color: #666261;
     --card-box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
     --card-hover-box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.09);
-    --pseudo-hover: #ff7242;
+    --pseudo-hover: #24B1FF;
     --headline-presudo: #a0a0a0;
-    --scrollbar-color: #49b1f5;
+    --scrollbar-color: #0099FF;
     --hl-color: #a6accd;
     --hl-bg: #292d3e;
     --hltools-bg: #252938;
@@ -443,7 +443,7 @@ $light-text: #ff7242 $border-radius: .5rem*/
 .download-list-item-button:hover {
     text-decoration: none;
     color: #fff;
-    background-color: #ff7242;
+    background-color: #24B1FF;
 }
 
 .article_describe {
@@ -536,7 +536,7 @@ $light-text: #ff7242 $border-radius: .5rem*/
 }
 
 #rightMenu:hover {
-    box-shadow: 0px 0px 2px 1px #49B1F5 !important;
+    box-shadow: 0px 0px 2px 1px #0099FF !important;
     transition: 1.5s !important;
 }
 
@@ -596,7 +596,7 @@ $light-text: #ff7242 $border-radius: .5rem*/
 [data-theme='light'] #tag:hover,
 [data-theme='light'] #category:hover,
 [data-theme='light'] .error-content:hover {
-    box-shadow: 0px 0px 2px 1px #49B1F5 !important;
+    box-shadow: 0px 0px 2px 1px #0099FF !important;
     transition: 1.5s !important;
 }
 
@@ -612,7 +612,7 @@ $light-text: #ff7242 $border-radius: .5rem*/
 [data-theme='dark'] #tag:hover,
 [data-theme='dark'] #category:hover,
 [data-theme='dark'] .error-content:hover {
-    box-shadow: 0px 0px 2px 1px #49B1F5 !important;
+    box-shadow: 0px 0px 2px 1px #0099FF !important;
     transition: 1.5s !important;
 }
 
@@ -651,14 +651,14 @@ back [data-theme='light'] #rightMenu {
 
 [data-theme='light'] #rightside>div>button,
 [data-theme='light'] #rightside>div>a {
-    background: rgba(73, 177, 245, 0.5);
+    background: #0099FF;
     backdrop-filter: blur(50px);
     cursor: pointer !important;
 }
 
 [data-theme='light'] #rightside>div>button:hover,
 [data-theme='light'] #rightside>div>a:hover {
-    background: #ff7242;
+    background: #24B1FF;
     cursor: pointer !important;
 }
 
@@ -709,7 +709,7 @@ back [data-theme='light'] #rightMenu {
 [data-theme='light'] #pagination .next-post:hover .label,
 [data-theme='light'] #pagination .next-post:hover .next_info,
 [data-theme='light'] #pagination .prev-post:hover .prev_info {
-    color: #49B1F5 !important;
+    color: #0099FF !important;
 }
 
 [data-theme='light'] #pagination .prev-post .label,
@@ -729,7 +729,7 @@ back [data-theme='light'] #rightMenu {
 [data-theme='dark'] #pagination .next-post:hover .label,
 [data-theme='dark'] #pagination .next-post:hover .next_info,
 [data-theme='dark'] #pagination .prev-post:hover .prev_info {
-    color: #49B1F5 !important;
+    color: #0099FF !important;
     transition: 0.3s;
 }
 
@@ -758,7 +758,7 @@ back [data-theme='light'] #rightMenu {
 }
 
 .algolia-hit-item-link:hover {
-    color: #49B1F5 !important;
+    color: #0099FF !important;
 }
 
 .ais-Hits-list {
@@ -815,7 +815,7 @@ back [data-theme='light'] #rightMenu {
 
 .cal tbody a:hover {
     color: #000;
-    background-color: #49B1F5;
+    background-color: #0099FF;
 }
 
 .snackbar-container {
@@ -828,20 +828,20 @@ back [data-theme='light'] #rightMenu {
 }
 
 .cal-title a:hover {
-    color: #49B1F5;
+    color: #0099FF;
 }
 
 #aside-content .card-tag-cloud a:hover {
-    background-color: #49B1F5;
+    background-color: #0099FF;
     color: #fff !important;
 }
 
 .swiper-pagination-bullet:hover {
-    background-color: #49B1F5 !important;
+    background-color: #0099FF !important;
 }
 
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
-    background-color: #49B1F5 !important;
+    background-color: #0099FF !important;
 }
 
 .ais-SearchBox-loadingIndicator {

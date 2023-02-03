@@ -12,7 +12,7 @@
     
     .comment-barrage-item:hover {
         box-shadow: var(--card-hover-box-shadow);
-        box-shadow: 0px 0px 2px 1px #49B1F5 !important;
+        box-shadow: 0px 0px 2px 1px #0099FF !important;
     }
     
     @media screen and (max-width: 768px) {
