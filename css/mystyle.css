@@ -4,12 +4,6 @@
     src: url('/fonts/LXGWWenKai-Regular.ttf') format("truetype");
 } */
 
-@font-face {
-    font-family: "LXGWWenKai-Regular";
-    font-display: swap;
-    src: url('https://gitee.com/Robert-Stackflow/hust-data-base/raw/master/fonts/LXGWWenKai-Regular.ttf') format("truetype");
-}
-
 
 /* 渐变色滚动动画 */
 
