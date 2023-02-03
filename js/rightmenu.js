@@ -158,7 +158,6 @@ rmf.hideAsideBtn = function() { // Hide aside
 document.onkeydown = function(event) {
     event = (event || window.event);
     if (event.keyCode == 17) {
-        console.log("你知道的太多了");
         return;
     }
 }
@@ -205,6 +204,7 @@ function popupMenu() {
                 txa.select();
                 document.execCommand("Copy");
                 document.body.removeChild(txa);
+                GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success)
             }
         }
         //如果是图片
@@ -212,7 +212,9 @@ function popupMenu() {
             $('#menu-img').show()
             rmf.openWithNewTab = function() {
                 window.open(el.src);
-                window.location.reload();
+            }
+            rmf.downloadImage = function() {
+                el.click()
             }
             rmf.click = function() {
                 el.click()
@@ -225,6 +227,7 @@ function popupMenu() {
                 txa.select();
                 document.execCommand("Copy");
                 document.body.removeChild(txa);
+                GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success)
             }
         } else if (el.tagName == "TEXTAREA" || el.tagName == "INPUT") {
             //如果是输入框/文本框
