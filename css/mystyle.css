@@ -435,9 +435,9 @@ $light-text: #24B1FF $border-radius: .5rem*/
     background-color: var(--btn-beautify-color, #777);
     color: #fff;
     line-height: 2;
-    --btn-beautify-color: #428bca;
+    --btn-beautify-color: #0099FF;
     padding: 6px 15px;
-    font-family: "LXGWWenKai-Regular";
+    font-family: "LXGW WenKai";
 }
 
 .download-list-item-button:hover {
@@ -560,7 +560,7 @@ $light-text: #24B1FF $border-radius: .5rem*/
 
  :root {
     --lyx-border: #c9c9c9;
-    --lyx-blue: #6cf;
+    --lyx-blue: #0099FF;
     --lyx-gray: #e2e2e2;
     --lyx-theme: #6cf;
     --lyx-green: #39c5bb;
