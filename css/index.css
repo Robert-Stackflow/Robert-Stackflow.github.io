@@ -1347,8 +1347,8 @@ canvas:not(#ribbon-canvas),
   --global-font-size: 14px;
   --global-bg: #fff;
   --font-color: #4c4948;
-  --hr-border: #80ccff;
-  --hr-before-color: #4db8ff;
+  --hr-border: #d2ebfd;
+  --hr-before-color: #bfe4fb;
   --search-bg: #f6f8fa;
   --search-input-color: #4c4948;
   --search-result-title: #4c4948;
@@ -3830,7 +3830,7 @@ h1.page-title + .tag-cloud-list {
   text-align: center;
 }
 #pagination .page-number.current {
-  background: #00c4b6;
+  background: #09f;
   color: var(--white);
 }
 #pagination .pagination-info {
@@ -3909,7 +3909,7 @@ h1.page-title + .tag-cloud-list {
   overflow-wrap: break-word;
 }
 #article-container a {
-  color: #09f;
+  color: #99a9bf;
 }
 #article-container a:hover {
   text-decoration: underline;
@@ -4193,7 +4193,7 @@ h1.page-title + .tag-cloud-list {
 #rightside {
   position: fixed;
   right: -48px;
-  bottom: 40px;
+  bottom: 60px;
   z-index: 100;
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -5814,7 +5814,7 @@ blockquote.pullquote.right {
   line-height: 24px;
 }
 #algolia-search .search-dialog .ais-Pagination .ais-Pagination-item--selected a {
-  background: #00c4b6;
+  background: #09f;
   color: #eee;
   cursor: default;
 }

@@ -806,6 +806,8 @@ back [data-theme='light'] #rightMenu {
 .cal tbody a {
     border-radius: 5px;
     border: 0px;
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
 
 .cal tbody .cal-today {
@@ -814,7 +816,6 @@ back [data-theme='light'] #rightMenu {
 }
 
 .cal tbody a:hover {
-    color: #000;
     background-color: #0099FF;
 }
 
