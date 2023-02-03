@@ -1,7 +1,13 @@
-@font-face {
+/* @font-face {
     font-family: 'LXGWWenKai-Regular';
     font-display: swap;
     src: url('/fonts/LXGWWenKai-Regular.ttf') format("truetype");
+} */
+
+@font-face {
+    font-family: "LXGWWenKai-Regular";
+    font-display: swap;
+    src: url('https://gitee.com/Robert-Stackflow/hust-data-base/blob/master/fonts/LXGWWenKai-Regular.ttf') format("truetype");
 }
 
 

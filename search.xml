@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>【软件工程】原型设计、甘特图、用例图</title>
+      <link href="/2022/10/04/%E3%80%90%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E3%80%91%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1%E3%80%81%E7%94%98%E7%89%B9%E5%9B%BE%E3%80%81%E7%94%A8%E4%BE%8B%E5%9B%BE/"/>
+      <url>/2022/10/04/%E3%80%90%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E3%80%91%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1%E3%80%81%E7%94%98%E7%89%B9%E5%9B%BE%E3%80%81%E7%94%A8%E4%BE%8B%E5%9B%BE/</url>
+      
+        <content type="html"><![CDATA[<h2 id="原型设计"><a href="#原型设计" class="headerlink" title="原型设计"></a>原型设计</h2><p><a href="https://modao.cc/app/ugAlFVTJrip3ppkpc5rKyo">点击查看原型设计</a></p><h3 id="甘特图"><a href="#甘特图" class="headerlink" title="甘特图"></a>甘特图</h3><p>[](<a href="https://modao.cc/app/ugAlFVTJrip3ppkpc5rKyo">https://modao.cc/app/ugAlFVTJrip3ppkpc5rKyo</a> #朝夕-分享)</p><h3 id="项目分工"><a href="#项目分工" class="headerlink" title="项目分工"></a>项目分工</h3><table><thead><tr><th align="center">分工内容</th><th align="center">技术栈</th><th align="center">分工对象</th><th align="center">备注</th></tr></thead><tbody><tr><td align="center">UI设计、文档撰写</td><td align="center">PhotoShop</td><td align="center">张许恒</td><td align="center">需要配合客户端完成界面设计</td></tr><tr><td align="center">客户端开发</td><td align="center">Android、SQLite</td><td align="center">谢林桦</td><td align="center"></td></tr><tr><td align="center">服务端开发</td><td align="center">MongoDB、SpringBoot、JavaWeb</td><td align="center">徐瑞达、刘鉴之</td><td align="center"></td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> 团队项目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 软件工程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【软件工程】团队分工</title>
       <link href="/2022/09/23/%E3%80%90%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E3%80%91%E5%9B%A2%E9%98%9F%E5%88%86%E5%B7%A5/"/>
       <url>/2022/09/23/%E3%80%90%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E3%80%91%E5%9B%A2%E9%98%9F%E5%88%86%E5%B7%A5/</url>
