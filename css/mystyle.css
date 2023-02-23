@@ -357,6 +357,7 @@ $light-text: #24B1FF $border-radius: .5rem*/
 }
 
 .download-list-item-button {
+    border-radius: 8px;
     -webkit-text-size-adjust: 100%;
     --global-font-size: 14px;
     --global-bg: #fff;
@@ -709,14 +710,14 @@ back [data-theme='light'] #rightMenu {
 [data-theme='light'] #pagination .next-post:hover .label,
 [data-theme='light'] #pagination .next-post:hover .next_info,
 [data-theme='light'] #pagination .prev-post:hover .prev_info {
-    color: #0099FF !important;
+    color: white !important;
 }
 
 [data-theme='light'] #pagination .prev-post .label,
 [data-theme='light'] #pagination .next-post .label,
 [data-theme='light'] #pagination .next-post .next_info,
 [data-theme='light'] #pagination .prev-post .prev_info {
-    color: black !important;
+    color: white !important;
 }
 
 [data-theme='dark'] .next-post:hover,
@@ -729,7 +730,7 @@ back [data-theme='light'] #rightMenu {
 [data-theme='dark'] #pagination .next-post:hover .label,
 [data-theme='dark'] #pagination .next-post:hover .next_info,
 [data-theme='dark'] #pagination .prev-post:hover .prev_info {
-    color: #0099FF !important;
+    color: white !important;
     transition: 0.3s;
 }
 
