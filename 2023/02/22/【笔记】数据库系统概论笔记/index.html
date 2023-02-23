@@ -1,0 +1,1115 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【笔记】数据库系统概论笔记 | 苍岚</title><meta name="keywords" content="笔记"><meta name="author" content="余湍"><meta name="copyright" content="余湍"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="华中科技大学计算机科学与技术学院数据库系统概论课程笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【笔记】数据库系统概论笔记">
+<meta property="og:url" content="https://cloudchewie.com/2023/02/22/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="苍岚">
+<meta property="og:description" content="华中科技大学计算机科学与技术学院数据库系统概论课程笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cloudchewie.com/img/sticky.webp">
+<meta property="article:published_time" content="2023-02-22T12:59:05.000Z">
+<meta property="article:modified_time" content="2023-02-23T11:47:38.678Z">
+<meta property="article:author" content="余湍">
+<meta property="article:tag" content="专业课程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cloudchewie.com/img/sticky.webp"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://cloudchewie.com/2023/02/22/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: {"appId":"6IRW362MI1","apiKey":"a4043bbe3b536f100259866d9ff0ed57","indexName":"search_index_cloudchewie","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"copy_success":"复制成功","chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","comment_barrage_open":"打开评论弹幕","comment_barrage_close":"关闭评论弹幕","bgLight":"#0099FF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【笔记】数据库系统概论笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-23 19:47:38'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/mystyle.css" media="defer" onload="this.media='all'"><link href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-webfont/1.6.0/lxgwwenkai-regular.css" rel="stylesheet"><style id="barragesColor"></style><link rel="stylesheet" href="/css/commentBarrage.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="/css/swiperstyle.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="苍岚" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-circle-info"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="javascript:rmf.switchDarkMode()"><i class="fa-fw fas fa-adjust"></i><span> 深色模式</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">苍岚</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-circle-info"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="javascript:rmf.switchDarkMode()"><i class="fa-fw fas fa-adjust"></i><span> 深色模式</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">【笔记】数据库系统概论笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-22T12:59:05.000Z" title="发表于 2023-02-22 20:59:05">2023-02-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-23T11:47:38.678Z" title="更新于 2023-02-23 19:47:38">2023-02-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%B8%93%E4%B8%9A%E6%A0%B8%E5%BF%83/">专业核心</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">11.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>39分钟</span></span></div></div></div><article class="post-content" id="article-container"><h2 id="一、绪论"><a href="#一、绪论" class="headerlink" title="一、绪论"></a>一、绪论</h2><h3 id="1-1-数据模型"><a href="#1-1-数据模型" class="headerlink" title="1.1 数据模型"></a>1.1 数据模型</h3><h4 id="1-1-1-数据模型概述"><a href="#1-1-1-数据模型概述" class="headerlink" title="1.1.1 数据模型概述"></a>1.1.1 数据模型概述</h4><ul>
+<li>数据模型是严格定义的一组概念，精确的描述了系统的静态特性、动态特性和完整性约束</li>
+<li>组成要素<ul>
+<li>数据结构：描述系统的<strong>静态特性</strong>，即组成数据库的对象类型</li>
+<li>数据操作：描述系统的<strong>动态特性</strong>，即对数据库中对象的实例允许执行的操作的集合，包括操作及操作规则</li>
+<li>数据的约束条件：数据的约束条件是<strong>完整性规则</strong>的集合，规定数据库状态及状态变化所应满足的条件，以保证数据的正确、有效</li>
+</ul>
+</li>
+<li>类型<ul>
+<li>概念模型</li>
+<li>层次模型</li>
+<li>网状模型</li>
+<li>关系模型</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-1-2-实体-联系模型（E-R模型）"><a href="#1-1-2-实体-联系模型（E-R模型）" class="headerlink" title="1.1.2 实体-联系模型（E-R模型）"></a>1.1.2 实体-联系模型（E-R模型）</h4><ul>
+<li>基本概念<ul>
+<li>世界是由一组称作<strong>实体</strong>的基本对象和这些对象之间的<strong>联系</strong>构成的</li>
+<li>实体(Entity)：客观存在并可相互区别的人、事物、事件和概念</li>
+<li>属性(Attribute)：实体具有的特性</li>
+<li>码(Key、实体标识符)：唯一标识实体的属性集</li>
+<li>域(Domain)：属性的取值范围</li>
+<li>实体型(Entity Type)：用实体名及其属性名集合来抽象刻画同类实体</li>
+<li>实体集(Entity Set)：同型实体的集合，如全体学生，全部的系</li>
+<li>联系(Relationship)：实体(型)内部的联系(组成实体的各属性间)；实体(型)之间的联系(不同的实体集之间)</li>
+</ul>
+</li>
+<li>图形表示<ul>
+<li>矩形框 – 实体型</li>
+<li>菱形框 – 联系类型</li>
+<li>椭圆形框 – 实体型&#x2F;联系类型的属性</li>
+<li>直线 – 实体型与联系之间用直线相连，线旁标注联系的种类(1:1, 1:N, M:N)</li>
+<li>实体集属性中<strong>作为主码的一部分的属性用下划线</strong>来标明</li>
+<li>在1:N的联系中，联系集的主码是n端的主码</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-1-3-由E-R图到数据库设计"><a href="#1-1-3-由E-R图到数据库设计" class="headerlink" title="1.1.3 由E-R图到数据库设计"></a>1.1.3 由E-R图到数据库设计</h4><ul>
+<li>E-R图的设计要点<ul>
+<li>确定实体：实体名、实体属性、实体码</li>
+<li>确定联系：存在性联系、功能性联系、事件联系</li>
+</ul>
+</li>
+<li>E-R图向关系模型的转换<ul>
+<li>实体→关系</li>
+<li>属性→关系的属性</li>
+<li>一对一联系→新的关系，属性为双方的码</li>
+<li>一对一联系→与某一端关系合并，合并后在该端加入另一端关系的码和联系本身的属性，其码不变</li>
+<li>多对多联系→新的关系，其属性为与该联系相连的各实体的码以及联系本身的属性，其码是与该联系相连的各实体的码的组合</li>
+<li>一对多联系→新的关系，其属性为与该联系相连的各实体的码以及联系本身的属性，其码是<strong>n端实体的码</strong></li>
+<li>一对多联系→与n端关系合并，合并后在n端关系加入1端关系的码和联系本身的属性，<strong>n端关系的码不变</strong></li>
+<li>三个或三个以上实体间的多元联系→新的关系，其属性为与该多元联系相连的各实体的码以及联系本身的属性，其码是与该联系相连的各实体的码的组合</li>
+<li>合并具有相同码的关系模式，并去除同义属性</li>
+</ul>
+</li>
+<li>从关系模型到数据库实施<ul>
+<li>定义数据库结构：表结构、视图</li>
+<li>装载数据</li>
+<li>编制与调试应用程序</li>
+<li>数据库试运行</li>
+<li>数据库运行与维护</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-1-4-关系模型"><a href="#1-1-4-关系模型" class="headerlink" title="1.1.4 关系模型"></a>1.1.4 关系模型</h4><ul>
+<li><p>关系模型使用二维表来表示实体及其联系：行、列</p>
+<ul>
+<li>用表格表示实体集，用列表示属性，表结构表示实体的型</li>
+<li>用表间的特定冗余信息表示实体间的联系(主键、外键)</li>
+<li>行、列无序</li>
+<li>列不可再分</li>
+</ul>
+</li>
+<li><p>关系模型中的概念</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="关系模型中的概念.png" style="zoom:30%;" />
+
+<ul>
+<li>关系：即通常说的表，用于表示实体以及实体间的联系</li>
+<li>元组：表中的一行即为一个元组</li>
+<li>属性：表中的一列即为一个属性</li>
+<li>主码(key)：图中的某个属性组，它可以唯一确定一个元组</li>
+<li>域(domain)：属性的取值范围</li>
+<li>分量：元组中的一个属性值</li>
+<li>关系模式：对关系的描述，一般表示为：关系名(属性1，属性2，…，属性n)</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-数据库系统"><a href="#1-2-数据库系统" class="headerlink" title="1.2 数据库系统"></a>1.2 数据库系统</h3><ul>
+<li>数据库系统：由应用程序、DBMS、操作系统、硬件、人员（数据库管理员DBA）组成</li>
+<li>数据库管理系统DBMS<ul>
+<li>DB定义</li>
+<li>操纵语言及编译程序</li>
+<li>DB运行控制程序</li>
+<li>实用程序</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、关系数据库"><a href="#二、关系数据库" class="headerlink" title="二、关系数据库"></a>二、关系数据库</h2><h3 id="2-1-关系数据结构"><a href="#2-1-关系数据结构" class="headerlink" title="2.1 关系数据结构"></a>2.1 关系数据结构</h3><ul>
+<li>域：一组值的集合，这组值具有相同的数据类型</li>
+<li>笛卡尔积<ul>
+<li>一组域$D_1,D_2,\cdots,D_n$的笛卡尔积为：$D_1\times D_2\times\cdots\times D_n &#x3D; {(d_1 , d_2 , \cdots, d_n) | d_i∈D_i , i&#x3D;1,\cdots,n}$</li>
+<li>笛卡尔积的每个元素$(d_1,d_2,\cdots,d_n)$称作一个$n$元组</li>
+<li>元组的每个值$d_i$称为一个分量</li>
+<li>若$D_i$的基数为$m_i$，则笛卡尔积的基数为$\prod\limits_{i&#x3D;1}^{n}m_i$</li>
+</ul>
+</li>
+<li>关系<ul>
+<li>笛卡尔积$D_1\times D_2\times\cdots\times D_n$的子集叫做在域$D_1,D_2,\cdots,D_n$上的关系，用$R(D_1 , D_2 ,\cdots, D_n )$表示</li>
+<li>关系是笛卡尔积中有意义的子集</li>
+</ul>
+</li>
+<li>候选码<ul>
+<li>关系中的一个属性组，其值能唯一标识一个元组。</li>
+<li>若从该属性组中去掉任何一个属性，它就不具有这一性质</li>
+</ul>
+</li>
+<li>主属性：任何一个候选码中的属性称作主属性</li>
+<li>主码：从一个关系的多个候选码中选定一个作为主码</li>
+<li>外部码：关系R中的一个属性组，它不是R的码，但它与另一个关系S的码相对应，则称这个属性组为R的外部码</li>
+<li>关系模式<ul>
+<li>关系的描述称作关系模式，包括关系名、关系中的属性名、属性向域的映象、属性间的数据依赖关系等</li>
+<li>关系模式是一个5元组$R(U,D,Dom，F)$，其中R是关系名；U是关系的属性集合；D是U中属性所来自的域的集合；DOM是属性向域映射的集合；F是属性间的依赖关系集合</li>
+</ul>
+</li>
+<li>关系数据库<ul>
+<li>在一个应用领域内，用关系表示实体及其联系，关系的集合构成一个关系数据库</li>
+<li>其型是关系模式的集合，即数据库描述，称作数据库的<strong>内涵</strong>(Intension)</li>
+<li>其值是某一时刻关系的集合，称作数据库的<strong>外延</strong>(Extension)</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-关系的完整性"><a href="#2-2-关系的完整性" class="headerlink" title="2.2 关系的完整性"></a>2.2 关系的完整性</h3><ul>
+<li>实体完整性：若属性A是基本关系R的主属性，则A不能取空值</li>
+<li>参照完整性：如果关系$R_2$的外部码$F_k$与关系$R_1$的主码$P_k$相对应，则$R_2$中的每一个元组的$F_k$值或者等于$R_1$中某个元组的$P_k$值，或者为空值</li>
+<li>用户定义的完整性:用户针对具体的应用环境定义的完整性约束条件</li>
+</ul>
+<h3 id="2-3-关系代数"><a href="#2-3-关系代数" class="headerlink" title="2.3 关系代数"></a>2.3 关系代数</h3><ul>
+<li><p>关系代数是一种抽象的查询语言，通过对关系的运算来表达查询操作</p>
+</li>
+<li><p>基本概念</p>
+<ul>
+<li>如果两个关系的属性数目相同，且各属性的域相同，则两个关系是相容的</li>
+<li>元组的连串：若$r&#x3D;(r_1,r_2,\cdots,r_n)$，$s&#x3D;(s_1,s_2,\cdots,s_n)$则定义二者的连串$\widehat{AB}&#x3D;(r_1,r_2,\cdots,r_n,s_1,s_2,\cdots,s_n)$</li>
+<li>给定关系模式$R(A_1 , A_2 ,\cdots, A_n)$，设$R$是它的一个具体的关系，$t\in R$是关系的一个元组<ul>
+<li>$A&#x3D;{A_{i1},A_{i2},\cdots,A_{ik}}\sube{A_a,A_2,\cdots,A_n}$是<strong>属性列</strong>，$\overline{A}$表示${A_1,A_2,\cdots,A_n}$去掉$A$后剩余的属性组</li>
+<li>$t[A_i]$表示元组$t$中相应于属性$A_i$的一个<strong>分量</strong></li>
+<li>$t[A]&#x3D;{t[A_{i1}],t[A_{i2}],\cdots,t[A_{ik}]}$表示元组$t$在属性列$A$上各分量的集合</li>
+<li>给定关系$R(X,Z)$，$X$和$Z$为属性组。当$t[X]&#x3D;x$时，$x$在$R$中的<strong>象集</strong>为：$Z_X&#x3D;{t[Z]|t∈ R,t[X]&#x3D;x}$ ,它表示$R$中属性组$X$上值为$x$的诸元组在$Z$上分量的集合</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>集合运算符（进行集合运算的两个关系必须相容）：并$\cup$、交$\cap$、差$-$</p>
+</li>
+<li><p>关系运算符</p>
+<ul>
+<li><p>笛卡尔积$\times$</p>
+<ul>
+<li>设两个关系R，S，其度分别为n，m，则它们的广义笛卡尔积为$R\times S&#x3D;{\widehat{rs}|r\in R\land s\in S}$</li>
+</ul>
+</li>
+<li><p>选择$\sigma$</p>
+<ul>
+<li>$\sigma_F(R)&#x3D;{t|t\in R\land F(t)&#x3D;true}$</li>
+<li>即$\sigma$运算的结果为满足条件F的元组集合</li>
+</ul>
+</li>
+<li><p>投影$\Pi$</p>
+<ul>
+<li>$\Pi_A(R)&#x3D;{t[A]|t\in R}$，其中$A$为$R$的属性列</li>
+<li>投影结果中要去掉相同的行</li>
+</ul>
+</li>
+<li><p>连接$\Join$</p>
+<ul>
+<li><p>$R\underset{A\Theta B}\Join S&#x3D;{\widehat{rs}|r\in R\land s\in S\land r[A]\Theta S[B]}$</p>
+</li>
+<li><p>$R\underset{A\Theta B}\Join S&#x3D;\sigma_{R[A]\Theta S[B]}(R\times S)$</p>
+</li>
+<li><p>即从两个关系的笛卡尔积中选取给定属性间满足一定条件的元组</p>
+</li>
+<li><p>等值连接：从两个关系的广义笛卡儿积中选取满足某一等值条件的元组，两个关系<strong>可以没有相同属性列</strong></p>
+</li>
+<li><p>自然连接：<strong>特殊的等值连接</strong>，从两个关系的广义笛卡儿积中选取在<strong>相同属性列</strong>上取值相等的元组，并<strong>去掉重复的列</strong></p>
+</li>
+</ul>
+</li>
+<li><p>除$÷$</p>
+<ul>
+<li>设有关系$R(X,Y)$和$S(Y,Z)$，则$R÷Z$可根据如下过程得到</li>
+<li>在关系$S$中对$Y$做投影，得到$\Pi_Y(Z)$</li>
+<li>关系$R$在属性列$X$上作取消重复值的投影，得到$\Pi_X(R)$</li>
+<li>判断$\Pi_X(R)$中$x_i$的象集$Y_i$是否包含$\Pi_Y(Z)$，如果包含，则最终结果中包含$x_i$</li>
+<li>即$R÷Z$表示【$R$在$X$上分量值$x$的象集$Y_x$包含$S$在$Y$上投影的集合】在$X$属性列上的投影</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>比较运算符：&lt;、≤、＞、≥、≠、&#x3D;</p>
+</li>
+<li><p>逻辑运算符：与$\land$、或$\lor$、非$\lnot$</p>
+</li>
+</ul>
+<h2 id="三、SQL语言"><a href="#三、SQL语言" class="headerlink" title="三、SQL语言"></a>三、SQL语言</h2><h3 id="3-1-数据库、表、索引、完整性约束"><a href="#3-1-数据库、表、索引、完整性约束" class="headerlink" title="3.1 数据库、表、索引、完整性约束"></a>3.1 数据库、表、索引、完整性约束</h3><ul>
+<li><p>数据库、表、索引的创建、修改、删除</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#创建数据库</span><br><span class="line"><span class="keyword">CREATE</span> DATABASE <span class="operator">&lt;</span>数据库名<span class="operator">&gt;</span></span><br><span class="line">#删除数据库</span><br><span class="line"><span class="keyword">DROP</span> DATABASE <span class="operator">&lt;</span>数据库名<span class="operator">&gt;</span></span><br><span class="line">#指定数据库</span><br><span class="line">DATABASE <span class="operator">&lt;</span>数据库名<span class="operator">&gt;</span></span><br><span class="line">USE <span class="operator">&lt;</span>数据库名<span class="operator">&gt;</span></span><br><span class="line">#创建表</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] <span class="operator">&lt;</span>数据表名<span class="operator">&gt;</span></span><br><span class="line">(</span><br><span class="line">    <span class="operator">&lt;</span>列定义列表<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span>表约束列表<span class="operator">&gt;</span></span><br><span class="line">)</span><br><span class="line">#修改表</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="operator">&lt;</span>数据表名<span class="operator">&gt;</span> <span class="operator">&lt;</span>修改子句列表<span class="operator">&gt;</span></span><br><span class="line">#删除表</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span></span><br><span class="line">#创建索引</span><br><span class="line"><span class="keyword">CREATE</span> [<span class="keyword">UNIQUE</span>] [CLUSTER] INDEX <span class="operator">&lt;</span>索引名<span class="operator">&gt;</span> <span class="keyword">ON</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> (<span class="operator">&lt;</span>列名列表:<span class="operator">&lt;</span>列名<span class="operator">&gt;</span> [<span class="keyword">ASC</span><span class="operator">|</span><span class="keyword">DESC</span>]<span class="operator">&gt;</span>)</span><br><span class="line">#删除索引</span><br><span class="line"><span class="keyword">DROP</span> INDEX <span class="operator">&lt;</span>索引名<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表的列定义</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&lt;</span>列名<span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> [列级约束列表<span class="operator">|</span><span class="keyword">NOT</span> <span class="keyword">NULL</span><span class="operator">|</span>AUTO_INCREMENT<span class="operator">|</span><span class="keyword">DEFAULT</span> <span class="operator">&lt;</span>默认值<span class="operator">&gt;</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表的约束</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#主码约束</span><br><span class="line">	#单属性主码：列级约束方式</span><br><span class="line">	<span class="operator">&lt;</span>列名<span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> <span class="keyword">PRIMARY</span> KEY</span><br><span class="line">	#单属性主码：表级约束方式</span><br><span class="line">	[CONSTRANIT [约束名]] <span class="keyword">PRIMARY</span> KEY (<span class="operator">&lt;</span>列名<span class="operator">&gt;</span>)</span><br><span class="line">	#多属性主码：表级约束方式</span><br><span class="line">	[CONSTRANIT [约束名]] <span class="keyword">PRIMARY</span> KEY (<span class="operator">&lt;</span>列名列表<span class="operator">&gt;</span>)</span><br><span class="line">#唯一性约束</span><br><span class="line">	#列级约束方式</span><br><span class="line">	<span class="operator">&lt;</span>列名<span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> <span class="keyword">UNIQUE</span></span><br><span class="line">	#表级约束方式</span><br><span class="line">	[CONSTRANIT [约束名]] <span class="keyword">UNIQUE</span> (<span class="operator">&lt;</span>列名列表<span class="operator">&gt;</span>)</span><br><span class="line">#外码约束</span><br><span class="line">	#列级约束方式</span><br><span class="line">	<span class="operator">&lt;</span>列名<span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> <span class="keyword">REFERENCES</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span>(<span class="operator">&lt;</span>列名<span class="operator">&gt;</span>)</span><br><span class="line">	#表级约束方式</span><br><span class="line">	[CONSTRANIT [约束名]] <span class="keyword">FOREIGN</span> KEY (<span class="operator">&lt;</span>列名列表<span class="operator">&gt;</span>) <span class="keyword">REFERENCES</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span>(<span class="operator">&lt;</span>列名列表<span class="operator">&gt;</span>)</span><br><span class="line">#检查约束</span><br><span class="line">	#列级约束方式</span><br><span class="line">	<span class="operator">&lt;</span>列名<span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> <span class="keyword">CHECK</span> (<span class="operator">&lt;</span>检查条件<span class="operator">&gt;</span>)</span><br><span class="line">	#表级约束方式</span><br><span class="line">	[CONSTRANIT [约束名]] <span class="keyword">CHECK</span> (<span class="operator">&lt;</span>检查条件<span class="operator">&gt;</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表的修改子句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#添加约束</span><br><span class="line"><span class="keyword">ADD</span> <span class="operator">&lt;</span>表级约束子句<span class="operator">&gt;</span></span><br><span class="line">#删除约束</span><br><span class="line"><span class="keyword">DROP</span> &#123;<span class="keyword">CHECK</span><span class="operator">|</span><span class="keyword">CONSTRAINT</span><span class="operator">|</span><span class="keyword">FOREIGN</span> KEY&#125; <span class="operator">&lt;</span>约束名<span class="operator">&gt;</span></span><br><span class="line">#删除主码</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">PRIMARY</span> KEY</span><br><span class="line">▲注:等同于语句<span class="keyword">DROP</span> INDEX &quot;PRIMARY&quot; <span class="keyword">on</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span></span><br><span class="line">#删除唯一性约束</span><br><span class="line">▲注:等同于语句<span class="keyword">DROP</span> INDEX <span class="operator">&lt;</span>索引名<span class="operator">&gt;</span> <span class="keyword">on</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>断言</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#创建断言，其中<span class="keyword">CHECK</span>子句类似于<span class="keyword">WHERE</span>子句</span><br><span class="line"><span class="keyword">CREATE</span> ASSERTION <span class="operator">&lt;</span>断言名<span class="operator">&gt;</span> <span class="operator">&lt;</span><span class="keyword">CHECK</span>子句<span class="operator">&gt;</span></span><br><span class="line">#删除断言</span><br><span class="line"><span class="keyword">DROP</span> ASSERTION <span class="operator">&lt;</span>断言名<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="3-2-数据查询"><a href="#3-2-数据查询" class="headerlink" title="3.2 数据查询"></a>3.2 数据查询</h3><ul>
+<li><p>查询子句的基本结构</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">&lt;</span>列组合<span class="operator">&gt;</span> <span class="keyword">FROM</span> <span class="operator">&lt;</span>数据表列表<span class="operator">&gt;</span></span><br><span class="line">	[<span class="keyword">WHERE</span> <span class="operator">&lt;</span>行条件子句<span class="operator">&gt;</span>]</span><br><span class="line">	[<span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="operator">&lt;</span>分组子句<span class="operator">&gt;</span>]</span><br><span class="line">	[<span class="keyword">HAVING</span> <span class="operator">&lt;</span>组条件子句<span class="operator">&gt;</span>]</span><br><span class="line">	[<span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="operator">&lt;</span>排序子句<span class="operator">&gt;</span>]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>根据WHERE子句的检索条件，从FROM子句指定的基本表或视图中选取满足条件的元组，再按照SELECT子句中指定的列，投影得到结果表</li>
+<li>如果有GROUP子句，则将查询结果按照&lt;列名1&gt;相同的值进行分组</li>
+<li>如果GROUP子句后有HAVING短语，则只输出满足HAVING条件的元组</li>
+<li>如果有ORDER子句，查询结果还要按照&lt;列名2&gt;的值进行排序</li>
+</ul>
+</li>
+<li><p>SELECT子句</p>
+<ul>
+<li><p>目标列形式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#全部列</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">from</span> SC</span><br><span class="line">#列名</span><br><span class="line"><span class="keyword">SELECT</span> Sno,Score <span class="keyword">from</span> SC</span><br><span class="line">#算术表达式，可包含<span class="operator">+</span>、<span class="operator">-</span>、<span class="operator">*</span>、<span class="operator">/</span>、百分数</span><br><span class="line"><span class="keyword">SELECT</span> Sno,Score<span class="operator">*</span><span class="number">1.2</span> <span class="keyword">from</span> SC</span><br><span class="line">#聚集函数：SUM、AVG</span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">SUM</span>(Score) <span class="keyword">from</span> SC</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重复元组的处理</p>
+<ul>
+<li><p>缺省或关键字ALL表示保留重复元组</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> [<span class="keyword">ALL</span>] <span class="operator">&lt;</span>列组合<span class="operator">&gt;</span> <span class="keyword">FROM</span> <span class="operator">&lt;</span>数据表列表<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关键字DISTINCT表示去除重复元组</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> <span class="operator">&lt;</span>列组合<span class="operator">&gt;</span> <span class="keyword">FROM</span> <span class="operator">&lt;</span>数据表列表<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>列的重命名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#旧目标列可以是列名、表达式、聚集函数名</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">&lt;</span>旧目标列<span class="operator">&gt;</span> <span class="keyword">AS</span> <span class="operator">&lt;</span>新列名<span class="operator">&gt;</span> <span class="keyword">FROM</span> <span class="operator">&lt;</span>数据表列表<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>FROM子句</p>
+<ul>
+<li><p>限定：同时指定一个或多个表（或视图）时，如果选择列表中存在同名列，这时应使用对象名限定这些列</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> username,city.cityid <span class="keyword">FROM</span> <span class="keyword">user</span>,city <span class="keyword">WHERE</span> user.cityid<span class="operator">=</span>city.cityid</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表的重命名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> A.cityid <span class="keyword">FROM</span> <span class="keyword">user</span> <span class="keyword">AS</span> A</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>子查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> CS.name <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> S <span class="keyword">WHERE</span> dept<span class="operator">=</span>&quot;CS&quot;) <span class="keyword">AS</span> CS <span class="keyword">WHERE</span> CS.age<span class="operator">&gt;</span><span class="number">20</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>WHERE子句</p>
+<ul>
+<li><p>比较运算符</p>
+</li>
+<li><p>逻辑运算符：AND、OR、NOT</p>
+</li>
+<li><p>BETWEEN条件</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sname <span class="keyword">FROM</span> SC <span class="keyword">WHERE</span> Score <span class="keyword">BETWEEN</span> <span class="number">80</span> <span class="keyword">AND</span> <span class="number">100</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模糊查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#<span class="operator">%</span>匹配零个以上字符、_匹配单个字符、\转义字符</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> SC <span class="keyword">WHERE</span> Sname <span class="keyword">LIKE</span> <span class="string">&#x27;张%&#x27;</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> SC <span class="keyword">WHERE</span> Sname <span class="keyword">LIKE</span> <span class="string">&#x27;张\_%&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>ORDER子句</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT &lt;列组合&gt; FROM &lt;数据表列表&gt; ORDER BY &lt;列名列表:&lt;列名&gt; [ASC|DESC]&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>GROUP与HAVING子句</p>
+<ul>
+<li>GROUP BY：将表中的元组按指定列上值相等的原则分组，然后在每一分组上使用聚集函数，得到单一值</li>
+<li>HAVING：对分组进行选择，可以针对聚集函数的结果值进行筛选，作用于分组计算的结果集</li>
+</ul>
+</li>
+<li><p>空值</p>
+<ul>
+<li>如果null参与算术运算，则该算术表达式的值为null</li>
+<li>如果null参与比较运算，则结果可视为false</li>
+<li>如果null参与聚集运算，则除count(*)之外其它聚集函数都忽略null</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sname <span class="keyword">FROM</span> SC <span class="keyword">WHERE</span> Score <span class="keyword">IS</span> <span class="keyword">NULL</span></span><br><span class="line"><span class="keyword">SELECT</span> Sname <span class="keyword">FROM</span> SC <span class="keyword">WHERE</span> Score <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>连接查询</p>
+<ul>
+<li>等值连接：某两张表在某个属性上相等</li>
+<li>自然连接：在等值连接中去掉重复的属性列</li>
+<li>自身连接：一个表与其自己进行连接，同一个数据表取不同别名</li>
+<li>外连接：将悬浮元组包含在连接结果中的连接</li>
+</ul>
+</li>
+<li><p>嵌套查询</p>
+<ul>
+<li><p>子查询是嵌套在另一查询中的 Select-From-Where 表达式</p>
+</li>
+<li><p>子查询中不能使用 Order By 子句，Order By子句只能对最终查询结果进行排序</p>
+</li>
+<li><p>集合成员资格</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#判断表达式的值是否在子查询的结果中</span><br><span class="line"><span class="operator">&lt;</span>表达式<span class="operator">&gt;</span> [<span class="keyword">NOT</span>] <span class="keyword">IN</span> <span class="operator">&lt;</span>子查询<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>集合之间的比较</p>
+<ul>
+<li><p>当用户能确切知道内层查询返回的是单值时，可以用&gt;、&lt;、＝、&gt;＝、&lt;＝、!＝或&lt;&gt;等比较运算符</p>
+</li>
+<li><p>ANY：表达式的值至少与子查询结果中的一个值相比满足</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sname <span class="keyword">FROM</span> Student <span class="keyword">WHERE</span> Sage <span class="operator">&lt;</span> <span class="keyword">ANY</span> (<span class="keyword">SELECT</span> Sage <span class="keyword">FROM</span>  Student <span class="keyword">WHERE</span> Sdept＝’<span class="keyword">IS</span>’)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ALL：表达式的值与子查询结果中的所有的值相比都满足</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sname <span class="keyword">FROM</span> Student <span class="keyword">WHERE</span> Sage <span class="operator">&lt;</span> <span class="keyword">ALL</span> (<span class="keyword">SELECT</span> Sage <span class="keyword">FROM</span>  Student <span class="keyword">WHERE</span> Sdept＝’<span class="keyword">IS</span>’)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>相关嵌套查询</p>
+<ul>
+<li>Exists：测试该子查询的结果是否有元组，带有Exists的子查询不返回任何数据，只产生True&#x2F;False</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>集合查询</p>
+<ul>
+<li>集合并：union</li>
+<li>集合交：intersect</li>
+<li>集合差：minus</li>
+<li>集合操作自动去除重复元组，如果要保留重复元组，必须用all关键词指明</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-数据的增删改"><a href="#3-3-数据的增删改" class="headerlink" title="3.3 数据的增删改"></a>3.3 数据的增删改</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#插入单个元组</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> [(<span class="operator">&lt;</span>列列表<span class="operator">&gt;</span>)] <span class="keyword">VALUES</span>(<span class="operator">&lt;</span>值列表<span class="operator">&gt;</span>)</span><br><span class="line">#插入子查询结果(要求子查询结果的模式和要插入的模式相同)</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> [(<span class="operator">&lt;</span>列列表<span class="operator">&gt;</span>)] (<span class="operator">&lt;</span>子查询结果集<span class="operator">&gt;</span>)</span><br><span class="line">#删除元组(没有<span class="keyword">WHERE</span>语句时，删除所有元组)</span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> [<span class="keyword">WHERE</span> <span class="operator">&lt;</span>条件表达式<span class="operator">&gt;</span>]</span><br><span class="line">#更新元组</span><br><span class="line"><span class="keyword">UPDATE</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> <span class="keyword">SET</span> <span class="operator">&lt;</span>列修改列表:<span class="operator">&lt;</span>列名<span class="operator">&gt;=</span>表达式<span class="operator">|</span>子查询<span class="operator">&gt;</span> [<span class="keyword">WHERE</span> <span class="operator">&lt;</span>条件表达式<span class="operator">&gt;</span>]</span><br><span class="line">#跨表更新</span><br><span class="line"><span class="keyword">UPDATE</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> <span class="keyword">SET</span> <span class="operator">&lt;</span>列修改列表:<span class="operator">&lt;</span>列名<span class="operator">&gt;=</span>表达式<span class="operator">|</span>子查询<span class="operator">&gt;</span> [<span class="keyword">FROM</span> <span class="operator">&lt;</span>表列表<span class="operator">&gt;</span>][<span class="keyword">WHERE</span> <span class="operator">&lt;</span>条件表达式<span class="operator">&gt;</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-视图"><a href="#3-4-视图" class="headerlink" title="3.4 视图"></a>3.4 视图</h3><ul>
+<li><p>视图是从一个或几个基本表（或视图）导出的一个虚表</p>
+</li>
+<li><p>数据库中只存放视图的定义而不存放视图的数据</p>
+</li>
+<li><p>当基表中的数据发生变化时从视图中查出的数据也随之改变</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#创建视图</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> <span class="operator">&lt;</span>视图名<span class="operator">&gt;</span> <span class="keyword">AS</span> <span class="operator">&lt;</span>查询表达式<span class="operator">&gt;</span> [<span class="keyword">WITH</span> <span class="keyword">CHECK</span> OPTION]</span><br><span class="line">#删除视图</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">VIEW</span> <span class="operator">&lt;</span>视图名<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>视图的属性名缺省为子查询结果中的属性名，也可以显式指明</p>
+</li>
+<li><p>当对视图进行insert，update时，要检查是否满足with check option条件</p>
+</li>
+<li><p>视图更新</p>
+<ul>
+<li>对视图的更新，最终要转换为<strong>对基表的更新</strong></li>
+<li>SELECT子句中的目标列不能包含聚集函数</li>
+<li>SELECT子句中不能使用UNIQUE或DISTINCT关键字</li>
+<li>不能包括GROUP BY子句</li>
+<li>不能包括经算术表达式计算出来的列</li>
+<li>对于行列子集视图可以更新（视图是从单个基本表使用选择、投影操作导出的，并且包含了基本表的主码）</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-5-触发器、存储过程、用户自定义函数"><a href="#3-5-触发器、存储过程、用户自定义函数" class="headerlink" title="3.5 触发器、存储过程、用户自定义函数"></a>3.5 触发器、存储过程、用户自定义函数</h3><ul>
+<li><p>触发器</p>
+<ul>
+<li><p>触发器是与某个表绑定的命名存储对象，由一组SQL语句组成</p>
+</li>
+<li><p>当该表发生某个操作时，触发器将会被触发执行，一般用于维护数据库<strong>完整性规则</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#创建触发器</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> <span class="operator">&lt;</span>触发器名<span class="operator">&gt;</span></span><br><span class="line">	&#123;BEFORE<span class="operator">|</span>AFTER&#125;</span><br><span class="line">	&#123;<span class="operator">&lt;</span>触发事件列表，以<span class="keyword">OR</span>连接<span class="operator">&gt;</span>&#125;</span><br><span class="line">	<span class="keyword">ON</span> <span class="operator">&lt;</span>数据表名<span class="operator">&gt;</span></span><br><span class="line">	[<span class="keyword">FROM</span> <span class="operator">&lt;</span>引用数据表名<span class="operator">&gt;</span>]</span><br><span class="line">	[<span class="keyword">FOR</span> [<span class="keyword">EACH</span>] &#123;<span class="type">ROW</span><span class="operator">|</span>STATEMENT&#125;]</span><br><span class="line">	[<span class="keyword">WHEN</span> (<span class="operator">&lt;</span>条件<span class="operator">&gt;</span>)]</span><br><span class="line">	<span class="keyword">EXECUTE</span> <span class="keyword">PROCEDURE</span> <span class="operator">&lt;</span>函数名<span class="operator">&gt;</span>(<span class="operator">&lt;</span>参数列表<span class="operator">&gt;</span>)</span><br><span class="line">#删除触发器</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TRIGGER</span> <span class="operator">&lt;</span>触发器名<span class="operator">&gt;</span> <span class="keyword">ON</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>行级触发器：数据每发生一次操作即执行一次触发器动作，如UPDATE多行的某个字段时</p>
+</li>
+<li><p>语句级触发器（默认）：触发事件语句执行完后才执行一次触发器动作</p>
+</li>
+<li><p>触发器的激活</p>
+<ul>
+<li>执行该表上的BEFORE触发器</li>
+<li>执行激活触发器的SQL语句</li>
+<li>执行该表上的AFTER触发器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>游标</p>
+<ul>
+<li><p>SQL操作都是面向集合的，即操作的对象以及运算的结果均为集合</p>
+</li>
+<li><p>游标(CURSOR)相当于一个存储于内存的带有指针的表，每次可以存取指针指向的一行数据，并将指针向前推进一行</p>
+</li>
+<li><p>使用游标可以遍历某个查询语句的结果集</p>
+</li>
+<li><p>游标不可滚动，即只能依次遍历，不能反向遍历，不能跳跃遍历，不能随机访问，不能修改游标中的数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#定义变量</span><br><span class="line"><span class="keyword">DECLARE</span> <span class="operator">&lt;</span>变量名<span class="operator">&gt;</span> <span class="operator">&lt;</span>变量数据类型<span class="operator">&gt;</span> [<span class="keyword">DEFAULT</span> <span class="operator">&lt;</span>默认值<span class="operator">&gt;</span>]</span><br><span class="line">#定义游标，游标的数据集将为查询语句的结果</span><br><span class="line"><span class="keyword">CURSOR</span> <span class="operator">&lt;</span>游标名<span class="operator">&gt;</span> <span class="keyword">FOR</span> <span class="operator">&lt;</span>查询语句<span class="operator">&gt;</span></span><br><span class="line">#打开定义过的游标，并初始化指针</span><br><span class="line"><span class="keyword">OPEN</span> <span class="operator">&lt;</span>游标名<span class="operator">&gt;</span></span><br><span class="line">#读取游标，将读取到的一行数据写入变量列表中</span><br><span class="line">#读取未打开的游标会出错</span><br><span class="line"><span class="keyword">FETCH</span> [[NEXT] <span class="keyword">FROM</span>] <span class="operator">&lt;</span>游标名<span class="operator">&gt;</span> <span class="keyword">INTO</span> <span class="operator">&lt;</span>变量列表<span class="operator">&gt;</span></span><br><span class="line">#关闭游标，关闭未打开的游标会出错</span><br><span class="line"><span class="keyword">CLOSE</span> <span class="operator">&lt;</span>游标名<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>存储过程</p>
+<ul>
+<li><p>存储过程是一个SQL语句组合</p>
+</li>
+<li><p>在创建时进行预编译，首次被调用时进行解析，以后再被调用，则可直接执行</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#创建存储过程</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> <span class="operator">&lt;</span>存储过程名称<span class="operator">&gt;</span></span><br><span class="line">([@<span class="operator">&lt;</span>参数名称<span class="operator">&gt;</span> <span class="operator">&lt;</span>参数数据类型<span class="operator">&gt;</span> [<span class="type">VARYING</span>][<span class="operator">=</span><span class="operator">&lt;</span>默认值<span class="operator">&gt;</span>][<span class="keyword">OUT</span><span class="operator">|</span>OUTPUT]])</span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line">	[定义变量列表]</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="operator">&lt;</span><span class="keyword">SQL</span>语句组合<span class="operator">&gt;</span></span><br><span class="line"><span class="keyword">END</span></span><br><span class="line">#执行存储过程</span><br><span class="line">[<span class="keyword">EXECUTE</span><span class="operator">|</span><span class="keyword">EXEC</span>] <span class="operator">&lt;</span>存储过程名称<span class="operator">&gt;</span> <span class="operator">&lt;</span>参数列表<span class="operator">&gt;</span></span><br><span class="line">#删除存储过程</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">PROCEDURE</span> <span class="operator">&lt;</span>存储过程名称<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数据传递方式</p>
+<ul>
+<li>输入参数</li>
+<li>输出参数使用OUTPUT标识</li>
+<li>RETURN语句返回单个int型数据，如操作过程中受影响的行数，错误码</li>
+<li>RETURN不能返回NULL，若试图返回NULL，将生成警告信息并返回0</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>用户自定义函数</p>
+<ul>
+<li><p>自定义函数可以像数据库内部函数一样在SQL语句中使用，如WHERE子句、SELECT子句、表达式中</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> <span class="operator">&lt;</span>函数名<span class="operator">&gt;</span></span><br><span class="line">([参数列表:<span class="operator">&lt;</span>参数名称<span class="operator">&gt;</span> <span class="operator">&lt;</span>参数数据类型<span class="operator">&gt;</span>])</span><br><span class="line"><span class="keyword">RETURNS</span> <span class="operator">&lt;</span>返回数据类型<span class="operator">&gt;</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="operator">&lt;</span>函数体<span class="operator">&gt;</span></span><br><span class="line">	<span class="keyword">RETURN</span> <span class="operator">&lt;</span>返回值:常量<span class="operator">/</span>表达式<span class="operator">/</span>语句查询结果<span class="operator">&gt;</span></span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="3-6-安全性控制"><a href="#3-6-安全性控制" class="headerlink" title="3.6 安全性控制"></a>3.6 安全性控制</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#创建用户</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="operator">&lt;</span>用户名<span class="operator">&gt;</span> <span class="keyword">with</span> PASSWORD <span class="operator">&lt;</span>密码<span class="operator">&gt;</span></span><br><span class="line">#创建角色，角色是权限的集合</span><br><span class="line"><span class="keyword">CREATE</span> ROLE [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] <span class="operator">&lt;</span>角色列表<span class="operator">&gt;</span></span><br><span class="line">#删除角色，拥有该角色的用户失去该角色定义的权限集合</span><br><span class="line"><span class="keyword">DROP</span> ROLE [IF <span class="keyword">EXISTS</span>] <span class="operator">&lt;</span>角色列表<span class="operator">&gt;</span></span><br><span class="line">#授权，其中<span class="keyword">WITH</span> <span class="keyword">GRANT</span> OPTION表示获得权限的用户可以把权限授予他人</span><br><span class="line"><span class="keyword">GRANT</span> <span class="operator">&lt;</span>角色名<span class="operator">&gt;</span> <span class="keyword">TO</span> <span class="operator">&lt;</span>用户列表<span class="operator">&gt;</span> [<span class="keyword">WITH</span> <span class="keyword">GRANT</span> OPTION]</span><br><span class="line"><span class="keyword">GRANT</span> <span class="operator">&lt;</span>权限列表<span class="operator">&gt;</span> [<span class="keyword">ON</span> <span class="operator">&lt;</span>对象类型<span class="operator">&gt;</span> <span class="operator">&lt;</span>对象名<span class="operator">&gt;</span>] <span class="keyword">TO</span> <span class="operator">&lt;</span>用户列表<span class="operator">&gt;</span> [<span class="keyword">WITH</span> <span class="keyword">GRANT</span> OPTION]</span><br><span class="line">#收回，若用户已将权限授予其它用户，则也一并收回</span><br><span class="line"><span class="keyword">REVOKE</span> <span class="operator">&lt;</span>权限列表<span class="operator">&gt;</span> [<span class="keyword">ON</span> <span class="operator">&lt;</span>对象类型<span class="operator">&gt;</span> <span class="operator">&lt;</span>对象名<span class="operator">&gt;</span>] <span class="keyword">FROM</span> <span class="operator">&lt;</span>用户列表<span class="operator">|</span>PUBLIC<span class="operator">&gt;</span></span><br><span class="line">#权限列表</span><br><span class="line"><span class="keyword">ALL</span> PRIVILIGES</span><br><span class="line">&#123;<span class="keyword">SELECT</span><span class="operator">|</span><span class="keyword">UPDATE</span>&#125; [(<span class="operator">&lt;</span>字段列表<span class="operator">&gt;</span>)]</span><br><span class="line">&#123;<span class="keyword">INSERT</span><span class="operator">|</span><span class="keyword">DELETE</span><span class="operator">|</span><span class="keyword">ALTER</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-7-并发控制"><a href="#3-7-并发控制" class="headerlink" title="3.7 并发控制"></a>3.7 并发控制</h3><h4 id="3-7-1-并发控制概述"><a href="#3-7-1-并发控制概述" class="headerlink" title="3.7.1 并发控制概述"></a>3.7.1 并发控制概述</h4><ul>
+<li>并发控制的必要性<ul>
+<li>事务串行执行：每个时刻只有一个事务运行，其他事务必须等到这个事务结束以后方能运行，不能充分利用系统资源，发挥数据库共享资源的特点</li>
+<li>交叉并发方式：单处理机系统中，并行事务的并行操作轮流交叉运行</li>
+<li>同时并发方式：多处理机系统中，可实现多个事务真正的并行运行</li>
+</ul>
+</li>
+<li>并发控制带来的数据不一致性<ul>
+<li>丢失修改<ul>
+<li>两个事务T1和T2读入同一数据并修改，T2的提交结果破坏了T1提交的结果，导致T1的修改被丢失</li>
+</ul>
+</li>
+<li>不可重复读<ul>
+<li>事务T1读取某一数据后，事务T2对其做了修改，当事务T1再次读该数据时，得到与前一次不同的值</li>
+<li>事务T1按一定条件从数据库中读取了某些数据记录后，事务T2删除了其中部分记录，当T1再次按相同条件读取数据时，发现某些记录消失了</li>
+<li>事务T1按一定条件从数据库中读取某些数据记录后，事务T2插入了一些记录，当T1再次按相同条件读取数据时，发现多了一些记录。</li>
+</ul>
+</li>
+<li>读脏数据<ul>
+<li>事务T1修改某一数据，并将其写回磁盘，事务T2读取同一数据后，T1由于某种原因被撤销，这时T1已修改过的数据恢复原值，T2读到的数据就与数据库中的数据不一致，此时T2读到的数据就为“脏”数据</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-7-2-封锁"><a href="#3-7-2-封锁" class="headerlink" title="3.7.2 封锁"></a>3.7.2 封锁</h4><ul>
+<li><p>封锁概述</p>
+<ul>
+<li><p>事务T在对某个数据对象操作之前，先向系统发出请求，对其加锁</p>
+</li>
+<li><p>排它锁（Exclusive Locks，简记为X锁、写锁）</p>
+<ul>
+<li>若事务T对数据对象A加上X锁，则只允许T读取和修改A，其它任何事务都不能再对A加任何类型的锁，直到T释放A上的锁</li>
+<li>保证其他事务在T释放A上的锁之前<strong>不能再读取和修改</strong>A</li>
+</ul>
+</li>
+<li><p>共享锁（Share Locks，简记为S锁、读锁）</p>
+<ul>
+<li>若事务T对数据对象A加上S锁，则其它事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁</li>
+<li><strong>保证其他事务可以读A，但在T释放A上的S锁之前不能对A做任何修改</strong></li>
+</ul>
+</li>
+<li><p>锁的相容性矩阵（Y表示相容，N表示不相容）</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">X</th>
+<th align="center">S</th>
+<th align="center">-</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">X</td>
+<td align="center">N</td>
+<td align="center">N</td>
+<td align="center">Y</td>
+</tr>
+<tr>
+<td align="center">S</td>
+<td align="center">N</td>
+<td align="center">Y</td>
+<td align="center">Y</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">Y</td>
+<td align="center">Y</td>
+<td align="center">Y</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p>封锁解决数据不一致性</p>
+<ul>
+<li>解决丢失修改问题：修改前先对待修改数据对象加X锁</li>
+<li>解决不可重复读问题：读前先对待读数据对象加S锁</li>
+<li>解决读脏数据问题：T1修改前先对待修改数据对象加X锁，T2读前先对待读数据对象加S锁</li>
+</ul>
+</li>
+<li><p>活锁</p>
+<ul>
+<li>T2、T3、…、Tn依次等待事务T1释放锁，而系统依次批准了T3、…、Tn的请求，T2将有可能永远等待，即活锁</li>
+<li>采用<strong>先来先服务</strong>的策略避免活锁：当多个事务请求封锁同一数据对象时，按请求封锁的先后次序对这些事务排队，该数据对象上的锁一旦释放，首先批准申请队列中第一个事务获得锁</li>
+</ul>
+</li>
+<li><p>死锁</p>
+<ul>
+<li>事务T1封锁了数据R1，而T2封锁了数据R2；T1又请求封锁R2，因T2已封锁了R2，于是T1等待T2释放R2上的锁；接着T2又申请封锁R1，因T1已封锁了R1，T2也只能等待T1释放R1上的锁，这样T1在等待T2，而T2又在等待T1，T1和T2两个事务永远不能结束，形成死锁</li>
+<li>预防死锁<ul>
+<li>一次封锁法：每个事务必须一次将所有要使用的数据全部加锁，否则就不能继续执行</li>
+<li>顺序封锁法：预先对数据对象规定一个封锁顺序，所有事务都按这个顺序实行封锁</li>
+<li>时间戳优先级法：较老时间戳具有更高优先级，当一事务重启时，它的新优先级仍为原先的时间戳</li>
+</ul>
+</li>
+<li>死锁的检测与解除<ul>
+<li>超时法检测：如果一个事务的等待时间超过了规定的时限，就认为发生了死锁；阈值过短则可能误判，过长则死锁不能及时发现</li>
+<li>事务等待图法检测<ul>
+<li>事务等待图是一个有向图G&#x3D;(T,U)，其中T为结点的集合，每个结点表示正运行的事务，U为边的集合，每条边表示事务等待的情况，若T1等待T2，则T1与T2之间有一条从T1指向T2的有向边</li>
+<li>并发控制子系统周期性地（比如每隔数秒）生成事务等待图，检测事务。<strong>如果发现图中存在回路，则表示系统中出现了死锁</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>封锁协议</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="封锁协议.png" style="zoom:60%;" />
+
+<ul>
+<li>1级封锁协议<ul>
+<li>事务T在修改数据R之前必须先对其加X锁，直到事务结束才释放</li>
+<li>1级封锁协议可防止丢失修改</li>
+<li>在1级封锁协议中，如果是读数据，不需要加锁的，所以它不能保证可重复读和不读“脏”数据</li>
+</ul>
+</li>
+<li>2级封锁协议<ul>
+<li>1级封锁协议+事务T在读取数据R前必须先加S锁，读完后即可释放S锁</li>
+<li>在2级封锁协议中，由于读完数据后即可释放S锁，所以它不能保证可重复读</li>
+</ul>
+</li>
+<li>3级封锁协议<ul>
+<li>1级封锁协议+事务T在读取数据R之前必须先对其加S锁，直到事务结束才释放</li>
+<li>3级封锁协议可防止丢失修改、读脏数据和不可重复读</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-7-3-可串行性"><a href="#3-7-3-可串行性" class="headerlink" title="3.7.3 可串行性"></a>3.7.3 可串行性</h4><ul>
+<li>可串行化(Serializable)调度：多个事务的并发执行是正确的，当且仅当其结果与按某一次序串行地执行这些事务时的结果相同</li>
+<li>冲突可串行化调度<ul>
+<li>冲突可串行化是可串行化调度的<strong>充分条件</strong></li>
+<li>冲突操作指<strong>不同事务对同一数据的读写操作和写写操作</strong>，冲突操作中两个操作的次序发生改变将导致结果改变</li>
+<li>某个调度在冲突操作的次序不改变的前提下，通过交换两个事务不冲突操作的次序，转变为可串行的调度，则该调度是冲突可串行化的</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-7-4-两段锁协议"><a href="#3-7-4-两段锁协议" class="headerlink" title="3.7.4 两段锁协议"></a>3.7.4 两段锁协议</h4><ul>
+<li>当一个事务满足以下条件时，是满足两段锁协议的<ul>
+<li>在对任何数据进行读写操作前，首先申请并获得对该数据的封锁</li>
+<li>在释放一个封锁后，事务不再申请和获得任何其他封锁</li>
+<li>事务被划分为两个阶段<ul>
+<li>扩展阶段：获得封锁且不释放任何锁</li>
+<li>收缩阶段：释放封锁且不申请任何锁</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>若并发执行的所有事务均满足两段锁协议，则这些事务的任何调度策略都是可串行化的，这是可串行化的<strong>充分条件</strong></li>
+<li>遵循两段锁协议的事务不要求事务必须一次将所有要使用的数据全部加锁，因此<strong>可能发生死锁</strong></li>
+</ul>
+<h3 id="3-8-数据库恢复技术"><a href="#3-8-数据库恢复技术" class="headerlink" title="3.8 数据库恢复技术"></a>3.8 数据库恢复技术</h3><h4 id="3-8-1-事务"><a href="#3-8-1-事务" class="headerlink" title="3.8.1 事务"></a>3.8.1 事务</h4><ul>
+<li><p>事务概念</p>
+<ul>
+<li>事务(Transaction)：用户定义的具有交易特性的一个数据库操作序列</li>
+<li>特性<ul>
+<li>原子性：事务是数据库的逻辑工作单位，事务中各操作要么都做，要么都不做</li>
+<li>一致性：数据库状态与外部状态一致</li>
+<li>隔离性：一个事务的执行不能被其他事务干扰</li>
+<li>持续性：一个事务一旦提交，它对数据库中数据的改变就应该是永久性的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>定义事务</p>
+<ul>
+<li><p>显式定义</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#提交事务</span><br><span class="line"><span class="keyword">BEGIN</span> TRANSACTION</span><br><span class="line">	<span class="keyword">SQL</span></span><br><span class="line">	...</span><br><span class="line"><span class="keyword">COMMIT</span></span><br><span class="line">#回滚事务</span><br><span class="line"><span class="keyword">BEGIN</span> TRANSACTION</span><br><span class="line">	<span class="keyword">SQL</span></span><br><span class="line">	...</span><br><span class="line"><span class="keyword">ROLLBACK</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>隐式定义：DBMS按缺省规定自动划分事务</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-8-2-数据库恢复"><a href="#3-8-2-数据库恢复" class="headerlink" title="3.8.2 数据库恢复"></a>3.8.2 数据库恢复</h4><ul>
+<li>故障种类<ul>
+<li>事务故障：某个事务在运行过程中由于种种原因未运行至预期的终点便结束</li>
+<li>系统故障：操作系统或DBMS代码错误等</li>
+<li>介质故障：磁盘损坏等原因</li>
+</ul>
+</li>
+<li>恢复的实现：建立冗余数据<ul>
+<li>数据转储<ul>
+<li>静态转储：在系统中无运行事务时进行转储，转储期间不允许对数据库进行任何存取修改活动</li>
+<li>动态转储：转储与事务并发执行，但获得一致性副本较麻烦，因此需要将动态转储期间各事务对数据库的修改活动登记下来，建立日志文件</li>
+<li>海量转储：定期或不定期将数据库全部数据转储，其转储量大，易造成重复转储</li>
+<li>增量转储：每次转储上次转储后更新过的数据，其备份量小，但恢复过程较复杂</li>
+</ul>
+</li>
+<li>登录日志文件<ul>
+<li>用来记录事务对数据库的更新操作的文件</li>
+<li>以记录为单位的日志文件内容<ul>
+<li>各个事务的开始标记(BEGIN TRANSACTION)</li>
+<li>各个事务的结束标记(COMMIT或ROLLBACK)</li>
+<li>各个事务的所有更新操作</li>
+<li>与事务有关的内部更新操作</li>
+<li>每条日志记录的内容<ul>
+<li>事务标识</li>
+<li>操作类型（插入、删除或修改）</li>
+<li>操作对象（记录ID）</li>
+<li>更新前数据的旧值（对插入操作而言，此项为空值）</li>
+<li>更新后数据的新值（对删除操作而言, 此项为空值）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>以数据块为单位的日志文件<ul>
+<li>事务标识号</li>
+<li>该事务执行更新前的数据块</li>
+<li>该事务执行更新后的数据块</li>
+</ul>
+</li>
+<li>每个日志记录在日志中都有一个唯一的码，叫做日志序号（简称LSN）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>恢复策略<ul>
+<li>事务故障的恢复：由恢复子系统利用<strong>日志文件</strong>撤消此事务已对数据库进行的修改<ul>
+<li>反向扫描文件日志，查找该事务的更新操作，并对该事务的更新操作执行逆操作</li>
+<li>如此处理下去，直至读到此事务的开始标记，事务故障恢复即完成</li>
+</ul>
+</li>
+<li>系统故障的恢复<ul>
+<li>正向扫描日志文件，得到Undo队列和Redo队列</li>
+<li><strong>Undo故障发生时未完成的事务</strong>：一些未完成事务对数据库的更新已写入数据库，反向扫描日志文件，对每个UNDO事务的更新操作执行逆操作</li>
+<li><strong>Redo已完成的事务</strong>：一些已提交事务对数据库的更新还留在缓冲区没来得及写入数据库，正向扫描日志文件，对每个REDO事务重新执行登记的操作</li>
+<li>通俗方式<ul>
+<li>在系统发生故障之前已经提交的事务需要重做</li>
+<li>在系统发生故障之前开始但没有提交的需要撤销</li>
+<li>在系统发生故障之前已经回滚的事务不做操作，相当于没有进行</li>
+<li>系统恢复后，回滚和撤销的事务相当于没有执行，只需要考虑重做的事务</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>介质故障的恢复<ul>
+<li>重装数据库，使数据库恢复到一致性状态<ul>
+<li>对于静态转储的数据库副本，装入后数据库即处于一致性状态</li>
+<li>对于动态转储的数据库副本，还须同时装入转储时刻的日志文件副本，利用与恢复系统故障相同的方法恢复</li>
+</ul>
+</li>
+<li>装入转储结束时刻的日志副本，重做已完成的事务<ul>
+<li>首先扫描日志文件，找出故障发生时已提交的事务的标识，将其记入重做队列</li>
+<li>然后正向扫描日志文件，对重做队列中的所有事务操作进行重做。即将日志记录中“更新后的值”写入数据库</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="四、关系数据理论"><a href="#四、关系数据理论" class="headerlink" title="四、关系数据理论"></a>四、关系数据理论</h2><h3 id="4-1-规范化理论"><a href="#4-1-规范化理论" class="headerlink" title="4.1 规范化理论"></a>4.1 规范化理论</h3><ul>
+<li>关系的规范化：按照一定的规范设计的关系模式，将结构复杂的关系分解成结构简单的关系，从而把不好的关系数据库模式转变成为好的关系数据库模式</li>
+<li>简化的关系模式：$R(U,F)$，其中$U$为组成该关系的属性名集合，$F$为属性间数据的依赖关系集合</li>
+</ul>
+<h3 id="4-2-函数依赖（FD）"><a href="#4-2-函数依赖（FD）" class="headerlink" title="4.2 函数依赖（FD）"></a>4.2 函数依赖（FD）</h3><ul>
+<li><p>设$R(U)$是属性集$U$上的关系模式，$X $, $Y\sube U$， $r$是$R(U) $上的任意一个关系，如果有对$\forall t,s\in r$，若$t[X] &#x3D; s[X]$，则$t[Y] &#x3D; s[Y]$，那么称<strong>X函数决定Y</strong>，或<strong>Y函数依赖于X</strong>，记作$X\rightarrow Y$，并称$X$为决定因素</p>
+</li>
+<li><p>函数依赖不是指关系模式R的某个或某些关系实例满足的约束条件，而是指<strong>R的所有关系实例均要满足的约束条件</strong></p>
+</li>
+<li><p>若$X\rightarrow Y$且$Y\rightarrow X$，则$X\leftrightarrow Y$</p>
+</li>
+<li><p>若$Y$不函数依赖于$X$，则$X\nrightarrow Y$</p>
+</li>
+<li><p>平凡函数依赖：如果$X\rightarrow Y$且$Y\subset X$，则称为平凡函数依赖</p>
+</li>
+<li><p>非平凡函数依赖：如果$X\rightarrow Y$且$Y\nsubseteq X$，则称为非平凡函数依赖</p>
+</li>
+<li><p>若不特别声明，我们讨论的都是非平凡的函数依赖</p>
+</li>
+<li><p><strong>部分函数依赖</strong>：如果$X\rightarrow Y$，且对于任意$X$的真子集$X^{‘}$，有$X^{‘}\nrightarrow Y$，则称$Y$对$X$完全函数依赖，记作$X{\stackrel{f}\rightarrow}Y$，否则称$Y$对$X$部分函数依赖，记作$X{\stackrel{p}\rightarrow}Y$</p>
+<blockquote>
+<p>只有当决定因素是组合属性时，讨论部分函数依赖才有意义</p>
+<p>当决定因素是单属性时，只能是完全函数依赖</p>
+<p>例如，在关系模式$S(SNO,SN,AGE,DEPT)$，决定因素为单属性$SNO$，有$SNO   (SN,AGE,DEPT)$，不存在部分函数依赖</p>
+</blockquote>
+</li>
+<li><p>传递函数依赖：如果$X\rightarrow Y$，$Y\rightarrow Z$，$Y\nrightarrow X$，$Y\nsubseteq X$，则称$Z$对$X$传递函数依赖</p>
+</li>
+<li><p>候选码：设$K$为$R(U,F)$的属性或属性组合，若$K\stackrel{f}\rightarrow U$，则称$K$为$R$的候选码</p>
+</li>
+<li><p>主属性：任何一个候选码中的属性称作主属性</p>
+</li>
+<li><p>主码：从一个关系的多个候选码中选定一个作为主码</p>
+</li>
+<li><p>超码：某个属性组合，其存在一个子集是候选码</p>
+</li>
+</ul>
+<h3 id="4-3-范式"><a href="#4-3-范式" class="headerlink" title="4.3 范式"></a>4.3 范式</h3><ul>
+<li>$1NF$<ul>
+<li>关系中每一分量在语义上不可再分</li>
+<li>即不能以集合、数组、序列、结构体等作为属性值</li>
+</ul>
+</li>
+<li>$2NF$<ul>
+<li>若$R\in 1NF$，且每个非主属性完全依赖于码，则称$R\in 2NF$</li>
+<li>该范式<strong>消除了非主属性对码的部分依赖</strong></li>
+<li>采用投影分解法将一个$1NF$的关系分解为多个$2NF$的关系</li>
+<li>将一个$1NF$关系分解为多个$2NF$的关系，并不能完全消除关系模式中的各种异常情况和数据冗余</li>
+</ul>
+</li>
+<li>$3NF$<ul>
+<li>关系模式$R(U,F)$中，若不存在这样的码$X$、属性组$Y$及非主属性$Z$（$Z\nsubseteq Y$），使得$X\rightarrow Y$，$Y\nrightarrow X$，$Y\rightarrow Z$成立，称$R\in 3NF$</li>
+<li>每一个非主属性既不部分函数依赖于候选码也不传递函数依赖于候选码</li>
+<li>该范式<strong>消除了非主属性对码的传递依赖</strong></li>
+</ul>
+</li>
+<li>$BCNF$<ul>
+<li>设$R\in 1NF$，若对于$R$的每个函数依赖$X\rightarrow Y$，若$Y$不属于$X$，则$X$必包含候选码，那么$R\in BCNF$</li>
+<li>该范式<strong>消除了主属性对码的传递依赖或部分依赖</strong></li>
+<li>如果$R\in 3NF$，且$R$只有一个候选码，则$R\in BCNF$</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-4-函数依赖的公理系统"><a href="#4-4-函数依赖的公理系统" class="headerlink" title="4.4 函数依赖的公理系统"></a>4.4 函数依赖的公理系统</h3><ul>
+<li>逻辑蕴涵：已知关系模式$R$，$U$是属性集全体，$F$是其函数依赖，$X$，$Y$是其属性子集，对于任何一个关系$r$，若函数依赖$X\rightarrow Y$都成立，则称$F$逻辑蕴涵$X\rightarrow Y$</li>
+<li>依赖闭包：在关系模式$R$中，为$F$所逻辑蕴涵的函数依赖的全体叫做$F$的闭包，记作$F^{+}$</li>
+<li><strong>$X$关于$F$的闭包$X_{F^+}$：$X_{F^+}&#x3D;{A|X\rightarrow A可由F根据Armstrong公理系统导出}$</strong></li>
+<li>$Armstrong$公理系统<ul>
+<li>自反律：若$Y\subseteq X\subseteq U$，则$X\rightarrow Y$为$F$所蕴含</li>
+<li>增广律：若$X\rightarrow Y$为$F$所蕴含，且$Z\subseteq U$，则$XZ\rightarrow YZ$为$F$所蕴含</li>
+<li>传递律：若$X\rightarrow Y$和$Y\rightarrow Z$为$F$所蕴含，则$X\rightarrow Z$为$F$所蕴含</li>
+<li><strong>合并规则</strong>：由$X\rightarrow Y$，$X\rightarrow Z$，则$X\rightarrow YZ$</li>
+<li><strong>伪传递规则</strong>：由$X\rightarrow Y$，$WY\rightarrow Z$，则$XW\rightarrow Z$</li>
+<li><strong>分解规则</strong>：由$X\rightarrow Y$，$Z\subseteq Y$，则$X\rightarrow Z$</li>
+<li>$X\rightarrow A_1A_2\cdots A_k$成立的充要条件是$X\rightarrow A_i$成立</li>
+</ul>
+</li>
+<li>$X\rightarrow Y$能由$F$根据$Armstrong$导出的充要条件是$Y\subseteq X_{F^+}$<ul>
+<li>判定$X\rightarrow Y$能否由$F$根据$Armstrong$导出转化为先求$X_{F^+}$，然后判断$Y$是否为其子集</li>
+<li>如果$X_{F^+}&#x3D;U$，则$X$是$R$的候选码</li>
+</ul>
+</li>
+<li><strong>$X_{F^+}$的计算</strong><ul>
+<li>寻找$F$中决定因素为$X$或$X$子集的函数依赖，得到这些函数依赖的右部，与$X$合并得到新的$X$</li>
+<li>继续以上步骤，直至合并前后的属性集相同或合并后的属性集为$U$</li>
+</ul>
+</li>
+<li><strong>候选码的计算</strong><ul>
+<li>基本定义<ul>
+<li>左部属性：只出现在$F$左边的属性</li>
+<li>右部属性：只出现在$F$右边的属性</li>
+<li>双部属性：出现在$F$两边的属性</li>
+<li>外部属性：不出现在$F$的属性</li>
+</ul>
+</li>
+<li>基本规则<ul>
+<li>左部属性一定出现在任何候选码中&#x2F;一定是主属性</li>
+<li>右部属性一定不出现在任何候选码中&#x2F;一定是非主属性</li>
+<li>外部属性一定出现在任何候选码中&#x2F;一定是主属性</li>
+</ul>
+</li>
+<li>求解过程<ul>
+<li>求<strong>已经确定的主属性集</strong>关于函数依赖的闭包</li>
+<li>如果该闭包为属性全集$U$，则<strong>已经确定的主属性集</strong>为唯一候选码</li>
+<li>如果该闭包不为属性全集$U$，则依次取左部属性和双部属性中的一个组成临时候选码，求其闭包，如果该闭包为属性全集$U$，则该临时候选码为候选码</li>
+<li>如果第三步中仍未得到候选码，则依次取左部属性和双部属性中的<strong>2~n</strong>个组成临时候选码，求其闭包，如果该闭包为属性全集$U$，则该临时候选码为候选码</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>函数依赖的等价&#x2F;覆盖：如果$G^+&#x3D;F^+$，则$F$覆盖$G$</li>
+<li>最小覆盖&#x2F;极小函数依赖集：满足如下条件的函数依赖集<ul>
+<li>$F$中任一函数依赖的右部仅含有一个属性</li>
+<li>$F$中不存在这样的函数依赖$X\rightarrow A$，使得$F$与$F-{X\rightarrow A}$等价，即$F$中的函数依赖不能被其他函数依赖导出</li>
+<li>$F$中不存在这样的函数依赖$X\rightarrow A$，$X$有真子集$Z$使得$F$与$F-{X\rightarrow A}\cup{Z\rightarrow A}$等价，即$F$中各函数依赖左部均为最小属性集，均不存在冗余属性</li>
+</ul>
+</li>
+<li><strong>最小覆盖的计算</strong><ul>
+<li>将$F$中所有函数依赖的右边化为单一属性<ul>
+<li>使用合并规则</li>
+<li>逐一检查$F$中各函数依赖$F_i:X\rightarrow Y$，若$Y&#x3D;A_1A_2\cdots A_k,k\geq2$，则使用${X\rightarrow A_j|j&#x3D;1,2,\cdots,k}$代替$X\rightarrow Y$</li>
+</ul>
+</li>
+<li>去掉$F$中所有冗余的函数依赖<ul>
+<li>逐一检查$F$中各函数依赖$F_i:X\rightarrow Y$，设$G&#x3D;F-F_i$，若$Y\in X_{G^+}$，则去掉该函数依赖</li>
+</ul>
+</li>
+<li>去掉$F$中所有函数依赖的左边的冗余属性<ul>
+<li>逐一检查$F$中各函数依赖$F_i:X\rightarrow Y$，若$X&#x3D;B_1B_2\cdots B_m$，考察$B_i$，若$Y\in(X-B_i)_{F^+}$，则以$X-B_i$代替$X$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-5-模式分解"><a href="#4-5-模式分解" class="headerlink" title="4.5 模式分解"></a>4.5 模式分解</h3><ul>
+<li>模式分解：将关系模式$R&lt;U,V&gt;$分解为$\rho&#x3D;{R_1&lt;U_1,F_1&gt;,\cdots,R_n&lt;U_n,F_n&gt;}$，且$U&#x3D;U_1\cup\cdots\cup U_n$，没有$U_i\subseteq U_j,1\leq i,j\leq n$，$F_i$是$F$在$U_i$上的投影</li>
+<li>正确的模式分解<ul>
+<li>具有无损连接性：设$\rho&#x3D;{R_1&lt;U_1,F_1&gt;,\cdots,R_n&lt;U_n,F_n&gt;}$是$R&lt;U,V&gt;$的一个分解，若对$R$上的任何一个关系$r$均有$r&#x3D;r在\rho中个关系模式上投影的自然连接$，则称$\rho$具有无损连接性，简称$\rho$为无损分解</li>
+<li>具有保持函数依赖性：设$\rho&#x3D;{R_1&lt;U_1,F_1&gt;,\cdots,R_n&lt;U_n,F_n&gt;}$是$R&lt;U,V&gt;$的一个分解，若$F$所逻辑蕴涵的函数依赖一定为分解后所有的关系模式中的函数依赖$F_i$所逻辑蕴涵，即$F^+&#x3D;(F_1\cup F_2\cup\cdots\cup F_n)^+$，则称$\rho$具有保持函数依赖性</li>
+<li>如果一个分解具有无损连接性，则它能够保证不丢失信息</li>
+<li>如果一个分解保持了函数依赖，则它可以减轻或解决各种异常情况</li>
+</ul>
+</li>
+</ul>
+<h2 id="五、查询优化"><a href="#五、查询优化" class="headerlink" title="五、查询优化"></a>五、查询优化</h2><h3 id="6-1-查询处理"><a href="#6-1-查询处理" class="headerlink" title="6.1 查询处理"></a>6.1 查询处理</h3><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="查询计划举例.png" style="zoom:30%;" />
+
+<ul>
+<li><p>查询处理流程</p>
+<ul>
+<li>操作算子以树的形式进行组织</li>
+<li>数据流从叶子结点流向根节点</li>
+<li>根节点的输出是查询的结构</li>
+</ul>
+</li>
+<li><p>迭代模型</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="迭代模型.png" style="zoom:30%;" />
+
+<ul>
+<li>每个算子执行$Next$函数，调用得到一个下层提交的元组或一个空值标记$NULL,,, Maker$</li>
+</ul>
+</li>
+<li><p>物化模型</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="物化模型.png" style="zoom:30%;" />
+
+<ul>
+<li>每个算子一次性获取所有输出，传递元组列表给父节点</li>
+</ul>
+</li>
+<li><p>向量模型</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="向量模型.png" style="zoom:30%;" />
+
+<ul>
+<li>基本框架同迭代模型，但是每次提交一批元组（Batch）</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-2-代数优化"><a href="#6-2-代数优化" class="headerlink" title="6.2 代数优化"></a>6.2 代数优化</h3><h4 id="6-2-1-代数优化的基本准则"><a href="#6-2-1-代数优化的基本准则" class="headerlink" title="6.2.1 代数优化的基本准则"></a>6.2.1 代数优化的基本准则</h4><ul>
+<li>选择运算尽可能先做</li>
+<li>在执行连接操作前对关系适当进行预处理</li>
+<li>投影运算和选择运算同时做</li>
+<li>某些选择运算与在其前面执行的笛卡尔积合并为连接运算</li>
+</ul>
+<h4 id="6-2-2-关系代数等价变换规则"><a href="#6-2-2-关系代数等价变换规则" class="headerlink" title="6.2.2 关系代数等价变换规则"></a>6.2.2 关系代数等价变换规则</h4><ul>
+<li>连接、笛卡尔积交换律：$E_1\times E_2&#x3D;E_2\times E_1$、$E_1\Join E_2&#x3D;E_2\Join E_1$</li>
+<li>连接、笛卡尔积结合律：$(E_1\times E_2)\times E_3&#x3D;E_1\times(E_2\times E_3)$、$(E_1\Join E_2)\Join E_3&#x3D;E_1\Join(E_2\Join E_3)$</li>
+<li>投影的串接定律：$\prod_{A_1,A_2,\cdots,A_n}(\prod_{B_1,B_2,\cdots,B_m}(E))&#x3D;\prod_{A_1,A_2,\cdots,A_n}(E)$，其中${A_1,A_2,\cdots,A_n}$是${B_1,B_2,\cdots,B_m}$的子集</li>
+<li>连接的串接定律：$\sigma_{F_1}(\sigma_{F_2}(E))&#x3D;\sigma_{F_1\land F_2}(E)$</li>
+<li>选择与投影的交换律<ul>
+<li>如果选择条件$F$只涉及$A_1,\cdots,A_n$，则$\sigma_F(\prod_{A_1,A_2,\cdots,A_n}(E))&#x3D;\prod_{A_1,A_2,\cdots,A_n}(\sigma_F(E))$</li>
+<li>如果选择条件$F$含有不属于$A_1,\cdots,A_n$的属性$B_1,\cdots,B_n$，则$\sigma_F(\prod_{A_1,A_2,\cdots,A_n}(E))&#x3D;\prod_{A_1,A_2,\cdots,A_n}(\sigma_F(\prod_{A_1,A_2,\cdots,A_n,B_1,B_2,\cdots,B_m}(E)))$</li>
+</ul>
+</li>
+<li>选择、笛卡尔积交换律<ul>
+<li>如果选择条件$F$只涉及$E_1$，则$\sigma_F(E_1\times E_2)&#x3D;\sigma_F(E_1)\times E_2$</li>
+<li>设$F&#x3D;F_1\land F_2$，如果选择条件$F_1$只涉及$E_1$且选择条件$F_2$只涉及$E_2$，则$\sigma_F(E_1\times E_2)&#x3D;\sigma_{F_1}(E_1)\times \sigma_{F_2}(E_2)$</li>
+<li>设$F&#x3D;F_1\land F_2$，如果选择条件$F_1$只涉及$E_1$且选择条件$F_2$涉及$E_1$和$E_2$两者的属性，则$\sigma_F(E_1\times E_2)&#x3D;\sigma_{F_1}(E_1)\times \sigma_{F_2}(E_2)$</li>
+</ul>
+</li>
+<li>选择对自然连接的分配律：$\sigma(E_1\times E_2)&#x3D;\sigma(E_1)\times\sigma(E_2)$</li>
+<li>投影与笛卡尔积的交换：假设$A_1,A_2,\cdots,A_n$是，，$\prod_{A_1,A_2,\cdots,A_n,B_1,B_2,\cdots,B_m}(E_1\times E_2)&#x3D;\prod_{A_1,A_2,\cdots,A_n}(E_1)\times \prod_{B_1,B_2,\cdots,B_m}(E_2)$</li>
+</ul>
+<h4 id="6-2-3-代数优化的步骤"><a href="#6-2-3-代数优化的步骤" class="headerlink" title="6.2.3 代数优化的步骤"></a>6.2.3 代数优化的步骤</h4><ul>
+<li>根据SQL语句画出语法树</li>
+<li>将语法树转换为关系代数语法树</li>
+<li>通过代数优化得到优化后的关系代数语法树</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://cloudchewie.com">余湍</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://cloudchewie.com/2023/02/22/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%94%E8%AE%B0/">https://cloudchewie.com/2023/02/22/【笔记】数据库系统概论笔记/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://cloudchewie.com" target="_blank">苍岚</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%A8%8B/">专业课程</a></div><div class="post_share"><div class="social-share" data-image="/img/sticky.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/02/22/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%AC%94%E8%AE%B0/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【笔记】计算机网络与通信笔记</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/08/19/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0/" title="【笔记】算法设计与分析笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/sticky.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-19</div><div class="title">【笔记】算法设计与分析笔记</div></div></a></div><div><a href="/2023/02/22/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%AC%94%E8%AE%B0/" title="【笔记】计算机网络与通信笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/sticky.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-22</div><div class="title">【笔记】计算机网络与通信笔记</div></div></a></div></div></div></div><div class="comment-barrage"></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">余湍</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Robert-stackflow"><i class="fab fa-github"></i><span>Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://space.bilibili.com/651449217" target="_blank" title="Bilibili"><i class="fab fa-bilibili"></i></a><a class="social-icon" href="mailto:2014027378@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-square-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">由于Vercel部署服务无法正常访问，本站评论系统处于瘫痪，正在加急修复</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%BB%AA%E8%AE%BA"><span class="toc-text">一、绪论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-text">1.1 数据模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E6%A6%82%E8%BF%B0"><span class="toc-text">1.1.1 数据模型概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-2-%E5%AE%9E%E4%BD%93-%E8%81%94%E7%B3%BB%E6%A8%A1%E5%9E%8B%EF%BC%88E-R%E6%A8%A1%E5%9E%8B%EF%BC%89"><span class="toc-text">1.1.2 实体-联系模型（E-R模型）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-3-%E7%94%B1E-R%E5%9B%BE%E5%88%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="toc-text">1.1.3 由E-R图到数据库设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-4-%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B"><span class="toc-text">1.1.4 关系模型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F"><span class="toc-text">1.2 数据库系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">二、关系数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">2.1 关系数据结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%85%B3%E7%B3%BB%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-text">2.2 关系的完整性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0"><span class="toc-text">2.3 关系代数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81SQL%E8%AF%AD%E8%A8%80"><span class="toc-text">三、SQL语言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%95%B0%E6%8D%AE%E5%BA%93%E3%80%81%E8%A1%A8%E3%80%81%E7%B4%A2%E5%BC%95%E3%80%81%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F"><span class="toc-text">3.1 数据库、表、索引、完整性约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2"><span class="toc-text">3.2 数据查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E6%95%B0%E6%8D%AE%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9"><span class="toc-text">3.3 数据的增删改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E8%A7%86%E5%9B%BE"><span class="toc-text">3.4 视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E8%A7%A6%E5%8F%91%E5%99%A8%E3%80%81%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E7%94%A8%E6%88%B7%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0"><span class="toc-text">3.5 触发器、存储过程、用户自定义函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-%E5%AE%89%E5%85%A8%E6%80%A7%E6%8E%A7%E5%88%B6"><span class="toc-text">3.6 安全性控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6"><span class="toc-text">3.7 并发控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-7-1-%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6%E6%A6%82%E8%BF%B0"><span class="toc-text">3.7.1 并发控制概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-7-2-%E5%B0%81%E9%94%81"><span class="toc-text">3.7.2 封锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-7-3-%E5%8F%AF%E4%B8%B2%E8%A1%8C%E6%80%A7"><span class="toc-text">3.7.3 可串行性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-7-4-%E4%B8%A4%E6%AE%B5%E9%94%81%E5%8D%8F%E8%AE%AE"><span class="toc-text">3.7.4 两段锁协议</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-8-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E6%8A%80%E6%9C%AF"><span class="toc-text">3.8 数据库恢复技术</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-8-1-%E4%BA%8B%E5%8A%A1"><span class="toc-text">3.8.1 事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-8-2-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D"><span class="toc-text">3.8.2 数据库恢复</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%90%86%E8%AE%BA"><span class="toc-text">四、关系数据理论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E8%A7%84%E8%8C%83%E5%8C%96%E7%90%86%E8%AE%BA"><span class="toc-text">4.1 规范化理论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%EF%BC%88FD%EF%BC%89"><span class="toc-text">4.2 函数依赖（FD）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E8%8C%83%E5%BC%8F"><span class="toc-text">4.3 范式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E7%9A%84%E5%85%AC%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-text">4.4 函数依赖的公理系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-%E6%A8%A1%E5%BC%8F%E5%88%86%E8%A7%A3"><span class="toc-text">4.5 模式分解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96"><span class="toc-text">五、查询优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E6%9F%A5%E8%AF%A2%E5%A4%84%E7%90%86"><span class="toc-text">6.1 查询处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E4%BB%A3%E6%95%B0%E4%BC%98%E5%8C%96"><span class="toc-text">6.2 代数优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-1-%E4%BB%A3%E6%95%B0%E4%BC%98%E5%8C%96%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%87%86%E5%88%99"><span class="toc-text">6.2.1 代数优化的基本准则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-2-%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0%E7%AD%89%E4%BB%B7%E5%8F%98%E6%8D%A2%E8%A7%84%E5%88%99"><span class="toc-text">6.2.2 关系代数等价变换规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-3-%E4%BB%A3%E6%95%B0%E4%BC%98%E5%8C%96%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-text">6.2.3 代数优化的步骤</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div id="download"><div class="card-content"><div class="item-headline"><i class="fas fa-file-arrow-down"></i><span>文件下载</span></div><div class="download-list"><div class="download-list-item"><a class="download-list-item-button" target="_blank" rel="noopener" href="https://robert-stackflow.github.io/dowloads/【笔记】数据库系统概论笔记.pdf" title="下载数据库系统概论笔记PDF"><span>下载数据库系统概论笔记PDF</span></a></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By 余湍</div><div class="footer_custom_text">昼夜交替的低语，暗藏着谁人的心迹</div></div></footer></div><div id="rightside"><div id="rightside-button-list"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="hide-aside-btn" type="button" title="单栏/双栏模式"><i class="fas fa-arrows-alt-h"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.location.href=&quot;/&quot;;"><i class="fas fa-home"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="javascript:rmf.switchDarkMode();"><i class="fas fa-adjust"></i></a><a class="rightMenu-item" href="javascript:rmf.scrollToTop();"><i class="fa fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line" id="menu-general"><a class="rightMenu-item" href="javascript:window.location.href=&quot;/archives/&quot;;"><i class="fas fa-archive"></i><span>归档</span></a><a class="rightMenu-item" href="javascript:window.location.href=&quot;/tags/&quot;;"><i class="fas fa-tags"></i><span>标签</span></a><a class="rightMenu-item" href="javascript:window.location.href=&quot;/categories/&quot;;"><i class="fas fa-folder-open"></i><span>分类</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-text"><a class="rightMenu-item" href="javascript:rmf.copySelect();"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://cn.bing.com/search?q=&quot;+window.getSelection().toString());window.location.reload();"><i class="fas fa-magnifying-glass"></i><span>必应搜索</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-too"><a class="rightMenu-item" href="javascript:window.open(window.getSelection().toString());window.location.reload();"><i class="fa fa-link"></i><span>转到链接</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-paste"><a class="rightMenu-item" href="javascript:rmf.paste()"><i class="fa fa-copy"></i><span>粘贴</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-post"><a class="rightMenu-item" href="#post-comment"><i class="fas fa-comments"></i><span>转到评论</span></a><a class="rightMenu-item" href="javascript:rmf.copyWordsLink()"><i class="fa fa-link"></i><span>复制本文地址</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-to"><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>新窗口打开</span></a><a class="rightMenu-item" id="menu-too" href="javascript:rmf.open()"><i class="fa fa-link"></i><span>转到链接</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制链接</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-img"><a class="rightMenu-item" href="javascript:rmf.downloadImage()"><i class="fa fa-download"></i><span>保存图片</span></a><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>在新窗口打开</span></a><a class="rightMenu-item" href="javascript:rmf.click()"><i class="fa fa-arrows-alt"></i><span>全屏显示</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制图片链接</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-other"><a class="rightMenu-item" href="javascript:rmf.switchReadMode();"><i class="fas fa-book-open"></i><span>阅读模式</span></a><a class="rightMenu-item" href="javascript:rmf.translate();"><i class="fas fa-language"></i><span>简繁转换</span></a><a class="rightMenu-item" href="javascript:rmf.hideAsideBtn();"><i class="fas fa-arrows-alt-h"></i><span>显示/隐藏侧栏</span></a></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="https://cdn.jsdelivr.net/npm/algoliasearch/dist/algoliasearch-lite.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script type="text/javascript" src="https://cdn1.tianli0.top/npm/jquery@latest/dist/jquery.min.js"></script><script type="text/javascript" src="/js/rightmenu.js"></script><script type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script type="text/javascript" src="/js/lunar.js"></script><script type="text/javascript" src="/js/day.js"></script><script type="text/javascript" src="/js/calendar.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/sticky.webp" alt="/img/sticky.webp"/></div><div class="blog-slider__content"><span class="blog-slider__code">2023-02-22</span><a class="blog-slider__title" href="2023/02/22/【笔记】计算机网络与通信笔记/">【笔记】计算机网络与通信笔记</a><div class="blog-slider__text">华中科技大学计算机科学与技术学院计算机网络与通信课程笔记</div><a class="blog-slider__button" href="2023/02/22/【笔记】计算机网络与通信笔记/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/sticky.webp" alt="/img/sticky.webp"/></div><div class="blog-slider__content"><span class="blog-slider__code">2023-02-22</span><a class="blog-slider__title" href="2023/02/22/【笔记】数据库系统概论笔记/">【笔记】数据库系统概论笔记</a><div class="blog-slider__text">华中科技大学计算机科学与技术学院数据库系统概论课程笔记</div><a class="blog-slider__button" href="2023/02/22/【笔记】数据库系统概论笔记/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/sticky.webp" alt="/img/sticky.webp"/></div><div class="blog-slider__content"><span class="blog-slider__code">2022-08-19</span><a class="blog-slider__title" href="2022/08/19/【教程】Windows下安装WSL 2/">【教程】Windows下安装WSL 2</a><div class="blog-slider__text">Windows下安装Linux子系统教程</div><a class="blog-slider__button" href="2022/08/19/【教程】Windows下安装WSL 2/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/sticky.webp" alt="/img/sticky.webp"/></div><div class="blog-slider__content"><span class="blog-slider__code">2022-08-19</span><a class="blog-slider__title" href="2022/08/19/【笔记】算法设计与分析笔记/">【笔记】算法设计与分析笔记</a><div class="blog-slider__text">华中科技大学计算机科学与技术学院算法设计与分析课程笔记</div><a class="blog-slider__button" href="2022/08/19/【笔记】算法设计与分析笔记/">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><!-- hexo injector body_end end --></body></html>
