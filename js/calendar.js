@@ -312,8 +312,9 @@
                     } else if (day <= dLastDayOfMonth) {
                         if (day == dDay && nMonth == dMonth && nYear == dYear) {
                             cDay.addClass('cal-today');
+                        }else{
+                            cDay.addClass('cal-ntoday');
                         }
-
                         var count = {
                             num: 0,
                             keys: []
@@ -330,7 +331,12 @@
                             var cLink = $('<a>').attr('href', current.posts[index].link).attr('title', current.posts[index].title).html(day++);
                             cDay.append(cLink);
                         } else {
-                            cDay.html(day++);
+                            if (day == dDay && nMonth == dMonth && nYear == dYear) {
+                                var cLink = $('<a>').html(day++);
+                                cDay.append(cLink);
+                            }else{
+                                cDay.html(day++);
+                            }
                         }
                     } else {
                         cDay.addClass('cal-gray');

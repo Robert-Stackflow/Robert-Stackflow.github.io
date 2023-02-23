@@ -803,19 +803,25 @@ back [data-theme='light'] #rightMenu {
     -webkit-line-clamp: 5!important;
 }
 
-.cal tbody a {
+.cal tbody .cal-ntoday a {
     border-radius: 5px;
     border: 0px;
     margin-top: 3px;
     margin-bottom: 3px;
+    margin-left: 1px;
+    margin-right: 1px;
 }
 
-.cal tbody .cal-today {
+.cal tbody .cal-today a {
     border-radius: 5px;
     border: 0px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: 1px;
+    margin-right: 1px;
 }
 
-.cal tbody a:hover {
+.cal tbody .cal-ntoday a:hover {
     background-color: #0099FF;
 }
 

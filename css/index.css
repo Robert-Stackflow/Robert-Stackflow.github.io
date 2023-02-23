@@ -3257,7 +3257,7 @@ h1.page-title + .tag-cloud-list {
   font-weight: 700;
   border: 1px solid #fff;
 }
-.cal tbody .cal-today {
+.cal tbody .cal-today a {
   background-color: #ffdfdd;
   color: #f76b61;
 }
@@ -3281,8 +3281,8 @@ h1.page-title + .tag-cloud-list {
   cursor: pointer;
   color: #42d3d8;
 }
-.cal tbody a:hover,
-.cal tbody a:focus {
+.cal tbody .cal-ntoday a:hover,
+.cal tbody .cal-ntoday a:focus {
   background-color: #ffdfdd;
   color: #fff;
   cursor: pointer;
