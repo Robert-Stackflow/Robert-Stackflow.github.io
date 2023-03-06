@@ -455,12 +455,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const newEle = document.createElement('button')
             newEle.type = 'button'
             newEle.className = 'fas fa-sign-out-alt exit-readmode'
+            newEle.removeEventListener('click', clickFn)
             $body.appendChild(newEle)
             $(document.getElementById("post-meta")).hide()
-            var oldBarrage = commentBarrageConfig.displayBarrage
             rmf.isReadMode = true;
-            if (commentBarrageConfig.displayBarrage == true)
-                switchCommentBarrage()
+            var oldBarrage;
+            // if (commentBarrageConfig != undefined) {
+            //   oldBarrage = commentBarrageConfig.displayBarrage;
+            //   if (commentBarrageConfig.displayBarrage == true) switchCommentBarrage();
+            // }
 
             function clickFn() {
                 $body.classList.remove('read-mode')
@@ -472,7 +475,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (oldBarrage == true && commentBarrageConfig.displayBarrage == false)
                     switchCommentBarrage()
             }
-            console.log(commentBarrageConfig.displayBarrage)
             newEle.addEventListener('click', clickFn)
         },
         switchDarkMode: () => { // Switch Between Light And Dark Mode

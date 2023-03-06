@@ -115,10 +115,12 @@ rmf.switchReadMode = function() {
     newEle.className = 'fas fa-sign-out-alt exit-readmode'
     $body.appendChild(newEle)
     $(document.getElementById("post-meta")).hide()
-    var oldBarrage = commentBarrageConfig.displayBarrage
     rmf.isReadMode = true;
-    if (commentBarrageConfig.displayBarrage == true)
-        switchCommentBarrage()
+    var oldBarrage;
+    // if (commentBarrageConfig != undefined) {
+    //   oldBarrage = commentBarrageConfig.displayBarrage;
+    //   if (commentBarrageConfig.displayBarrage == true) switchCommentBarrage();
+    // }
 
     function clickFn() {
         $body.classList.remove('read-mode')
@@ -130,7 +132,6 @@ rmf.switchReadMode = function() {
         if (oldBarrage == true && commentBarrageConfig.displayBarrage == false)
             switchCommentBarrage()
     }
-    console.log(commentBarrageConfig.displayBarrage)
     newEle.addEventListener('click', clickFn)
 }
 

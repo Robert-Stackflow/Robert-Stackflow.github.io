@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://cloudchewie.com/about/index.html</loc>
+    
+    <lastmod>2023-03-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://cloudchewie.com/2022/08/19/%E3%80%90%E6%95%99%E7%A8%8B%E3%80%91Windows%E4%B8%8B%E5%AE%89%E8%A3%85WSL%202/</loc>
     
     <lastmod>2023-03-06</lastmod>
@@ -12,15 +21,6 @@
   
   <url>
     <loc>https://cloudchewie.com/term/index.html</loc>
-    
-    <lastmod>2023-03-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudchewie.com/about/index.html</loc>
     
     <lastmod>2023-03-06</lastmod>
     
@@ -84,15 +84,6 @@
   
   <url>
     <loc>https://cloudchewie.com/categories/index.html</loc>
-    
-    <lastmod>2023-02-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudchewie.com/about/index%20-%20%E5%89%AF%E6%9C%AC.html</loc>
     
     <lastmod>2023-02-23</lastmod>
     
