@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>镜居</title>
+  <title>镜</title>
   <icon>https://cloudchewie.com/icon.png</icon>
   <subtitle>我之心扉，早已蒙尘；幸有良人，辟尘生辉</subtitle>
   <link href="https://cloudchewie.com/atom.xml" rel="self"/>
