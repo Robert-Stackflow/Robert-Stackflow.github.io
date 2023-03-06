@@ -709,27 +709,18 @@ back [data-theme="light"] #rightMenu {
   cursor: pointer !important;
 }
 
-/* .pagination-post {
-    background-image: url(http://cloudchewie.com/img/sticky.webp) !important;
-} */
-
 [data-theme="light"] .pagination-post {
   background: white !important;
-  backdrop-filter: blur(50px);
   border-radius: 10px;
 }
 
 [data-theme="dark"] .pagination-post {
-  backdrop-filter: blur(50px);
   border-radius: 10px;
   background-color: #040404 !important;
 }
 
 [data-theme="dark"] .pagination-post:hover {
-  transition: 0.3s;
   background-color: #040404 !important;
-  box-shadow: 0 0 8px 0 rgba(232, 237, 250, 0.6),
-    0 2px 4px 0 rgba(232, 237, 250, 0.5);
 }
 
 [data-theme="light"] .note {

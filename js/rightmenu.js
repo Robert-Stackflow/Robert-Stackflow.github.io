@@ -177,7 +177,6 @@ function popupMenu() {
         }
         //如果是文章，则显示文章相关的菜单项
         if (document.getElementById('post')) {
-            console.log("post")
             $('#menu-post').show();
             $('#menu-other').show();
         }

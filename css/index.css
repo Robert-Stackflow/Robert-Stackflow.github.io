@@ -2404,7 +2404,7 @@ figure.highlight pre .javascript .function {
 }
 #recent-posts > .recent-post-item .post_cover {
   overflow: hidden;
-  width: 44%;
+  width: 30%;
   height: 100%;
 }
 @media screen and (max-width: 768px) {
@@ -2433,7 +2433,7 @@ figure.highlight pre .javascript .function {
 }
 #recent-posts > .recent-post-item >.recent-post-info {
   padding: 0 40px;
-  width: 57%;
+  width: 70%;
 }
 @media screen and (max-width: 768px) {
   #recent-posts > .recent-post-item >.recent-post-info {
@@ -3858,8 +3858,7 @@ h1.page-title + .tag-cloud-list {
 #pagination .prev-post .label,
 #pagination .next-post .label {
   color: var(--light-grey);
-  text-transform: uppercase;
-  font-size: 90%;
+  font-size: 100%;
 }
 #pagination .prev-post,
 #pagination .next-post {
@@ -4079,10 +4078,11 @@ h1.page-title + .tag-cloud-list {
   position: relative;
   display: inline-block;
   overflow: hidden;
-  margin: 3px;
+  margin: 4px;
   width: calc(33.333% - 6px);
   height: 200px;
   background: #000;
+  border-radius: 10px;
   vertical-align: bottom;
 }
 @media screen and (max-width: 768px) {
