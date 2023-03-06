@@ -1,0 +1,1 @@
+var posts=["2022/08/19/【教程】Windows下安装WSL 2/","2023/02/22/【笔记】数据库系统概论笔记/","2022/08/19/【笔记】算法设计与分析笔记/","2023/02/22/【笔记】计算机网络与通信笔记/"];function toRandomPost(){pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);};

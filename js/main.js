@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     let blogNameWidth, menusWidth, searchWidth, $nav
     let mobileSidebarOpen = false
-
     const adjustMenu = (init) => {
         if (init) {
             blogNameWidth = document.getElementById('site-name').offsetWidth
@@ -22,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             $nav.classList.remove('hide-menu')
         }
+        document.querySelector('#search-button > .darkmode').addEventListener('click', rmf.switchDarkMode)
+        document.querySelector('#search-button > .wander').addEventListener('click', toRandomPost)
     }
 
     // 初始化header
