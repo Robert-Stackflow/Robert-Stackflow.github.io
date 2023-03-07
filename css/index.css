@@ -2167,7 +2167,7 @@ figure.highlight pre .javascript .function {
   flex: 1 auto;
   margin: 0 auto;
   padding: 40px 15px;
-  max-width: 1200px;
+  max-width: 1250px;
   width: 100%;
 }
 @media screen and (max-width: 900px) {
@@ -2225,7 +2225,7 @@ figure.highlight pre .javascript .function {
   }
 }
 .layout.hide-aside {
-  max-width: 1000px;
+  max-width: 1200px;
 }
 @media screen and (min-width: 2000px) {
   .layout.hide-aside {
@@ -2925,13 +2925,6 @@ h1.page-title + .tag-cloud-list {
   -ms-transition: filter 375ms ease-in 0.2s, -ms-transform 0.3s;
   transition: filter 375ms ease-in 0.2s, transform 0.3s;
   object-fit: cover;
-}
-.avatar-img img:hover {
-  -webkit-transform: rotate(360deg);
-  -moz-transform: rotate(360deg);
-  -o-transform: rotate(360deg);
-  -ms-transform: rotate(360deg);
-  transform: rotate(360deg);
 }
 .site-data {
   display: table;
@@ -6540,7 +6533,7 @@ blockquote.pullquote.right {
   background: url(/img/index_img/beloved.jpg)
     no-repeat;
   background-size: cover;
-  min-height: 230px;
+  min-height: 400px;
   color: var(--anzhiyu-white);
 }
 
