@@ -1,11 +1,11 @@
 /* 主页哔哔bb */
-#bber-talk {
+#speaks {
     width: 100%;
     height: 25px;
     line-height: 25px;
   }
 
-  #bber-talk .li-style {
+  #speaks .li-style {
     width: 90%;
     height: 25px;
     text-align: center;
@@ -17,11 +17,11 @@
     transition: 0.3s;
   }
 
-  #bber-talk .li-style:hover{
+  #speaks .li-style:hover{
     color: #49b1f5;
   }
 
-  #bber-talk ul,li{
+  #speaks ul,li{
     list-style:none;
     display:block;
     margin: 0;

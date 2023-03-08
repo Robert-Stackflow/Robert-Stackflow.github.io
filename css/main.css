@@ -551,13 +551,12 @@ $light-text: #24B1FF $border-radius: .5rem*/
   height: fit-content;
   top: 10%;
   left: 10%;
-  background-color: var(--card-bg);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.6) !important;
   border-radius: 8px;
   z-index: 100;
   box-shadow: 1px 1px 5px #88888894;
-  background-color: var(--lyx-white-acrylic1);
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(50px);
+  box-shadow: var(--card-box-shadow);
 }
 
 [data-theme="dark"] #rightMenu {
@@ -667,11 +666,13 @@ $light-text: #24B1FF $border-radius: .5rem*/
   margin-top: 20px;
 }
 
+[data-theme="light"] .gc,
+[data-theme="light"] .fl,
 [data-theme="light"] .card-widget,
 [data-theme="light"] #error-wrap .error-content,
 [data-theme="light"] #category-bar,
 [data-theme="light"] .bbTimeList,
-[data-theme="light"] .recent-post-item,
+[data-theme="light"] #recent-posts .recent-post-item,
 [data-theme="light"] #post,
 [data-theme="light"] #archive,
 [data-theme="light"] #page,
@@ -686,8 +687,10 @@ $light-text: #24B1FF $border-radius: .5rem*/
 [data-theme="dark"] #error-wrap .error-content,
 [data-theme="dark"] .bbTimeList,
 [data-theme="dark"] #category-bar,
-[data-theme="dark"] .recent-post-item,
+[data-theme="dark"] #recent-posts .recent-post-item,
 [data-theme="dark"] #post,
+[data-theme="dark"] .gc,
+[data-theme="dark"] .fl,
 [data-theme="dark"] #archive,
 [data-theme="dark"] #page,
 [data-theme="dark"] #tag,
@@ -703,10 +706,12 @@ $light-text: #24B1FF $border-radius: .5rem*/
 }
 
 [data-theme="light"] #category-bar:hover,
+[data-theme="light"] .gc:hover,
+[data-theme="light"] .fl:hover,
 [data-theme="light"] .bbTimeList:hover,
 [data-theme="light"] #error-wrap .error-content:hover,
 [data-theme="light"] .card-widget:hover,
-[data-theme="light"] .recent-post-item:hover,
+[data-theme="light"] #recent-posts .recent-post-item:hover,
 [data-theme="light"] #post:hover,
 [data-theme="light"] #archive:hover,
 [data-theme="light"] #page:hover,
@@ -732,9 +737,11 @@ $light-text: #24B1FF $border-radius: .5rem*/
 
 [data-theme="dark"] #category-bar:hover,
 [data-theme="dark"] .bbTimeList:hover,
+[data-theme="dark"] .gc:hover,
+[data-theme="dark"] .fl:hover,
 [data-theme="dark"] #error-wrap .error-content:hover,
 [data-theme="dark"] .card-widget:hover,
-[data-theme="dark"] .recent-post-item:hover,
+[data-theme="dark"] #recent-posts .recent-post-item:hover,
 [data-theme="dark"] #post:hover,
 [data-theme="dark"] #archive:hover,
 [data-theme="dark"] #page:hover,
@@ -1188,6 +1195,11 @@ back [data-theme="light"] #rightMenu {
   -ms-border-radius: 6px !important;
   -o-border-radius: 6px !important;
 }
+[data-theme='light'] .menus_item_child{
+  box-shadow:  var(--card-box-shadow);
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(50px);
+}
 .menus_item_child li {
   align-self: center;
   align-items: center;
@@ -1203,4 +1215,10 @@ back [data-theme="light"] #rightMenu {
   改为：*/
   left: 50%;
   translate: -50%;
+}
+/* .gc{
+  box-shadow: 2px 2px 5px 3px #546e7a20 !important;
+} */
+#toggle-menu > a{
+  padding: 8px !important;
 }
