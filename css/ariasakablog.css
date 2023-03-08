@@ -118,8 +118,14 @@ li.categoryBar-list-item {
   -ms-transition: all 0.5s;
   -o-transition: all 0.5s;
 }
+#algolia-search > div.search-dialog > nav > button > i{
+    color:white !important;
+}
+#algolia-pagination > div > ul > li.ais-Pagination-item.ais-Pagination-item--page.ais-Pagination-item--selected > a{
+    border-radius: 3px !important;
+}
 .layout {
-  max-width: 1450px;
+  max-width: 1450px !important;
 }
 @media screen and (min-width: 1200px) {
   #recent-posts {

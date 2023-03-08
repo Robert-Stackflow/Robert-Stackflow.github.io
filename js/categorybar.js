@@ -1,7 +1,7 @@
 categoriesBarActive()
 topCategoriesBarScroll()
 
-//分类条
+//专栏条
 function categoriesBarActive(){
   var urlinfo = window.location.pathname;
   urlinfo = decodeURIComponent(urlinfo)
@@ -11,15 +11,15 @@ function categoriesBarActive(){
       document.getElementById('首页').classList.add("select")
     }
   }else {
-    // 验证是否是分类链接
+    // 验证是否是专栏链接
     var pattern = /\/categories\/.*?\//;
     var patbool = pattern.test(urlinfo);
     console.log(patbool);
-    // 获取当前的分类
+    // 获取当前的专栏
     if (patbool) {
       var valuegroup = urlinfo.split("/");
       console.log(valuegroup[2]);
-      // 获取当前分类
+      // 获取当前专栏
       var nowCategorie = valuegroup[2];
       if (document.querySelector('#category-bar')){
         document.getElementById(nowCategorie).classList.add("select");

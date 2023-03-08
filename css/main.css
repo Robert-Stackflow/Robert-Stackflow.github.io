@@ -167,12 +167,12 @@ div.tk-submit > div.tk-row.actions > a {
   min-height: 200px !important;
 }
 
-/* 分类目录条、标签目录条 */
+/* 专栏目录条、标签目录条 */
 
 /* $main: #1677B3 $second: #fff $1px solid rgba(150, 150, 150, 0.2): 1px solid rgba(150, 150, 150, 0.2);
 $light-text: #24B1FF $border-radius: .5rem*/
 
-/*单个分类*/
+/*单个专栏*/
 
 .page #category .category-list-bar,
 .page #category-bar .category-list-bar,
@@ -186,8 +186,8 @@ $light-text: #24B1FF $border-radius: .5rem*/
   /* backdrop-filter: blur(40px); */
   margin-bottom: 10px;
 }
-#category-bar .category-list-bar{
-  margin:0px !important;
+#category-bar .category-list-bar {
+  margin: 0px !important;
 }
 [data-theme="dark"] .page #category .category-list-bar,
 [data-theme="dark"] .page #category-bar .category-list-bar,
@@ -1196,14 +1196,19 @@ back [data-theme="light"] #rightMenu {
   -ms-border-radius: 6px !important;
   -o-border-radius: 6px !important;
 }
-[data-theme='light'] .menus_item_child{
-  box-shadow:  var(--card-box-shadow);
-  background: rgba(255, 255, 255, 0.6) !important;
-  backdrop-filter: blur(50px);
+@media screen and (max-width: 600px){
+  [data-theme="light"] .menus_item_child {
+    box-shadow: var(--card-box-shadow);
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(50px);
+  }
 }
 .menus_item_child li {
   align-self: center;
   align-items: center;
+  justify-content: center;
+  justify-self: center;
+  align-content: center;
   justify-content: center;
   margin-right: 5px !important;
 }
@@ -1217,6 +1222,13 @@ back [data-theme="light"] #rightMenu {
   left: 50%;
   translate: -50%;
 }
-#toggle-menu > a{
+#toggle-menu > a {
   padding: 8px !important;
+}
+#page-header:not(.not-home-page)::before {
+  backdrop-filter: blur(30px);
+}
+#page-header #post-info{
+  text-align: center !important;
+  bottom:130px !important;
 }
