@@ -79,13 +79,6 @@ if (m == 10 && dd <= 1) { //国庆节
         setCookie("isPopupWindow", "1", 1);
     }
 }
-// if (m == 8 && dd == 15) { //搞来玩的，鬼子投降
-//     console.log("鬼子投降" + (y - 1945).toString() + "年了！");
-//     if (getCookie("isPopupWindow") != "1") {
-//         Swal.fire("鬼子投降" + (y - 1945).toString() + "年了！");
-//         setCookie("isPopupWindow", "1", 1);
-//     }
-// }
 if (m == 1 && dd == 1) { //元旦节
     console.log(y.toString() + "年元旦快乐！");
     if (getCookie("isPopupWindow") != "1") {
@@ -93,22 +86,6 @@ if (m == 1 && dd == 1) { //元旦节
         setCookie("isPopupWindow", "1", 1);
     }
 }
-// if (m == 3 && dd == 8) { //妇女节
-//     console.log("各位女神们，妇女节快乐！");
-//     if (getCookie("isPopupWindow") != "1") {
-//         Swal.fire("各位女神们，妇女节快乐！");
-//         setCookie("isPopupWindow", "1", 1);
-//     }
-// }
-// l = ["震惊！微软让Minecraft Java免费了！", "Minecraft竟然违背Mojang的原则发布2.0！", "非常抱歉，因为不可控原因，博客将于明天停止运营，再见", "好消息，日本没了！", "美国垮了，背后原因竟是时刻心心念念想着祖国的川普！", "微软垮了！"]
-// console.log(m, dd);
-// if (m == 4 && dd == 1) { //愚人节，随机谎话
-//     console.log(l[randomNum(0, l.length - 1)]);
-//     if (getCookie("isPopupWindow") != "1") {
-//         Swal.fire(l[randomNum(0, l.length - 1)]);
-//         setCookie("isPopupWindow", "1", 1);
-//     }
-// }
 if (m == 5 && dd == 1) { //劳动节
     console.log("劳动节快乐！为助力各行各业发展辛勤工作的人们致敬！");
     if (getCookie("isPopupWindow") != "1") {
@@ -123,13 +100,13 @@ if (m == 5 && dd == 4) { //青年节
         setCookie("isPopupWindow", "1", 1);
     }
 }
-// if (m == 6 && dd == 1) { //儿童节
-//     console.log("各位小朋友们，儿童节快乐！");
-//     if (getCookie("isPopupWindow") != "1") {
-//         Swal.fire("各位小朋友们，儿童节快乐！");
-//         setCookie("isPopupWindow", "1", 1);
-//     }
-// }
+if (m == 6 && dd == 1) { //儿童节
+    console.log("各位小朋友们，儿童节快乐！");
+    if (getCookie("isPopupWindow") != "1") {
+        Swal.fire("各位小朋友们，儿童节快乐！");
+        setCookie("isPopupWindow", "1", 1);
+    }
+}
 if (m == 7 && dd == 1) { //建党节
     console.log("中国共产党" + (y - 1921).toString() + "岁生日快乐");
     if (getCookie("isPopupWindow") != "1") {

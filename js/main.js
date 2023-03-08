@@ -23,6 +23,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         document.querySelector('#search-button > .darkmode').addEventListener('click', rmf.switchDarkMode)
         document.querySelector('#search-button > .wander').addEventListener('click', toRandomPost)
+        if (document.querySelector('#bber-talk')) {
+            var swiper = new Swiper('.swiper-container', {
+              direction: 'vertical', // 垂直切换选项
+              loop: true,
+              autoplay: {
+              delay: 5000,
+              pauseOnMouseEnter: true
+            },
+            });
+          }
     }
 
     // 初始化header
@@ -479,20 +489,20 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         switchDarkMode: () => { // Switch Between Light And Dark Mode
             const nowMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
-            let $rightMenu = $('#menus > div.menus_items > div:nth-child(7) > a > span');
-            let $rightMenu_mobile = $('#sidebar-menus > div.menus_items > div:nth-child(7) > a > span');
-            if (nowMode === 'light') {
-                $rightMenu.html("浅色模式")
-                activateDarkMode()
-                saveToLocal.set('theme', 'dark', 2)
-                GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night)
-            } else {
-                $rightMenu.html("深色模式")
-                activateLightMode()
-                saveToLocal.set('theme', 'light', 2)
-                rmf.day_night_count++;
-                GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day)
-            }
+            // let $rightMenu = $('#menus > div.menus_items > div:nth-child(2) > a > span');
+            // let $rightMenu_mobile = $('#sidebar-menus > div.menus_items > div:nth-child(7) > a > span');
+            // if (nowMode === 'light') {
+            //     $rightMenu.html("浅色模式")
+            //     activateDarkMode()
+            //     saveToLocal.set('theme', 'dark', 2)
+            //     GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night)
+            // } else {
+            //     $rightMenu.html("深色模式")
+            //     activateLightMode()
+            //     saveToLocal.set('theme', 'light', 2)
+            //     rmf.day_night_count++;
+            //     GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day)
+            // }
             // handle some cases
             typeof utterancesTheme === 'function' && utterancesTheme()
             typeof changeGiscusTheme === 'function' && changeGiscusTheme()
@@ -780,15 +790,15 @@ document.addEventListener('DOMContentLoaded', function() {
             toggleCardCategory()
         }
         const nowMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
-        let $rightMenu = $('#menus > div.menus_items > div:nth-child(7) > a > span');
-        let $rightMenu_mobile = $('#sidebar-menus > div.menus_items > div:nth-child(7) > a > span');
-        if (nowMode === 'light') {
-            $rightMenu.html("深色模式")
-            $rightMenu_mobile.html("深色模式")
-        } else {
-            $rightMenu.html("浅色模式")
-            $rightMenu_mobile.html("浅色模式")
-        }
+        // let $rightMenu = $('#menus > div.menus_items > div:nth-child(7) > a > span');
+        // let $rightMenu_mobile = $('#sidebar-menus > div.menus_items > div:nth-child(7) > a > span');
+        // if (nowMode === 'light') {
+        //     $rightMenu.html("深色模式")
+        //     $rightMenu_mobile.html("深色模式")
+        // } else {
+        //     $rightMenu.html("浅色模式")
+        //     $rightMenu_mobile.html("浅色模式")
+        // }
         if (rmf.getCookie("daynight") == "NaN")
             rmf.day_night_count = 0
         else
@@ -798,7 +808,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (rmf.day_night_count + initDay == 0)
                 GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShowLong("冬至·伊始:我的心与爱是不是能够这般纯粹，经受住时空的考验"), rmf.day_night_count++;
             if (rmf.day_night_count + initDay == 20)
-                GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShowLong("交替·新生:月徊而霜凝兮，良人伴我侧；月斜而影绰兮，明镜照我心"), rmf.day_night_count++;
+                GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShowLong("交替·新生:月徊而霜凝兮，良人伴我侧；月斜而影绰兮，明Cloudchewie照我心"), rmf.day_night_count++;
             if (rmf.day_night_count + initDay == 60)
                 GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShowLong("风起·渴盼:桐絮扰动着尘世，恋人缔造着世界；细腻不语的青苔，是我对你的爱恋"), rmf.day_night_count++;
             if (rmf.day_night_count + initDay == 120)

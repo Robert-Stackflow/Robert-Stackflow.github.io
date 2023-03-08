@@ -78,14 +78,14 @@ rmf.switchDarkMode = function() {
     let $rightMenu = $('#menus > div.menus_items > div:nth-child(7) > a > span');
     let $rightMenu_mobile = $('#sidebar-menus > div.menus_items > div:nth-child(7) > a > span');
     if (nowMode === 'light') {
-        $rightMenu.html("浅色模式")
-        $rightMenu_mobile.html("浅色模式")
+        // $rightMenu.html("浅色模式")
+        // $rightMenu_mobile.html("浅色模式")
         activateDarkMode()
         saveToLocal.set('theme', 'dark', 2)
         GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night)
     } else {
-        $rightMenu.html("深色模式")
-        $rightMenu_mobile.html("深色模式")
+        // $rightMenu.html("深色模式")
+        // $rightMenu_mobile.html("深色模式")
         activateLightMode()
         saveToLocal.set('theme', 'light', 2)
         rmf.day_night_count++;

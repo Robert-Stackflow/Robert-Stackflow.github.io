@@ -1,0 +1,889 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【笔记】计算机网络与通信笔记(一) | Cloudchewie</title><meta name="keywords" content="计网,笔记"><meta name="author" content="余湍"><meta name="copyright" content="余湍"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="华中科技大学计算机科学与技术学院计算机网络与通信课程笔记，包括考试重点、计算机网络与因特网">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【笔记】计算机网络与通信笔记(一)">
+<meta property="og:url" content="https://cloudchewie.com/2022/11/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%AC%94%E8%AE%B0(%E4%B8%80)/index.html">
+<meta property="og:site_name" content="Cloudchewie">
+<meta property="og:description" content="华中科技大学计算机科学与技术学院计算机网络与通信课程笔记，包括考试重点、计算机网络与因特网">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cloudchewie.com/img/post_img/network.png">
+<meta property="article:published_time" content="2022-11-12T01:08:12.000Z">
+<meta property="article:modified_time" content="2023-03-07T13:27:31.650Z">
+<meta property="article:author" content="余湍">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cloudchewie.com/img/post_img/network.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://cloudchewie.com/2022/11/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%AC%94%E8%AE%B0(%E4%B8%80)/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: {"appId":"6IRW362MI1","apiKey":"a4043bbe3b536f100259866d9ff0ed57","indexName":"search_index_cloudchewie","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"copy_success":"复制成功","chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","comment_barrage_open":"打开评论弹幕","comment_barrage_close":"关闭评论弹幕","browser_version_low":"浏览器版本过低，网站样式可能错乱","welcome":"欢迎访问Cloudchewie","cookie_notice":"本站使用Cookie和本地/会话存储保证浏览体验和网站统计","bgLight":"#0099FF","bgDark":"#1f1f1f","position":"top-right"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【笔记】计算机网络与通信笔记(一)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-07 21:27:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><canvas id="universe"></canvas><style id="barragesColor"></style><link rel="stylesheet" href="/css/copyright.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/main.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/heoMainColor.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/categorybar.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/commentBarrage.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-webfont/1.6.0/lxgwwenkai-regular.css"><link rel="stylesheet" href="/css/swiper-bundle.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/bblist.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="/css/swiper.min.css"><link rel="stylesheet" href="/css/swiperstyle.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Cloudchewie" type="application/atom+xml">
+</head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="/css/pace.css"/><script src="/"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa-fw fa fa-sitemap"></i><span> 本站</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/essay/"><i class="fa-fw fas fa-rocket"></i><span> 即刻</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fa-fw fas fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/guestbook/"><i class="fa-fw fas fa-message"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa-fw fa-fw fas fa-address-card"></i><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-circle-info"></i><span> 关于我</span></a></li><li><a class="site-page child" href="/term/"><i class="fa-fw fa-fw fas fa-balance-scale"></i><span> 声明</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Cloudchewie</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i></a></div><div id="search-button"><a class="site-page social-icon darkmode"><i class="fas fa-adjust fa-fw"></i></a></div><div id="search-button"><a class="site-page social-icon wander"><i class="fas fa-bus fa-fw"></i></a></div><div class="menus_items"><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa-fw fa fa-sitemap"></i><span> 本站</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/essay/"><i class="fa-fw fas fa-rocket"></i><span> 即刻</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fa-fw fas fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/guestbook/"><i class="fa-fw fas fa-message"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa-fw fa-fw fas fa-address-card"></i><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-circle-info"></i><span> 关于我</span></a></li><li><a class="site-page child" href="/term/"><i class="fa-fw fa-fw fas fa-balance-scale"></i><span> 声明</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">【笔记】计算机网络与通信笔记(一)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-12T01:08:12.000Z" title="发表于 2022-11-12 09:08:12">2022-11-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-07T13:27:31.650Z" title="更新于 2023-03-07 21:27:31">2023-03-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%B8%93%E4%B8%9A%E6%A0%B8%E5%BF%83/">专业核心</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2022/11/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%AC%94%E8%AE%B0(%E4%B8%80)/#post-comment"><span id="twikoo-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div><article class="post-content" id="article-container"><h2 id="考试重点"><a href="#考试重点" class="headerlink" title="考试重点"></a>考试重点</h2><ul>
+<li>协议栈：五层协议的名称、功能、协议、分组名称、各种设备处理的协议</li>
+<li>基础知识：时延的类型与计算</li>
+<li>应用层：HTTP协议报文、HTTP协议非持续连接与持续连接、SMTP协议与衍生协议的功能</li>
+<li>运输层：可靠数据传输（StopWait、GBN、SN、TCP）、TCP协议的拥塞控制、CRC校验</li>
+<li>网络层数据层面：子网划分、CIDR、NAT、IP协议报文</li>
+<li>网络层控制层面：路由转发、链路状态选择算法、距离向量选择算法</li>
+<li>链路层：MAC地址、ARP协议、以太网协议、争用期、交换机</li>
+</ul>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><ul>
+<li>运输层：TCP建立连接的过程、TCP的流量控制、TCP Tahoe TCP Reno</li>
+<li>网络层：DHCP、ICMP、路由器的三种交换结构、LS、OSPF、DV、RIP、BGP协议</li>
+<li>网关路由器</li>
+<li>链路层：码分多址</li>
+</ul>
+<h2 id="一、计算机网络与因特网"><a href="#一、计算机网络与因特网" class="headerlink" title="一、计算机网络与因特网"></a>一、计算机网络与因特网</h2><h3 id="1-1-什么是因特网"><a href="#1-1-什么是因特网" class="headerlink" title="1.1 什么是因特网"></a>1.1 什么是因特网</h3><h4 id="1-1-1-具体构成"><a href="#1-1-1-具体构成" class="headerlink" title="1.1.1 具体构成"></a>1.1.1 具体构成</h4><ul>
+<li><p>硬件层面</p>
+<ul>
+<li><p>主机&#x2F;端系统：诸如桌面$PC$、$Linux$工作站、平板电脑等与因特网互联的设备</p>
+<blockquote>
+<p>端系统也称主机$(host)$，因为其能运行应用程序；主机又可以分为客户$(client)$和服务器$(server)$</p>
+</blockquote>
+</li>
+<li><p>端系统通过<strong>通信链路</strong>和<strong>分组交换机</strong>连接到一起</p>
+</li>
+<li><p>通信链路：由不同类型的物理媒体组成，包括同轴电缆、铜线、光纤和无线电频谱</p>
+</li>
+<li><p>分组交换机：用于连接不同的通信链路传输数据，包括路由器和链路层交换机等</p>
+</li>
+<li><p>端系统通过<strong>因特网服务提供商</strong>$(ISP)$接入因特网</p>
+</li>
+</ul>
+</li>
+<li><p>软件层面</p>
+<ul>
+<li>**协议$(protocol)$**控制着因特网中信息的接受和发送，其主要协议统称为$TCP&#x2F;IP$</li>
+<li>协议定义了在两个或多个通信实体之间交换的报文的格式和顺序，以及报文发送和&#x2F;或接收报文所采取的动作</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-网络边缘"><a href="#1-2-网络边缘" class="headerlink" title="1.2 网络边缘"></a>1.2 网络边缘</h3><h4 id="1-2-1-接入网"><a href="#1-2-1-接入网" class="headerlink" title="1.2.1 接入网"></a>1.2.1 接入网</h4><ul>
+<li><p>基本概念</p>
+<ul>
+<li><p>接入网：将端系统物理连接到其<strong>边缘路由器</strong>的网络</p>
+<blockquote>
+<p>接入网的本质作用：通过各种方式使主机连接到路由器，以使得任意两个端系统间能够相互通信</p>
+</blockquote>
+</li>
+<li><p>边缘路由器：端系统连接到其他任何远程端系统的路径上的<strong>第一台</strong>路由器</p>
+</li>
+</ul>
+</li>
+<li><p>接入方式</p>
+<ul>
+<li><p>点对点方式</p>
+<ul>
+<li><p>数据用户线$DSL$：通过本地电话公司获得互联网接入，本地电话公司即为其$ISP$</p>
+<blockquote>
+<p>不对称数字用户线$ADSL$通过在不同的频段进行编码使得电话线能够同时承载数据信号与电话信号。</p>
+</blockquote>
+</li>
+<li><p>光纤到户$FTTH$：将光纤从本地中心局直接连接到房间，通过光猫（光调制解调器）转换光电信号，使用双绞线连接电脑</p>
+</li>
+<li><p>卫星：电脑连接卫星信号接收机，通过无线电波与卫星相连，卫星又通过无线电波与地面上另一接收机相连</p>
+</li>
+</ul>
+</li>
+<li><p>以太网方式</p>
+<ul>
+<li>有线以太网：端系统通过双绞线连到以太网，以太网连接至边缘路由器</li>
+<li>$WiFi$：端系统连到$WiFi$，$WiFi$连接至边缘路由器</li>
+</ul>
+</li>
+<li><p>广域无线接入方式</p>
+<ul>
+<li>由电信运营商提供，如$3G$、$4G$、$5G$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-2-2-物理媒体"><a href="#1-2-2-物理媒体" class="headerlink" title="1.2.2 物理媒体"></a>1.2.2 物理媒体</h4><ul>
+<li>导引型媒体<ul>
+<li>双绞铜线：由两根并行铜线组成，如传统电话线</li>
+<li>同轴电缆：由两根同心铜线组成，如电缆</li>
+<li>光纤：能够引导光脉冲，误码率低</li>
+</ul>
+</li>
+<li>非导引型媒体<ul>
+<li>无线电波：通过电磁频谱传递信号</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3-网络核心"><a href="#1-3-网络核心" class="headerlink" title="1.3 网络核心"></a>1.3 网络核心</h3><h4 id="1-3-1-电路交换"><a href="#1-3-1-电路交换" class="headerlink" title="1.3.1 电路交换"></a>1.3.1 电路交换</h4><ul>
+<li><p>特点（<a target="_blank" rel="noopener" href="https://gaia.cs.umass.edu/kurose_ross/interactive/circuit_switching.php">在线交互程序</a>）</p>
+<ul>
+<li>数据交换前需建立一条从发送端到接收端的物理通路</li>
+<li>在数据交换的全部时间，用户始终占用端到端的固定传输信道，且<strong>只能为其所用</strong></li>
+<li>所有用户平分网络链路的传输容量，且<strong>传输速率恒定</strong></li>
+<li>交换双方可以<strong>实时</strong>进行数据交换，不会存在延迟</li>
+<li>适合传送<strong>大量数据</strong>，传送分组时间远大于连接建立时间</li>
+</ul>
+</li>
+<li><p>复用方式</p>
+<ul>
+<li><p>频分复用$FDM$</p>
+<ul>
+<li>所有连接共用链路的频谱，每个连接专用一个频段，其宽度称为<strong>带宽</strong></li>
+<li>每条连接连续地得到部分带宽</li>
+</ul>
+</li>
+<li><p>时分复用$TDM$</p>
+<ul>
+<li>时间被划分为固定期间的帧，每个帧被划分为固定数量的时隙</li>
+<li>链路为每个连接在每个帧中指令一个时隙，这些时隙由每个连接单独使用</li>
+<li>每条连接周期性地得到全部带宽</li>
+</ul>
+</li>
+<li><p>复用方式的对比</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="1-2 频分复用与时分复用.png" style="zoom: 67%;" />
+</li>
+<li><p>举例说明：</p>
+<ul>
+<li>问：设所有链路速率皆为$1.536Mbps$，每条链路使用有$24$个时隙的$TDM$，建立端到端的电路需要$500$毫秒，则计算通过电路交换网络将一个$640000$比特长的文件从主机$A$传送到主机$B$需要多长时间</li>
+<li>答：$(640kb)&#x2F;(1.536Mbps&#x2F;24)+0.5&#x3D;10.5s$</li>
+</ul>
+</li>
+<li><p>缺点：</p>
+<ul>
+<li>计算机之间的数据交换往往具有<strong>突发性</strong>和<strong>间歇性</strong>特征，而对电路交换而言，用户支付的费用则是按用户占用线路的时间来收费</li>
+<li>只要在通话双方建立的通路中任何一点出了故障，就必须重新拨号建立新连接，这对紧急和重要通信很不利。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-3-2-分组交换"><a href="#1-3-2-分组交换" class="headerlink" title="1.3.2 分组交换"></a>1.3.2 分组交换</h4><ul>
+<li><p>特点</p>
+<ul>
+<li><p>将要发送的报文分解成若干个小部分，称为分组</p>
+<blockquote>
+<p>每个分组都通过通信链路和分组交换机传送，以等于该链路最大传输速率地速度通过通信链路</p>
+<p>通过某链路发送一个$L$比特的分组，链路传输速率为$R,bit&#x2F;s$，则传输分组的时间为$L&#x2F;R$秒</p>
+</blockquote>
+</li>
+<li><p>存储转发传输：交换机能够开始向输出链路传输该分组的第一个比特前，<strong>必须接收到整个分组</strong></p>
+</li>
+<li><p>每个分组传输的链路可能不同，且存在冗余路由</p>
+<blockquote>
+<p>在分组传输前<strong>不必预先确定分组的传输路径</strong>，而是在传输到某个分组交换机后根据转发表查找转发端口</p>
+</blockquote>
+</li>
+<li><p>网络核心中每个交换结点均为共享结点</p>
+</li>
+<li><p>适合传送<strong>突发数据</strong></p>
+</li>
+</ul>
+</li>
+<li><p>电路类型</p>
+<ul>
+<li>数据报网络</li>
+<li>虚电路网络（结合电路连接的优点）<ul>
+<li>虚电路需要<strong>建立连接</strong>，即建立虚电路链路</li>
+<li><strong>在建立连接时决定链路的路由</strong>，在整个连接过程中保持不变</li>
+<li>在链路通过的每个节点，预留一定的资源</li>
+<li>每个分组携带一个标识（虚电路号），根据该标识知道该从哪个虚电路传输数据</li>
+<li>虚电路如果不再使用，需要<strong>释放相关的资源</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>与电路交换比较（<a target="_blank" rel="noopener" href="https://gaia.cs.umass.edu/kurose_ross/interactive/ps_versus_cs.php">在线交互程序</a>）</p>
+<ul>
+<li><p>在相同条件下，分组交换能够比电路交换支持更多的用户</p>
+<blockquote>
+<p>设一条$1Mbps$的链路，每个用户需要$100kbps$，电路交换模式下仅支持$10$个用户；设分组交换下$1$个用户活跃的概率为$0.1$，在$35$个用户条件下，$11$个及以上用户同时活动的概率为$0.0004$，即$10$个及$10$个以内用户同时活跃的概率为$0.9996$，基本上与电路交换性能相当</p>
+</blockquote>
+</li>
+<li><p>当用户数较少时，分组交换能够获得比电路交换更好的性能</p>
+<blockquote>
+<p>同一时刻仅有一个用户传输$1M$的数据，电路交换需要$10s$，分组交换需要$1s$</p>
+</blockquote>
+</li>
+<li><p>在数据量大时，分组交换的传输时延比电路交换大</p>
+<blockquote>
+<p>通过由$n$条速率均为$R$的链路组成的路径，从源到目的地发送一个分组的时延为$d_{端到端}&#x3D;N\frac{L}{R}$</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li>分组在各结点存储转发时因要排队<strong>会造成一定的时延</strong>，当网络通信量过大时，这种时延可能会很大。</li>
+<li>各分组必须携带一定的<strong>控制信息（说明信息）</strong>，从而带来额外开销。</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-3-3-ISP-网络模型"><a href="#1-3-3-ISP-网络模型" class="headerlink" title="1.3.3 $ISP$网络模型"></a>1.3.3 $ISP$网络模型</h4><ul>
+<li><p>各种$ISP$互相连在一起</p>
+</li>
+<li><p>低级$ISP$可以连入高级$ISP$进行互通</p>
+</li>
+<li><p>同级$ISP$之间通过$IXP$和对等链路进行<strong>对等</strong>链接</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="1-3 ISP模型.png" style="zoom: 33%;" /></li>
+</ul>
+<h3 id="1-4-分组交换网络的衡量"><a href="#1-4-分组交换网络的衡量" class="headerlink" title="1.4 分组交换网络的衡量"></a>1.4 分组交换网络的衡量</h3><h4 id="1-4-1-时延"><a href="#1-4-1-时延" class="headerlink" title="1.4.1 时延"></a>1.4.1 时延</h4><p>节点总时延主要包括节点处理时延、排队时延、传输时延、传播时延</p>
+<ul>
+<li>节点处理时延$(d_{proc})$<ul>
+<li>检查分组首部并决定该分组导向何处所需的时间</li>
+<li>检查比特级别的差错所需的时间</li>
+</ul>
+</li>
+<li><strong>排队时延</strong>$(d_{queue})$<ul>
+<li>在队列中，分组在链路上等待传输的时间，时延长度取决于<strong>先到达的正在排队的分组数量</strong></li>
+</ul>
+</li>
+<li>传输时延$(d_{trans})$<ul>
+<li>将分组的所有比特推向输出链路所需的时间（<a target="_blank" rel="noopener" href="https://gaia.cs.umass.edu/kurose_ross/interactive/one-hop-delay.php">在线交互程序</a>）</li>
+<li>等于分组的长度除以<strong>链路传输速率</strong>，即$L&#x2F;R$，其中$R$的单位为$bps、kbps、Mbps$等</li>
+</ul>
+</li>
+<li>传播时延$(d_{prop})$<ul>
+<li>从输出链路的起点到目的地传播所需的时间，数据以链路的传播速率传播，取决于链路的物理媒体</li>
+<li>等于两台路由器间的距离除以<strong>链路传播速率</strong>，即$d&#x2F;s$</li>
+</ul>
+</li>
+<li>关于传输时延和传播时延（<a target="_blank" rel="noopener" href="https://gaia.cs.umass.edu/kurose_ross/interactive/caravan.php">在线交互程序</a>，<a target="_blank" rel="noopener" href="https://gaia.cs.umass.edu/kurose_ross/interactive/end-end-delay.php">在线交互程序</a>）</li>
+</ul>
+<p>总传输时延$d_{nodal}&#x3D;d_{proc}+d_{queue}+d_{trans}+d_{prop}$</p>
+<h4 id="1-4-2-丢包"><a href="#1-4-2-丢包" class="headerlink" title="1.4.2 丢包"></a>1.4.2 丢包</h4><ul>
+<li><p>排队时延分析（<a target="_blank" rel="noopener" href="https://gaia.cs.umass.edu/kurose_ross/interactive/qdelay.php">在线交互程序</a>）</p>
+<ul>
+<li><p>设链路传输速率为$R,bps$，分组大小为$L,bit&#x2F;pkt$，分组到达队列的平均速率$a,pkt&#x2F;s$</p>
+</li>
+<li><p>则比特到达队列的平均速率为$La,bps$，流量强度为$La&#x2F;R$</p>
+</li>
+<li><p>$La&#x2F;R\sim0$：平均排队时延很小，甚至为$0$</p>
+<p>$La&#x2F;R &lt; 1$：时延较小，且会随时间推延而变小</p>
+<p>$La&#x2F;R &#x3D; 1$：时延不会变化，具体数值取决于当时队列长度</p>
+<p>$La&#x2F;R &gt; 1$： 比特到达队列的平均速率远超过从队列传输出去的速率，队列将无限增加，排队时延趋于$\infty$</p>
+</li>
+</ul>
+</li>
+<li><p>丢包</p>
+<ul>
+<li>当队列已满时，分组将会被路由器丢弃，分组即会丢失</li>
+<li>丢失的分组已经传输到网络核心，但是绝不会从网络发送到目的地</li>
+</ul>
+</li>
+<li><p>在$Windows$操作系统使用$tracert$命令、在$Linux$和$Mac$操作系统使用$traceroute$命令以测试端到端时延</p>
+</li>
+</ul>
+<h4 id="1-4-3-吞吐量"><a href="#1-4-3-吞吐量" class="headerlink" title="1.4.3 吞吐量"></a>1.4.3 吞吐量</h4><ul>
+<li>$P2P$系统<ul>
+<li>服务器$\Longrightarrow$路由器$\Longrightarrow$客户端<ul>
+<li>使用$R_s$表示服务器与路由器之间的链路速率，$R_c$表示路由器与客户端之间的链路速率</li>
+<li>服务器不能以快于$R_s$的速率向链路发送比特，路由器也不能以大于$R_c$的速率发送比特</li>
+<li>当$R_s&gt;R_c$时，路由器端将会出现比特等待队列，当$R_s&lt;R_c$时，数据将流畅地传输到客户端</li>
+<li>其吞吐量被定义为$min{R_c,R_s}$</li>
+</ul>
+</li>
+<li>服务器$\Longrightarrow$路由器$1$$\Longrightarrow$路由器$2$$,\cdots,$$\Longrightarrow$路由器$N$$\Longrightarrow$客户端<ul>
+<li>吞吐量为$min{R_1,R_2,\cdots,R_N}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>当网络核心的链路速率远大于接入网时，吞吐量的主要限制因素便为<strong>接入网</strong></li>
+<li>瓶颈链路：在端到端路径上限制了端到端平均吞吐量的链路（<a target="_blank" rel="noopener" href="https://gaia.cs.umass.edu/kurose_ross/interactive/end-end-throughput-simple.php">在线交互程序</a>）</li>
+</ul>
+<h3 id="1-5-协议层次及其服务模型"><a href="#1-5-协议层次及其服务模型" class="headerlink" title="1.5 协议层次及其服务模型"></a>1.5 协议层次及其服务模型</h3><h4 id="1-5-1-协议分层"><a href="#1-5-1-协议分层" class="headerlink" title="1.5.1 协议分层"></a>1.5.1 协议分层</h4><ul>
+<li><p>基本概念</p>
+<ul>
+<li><p><strong>实体</strong>是任何可以发送和接收信息的硬件和软件进程。通常是一个特定的软件模块</p>
+</li>
+<li><p>不同机器上包含对应层的实体称为<strong>对等体</strong>，如客户端的运输层对应服务端的运输层</p>
+</li>
+<li><p><strong>服务</strong>指为保证上层对等体之间能互相通信，下层向上层提供的功能</p>
+</li>
+<li><p><strong>接口</strong>位于每对相邻层之间，定义了下层向上层提供的原语操作和服务</p>
+</li>
+<li><p>**协议数据单元$(PDU)$**是对等层次上传送数据的单位</p>
+</li>
+<li><p>**服务数据单元$(SDU)$**是层与层之间交换数据的单位</p>
+</li>
+<li><p><strong>网络体系结构</strong>是层和协议的集合</p>
+</li>
+<li><p><strong>协议栈</strong>指一个特定的系统所使用的一系列协议（每层一组协议）</p>
+</li>
+</ul>
+</li>
+<li><p>因特网的五层结构（<a target="_blank" rel="noopener" href="https://gaia.cs.umass.edu/kurose_ross/interactive/layers.php">在线交互程序</a>）</p>
+<table>
+<thead>
+<tr>
+<th align="center">层次</th>
+<th align="center">功能</th>
+<th align="center">协议</th>
+<th align="center">分组名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">应用层</td>
+<td align="center">直接为用户的网络应用程序提供服务</td>
+<td align="center">$HTTP$、$SMTP$、$FTP$、$DNS$</td>
+<td align="center">报文</td>
+</tr>
+<tr>
+<td align="center">表示层</td>
+<td align="center"><strong>在$OSI$模型中</strong>，统一表示数据的含义</td>
+<td align="center">$-$</td>
+<td align="center">$-$</td>
+</tr>
+<tr>
+<td align="center">会话层</td>
+<td align="center"><strong>在$OSI$模型中</strong>，数据交换的定界和同步</td>
+<td align="center">$-$</td>
+<td align="center">$-$</td>
+</tr>
+<tr>
+<td align="center">运输层</td>
+<td align="center">在不同主机的进程间数据传送</td>
+<td align="center">$TCP$、$UDP$</td>
+<td align="center">报文段</td>
+</tr>
+<tr>
+<td align="center">网络层</td>
+<td align="center">在不同主机间数据传送；选择合适的路由传输运输层分组</td>
+<td align="center">网际协议$IP$，路由协议</td>
+<td align="center">数据报</td>
+</tr>
+<tr>
+<td align="center">链路层</td>
+<td align="center">网络相邻结点间数据传送</td>
+<td align="center">$PPP$、以太网</td>
+<td align="center">帧</td>
+</tr>
+<tr>
+<td align="center">物理层</td>
+<td align="center">在线路上传输比特流</td>
+<td align="center">$-$</td>
+<td align="center">$-$</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h4 id="1-5-2-网络分层模型"><a href="#1-5-2-网络分层模型" class="headerlink" title="1.5.2 网络分层模型"></a>1.5.2 网络分层模型</h4><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="1-4 层次结构的数据流动.png" style="zoom:33%;" /></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://cloudchewie.com">余湍</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://cloudchewie.com/2022/11/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%AC%94%E8%AE%B0(%E4%B8%80)/">https://cloudchewie.com/2022/11/12/【笔记】计算机网络与通信笔记(一)/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://cloudchewie.com" target="_blank">Cloudchewie</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a></div><div class="post_share"><div class="social-share" data-image="/img/post_img/network.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/02/22/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%94%E8%AE%B0(%E4%B8%89)/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/post_img/database.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【笔记】数据库系统概论笔记(三)</div></div></a></div><div class="next-post pull-right"><a href="/2022/11/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%AC%94%E8%AE%B0(%E4%BA%8C)/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/post_img/network.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【笔记】计算机网络与通信笔记(二)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div class="relatedPosts-list-item"><a href="/2023/02/22/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%94%E8%AE%B0(%E4%B8%80)/" title="【笔记】数据库系统概论笔记(一)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/post_img/database.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-22</div><div class="title">【笔记】数据库系统概论笔记(一)</div></div></a></div><div class="relatedPosts-list-item"><a href="/2023/02/22/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%94%E8%AE%B0(%E4%B8%89)/" title="【笔记】数据库系统概论笔记(三)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/post_img/database.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-22</div><div class="title">【笔记】数据库系统概论笔记(三)</div></div></a></div><div class="relatedPosts-list-item"><a href="/2023/02/22/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%94%E8%AE%B0(%E4%BA%8C)/" title="【笔记】数据库系统概论笔记(二)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/post_img/database.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-22</div><div class="title">【笔记】数据库系统概论笔记(二)</div></div></a></div><div class="relatedPosts-list-item"><a href="/2022/08/21/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0(%E4%B8%80)/" title="【笔记】算法设计与分析笔记(一)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/post_img/algorithms.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-21</div><div class="title">【笔记】算法设计与分析笔记(一)</div></div></a></div><div class="relatedPosts-list-item"><a href="/2022/08/21/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0(%E4%B8%89)/" title="【笔记】算法设计与分析笔记(三)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/post_img/algorithms.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-21</div><div class="title">【笔记】算法设计与分析笔记(三)</div></div></a></div><div class="relatedPosts-list-item"><a href="/2022/08/21/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0(%E4%BA%8C)/" title="【笔记】算法设计与分析笔记(二)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/post_img/algorithms.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-21</div><div class="title">【笔记】算法设计与分析笔记(二)</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="comment-barrage"></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">余湍</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Robert-stackflow"><i class="fab fa-github"></i><span>Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://space.bilibili.com/651449217" target="_blank" title="Bilibili"><i class="fab fa-bilibili"></i></a><a class="social-icon" href="mailto:2014027378@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-square-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">由于Vercel部署服务无法正常访问，本站评论系统处于瘫痪，正在加急修复</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%80%83%E8%AF%95%E9%87%8D%E7%82%B9"><span class="toc-text">考试重点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85"><span class="toc-text">补充</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%9B%A0%E7%89%B9%E7%BD%91"><span class="toc-text">一、计算机网络与因特网</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%9B%A0%E7%89%B9%E7%BD%91"><span class="toc-text">1.1 什么是因特网</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-%E5%85%B7%E4%BD%93%E6%9E%84%E6%88%90"><span class="toc-text">1.1.1 具体构成</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E7%BD%91%E7%BB%9C%E8%BE%B9%E7%BC%98"><span class="toc-text">1.2 网络边缘</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-%E6%8E%A5%E5%85%A5%E7%BD%91"><span class="toc-text">1.2.1 接入网</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-%E7%89%A9%E7%90%86%E5%AA%92%E4%BD%93"><span class="toc-text">1.2.2 物理媒体</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E7%BD%91%E7%BB%9C%E6%A0%B8%E5%BF%83"><span class="toc-text">1.3 网络核心</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-1-%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2"><span class="toc-text">1.3.1 电路交换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-2-%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2"><span class="toc-text">1.3.2 分组交换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3-ISP-%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="toc-text">1.3.3 $ISP$网络模型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C%E7%9A%84%E8%A1%A1%E9%87%8F"><span class="toc-text">1.4 分组交换网络的衡量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-1-%E6%97%B6%E5%BB%B6"><span class="toc-text">1.4.1 时延</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-2-%E4%B8%A2%E5%8C%85"><span class="toc-text">1.4.2 丢包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-3-%E5%90%9E%E5%90%90%E9%87%8F"><span class="toc-text">1.4.3 吞吐量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E5%8D%8F%E8%AE%AE%E5%B1%82%E6%AC%A1%E5%8F%8A%E5%85%B6%E6%9C%8D%E5%8A%A1%E6%A8%A1%E5%9E%8B"><span class="toc-text">1.5 协议层次及其服务模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-1-%E5%8D%8F%E8%AE%AE%E5%88%86%E5%B1%82"><span class="toc-text">1.5.1 协议分层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-2-%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B"><span class="toc-text">1.5.2 网络分层模型</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div id="download"><div class="card-content"><div class="item-headline"><i class="fas fa-file-arrow-down"></i><span>文件下载</span></div><div class="download-list"><div class="download-list-item"><a class="download-list-item-button" target="_blank" rel="noopener" href="https://robert-stackflow.github.io/dowloads/【笔记】数据库系统概论笔记.pdf" title="下载数据库系统概论笔记PDF"><span>下载数据库系统概论笔记PDF</span></a></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By 余湍</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">昼夜交替的低语，暗藏着谁人的心迹</div></div></footer></div><div id="rightside"><div id="rightside-button-list"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="hide-aside-btn" type="button" title="单栏/双栏模式"><i class="fas fa-arrows-alt-h"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.location.href=&quot;/&quot;;"><i class="fas fa-home"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="javascript:rmf.switchDarkMode();"><i class="fas fa-adjust"></i></a><a class="rightMenu-item" href="javascript:rmf.scrollToTop();"><i class="fa fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line" id="menu-general"><a class="rightMenu-item" href="javascript:window.location.href=&quot;/archives/&quot;;"><i class="fas fa-archive"></i><span>归档</span></a><a class="rightMenu-item" href="javascript:window.location.href=&quot;/tags/&quot;;"><i class="fas fa-tags"></i><span>标签</span></a><a class="rightMenu-item" href="javascript:window.location.href=&quot;/categories/&quot;;"><i class="fas fa-folder-open"></i><span>分类</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-text"><a class="rightMenu-item" href="javascript:rmf.copySelect();"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://cn.bing.com/search?q=&quot;+window.getSelection().toString());window.location.reload();"><i class="fas fa-magnifying-glass"></i><span>必应搜索</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-too"><a class="rightMenu-item" href="javascript:window.open(window.getSelection().toString());window.location.reload();"><i class="fa fa-link"></i><span>转到链接</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-paste"><a class="rightMenu-item" href="javascript:rmf.paste()"><i class="fa fa-copy"></i><span>粘贴</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-post"><a class="rightMenu-item" href="#post-comment"><i class="fas fa-comments"></i><span>转到评论</span></a><a class="rightMenu-item" href="javascript:rmf.copyWordsLink()"><i class="fa fa-link"></i><span>复制本文地址</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-to"><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>新窗口打开</span></a><a class="rightMenu-item" id="menu-too" href="javascript:rmf.open()"><i class="fa fa-link"></i><span>转到链接</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制链接</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-img"><a class="rightMenu-item" href="javascript:rmf.downloadImage()"><i class="fa fa-download"></i><span>保存图片</span></a><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>在新窗口打开</span></a><a class="rightMenu-item" href="javascript:rmf.click()"><i class="fa fa-arrows-alt"></i><span>全屏显示</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制图片链接</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-other"><a class="rightMenu-item" href="javascript:rmf.switchReadMode();"><i class="fas fa-book-open"></i><span>阅读模式</span></a><a class="rightMenu-item" href="javascript:rmf.translate();"><i class="fas fa-language"></i><span>简繁转换</span></a><a class="rightMenu-item" href="javascript:rmf.hideAsideBtn();"><i class="fas fa-arrows-alt-h"></i><span>显示/隐藏侧栏</span></a></div></div><div><script src="https://npm.elemecdn.com/vue@2.6.11"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="https://cdn.jsdelivr.net/npm/algoliasearch/dist/algoliasearch-lite.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://comment.cloudchewie.com/',
+      region: 'ap-shanghai',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://comment.cloudchewie.com/',
+      region: 'ap-shanghai',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script><script>var gitcalendar = new Vue({
+  el: '#gitcalendar',
+  data: {
+    simplemode: false,
+    user: 'Robert-Stackflow',
+    fixed: 'fixed',
+    px: 'px',
+    x: '',
+    y: '',
+    span1: '',
+    span2: '',
+    month: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+    monthchange: [],
+    oneyearbeforeday: '',
+    thisday: '',
+    amonthago: '',
+    aweekago: '',
+    weekdatacore: 0,
+    datacore: 0,
+    total: 0,
+    datadate: '',
+    data: [],
+    positionplusdata: [],
+    firstweek: [],
+    lastweek: [],
+    beforeweek: [],
+    thisweekdatacore: 0,
+    mounthbeforeday: 0,
+    mounthfirstindex: 0,
+    crispedges: 'crispedges',
+    thisdayindex: 0,
+    amonthagoindex: 0,
+    amonthagoweek: [],
+    firstdate: [],
+    first2date: [],
+    montharrbefore: [],
+    monthindex: 0,
+    color: ['#e4dfd7', '#f9f4dc', '#f7e8aa', '#f7e8aa', '#f8df72', '#fcd217', '#fcc515', '#f28e16', '#fb8b05', '#d85916', '#f43e06']
+  },
+  methods: {
+    selectStyle(data, event) {
+      document.querySelector('.angle-wrapper').style.display = 'block'
+      this.span1 = data.date;
+      this.span2 = data.count;
+      this.x = event.clientX - 100;
+      this.y = event.clientY - 60
+    },
+    outStyle() {
+      document.querySelector('.angle-wrapper').style.display = 'none'
+    },
+    thiscolor(x) {
+      if (x === 0) {
+        let i = parseInt(x / 2);
+        return this.color[0]
+      } else if (x < 2) {
+        return this.color[1]
+      } else if (x < 20) {
+        let i = parseInt(x / 2);
+        return this.color[i]
+      } else {
+        return this.color[9]
+      }
+    },
+  }
+});
+var apiurl = 'gitcalendar.cloudchewie.com' ? 'https://gitcalendar.cloudchewie.com/api?' : 'https://githubapi.ryanchristian.dev/user/'
+var githubapiurl = apiurl + gitcalendar.user;
+//canvas绘图
+function responsiveChart() {
+  let c = document.getElementById("gitcanvas");
+  if (c) {
+    let cmessage = document.getElementById("gitmessage");
+    let ctx = c.getContext("2d");
+    c.width = document.getElementById("gitcalendarcanvasbox").offsetWidth;
+    let linemaxwitdh = 0.96 * c.width / gitcalendar.data.length;
+    c.height = 9 * linemaxwitdh;
+    let lineminwitdh = 0.8 * linemaxwitdh;
+    let setposition = {
+      x: 0.02 * c.width,
+      y: 0.025 * c.width
+    };
+    for (let week in gitcalendar.data) {
+      weekdata = gitcalendar.data[week];
+      for (let day in weekdata) {
+        let dataitem = {
+          date: "",
+          count: "",
+          x: 0,
+          y: 0
+        };
+        gitcalendar.positionplusdata.push(dataitem);
+        ctx.fillStyle = gitcalendar.thiscolor(weekdata[day].count);
+        setposition.y = Math.round(setposition.y * 100) / 100;
+        dataitem.date = weekdata[day].date;
+        dataitem.count = weekdata[day].count;
+        dataitem.x = setposition.x;
+        dataitem.y = setposition.y;
+        ctx.fillRect(setposition.x, setposition.y, lineminwitdh, lineminwitdh);
+        setposition.y = setposition.y + linemaxwitdh
+      };
+      setposition.y = 0.025 * c.width;
+      setposition.x = setposition.x + linemaxwitdh
+    };
+    ctx.font = "600  Arial";
+    ctx.fillStyle = '#aaa';
+    ctx.fillText("日", 0, 1.9 * linemaxwitdh);
+    ctx.fillText("二", 0, 3.9 * linemaxwitdh);
+    ctx.fillText("四", 0, 5.9 * linemaxwitdh);
+    ctx.fillText("六", 0, 7.9 * linemaxwitdh);
+    let monthindexlist = c.width / 24;
+    for (let index in gitcalendar.monthchange) {
+      ctx.fillText(gitcalendar.monthchange[index], monthindexlist, 0.7 * linemaxwitdh);
+      monthindexlist = monthindexlist + c.width / 12
+    };
+    cmessage.onmousemove = function(event) {
+      document.querySelector('.angle-wrapper').style.display = 'none'
+    };
+    c.onmousemove = function(event) {
+      document.querySelector('.angle-wrapper').style.display = 'none'
+      getMousePos(c, event);
+    };
+
+    function getMousePos(canvas, event) {
+      var rect = canvas.getBoundingClientRect();
+      var x = event.clientX - rect.left * (canvas.width / rect.width);
+      var y = event.clientY - rect.top * (canvas.height / rect.height);
+      //console.log("x:"+x+",y:"+y);
+      for (let item of gitcalendar.positionplusdata) {
+        let lenthx = x - item.x;
+        let lenthy = y - item.y;
+        //console.log(lenthx,lenthy);
+        if (0 < lenthx && lenthx < lineminwitdh) {
+          if (0 < lenthy && lenthy < lineminwitdh) {
+            //console.log(item.date,item.count)
+            document.querySelector('.angle-wrapper').style.display = 'block'
+            gitcalendar.span1 = item.date;
+            gitcalendar.span2 = item.count;
+            gitcalendar.x = event.clientX - 100;
+            gitcalendar.y = event.clientY - 60
+          }
+        }
+        //if(0< x - item.x <lineminwitdh&&0< y - item.y <lineminwitdh){
+        //console.log(item.count,item.date);
+        //}
+      }
+    }
+  }
+}
+//数据统计算法
+function addlastmonth() {
+  if (gitcalendar.thisdayindex === 0) {
+    thisweekcore(52);
+    thisweekcore(51);
+    thisweekcore(50);
+    thisweekcore(49);
+    thisweekcore(48);
+    gitcalendar.thisweekdatacore += gitcalendar.firstdate[6].count;
+    gitcalendar.amonthago = gitcalendar.firstdate[6].date
+  } else {
+    thisweekcore(52);
+    thisweekcore(51);
+    thisweekcore(50);
+    thisweekcore(49);
+    thisweek2core();
+    gitcalendar.amonthago = gitcalendar.first2date[gitcalendar.thisdayindex - 1].date
+  }
+};
+
+function thisweek2core() {
+  for (let i = gitcalendar.thisdayindex - 1; i < gitcalendar.first2date.length; i++) {
+    gitcalendar.thisweekdatacore += gitcalendar.first2date[i].count
+  }
+};
+
+function thisweekcore(index) {
+  for (let item of gitcalendar.data[index]) {
+    gitcalendar.thisweekdatacore += item.count
+  }
+};
+
+function addlastweek() {
+  for (let item of gitcalendar.lastweek) {
+    gitcalendar.weekdatacore += item.count
+  }
+};
+
+function addbeforeweek() {
+  for (let i = gitcalendar.thisdayindex; i < gitcalendar.beforeweek.length; i++) {
+    gitcalendar.weekdatacore += gitcalendar.beforeweek[i].count
+  }
+};
+
+function addweek(data) {
+  if (gitcalendar.thisdayindex === 6) {
+    gitcalendar.aweekago = gitcalendar.lastweek[0].date;
+    addlastweek()
+  } else {
+    lastweek = data.contributions[51];
+    gitcalendar.aweekago = lastweek[gitcalendar.thisdayindex + 1].date;
+    addlastweek();
+    addbeforeweek()
+  }
+}
+
+fetch(githubapiurl)
+  .then(data => data.json())
+  .then(data => {
+    gitcalendar.data = data.contributions;
+    gitcalendar.total = data.total;
+    gitcalendar.first2date = gitcalendar.data[48];
+    gitcalendar.firstdate = gitcalendar.data[47];
+    gitcalendar.firstweek = data.contributions[0];
+    gitcalendar.lastweek = data.contributions[52];
+    gitcalendar.beforeweek = data.contributions[51];
+    gitcalendar.thisdayindex = gitcalendar.lastweek.length - 1;
+    gitcalendar.thisday = gitcalendar.lastweek[gitcalendar.thisdayindex].date;
+    gitcalendar.oneyearbeforeday = gitcalendar.firstweek[0].date;
+    gitcalendar.monthindex = gitcalendar.thisday.substring(5, 7) * 1;
+    gitcalendar.montharrbefore = gitcalendar.month.splice(gitcalendar.monthindex, 12 - gitcalendar.monthindex);
+    gitcalendar.monthchange = gitcalendar.montharrbefore.concat(gitcalendar.month);
+    addweek(data);
+    addlastmonth();
+    responsiveChart();
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
+
+//手机版更换为svg绘制
+if (document.getElementById("gitcalendarcanvasbox").offsetWidth < 500) {
+  gitcalendar.simplemode = false
+}
+
+//当改变窗口大小时重新绘制canvas
+window.onresize = function() {
+  if (gitcalendar.simplemode) responsiveChart()
+}
+
+//解决滚动滑轮时出现的标签显示
+window.onscroll = function() {
+  if (document.querySelector('.angle-wrapper')) {
+    document.querySelector('.angle-wrapper').style.display = 'none'
+  }
+};</script></div><script type="text/javascript" src="/js/pace.min.js" data-pjax="" defer=""></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.13.4/dist/av-min.js"></script><script type="text/javascript" src="https://cdn1.tianli0.top/npm/jquery@latest/dist/jquery.min.js"></script><script type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script type="text/javascript" src="/js/categorybar.js"></script><script type="text/javascript" src="/js/lunar.js"></script><script type="text/javascript" src="/js/day.js"></script><script type="text/javascript" src="/js/welcome.js"></script><script type="text/javascript" src="/js/version.js"></script><script type="text/javascript" src="/js/calendar.js"></script><script type="text/javascript" src="/js/rightmenu.js"></script><script type="text/javascript" src="/js/universe.js"></script><script type="text/javascript" src="/js/random.js"></script><script type="text/javascript" defer src="/js/waterfall.min.js"></script><script type="text/javascript" defer src="/js/imgStatus.js"></script><script type="text/javascript" defer src="/js/lately.min.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/post_img/database.jpg" alt="/img/post_img/database.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2023-02-22</span><a class="blog-slider__title" href="2023/02/22/【笔记】数据库系统概论笔记(三)/">【笔记】数据库系统概论笔记(三)</a><div class="blog-slider__text">华中科技大学计算机科学与技术学院数据库系统概论课程笔记，包括关系数据理论、查询优化</div><a class="blog-slider__button" href="2023/02/22/【笔记】数据库系统概论笔记(三)/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/post_img/database.jpg" alt="/img/post_img/database.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2023-02-22</span><a class="blog-slider__title" href="2023/02/22/【笔记】数据库系统概论笔记(二)/">【笔记】数据库系统概论笔记(二)</a><div class="blog-slider__text">华中科技大学计算机科学与技术学院数据库系统概论课程笔记，包括数据库、表、索引、完整性约束、数据增删改查、视图、触发器、安全性控制、并发控制、数据库恢复</div><a class="blog-slider__button" href="2023/02/22/【笔记】数据库系统概论笔记(二)/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/post_img/database.jpg" alt="/img/post_img/database.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2023-02-22</span><a class="blog-slider__title" href="2023/02/22/【笔记】数据库系统概论笔记(一)/">【笔记】数据库系统概论笔记(一)</a><div class="blog-slider__text">华中科技大学计算机科学与技术学院数据库系统概论课程笔记，包括绪论、关系数据库</div><a class="blog-slider__button" href="2023/02/22/【笔记】数据库系统概论笔记(一)/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/post_img/network.png" alt="/img/post_img/network.png"/></div><div class="blog-slider__content"><span class="blog-slider__code">2022-11-12</span><a class="blog-slider__title" href="2022/11/12/【笔记】计算机网络与通信笔记(五)/">【笔记】计算机网络与通信笔记(五)</a><div class="blog-slider__text">华中科技大学计算机科学与技术学院计算机网络与通信课程笔记，包括链路层和无线网络</div><a class="blog-slider__button" href="2022/11/12/【笔记】计算机网络与通信笔记(五)/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/post_img/network.png" alt="/img/post_img/network.png"/></div><div class="blog-slider__content"><span class="blog-slider__code">2022-11-12</span><a class="blog-slider__title" href="2022/11/12/【笔记】计算机网络与通信笔记(四)/">【笔记】计算机网络与通信笔记(四)</a><div class="blog-slider__text">华中科技大学计算机科学与技术学院计算机网络与通信课程笔记，包括网络层</div><a class="blog-slider__button" href="2022/11/12/【笔记】计算机网络与通信笔记(四)/">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="/js/swiper.min.js"></script>
+<script data-pjax src="/js/swiperindex.js"></script>
+<style></style><!-- hexo injector body_end end --></body></html>

@@ -1,0 +1,18 @@
+[data-theme="dark"] #post .post-copyright {
+  background-color: #1f1f1f !important;
+}
+[data-theme="dark"] #post .post-copyright {
+  border: 1px solid rgb(19 18 18 / 35%);
+}
+[data-theme="dark"] .post-copyright-info {
+  color: #ffffff;
+}
+[data-theme="light"] #post .post-copyright {
+  background-color: transparent ;
+}
+#post .post-copyright__title {
+  font-size: 22px;
+}
+#post .post-copyright__notice {
+  font-size: 15px;
+}
