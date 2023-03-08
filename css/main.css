@@ -1226,7 +1226,7 @@ back [data-theme="light"] #rightMenu {
   padding: 8px !important;
 }
 #page-header:not(.not-home-page)::before {
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(20px);
 }
 #page-header #post-info{
   text-align: center !important;
