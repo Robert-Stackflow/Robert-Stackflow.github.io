@@ -696,6 +696,7 @@ $light-text: #24B1FF $border-radius: .5rem*/
 [data-theme="dark"] #tag,
 [data-theme="dark"] #category,
 [data-theme="dark"] .error-content {
+  background: var(--card-bg);
   box-shadow: none !important;
 }
 
@@ -1216,9 +1217,6 @@ back [data-theme="light"] #rightMenu {
   left: 50%;
   translate: -50%;
 }
-/* .gc{
-  box-shadow: 2px 2px 5px 3px #546e7a20 !important;
-} */
 #toggle-menu > a{
   padding: 8px !important;
 }

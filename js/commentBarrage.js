@@ -11,7 +11,7 @@ const commentBarrageConfig = {
     //弹幕显示间隔时间，单位ms
     barrageTime: 3000,
     //twikoo部署地址（Vercel、私有部署），腾讯云的为环境ID
-    // twikooUrl: "https://cloudchewie-comments.vercel.app/",
+    twikooUrl: "https://comment.cloudchewie.com/",
     twikooUrl: "",
     //token获取见前文
     accessToken: "df242fe099bf81ec336572476fbdc208",
