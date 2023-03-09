@@ -1374,8 +1374,10 @@ canvas:not(#ribbon-canvas),
   --blockquote-bg: rgba(0,153,255,0.1);
   --reward-pop: #f5f5f5;
   --toc-link-color: #666261;
-  --card-box-shadow: 0 3px 8px 6px rgba(7,17,27,0.05);
-  --card-hover-box-shadow: 0 3px 8px 6px rgba(7,17,27,0.09);
+  --card-border: 1px solid var(--tab-botton-bg);
+  --card-box-shadow: 0 8px 12px -3px rgba(45,45,45,0.05);
+  --card-hover-box-shadow: 0 8px 12px -3px rgba(45,45,45,0.05);
+  --card-border-dashed: 2px dashed var(--tab-button-hover-bg);
   --pseudo-hover: #24b1ff;
   --headline-presudo: #a0a0a0;
   --scrollbar-color: #09f;
@@ -4128,7 +4130,21 @@ h2.f4.text-normal.mb-3 {
 #nav.hide-menu #search-button span {
   display: none;
 }
+#nav.hide-menu #mode-button span {
+  display: none;
+}
+#nav.hide-menu #wander-button span {
+  display: none;
+}
 #nav #search-button {
+  display: inline;
+  padding: 0 0 0 2px;
+}
+#nav #mode-button {
+  display: inline;
+  padding: 0 0 0 2px;
+}
+#nav #wander-button {
   display: inline;
   padding: 0 0 0 2px;
 }
@@ -8788,10 +8804,6 @@ img.inline.entered.loaded {
 }
 [data-theme="dark"] #footer:before {
   background-color: transparent !important;
-}
-[data-theme="dark"] .recent-post-item {
-  -webkit-box-shadow: 2px 2px 5px 3px rgba(84,110,122,0.125) !important;
-  box-shadow: 2px 2px 5px 3px rgba(84,110,122,0.125) !important;
 }
 [data-theme="dark"] .tag-cloud-list a {
   color: #848587 !important;

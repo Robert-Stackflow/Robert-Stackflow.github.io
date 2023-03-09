@@ -27,10 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
       $nav.classList.remove("hide-menu");
     }
     document
-      .querySelector("#search-button > .darkmode")
+      .querySelector("#mode-button")
       .addEventListener("click", rmf.switchDarkMode);
     document
-      .querySelector("#search-button > .wander")
+      .querySelector("#wander-button")
       .addEventListener("click", toRandomPost);
     if (document.querySelector("#bber-talk")) {
       var swiper = new Swiper(".swiper-container", {

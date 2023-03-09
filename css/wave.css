@@ -34,7 +34,7 @@
   .parallax > use:nth-child(4) {
     animation-delay: -5s;
     animation-duration: 20s;
-    fill: #d9e9f1;
+    fill: #f2f6fc;
   }
   /* 黑色模式背景 */
   [data-theme="dark"] .parallax > use:nth-child(1) {
