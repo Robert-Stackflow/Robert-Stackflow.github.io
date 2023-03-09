@@ -14,11 +14,9 @@ function categoriesBarActive(){
     // 验证是否是专栏链接
     var pattern = /\/categories\/.*?\//;
     var patbool = pattern.test(urlinfo);
-    console.log(patbool);
     // 获取当前的专栏
     if (patbool) {
       var valuegroup = urlinfo.split("/");
-      console.log(valuegroup[2]);
       // 获取当前专栏
       var nowCategorie = valuegroup[2];
       if (document.querySelector('#category-bar')){

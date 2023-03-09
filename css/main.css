@@ -783,9 +783,13 @@ back [data-theme="light"] #rightMenu {
 [data-theme="light"] #page-header.nav-visible #nav {
   background: rgba(255, 255, 255, 0.2) !important;
   backdrop-filter: blur(50px);
-  color: white !important;
+  color: black !important;
 }
-
+[data-theme="light"] #page-header.nav-fixed #nav {
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(50px);
+  color: black !important;
+}
 [data-theme="light"] #rightside > div > button,
 [data-theme="light"] #rightside > div > a {
   background: #0099ff;
@@ -1055,8 +1059,27 @@ back [data-theme="light"] #rightMenu {
 }
 
 #article-container .tag-Link:hover {
-  border: var(--style-border-hover);
   text-decoration: none !important;
+  background: #0099ff;
+  color: #fff !important;
+}
+#article-container .tag-Link:hover .tag-link-tips,
+#article-container .tag-Link:hover .tag-link-bottom,
+#article-container .tag-Link:hover .tag-link-bottom,
+#article-container .tag-Link:hover .tag-link-bottom .tag-link-right,
+.tag-link-right
+  .tag-link-sitename
+  #article-container
+  .tag-Link:hover
+  .tag-link-bottom
+  .tag-link-right
+  .tag-link-title
+  #article-container
+  .tag-Link:hover
+  .tag-link-bottom
+  .fa-solid {
+  text-decoration: none !important;
+  color: #fff !important;
 }
 
 #article-container .tag-Link .tag-link-tips {
@@ -1067,9 +1090,7 @@ back [data-theme="light"] #rightMenu {
   text-decoration: none !important;
 }
 
-#article-container .tag-Link .tag-link-tips,
-#article-container .tag-Link .fa-solid,
-#article-container .tag-Link .tag-link-sitename {
+#article-container .tag-Link .tag-link-tips {
   color: #999999;
 }
 
@@ -1086,11 +1107,9 @@ back [data-theme="light"] #rightMenu {
   min-width: 40px;
   height: 40px;
   background-size: cover;
-  text-decoration: none !important;
 }
 
 #article-container .tag-Link .tag-link-bottom .tag-link-right {
-  text-decoration: none !important;
   margin-left: 1rem;
 }
 
@@ -1196,7 +1215,7 @@ back [data-theme="light"] #rightMenu {
   -ms-border-radius: 6px !important;
   -o-border-radius: 6px !important;
 }
-@media screen and (max-width: 600px){
+@media screen and (max-width: 600px) {
   [data-theme="light"] .menus_item_child {
     box-shadow: var(--card-box-shadow);
     background: rgba(255, 255, 255, 0.8) !important;
@@ -1226,9 +1245,13 @@ back [data-theme="light"] #rightMenu {
   padding: 8px !important;
 }
 #page-header:not(.not-home-page)::before {
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
 }
-#page-header #post-info{
+#page-header #post-info {
   text-align: center !important;
-  bottom:130px !important;
+  bottom: 130px !important;
+}
+.nav-fixed #nav {
+  background: rgba(0, 0, 0, 0.8) !important;
 }

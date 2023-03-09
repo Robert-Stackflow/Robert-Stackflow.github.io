@@ -232,6 +232,9 @@ li.categoryBar-list-item {
   .contrib-column {
     display: none !important;
   }
+  .gc {
+    display: none !important;
+  }
 }
 .contrib-column {
   text-align: center;

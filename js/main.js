@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     let hideMenuIndex = "";
-    if (window.innerWidth < 768) hideMenuIndex = true;
+    if (window.innerWidth < 950) hideMenuIndex = true;
     else
       hideMenuIndex =
         blogNameWidth + menusWidth + searchWidth > $nav.offsetWidth - 120;
@@ -44,7 +44,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     {
       var path = $("#post-cover").attr("data-lazy-src");
-      $("#page-header:not(.not-top-img)::before").css("background",'background-image: url('+path+')');
+      $("#page-header:not(.not-top-img)::before").css(
+        "background",
+        "background-image: url(" + path + ")"
+      );
     }
   };
 
@@ -547,13 +550,13 @@ document.addEventListener("DOMContentLoaded", function () {
       newEle.removeEventListener("click", clickFn);
       $body.appendChild(newEle);
       $(document.getElementById("post-meta")).hide();
+      $(document.querySelector("#page-header > section")).hide();
       rmf.isReadMode = true;
-      var oldBarrage;
-      // if (commentBarrageConfig != undefined) {
-      //   oldBarrage = commentBarrageConfig.displayBarrage;
-      //   if (commentBarrageConfig.displayBarrage == true) switchCommentBarrage();
-      // }
-
+      let commentBarrage = document.querySelector(".comment-barrage");
+      let visible = $(commentBarrage).css("display");
+      if (commentBarrage && visible != "none") {
+        $(commentBarrage).fadeToggle();
+      }
       function clickFn() {
         $body.classList.remove("read-mode");
         document.getElementById("post").classList.remove("read-mode");
@@ -561,8 +564,9 @@ document.addEventListener("DOMContentLoaded", function () {
         newEle.removeEventListener("click", clickFn);
         rmf.isReadMode = false;
         $(document.getElementById("post-meta")).show();
-        if (oldBarrage == true && commentBarrageConfig.displayBarrage == false)
-          switchCommentBarrage();
+        if (visible != "none") {
+          $(commentBarrage).fadeToggle();
+        }
       }
       newEle.addEventListener("click", clickFn);
     },
@@ -572,20 +576,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.documentElement.getAttribute("data-theme") === "dark"
           ? "dark"
           : "light";
-      // let $rightMenu = $('#menus > div.menus_items > div:nth-child(2) > a > span');
-      // let $rightMenu_mobile = $('#sidebar-menus > div.menus_items > div:nth-child(7) > a > span');
-      // if (nowMode === 'light') {
-      //     $rightMenu.html("浅色模式")
-      //     activateDarkMode()
-      //     saveToLocal.set('theme', 'dark', 2)
-      //     GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night)
-      // } else {
-      //     $rightMenu.html("深色模式")
-      //     activateLightMode()
-      //     saveToLocal.set('theme', 'light', 2)
-      //     rmf.day_night_count++;
-      //     GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day)
-      // }
       // handle some cases
       typeof utterancesTheme === "function" && utterancesTheme();
       typeof changeGiscusTheme === "function" && changeGiscusTheme();
