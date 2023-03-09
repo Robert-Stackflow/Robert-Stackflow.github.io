@@ -1,0 +1,112 @@
+/* 下载按钮和404返回按钮 */
+.download-list-item {
+  line-height: 2;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  margin-bottom: 0 !important;
+  margin: 0 0 20px;
+  text-align: center;
+  font-family: "LXGW WenKai";
+}
+.download-list-item-button,
+.error-back-button {
+  border-radius: 8px;
+  text-align: center;
+  box-sizing: border-box;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-block;
+  margin: 6px 6px 6px 6px;
+  background-color: var(--theme-color);
+  color: #fff;
+  padding: 6px 15px;
+}
+
+.error-back-button {
+  margin-top: 1rem;
+  display: block;
+  align-self: center;
+  max-width: fit-content;
+}
+
+.download-list-item-button:hover,
+.error-back-button:hover {
+  text-decoration: none;
+  color: #fff;
+  background-color: #24b1ff;
+}
+[data-theme="light"] .cal_week {
+  background: transparent;
+}
+[data-theme="light"] #rightside > div > button,
+[data-theme="light"] #rightside > div > a {
+  background: #0099ff;
+  backdrop-filter: blur(50px);
+  cursor: pointer !important;
+}
+[data-theme="light"] #rightside > div > button:hover,
+[data-theme="light"] #rightside > div > a:hover {
+  background: #24b1ff;
+  cursor: pointer !important;
+}
+[data-theme="dark"] #rightside > div > button,
+[data-theme="dark"] #rightside > div > a {
+  cursor: pointer !important;
+}
+.card-archive-list-link {
+  border-radius: 8px;
+}
+.card-archive-list-link:hover {
+  border-radius: 8px;
+  color: var(--white) !important;
+}
+#sidebar::-webkit-scrollbar {
+  width: 0 !important;
+}
+#sidebar {
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+}
+[data-theme="light"] #sidebar #sidebar-menus.open {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+}
+[data-theme="dark"] #sidebar #sidebar-menus.open {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+}
+#sidebar #menu-mask {
+  background: rgba(255, 255, 255, 0);
+}
+/* 文章日历 */
+.cal tbody .cal-ntoday a {
+  border-radius: 5px;
+  border: 0px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+.cal tbody .cal-today a {
+  border-radius: 5px;
+  border: 0px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+.cal tbody .cal-ntoday a:hover {
+  background-color: #0099ff;
+}
+.cal-title {
+  font-family: "LXGWWenKai-Regular";
+}
+body > div.snackbar-container.snackbar-css.snackbar-pos.top-right > p{
+  font-family: "LXGWWenKai-Regular";
+}
+
+.cal-title a:hover {
+  color: #0099ff;
+}

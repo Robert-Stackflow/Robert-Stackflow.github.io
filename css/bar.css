@@ -1,0 +1,174 @@
+/* 专栏目录条、标签目录条 */
+
+/* $main: #1677B3 $second: #fff $1px solid rgba(150, 150, 150, 0.2): 1px solid rgba(150, 150, 150, 0.2);
+$light-text: #24B1FF $border-radius: .5rem */
+
+/*单个专栏*/
+
+.page #category .category-list-bar,
+.page #category-bar .category-list-bar,
+#tag .tag-list-bar {
+  width: 100%;
+  height: 40px;
+  /* background-color: var(--kk-card-bg); */
+  line-height: 40px;
+  display: flex;
+  /* border: 1px solid #eef4f7; */
+  /* backdrop-filter: blur(40px); */
+  margin-bottom: 10px;
+}
+#category-bar .category-list-bar {
+  margin: 0px !important;
+}
+[data-theme="dark"] .page #category .category-list-bar,
+[data-theme="dark"] .page #category-bar .category-list-bar,
+[data-theme="dark"] #tag .tag-list-bar {
+  /* border: 1px solid #eef4f7; */
+  transition: 1s;
+}
+
+.page #category .category-list-bar:hover,
+.page #category-bar .category-list-bar:hover,
+#tag .tag-list-bar:hover {
+  /* border: 1px solid #0099ff; */
+  transition: 1s;
+}
+
+.page #category .category-list-bar .fas,
+.page #category-bar .category-list-bar .fas,
+#tag .tag-list-bar .fas {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 1rem;
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+}
+
+.page #category .category-list-bar .lists,
+.page #category-bar .category-list-bar .lists,
+#tag .tag-list-bar .lists {
+  width: calc(100%);
+  overflow: scroll;
+}
+
+.page #category .category-list-bar .lists::-webkit-scrollbar,
+.page #category-bar .category-list-bar .lists::-webkit-scrollbar,
+#tag .tag-list-bar .lists::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.page #category .category-list-bar .lists ul,
+.page #category-bar .category-list-bar .lists ul,
+#tag .tag-list-bar .lists ul {
+  width: max-content;
+  height: 40px;
+  display: flex;
+  margin: 0px;
+  align-items: center;
+  list-style-type: none;
+}
+
+.page #category .category-list-bar .lists .category-list .category-list-item,
+.page
+  #category-bar
+  .category-list-bar
+  .lists
+  .category-list
+  .category-list-item,
+#tag .tag-list-bar .lists ul a {
+  padding: 0 0.4rem;
+  margin: 0 0.3rem;
+  height: 2rem;
+  line-height: 2rem;
+  /*background: #fff;*/
+  border-radius: 0.4rem;
+  transition: 0.2s;
+  transition: 1s;
+}
+
+.page
+  #category
+  .category-list-bar
+  .lists
+  .category-list
+  .category-list-item:hover,
+.page
+  #category
+  .category-list-bar
+  .lists
+  .category-list
+  .category-list-item.checked,
+.page
+  #category-bar
+  .category-list-bar
+  .lists
+  .category-list
+  .category-list-item:hover,
+.page
+  #category-bar
+  .category-list-bar
+  .lists
+  .category-list
+  .category-list-item.checked,
+#tag .tag-list-bar .lists ul a:hover,
+#tag .tag-list-bar .lists ul a.checked {
+  background-color: #0099ff;
+  color: white !important;
+  transition: 1s;
+}
+
+.page
+  #category
+  .category-list-bar
+  .lists
+  .category-list
+  .category-list-item:hover
+  a,
+.page
+  #category
+  .category-list-bar
+  .lists
+  .category-list
+  .category-list-item.checked
+  a,
+.page
+  #category-bar
+  .category-list-bar
+  .lists
+  .category-list
+  .category-list-item:hover
+  a,
+.page
+  #category-bar
+  .category-list-bar
+  .lists
+  .category-list
+  .category-list-item.checked
+  a {
+  color: white !important;
+}
+
+.page
+  #category
+  .category-list-bar
+  .lists
+  .category-list
+  .category-list-item
+  span,
+.page
+  #category-bar
+  .category-list-bar
+  .lists
+  .category-list
+  .category-list-item
+  span {
+  display: none;
+}
+
+#category-bar {
+  margin-top: 20px;
+}

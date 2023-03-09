@@ -38,7 +38,14 @@
   cursor: pointer;
   display: flex;
 }
-
+.bbTimeList {
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
 #bbtalk {
   display: flex;
   flex-direction: column;

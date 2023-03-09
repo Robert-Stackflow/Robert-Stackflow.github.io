@@ -1,7 +1,7 @@
 .comment-barrage {
   position: fixed;
   bottom: 10px;
-  right: 60px;
+  right: 58px;
   padding: 0 0 30px 10px;
   z-index: 100;
   display: flex;
@@ -24,16 +24,15 @@
   max-height: 144px;
   margin: 4px 0;
   padding: 8px;
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--card-bg);
   backdrop-filter: blur(20px) saturate(180%);
   border-radius: 8px;
   color: #fff;
   animation: barrageIn 1.5s;
-  transition:all 1s;
+  transition: 0.5s;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: var(--card-border);
   box-shadow: var(--card-box-shadow);
   -webkit-animation: barrageIn 1.5s;
 }
