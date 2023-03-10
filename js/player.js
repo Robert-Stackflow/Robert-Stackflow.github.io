@@ -26,16 +26,170 @@ class Musics {
       {
         id: 1,
         title: "Lovers' Oath 蒲苇如丝",
-        singer: "HOYO Music",
+        singer: "HOYO Mix",
         songUrl: "./songs/蒲苇如丝.mp3",
-        imageUrl: "./images/songs/1.webp",
+        imageUrl: "./images/蒲苇如丝.jpg",
       },
       {
         id: 2,
         title: "有何不可",
-        singer: "有何不可",
+        singer: "许嵩",
         songUrl: "./songs/有何不可.flac",
-        imageUrl: "./images/songs/2.webp",
+        imageUrl: "./images/自定义.jpg",
+      },
+      {
+        id: 3,
+        title: "清明雨上",
+        singer: "许嵩",
+        songUrl: "./songs/清明雨上.flac",
+        imageUrl: "./images/自定义.jpg",
+      },
+      {
+        id: 4,
+        title: "如果当时",
+        singer: "许嵩",
+        songUrl: "./songs/如果当时.flac",
+        imageUrl: "./images/自定义.jpg",
+      },
+      {
+        id: 5,
+        title: "白马非马",
+        singer: "许嵩",
+        songUrl: "./songs/白马非马.flac",
+        imageUrl: "./images/寻雾启示.jpg",
+      },
+      {
+        id: 6,
+        title: "灰色头像",
+        singer: "许嵩",
+        songUrl: "./songs/灰色头像.flac",
+        imageUrl: "./images/寻雾启示.jpg",
+      },
+      {
+        id: 7,
+        title: "庐州月",
+        singer: "许嵩",
+        songUrl: "./songs/庐州月.flac",
+        imageUrl: "./images/寻雾启示.jpg",
+      },
+      {
+        id: 8,
+        title: "半城烟沙",
+        singer: "许嵩",
+        songUrl: "./songs/半城烟沙.flac",
+        imageUrl: "./images/Vae珍藏.jpg",
+      },
+      {
+        id: 9,
+        title: "天龙八部之宿敌",
+        singer: "许嵩",
+        songUrl: "./songs/天龙八部之宿敌.flac",
+        imageUrl: "./images/Vae珍藏.jpg",
+      },
+      {
+        id: 10,
+        title: "拆东墙",
+        singer: "许嵩",
+        songUrl: "./songs/拆东墙.flac",
+        imageUrl: "./images/苏格拉没有底.jpg",
+      },
+      {
+        id: 11,
+        title: "千百度",
+        singer: "许嵩",
+        songUrl: "./songs/千百度.flac",
+        imageUrl: "./images/苏格拉没有底.jpg",
+      },
+      {
+        id: 12,
+        title: "老古董",
+        singer: "许嵩",
+        songUrl: "./songs/老古董.flac",
+        imageUrl: "./images/寻宝游戏.jpg",
+      },
+      {
+        id: 13,
+        title: "如约而至",
+        singer: "许嵩",
+        songUrl: "./songs/如约而至.flac",
+        imageUrl: "./images/寻宝游戏.jpg",
+      },
+      {
+        id: 14,
+        title: "雅俗共赏",
+        singer: "许嵩",
+        songUrl: "./songs/雅俗共赏.flac",
+        imageUrl: "./images/青年晚报.jpg",
+      },
+      {
+        id: 15,
+        title: "燕归巢",
+        singer: "许嵩",
+        songUrl: "./songs/燕归巢.flac",
+        imageUrl: "./images/青年晚报.jpg",
+      },
+      {
+        id: 16,
+        title: "幻听",
+        singer: "许嵩",
+        songUrl: "./songs/幻听.flac",
+        imageUrl: "./images/梦游计.jpg",
+      },
+      {
+        id: 17,
+        title: "庞贝",
+        singer: "许嵩",
+        songUrl: "./songs/庞贝.flac",
+        imageUrl: "./images/呼吸之野.jpg",
+      },
+      {
+        id: 18,
+        title: "庞贝(伴奏)",
+        singer: "许嵩",
+        songUrl: "./songs/庞贝(伴奏).flac",
+        imageUrl: "./images/呼吸之野.jpg",
+      },
+      {
+        id: 19,
+        title: "科幻",
+        singer: "许嵩",
+        songUrl: "./songs/科幻.flac",
+        imageUrl: "./images/呼吸之野.jpg",
+      },
+      {
+        id: 20,
+        title: "乌鸦",
+        singer: "许嵩",
+        songUrl: "./songs/乌鸦.flac",
+        imageUrl: "./images/呼吸之野.jpg",
+      },
+      {
+        id: 21,
+        title: "弹指一挥间",
+        singer: "许嵩",
+        songUrl: "./songs/弹指一挥间.flac",
+        imageUrl: "./images/不如吃茶去.jpg",
+      },
+      {
+        id: 22,
+        title: "惊鸿一面",
+        singer: "许嵩",
+        songUrl: "./songs/惊鸿一面.flac",
+        imageUrl: "./images/不如吃茶去.jpg",
+      },
+      {
+        id: 23,
+        title: "七夕",
+        singer: "许嵩",
+        songUrl: "./songs/七夕.flac",
+        imageUrl: "./images/不如吃茶去.jpg",
+      },
+      {
+        id: 24,
+        title: "山水之间",
+        singer: "许嵩",
+        songUrl: "./songs/山水之间.flac",
+        imageUrl: "./images/不如吃茶去.jpg",
       },
     ];
   }
@@ -66,10 +220,6 @@ class PlayerCreator {
       singer: $(".music__info--singer"),
       image: $(".music-player__image img"),
       blur: $(".music-player__blur"),
-    };
-    this.ban_dom = {
-      //禁音时需要渲染的dom组
-      control__btn: $(".control__volume--icon"),
     };
 
     // 时间显示容器
@@ -111,7 +261,6 @@ class PlayerCreator {
     this.render_doms.singer.html(singer);
     this.render_doms.image.prop("src", imageUrl);
     this.render_doms.blur.css("background-image", 'url("' + imageUrl + '")');
-
     //切换列表中的item的类名 play
     this.song_list
       .find(".music__list__item")
@@ -138,27 +287,12 @@ class PlayerCreator {
     this.$mode = new Btns(".player-control__btn--mode", {
       click: this.changePlayMode.bind(this),
     });
-    //禁音
-    this.$ban = new Btns(".control__volume--icon", {
-      click: this.banNotes.bind(this),
-    });
     //列表点击
     this.song_list.on("click", "li", (e) => {
       let index = $(e.target).index();
       this.changeSong(index);
     });
 
-    //音量控制 audio标签音量 vlouem 属性控制0-1
-
-    new Progress(".control__volume--progress", {
-      min: 0,
-      max: 1,
-      value: this.audio.volume,
-      handler: (value) => {
-        //更改进度时
-        this.audio.volume = value;
-      },
-    });
     //歌曲进度 this.audio.duration
     //可以播放的时候触发（歌曲的基本信息都已经获取到了）
     this.audio.oncanplay = () => {
@@ -276,18 +410,6 @@ class PlayerCreator {
     this.renderSongStyle();
     //如果切歌前是在播放，就继续播放
     if (!_is_pause) this.audio.play();
-  }
-  //禁音
-  banNotes() {
-    let _o_i = this.$ban.$el.find("i");
-    if (this.audio.muted == true) {
-      //如果禁音则开启
-      this.audio.muted = false;
-      _o_i.removeClass("icon-muted").addClass("icon-volume");
-    } else {
-      this.audio.muted = true;
-      _o_i.removeClass("icon-volume").addClass("icon-muted");
-    }
   }
 }
 

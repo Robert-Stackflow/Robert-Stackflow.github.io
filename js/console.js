@@ -58,8 +58,8 @@ function tosetting() {
     let bg = document.getElementById("web_bg");
     if (s.charAt(0) == "#") {
       bg.style.backgroundColor = s;
-      bg.style.backgroundImage = "none";
-    } else bg.style.backgroundImage = s;
+      bg.style.background = "none";
+    } else bg.style.background = s;
     if (!flag) {
       saveData("blogbg", s);
     }

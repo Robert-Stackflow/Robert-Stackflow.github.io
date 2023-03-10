@@ -103,10 +103,27 @@
 .cal-title {
   font-family: LXGW WenKai;
 }
-body > div.snackbar-container.snackbar-css.snackbar-pos.top-right > p{
+body > div.snackbar-container.snackbar-css.snackbar-pos.top-right > p {
   font-family: LXGW WenKai;
 }
 
 .cal-title a:hover {
   color: #0099ff;
+}
+button#go-up #percent {
+  display: none;
+  font-weight: bold;
+  font-size: 15px !important;
+}
+
+button#go-up span:nth-child(2) {
+  font-size: 12px !important;
+  margin-right: -1px;
+}
+button#go-up:hover i {
+  display: block !important;
+}
+
+button#go-up:hover #percent {
+  display: none !important;
 }

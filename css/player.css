@@ -65,16 +65,21 @@
 .music-player__list {
   width: 100%;
   padding: 10px;
+  max-height: 200px;
+  overflow-y: auto;
   margin-top: 30px;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
-  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  background: var(--card-bg);
+  border-radius: 10px;
+  -webkit-box-shadow: var(--card-box-shadow);
+  box-shadow: var(--card-box-shadow);
+  border: var(--card-border);
 }
+.music__list_content{
 
+}
 .music__list__item {
   padding-left: 25px;
-  color: #ccc;
+  color: var(--font-color);
   position: relative;
   margin-bottom: 10px;
   font-size: 14px;
@@ -86,7 +91,8 @@
 }
 
 .music__list__item.play {
-  color: #fff;
+  color: var(--theme-color);
+  font-weight: bold;
 }
 
 .music__list__item.play:before {
@@ -94,16 +100,20 @@
   content: "\e87a";
   position: absolute;
   left: 0px;
-  top: 4px;
+  top: 1px;
 }
 /* 播放器主体 */
 .music-player__main {
-  height: 180px;
+  /* height: 180px; */
   padding: 25px;
-  box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+  box-shadow: var(--card-box-shadow);
   border-radius: 10px;
   position: relative;
   overflow: hidden;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
 }
 
 /* 播放器主体模糊背景 */
@@ -118,14 +128,28 @@
   -webkit-filter: blur(20px);
   filter: blur(20px);
 }
+.music-player__blur::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0 0 0 0.4);
+  backdrop-filter: blur(10px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
+}
 /* 播放器唱片效果 */
 .music-player__disc {
   float: left;
   width: 130px;
   height: 130px;
-  background: url(/img/cd.png) no-repeat center;
+  background: url(/img/mess/cd.png) no-repeat center;
   background-size: 100%;
+  justify-self: center;
+  align-items: center;
+  align-self: center;
+  align-content: center;
   position: relative;
+  margin: 20px;
 }
 
 /* 唱片指针 */
@@ -168,7 +192,6 @@
 /* 播放器控件 */
 .music-player__controls {
   width: 330px;
-  height: 130px;
   float: right;
 }
 
@@ -187,65 +210,63 @@
 .player-control {
   width: 100%;
 }
-
+div.player-control > div:nth-child(2) {
+  display: flex;
+}
 .player-control__content {
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+  justify-self: center;
   overflow: hidden;
 }
 
 /* 播放暂停按钮 */
 .player-control__btns {
-  float: left;
   overflow: hidden;
+  width: fit-content;
 }
 
 .player-control__btn {
   float: left;
-  margin: 0 5px;
+  margin: 0 10px;
   font-weight: bolder;
   cursor: pointer;
 }
 [data-theme="light"] .player-control__btn,
 [data-theme="light"] .music__info .music__info--title {
-  color: #000;
+  color: #fff;
 }
 [data-theme="dark"] .player-control__btn,
 [data-theme="dark"] .music__info .music__info--title {
   color: #fff;
 }
-.player-control__volume {
-  float: right;
-  overflow: hidden;
-}
-
-.control__volume--progress {
-  float: left;
-  width: 100px;
-  position: relative;
-  top: 8px;
-}
-
 .player__song--timeProgess {
   font-size: 12px;
   color: #fff;
   padding: 0px 3px;
   background: rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 .player-control__content .nowTime {
   float: left;
+  background: transparent;
 }
 .player-control__content .totalTime {
   float: right;
+  background: transparent;
 }
-
+div.player-control > div:nth-child(2) {
+  margin-bottom: 10px;
+}
 .music-player .progress {
   background: rgba(0, 0, 0, 0.3);
   height: 5px;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) inset;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) inset;
   overflow: hidden;
-  margin: 0.5rem 0 !important;
+  margin: 15px !important;
   border-radius: 2px;
   position: relative;
   cursor: pointer;
@@ -255,7 +276,7 @@
   width: 0px;
   height: 100%;
   border-radius: 2px;
-  background: rgb(12, 182, 212);
+  background: var(--theme-color);
 }
 
 .music-player .progress .pointer {
@@ -306,7 +327,6 @@
 }
 /*  播放进度  */
 .player__song--progress {
-  width: 100%;
   margin-top: 15px;
 }
 .music-player h1,
