@@ -27,9 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
       $nav.classList.remove("hide-menu");
     }
     document
-      .querySelector("#mode-button")
-      .addEventListener("click", rmf.switchDarkMode);
-    document
       .querySelector("#wander-button")
       .addEventListener("click", toRandomPost);
     if (document.querySelector("#bber-talk")) {
@@ -54,8 +51,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 200);
     localStorage.setItem(
       "MathJax-Menu-Settings",
-      '{"zoom":"Click","renderer":"SVG","scale":"1"}'
+      '{"zoom":"Click","scale":"1"}'
     );
+    if (Number(saveToLocal.get("translate-chn-cht")) == 2) {
+      $("#con-translate > i").attr("class", "iconfont icon-fanti");
+    } else if (Number(saveToLocal.get("translate-chn-cht")) == 1) {
+      $("#con-translate > i").attr("class", "iconfont icon-jianti");
+    }
+    if (saveToLocal.get("aside-status") == "hide")
+      $("#con-toggleaside").addClass("checked");
+    else $("#con-toggleaside").removeClass("checked");
   };
 
   // 初始化header
@@ -573,6 +578,7 @@ document.addEventListener("DOMContentLoaded", function () {
       $body.appendChild(newEle);
       $(document.getElementById("post-meta")).hide();
       rmf.isReadMode = true;
+      $("#con-readmode").addClass("checked");
       let commentBarrage = document.querySelector(".comment-barrage");
       let visible = $(commentBarrage).css("display");
       if (commentBarrage && !(visible == null || visible == "none")) {
@@ -584,6 +590,7 @@ document.addEventListener("DOMContentLoaded", function () {
         newEle.remove();
         newEle.removeEventListener("click", clickFn);
         rmf.isReadMode = false;
+        $("#con-readmode").removeClass("checked");
         $(document.getElementById("post-meta")).show();
         if (visible != "none") {
           $(commentBarrage).fadeToggle();
@@ -636,6 +643,9 @@ document.addEventListener("DOMContentLoaded", function () {
           ? saveToLocal.set("aside-status", "show", 2)
           : saveToLocal.set("aside-status", "hide", 2);
         $htmlDom.toggle("hide-aside");
+        if (saveToLocal.get("aside-status") == "hide")
+          $("#con-toggleaside").addClass("checked");
+        else $("#con-toggleaside").removeClass("checked");
       }
     },
 

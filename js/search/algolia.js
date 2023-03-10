@@ -1,10 +1,12 @@
 window.addEventListener('load', () => {
   const openSearch = () => {
-    const bodyStyle = document.body.style
-    bodyStyle.width = '100%'
-    bodyStyle.overflow = 'hidden'
-    btf.animateIn(document.getElementById('search-mask'), 'to_show 0.5s')
-    btf.animateIn(document.querySelector('#algolia-search .search-dialog'), 'titleScale 0.5s')
+    // const bodyStyle = document.body.style
+    // bodyStyle.width = '100%'
+    // bodyStyle.overflow = 'hidden'
+    $("#algolia-search .search-dialog").fadeToggle("fast");
+    $("#search-mask").fadeToggle("fast");
+    // btf.animateIn(document.getElementById('search-mask'), 'to_show 0.3s')
+    // btf.animateIn(document.querySelector('#algolia-search .search-dialog'), 'titleScale 0.3s')
     setTimeout(() => { document.querySelector('#algolia-search .ais-SearchBox-input').focus() }, 100)
 
     // shortcut: ESC
@@ -17,11 +19,13 @@ window.addEventListener('load', () => {
   }
 
   const closeSearch = () => {
-    const bodyStyle = document.body.style
-    bodyStyle.width = ''
-    bodyStyle.overflow = ''
-    btf.animateOut(document.querySelector('#algolia-search .search-dialog'), 'search_close .5s')
-    btf.animateOut(document.getElementById('search-mask'), 'to_hide 0.5s')
+    // const bodyStyle = document.body.style
+    // bodyStyle.width = ''
+    // bodyStyle.overflow = ''
+    $("#algolia-search .search-dialog").fadeToggle("fast");
+    $("#search-mask").fadeToggle("fast");
+    // btf.animateOut(document.querySelector('#algolia-search .search-dialog'), 'search_close 0.3s')
+    // btf.animateOut(document.getElementById('search-mask'), 'to_hide 0.3s')
   }
 
   const searchClickFn = () => {

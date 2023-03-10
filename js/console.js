@@ -73,14 +73,23 @@ function tosetting() {
     window.location.reload();
   };
   toggleWinbox = function () {
-    $("#settingWindow").fadeToggle();
+    document
+      .getElementById("console-mask")
+      .addEventListener("click", toggleWinbox);
+    $("#settingWindow").fadeToggle("fast");
+    $("#console-mask").fadeToggle("fast");
     if (document.getElementById("settingWindow").style.display != "none") {
       document.getElementById("settingWindow").style.display = "flex";
     }
   };
   fullScreen = function () {
-    if (document.fullscreenElement) document.exitFullscreen();
-    else document.documentElement.requestFullscreen();
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+      $("#con-fullscreen").removeClass("checked");
+    } else {
+      document.documentElement.requestFullscreen();
+      $("#con-fullscreen").addClass("checked");
+    }
   };
   toggleAside = function () {
     const $htmlDom = document.documentElement.classList;
@@ -88,11 +97,14 @@ function tosetting() {
       ? saveToLocal.set("aside-status", "show", 2)
       : saveToLocal.set("aside-status", "hide", 2);
     $htmlDom.toggle("hide-aside");
+    if (saveToLocal.get("aside-status") == "hide")
+      $("#con-toggleaside").addClass("checked");
+    else $("#con-toggleaside").removeClass("checked");
   };
   switchAside = function () {
     if (left) {
-      document.getElementById("aside-content").classList.add("right");
-      document.querySelector(".layout > div:first-child").classList.add("left");
+      $("#aside-content").addClass("right");
+      $(".layout > div:first-child").addClass("left");
       localStorage.setItem("leftAside", "false");
     } else {
       document.getElementById("aside-content").className = "aside-content";
@@ -164,4 +176,21 @@ function tosetting() {
     }
   };
   toggleNav = () => {};
+  document
+    .querySelector("#console-button")
+    .addEventListener("click", toggleWinbox);
+  window.onresize = function () {
+    if (!checkFull()) {
+      $("#con-fullscreen").removeClass("checked");
+    }
+  };
+}
+
+function checkFull() {
+  var isFull = document.fullScreen || document.fullscreenElement !== null;
+  console.log(isFull);
+  if (isFull === undefined) {
+    isFull = false;
+  }
+  return isFull;
 }

@@ -113,6 +113,7 @@ function initCommentBarrage() {
         $(commentBarrage).hide();
       }
       $("#switch_commentBarrage").hide();
+      $("#con-barrage").hide();
     } else {
       if (Number(localStorage.getItem("isBarrageToggle")) == 0) {
         commentBarrageConfig.displayBarrage = true;
@@ -122,12 +123,15 @@ function initCommentBarrage() {
         }
       }
       $("#switch_commentBarrage").show();
+      $("#con-barrage").show();
     }
   });
   if (commentBarrageConfig.displayBarrage) {
     $("#switch_commentBarrage").addClass("checked");
+    $("#con-barrage").addClass("checked");
   } else {
     $("#switch_commentBarrage").removeClass("checked");
+    $("#con-barrage").removeClass("checked");
   }
 }
 function commentLinkFilter(data) {
@@ -236,8 +240,10 @@ switchCommentBarrage = function () {
   }
   if (commentBarrageConfig.displayBarrage) {
     $("#switch_commentBarrage").addClass("checked");
+    $("#con-barrage").addClass("checked");
   } else {
     $("#switch_commentBarrage").removeClass("checked");
+    $("#con-barrage").removeClass("checked");
   }
   // }
 };

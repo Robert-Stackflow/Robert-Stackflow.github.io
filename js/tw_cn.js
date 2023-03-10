@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
       saveToLocal.set(targetEncodingCookie, targetEncoding, 2)
       translateBody()
       if (isSnackbar) btf.snackbarShow(snackbarData.cht_to_chs)
+      $("#con-translate > i").attr("class","iconfont icon-fanti");
     } else if (targetEncoding === 2) {
       currentEncoding = 2
       targetEncoding = 1
@@ -58,6 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
       saveToLocal.set(targetEncodingCookie, targetEncoding, 2)
       translateBody()
       if (isSnackbar) btf.snackbarShow(snackbarData.chs_to_cht)
+      $("#con-translate > i").attr("class","iconfont icon-jianti");
     }
   }
   function JTPYStr () {

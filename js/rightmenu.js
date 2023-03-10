@@ -126,9 +126,10 @@ rmf.switchReadMode = function () {
   $body.appendChild(newEle);
   $(document.getElementById("post-meta")).hide();
   rmf.isReadMode = true;
+  $("#con-readmode").addClass("checked");
   let commentBarrage = document.querySelector(".comment-barrage");
   let visible = commentBarrage.getAttribute("display");
-  if (commentBarrage && !(visible == null||visible=="none")) {
+  if (commentBarrage && !(visible == null || visible == "none")) {
     $(commentBarrage).fadeToggle();
   }
 
@@ -138,8 +139,9 @@ rmf.switchReadMode = function () {
     newEle.remove();
     newEle.removeEventListener("click", clickFn);
     rmf.isReadMode = false;
+    $("#con-readmode").removeClass("checked");
     $(document.getElementById("post-meta")).show();
-    if (!(visible == null||visible=="none")) {
+    if (!(visible == null || visible == "none")) {
       $(commentBarrage).fadeToggle();
     }
   }
@@ -167,6 +169,9 @@ rmf.hideAsideBtn = function () {
     ? saveToLocal.set("aside-status", "show", 2)
     : saveToLocal.set("aside-status", "hide", 2);
   $htmlDom.toggle("hide-aside");
+  if (saveToLocal.get("aside-status") == "hide")
+    $("#con-toggleaside").addClass("checked");
+  else $("#con-toggleaside").removeClass("checked");
 };
 // 右键菜单事件
 document.onkeydown = function (event) {

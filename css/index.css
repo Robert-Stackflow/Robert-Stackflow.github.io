@@ -4131,7 +4131,7 @@ h2.f4.text-normal.mb-3 {
 #nav.hide-menu #search-button span {
   display: none;
 }
-#nav.hide-menu #mode-button span {
+#nav.hide-menu #console-button span {
   display: none;
 }
 #nav.hide-menu #wander-button span {
@@ -4141,7 +4141,7 @@ h2.f4.text-normal.mb-3 {
   display: inline;
   padding: 0 0 0 2px;
 }
-#nav #mode-button {
+#nav #console-button {
   display: inline;
   padding: 0 0 0 2px;
 }
@@ -7590,6 +7590,16 @@ blockquote.pullquote.right {
   color: #09f;
 }
 #search-mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  background: rgba(0,0,0,0.6);
+}
+#console-mask {
   position: fixed;
   top: 0;
   right: 0;

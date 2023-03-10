@@ -119,7 +119,6 @@
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
   border: var(--card-border);
-  box-shadow: var(--card-box-shadow);
   padding: 30px;
   backdrop-filter: blur(20px);
   -ms-transform-origin-y: translate(-50%, -50%);
@@ -140,6 +139,7 @@
 #settingWindow {
   display: none;
   flex-direction: column;
+  z-index: 1001;
 }
 #backer {
   text-align: center;

@@ -1,3 +1,32 @@
+@font-face {
+  font-family: "iconfont";
+  src: url("/fonts/iconfont.woff2") format("woff2"),
+    url("/fonts/iconfont.woff") format("woff"),
+    url("/fonts/iconfont.ttf") format("truetype");
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 20px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.iconfont::before {
+  font-size: 23px !important;
+}
+
+.icon-danmu:before {
+  content: "\e612";
+}
+
+.icon-jianti:before {
+  content: "\e6d7";
+}
+
+.icon-fanti:before {
+  content: "\e6d8";
+}
+
 /* 网页 */
 [data-theme="light"] #web_bg {
   /* background: url(http://cloudchewie.com/img/img-index.jpeg); */
@@ -49,32 +78,58 @@
   color: #fff !important;
 }
 .search-dialog {
-  background: rgba(73, 177, 245, 0.5);
+  background: var(--card-bg);
+  border: var(--card-border);
   backdrop-filter: blur(10px);
 }
+#search-mask,
+#console-mask {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transform: translateZ(0);
+  background: var(--heo-maskbgdeep);
+  position: fixed;
+  inset: 0px;
+  z-index: 1000;
+}
 #algolia-hits-empty {
-  color: white;
+  color: var(--font-color);
 }
 .search-dialog-title {
-  color: white;
+  color: var(--font-color);
 }
 .algolia-poweredBy {
   visibility: hidden;
 }
 .algolia-hit-item-link {
-  color: white !important;
+  color: var(--font-color) !important;
+  font-weight: bold;
 }
 .algolia-hit-item-link:hover {
   color: var(--theme-color) !important;
 }
 .ais-Hits-list {
-  color: white;
+  color: var(--font-color);
 }
 .ais-SearchBox-loadingIndicator {
   visibility: hidden;
 }
-.ais-Stats-text {
-  color: white;
+.ais-Stats-text,
+.ais-Pagination-link {
+  color: var(--font-color) !important;
+}
+.ais-Pagination-link:hover {
+  color: var(--theme-color) !important;
+}
+.search-close-button {
+  color: var(--font-color) !important;
+}
+#algolia-search
+  .search-dialog
+  .ais-Pagination
+  .ais-Pagination-item--selected
+  a {
+  color: #fff !important;
 }
 /* 轮播 */
 .swiper-button-next:after,
@@ -324,7 +379,7 @@ li.categoryBar-list-item {
   -o-transition: all 0.5s;
 }
 #algolia-search > div.search-dialog > nav > button > i {
-  color: white !important;
+  color: var(--font-color) !important;
 }
 #algolia-pagination
   > div
@@ -470,9 +525,17 @@ li.categoryBar-list-item {
 #rightside-button-list > button.checked {
   background: #46c868 !important;
 }
+.con-rightside.checked {
+  background: var(--theme-color) !important;
+  color: white !important;
+}
 #card-toc {
   box-shadow: var(--card-box-shadow) !important;
   border: var(--card-border) !important;
   background: var(--card-bg);
   backdrop-filter: blur(20px) saturate(180%) !important;
+}
+.loading-bg {
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  background: var(--card-bg) !important;
 }
