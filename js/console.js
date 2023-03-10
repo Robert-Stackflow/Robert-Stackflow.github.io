@@ -192,7 +192,11 @@ function tosetting() {
   };
   if (
     Number(localStorage.getItem("autoColor")) == 1 &&
-    document.querySelector("#page-header") != null
+    document.querySelector("#page-header") != null &&
+    document.querySelector("#page-header").style.backgroundImage != null &&
+    document
+      .querySelector("#page-header")
+      .style.backgroundImage.split('url("')[1] != null
   ) {
     var xhr = new XMLHttpRequest();
     var url = document

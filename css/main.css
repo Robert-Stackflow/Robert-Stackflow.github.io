@@ -230,7 +230,7 @@
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(50px);
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 950px) {
   .menus_item_child {
     box-shadow: none !important;
     background: none !important;
