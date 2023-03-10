@@ -2,6 +2,19 @@ document.addEventListener("pjax:complete", tosetting);
 document.addEventListener("DOMContentLoaded", tosetting);
 function tosetting() {
   $("#settingWindow").hide();
+  document.getElementById("settingStyle").innerText = `
+  *,*:not(.card-info)::before,*::after{
+      -webkit-backdrop-filter: none!important;
+      backdrop-filter: none!important;
+      -webkit-filter: none!important;
+      filter: none!important;
+  }`;
+  if (localStorage.getItem("autoColor") == undefined) {
+    localStorage.setItem("autoColor", "1");
+  }
+  if (localStorage.getItem("autoColor") == "1") {
+    document.getElementById("autoColor").checked = true;
+  }
   if (localStorage.getItem("hideRightside") == undefined) {
     localStorage.setItem("hideRightside", "0");
   }
@@ -62,12 +75,6 @@ function tosetting() {
   $(".asetting").hide();
   $("#backer").hide();
   $("#" + localStorage.getItem("themeColor")).attr("checked", true);
-  if (localStorage.getItem("blur") == "false") {
-    document.getElementById("blur").checked = true;
-  }
-  if (localStorage.getItem("yjjs") == "true") {
-    document.getElementById("yjjs").checked = true;
-  }
   document.getElementsByClassName("reSettings")[0].onclick = function () {
     localStorage.clear();
     window.location.reload();
@@ -176,6 +183,40 @@ function tosetting() {
     }
   };
   toggleNav = () => {};
+  autoColor = () => {
+    if (localStorage.getItem("autoColor") == "1")
+      localStorage.setItem("autoColor", "0");
+    else {
+      localStorage.setItem("autoColor", "1");
+    }
+  };
+  if (
+    Number(localStorage.getItem("autoColor")) == 1 &&
+    document.querySelector("#page-header") != null
+  ) {
+    var xhr = new XMLHttpRequest();
+    var url = document
+      .querySelector("#page-header")
+      .style.backgroundImage.split('url("')[1]
+      .split('")')[0];
+    xhr.open(
+      "GET",
+      "https://apis.yisous.xyz/api/imageColor?imgurl=https://" +
+        window.location.host +
+        url,
+      true
+    );
+    xhr.send();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          document.getElementById(
+            "themeColor"
+          ).innerText = `:root{--lyx-theme:${xhr.responseText}!important}`;
+        }
+      }
+    };
+  }
   document
     .querySelector("#console-button")
     .addEventListener("click", toggleWinbox);
@@ -188,7 +229,6 @@ function tosetting() {
 
 function checkFull() {
   var isFull = document.fullScreen || document.fullscreenElement !== null;
-  console.log(isFull);
   if (isFull === undefined) {
     isFull = false;
   }
