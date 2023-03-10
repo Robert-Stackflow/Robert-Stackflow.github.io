@@ -575,7 +575,7 @@ document.addEventListener("DOMContentLoaded", function () {
       rmf.isReadMode = true;
       let commentBarrage = document.querySelector(".comment-barrage");
       let visible = $(commentBarrage).css("display");
-      if (commentBarrage && visible != "none") {
+      if (commentBarrage && !(visible == null || visible == "none")) {
         $(commentBarrage).fadeToggle();
       }
       function clickFn() {

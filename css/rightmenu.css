@@ -23,7 +23,6 @@
   border: var(--card-border);
   border-radius: 8px;
   z-index: 100;
-  background-color: var(--lyx-black-acrylic1);
   backdrop-filter: blur(20px);
 }
 

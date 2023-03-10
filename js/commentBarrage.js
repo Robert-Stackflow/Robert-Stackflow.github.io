@@ -107,7 +107,6 @@ function initCommentBarrage() {
   });
   document.addEventListener("scroll", function () {
     if (isInViewPortOfOne(document.getElementById("post-comment"))) {
-      console.log("in comment area");
       commentBarrageConfig.displayBarrage = false;
       let commentBarrage = document.querySelector(".comment-barrage");
       if (commentBarrage) {
@@ -115,7 +114,6 @@ function initCommentBarrage() {
       }
       $("#switch_commentBarrage").hide();
     } else {
-      console.log("out comment area");
       if (Number(localStorage.getItem("isBarrageToggle")) == 0) {
         commentBarrageConfig.displayBarrage = true;
         let commentBarrage = document.querySelector(".comment-barrage");
@@ -126,9 +124,9 @@ function initCommentBarrage() {
       $("#switch_commentBarrage").show();
     }
   });
-  if(commentBarrageConfig.displayBarrage){
+  if (commentBarrageConfig.displayBarrage) {
     $("#switch_commentBarrage").addClass("checked");
-  }else{
+  } else {
     $("#switch_commentBarrage").removeClass("checked");
   }
 }
@@ -236,9 +234,9 @@ switchCommentBarrage = function () {
   if (commentBarrage) {
     $(commentBarrage).fadeToggle();
   }
-  if(commentBarrageConfig.displayBarrage){
+  if (commentBarrageConfig.displayBarrage) {
     $("#switch_commentBarrage").addClass("checked");
-  }else{
+  } else {
     $("#switch_commentBarrage").removeClass("checked");
   }
   // }

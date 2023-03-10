@@ -170,11 +170,16 @@
   -ms-border-radius: 6px !important;
   -o-border-radius: 6px !important;
 }
+[data-theme="light"] .menus_item_child {
+  box-shadow: var(--card-box-shadow);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(50px);
+}
 @media screen and (max-width: 600px) {
-  [data-theme="light"] .menus_item_child {
-    box-shadow: var(--card-box-shadow);
-    background: rgba(255, 255, 255, 0.8) !important;
-    backdrop-filter: blur(50px);
+  .menus_item_child {
+    box-shadow: none !important;
+    background: none !important;
+    backdrop-filter: none !important;
   }
 }
 /* 导航栏子列表 */
@@ -465,7 +470,7 @@ li.categoryBar-list-item {
 #rightside-button-list > button.checked {
   background: #46c868 !important;
 }
-#card-toc{
+#card-toc {
   box-shadow: var(--card-box-shadow) !important;
   border: var(--card-border) !important;
   background: var(--card-bg);

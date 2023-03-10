@@ -1,7 +1,3 @@
-// console.log(
-//     "Codes uses GPL Licence"
-// )
-
 function insertAtCursor(myField, myValue) {
   //IE 浏览器
   if (document.selection) {
@@ -132,7 +128,7 @@ rmf.switchReadMode = function () {
   rmf.isReadMode = true;
   let commentBarrage = document.querySelector(".comment-barrage");
   let visible = commentBarrage.getAttribute("display");
-  if (commentBarrage && visible != "none") {
+  if (commentBarrage && !(visible == null||visible=="none")) {
     $(commentBarrage).fadeToggle();
   }
 
@@ -143,7 +139,7 @@ rmf.switchReadMode = function () {
     newEle.removeEventListener("click", clickFn);
     rmf.isReadMode = false;
     $(document.getElementById("post-meta")).show();
-    if (visible != "none") {
+    if (!(visible == null||visible=="none")) {
       $(commentBarrage).fadeToggle();
     }
   }
@@ -197,6 +193,7 @@ function popupMenu() {
       $("#menu-post").show();
       $("#menu-other").show();
     }
+    $("#menu-global").show();
     var el = window.document.body;
     el = event.target;
     var a =
