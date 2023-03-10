@@ -49,6 +49,13 @@ document.addEventListener("DOMContentLoaded", function () {
         "background-image: url(" + path + ")"
       );
     }
+    setInterval(function () {
+      $(".CtxtMenu_MenuArrow").html("");
+    }, 200);
+    localStorage.setItem(
+      "MathJax-Menu-Settings",
+      '{"zoom":"Click","renderer":"SVG","scale":"1"}'
+    );
   };
 
   // 初始化header
@@ -56,6 +63,21 @@ document.addEventListener("DOMContentLoaded", function () {
     adjustMenu(true);
     $nav.classList.add("show");
   };
+
+  function isHome() {
+    if (
+      window.document.location.href != "http://localhost:4000/" &&
+      window.document.location.href != "http://clouchewie.com/" &&
+      window.document.location.href != "http://www.cloudchewie.com" &&
+      window.document.location.href != "http://github.cloudchewie.com" &&
+      window.document.location.href != "https://localhost:4000/" &&
+      window.document.location.href != "https://clouchewie.com/" &&
+      window.document.location.href != "https://www.cloudchewie.com" &&
+      window.document.location.href != "https://github.cloudchewie.com"
+    )
+      return false;
+    return true;
+  }
 
   // sidebar menus
   const sidebarFn = {
@@ -550,7 +572,6 @@ document.addEventListener("DOMContentLoaded", function () {
       newEle.removeEventListener("click", clickFn);
       $body.appendChild(newEle);
       $(document.getElementById("post-meta")).hide();
-      $(document.querySelector("#page-header > section")).hide();
       rmf.isReadMode = true;
       let commentBarrage = document.querySelector(".comment-barrage");
       let visible = $(commentBarrage).css("display");
@@ -608,12 +629,14 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     },
     hideAsideBtn: () => {
-      // Hide aside
-      const $htmlDom = document.documentElement.classList;
-      $htmlDom.contains("hide-aside")
-        ? saveToLocal.set("aside-status", "show", 2)
-        : saveToLocal.set("aside-status", "hide", 2);
-      $htmlDom.toggle("hide-aside");
+      if (!isHome()) {
+        // Hide aside
+        const $htmlDom = document.documentElement.classList;
+        $htmlDom.contains("hide-aside")
+          ? saveToLocal.set("aside-status", "show", 2)
+          : saveToLocal.set("aside-status", "hide", 2);
+        $htmlDom.toggle("hide-aside");
+      }
     },
 
     runMobileToc: () => {
@@ -621,9 +644,13 @@ document.addEventListener("DOMContentLoaded", function () {
         window
           .getComputedStyle(document.getElementById("card-toc"))
           .getPropertyValue("opacity") === "0"
-      )
+      ) {
         window.mobileToc.open();
-      else window.mobileToc.close();
+        $("#mobile-toc-button").addClass("checked");
+      } else {
+        window.mobileToc.close();
+        $("#mobile-toc-button").removeClass("checked");
+      }
     },
   };
 
@@ -1025,8 +1052,23 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("toggle-menu").addEventListener("click", () => {
       sidebarFn.open();
     });
+    if (isHome()) {
+      $("#hide-aside-btn").hide();
+      const $htmlDom = document.documentElement.classList;
+      $htmlDom.contains("hide-aside")
+        ? saveToLocal.set("aside-status", "show", 2)
+        : saveToLocal.set("aside-status", "show", 2);
+    }
   };
 
   refreshFn();
   unRefreshFn();
+  if (isHome()) {
+    $("#hide-aside-btn").hide();
+    const $htmlDom = document.documentElement.classList;
+    if ($htmlDom.contains("hide-aside")) {
+      saveToLocal.set("aside-status", "show", 2);
+      $htmlDom.toggle("hide-aside");
+    }
+  }
 });

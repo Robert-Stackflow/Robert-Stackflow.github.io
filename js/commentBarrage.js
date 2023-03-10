@@ -41,7 +41,7 @@ function isInViewPortOfOne(el) {
     window.innerHeight ||
     document.documentElement.clientHeight ||
     document.body.clientHeight;
-  const offsetTop = el.offsetTop;
+  if (el != null) var offsetTop = el.offsetTop;
   const scrollTop = document.documentElement.scrollTop;
   const top = offsetTop - scrollTop;
   return top <= viewPortHeight;
@@ -105,6 +105,32 @@ function initCommentBarrage() {
         .querySelector("#switch_commentBarrage")
         .addEventListener("click", switchCommentBarrage);
   });
+  document.addEventListener("scroll", function () {
+    if (isInViewPortOfOne(document.getElementById("post-comment"))) {
+      console.log("in comment area");
+      commentBarrageConfig.displayBarrage = false;
+      let commentBarrage = document.querySelector(".comment-barrage");
+      if (commentBarrage) {
+        $(commentBarrage).hide();
+      }
+      $("#switch_commentBarrage").hide();
+    } else {
+      console.log("out comment area");
+      if (Number(localStorage.getItem("isBarrageToggle")) == 0) {
+        commentBarrageConfig.displayBarrage = true;
+        let commentBarrage = document.querySelector(".comment-barrage");
+        if (commentBarrage) {
+          $(commentBarrage).show();
+        }
+      }
+      $("#switch_commentBarrage").show();
+    }
+  });
+  if(commentBarrageConfig.displayBarrage){
+    $("#switch_commentBarrage").addClass("checked");
+  }else{
+    $("#switch_commentBarrage").removeClass("checked");
+  }
 }
 function commentLinkFilter(data) {
   data.sort((a, b) => {
@@ -204,13 +230,18 @@ switchCommentBarrage = function () {
     "isBarrageToggle",
     Number(!Number(localStorage.getItem("isBarrageToggle")))
   );
-  if (!isInViewPortOfOne(document.getElementById("post-comment"))) {
-    commentBarrageConfig.displayBarrage = !commentBarrageConfig.displayBarrage;
-    let commentBarrage = document.querySelector(".comment-barrage");
-    if (commentBarrage) {
-      $(commentBarrage).fadeToggle();
-    }
+  // if (!isInViewPortOfOne(document.getElementById("post-comment"))) {
+  commentBarrageConfig.displayBarrage = !commentBarrageConfig.displayBarrage;
+  let commentBarrage = document.querySelector(".comment-barrage");
+  if (commentBarrage) {
+    $(commentBarrage).fadeToggle();
   }
+  if(commentBarrageConfig.displayBarrage){
+    $("#switch_commentBarrage").addClass("checked");
+  }else{
+    $("#switch_commentBarrage").removeClass("checked");
+  }
+  // }
 };
 $(".comment-barrage").hover(
   function () {

@@ -82,7 +82,7 @@
   color: var(--theme-color) !important;
 }
 .snackbar-container {
-  font-family: "LXGWWenKai-Regular";
+  font-family: LXGW WenKai;
   text-align: center;
 }
 .swiper-pagination-bullet:hover {
@@ -453,6 +453,21 @@ li.categoryBar-list-item {
   background: transparent !important;
   box-shadow: none !important;
 }
-#page > h1{
+#page > h1 {
   text-align: center;
+}
+@media screen and (max-width: 900px) {
+  #post,
+  #recent-posts {
+    margin-top: 20px;
+  }
+}
+#rightside-button-list > button.checked {
+  background: #46c868 !important;
+}
+#card-toc{
+  box-shadow: var(--card-box-shadow) !important;
+  border: var(--card-border) !important;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px) saturate(180%) !important;
 }
