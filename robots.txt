@@ -1,14 +1,15 @@
 # hexo robots.txt
 User-agent: *
-Allow: /
-Allow: /archives/
 
 Disallow: /vendors/
 Disallow: /js/
 Disallow: /css/
+Disallow: /img/
 Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
+Disallow: /*.css
+Disallow: /*.js
 
 Sitemap: http://cloudchewie.com/sitemap.xml
 Sitemap: http://cloudchewie.com/baidusitemap.xml
