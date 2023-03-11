@@ -250,6 +250,8 @@ const btf = {
   },
 
   loadLightbox: (ele) => {
+    if(window.location.href.indexOf("/music/")!=-1)
+      return;
     const service = GLOBAL_CONFIG.lightbox;
 
     if (service === "mediumZoom") {
