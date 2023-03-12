@@ -4,8 +4,8 @@
 [data-theme="dark"] #post .post-copyright {
   border: 1px solid rgb(19 18 18 / 35%);
 }
-[data-theme="dark"] .post-copyright-info {
-  color: #ffffff;
+.post-copyright-info a,.post-copyright-type a,.post-copyright-notice a {
+  color:var(--font-color) !important;
 }
 [data-theme="light"] #post .post-copyright {
   background-color: transparent ;

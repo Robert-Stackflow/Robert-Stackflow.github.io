@@ -27,7 +27,6 @@
   background: var(--card-bg);
   backdrop-filter: blur(20px) saturate(180%);
   border-radius: 8px;
-  color: #fff;
   animation: barrageIn 1.5s;
   transition: 0.5s;
   display: flex;
@@ -38,7 +37,7 @@
 }
 
 .comment-barrage-item:hover {
-  border: 1px solid #0099ff !important;
+  border: 1px solid var(--theme-color) !important;
   box-shadow: none !important;
 }
 .comment-barrage-item.out {
@@ -75,6 +74,12 @@
   align-items: center;
 }
 
+.comment-barrage-item .barrageHead a {
+  color: var(--font-color);
+}
+.comment-barrage-item .barrageHead a:hover {
+  color: var(--theme-color);
+}
 .comment-barrage-item .barrageAvatar {
   width: 16px;
   height: 16px;

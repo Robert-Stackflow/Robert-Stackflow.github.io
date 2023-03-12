@@ -73,4 +73,5 @@ $(document).ready(function () {
     } catch (e) {}
   }
   window.addEventListener("resize", res);
+  setInterval(res,1000);
 });

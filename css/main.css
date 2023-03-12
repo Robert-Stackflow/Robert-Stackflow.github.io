@@ -11,6 +11,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.rightMenu-item .iconfont::before {
+  font-size: 20px !important;
+}
 .iconfont::before {
   font-size: 23px !important;
 }
@@ -22,7 +25,17 @@
 .icon-jianti:before {
   content: "\e6d7";
 }
-
+#love-button > a > i {
+  color: red !important;
+}
+#love-button:hover > a > i {
+  color: rgba(255, 0, 0, 0.6) !important;
+}
+#love-button:hover > a {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
 .icon-fanti:before {
   content: "\e6d8";
 }
@@ -141,13 +154,13 @@
   text-align: center;
 }
 .swiper-pagination-bullet:hover {
-  background-color: #0099ff !important;
+  background-color: var(--theme-color) !important;
 }
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
-  background-color: #0099ff !important;
+  background-color: var(--theme-color) !important;
 }
 #aside-content .card-tag-cloud a:hover {
-  background-color: #0099ff;
+  background-color: var(--theme-color);
   color: #fff !important;
 }
 /* 导航栏居中 */
@@ -211,8 +224,8 @@
   background-color: transparent !important;
 }
 .site-page:hover {
-  background-color: #0099ff;
-  box-shadow: 0 0 1px #0099ff !important;
+  background-color: var(--theme-color);
+  box-shadow: 0 0 1px var(--theme-color) !important;
   border-radius: 5px;
   color: #fff !important;
 }
@@ -274,7 +287,7 @@
 }
 @media screen and (max-width: 768px) {
   .cards2 {
-    padding: 20px 5px;
+    padding: 0px 0px 0px 0px;
   }
 }
 .top {
@@ -284,12 +297,18 @@
   margin-left: auto;
   margin-right: auto;
 }
+#pagination > div > a.extend.prev {
+  color: var(--font-color);
+}
 .gc {
   margin-right: 10px !important;
 }
 @media screen and (max-width: 900px) {
   .cards2 {
     flex-wrap: wrap;
+  }
+  .layout {
+    padding: 0px 10px 20px 10px !important;
   }
   .fl,
   .gc {
@@ -390,6 +409,11 @@ li.categoryBar-list-item {
 }
 .layout {
   max-width: 1450px !important;
+}
+@media screen and (max-width: 500px) {
+  #site-name {
+    font-size: 20px;
+  }
 }
 @media screen and (min-width: 1200px) {
   #recent-posts {
@@ -512,9 +536,19 @@ li.categoryBar-list-item {
 .transparentpage {
   background: transparent !important;
   box-shadow: none !important;
+  padding: 0px 40px !important;
 }
 .transparentpage .page-title {
   display: none;
+}
+.fj-gallery a {
+  background: none !important;
+}
+.fj-gallery img {
+  display: inline !important;
+}
+div.fj-gallery > p > div > a > img {
+  border-radius: 8px;
 }
 #page > h1 {
   text-align: center;

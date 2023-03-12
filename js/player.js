@@ -123,7 +123,7 @@ class PlayerCreator {
     let { title, singer, songUrl, imageUrl } = this.musics.getSongByNum(
       this.song_index
     );
-    this.audio.src = songUrl;
+    if (this.audio != null) this.audio.src = songUrl;
     this.render_doms.title.html(title);
     this.render_doms.singer.html(singer);
     this.render_doms.image.prop("src", imageUrl);
@@ -162,38 +162,41 @@ class PlayerCreator {
 
     //歌曲进度 this.audio.duration
     //可以播放的时候触发（歌曲的基本信息都已经获取到了）
-    this.audio.oncanplay = () => {
-      //避免重复实例化
-      if (this.progress) {
-        this.progress.max = this.audio.duration; //切换歌曲后更新时长
+    if (this.audio != null) {
+      this.audio.oncanplay = () => {
+        //避免重复实例化
+        if (this.progress) {
+          this.progress.max = this.audio.duration; //切换歌曲后更新时长
+          this.render_time.total.html(
+            this.util.formatTime(this.audio.duration)
+          );
+          return false;
+        }
+        this.progress = new Progress(".player__song--progress", {
+          min: 0,
+          max: this.audio.duration,
+          value: 0,
+          handler: (value) => {
+            this.audio.currentTime = value;
+          },
+        });
+        //调整总时长
         this.render_time.total.html(this.util.formatTime(this.audio.duration));
-        return false;
-      }
-      this.progress = new Progress(".player__song--progress", {
-        min: 0,
-        max: this.audio.duration,
-        value: 0,
-        handler: (value) => {
-          this.audio.currentTime = value;
-        },
-      });
-      //调整总时长
-      this.render_time.total.html(this.util.formatTime(this.audio.duration));
-    };
+      };
+      //会在播放的时候持续触发
+      this.audio.ontimeupdate = () => {
+        this.progress.setValue(this.audio.currentTime);
+        //调整当前时长
+        this.render_time.now.html(this.util.formatTime(this.audio.currentTime));
+      };
 
-    //会在播放的时候持续触发
-    this.audio.ontimeupdate = () => {
-      this.progress.setValue(this.audio.currentTime);
-      //调整当前时长
-      this.render_time.now.html(this.util.formatTime(this.audio.currentTime));
-    };
-
-    //当歌曲播放完成的时候
-    this.audio.onended = () => {
-      this.changeSong("next");
-      //播放完，换歌后，重新播放
-      this.audio.play();
-    };
+      //当歌曲播放完成的时候
+      this.audio.onended = () => {
+        this.changeSong("next");
+        //播放完，换歌后，重新播放
+        this.audio.play();
+      };
+    }
   }
 
   //播放暂停控制

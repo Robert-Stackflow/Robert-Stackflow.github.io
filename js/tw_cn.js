@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (targetEncoding === 1) {
       currentEncoding = 1
       targetEncoding = 2
-      translateButtonObject.innerHTML = msgToTraditionalChinese
+      // translateButtonObject.innerHTML = msgToTraditionalChinese
       saveToLocal.set(targetEncodingCookie, targetEncoding, 2)
       translateBody()
       if (isSnackbar) btf.snackbarShow(snackbarData.cht_to_chs)
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } else if (targetEncoding === 2) {
       currentEncoding = 2
       targetEncoding = 1
-      translateButtonObject.innerHTML = msgToSimplifiedChinese
+      // translateButtonObject.innerHTML = msgToSimplifiedChinese
       saveToLocal.set(targetEncodingCookie, targetEncoding, 2)
       translateBody()
       if (isSnackbar) btf.snackbarShow(snackbarData.chs_to_cht)
@@ -87,12 +87,12 @@ document.addEventListener('DOMContentLoaded', function () {
     return str
   }
   function translateInitialization () {
-    translateButtonObject = document.getElementById('translateLink')
+    translateButtonObject = document.getElementById('con-translate')
     if (translateButtonObject) {
       if (currentEncoding !== targetEncoding) {
         setTimeout(translateBody, translateDelay)
-        if (targetEncoding === 1) translateButtonObject.innerHTML = msgToSimplifiedChinese
-        else translateButtonObject.innerHTML = msgToTraditionalChinese
+        // if (targetEncoding === 1) translateButtonObject.innerHTML = msgToSimplifiedChinese
+        // else translateButtonObject.innerHTML = msgToTraditionalChinese
       }
       translateButtonObject.addEventListener('click', translatePage, false)
     }

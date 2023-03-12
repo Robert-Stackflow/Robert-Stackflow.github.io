@@ -1394,8 +1394,8 @@ body {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 *::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 4px;
+  height: 4px;
 }
 *::-webkit-scrollbar-thumb {
   background: var(--scrollbar-color);
@@ -2256,6 +2256,9 @@ figure.highlight pre .javascript .function {
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
+.collect .collect-list .collect_box .collect_content a:hover {
+  background: transparent !important;
+}
 [data-theme='dark'] .collect .collect-list .collect_box {
   color: #ddd !important;
 }
@@ -2348,9 +2351,9 @@ figure.highlight pre .javascript .function {
     flex-direction: column;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   .layout {
-    padding: 20px 5px;
+    padding: 0px 5px 20x 0px !important;
   }
 }
 @media screen and (min-width: 2000px) {
@@ -2754,7 +2757,7 @@ h1.page-title + .tag-cloud-list {
   font-size: 1.4em;
 }
 #aside-content .card-info .card-info-social-icons .social-icon:hover i {
-  color: #09f;
+  color: var(--theme-color);
 }
 #aside-content .card-info #card-info-btn {
   display: block;
@@ -4301,6 +4304,9 @@ h2.f4.text-normal.mb-3 {
 #nav.hide-menu #wander-button span {
   display: none;
 }
+#nav.hide-menu #love-button span {
+  display: none;
+}
 #nav #search-button {
   display: inline;
   padding: 0 0 0 2px;
@@ -4310,6 +4316,10 @@ h2.f4.text-normal.mb-3 {
   padding: 0 0 0 2px;
 }
 #nav #wander-button {
+  display: inline;
+  padding: 0 0 0 2px;
+}
+#nav #love-button {
   display: inline;
   padding: 0 0 0 2px;
 }
@@ -4349,7 +4359,7 @@ h2.f4.text-normal.mb-3 {
   width: 100%;
   height: 100%;
   position: fixed;
-  background: var(--preloader-bg);
+  background: var(--card-bg);
   z-index: 1001;
   opacity: 1;
   -ms-filter: none;
@@ -4539,10 +4549,14 @@ h2.f4.text-normal.mb-3 {
   overflow-wrap: break-word;
 }
 #article-container a {
-  color: #99a9bf;
+  color: #09f;
+  padding: 3px;
 }
 #article-container a:hover {
-  text-decoration: underline;
+  text-decoration: none;
+  border-radius: 5px;
+  background: var(--theme-color);
+  color: #fff;
 }
 #article-container img {
   display: block;
@@ -4909,6 +4923,7 @@ h2.f4.text-normal.mb-3 {
   z-index: 103;
   overflow-x: hidden;
   overflow-y: auto;
+  scrollbar-width: none;
   width: 300px;
   height: 100%;
   background: var(--sidebar-bg);
@@ -5421,7 +5436,7 @@ blockquote.pullquote.right {
   padding: 12px;
 }
 .link_card:hover {
-  background: #09f;
+  background: var(--theme-color);
   color: #fff !important;
 }
 .link_card .link_icon,
@@ -6778,7 +6793,7 @@ blockquote.pullquote.right {
 .author-content-item.selfInfo {
   display: flex;
   max-height: 400px;
-  background: linear-gradient(120deg, #5b27ff 0, #0099FF 100%);
+  background: linear-gradient(120deg, #5b27ff 0, #0099ff 100%);
   background-size: 200%;
   justify-content: space-evenly;
   align-items: center;
@@ -7233,9 +7248,8 @@ blockquote.pullquote.right {
   }
   .layout > div:first-child:not(.recent-posts) {
     /* border-radius: 0; */
-    padding: 0 1rem !important;
+    padding: 1rem 1rem !important;
     box-shadow: none !important;
-    background: var(--anzhiyu-background);
   }
   .author-content-item .card-content .banner-button-group .banner-button-text {
     display: none;
@@ -7357,7 +7371,7 @@ blockquote.pullquote.right {
   .loading-bar::after {
     content: "";
     position: absolute;
-    top: 500px;
+    /* top: 500px; */
     left: 0;
     filter: drop-shadow(0 -500px 0 var(--loadingbar-prospect-color));
     width: 500px;
@@ -8011,7 +8025,7 @@ blockquote.pullquote.right {
 #bangumis .card .info .title {
   font-size: 20px;
   border-radius: 5px;
-  color: #09f;
+  color: var(--theme-color);
   white-space: normal;
   word-break: break-word;
 }
@@ -9048,7 +9062,7 @@ body:not(.read-mode) #post #article-container h3:hover,
 body:not(.read-mode) #post #article-container h4:hover,
 body:not(.read-mode) #post #article-container h5:hover,
 body:not(.read-mode) #post #article-container h6:hover {
-  color: #09f;
+  color: var(--theme-color);
 }
 @media screen and (min-width: 900px) {
   body:not(.read-mode) #article-container h3:hover,
@@ -9184,7 +9198,7 @@ body:not(.read-mode) #post #article-container h6:hover {
   width: 90%;
   background: var(--search-bg);
   color: var(--search-input-color);
-  border: 2px solid #09f;
+  border: 2px solid var(--theme-color);
   border-radius: 30px;
   outline: none;
   margin-top: 10px;

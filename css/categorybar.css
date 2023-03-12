@@ -53,12 +53,12 @@
 }
 
 .category-bar-item:hover a {
-  background: #0099ff;
+  background: var(--theme-color);
   color: #ffffff !important;
 }
 
 .category-bar-item.select a {
-  background: #0099ff;
+  background: var(--theme-color);
   color: #ffffff !important;
   border-radius: 0.4rem;
 }
@@ -74,7 +74,7 @@
   color: var(--font-color) !important;
 }
 .category-bar-more:hover a {
-  background: #0099ff;
+  background: var(--theme-color);
   color: #ffffff;
 }
 [data-theme="dark"] .category-list-link {

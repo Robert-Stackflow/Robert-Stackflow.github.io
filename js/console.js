@@ -15,6 +15,16 @@ function tosetting() {
   if (localStorage.getItem("autoColor") == "1") {
     document.getElementById("autoColor").checked = true;
   }
+  if (localStorage.getItem("rightmouse") == undefined) {
+    localStorage.setItem("rightmouse", "1");
+  }
+  if (localStorage.getItem("rightmouse") == "1") {
+    $("#con-rightmouse").addClass("checked");
+    bindRightMenu(true);
+  } else {
+    $("#con-rightmouse").removeClass("checked");
+    bindRightMenu(false);
+  }
   if (localStorage.getItem("hideRightside") == undefined) {
     localStorage.setItem("hideRightside", "0");
   }
@@ -143,28 +153,6 @@ function tosetting() {
       localStorage.removeItem("theme");
     }
   }
-  if (location.href.indexOf("posts") != -1) {
-    var xhr = new XMLHttpRequest();
-    var url = document
-      .querySelector("#page-header")
-      .style.backgroundImage.split('url("')[1]
-      .split('")')[0];
-    xhr.open(
-      "GET",
-      "https://apis.yisous.xyz/api/imageColor?imgurl=" + url,
-      true
-    );
-    xhr.send();
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          document.getElementById(
-            "themeColor"
-          ).innerText = `:root{--theme-color:${xhr.responseText}!important}`;
-        }
-      }
-    };
-  }
   toggleAutoTheme = () => {
     if (localStorage.getItem("autoTheme") == "true") {
       localStorage.setItem("autoTheme", "false");
@@ -198,28 +186,7 @@ function tosetting() {
       .querySelector("#page-header")
       .style.backgroundImage.split('url("')[1] != null
   ) {
-    var xhr = new XMLHttpRequest();
-    var url = document
-      .querySelector("#page-header")
-      .style.backgroundImage.split('url("')[1]
-      .split('")')[0];
-    xhr.open(
-      "GET",
-      "https://apis.yisous.xyz/api/imageColor?imgurl=https://" +
-        window.location.host +
-        url,
-      true
-    );
-    xhr.send();
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          document.getElementById(
-            "themeColor"
-          ).innerText = `:root{--lyx-theme:${xhr.responseText}!important}`;
-        }
-      }
-    };
+    changeAutoColor();
   }
   document
     .querySelector("#console-button")
@@ -229,6 +196,41 @@ function tosetting() {
       $("#con-fullscreen").removeClass("checked");
     }
   };
+  toggleRightMouse = () => {
+    if (localStorage.getItem("rightmouse") == "1") {
+      localStorage.setItem("rightmouse", "0");
+      $("#con-rightmouse").removeClass("checked");
+      bindRightMenu(false);
+    } else {
+      localStorage.setItem("rightmouse", "1");
+      $("#con-rightmouse").addClass("checked");
+      bindRightMenu(true);
+    }
+  };
+}
+function changeAutoColor() {
+  // var xhr = new XMLHttpRequest();
+  // var url = document
+  //   .querySelector("#page-header")
+  //   .style.backgroundImage.split('url("')[1]
+  //   .split('")')[0];
+  // xhr.open(
+  //   "GET",
+  //   "https://apis.yisous.xyz/api/imageColor?imgurl=https://" +
+  //     window.location.host +
+  //     url,
+  //   true
+  // );
+  // xhr.send();
+  // xhr.onreadystatechange = function () {
+  //   if (xhr.readyState === 4) {
+  //     if (xhr.status === 200) {
+  //       document.getElementById(
+  //         "themeColor"
+  //       ).innerText = `:root{--lyx-theme:${xhr.responseText}!important}`;
+  //     }
+  //   }
+  // };
 }
 
 function checkFull() {

@@ -486,6 +486,7 @@ document.addEventListener("DOMContentLoaded", function () {
         );
         if (window.innerWidth < 900) {
           window.mobileToc.close();
+          $("#mobile-toc-button").removeClass("checked");
         }
       });
 

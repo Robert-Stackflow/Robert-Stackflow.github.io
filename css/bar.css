@@ -116,7 +116,7 @@ $light-text: #24B1FF $border-radius: .5rem */
   .category-list-item.checked,
 #tag .tag-list-bar .lists ul a:hover,
 #tag .tag-list-bar .lists ul a.checked {
-  background-color: #0099ff;
+  background-color: var(--theme-color);
   color: white !important;
   transition: 1s;
 }

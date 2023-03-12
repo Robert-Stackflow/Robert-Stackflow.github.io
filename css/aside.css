@@ -40,7 +40,7 @@
 }
 [data-theme="light"] #rightside > div > button,
 [data-theme="light"] #rightside > div > a {
-  background: #0099ff;
+  background: var(--theme-color);
   backdrop-filter: blur(50px);
   cursor: pointer !important;
 }
@@ -98,7 +98,7 @@
 }
 
 .cal tbody .cal-ntoday a:hover {
-  background-color: #0099ff;
+  background-color: var(--theme-color);
 }
 .cal-title {
   font-family: LXGW WenKai;
@@ -108,7 +108,7 @@ body > div.snackbar-container.snackbar-css.snackbar-pos.top-right > p {
 }
 
 .cal-title a:hover {
-  color: #0099ff;
+  color: var(--theme-color);
 }
 button#go-up #percent {
   display: none;

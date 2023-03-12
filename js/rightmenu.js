@@ -160,7 +160,7 @@ rmf.scrollToTop = function () {
   btf.scrollToDest(0, 500);
 };
 rmf.translate = function () {
-  document.getElementById("translateLink").click();
+  document.getElementById("con-translate").click();
 };
 rmf.hideAsideBtn = function () {
   // Hide aside
@@ -182,124 +182,7 @@ document.onkeydown = function (event) {
 };
 
 function popupMenu() {
-  //window.oncontextmenu=function(){return false;}
-  window.oncontextmenu = function (event) {
-    // console.log(event.keyCode)
-    //隐藏所有菜单项
-    document.querySelectorAll(".rightMenu-line").forEach((item) => {
-      $(item).hide();
-    });
-    //如果有文字选中，则显示文字选中相关的菜单项
-    if (document.getSelection().toString()) {
-      $("#menu-text").show();
-    }
-    //如果是文章，则显示文章相关的菜单项
-    if (document.getElementById("post")) {
-      $("#menu-post").show();
-      $("#menu-other").show();
-    }
-    $("#menu-global").show();
-    var el = window.document.body;
-    el = event.target;
-    var a =
-      /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\*\+,;=.]+$/;
-    //如果是链接，则显示链接相关的菜单项
-    if (a.test(window.getSelection().toString())) {
-      $("#menu-too").show();
-    }
-    if (el.tagName == "A") {
-      $("#menu-to").show();
-      rmf.open = function () {
-        location.href = el.href;
-      };
-      rmf.openWithNewTab = function () {
-        window.open(el.href);
-        window.location.reload();
-      };
-      rmf.copyLink = function () {
-        let url = el.href;
-        let txa = document.createElement("textarea");
-        txa.value = url;
-        document.body.appendChild(txa);
-        txa.select();
-        document.execCommand("Copy");
-        document.body.removeChild(txa);
-        GLOBAL_CONFIG.Snackbar !== undefined &&
-          btf.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success);
-      };
-    }
-    //如果是图片
-    if (el.tagName == "IMG") {
-      $("#menu-img").show();
-      rmf.openWithNewTab = function () {
-        window.open(el.src);
-      };
-      rmf.downloadImage = function () {
-        el.click();
-      };
-      rmf.click = function () {
-        el.click();
-      };
-      rmf.copyLink = function () {
-        let url = el.src;
-        let txa = document.createElement("textarea");
-        txa.value = url;
-        document.body.appendChild(txa);
-        txa.select();
-        document.execCommand("Copy");
-        document.body.removeChild(txa);
-        GLOBAL_CONFIG.Snackbar !== undefined &&
-          btf.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success);
-      };
-    } else if (el.tagName == "TEXTAREA" || el.tagName == "INPUT") {
-      //如果是输入框/文本框
-      $("#menu-paste").show();
-      rmf.paste = function () {
-        navigator.permissions
-          .query({
-            name: "clipboard-read",
-          })
-          .then((result) => {
-            if (result.state == "granted" || result.state == "prompt") {
-              //读取剪贴板
-              navigator.clipboard.readText().then((text) => {
-                // console.log(text)
-                insertAtCursor(el, text);
-              });
-            } else {
-              alert("请允许读取剪贴板！");
-            }
-          });
-      };
-    }
-    let pageX = event.clientX + 10;
-    let pageY = event.clientY;
-    let rmWidth = $("#rightMenu").width();
-    let rmHeight = $("#rightMenu").height();
-    if (pageX + rmWidth > window.innerWidth) {
-      pageX -= rmWidth + 10;
-    }
-    if (pageY + rmHeight > window.innerHeight) {
-      pageY -= pageY + rmHeight - window.innerHeight;
-    }
-    //判断是否只有小菜单，如果是则显示通用菜单项
-    var isOnlySmall = true;
-    document.querySelectorAll(".rightMenu-line").forEach((item) => {
-      if ($(item).css("display") != "none") isOnlySmall = false;
-    });
-    if (isOnlySmall) $("#menu-general").show();
-    //如果是阅读模式，则隐藏所有菜单项
-    if (rmf.isReadMode)
-      document.querySelectorAll(".rightMenu-line").forEach((item) => {
-        $(item).hide();
-      });
-    rmf.showRightMenu(true, pageY, pageX);
-    return false;
-  };
-
-  window.addEventListener("click", function () {
-    rmf.showRightMenu(false);
-  });
+  bindRightMenu(true);
 }
 if (
   !navigator.userAgent.match(
@@ -307,6 +190,125 @@ if (
   )
 ) {
   popupMenu();
+}
+function bindRightMenu(enable) {
+  if (enable) {
+    window.oncontextmenu = function (event) {
+      //隐藏所有菜单项
+      document.querySelectorAll(".rightMenu-line").forEach((item) => {
+        $(item).hide();
+      });
+      //如果有文字选中，则显示文字选中相关的菜单项
+      if (document.getSelection().toString()) {
+        $("#menu-text").show();
+      }
+      //如果是文章，则显示文章相关的菜单项
+      if (document.getElementById("post")) {
+        $("#menu-post").show();
+        $("#menu-other").show();
+      }
+      $("#menu-global").show();
+      var el = window.document.body;
+      el = event.target;
+      var a =
+        /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\*\+,;=.]+$/;
+      //如果是链接，则显示链接相关的菜单项
+      if (el.tagName == "A") {
+        $("#menu-to").show();
+        rmf.open = function () {
+          location.href = el.href;
+        };
+        rmf.openWithNewTab = function () {
+          window.open(el.href);
+          // window.location.reload();
+        };
+        rmf.copyLink = function () {
+          let url = el.href;
+          let txa = document.createElement("textarea");
+          txa.value = url;
+          document.body.appendChild(txa);
+          txa.select();
+          document.execCommand("Copy");
+          document.body.removeChild(txa);
+          GLOBAL_CONFIG.Snackbar !== undefined &&
+            btf.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success);
+        };
+      }
+      //如果是图片
+      if (el.tagName == "IMG") {
+        $("#menu-img").show();
+        rmf.openWithNewTab = function () {
+          window.open(el.src);
+        };
+        rmf.downloadImage = function () {
+          el.click();
+        };
+        rmf.click = function () {
+          el.click();
+        };
+        rmf.copyLink = function () {
+          let url = el.src;
+          let txa = document.createElement("textarea");
+          txa.value = url;
+          document.body.appendChild(txa);
+          txa.select();
+          document.execCommand("Copy");
+          document.body.removeChild(txa);
+          GLOBAL_CONFIG.Snackbar !== undefined &&
+            btf.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success);
+        };
+      } else if (el.tagName == "TEXTAREA" || el.tagName == "INPUT") {
+        //如果是输入框/文本框
+        $("#menu-paste").show();
+        rmf.paste = function () {
+          navigator.permissions
+            .query({
+              name: "clipboard-read",
+            })
+            .then((result) => {
+              if (result.state == "granted" || result.state == "prompt") {
+                //读取剪贴板
+                navigator.clipboard.readText().then((text) => {
+                  insertAtCursor(el, text);
+                });
+              } else {
+                alert("请允许读取剪贴板！");
+              }
+            });
+        };
+      }
+      let pageX = event.clientX + 10;
+      let pageY = event.clientY;
+      let rmWidth = $("#rightMenu").width();
+      let rmHeight = $("#rightMenu").height();
+      if (pageX + rmWidth > window.innerWidth) {
+        pageX -= rmWidth + 10;
+      }
+      if (pageY + rmHeight > window.innerHeight) {
+        pageY -= pageY + rmHeight - window.innerHeight;
+      }
+      //判断是否只有小菜单，如果是则显示通用菜单项
+      var isOnlySmall = true;
+      document.querySelectorAll(".rightMenu-line").forEach((item) => {
+        if ($(item).css("display") != "none") isOnlySmall = false;
+      });
+      if (isOnlySmall) $("#menu-general").show();
+      //如果是阅读模式，则隐藏所有菜单项
+      if (rmf.isReadMode)
+        document.querySelectorAll(".rightMenu-line").forEach((item) => {
+          $(item).hide();
+        });
+      rmf.showRightMenu(true, pageY, pageX);
+      return false;
+    };
+    window.addEventListener("click", function () {
+      rmf.showRightMenu(false);
+    });
+  } else {
+    window.oncontextmenu = function () {
+      return true;
+    };
+  }
 }
 const box = document.documentElement;
 

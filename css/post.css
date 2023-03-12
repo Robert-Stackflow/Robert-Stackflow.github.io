@@ -92,7 +92,7 @@
   top: 0;
   color: white;
   padding: 0 15px;
-  background-color: #0099ff;
+  background-color: var(--theme-color);
   border-radius: 0 0 10px 10px;
 }
 [data-theme="dark"] .newPost-left,
@@ -134,7 +134,7 @@
 
 #article-container .tag-Link:hover {
   text-decoration: none !important;
-  background: #0099ff;
+  background: var(--theme-color);
   color: #fff !important;
 }
 #article-container .tag-Link:hover .tag-link-tips,

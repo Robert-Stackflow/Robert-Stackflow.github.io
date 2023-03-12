@@ -61,7 +61,7 @@
   background: rgba(144, 147, 153, 0.1) !important;
 }
 .twikoo .el-button:not(.el-button--primary):not(.el-button--text):hover {
-  background: #0099ff !important;
+  background: var(--theme-color)!important;
   color: #fff !important;
 }
 div.tk-main > div.tk-content p {
