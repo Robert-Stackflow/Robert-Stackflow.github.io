@@ -1,7 +1,7 @@
 AV.init({
-  appId: "fffJo68x4OzaTPt2xt9Ir0Ak-gzGzoHsz",
-  appKey: "AXzwa52w3PfcFQ9m6DAURKJq",
-  serverURL: "https://fffjo68x.lc-cn-n1-shared.com",
+  appId: "47fZKZYL4YiJGanqaTbHWm3t-MdYXbMMI",
+  appKey: "hqwFDMDw5xIddqtuQHY58tqc",
+  serverURL: "https://47fzkzyl.api.lncldglobal.com",
 });
 function lunbo() {
   var speaks = [];

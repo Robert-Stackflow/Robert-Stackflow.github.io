@@ -11,13 +11,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.rightMenu-item .iconfont::before {
-  font-size: 20px !important;
-}
-.iconfont::before {
-  font-size: 23px !important;
-}
-
 .icon-danmu:before {
   content: "\e612";
 }
@@ -561,10 +554,6 @@ div.fj-gallery > p > div > a > img {
 }
 #rightside-button-list > button.checked {
   background: #46c868 !important;
-}
-.con-rightside.checked {
-  background: var(--theme-color) !important;
-  color: white !important;
 }
 #card-toc {
   box-shadow: var(--card-box-shadow) !important;

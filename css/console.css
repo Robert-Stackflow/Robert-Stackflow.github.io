@@ -200,9 +200,25 @@
 #setting-sides {
   white-space: nowrap;
 }
+.rightMenu-item .iconfont::before {
+  font-size: 20px !important;
+}
+.iconfont::before {
+  font-size: 23px !important;
+}
+.con-rightside.checked {
+  background: var(--theme-color) !important;
+  color: white !important;
+}
+setting-sides{
+  margin-top: -5px !important;
+}
 @media screen and (max-width: 600px) {
   .con-rightside i::before {
-    font-size: 16px;
+    font-size: 16px !important;
+  }
+  .con-rightside .iconfont::before {
+    font-size: 17px !important;
   }
   .con-rightside {
     height: 20px !important;
@@ -210,6 +226,15 @@
   }
   #setting-sides {
     white-space: break-spaces !important;
+  }
+  .con-rightside:hover {
+    background: none !important;
+    box-shadow: none;
+    color: var(--theme-color) !important;
+  }
+  .con-rightside.checked {
+    background: none !important;
+    color: var(--theme-color) !important;
   }
 }
 #setting-sidesl {
