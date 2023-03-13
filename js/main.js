@@ -375,37 +375,49 @@ document.addEventListener("DOMContentLoaded", function () {
         const currentTop = window.scrollY || document.documentElement.scrollTop;
         const isDown = scrollDirection(currentTop);
         if (currentTop > 56) {
-          if (isDown) {
-            if ($header.classList.contains("nav-visible"))
-              $header.classList.remove("nav-visible");
-            if (isChatBtnShow && isChatShow === true) {
-              chatBtnHide();
-              isChatShow = false;
+          $header.classList.remove("nav-top");
+          if (localStorage.getItem("fixedNav") == "0") {
+            if (isDown) {
+              if ($header.classList.contains("nav-visible"))
+                $header.classList.remove("nav-visible");
+              if (isChatBtnShow && isChatShow === true) {
+                chatBtnHide();
+                isChatShow = false;
+              }
+            } else {
+              if (!$header.classList.contains("nav-visible"))
+                $header.classList.add("nav-visible");
+              if (isChatBtnHide && isChatShow === false) {
+                chatBtnShow();
+                isChatShow = true;
+              }
             }
-          } else {
-            if (!$header.classList.contains("nav-visible"))
-              $header.classList.add("nav-visible");
-            if (isChatBtnHide && isChatShow === false) {
-              chatBtnShow();
-              isChatShow = true;
-            }
+            $header.classList.add("nav-fixed");
           }
-          $header.classList.add("nav-fixed");
           if (
             window.getComputedStyle($rightside).getPropertyValue("opacity") ===
-            "0"
+              "0" &&
+            localStorage.getItem("hideAside") == "0"
           ) {
             $rightside.style.cssText =
               "opacity: 0.8; transform: translateX(-60px)";
           }
         } else {
           if (currentTop === 0) {
-            $header.classList.remove("nav-fixed", "nav-visible");
+            if (localStorage.getItem("fixedNav") == "0") {
+              $header.classList.remove("nav-fixed", "nav-visible");
+            }
+            $header.classList.add("nav-top");
           }
-          $rightside.style.cssText = "opacity: ''; transform: ''";
+          if (localStorage.getItem("hideAside") == "0") {
+            $rightside.style.cssText = "opacity: ''; transform: ''";
+          }
         }
 
-        if (document.body.scrollHeight <= innerHeight) {
+        if (
+          document.body.scrollHeight <= innerHeight &&
+          localStorage.getItem("hideAside") == "0"
+        ) {
           $rightside.style.cssText =
             "opacity: 0.8; transform: translateX(-60px)";
         }
@@ -971,7 +983,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (rmf.day_night_count + initDay == 20)
         GLOBAL_CONFIG.Snackbar !== undefined &&
           btf.snackbarShowLong(
-            "交替·新生:月徊而霜凝兮，良人伴我侧；月斜而影绰兮，明Cloudchewie照我心"
+            "交替·新生:月徊而霜凝兮，良人伴我侧；月斜而影绰兮，明镜照我心"
           ),
           rmf.day_night_count++;
       if (rmf.day_night_count + initDay == 60)

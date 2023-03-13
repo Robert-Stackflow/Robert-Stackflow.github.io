@@ -1494,7 +1494,7 @@ a {
   overflow-wrap: break-word;
 }
 a:hover {
-  color: #09f;
+  color: var(--theme-color);
 }
 .is-center {
   text-align: center;
@@ -1791,7 +1791,7 @@ figure.highlight pre .javascript .function {
   transition: color 0.2s;
 }
 #article-container .highlight-tools .copy-button:hover {
-  color: #09f;
+  color: var(--theme-color);
 }
 #article-container .gutter {
   -webkit-user-select: none;
@@ -1911,7 +1911,7 @@ figure.highlight pre .javascript .function {
   }
 }
 .error404 #error-wrap .error-content .error-img img {
-  background-color: #09f;
+  background-color: var(--theme-color);
 }
 .error404 #error-wrap .error-content .error-info {
   display: -webkit-inline-box;
@@ -2782,8 +2782,8 @@ h1.page-title + .tag-cloud-list {
 }
 @media screen and (min-width: 900px) {
   #aside-content .sticky_layout {
-    position: sticky;
-    position: -webkit-sticky;
+    position: sticky !important;
+    position: -webkit-sticky !important;
     top: 20px;
     -webkit-transition: top 0.3s;
     -moz-transition: top 0.3s;
@@ -2859,10 +2859,16 @@ h1.page-title + .tag-cloud-list {
   font-size: 95%;
   line-height: 1.5;
   -webkit-line-clamp: 2;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
 }
 #aside-content .aside-list > .aside-list-item .content > .title:hover,
 #aside-content .aside-list > .aside-list-item .content > .comment:hover {
-  color: #09f;
+  color: var(--theme-color);
+  font-weight: bold;
 }
 #aside-content .aside-list > .aside-list-item.no-cover {
   min-height: 4.4em;
@@ -3057,11 +3063,10 @@ h1.page-title + .tag-cloud-list {
   transition: all 0.2s ease-in-out;
 }
 #aside-content #card-toc .toc-content .toc-link:hover {
-  color: #09f;
+  color: var(--theme-color);
 }
 #aside-content #card-toc .toc-content .toc-link.active {
-  background: #00c4b6;
-  color: #fff;
+  color: var(--theme-color);
 }
 #aside-content :only-child > .card-widget {
   margin-top: 0;
@@ -3113,7 +3118,7 @@ h1.page-title + .tag-cloud-list {
   transition: all 0.3s;
 }
 .site-data > a:hover div {
-  color: #09f !important;
+  color: var(--theme-color) !important;
 }
 .site-data > a .headline {
   color: var(--font-color);
@@ -4619,9 +4624,9 @@ h2.f4.text-normal.mb-3 {
   margin: 8px 8px 8px 0;
   padding: 0 12px;
   width: fit-content;
-  border: 1px solid #09f;
+  border: 1px solid var(--theme-color);
   border-radius: 12px;
-  color: #09f;
+  color: var(--theme-color);
   font-size: 0.85em;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
@@ -4630,7 +4635,7 @@ h2.f4.text-normal.mb-3 {
   transition: all 0.2s ease-in-out;
 }
 #post .tag_share .post-meta__tags:hover {
-  background: #09f;
+  background: var(--theme-color);
   color: var(--white);
 }
 #post .tag_share .post_share {
@@ -4664,12 +4669,12 @@ h2.f4.text-normal.mb-3 {
   position: absolute;
   top: 2px;
   right: 12px;
-  color: #09f;
+  color: var(theme-color);
   content: '\f1f9';
   font-size: 1.3em;
 }
 #post .post-copyright .post-copyright-meta {
-  color: #09f;
+  color: var(light-blue);
   font-weight: bold;
 }
 #post .post-copyright .post-copyright-info {
@@ -7900,13 +7905,14 @@ blockquote.pullquote.right {
   border-radius: 10px;
 }
 #aside-content #card-toc .toc-content .toc-link:hover {
-  background: var(--km-toc-hover);
-  color: var(--font-color);
+  font-weight: bold;
+  color: var(--theme-color);
 }
 #aside-content #card-toc .toc-content .toc-link.active {
-  color: var(--km-toc-active-font);
+  font-size: 16px !important;
+  font-weight: bolder;
+  color: var(--theme-color);
   border-radius: 10px;
-  background: var(--km-toc-active);
 }
 #aside-content #card-toc .item-headline .toc-percentage {
   display: none;
@@ -8391,7 +8397,7 @@ blockquote.pullquote.right {
   --km-button-font: #fff;
   --km-button-shadow: rgba(56,56,56,0.2);
   --km-toc-active: rgba(226,203,255,0.6);
-  --km-toc-active-font: #000;
+  --km-toc-active-font: #fff;
   --km-toc-hover: rgba(226,203,255,0.4);
   --km-card-bg: rgba(102,204,255,0.204);
   --km-general-shadow: #546e7a;

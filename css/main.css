@@ -83,6 +83,13 @@
 .nav-fixed #nav .site-page:hover {
   color: #fff !important;
 }
+.nav-fixed.nav-top #nav {
+  background: none !important;
+  background-color: transparent !important;
+}
+.nav-fixed.nav-top #nav a {
+  color: #fff !important;
+}
 .search-dialog {
   background: var(--card-bg);
   border: var(--card-border);
@@ -142,6 +149,9 @@
 .swiper-button-prev:after {
   color: var(--theme-color) !important;
 }
+.snackbar {
+  background-color: var(--theme-color);
+}
 .snackbar-container {
   font-family: LXGW WenKai;
   text-align: center;
@@ -157,11 +167,25 @@
   color: #fff !important;
 }
 /* 导航栏居中 */
-#nav .menus_items {
-  position: absolute;
+/* #nav .menus_items {
   width: fit-content;
   left: 50%;
   transform: translateX(-50%);
+} */
+#page-header #nav #nav-group {
+  width: 100%;
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+#menus {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  margin: 0;
+  -webkit-user-select: none;
 }
 /* 站名悬浮*/
 #site-name::before {
@@ -178,10 +202,14 @@
   -ms-transition: 0.3s;
   -o-transition: 0.3s;
   position: absolute;
-  top: 0 !important;
-  right: 0 !important;
   width: 100%;
-  height: 100%;
+  height: fit-content;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  justify-items: center;
+  justify-self: center;
+  justify-content: center;
   content: "\f015";
   font-family: "Font Awesome 6 Free";
   text-align: center;
@@ -193,9 +221,25 @@
   opacity: 1;
   scale: 1.03;
 }
+#blog-name {
+  display: flex;
+  z-index: 102;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: fit-content;
+}
 #site-name {
   position: relative;
   font-size: 24px;
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  justify-items: center;
+  justify-self: center;
+  justify-content: center;
+  z-index: 101;
 }
 /* 固定顶栏 */
 /* .nav-fixed #nav{
@@ -230,6 +274,12 @@
   -moz-border-radius: 6px !important;
   -ms-border-radius: 6px !important;
   -o-border-radius: 6px !important;
+}
+.nav-fixed.nav-top #nav .menus_items .menus_item .menus_item_child li a {
+  color: var(--font-color) !important;
+}
+.nav-fixed.nav-top #nav .menus_items .menus_item .menus_item_child li:hover a {
+  color: #fff !important;
 }
 [data-theme="light"] .menus_item_child {
   box-shadow: var(--card-box-shadow);
@@ -574,3 +624,12 @@ div.fj-gallery > p > div > a > img {
   backdrop-filter: blur(10px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
 } */
+body {
+  overflow: visible !important;
+}
+#article-container a:has(img):hover {
+  text-decoration: none;
+  border-radius: 5px;
+  background: none !important;
+  color: #fff;
+}

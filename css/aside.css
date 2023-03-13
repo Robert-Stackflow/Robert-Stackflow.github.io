@@ -33,20 +33,19 @@
 .error-back-button:hover {
   text-decoration: none;
   color: #fff;
-  background-color: #24b1ff;
+  background: var(--btn-hover-color);
 }
 [data-theme="light"] .cal_week {
   background: transparent;
 }
 [data-theme="light"] #rightside > div > button,
 [data-theme="light"] #rightside > div > a {
-  background: var(--theme-color);
   backdrop-filter: blur(50px);
   cursor: pointer !important;
 }
 [data-theme="light"] #rightside > div > button:hover,
 [data-theme="light"] #rightside > div > a:hover {
-  background: #24b1ff;
+  background: var(--btn-hover-color);
   cursor: pointer !important;
 }
 [data-theme="dark"] #rightside > div > button,

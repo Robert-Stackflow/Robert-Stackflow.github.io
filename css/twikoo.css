@@ -61,7 +61,7 @@
   background: rgba(144, 147, 153, 0.1) !important;
 }
 .twikoo .el-button:not(.el-button--primary):not(.el-button--text):hover {
-  background: var(--theme-color)!important;
+  background: var(--theme-color) !important;
   color: #fff !important;
 }
 div.tk-main > div.tk-content p {
@@ -169,4 +169,14 @@ div.tk-submit > div.tk-row.actions > a {
 /* 隐藏logo */
 #twikoo > div.tk-footer {
   visibility: visible;
+}
+.tk-action-icon,
+.tk-icon.__comments {
+  color: var(--theme-color) !important;
+}
+.tk-action-count {
+  color: var(--theme-color) !important;
+}
+.tk-pagination-pager{
+  border-radius: 8px;
 }

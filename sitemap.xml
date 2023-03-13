@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://cloudchewie.com/music/index.html</loc>
+    
+    <lastmod>2023-03-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://cloudchewie.com/about/index.html</loc>
     
     <lastmod>2023-03-13</lastmod>
@@ -95,15 +104,6 @@
     <loc>https://cloudchewie.com/term/index.html</loc>
     
     <lastmod>2023-03-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudchewie.com/music/index.html</loc>
-    
-    <lastmod>2023-03-10</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
