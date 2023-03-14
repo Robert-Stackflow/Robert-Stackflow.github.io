@@ -100,9 +100,9 @@ function initCommentBarrage() {
     }
   }, commentBarrageConfig.barrageTime);
   document.addEventListener("DOMContentLoaded", function () {
-    if (document.querySelector("#switch_commentBarrage") != null)
+    if (document.querySelector("#con-barrage") != null)
       document
-        .querySelector("#switch_commentBarrage")
+        .querySelector("#con-barrage")
         .addEventListener("click", switchCommentBarrage);
   });
   document.addEventListener("scroll", function () {
@@ -112,7 +112,6 @@ function initCommentBarrage() {
       if (commentBarrage) {
         $(commentBarrage).hide();
       }
-      $("#switch_commentBarrage").hide();
       $("#con-barrage").hide();
     } else {
       if (Number(localStorage.getItem("isBarrageToggle")) == 0) {
@@ -122,17 +121,17 @@ function initCommentBarrage() {
           $(commentBarrage).show();
         }
       }
-      $("#switch_commentBarrage").show();
       $("#con-barrage").show();
     }
   });
   if (commentBarrageConfig.displayBarrage) {
-    $("#switch_commentBarrage").addClass("checked");
     $("#con-barrage").addClass("checked");
   } else {
-    $("#switch_commentBarrage").removeClass("checked");
     $("#con-barrage").removeClass("checked");
   }
+  setInterval(function(){
+    $(".comment-barrage pangu").remove();
+  },10);
 }
 function commentLinkFilter(data) {
   data.sort((a, b) => {
@@ -239,12 +238,11 @@ switchCommentBarrage = function () {
     $(commentBarrage).fadeToggle();
   }
   if (commentBarrageConfig.displayBarrage) {
-    $("#switch_commentBarrage").addClass("checked");
     $("#con-barrage").addClass("checked");
   } else {
-    $("#switch_commentBarrage").removeClass("checked");
     $("#con-barrage").removeClass("checked");
   }
+  console.log("open:"+commentBarrageConfig.displayBarrage);
   // }
 };
 $(".comment-barrage").hover(
@@ -276,7 +274,6 @@ $(".comment-barrage").hover(
 if (localStorage.getItem("isBarrageToggle") == undefined) {
   localStorage.setItem("isBarrageToggle", "0");
 } else if (localStorage.getItem("isBarrageToggle") == "1") {
-  localStorage.setItem("isBarrageToggle", "0");
   switchCommentBarrage();
 }
 initCommentBarrage();

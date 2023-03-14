@@ -119,9 +119,11 @@
   border-width: 1px !important;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  color: #000;
+  color: var(--font-color);
 }
-
+[data-theme="dark"] #article-container .tag-Link{
+  color: var(--font-color);
+}
 [data-theme="light"] #article-container .tag-Link {
   background: var(--heo-secondbg);
   border: var(--style-border);
@@ -157,13 +159,12 @@
 }
 
 #article-container .tag-Link .tag-link-tips {
-  border-bottom: var(--style-border);
+  border-bottom: 1px dashed #4259ef23;
   padding-bottom: 4px;
   font-size: 0.6rem;
   font-weight: normal;
   text-decoration: none !important;
 }
-
 #article-container .tag-Link .tag-link-tips {
   color: #999999;
 }

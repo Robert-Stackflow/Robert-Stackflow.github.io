@@ -65,14 +65,14 @@
 [data-theme="light"] .nav-fixed #nav {
   background: rgba(255, 255, 255, 0.8) !important;
   backdrop-filter: blur(50px);
-  color: black !important;
+  color: var(--font-color) !important;
 }
 [data-theme="dark"] .nav-fixed #nav {
   background: rgba(0, 0, 0, 0.8) !important;
   backdrop-filter: blur(50px);
 }
 [data-theme="light"] .nav-fixed #nav a {
-  color: black !important;
+  color: var(--font-color) !important;
 }
 [data-theme="dark"] #pagination > div > a.page-number {
   color: var(--btn-color) !important;
@@ -88,6 +88,15 @@
   background-color: transparent !important;
 }
 .nav-fixed.nav-top #nav a {
+  color: #fff !important;
+}
+.nav-fixed.nav-top #nav a {
+  color: #fff !important;
+}
+[data-theme="light"] .not-top-img.nav-fixed.nav-top #nav a {
+  color: var(--font-color) !important;
+}
+[data-theme="light"] .not-top-img.nav-fixed.nav-top #nav a:hover {
   color: #fff !important;
 }
 .search-dialog {
