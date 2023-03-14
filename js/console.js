@@ -41,6 +41,11 @@ function tosetting() {
       saveData("blogbg", s);
     }
   };
+  changeAPlayerList = function (s) {
+    $("#aplayer").attr("data-id", s);
+    $("#aplayer").removeClass("no-reload");
+    loadMeting();
+  };
   toggleStarBg = function () {
     if (localStorage.getItem("starBg") == "1") {
       localStorage.setItem("starBg", "0");
@@ -132,6 +137,7 @@ function tosetting() {
     if (localStorage.getItem("fixedNav") == "0") {
       localStorage.setItem("fixedNav", "1");
       $("#page-header").addClass("nav-fixed nav-visible");
+      $("#name-container").show();
     } else {
       localStorage.setItem("fixedNav", "0");
       $("#page-header").removeClass("nav-fixed nav-visible");
@@ -165,12 +171,18 @@ function tosetting() {
   toggleAPlayer = () => {
     if (localStorage.getItem("aplayer") == "1") {
       localStorage.setItem("aplayer", "0");
-      $("div.aplayer.no-destroy.no-reload.aplayer-withlist").remove();
+      $(".aplayer").hide();
+      if (window.aplayers) {
+        for (let i = 0; i < window.aplayers.length; i++)
+          window.aplayers[i].pause();
+      }
+      // $("div.aplayer.no-destroy.no-reload.aplayer-withlist").remove();
     } else {
       localStorage.setItem("aplayer", "1");
+      $(".aplayer").show();
     }
   };
-  {
+  loadSetting = () => {
     $("#settingWindow").hide();
     //取消模糊效果
     document.getElementById("settingStyle").innerText = `
@@ -193,6 +205,7 @@ function tosetting() {
       $("#page-header").removeClass("nav-fixed nav-visible");
       $("#name-container").hide();
     } else {
+      $("#name-container").show();
       document.getElementById("fixedNav").checked = true;
       $("#page-header").addClass("nav-fixed nav-visible");
     }
@@ -212,11 +225,15 @@ function tosetting() {
       localStorage.setItem("aplayer", "1");
     }
     if (localStorage.getItem("aplayer") == "1") {
-      $("div.aplayer.no-destroy.no-reload.aplayer-withlist").show();
+      $(".aplayer").show();
       document.getElementById("toggleAPlayer").checked = true;
     } else {
       document.getElementById("toggleAPlayer").checked = false;
-      $("div.aplayer.no-destroy.no-reload.aplayer-withlist").remove();
+      $(".aplayer").hide();
+      if (window.aplayers) {
+        for (let i = 0; i < window.aplayers.length; i++)
+          window.aplayers[i].pause();
+      }
     }
     //加载是否显示右侧边栏
     if (localStorage.getItem("hideAside") == undefined) {
@@ -275,7 +292,8 @@ function tosetting() {
       $("#universe").hide();
       document.getElementById("starBg").checked = false;
     }
-  }
+  };
+  loadSetting();
 }
 function changeAutoColor(first) {
   if (

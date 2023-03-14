@@ -374,8 +374,12 @@ document.addEventListener("DOMContentLoaded", function () {
       return btf.throttle(function (e) {
         const currentTop = window.scrollY || document.documentElement.scrollTop;
         const isDown = scrollDirection(currentTop);
-        if (currentTop > 56) {
+        if (currentTop < 10) {
+          $header.classList.add("nav-top");
+        } else {
           $header.classList.remove("nav-top");
+        }
+        if (currentTop > 56) {
           if (localStorage.getItem("fixedNav") == "0") {
             if (isDown) {
               if ($header.classList.contains("nav-visible"))
@@ -407,7 +411,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (localStorage.getItem("fixedNav") == "0") {
               $header.classList.remove("nav-fixed", "nav-visible");
             }
-            $header.classList.add("nav-top");
           }
           if (localStorage.getItem("hideAside") == "0") {
             $rightside.style.cssText = "opacity: ''; transform: ''";
@@ -592,7 +595,9 @@ document.addEventListener("DOMContentLoaded", function () {
       $(document.getElementById("post-meta")).hide();
       rmf.isReadMode = true;
       $("#con-readmode").addClass("checked");
-      let commentBarrage = document.querySelector(".comment-barrage");
+      $(".aplayer").hide();
+
+      let commentBarrage = document.querySelector(".barrageswiper");
       let visible = $(commentBarrage).css("display");
       if (commentBarrage && !(visible == null || visible == "none")) {
         $(commentBarrage).fadeToggle();
@@ -603,6 +608,7 @@ document.addEventListener("DOMContentLoaded", function () {
         newEle.remove();
         newEle.removeEventListener("click", clickFn);
         rmf.isReadMode = false;
+        $(".aplayer").show();
         $("#con-readmode").removeClass("checked");
         $(document.getElementById("post-meta")).show();
         if (visible != "none") {
@@ -677,31 +683,35 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   };
 
-  document.getElementById("rightside").addEventListener("click", function (e) {
-    const $target = e.target.id ? e.target : e.target.parentNode;
-    switch ($target.id) {
-      case "go-up":
-        rightSideFn.scrollToTop();
-        break;
-      case "rightside_config":
-        rightSideFn.showOrHideBtn($target);
-        break;
-      case "mobile-toc-button":
-        rightSideFn.runMobileToc();
-        break;
-      case "readmode":
-        rightSideFn.switchReadMode();
-        break;
-      case "darkmode":
-        rightSideFn.switchDarkMode();
-        break;
-      case "hide-aside-btn":
-        rightSideFn.hideAsideBtn();
-        break;
-      default:
-        break;
-    }
-  });
+  bindRightMenuClickListener = () => {
+    document
+      .getElementById("rightside")
+      .addEventListener("click", function (e) {
+        const $target = e.target.id ? e.target : e.target.parentNode;
+        switch ($target.id) {
+          case "go-up":
+            rightSideFn.scrollToTop();
+            break;
+          case "rightside_config":
+            rightSideFn.showOrHideBtn($target);
+            break;
+          case "mobile-toc-button":
+            rightSideFn.runMobileToc();
+            break;
+          case "readmode":
+            rightSideFn.switchReadMode();
+            break;
+          case "darkmode":
+            rightSideFn.switchDarkMode();
+            break;
+          case "hide-aside-btn":
+            rightSideFn.hideAsideBtn();
+            break;
+          default:
+            break;
+        }
+      });
+  };
 
   /**
    * menu
@@ -1058,6 +1068,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 300);
     }
     scrollFnToDo();
+    bindRightMenuClickListener();
     GLOBAL_CONFIG_SITE.isHome && scrollDownInIndex();
     addHighlightTool();
     GLOBAL_CONFIG.isPhotoFigcaption && addPhotoFigcaption();

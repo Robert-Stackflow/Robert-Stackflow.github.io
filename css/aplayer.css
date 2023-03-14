@@ -12,7 +12,8 @@
   font-size: 13px !important;
 }
 @media screen and (max-width: 768px) {
-  .aplayer.aplayer-fixed .aplayer-lrc {
+  .aplayer.aplayer-fixed .aplayer-lrc,
+  .aplayer-icon.aplayer-icon-lrc {
     display: none !important;
   }
 }
@@ -191,4 +192,7 @@
   .aplayer.aplayer-fixed .aplayer-list {
     margin-bottom: 115px !important;
   }
+}
+.aplayer .aplayer-list ol li:first-child{
+  border-top: none !important;
 }

@@ -187,7 +187,8 @@
   position: relative;
   align-items: center;
 }
-#menus {
+#menus,
+#name-container {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -349,8 +350,13 @@
   margin-left: auto;
   margin-right: auto;
 }
-#pagination > div > a.extend.prev {
+#pagination > div > a.extend.prev,
+#textbtn {
   color: var(--font-color);
+}
+#pagination > div > a.extend.prev:hover,
+#textbtn:hover {
+  color: #fff;
 }
 .gc {
   margin-right: 10px !important;
@@ -641,4 +647,14 @@ body {
   border-radius: 5px;
   background: none !important;
   color: #fff;
+}
+#textbtn {
+  cursor: pointer;
+}
+#textnumer {
+  outline: none;
+  text-align: center;
+}
+input:focus-visible {
+  border: none !important;
 }

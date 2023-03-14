@@ -4536,6 +4536,9 @@ h2.f4.text-normal.mb-3 {
   height: 2.5em;
   line-height: 2.5em;
 }
+.layout > .recent-posts .pagination > *:not(.space) {
+  border: none !important;
+}
 .layout > .recent-posts .pagination > *:not(.space):hover {
   background: var(--btn-hover-color);
   color: var(--btn-color);

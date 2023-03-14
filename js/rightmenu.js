@@ -127,7 +127,8 @@ rmf.switchReadMode = function () {
   $(document.getElementById("post-meta")).hide();
   rmf.isReadMode = true;
   $("#con-readmode").addClass("checked");
-  let commentBarrage = document.querySelector(".comment-barrage");
+  $(".aplayer").hide();
+  let commentBarrage = document.querySelector(".barrageswiper");
   let visible = commentBarrage.getAttribute("display");
   if (commentBarrage && !(visible == null || visible == "none")) {
     $(commentBarrage).fadeToggle();
@@ -138,6 +139,7 @@ rmf.switchReadMode = function () {
     document.getElementById("post").classList.remove("read-mode");
     newEle.remove();
     newEle.removeEventListener("click", clickFn);
+    $(".aplayer").show();
     rmf.isReadMode = false;
     $("#con-readmode").removeClass("checked");
     $(document.getElementById("post-meta")).show();
@@ -192,7 +194,7 @@ if (
   popupMenu();
 }
 function bindRightMenu(enable) {
-  if (enable) {
+  if (enable && document.body.clientWidth > 400) {
     window.oncontextmenu = function (event) {
       //隐藏所有菜单项
       document.querySelectorAll(".rightMenu-line").forEach((item) => {
