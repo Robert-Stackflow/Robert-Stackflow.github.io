@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>【魔改】导入自定义歌单</title>
+      <link href="/2023/03/15/%E3%80%90%E9%AD%94%E6%94%B9%E3%80%91%E5%AF%BC%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AD%8C%E5%8D%95/"/>
+      <url>/2023/03/15/%E3%80%90%E9%AD%94%E6%94%B9%E3%80%91%E5%AF%BC%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AD%8C%E5%8D%95/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="复制歌单链接"><a href="#复制歌单链接" class="headerlink" title="复制歌单链接"></a>复制歌单链接</h3><div class="tabs" id="歌单"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#歌单-1">网易云音乐</button></li><li class="tab"><button type="button" data-href="#歌单-2">QQ音乐</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="歌单-1"><ul><li><p>进入网易云音乐Web端：<a href="https://music.163.com/#">网易云音乐</a></p></li><li><p>选择某个歌单页面</p></li><li><p>复制歌单链接，格式类似：<code>https://music.163.com/#/playlist?id=7366289244</code></p><img src="网易云示例.png" style="zoom: 45%;" /></li></ul><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="歌单-2"><ul><li><p>进入QQ音乐Web端：<a href="https://y.qq.com/">QQ音乐</a></p></li><li><p>选择某个歌单页面</p></li><li><p>复制歌单链接，格式类似：<code>https://y.qq.com/n/ryqq/playlist/8511953444</code></p><img src="QQ音乐示例.png" style="zoom: 45%;" /></li></ul><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div><h3 id="导入歌单"><a href="#导入歌单" class="headerlink" title="导入歌单"></a>导入歌单</h3><ul><li><p>进入控制台-APlayer菜单-自定义歌单</p></li><li><p>粘贴复制的歌单链接到输入框中</p></li><li><p>点击解析按钮解析</p></li><li><p>解析成功后关闭控制台即可在APlayer播放列表中查看导入的歌曲列表</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 魔改 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【笔记】数据库系统概论笔记(一)</title>
       <link href="/2023/02/22/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%94%E8%AE%B0(%E4%B8%80)/"/>
       <url>/2023/02/22/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%94%E8%AE%B0(%E4%B8%80)/</url>

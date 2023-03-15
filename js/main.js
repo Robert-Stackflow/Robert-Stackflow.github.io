@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (Number(saveToLocal.get("translate-chn-cht")) == 1) {
       $("#con-translate > i").attr("class", "iconfont icon-jianti");
     }
-    if (saveToLocal.get("aside-status") == "hide")
+    if (saveToLocal.get("enableAside") == "hide")
       $("#con-toggleaside").addClass("checked");
     else $("#con-toggleaside").removeClass("checked");
   };
@@ -380,7 +380,7 @@ document.addEventListener("DOMContentLoaded", function () {
           $header.classList.remove("nav-top");
         }
         if (currentTop > 56) {
-          if (localStorage.getItem("fixedNav") == "0") {
+          if (btf.loadData("enableFixedNav") == "false") {
             if (isDown) {
               if ($header.classList.contains("nav-visible"))
                 $header.classList.remove("nav-visible");
@@ -401,25 +401,25 @@ document.addEventListener("DOMContentLoaded", function () {
           if (
             window.getComputedStyle($rightside).getPropertyValue("opacity") ===
               "0" &&
-            localStorage.getItem("hideAside") == "0"
+            btf.loadData("enableRightSide") == "true"
           ) {
             $rightside.style.cssText =
               "opacity: 0.8; transform: translateX(-60px)";
           }
         } else {
           if (currentTop === 0) {
-            if (localStorage.getItem("fixedNav") == "0") {
+            if (btf.loadData("enableFixedNav") == "false") {
               $header.classList.remove("nav-fixed", "nav-visible");
             }
           }
-          if (localStorage.getItem("hideAside") == "0") {
+          if (btf.loadData("enableRightSide") == "true") {
             $rightside.style.cssText = "opacity: ''; transform: ''";
           }
         }
 
         if (
           document.body.scrollHeight <= innerHeight &&
-          localStorage.getItem("hideAside") == "0"
+          btf.loadData("enableRightSide") == "true"
         ) {
           $rightside.style.cssText =
             "opacity: 0.8; transform: translateX(-60px)";
@@ -659,10 +659,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // Hide aside
         const $htmlDom = document.documentElement.classList;
         $htmlDom.contains("hide-aside")
-          ? saveToLocal.set("aside-status", "show", 2)
-          : saveToLocal.set("aside-status", "hide", 2);
+          ? saveToLocal.set("enableAside", "show", 2)
+          : saveToLocal.set("enableAside", "hide", 2);
         $htmlDom.toggle("hide-aside");
-        if (saveToLocal.get("aside-status") == "hide")
+        if (saveToLocal.get("enableAside") == "hide")
           $("#con-toggleaside").addClass("checked");
         else $("#con-toggleaside").removeClass("checked");
       }
@@ -1087,21 +1087,25 @@ document.addEventListener("DOMContentLoaded", function () {
       sidebarFn.open();
     });
     if (isHome()) {
+      btf.goToPage();
       $("#hide-aside-btn").hide();
       const $htmlDom = document.documentElement.classList;
       $htmlDom.contains("hide-aside")
-        ? saveToLocal.set("aside-status", "show", 2)
-        : saveToLocal.set("aside-status", "show", 2);
+        ? saveToLocal.set("enableAside", "show", 2)
+        : saveToLocal.set("enableAside", "show", 2);
     }
   };
 
+  $(
+    "#aside-content > div.card-widget.card-info > div.card-info-social-icons.is-center > a:nth-child(1)"
+  ).attr("target", "");
   refreshFn();
   unRefreshFn();
   if (isHome()) {
     $("#hide-aside-btn").hide();
     const $htmlDom = document.documentElement.classList;
     if ($htmlDom.contains("hide-aside")) {
-      saveToLocal.set("aside-status", "show", 2);
+      saveToLocal.set("enableAside", "show", 2);
       $htmlDom.toggle("hide-aside");
     }
   }
@@ -1119,13 +1123,15 @@ document.addEventListener("DOMContentLoaded", function () {
         ) - document.documentElement.clientHeight, // 整个网页高度
       result = Math.round((a / b) * 100), // 计算百分比
       up = document.querySelector("#go-up"); // 获取按钮
-    if (result <= 95) {
-      up.childNodes[0].style.display = "none";
-      up.childNodes[1].style.display = "block";
-      up.childNodes[1].childNodes[0].innerHTML = result;
-    } else {
-      up.childNodes[1].style.display = "none";
-      up.childNodes[0].style.display = "block";
+    if (up != null) {
+      if (result <= 95) {
+        up.childNodes[0].style.display = "none";
+        up.childNodes[1].style.display = "block";
+        up.childNodes[1].childNodes[0].innerHTML = result;
+      } else {
+        up.childNodes[1].style.display = "none";
+        up.childNodes[0].style.display = "block";
+      }
     }
   }
 });

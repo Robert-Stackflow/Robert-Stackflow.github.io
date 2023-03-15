@@ -38,7 +38,7 @@ var aplayers = []
             try {
                 aplayers[e].destroy()
             } catch (a) {
-                console.log(a)
+                // console.log(a)
             }
     aplayers = [];
     for (var r = document.querySelectorAll(".aplayer"), s = 0; s < r.length; s++) {

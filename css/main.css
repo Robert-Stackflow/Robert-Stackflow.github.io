@@ -436,7 +436,10 @@
   box-shadow: var(--card-box-shadow);
   background: var(--card-bg) !important;
 }
-
+.gc:hover,
+.fl:hover {
+  box-shadow: var(--card-hover-box-shadow);
+}
 li.categoryBar-list-item {
   height: 115px !important;
   padding-top: 10px !important;
@@ -465,9 +468,6 @@ li.categoryBar-list-item {
   > a {
   border-radius: 3px !important;
 }
-.layout {
-  max-width: 1450px !important;
-}
 @media screen and (max-width: 500px) {
   #site-name {
     font-size: 20px;
@@ -481,18 +481,18 @@ li.categoryBar-list-item {
     flex-wrap: wrap; /*规定灵活的项目在必要的时候拆行或拆列。*/
     justify-content: space-between; /*。*/
   }
-  #recent-posts > .recent-post-item:not(.latest) {
+  #recent-posts > .recent-post-item {
     /*max-height:324px;*/ /*文章容器最大高度*/
     margin-top: 1rem; /*最小间距*/
     display: inline-block;
     height: auto; /*高度自动*/
     width: 49%; /*文章容器容器宽度*/
   }
-  #recent-posts > .recent-post-item:not(.latest) .post_cover {
+  #recent-posts > .recent-post-item .post_cover {
     width: 100%; /*图片封面宽度*/
     height: 200px; /*图片封面高度*/
   }
-  #recent-posts > .recent-post-item:not(.latest) .post_cover img.post_bg {
+  #recent-posts > .recent-post-item .post_cover img.post_bg {
     width: 100%; /*图片宽度*/
     height: 100%; /*图片高度*/
   }
@@ -518,18 +518,18 @@ li.categoryBar-list-item {
     ):hover {
     background-color: var(--theme-color);
   }
-  #recent-posts > .recent-post-item:not(.latest) {
+  #recent-posts > .recent-post-item {
     -webkit-flex-direction: column; /*容器内部纵向排列*/
     -ms-flex-direction: column; /*容器内部纵向排列*/
     flex-direction: column; /*容器内部纵向排列*/
   }
-  #recent-posts > .recent-post-item:not(.latest) .left_radius {
+  #recent-posts > .recent-post-item .left_radius {
     border-radius: 12px 8px 0 0; /*圆角修改*/
   }
-  #recent-posts > .recent-post-item:not(.latest) .right_radius {
+  #recent-posts > .recent-post-item .right_radius {
     border-radius: 12px 8px 0 0; /*圆角修改*/
   }
-  .recent-post-item:not(.latest) {
+  .recent-post-item {
     height: auto !important; /*容器高度自动*/
   }
 
@@ -539,7 +539,7 @@ li.categoryBar-list-item {
     width: 100% !important; /*容器宽度*/
   }
   #recent-posts
-    > .recent-post-item:not(.latest)
+    > .recent-post-item
     > .recent-post-info
     > .article-title {
     -webkit-line-clamp: 1; /*控制标题的行数*/
@@ -550,14 +550,14 @@ li.categoryBar-list-item {
     line-height: 1.4; /*控制标题的行高*/
   }
   #recent-posts
-    > .recent-post-item:not(.latest)
+    > .recent-post-item
     > .recent-post-info
     > .article-title
     :hover {
     color: var(--lyx-theme);
   }
   #recent-posts
-    > .recent-post-item:not(.latest)
+    > .recent-post-item
     > .recent-post-info
     > .article-meta-wrap {
     margin-bottom: 1rem; /*控制标题meta信息的底部间距*/
@@ -591,7 +591,11 @@ li.categoryBar-list-item {
 .contrib-column-first {
   border-left: 0;
 }
+#page.transparentpage {
+  border: none !important;
+}
 .transparentpage {
+  border: none !important;
   background: transparent !important;
   box-shadow: none !important;
   padding: 0px 40px !important;
@@ -651,10 +655,151 @@ body {
 #textbtn {
   cursor: pointer;
 }
+.layout > .recent-posts .pagination > *:not(.space) {
+  border: var(--card-border) !important;
+}
+#pageNumInput:hover {
+  background: var(--card-bg) !important;
+  border-color: var(--theme-color) !important;
+  color: #ddd;
+  width: 70px;
+}
+#textnumer:hover {
+  background: var(--card-bg) !important;
+  border-color: var(--theme-color) !important;
+  color: #ddd;
+}
+.layout #pageNumInput input {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  text-align: center;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  transition: 0.5s;
+}
 #textnumer {
-  outline: none;
+  outline: none !important;
+  border: none !important;
   text-align: center;
 }
-input:focus-visible {
-  border: none !important;
+#pagination {
+  align-self: center;
+  justify-self: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  width: 100%;
+}
+.pagination > * {
+  display: inline-block;
+}
+#pagination .pagination {
+  position: relative;
+}
+#pageNumInput {
+  display: inline-flex;
+  position: relative;
+}
+#pageNumInput:hover {
+  background: 0 0;
+  width: 70px;
+  display: inline-flex;
+  position: relative;
+}
+#pageNumInput:focus-within {
+  width: 70px;
+}
+#pageNumInput:focus-within::after,
+#pageNumInput:focus-within::before {
+  display: block;
+}
+#pageNumInput::before {
+  display: none;
+  content: "回车跳转";
+  position: absolute;
+  white-space: nowrap;
+  left: 50%;
+  top: 0px;
+  transform: translate(-50%, calc(-100% - 15px));
+  line-height: 1;
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 12px 16px;
+  background: rgb(68, 68, 68);
+}
+#pageNumInput::after {
+  display: none;
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  border: 10px solid transparent;
+  border-top-color: #444;
+  -webkit-transform: translate(-50%, calc(-50% - 5px));
+  -moz-transform: translate(-50%, calc(-50% - 5px));
+  -o-transform: translate(-50%, calc(-50% - 5px));
+  -ms-transform: translate(-50%, calc(-50% - 5px));
+  transform: translate(-50%, calc(-50% - 5px));
+}
+.layout > div .pagination .next,
+.layout > div .pagination .prev {
+  width: 4rem !important;
+  position: absolute;
+  right: 0;
+  margin: 0;
+}
+.layout > div .pagination .prev {
+  left: 0;
+}
+.gc,
+.fl,
+.cardHover,
+.error404 #error-wrap .error-content,
+.layout > div:first-child:not(.recent-posts),
+#recent-posts > .recent-post-item,
+#aside-content .card-widget,
+.layout > .recent-posts .pagination > *:not(.space) {
+  border: var(--card-border) !important;
+}
+.avatar-img {
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+  background: url(/img/index_img/avatar_bg.webp);
+  background-size: cover;
+  height: 160px;
+  width: 100%;
+  border-radius: 0;
+  margin-top: 0px !important;
+}
+.card-info {
+  padding: 0px 0px 24px 0px !important;
+}
+#aside-content
+  > div.card-widget.card-info
+  > div.card-info-data.site-data.is-center {
+  padding: 0px 20px !important;
+}
+#card-info-btn {
+  margin: 10px 20px !important;
+}
+#aside-content
+  > div.card-widget.card-info
+  > div.card-info-social-icons.is-center {
+  margin: 0px 20px !important;
+}
+.avatar-img img {
+  position: absolute;
+  left: calc(50% - 55px);
+  bottom: 0;
+  object-fit: cover;
+  z-index: 1;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 5px #fff solid;
 }

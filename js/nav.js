@@ -15,11 +15,11 @@ function is_home() {
   return true;
 }
 function tonav() {
-  if (localStorage.getItem("fixedNav") == "1" && !is_home()) {
+  if (btf.loadData("enableFixedNav") == "true" && !is_home()) {
     $("#name-container").show();
     var position = $(window).scrollTop();
     $(window).scroll(function () {
-      if (localStorage.getItem("fixedNav") == "1") {
+      if (btf.loadData("enableFixedNav") == "true") {
         var scroll = $(window).scrollTop();
         if (scroll > position) {
           $("#page-header").addClass("nav-down");

@@ -1,16 +1,25 @@
-categoriesBarActive()
-topCategoriesBarScroll()
+categoriesBarActive();
+topCategoriesBarScroll();
+bindListener();
+
+function bindListener() {
+  $("#categoryBar > ul > li").each(function () {
+    this.addEventListener("click", () => {
+      pjax.loadUrl($(this).find("a").attr("href"));
+    });
+  });
+}
 
 //专栏条
-function categoriesBarActive(){
+function categoriesBarActive() {
   var urlinfo = window.location.pathname;
-  urlinfo = decodeURIComponent(urlinfo)
+  urlinfo = decodeURIComponent(urlinfo);
   //判断是否是首页
-  if (urlinfo == '/'){
-    if (document.querySelector('#category-bar')){
-      document.getElementById('首页').classList.add("select")
+  if (urlinfo == "/") {
+    if (document.querySelector("#category-bar")) {
+      document.getElementById("首页").classList.add("select");
     }
-  }else {
+  } else {
     // 验证是否是专栏链接
     var pattern = /\/categories\/.*?\//;
     var patbool = pattern.test(urlinfo);
@@ -19,24 +28,27 @@ function categoriesBarActive(){
       var valuegroup = urlinfo.split("/");
       // 获取当前专栏
       var nowCategorie = valuegroup[2];
-      if (document.querySelector('#category-bar')){
+      if (document.querySelector("#category-bar")) {
         document.getElementById(nowCategorie).classList.add("select");
       }
     }
   }
-
 }
 
 //鼠标控制横向滚动
-function topCategoriesBarScroll(){
-  if (document.getElementById("category-bar-items")){
+function topCategoriesBarScroll() {
+  if (document.getElementById("category-bar-items")) {
     let xscroll = document.getElementById("category-bar-items");
-  xscroll.addEventListener("mousewheel", function (e) {
-    //计算鼠标滚轮滚动的距离
-    let v = -e.wheelDelta / 2;
-    xscroll.scrollLeft += v;
-    //阻止浏览器默认方法
-    e.preventDefault();
-}, false);
+    xscroll.addEventListener(
+      "mousewheel",
+      function (e) {
+        //计算鼠标滚轮滚动的距离
+        let v = -e.wheelDelta / 2;
+        xscroll.scrollLeft += v;
+        //阻止浏览器默认方法
+        e.preventDefault();
+      },
+      false
+    );
   }
 }

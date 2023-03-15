@@ -1,4 +1,48 @@
 const btf = {
+  saveData: function (name, data) {
+    localStorage.setItem(
+      name,
+      JSON.stringify({ time: Date.now(), data: data })
+    );
+  },
+  removeData: function (name) {
+    localStorage.removeItem(name);
+  },
+  loadData: function (name, time) {
+    let d = JSON.parse(localStorage.getItem(name));
+    if (d) {
+      let t = Date.now() - d.time;
+      if (t < time * 60 * 1000 && t > -1) return d.data;
+    }
+    return d ? d.data : undefined;
+  },
+  copy: function (obj, text) {
+    var clipboard = new ClipboardJS(obj, {
+      text: function (trigger) {
+        return text;
+      },
+    });
+    clipboard.on("success", function (e) {
+      e.clearSelection();
+    });
+
+    clipboard.on("error", function (e) {});
+  },
+  goToPage: () => {
+    let e = document.querySelector("#textnumer");
+    e &&
+      (e.addEventListener("input", () => {
+        let t = document.querySelectorAll(".page-number"),
+          n = t[t.length - 1].innerHTML;
+        Number(e.value) > n && (e.value = n);
+      }),
+      e.addEventListener("keyup", (t) => {
+        "Enter" == t.key &&
+          "" != e.value &&
+          "0" != e.value &&
+          pjax.loadUrl("1" == e.value ? "/" : `/page/${e.value}/`);
+      }));
+  },
   debounce: function (func, wait, immediate) {
     let timeout;
     return function () {
@@ -250,8 +294,7 @@ const btf = {
   },
 
   loadLightbox: (ele) => {
-    if(window.location.href.indexOf("/music/")!=-1)
-      return;
+    if (window.location.href.indexOf("/music/") != -1) return;
     const service = GLOBAL_CONFIG.lightbox;
 
     if (service === "mediumZoom") {

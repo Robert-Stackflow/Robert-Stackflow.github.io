@@ -168,10 +168,10 @@ rmf.hideAsideBtn = function () {
   // Hide aside
   const $htmlDom = document.documentElement.classList;
   $htmlDom.contains("hide-aside")
-    ? saveToLocal.set("aside-status", "show", 2)
-    : saveToLocal.set("aside-status", "hide", 2);
+    ? saveToLocal.set("enableAside", "show", 2)
+    : saveToLocal.set("enableAside", "hide", 2);
   $htmlDom.toggle("hide-aside");
-  if (saveToLocal.get("aside-status") == "hide")
+  if (saveToLocal.get("enableAside") == "hide")
     $("#con-toggleaside").addClass("checked");
   else $("#con-toggleaside").removeClass("checked");
 };

@@ -1,0 +1,43 @@
+/* td,th {
+    border: 1px solid #000;
+    width: 100px;
+    height: 50px;
+}
+
+table {
+    margin: 300px auto;
+    text-align: center;
+    border: 2px solid #000;
+    border-collapse: collapse;
+}
+
+caption {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 20px;
+} */
+body {
+    margin: 100px 100px;
+}
+
+span {
+    display: inline-block;
+    margin: 5px;
+    text-align: center;
+    line-height: 30px;
+    width: 80px;
+    height: 30px;
+    border: 2px solid skyblue;
+    border-radius: 17px;
+}
+
+span:hover {
+    background-color: skyblue;
+    color: #fff;
+    transition: background-color .2s, color .2s;
+}
+
+h1 {
+    margin-left: 6px;
+    color: skyblue;
+}

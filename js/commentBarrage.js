@@ -29,52 +29,33 @@ function startbarrage() {
     noAvatarType: "retro",
     dom: document.querySelector(".comment-barrage"),
     //是否默认show留言弹幕
-    displayBarrage: true,
+    displayBarrage: false,
     //头像cdn，默认cravatar
     avatarCDN: "cravatar.cn",
   };
-  function checkURL(URL) {
-    var str = URL;
-    //判断URL地址的正则表达式为:http(s)?://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?
-    //下面的代码中应用了转义字符"\"输出一个字符"/"
-    var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
-    var objExp = new RegExp(Expression);
-    if (objExp.test(str) == true) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-  function isInViewPortOfOne(el) {
-    const viewPortHeight =
-      window.innerHeight ||
-      document.documentElement.clientHeight ||
-      document.body.clientHeight;
-    const offsetTop = el.offsetTop;
-    const scrollTop = document.documentElement.scrollTop;
-    const top = offsetTop - scrollTop;
-    return top <= viewPortHeight;
-  }
-  if (
-    location.href.indexOf("posts") != -1 ||
-    location.href.indexOf("posts") != -1
-  )
-    document.onscroll = function () {
-      if (commentBarrageConfig.displayBarrage) {
-        if (isInViewPortOfOne(document.getElementById("post-comment"))) {
-          document.getElementsByClassName("barrageswiper")[0].style.transform =
-            "translateX(514px)";
-          document.getElementsByClassName("barrageswiper")[0].style.opacity =
-            "0";
-        } else {
-          document.getElementsByClassName("barrageswiper")[0].style.transform =
-            "";
-          document.getElementsByClassName("barrageswiper")[0].style.opacity =
-            "1";
+  function initCommentBarrage() {
+    {
+      //加载设置
+      if (btf.loadData("enableCommentBarrage") == undefined) {
+        btf.saveData("enableCommentBarrage", "false");
+      }
+      if (btf.loadData("enableCommentBarrage") == "true") {
+        commentBarrageConfig.displayBarrage = true;
+        let commentBarrage = document.querySelector(".barrageswiper");
+        if (commentBarrage) {
+          $("#con-barrage").addClass("checked");
+          $(commentBarrage).show();
+        }
+      } else {
+        commentBarrageConfig.displayBarrage = false;
+        let commentBarrage = document.querySelector(".barrageswiper");
+        if (commentBarrage) {
+          $("#con-barrage").removeClass("checked");
+          $(commentBarrage).hide();
         }
       }
-    };
-  function initCommentBarrage() {
+    }
+    //获取数据
     var data = JSON.stringify({
       event: "COMMENT_GET",
       "commentBarrageConfig.accessToken": commentBarrageConfig.accessToken,
@@ -119,6 +100,7 @@ function startbarrage() {
     xhr.open("POST", commentBarrageConfig.twikooUrl);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(data);
+    //绑定点击事件
     if (document.querySelector("#con-barrage") != null) {
       document
         .querySelector("#con-barrage")
@@ -127,6 +109,7 @@ function startbarrage() {
         .querySelector("#con-barrage")
         .addEventListener("click", switchCommentBarrage);
     }
+    //绑定滑动事件
     document.addEventListener("scroll", function () {
       if (isInViewPortOfOne(document.getElementById("post-comment"))) {
         commentBarrageConfig.displayBarrage = false;
@@ -136,7 +119,7 @@ function startbarrage() {
         }
         $("#con-barrage").hide();
       } else {
-        if (Number(localStorage.getItem("isBarrageToggle")) == 0) {
+        if (btf.loadData("enableCommentBarrage") == "true") {
           commentBarrageConfig.displayBarrage = true;
           let commentBarrage = document.querySelector(".barrageswiper");
           if (commentBarrage) {
@@ -146,11 +129,7 @@ function startbarrage() {
         $("#con-barrage").show();
       }
     });
-    if (commentBarrageConfig.displayBarrage) {
-      $("#con-barrage").addClass("checked");
-    } else {
-      $("#con-barrage").removeClass("checked");
-    }
+    //定时删除pangu
     setInterval(function () {
       $(".comment-barrage pangu").remove();
     }, 10);
@@ -242,28 +221,45 @@ function startbarrage() {
     commentBarrageConfig.dom.append(aswiper);
   }
   switchCommentBarrage = function () {
-    localStorage.setItem(
-      "isBarrageToggle",
-      Number(!Number(localStorage.getItem("isBarrageToggle")))
-    );
+    if (btf.loadData("enableCommentBarrage") == "true")
+      btf.saveData("enableCommentBarrage", "false");
+    else btf.saveData("enableCommentBarrage", "true");
     // if (!isInViewPortOfOne(document.getElementById("post-comment"))) {
     commentBarrageConfig.displayBarrage = !commentBarrageConfig.displayBarrage;
     let commentBarrage = document.querySelector(".barrageswiper");
     if (commentBarrage) {
-      $(commentBarrage).hide();
-    }
-    if (commentBarrageConfig.displayBarrage) {
-      $("#con-barrage").addClass("checked");
-    } else {
-      $("#con-barrage").removeClass("checked");
+      if (commentBarrageConfig.displayBarrage) {
+        $("#con-barrage").addClass("checked");
+        $(commentBarrage).show();
+      } else {
+        $("#con-barrage").removeClass("checked");
+        $(commentBarrage).hide();
+      }
     }
     // }
   };
-  if (localStorage.getItem("isBarrageToggle") == undefined) {
-    localStorage.setItem("isBarrageToggle", "0");
-  } else if (localStorage.getItem("isBarrageToggle") == "1") {
-    localStorage.setItem("isBarrageToggle", "0");
-    switchCommentBarrage();
+  function checkURL(URL) {
+    var str = URL;
+    //判断URL地址的正则表达式为:http(s)?://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?
+    //下面的代码中应用了转义字符"\"输出一个字符"/"
+    var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+    var objExp = new RegExp(Expression);
+    if (objExp.test(str) == true) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  function isInViewPortOfOne(el) {
+    if (el == null) return false;
+    const viewPortHeight =
+      window.innerHeight ||
+      document.documentElement.clientHeight ||
+      document.body.clientHeight;
+    const offsetTop = el.offsetTop;
+    const scrollTop = document.documentElement.scrollTop;
+    const top = offsetTop - scrollTop;
+    return top <= viewPortHeight;
   }
   initCommentBarrage();
 }

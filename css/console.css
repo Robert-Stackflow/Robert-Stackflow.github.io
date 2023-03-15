@@ -168,10 +168,13 @@
   }
 }
 @media screen and (max-width: 530px) {
-  #con-rightmouse,#con-fullscreen,#con-toggleleftaside,#con-toggleaside{
+  #con-rightmouse,
+  #con-fullscreen,
+  #con-toggleleftaside,
+  #con-toggleaside {
     display: none !important;
   }
-  setting-sides{
+  setting-sides {
     margin-top: -25px !important;
   }
 }
@@ -218,7 +221,7 @@
   background: var(--theme-color) !important;
   color: white !important;
 }
-setting-sides{
+setting-sides {
   margin-top: -5px !important;
 }
 @media screen and (max-width: 900px) {
@@ -254,7 +257,8 @@ setting-sides{
 #themeColorSettings {
   flex-wrap: wrap;
 }
-.bgbox * {
+.bgbox *,
+.playlist-item {
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -263,7 +267,8 @@ setting-sides{
 }
 .pimgbox,
 .imgbox,
-.box {
+.box,
+.playlist-item {
   width: 166px;
   margin: 10px;
   background-size: cover;
@@ -301,16 +306,66 @@ setting-sides{
 }
 
 .box,
+.playlist-item,
 .boxl,
 .boxr {
   height: 100px;
 }
-
+.playlist-item {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.playlist-item span {
+  font-size: 18px;
+  color: #fff !important;
+  text-align: center;
+  align-self: center;
+  justify-self: center;
+}
+#url-input {
+  border-radius: 5px;
+  outline: none;
+  padding: 5px;
+  margin: 10px;
+  height: 2.5em;
+  line-height: 2.5em;
+  background: var(--card-bg);
+  border: var(--card-border);
+}
+#url-btn {
+  border-radius: 8px;
+  width: fit-content;
+  padding-left: 5px;
+  padding-right: 5px;
+  background: var(--card-bg);
+  border: var(--card-border);
+  display: inline-block;
+  margin: 0 6px;
+  height: 2.5em;
+  line-height: 2.5em;
+  text-align: center;
+}
+#url-btn:hover {
+  background: var(--theme-color);
+  color: #fff;
+}
+#url-btn.success {
+  background-color: lightgreen;
+  color: #fff;
+}
+#url-btn.fail {
+  background-color: red;
+  color: #fff;
+}
 @media screen and (max-width: 768px) {
   /* 背景 */
   .pimgbox,
   .imgbox,
-  .box {
+  .box,
+  .playlist-item {
     height: 73px;
     width: 135px;
   }
@@ -330,7 +385,7 @@ setting-sides{
   }
 }
 .winbox {
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
 }
 
@@ -342,7 +397,8 @@ setting-sides{
   background-position: center;
 }
 
-.bgbox {
+.bgbox,
+.playlist-container {
   display: flex;
   flex-wrap: wrap;
 }

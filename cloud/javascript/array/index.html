@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九九乘法表</title>
+    <link rel="stylesheet" href="./table.css">
+</head>
+
+<body>
+    <h1>九九乘法表</h1>
+    <!-- <table>
+        <caption>订单确认</caption>
+        <thead>
+            <tr>
+                <th>商品名称</th>
+                <th>商品价格</th>
+                <th>商品数量</th>
+                <th>总价</th>
+                <th>收货地址</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+    </table> -->
+    <script>
+        // alert('你好 JS')
+        // document.write('Javascript 我来了！\n')
+        // console.log('它，会魔法吧~')
+        // prompt('尝试写一点东西吧')
+
+        // let name = prompt('input your name')
+        // let age = prompt('input your age')
+        // document.write(`hello everyone,my name's ${name} and i'm ${age} this year\n`)
+
+        // let x1 = Number (prompt('input x1'))
+        // let x2 = Number (prompt('input x2'))
+        // document.write(x1+x2)
+
+        // let x1 = prompt('input x1')
+        // let x2 = prompt('input x2')
+        // // document.write((+x1)+(+x2))
+        // document.write(`the outcome is ${+x1+(+x2)}`)
+
+        // let name = prompt('input the name of goods')
+        // let price = prompt('input the price of goods')
+        // let amount = prompt('input the amount of goods')
+        // let address = prompt('input your addr')
+        // for(let i=0;i<200;i++){
+        //     document.getElementById("tbody").innerHTML = document.getElementById("tbody").innerHTML + (`
+        //     <tr>
+        //         <td id="name">${name}</td>
+        //         <td id="price">${price}</td>
+        //         <td id="amount">${amount}</td>
+        //         <td id="sumprice">${price*amount}</td>
+        //         <td id="address">${address}</td>
+        //     </tr>
+        // `)
+        // }
+
+        // let year = +prompt('input the year')
+        // if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+        //     alert('yes')
+        // } else {
+        //     alert('no')
+        // }
+
+        // let a = +prompt('input a')
+        // let b = +prompt('input b')
+        // let opt = prompt('input opt')
+        // switch (opt) {
+        //     case '+':
+        //         alert(`${a + b}`)
+        //         break;
+        //     case '-':
+        //         alert(`${a - b}`)
+        //         break;
+        //     case '*':
+        //         alert(`${a * b}`)
+        //         break;
+        //     case '/':
+        //         alert(`${a / b}`)
+        //         break;
+        //     default:
+        //         alert('error')
+        // }
+        // a >= b ? alert(`${a}`) : alert(`${b}`)
+        // let input = prompt('will you like them abondon me.\nwill you ?')
+        // while (1) {
+        //     if (input === 'no') {
+        //         alert('i ever knew you would do this,love u 2')
+        //         break
+        //     } else {
+        //         input = prompt('anwser me again!\nwill you like them abondon me.\nwill you ?')
+        //     }
+        // }
+        // let array = [1,2,3,4,5]
+        // for (let i = 0; i < array.length; i++) {
+        //     console.log(`${array[i]}`)
+        // }
+
+        for (let i = 1; i <= 9; i++) {
+            for (let j = 1; j <= i; j++) {
+                document.write(`<span>${i}*${j}=${i * j}</span>`)
+            }
+            document.write('<br>')
+        }
+    </script>
+</body>
+
+</html>
