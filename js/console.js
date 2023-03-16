@@ -51,13 +51,6 @@ function tosetting() {
     $("#aplayer").removeClass("no-reload");
     loadMeting();
   };
-  // 切换显示控制台
-  toggleWinbox = function () {
-    $("#settingWindow").fadeToggle("fast");
-    $("#console-mask").fadeToggle("fast");
-    if ($("#settingWindow").css("display") != "none")
-      $("#settingWindow").css("display", "flex");
-  };
   // 切换全屏
   toggleFullScreen = function () {
     if (isFullScreen()) {
@@ -147,7 +140,7 @@ function tosetting() {
     changeAutoColor(false);
   };
   // 切换右键菜单
-  toggleRightMouse = () => {
+  toggleContextMenu = () => {
     if (btf.loadData("enableContextMenu") == "true") {
       btf.saveData("enableContextMenu", "false");
       $("#con-rightmouse").removeClass("checked");
@@ -228,12 +221,6 @@ function tosetting() {
     $("#backer").hide();
     $(".asetting").hide();
     $("#settingWindow").hide();
-    document
-      .getElementById("console-mask")
-      .addEventListener("click", toggleWinbox);
-    document
-      .getElementById("console-button")
-      .addEventListener("click", toggleWinbox);
     //取消模糊效果
     document.getElementById("settingStyle").innerText = `
   *,*:not(.card-info)::before,*::after{
@@ -387,3 +374,14 @@ function isFullScreen() {
   if (isFull === undefined) isFull = false;
   return isFull;
 }
+// 切换显示控制台
+toggleWinbox = function () {
+  $("#settingWindow").fadeToggle("fast");
+  $("#console-mask").fadeToggle("fast");
+  if ($("#settingWindow").css("display") != "none")
+    $("#settingWindow").css("display", "flex");
+};
+document.getElementById("console-mask").addEventListener("click", toggleWinbox);
+document
+  .getElementById("console-button")
+  .addEventListener("click", toggleWinbox);

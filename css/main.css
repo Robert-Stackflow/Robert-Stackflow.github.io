@@ -511,6 +511,20 @@ li.categoryBar-list-item {
     right: 15px;
     text-decoration: none !important;
   }
+  #recent-posts
+    > div
+    > div.recent-post-info
+    > div.article-meta-wrap
+    > span:nth-child(2)
+    > span,
+  #recent-posts
+    > div
+    > div.recent-post-info
+    > div.article-meta-wrap
+    > span:nth-child(2)
+    > i {
+    display: none;
+  }
   .article-meta__categories:not(
       #category .article-meta__categories,
       #tag .article-meta__categories,
@@ -538,10 +552,7 @@ li.categoryBar-list-item {
     margin-top: 1em; /*容器内部文字上间距*/
     width: 100% !important; /*容器宽度*/
   }
-  #recent-posts
-    > .recent-post-item
-    > .recent-post-info
-    > .article-title {
+  #recent-posts > .recent-post-item > .recent-post-info > .article-title {
     -webkit-line-clamp: 1; /*控制标题的行数*/
     margin-top: 0.3rem; /*控制标题的上间距*/
     margin-bottom: 0.3rem; /*控制标题的下间距*/
@@ -556,10 +567,7 @@ li.categoryBar-list-item {
     :hover {
     color: var(--lyx-theme);
   }
-  #recent-posts
-    > .recent-post-item
-    > .recent-post-info
-    > .article-meta-wrap {
+  #recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap {
     margin-bottom: 1rem; /*控制标题meta信息的底部间距*/
   }
 }
@@ -610,7 +618,7 @@ li.categoryBar-list-item {
   display: inline !important;
 }
 div.fj-gallery > p > div > a > img {
-  border-radius: 8px;
+  border-radius: 0px;
 }
 #page > h1 {
   text-align: center;

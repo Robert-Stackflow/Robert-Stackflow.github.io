@@ -9526,20 +9526,21 @@ body:not(.read-mode) #post #article-container h6:hover {
   border-right: 2px solid var(--km-tab-border) !important;
   border-bottom: 2px solid var(--km-tab-border) !important;
   border-left: 2px solid var(--km-tab-border) !important;
-  border-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 #article-container .tabs > .nav-tabs {
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
   background: var(--km-tab-border) !important;
 }
 #article-container .tabs > .nav-tabs > .tab:nth-child(1) button {
-  border-top-left-radius: 15px;
+  border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 }
 @media screen and (max-width: 768px) {
   #article-container .tabs > .nav-tabs > .tab:nth-last-child(1) button {
-    border-top-right-radius: 15px;
+    border-top-right-radius: 0px;
   }
 }
 @media screen and (max-width: 423px) {
@@ -9549,7 +9550,7 @@ body:not(.read-mode) #post #article-container h6:hover {
 }
 @media screen and (max-width: 423px) {
   #article-container .tabs > .nav-tabs > .tab:nth-last-child(2) button {
-    border-top-right-radius: 15px !important;
+    border-top-right-radius: 0px !important;
   }
 }
 #article-container .tabs > .nav-tabs > .tab button {

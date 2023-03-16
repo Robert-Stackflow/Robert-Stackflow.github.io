@@ -128,6 +128,7 @@ rmf.switchReadMode = function () {
   rmf.isReadMode = true;
   $("#con-readmode").addClass("checked");
   $(".aplayer").hide();
+  toggleWinbox();
   let commentBarrage = document.querySelector(".barrageswiper");
   let visible = commentBarrage.getAttribute("display");
   if (commentBarrage && !(visible == null || visible == "none")) {
