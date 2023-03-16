@@ -1,7 +1,7 @@
 AV.init({
   appId: "47fZKZYL4YiJGanqaTbHWm3t-MdYXbMMI",
   appKey: "hqwFDMDw5xIddqtuQHY58tqc",
-  serverURL: "https://47fzkzyl.api.lncldglobal.com",
+  serverURL: "https://nowtime.cloudchewie.com",
 });
 function lunbo() {
   var speaks = [];

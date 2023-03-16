@@ -144,11 +144,11 @@ function tosetting() {
     if (btf.loadData("enableContextMenu") == "true") {
       btf.saveData("enableContextMenu", "false");
       $("#con-rightmouse").removeClass("checked");
-      bindRightMenu(false);
+      bindRightMenu(false, true);
     } else {
       btf.saveData("enableContextMenu", "true");
       $("#con-rightmouse").addClass("checked");
-      bindRightMenu(true);
+      bindRightMenu(true, true);
     }
   };
   // 切换APlayer
@@ -255,10 +255,10 @@ function tosetting() {
     }
     if (btf.loadData("enableContextMenu") == "true") {
       $("#con-rightmouse").addClass("checked");
-      bindRightMenu(true);
+      bindRightMenu(true, false);
     } else {
       $("#con-rightmouse").removeClass("checked");
-      bindRightMenu(false);
+      bindRightMenu(false, false);
     }
     //加载是否打开APlayer
     if (btf.loadData("enableAPlayer") == undefined) {

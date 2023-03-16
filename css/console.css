@@ -167,7 +167,7 @@
     width: 100% !important;
   }
 }
-@media screen and (max-width: 530px) {
+@media screen and (max-width: 900px) {
   #con-rightmouse,
   #con-fullscreen,
   #con-toggleleftaside,

@@ -194,9 +194,14 @@ if (
 ) {
   popupMenu();
 }
-function bindRightMenu(enable) {
-  if (enable && document.body.clientWidth > 400) {
+function bindRightMenu(enable, tip) {
+  if (enable && document.body.clientWidth > 900) {
+    if (tip)
+      btf.snackbarShow(
+        "已启用自定义右键菜单,可使用Ctrl+右键单击呼出默认右键菜单"
+      );
     window.oncontextmenu = function (event) {
+      if (event.ctrlKey || document.body.clientWidth < 900) return true;
       //隐藏所有菜单项
       document.querySelectorAll(".rightMenu-line").forEach((item) => {
         $(item).hide();

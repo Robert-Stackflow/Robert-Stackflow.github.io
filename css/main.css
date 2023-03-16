@@ -777,7 +777,7 @@ body {
   overflow: hidden;
   margin: 0 auto;
   position: relative;
-  background: url(/img/index_img/avatar_bg.webp);
+  /* background: url(/img/index_img/avatar_bg.webp); */
   background-size: cover;
   height: 160px;
   width: 100%;

@@ -651,7 +651,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   };
-
   const unRefreshFunction = function () {
     window.addEventListener("resize", () => {
       adjustMenu(false);
