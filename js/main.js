@@ -706,8 +706,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("toggle-menu").addEventListener("click", () => {
       sidebarFn.open();
     });
+    btf.goToPage();
     if (btf.isHome()) {
-      btf.goToPage();
       $("#hide-aside-btn").hide();
       const $htmlDom = document.documentElement.classList;
       $htmlDom.contains("hide-aside")

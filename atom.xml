@@ -6,7 +6,7 @@
   <link href="https://cloudchewie.com/atom.xml" rel="self"/>
   
   <link href="https://cloudchewie.com/"/>
-  <updated>2023-03-15T03:45:27.764Z</updated>
+  <updated>2023-03-16T09:27:33.493Z</updated>
   <id>https://cloudchewie.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://cloudchewie.com/2023/03/15/%E3%80%90%E9%AD%94%E6%94%B9%E3%80%91%E5%AF%BC%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AD%8C%E5%8D%95/"/>
     <id>https://cloudchewie.com/2023/03/15/%E3%80%90%E9%AD%94%E6%94%B9%E3%80%91%E5%AF%BC%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AD%8C%E5%8D%95/</id>
     <published>2023-03-15T02:59:05.000Z</published>
-    <updated>2023-03-15T03:45:27.764Z</updated>
+    <updated>2023-03-16T09:27:33.493Z</updated>
     
     
     <summary type="html">如何在本站导入自定义歌单</summary>
@@ -36,11 +36,68 @@
   </entry>
   
   <entry>
+    <title>【笔记】操作系统原理笔记(一)</title>
+    <link href="https://cloudchewie.com/2023/03/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0(%E4%B8%80)/"/>
+    <id>https://cloudchewie.com/2023/03/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0(%E4%B8%80)/</id>
+    <published>2023-03-12T04:29:45.000Z</published>
+    <updated>2023-03-16T10:04:48.794Z</updated>
+    
+    
+    <summary type="html">华中科技大学计算机科学与技术学院操作系统原理课程笔记，包括绪论、操作系统的结构和硬件支持、进程管理</summary>
+    
+    
+    
+    <category term="专业核心" scheme="https://cloudchewie.com/categories/%E4%B8%93%E4%B8%9A%E6%A0%B8%E5%BF%83/"/>
+    
+    
+    <category term="笔记" scheme="https://cloudchewie.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【笔记】操作系统原理笔记(二)</title>
+    <link href="https://cloudchewie.com/2023/03/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0(%E4%BA%8C)/"/>
+    <id>https://cloudchewie.com/2023/03/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0(%E4%BA%8C)/</id>
+    <published>2023-03-12T04:29:40.000Z</published>
+    <updated>2023-03-16T11:42:11.573Z</updated>
+    
+    
+    <summary type="html">华中科技大学计算机科学与技术学院操作系统原理课程笔记，包括资源管理、处理机管理、主存管理</summary>
+    
+    
+    
+    <category term="专业核心" scheme="https://cloudchewie.com/categories/%E4%B8%93%E4%B8%9A%E6%A0%B8%E5%BF%83/"/>
+    
+    
+    <category term="笔记" scheme="https://cloudchewie.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【笔记】操作系统原理笔记(三)</title>
+    <link href="https://cloudchewie.com/2023/03/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0(%E4%B8%89)/"/>
+    <id>https://cloudchewie.com/2023/03/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0(%E4%B8%89)/</id>
+    <published>2023-03-12T04:29:33.000Z</published>
+    <updated>2023-03-16T11:42:14.376Z</updated>
+    
+    
+    <summary type="html">华中科技大学计算机科学与技术学院操作系统原理课程笔记，包括设备管理、文件管理</summary>
+    
+    
+    
+    <category term="专业核心" scheme="https://cloudchewie.com/categories/%E4%B8%93%E4%B8%9A%E6%A0%B8%E5%BF%83/"/>
+    
+    
+    <category term="笔记" scheme="https://cloudchewie.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【笔记】数据库系统概论笔记(一)</title>
     <link href="https://cloudchewie.com/2023/02/22/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%94%E8%AE%B0(%E4%B8%80)/"/>
     <id>https://cloudchewie.com/2023/02/22/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%94%E8%AE%B0(%E4%B8%80)/</id>
     <published>2023-02-22T12:59:05.000Z</published>
-    <updated>2023-03-08T12:30:12.586Z</updated>
+    <updated>2023-03-16T09:46:40.570Z</updated>
     
     
     <summary type="html">华中科技大学计算机科学与技术学院数据库系统概论课程笔记，包括绪论、关系数据库</summary>
@@ -59,7 +116,7 @@
     <link href="https://cloudchewie.com/2023/02/22/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%94%E8%AE%B0(%E4%BA%8C)/"/>
     <id>https://cloudchewie.com/2023/02/22/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%94%E8%AE%B0(%E4%BA%8C)/</id>
     <published>2023-02-22T12:59:04.000Z</published>
-    <updated>2023-03-08T12:30:01.270Z</updated>
+    <updated>2023-03-16T09:46:40.569Z</updated>
     
     
     <summary type="html">华中科技大学计算机科学与技术学院数据库系统概论课程笔记，包括数据库、表、索引、完整性约束、数据增删改查、视图、触发器、安全性控制、并发控制、数据库恢复</summary>
@@ -78,7 +135,7 @@
     <link href="https://cloudchewie.com/2023/02/22/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%94%E8%AE%B0(%E4%B8%89)/"/>
     <id>https://cloudchewie.com/2023/02/22/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%94%E8%AE%B0(%E4%B8%89)/</id>
     <published>2023-02-22T12:59:03.000Z</published>
-    <updated>2023-03-08T12:30:05.584Z</updated>
+    <updated>2023-03-16T09:46:40.570Z</updated>
     
     
     <summary type="html">华中科技大学计算机科学与技术学院数据库系统概论课程笔记，包括关系数据理论、查询优化</summary>
@@ -97,7 +154,7 @@
     <link href="https://cloudchewie.com/2022/11/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%AC%94%E8%AE%B0(%E4%B8%80)/"/>
     <id>https://cloudchewie.com/2022/11/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%AC%94%E8%AE%B0(%E4%B8%80)/</id>
     <published>2022-11-12T01:08:12.000Z</published>
-    <updated>2023-03-08T12:29:56.954Z</updated>
+    <updated>2023-03-16T09:46:40.547Z</updated>
     
     
     <summary type="html">华中科技大学计算机科学与技术学院计算机网络与通信课程笔记，包括考试重点、计算机网络与因特网</summary>
@@ -116,7 +173,7 @@
     <link href="https://cloudchewie.com/2022/11/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%AC%94%E8%AE%B0(%E4%BA%8C)/"/>
     <id>https://cloudchewie.com/2022/11/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%AC%94%E8%AE%B0(%E4%BA%8C)/</id>
     <published>2022-11-12T01:08:11.000Z</published>
-    <updated>2023-03-08T12:29:38.207Z</updated>
+    <updated>2023-03-16T11:42:02.472Z</updated>
     
     
     <summary type="html">华中科技大学计算机科学与技术学院计算机网络与通信课程笔记，包括应用层</summary>
@@ -135,7 +192,7 @@
     <link href="https://cloudchewie.com/2022/11/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%AC%94%E8%AE%B0(%E4%B8%89)/"/>
     <id>https://cloudchewie.com/2022/11/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%AC%94%E8%AE%B0(%E4%B8%89)/</id>
     <published>2022-11-12T01:08:10.000Z</published>
-    <updated>2023-03-14T10:56:26.661Z</updated>
+    <updated>2023-03-16T09:46:40.533Z</updated>
     
     
     <summary type="html">华中科技大学计算机科学与技术学院计算机网络与通信课程笔记，包括运输层</summary>
@@ -154,7 +211,7 @@
     <link href="https://cloudchewie.com/2022/11/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%AC%94%E8%AE%B0(%E5%9B%9B)/"/>
     <id>https://cloudchewie.com/2022/11/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%AC%94%E8%AE%B0(%E5%9B%9B)/</id>
     <published>2022-11-12T01:08:09.000Z</published>
-    <updated>2023-03-08T12:29:47.854Z</updated>
+    <updated>2023-03-16T09:46:40.528Z</updated>
     
     
     <summary type="html">华中科技大学计算机科学与技术学院计算机网络与通信课程笔记，包括网络层</summary>
@@ -173,7 +230,7 @@
     <link href="https://cloudchewie.com/2022/11/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%AC%94%E8%AE%B0(%E4%BA%94)/"/>
     <id>https://cloudchewie.com/2022/11/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%AC%94%E8%AE%B0(%E4%BA%94)/</id>
     <published>2022-11-12T01:08:08.000Z</published>
-    <updated>2023-03-08T12:29:52.836Z</updated>
+    <updated>2023-03-16T09:46:40.529Z</updated>
     
     
     <summary type="html">华中科技大学计算机科学与技术学院计算机网络与通信课程笔记，包括链路层和无线网络</summary>
@@ -192,7 +249,7 @@
     <link href="https://cloudchewie.com/2022/08/21/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0(%E4%B8%80)/"/>
     <id>https://cloudchewie.com/2022/08/21/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0(%E4%B8%80)/</id>
     <published>2022-08-21T00:12:05.000Z</published>
-    <updated>2023-03-08T14:43:17.152Z</updated>
+    <updated>2023-03-16T10:14:03.583Z</updated>
     
     
     <summary type="html">华中科技大学计算机科学与技术学院算法设计与分析课程笔记，包括算法基础、算法渐进、分治思想</summary>
@@ -211,7 +268,7 @@
     <link href="https://cloudchewie.com/2022/08/21/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0(%E4%BA%8C)/"/>
     <id>https://cloudchewie.com/2022/08/21/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0(%E4%BA%8C)/</id>
     <published>2022-08-21T00:12:04.000Z</published>
-    <updated>2023-03-08T12:30:17.853Z</updated>
+    <updated>2023-03-16T10:16:08.426Z</updated>
     
     
     <summary type="html">华中科技大学计算机科学与技术学院算法设计与分析课程笔记，包括动态规划</summary>
@@ -230,7 +287,7 @@
     <link href="https://cloudchewie.com/2022/08/21/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0(%E4%B8%89)/"/>
     <id>https://cloudchewie.com/2022/08/21/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0(%E4%B8%89)/</id>
     <published>2022-08-21T00:12:03.000Z</published>
-    <updated>2023-03-08T12:30:21.589Z</updated>
+    <updated>2023-03-16T10:22:30.381Z</updated>
     
     
     <summary type="html">华中科技大学计算机科学与技术学院算法设计与分析课程笔记，包括贪心算法、基本图算法、最小生成树</summary>
@@ -249,7 +306,7 @@
     <link href="https://cloudchewie.com/2022/08/21/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0(%E5%9B%9B)/"/>
     <id>https://cloudchewie.com/2022/08/21/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0(%E5%9B%9B)/</id>
     <published>2022-08-21T00:12:02.000Z</published>
-    <updated>2023-03-08T15:29:03.629Z</updated>
+    <updated>2023-03-16T09:46:40.565Z</updated>
     
     
     <summary type="html">华中科技大学计算机科学与技术学院算法设计与分析课程笔记，包括单源点最短路问题、所有结点对的最短路径问题、最大流</summary>
@@ -279,6 +336,63 @@
     
     
     <category term="WSL" scheme="https://cloudchewie.com/tags/WSL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【笔记】计算机组成原理笔记(一)</title>
+    <link href="https://cloudchewie.com/2022/06/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0(%E4%B8%80)/"/>
+    <id>https://cloudchewie.com/2022/06/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0(%E4%B8%80)/</id>
+    <published>2022-06-12T01:08:12.000Z</published>
+    <updated>2023-03-16T11:43:17.762Z</updated>
+    
+    
+    <summary type="html">华中科技大学计算机科学与技术学院计算机组成原理课程笔记，包括计算机系统概述、数据信息的表示</summary>
+    
+    
+    
+    <category term="专业核心" scheme="https://cloudchewie.com/categories/%E4%B8%93%E4%B8%9A%E6%A0%B8%E5%BF%83/"/>
+    
+    
+    <category term="笔记" scheme="https://cloudchewie.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【笔记】计算机组成原理笔记(二)</title>
+    <link href="https://cloudchewie.com/2022/06/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0(%E4%BA%8C)/"/>
+    <id>https://cloudchewie.com/2022/06/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0(%E4%BA%8C)/</id>
+    <published>2022-06-12T01:08:10.000Z</published>
+    <updated>2023-03-16T11:45:46.319Z</updated>
+    
+    
+    <summary type="html">华中科技大学计算机科学与技术学院计算机组成原理课程笔记，包括运算器</summary>
+    
+    
+    
+    <category term="专业核心" scheme="https://cloudchewie.com/categories/%E4%B8%93%E4%B8%9A%E6%A0%B8%E5%BF%83/"/>
+    
+    
+    <category term="笔记" scheme="https://cloudchewie.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【笔记】计算机组成原理笔记(三)</title>
+    <link href="https://cloudchewie.com/2022/06/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0(%E4%B8%89)/"/>
+    <id>https://cloudchewie.com/2022/06/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0(%E4%B8%89)/</id>
+    <published>2022-06-12T01:08:02.000Z</published>
+    <updated>2023-03-16T11:46:00.308Z</updated>
+    
+    
+    <summary type="html">华中科技大学计算机科学与技术学院计算机组成原理课程笔记，包括存储系统</summary>
+    
+    
+    
+    <category term="专业核心" scheme="https://cloudchewie.com/categories/%E4%B8%93%E4%B8%9A%E6%A0%B8%E5%BF%83/"/>
+    
+    
+    <category term="笔记" scheme="https://cloudchewie.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   

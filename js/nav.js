@@ -15,11 +15,14 @@ function is_home() {
   return true;
 }
 function tonav() {
-  if (btf.loadData("enableFixedNav") == "true" && !is_home()) {
+  if (btf.loadData("enableFixedNav") == "true") {
     $("#name-container").show();
     var position = $(window).scrollTop();
     $(window).scroll(function () {
-      if (btf.loadData("enableFixedNav") == "true") {
+      if (
+        btf.loadData("enableFixedNav") == "true" &&
+        document.title.split(" | Cloudchewie")[0] != "Cloudchewie"
+      ) {
         var scroll = $(window).scrollTop();
         if (scroll > position) {
           $("#page-header").addClass("nav-down");
