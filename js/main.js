@@ -602,10 +602,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     {
       var path = $("#post-cover").attr("data-lazy-src");
-      $("#page-header:not(.not-top-img)::before").css(
-        "background",
-        "background-image: url(" + path + ")"
-      );
+      if ($("#page-header:not(.not-top-img)::before") != undefined) {
+        $("#page-header:not(.not-top-img)::before").css(
+          "background",
+          "background-image: url(" + path + ")"
+        );
+      }
     }
     setInterval(function () {
       $(".CtxtMenu_MenuArrow").html("");
