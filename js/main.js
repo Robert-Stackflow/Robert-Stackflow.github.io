@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  Vue.config.productionTip = false
-  Vue.config.devtools = false
   let blogNameWidth, menusWidth, searchWidth, $nav;
   let mobileSidebarOpen = false;
   const adjustMenu = (init) => {
