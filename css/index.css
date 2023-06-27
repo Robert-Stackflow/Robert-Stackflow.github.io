@@ -6963,7 +6963,7 @@ blockquote.pullquote.right {
   transition: 2s ease-in-out;
 }
 .author-content-item.game-yuanshen {
-  background: url(https://img02.anzhiy.cn/adminuploads/1/2022/12/19/63a079ca63c8a.webp)
+  background: url(/img/index_img/yuanshen.webp)
     no-repeat top;
   background-size: cover;
   min-height: 240px;
