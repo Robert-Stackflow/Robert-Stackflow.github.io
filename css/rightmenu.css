@@ -71,7 +71,8 @@
 }
 
 #rightMenu:hover {
-  box-shadow: 0px 0px 1px 1px var(--theme-color) !important;
+  /* box-shadow: 0px 0px 1px 1px var(--theme-color) !important; */
+  box-shadow: var(--card-hover-box-shadow) !important;
   transition: 0.3s !important;
 }
 

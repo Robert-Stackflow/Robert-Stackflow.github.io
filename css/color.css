@@ -67,7 +67,7 @@
 }
 
 ::selection {
-  background: var(--heo-fontcolor);
+  background: var(--theme-color);
   color: var(--heo-background);
 }
 

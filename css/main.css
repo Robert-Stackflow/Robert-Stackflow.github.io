@@ -12,7 +12,33 @@
 .icon-fanti:before {
   content: "\e6d8";
 }
-
+.social-share .icon-wechat .wechat-qrcode h4,
+.social-share .icon-wechat .wechat-qrcode .help p{
+  font-family: LXGW Wenkai !important;
+}
+.social-share .icon-wechat .wechat-qrcode h4 {
+  color: var(--font-color) !important;
+  background: none !important;
+}
+.social-share .icon-wechat .wechat-qrcode {
+  display: none;
+  border: var(--card-border) !important;
+  border-radius: 8px;
+  position: absolute;
+  z-index: 9;
+  top: -205px;
+  left: -84px;
+  width: 200px;
+  height: 192px;
+  color: #666;
+  font-size: 12px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: var(--card-hover-box-shadow) !important;
+  transition: all 200ms;
+  -webkit-tansition: all 350ms;
+  -moz-transition: all 350ms;
+}
 /* 网页 */
 [data-theme="light"] #web_bg {
   background-repeat: no-repeat;
@@ -35,6 +61,10 @@
 /* 页首*/
 #nav {
   box-shadow: none !important;
+}
+.nav-fixed:not(.nav-top) #nav {
+  box-shadow: var(--card-box-shadow) !important;
+  border-bottom: var(--card-border) !important;
 }
 [data-theme="light"] #page-header #nav {
   background: transparent;

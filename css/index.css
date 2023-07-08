@@ -221,6 +221,7 @@ template {
 }
 .fontawesomeIcon,
 span.categoryBar-list-count::before,
+#article-container a.headerlink:after,
 #post .post-copyright:before,
 #post .post-outdate-notice:before,
 .note:not(.no-icon)::before {
@@ -287,6 +288,11 @@ span.categoryBar-list-count::before,
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
+  -webkit-transition: 0.3s !important;
+  -moz-transition: 0.3s !important;
+  -o-transition: 0.3s !important;
+  -ms-transition: 0.3s !important;
+  transition: 0.3s !important;
 }
 .postImgHover img,
 #pagination .prev-post img,
@@ -314,7 +320,7 @@ span.categoryBar-list-count::before,
 .list-beauty li:hover:before,
 .category-lists ul li:hover:before,
 #algolia-search .search-dialog .ais-Hits-list li:hover:before {
-  border-color: var(--pseudo-hover);
+  border-color: var(--theme-color);
 }
 .list-beauty li:before,
 .category-lists ul li:before,
@@ -324,7 +330,7 @@ span.categoryBar-list-count::before,
   left: 0;
   width: 0.43em;
   height: 0.43em;
-  border: 0.215em solid #09f;
+  border: 0.215em solid var(--theme-color);
   border-radius: 0.43em;
   background: transparent;
   content: '';
@@ -1462,7 +1468,7 @@ table td {
   vertical-align: middle;
 }
 *::selection {
-  background: #00c4b6;
+  background: var(--theme-color);
   color: #f7f7f7;
 }
 button {
@@ -4324,16 +4330,27 @@ li.categoryBar-list-item {
 #pagination .prev_info,
 #pagination .next_info {
   color: var(--white);
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 16px;
 }
 #pagination .next-post {
-  background-color: #000;
+  background-color: #242428;
 }
 #pagination .next-post .pagination-info {
   text-align: right;
 }
+#pagination .next-post:hover,
+#pagination .prev-post:hover {
+  background-color: #242428;
+  font-size: inherit !important;
+  -webkit-transition: 0.3s !important;
+  -moz-transition: 0.3s !important;
+  -o-transition: 0.3s !important;
+  -ms-transition: 0.3s !important;
+  transition: 0.3s !important;
+}
 #pagination .prev-post {
-  background-color: #000;
+  background-color: #242428;
 }
 #pagination .pull-full {
   width: 100% !important;
@@ -4434,6 +4451,39 @@ li.categoryBar-list-item {
   font-family: Monaco, 'Ubuntu Mono', monospace;
   line-height: 1em;
 }
+#article-container a.headerlink {
+  padding: 0px !important;
+}
+#article-container a.headerlink:after {
+  float: right;
+  color: var(--headline-presudo);
+  content: '¶';
+  font-size: 0.95em;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
+}
+#article-container a.headerlink:hover {
+  background-color: transparent !important;
+}
+#article-container a.headerlink:hover:after {
+  color: var(--pseudo-hover);
+}
+#article-container h1:hover a.headerlink:after,
+#article-container h2:hover a.headerlink:after,
+#article-container h3:hover a.headerlink:after,
+#article-container h4:hover a.headerlink:after,
+#article-container h5:hover a.headerlink:after,
+#article-container h6:hover a.headerlink:after {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+}
 #article-container ol ol,
 #article-container ul ol,
 #article-container ol ul,
@@ -4505,16 +4555,20 @@ li.categoryBar-list-item {
   -ms-transition: box-shadow 0.3s ease-in-out;
   transition: box-shadow 0.3s ease-in-out;
 }
+#post .post-copyright:hover {
+  -webkit-box-shadow: var(--card-hover-box-shadow);
+  box-shadow: var(--card-hover-box-shadow);
+}
 #post .post-copyright:before {
   position: absolute;
   top: 2px;
   right: 12px;
-  color: var(theme-color);
+  color: var(--theme-color);
   content: '\f1f9';
   font-size: 1.3em;
 }
 #post .post-copyright .post-copyright-meta {
-  color: var(light-blue);
+  color: var(--theme-color);
   font-weight: bold;
 }
 #post .post-copyright .post-copyright-info {
@@ -4523,9 +4577,13 @@ li.categoryBar-list-item {
 #post .post-copyright .post-copyright-info a {
   text-decoration: underline;
   word-break: break-word;
+  padding: 2px !important;
 }
 #post .post-copyright .post-copyright-info a:hover {
   text-decoration: none;
+  border-radius: 5px;
+  background: var(--theme-color);
+  color: #fff !important;
 }
 #post .post-outdate-notice {
   position: relative;
@@ -4601,6 +4659,7 @@ li.categoryBar-list-item {
 .relatedPosts > .relatedPosts-list .content .title {
   color: var(--white);
   -webkit-line-clamp: 2;
+  font-size: 15px;
 }
 .post-reward {
   position: relative;
@@ -7589,7 +7648,7 @@ blockquote.pullquote.right {
 
   ::selection {
     color: #fff;
-    background: #2128bd;
+    background: var(--theme-color);
   }
 .search-dialog {
   position: fixed;
@@ -7661,7 +7720,7 @@ blockquote.pullquote.right {
   padding: 5px 14px;
   width: 100%;
   outline: none;
-  border: 2px solid #09f;
+  border: 2px solid var(--theme-color);
   border-radius: 40px;
   background: var(--search-bg);
   color: var(--search-input-color);
@@ -7674,7 +7733,7 @@ blockquote.pullquote.right {
   color: var(--search-result-title);
 }
 #algolia-search .search-dialog .ais-Hits-list a:hover {
-  color: #09f;
+  color: var(--theme-color);
 }
 #algolia-search .search-dialog .ais-Hits-list mark {
   background: transparent;
@@ -7708,7 +7767,7 @@ blockquote.pullquote.right {
   line-height: 24px;
 }
 #algolia-search .search-dialog .ais-Pagination .ais-Pagination-item--selected a {
-  background: #09f;
+  background: var(--theme-color);
   color: #eee;
   cursor: default;
 }
@@ -8886,10 +8945,10 @@ html {
   overflow-y: overlay;
 }
 ::selection {
-  background: var(--km-text-select) !important;
+  background: var(--theme-color) !important;
 }
 ::-moz-selection {
-  background: var(--km-text-select) !important;
+  background: var(--theme-color) !important;
 }
 body:not(.read-mode) #post #article-container h2 {
   font-size: 1.7rem;
@@ -8941,7 +9000,7 @@ body:not(.read-mode) #post #article-container h6:hover {
   body:not(.read-mode) #article-container h4:hover,
   body:not(.read-mode) #article-container h5:hover,
   body:not(.read-mode) #article-container h6:hover {
-    margin-left: 0.4rem;
+    margin-left: 0rem;
   }
 }
 #post #article-container .header-anchor {
