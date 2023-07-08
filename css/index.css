@@ -4332,6 +4332,9 @@ li.categoryBar-list-item {
 #pagination .next-post .pagination-info {
   text-align: right;
 }
+#pagination .prev-post {
+  background-color: #000;
+}
 #pagination .pull-full {
   width: 100% !important;
 }
