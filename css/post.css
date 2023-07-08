@@ -35,11 +35,11 @@
 [data-theme="dark"] .pagination-post:hover {
   background-color: #040404 !important;
 }
-[data-theme="light"] .next-post:hover,
+/* [data-theme="light"] .next-post:hover,
 [data-theme="light"] .prev-post:hover {
   font-size: medium;
   transition: 0.3s;
-}
+} */
 
 [data-theme="light"] #pagination .prev-post:hover .label,
 [data-theme="light"] #pagination .next-post:hover .label,
@@ -55,11 +55,11 @@
   color: white !important;
 }
 
-[data-theme="dark"] .next-post:hover,
+/* [data-theme="dark"] .next-post:hover,
 [data-theme="dark"] .prev-post:hover {
   font-size: medium;
   transition: 0.3s;
-}
+} */
 
 [data-theme="dark"] #pagination .prev-post:hover .label,
 [data-theme="dark"] #pagination .next-post:hover .label,

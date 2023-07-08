@@ -284,14 +284,9 @@ span.categoryBar-list-count::before,
 #pagination .prev-post:hover img,
 #pagination .next-post:hover img,
 .relatedPosts > .relatedPosts-list > div:hover img {
-  opacity: 0.8;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
-  filter: alpha(opacity=80);
-  -webkit-transform: scale(1.1);
-  -moz-transform: scale(1.1);
-  -o-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  transform: scale(1.1);
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
 }
 .postImgHover img,
 #pagination .prev-post img,
@@ -303,11 +298,6 @@ span.categoryBar-list-count::before,
   opacity: 0.6;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
   filter: alpha(opacity=60);
-  -webkit-transition: all 0.6s, filter 375ms ease-in 0.2s;
-  -moz-transition: all 0.6s, filter 375ms ease-in 0.2s;
-  -o-transition: all 0.6s, filter 375ms ease-in 0.2s;
-  -ms-transition: all 0.6s, filter 375ms ease-in 0.2s;
-  transition: all 0.6s, filter 375ms ease-in 0.2s;
   object-fit: cover;
 }
 .list-beauty,
@@ -4336,6 +4326,9 @@ li.categoryBar-list-item {
   color: var(--white);
   font-weight: 500;
 }
+#pagination .next-post {
+  background-color: #000;
+}
 #pagination .next-post .pagination-info {
   text-align: right;
 }
@@ -6281,12 +6274,34 @@ blockquote.pullquote.right {
 .read-mode #article-container .note .note-icon {
   color: var(--font-color);
 }
-
-
 .author-content {
   color: white;
 }
-
+.author-content.analysis {
+  background: var(--card-bg);
+  border: var(--card-border) !important;
+  -webkit-box-shadow: var(--card-box-shadow);
+  box-shadow: var(--card-box-shadow);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  padding: 30px;
+  transition: all 0.3s;
+  border-radius: 24px;
+}
+.author-content.analysis:hover {
+  -webkit-box-shadow: var(--card-hover-box-shadow);
+  box-shadow: var(--card-hover-box-shadow);
+}
+@media screen and (max-width: 768px) {
+  .author-content.analysis {
+    display: none;
+  }
+  .author-content-item .author-content-item-title, .yuanshen a{
+    font-size: 24px;
+  }
+}
 #page:has(#about-page) {
   border: 0;
   box-shadow: none !important;
@@ -6368,7 +6383,7 @@ blockquote.pullquote.right {
   padding: 1rem 2rem;
   overflow: hidden;
 }
-#about-page .myInfoAndSayHello{
+#about-page .myInfoAndSayHello {
   align-items: center !important;
   justify-items: center !important;
 }
@@ -6487,7 +6502,8 @@ blockquote.pullquote.right {
 .author-content-item .card-content .author-content-item-title {
   margin-bottom: 0.5rem;
 }
-.author-content-item .author-content-item-title ,.yuanshen a {
+.author-content-item .author-content-item-title,
+.yuanshen a {
   font-size: 36px;
   font-weight: 700;
   line-height: 1;
