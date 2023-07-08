@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont";
-  src: url("/fonts/iconfont.woff2") format("woff2"),
-    url("/fonts/iconfont.woff") format("woff"),
-    url("/fonts/iconfont.ttf") format("truetype");
+  src: url("https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@master/fonts/iconfont.woff2") format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@master/fonts/iconfont.woff") format("woff"),
+    url("https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@master/fonts/iconfont.ttf") format("truetype");
 }
 .iconfont {
   font-family: "iconfont" !important;
@@ -35,11 +35,8 @@
 
 /* 网页 */
 [data-theme="light"] #web_bg {
-  /* background: url(http://cloudchewie.com/img/img-index.jpeg); */
   background-repeat: no-repeat;
-  /* 背景图像大小 */
   background-size: cover;
-  /* background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%); */
   background: #f2f6fc;
 }
 /* 页脚 */
@@ -784,7 +781,6 @@ body {
   overflow: hidden;
   margin: 0 auto;
   position: relative;
-  /* background: url(/img/index_img/avatar_bg.webp); */
   background-size: cover;
   height: 160px;
   width: 100%;
