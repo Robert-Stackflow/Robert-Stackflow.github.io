@@ -177,6 +177,6 @@ div.tk-submit > div.tk-row.actions > a {
 .tk-action-count {
   color: var(--theme-color) !important;
 }
-.tk-pagination-pager{
+.tk-pagination-pager {
   border-radius: 8px;
 }

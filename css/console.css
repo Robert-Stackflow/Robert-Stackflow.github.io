@@ -15,6 +15,7 @@
   background-clip: content-box;
   display: inline-block;
   -webkit-appearance: none;
+  appearance: none;
   user-select: none;
   outline: none;
   transform: translateY(5px);
