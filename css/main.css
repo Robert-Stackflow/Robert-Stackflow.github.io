@@ -1,3 +1,25 @@
+@font-face {
+  font-family: "iconfont";
+  src: url("../fonts/iconfont.woff2")
+      format("woff2"),
+    url("../fonts/iconfont.woff")
+      format("woff"),
+    url("../fonts/iconfont.ttf")
+      format("truetype");
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 20px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-danmu:before {
+  content: "\e612";
+}
+.icon-jianti:before {
+  content: "\e6d7";
+}
 #love-button > a > i {
   color: red !important;
 }
