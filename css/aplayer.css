@@ -8,7 +8,7 @@
   font-family: LXGW Wenkai;
   color: var(--font-color) !important;
 }
-.aplayer .aplayer-lrc p {
+.globalaplayer .aplayer-lrc p {
   font-size: 13px !important;
 }
 @media screen and (max-width: 768px) {
@@ -64,10 +64,21 @@
   -ms-border-radius: 8px 0px 0px 8px;
   -o-border-radius: 8px 0px 0px 8px;
 }
-[data-theme="dark"] .aplayer .aplayer-info .aplayer-music .aplayer-author,
-[data-theme="dark"] .aplayer .aplayer-info .aplayer-controller .aplayer-time {
+[data-theme="dark"] .globalaplayer .aplayer-info .aplayer-music .aplayer-author,
+[data-theme="dark"] .globalaplayer .aplayer-info .aplayer-controller .aplayer-time,
+[data-theme="dark"] .globalaplayer .aplayer-info .aplayer-music .aplayer-title {
   color: white !important;
 }
+
+.globalaplayer .aplayer-lrc:after,
+.globalaplayer .aplayer-lrc:before {
+  background: none !important;
+}
+.globalaplayer span,
+.globalaplayer p {
+  font-family: LXGW Wenkai !important;
+}
+
 .aplayer.aplayer-fixed .aplayer-list {
   border: none !important;
   width: 290px !important;
@@ -77,7 +88,7 @@
 .aplayer-pic {
   background-color: var(--theme-color) !important;
 }
-.aplayer .aplayer-pic {
+.globalaplayer .aplayer-pic {
   transform: translateX(-1px);
   -webkit-transform: translateX(-1px);
   -moz-transform: translateX(-1px);
@@ -110,26 +121,26 @@
   -o-transform: translate(100px, -20px);
   box-shadow: var(--card-box-shadow) !important;
 }
-.aplayer .aplayer-list ol li {
+.globalaplayer .aplayer-list ol li {
   border-top: 1px dashed #4259ef23 !important;
 }
-.aplayer .aplayer-list ol li span,
+.globalaplayer .aplayer-list ol li span,
 .aplayer-title,
 .aplayer-time-inner span {
   font-family: LXGW Wenkai;
 }
-.aplayer .aplayer-list ol li:hover {
+.globalaplayer .aplayer-list ol li:hover {
   background: var(--text-bg-hover) !important;
 }
-[data-theme="light"] .aplayer .aplayer-list ol li:hover {
+[data-theme="light"] .globalaplayer .aplayer-list ol li:hover {
   background: #f6f6f6 !important;
 }
-[data-theme="dark"] .aplayer .aplayer-list ol li:hover .aplayer-list-index,
-[data-theme="dark"] .aplayer .aplayer-list ol li:hover .aplayer-list-title,
-[data-theme="dark"] .aplayer .aplayer-list ol li:hover .aplayer-list-author {
+[data-theme="dark"] .globalaplayer .aplayer-list ol li:hover .aplayer-list-index,
+[data-theme="dark"] .globalaplayer .aplayer-list ol li:hover .aplayer-list-title,
+[data-theme="dark"] .globalaplayer .aplayer-list ol li:hover .aplayer-list-author {
   color: white !important;
 }
-.aplayer .aplayer-list ol li.aplayer-list-light:hover {
+.globalaplayer .aplayer-list ol li.aplayer-list-light:hover {
   background: var(--theme-color) !important;
 }
 .aplayer-list-light,
@@ -140,11 +151,11 @@
 .aplayer-icon path {
   fill: var(--font-color) !important;
 }
-.aplayer .aplayer-list.aplayer-list-hide {
+.globalaplayer .aplayer-list.aplayer-list-hide {
   box-shadow: none !important;
   border: none !important;
 }
-.aplayer {
+.globalaplayer {
   background: none !important;
 }
 .aplayer.aplayer-fixed .aplayer-list ol::-webkit-scrollbar {
@@ -153,7 +164,7 @@
 [data-theme="dark"] .aplayer.aplayer-fixed .aplayer-list {
   background-color: var(--card-bg) !important;
 }
-.aplayer {
+.globalaplayer {
   font-family: LXGW Wenkai;
 }
 .aplayer-fixed.aplayer-narrow .aplayer-body {
@@ -193,6 +204,6 @@
     margin-bottom: 115px !important;
   }
 }
-.aplayer .aplayer-list ol li:first-child{
+.globalaplayer .aplayer-list ol li:first-child {
   border-top: none !important;
 }

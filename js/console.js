@@ -155,14 +155,15 @@ function tosetting() {
   toggleAPlayer = () => {
     if (btf.loadData("enableAPlayer") == "true") {
       btf.saveData("enableAPlayer", "false");
-      $(".aplayer").hide();
+      $(".globalaplayer").hide();
+      $(".music-wrapper .aplayer").show();
       if (window.aplayers) {
         for (let i = 0; i < window.aplayers.length; i++)
           window.aplayers[i].pause();
       }
     } else {
       btf.saveData("enableAPlayer", "true");
-      $(".aplayer").show();
+      $(".globalaplayer").show();
     }
   };
   // 解析歌单链接
@@ -265,10 +266,11 @@ function tosetting() {
       btf.saveData("enableAPlayer", "false");
     }
     if (btf.loadData("enableAPlayer") == "true") {
-      $(".aplayer").show();
+      $(".globalaplayer").show();
+      $(".music-wrapper .aplayer").show();
       document.getElementById("con-toggleAPlayer").checked = true;
     } else {
-      $(".aplayer").hide();
+      $(".globalaplayer").hide();
       if (window.aplayers)
         for (let i = 0; i < window.aplayers.length; i++)
           window.aplayers[i].pause();
