@@ -2,7 +2,7 @@
 if (typeof Lately === "undefined") {
   const script = document.createElement("script");
   script.src =
-    "https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@master/js/lately.min.js";
+    "https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@master/js/third-party/lately.min.js";
   script.onload = () => {
     Lately.init({ target: ".talk_date" });
   };

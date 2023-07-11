@@ -138,7 +138,7 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transform: translateZ(0);
-  background: var(--heo-maskbgdeep);
+  background: rgba(255, 255, 255, 0.85);
   position: fixed;
   inset: 0px;
   z-index: 1000;
@@ -539,7 +539,7 @@ li.categoryBar-list-item {
     top: 10px;
     color: white !important;
     padding: 0 15px;
-    background-color: var(--lyx-black-acrylic3);
+    background-color: #00000099;
     border-radius: 12px;
     right: 15px;
     text-decoration: none !important;
@@ -598,7 +598,7 @@ li.categoryBar-list-item {
     > .recent-post-info
     > .article-title
     :hover {
-    color: var(--lyx-theme);
+    color: var(--theme-color);
   }
   #recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap {
     margin-bottom: 1rem; /*控制标题meta信息的底部间距*/

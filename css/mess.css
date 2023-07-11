@@ -156,3 +156,47 @@
     background-position: 0% 50%;
   }
 }
+/* Emoji CSS */
+#owo-big {
+  position: fixed;
+  align-items: center;
+  background-color: var(--card-bg);
+  border: var(--card-border);
+  border-radius: 10px;
+  z-index: 9999;
+  display: none;
+  transform: translate(0, -105%);
+  overflow: hidden;
+  animation: owoIn 0.3s cubic-bezier(0.42, 0, 0.3, 1.11);
+}
+
+#owo-big img {
+  width: 100%;
+}
+
+@keyframes owoIn {
+  0% {
+    transform: translate(0, -95%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, -105%);
+    opacity: 1;
+  }
+}
+.OwO-body {
+  border-radius: 10px !important;
+  backdrop-filter: blur(20px) !important;
+  background: var(--card-bg) !important;
+}
+.OwO .OwO-body .OwO-items .OwO-item:hover {
+  background: var(--text-bg-hover) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+.OwO .OwO-body .OwO-bar .OwO-packages li:nth-child(1) {
+  border-radius: 0px 0px 0px 10px;
+}
+.OwO .OwO-body .OwO-bar .OwO-packages li {
+  margin: 0px;
+}

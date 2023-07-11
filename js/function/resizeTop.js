@@ -5,13 +5,6 @@ function getStyle(obj, name) {
     return obj.currentStyle[name];
   }
 }
-// try{
-// if(getStyle(document.getElementById("toggle-menu"),"display").replace(/\s+|px/gi,"")!="none"){
-//     document.getElementById("menus").setAttribute("style","display:none!important");
-// }else{
-
-//     document.getElementById("menus").setAttribute("style","");
-// }}catch(e){}
 var clientWidth = document.getElementById("content-inner").clientWidth;
 var paddingLeft = Number(
   getStyle(document.getElementById("content-inner"), "paddingLeft").replace(

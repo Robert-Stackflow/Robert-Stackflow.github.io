@@ -79,7 +79,7 @@
   font-size: 20px;
   padding: 10px;
   margin: 10px;
-  background-color: var(--lyx-light-grey);
+  background-color: #e2e2e2;
   opacity: 0.8;
   border-radius: 8px;
   transition: all 0.3s;
@@ -89,7 +89,7 @@
   -o-transition: all 0.3s;
 }
 .settingx:hover {
-  background-color: var(--lyx-gray);
+  background-color: #e2e2e2;
 }
 #backer {
   font-size: 20px;
@@ -127,6 +127,7 @@
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   z-index: 514;
   display: none;
 }
