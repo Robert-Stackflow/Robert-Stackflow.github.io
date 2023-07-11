@@ -1,7 +1,7 @@
 //加载lately.js
 if (typeof Lately === "undefined") {
   const script = document.createElement("script");
-  script.src = "https://fastly.jsdelivr.net/gh/Tokinx/Lately/lately.min.js";
+  script.src = "https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@master/js/lately.min.js";
   script.onload = () => {
     Lately.init({ target: ".talk_date" });
   };

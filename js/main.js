@@ -660,7 +660,13 @@ document.addEventListener("DOMContentLoaded", function () {
         mobileSidebarOpen &&
         sidebarFn.close();
     });
-
+    window.addEventListener("resize", () => {
+      "/nowtime/" == location.pathname &&
+        (waterfall("#talk"),
+        setTimeout(() => {
+          waterfall("#talk");
+        }, 300));
+    });
     document.getElementById("menu-mask").addEventListener("click", (e) => {
       sidebarFn.close();
     });
@@ -721,4 +727,9 @@ document.addEventListener("DOMContentLoaded", function () {
   refreshFunction();
   unRefreshFunction();
   percentFunction();
+  "/nowtime/" == location.pathname &&
+    (waterfall("#talk"),
+    setTimeout(() => {
+      waterfall("#talk");
+    }, 300));
 });
