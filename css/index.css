@@ -2428,7 +2428,7 @@ figure.highlight pre .javascript .function {
   }
 }
 .layout.hide-aside {
-  max-width: 1200px;
+  max-width: 1400px;
 }
 @media screen and (min-width: 2000px) {
   .layout.hide-aside {
@@ -3728,7 +3728,7 @@ li.categoryBar-list-item {
 #page-header {
   position: relative;
   width: 100%;
-  background-color: #09f;
+  background-color: transparent;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;

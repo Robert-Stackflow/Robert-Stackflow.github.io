@@ -1,31 +1,61 @@
-const galleryFn = {
+const cloudchewieFn = {
+  setCookie: (cname, cvalue, exdays = 365) => {
+    var d = new Date();
+    d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+  },
+  getCookie: (cname) => {
+    var name = cname + "=";
+    var ca = document.cookie.split(";");
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i].trim();
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  },
+  delCookie: (name) => {
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval = getCookie(name);
+    if (cval != null)
+      document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+  },
+  showRightMenu: (isTrue, x = 0, y = 0) => {
+    let $rightMenu = $("#rightMenu");
+    $rightMenu.css("top", x + "px").css("left", y + "px");
+    if (isTrue) {
+      $rightMenu.show();
+    } else {
+      $rightMenu.hide();
+    }
+  },
   /**
    * 图库
    */
   addPhotoFigcaption: () => {
-    document
-      .querySelectorAll("#article-container img")
-      .forEach(function (item) {
-        const parentEle = item.parentNode;
-        const altValue = item.title || item.alt;
-        if (
-          altValue &&
-          !parentEle.parentNode.classList.contains("justified-gallery")
-        ) {
-          const ele = document.createElement("div");
-          ele.className = "img-alt is-center";
-          ele.textContent = altValue;
-          parentEle.insertBefore(ele, item.nextSibling);
-        }
-      });
+    document.querySelectorAll("#article-container img").forEach((item) => {
+      const parentEle = item.parentNode;
+      const altValue = item.title || item.alt;
+      if (
+        altValue &&
+        !parentEle.parentNode.classList.contains("justified-gallery")
+      ) {
+        const ele = document.createElement("div");
+        ele.className = "img-alt is-center";
+        ele.textContent = altValue;
+        parentEle.insertBefore(ele, item.nextSibling);
+      }
+    });
   },
   /**
    * justified-gallery 图库排版
    */
-  runJustifiedGallery: function (ele) {
+  runJustifiedGallery: (ele) => {
     ele.forEach((item) => {
       const $imgList = item.querySelectorAll("img");
-
       $imgList.forEach((i) => {
         const dataLazySrc = i.getAttribute("data-lazy-src");
         if (dataLazySrc) i.src = dataLazySrc;
@@ -53,16 +83,7 @@ const galleryFn = {
       document.querySelectorAll("#article-container img:not(.no-lightbox)")
     );
   },
-};
-/**
- * Lightbox
- */
-
-/**
- * 代码高亮
- */
-const highlightFn = {
-  addHighlight: function () {
+  addHighlight: () => {
     const highLight = GLOBAL_CONFIG.highlight;
     if (!highLight) return;
 
@@ -96,7 +117,7 @@ const highlightFn = {
     }
 
     //定义函数
-    copy: (text, ctx) => {
+    const copy = (text, ctx) => {
       if (
         document.queryCommandSupported &&
         document.queryCommandSupported("copy")
@@ -119,28 +140,26 @@ const highlightFn = {
           ctx.previousElementSibling.innerText = GLOBAL_CONFIG.copy.noSupport;
         }
       }
-    },
-      (highlightCopyFn = (ele) => {
-        const $buttonParent = ele.parentNode;
-        $buttonParent.classList.add("copy-true");
-        const selection = window.getSelection();
-        const range = document.createRange();
-        if (isPrismjs)
-          range.selectNodeContents(
-            $buttonParent.querySelectorAll("pre code")[0]
-          );
-        else
-          range.selectNodeContents(
-            $buttonParent.querySelectorAll("table .code pre")[0]
-          );
-        selection.removeAllRanges();
-        selection.addRange(range);
-        const text = selection.toString();
-        copy(text, ele.lastChild);
-        selection.removeAllRanges();
-        $buttonParent.classList.remove("copy-true");
-      });
-    highlightShrinkFn = (ele) => {
+    };
+    const highlightCopyFn = (ele) => {
+      const $buttonParent = ele.parentNode;
+      $buttonParent.classList.add("copy-true");
+      const selection = window.getSelection();
+      const range = document.createRange();
+      if (isPrismjs)
+        range.selectNodeContents($buttonParent.querySelectorAll("pre code")[0]);
+      else
+        range.selectNodeContents(
+          $buttonParent.querySelectorAll("table .code pre")[0]
+        );
+      selection.removeAllRanges();
+      selection.addRange(range);
+      const text = selection.toString();
+      copy(text, ele.lastChild);
+      selection.removeAllRanges();
+      $buttonParent.classList.remove("copy-true");
+    };
+    const highlightShrinkFn = (ele) => {
       const $nextEle = [...ele.parentNode.children].slice(1);
       ele.firstChild.classList.toggle("closed");
       if (btf.isHidden($nextEle[$nextEle.length - 1])) {
@@ -153,15 +172,15 @@ const highlightFn = {
         });
       }
     };
-    highlightToolsFn = function (e) {
+    const highlightToolsFn = (e) => {
       const $target = e.target.classList;
       if ($target.contains("expand")) highlightShrinkFn(this);
       else if ($target.contains("copy-button")) highlightCopyFn(this);
     };
-    expandCode = function () {
+    const expandCode = () => {
       this.classList.toggle("expand-done");
     };
-    createEle = function (lang, item, service) {
+    const createEle = (lang, item, service) => {
       const fragment = document.createDocumentFragment();
       if (isShowTool) {
         const hlTools = document.createElement("div");
@@ -189,7 +208,7 @@ const highlightFn = {
 
     if (isHighlightLang) {
       if (isPrismjs) {
-        $figureHighlight.forEach(function (item) {
+        $figureHighlight.forEach((item) => {
           const langName = item.getAttribute("data-language")
             ? item.getAttribute("data-language")
             : "Code";
@@ -198,7 +217,7 @@ const highlightFn = {
           createEle(highlightLangEle, item);
         });
       } else {
-        $figureHighlight.forEach(function (item) {
+        $figureHighlight.forEach((item) => {
           let langName = item.getAttribute("class").split(" ")[1];
           if (langName === "plain" || langName === undefined) langName = "Code";
           const highlightLangEle = `<div class="code-lang">${langName}</div>`;
@@ -207,37 +226,31 @@ const highlightFn = {
       }
     } else {
       if (isPrismjs) {
-        $figureHighlight.forEach(function (item) {
+        $figureHighlight.forEach((item) => {
           btf.wrap(item, "figure", { class: "highlight" });
           createEle("", item);
         });
       } else {
-        $figureHighlight.forEach(function (item) {
+        $figureHighlight.forEach((item) => {
           createEle("", item, "hl");
         });
       }
     }
   },
-};
-
-/**
- * 边栏按钮功能
- */
-const rightSideFn = {
   switchReadMode: () => {
-    function clickFn() {
+    const clickFn = () => {
       $body.classList.remove("read-mode");
       document.getElementById("post").classList.remove("read-mode");
       newEle.remove();
       newEle.removeEventListener("click", clickFn);
-      rmf.isReadMode = false;
+      cloudchewieFn.isReadMode = false;
       $(".aplayer").show();
       $("#con-readmode").removeClass("checked");
       $(document.getElementById("post-meta")).show();
       if (visible != "none") {
         $(commentBarrage).fadeToggle();
       }
-    }
+    };
 
     const $body = document.body;
     $body.classList.add("read-mode");
@@ -247,9 +260,9 @@ const rightSideFn = {
     newEle.className = "fas fa-sign-out-alt exit-readmode";
     newEle.removeEventListener("click", clickFn);
     $body.appendChild(newEle);
-    toggleWinbox();
+    consoleFn.closeConsole();
     $(document.getElementById("post-meta")).hide();
-    rmf.isReadMode = true;
+    cloudchewieFn.isReadMode = true;
     $("#con-readmode").addClass("checked");
     $(".aplayer").hide();
 
@@ -260,15 +273,136 @@ const rightSideFn = {
     }
     newEle.addEventListener("click", clickFn);
   },
+  changeAutoColor: (first) => {
+    if (
+      btf.loadData("enableAutoColor") == "true" &&
+      document.querySelector("#page-header") != null &&
+      document.querySelector("#page-header").style.backgroundImage != null &&
+      document
+        .querySelector("#page-header")
+        .style.backgroundImage.split('url("')[1] != null
+    ) {
+      const colorThief = new ColorThief();
+      const image = new Image();
+      const xhr = new XMLHttpRequest();
+      var url = document
+        .querySelector("#page-header")
+        .style.backgroundImage.split('url("')[1]
+        .split('")')[0];
+      xhr.onload = () => {
+        let coverUrl = URL.createObjectURL(this.response);
+        image.onload = () => {
+          let color = colorThief.getColor(image);
+          setThemeColor(color[0], color[1], color[2]);
+          URL.revokeObjectURL(coverUrl);
+        };
+        image.src = coverUrl;
+      };
+      xhr.open("GET", url, true);
+      xhr.responseType = "blob";
+      xhr.send();
+    } else {
+      if (!first) setThemeColor(0, 153, 255);
+    }
+  },
+  isFullScreen: () => {
+    var isFull = document.fullScreen || document.fullscreenElement !== null;
+    if (isFull === undefined) isFull = false;
+    return isFull;
+  },
   switchDarkMode: () => {
+    // typeof utterancesTheme === "function" && utterancesTheme();
+    // typeof changeGiscusTheme === "function" && changeGiscusTheme();
+    // typeof FB === "object" && window.loadFBComment();
+    // typeof runMermaid === "function" && window.runMermaid();
     const nowMode =
       document.documentElement.getAttribute("data-theme") === "dark"
         ? "dark"
         : "light";
+    let $rightMenu = $(
+      "#menus > div.menus_items > div:nth-child(7) > a > span"
+    );
+    let $rightMenu_mobile = $(
+      "#sidebar-menus > div.menus_items > div:nth-child(7) > a > span"
+    );
+    if (nowMode === "light") {
+      // $rightMenu.html("浅色模式")
+      // $rightMenu_mobile.html("浅色模式")
+      activateDarkMode();
+      saveToLocal.set("theme", "dark", 2);
+      GLOBAL_CONFIG.Snackbar !== undefined &&
+        btf.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night);
+    } else {
+      // $rightMenu.html("深色模式")
+      // $rightMenu_mobile.html("深色模式")
+      activateLightMode();
+      saveToLocal.set("theme", "light", 2);
+      cloudchewieFn.day_night_count++;
+      GLOBAL_CONFIG.Snackbar !== undefined &&
+        btf.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day);
+    }
+    // handle some cases
     typeof utterancesTheme === "function" && utterancesTheme();
-    typeof changeGiscusTheme === "function" && changeGiscusTheme();
     typeof FB === "object" && window.loadFBComment();
-    typeof runMermaid === "function" && window.runMermaid();
+    window.DISQUS &&
+      document.getElementById("disqus_thread").children.length &&
+      setTimeout(() => window.disqusReset(), 200);
+  },
+  copySelect: () => {
+    document.execCommand("Copy", false, null);
+    GLOBAL_CONFIG.Snackbar !== undefined &&
+      btf.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success);
+  },
+  insertAtCursor: (myField, myValue) => {
+    if (document.selection) {
+      myField.focus();
+      sel = document.selection.createRange();
+      sel.text = myValue;
+      sel.select();
+    } else if (myField.selectionStart || myField.selectionStart == "0") {
+      var startPos = myField.selectionStart;
+      var endPos = myField.selectionEnd;
+      var restoreTop = myField.scrollTop;
+      myField.value =
+        myField.value.substring(0, startPos) +
+        myValue +
+        myField.value.substring(endPos, myField.value.length);
+
+      if (restoreTop > 0) {
+        myField.scrollTop = restoreTop;
+      }
+      myField.focus();
+      myField.selectionStart = startPos + myValue.length;
+      myField.selectionEnd = startPos + myValue.length;
+    } else {
+      myField.value += myValue;
+      myField.focus();
+    }
+  },
+  copyWordsLink: function () {
+    let url = window.location.href;
+    let txa = document.createElement("textarea");
+    txa.value = url;
+    document.body.appendChild(txa);
+    txa.select();
+    document.execCommand("Copy");
+    document.body.removeChild(txa);
+    GLOBAL_CONFIG.Snackbar !== undefined &&
+      btf.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success);
+  },
+  translate: () => {
+    document.getElementById("con-translate").click();
+  },
+  hideAsideBtn: () => {
+    // Hide aside
+    const $htmlDom = document.documentElement.classList;
+    $htmlDom.contains("hide-aside")
+      ? saveToLocal.set("enableAside", "show", 2)
+      : saveToLocal.set("enableAside", "hide", 2);
+    $htmlDom.toggle("hide-aside");
+    if (saveToLocal.get("enableAside") == "hide")
+      $("#con-toggleaside").addClass("checked");
+    else $("#con-toggleaside").removeClass("checked");
   },
   showOrHideBtn: (e) => {
     const rightsideHideClassList = document.getElementById(
@@ -287,15 +421,11 @@ const rightSideFn = {
     btf.scrollToDest(0, 500);
   },
   scrollToBottom: () => {
-    // window.scrollTo({
-    //   top: document.body.clientHeight,
-    //   behavior: "smooth",
-    // });
     btf.scrollToDest(document.body.scrollHeight, 500);
   },
   hideAsideBtn: () => {
     //隐藏右侧栏
-    if (!isHome()) {
+    if (!btf.isHome()) {
       const $htmlDom = document.documentElement.classList;
       $htmlDom.contains("hide-aside")
         ? saveToLocal.set("enableAside", "show", 2)
@@ -326,50 +456,12 @@ const rightSideFn = {
   clickFnOfSubMenu: () => {
     document
       .querySelectorAll("#sidebar-menus .site-page.group")
-      .forEach(function (item) {
-        item.addEventListener("click", function () {
+      .forEach((item) => {
+        item.addEventListener("click", () => {
           this.classList.toggle("hide");
         });
       });
   },
-};
-/**
- * 绑定右键菜单事件
- */
-bindRightSideButton = () => {
-  document.getElementById("rightside").addEventListener("click", function (e) {
-    const $target = e.target.id ? e.target : e.target.parentNode;
-    switch ($target.id) {
-      case "go-up":
-        rightSideFn.scrollToTop();
-        break;
-      case "go-down":
-        rightSideFn.scrollToBottom();
-        break;
-      case "rightside_config":
-        rightSideFn.showOrHideBtn($target);
-        break;
-      case "mobile-toc-button":
-        rightSideFn.runMobileToc();
-        break;
-      case "readmode":
-        rightSideFn.switchReadMode();
-        break;
-      case "darkmode":
-        rightSideFn.switchDarkMode();
-        break;
-      case "hide-aside-btn":
-        rightSideFn.hideAsideBtn();
-        break;
-      default:
-        break;
-    }
-  });
-};
-/**
- * 滚动处理
- */
-const scrollFn = {
   scrollFunction: () => {
     const $rightside = document.getElementById("rightside");
     const innerHeight = window.innerHeight + 56;
@@ -392,7 +484,7 @@ const scrollFn = {
     const isChatBtnShow = typeof chatBtnShow === "function";
 
     window.scrollCollect = () => {
-      return btf.throttle(function (e) {
+      return btf.throttle((e) => {
         const currentTop = window.scrollY || document.documentElement.scrollTop;
         const isDown = scrollDirection(currentTop);
         if (currentTop < 10) {
@@ -536,7 +628,7 @@ const scrollFn = {
 
     const list = $article.querySelectorAll("h1,h2,h3,h4,h5,h6");
     let detectItem = "";
-    const findHeadPosition = function (top) {
+    const findHeadPosition = (top) => {
       if (top === 0) {
         return false;
       }
@@ -544,7 +636,7 @@ const scrollFn = {
       let currentId = "";
       let currentIndex = "";
 
-      list.forEach(function (ele, index) {
+      list.forEach((ele, index) => {
         if (top > btf.getEleTop(ele) - 80) {
           const id = ele.id;
           currentId = id ? "#" + encodeURI(id) : "";
@@ -583,8 +675,8 @@ const scrollFn = {
       }
     };
 
-    window.resolveTocScrollFunction = function () {
-      return btf.throttle(function () {
+    window.resolveTocScrollFunction = () => {
+      return btf.throttle(() => {
         const currentTop = window.scrollY || document.documentElement.scrollTop;
         isToc && scrollPercent(currentTop);
         findHeadPosition(currentTop);
@@ -592,154 +684,146 @@ const scrollFn = {
     };
     window.addEventListener("scroll", resolveTocScrollFunction);
   },
-};
-/* 表情放大 */
-function enlargeEmoji() {
-  let flag = 1,
-    owo_time = "",
-    m = 3;
-  let div = document.createElement("div"),
-    body = document.querySelector("body");
-  div.id = "owo-big";
-  body.appendChild(div);
-  let observer = new MutationObserver((mutations) => {
-    for (let i = 0; i < mutations.length; i++) {
-      let dom = mutations[i].addedNodes,
-        owo_body = "";
-      if (dom.length == 2 && dom[1].className == "OwO-body") owo_body = dom[1];
-      // 如果需要在评论内容中启用此功能请解除下面的注释
-      // else if (dom.length == 1 && dom[0].className == 'tk-comment') owo_body = dom[0];
-      else continue;
-      // 禁用右键（手机端长按会出现右键菜单，为了体验给禁用掉）
-      if (document.body.clientWidth <= 768)
-        owo_body.addEventListener("contextmenu", (e) => e.preventDefault());
-      // 鼠标移入
-      owo_body.onmouseover = (e) => {
-        if (flag && e.target.tagName == "IMG") {
-          flag = 0;
-          // 移入300毫秒后显示盒子
-          owo_time = setTimeout(() => {
-            let height = e.target.clientHeight * m,
-              width = e.target.clientWidth * m,
-              left = e.x - e.offsetX - (width - e.target.clientWidth) / 2,
-              top = e.y - e.offsetY;
-            if (left + width > body.clientWidth)
-              left -= left + width - body.clientWidth + 10;
-            if (left < 0) left = 10;
-            div.style.cssText = `display:flex; height:${height}px; width:${width}px; left:${left}px; top:${top}px;`;
-            div.innerHTML = `<img src="${e.target.src}">`;
-          }, 300);
-        }
-      };
-      // 鼠标移出
-      owo_body.onmouseout = () => {
-        (div.style.display = "none"), (flag = 1), clearTimeout(owo_time);
-      };
-    }
-  });
-  observer.observe(document.getElementById("post-comment"), {
-    subtree: true,
-    childList: true,
-  });
-}
-/**
- * 复制加上版权信息
- */
-const addCopyright = () => {
-  const copyright = GLOBAL_CONFIG.copyright;
-  document.body.oncopy = (e) => {
-    e.preventDefault();
-    let textFont;
-    const copyFont = window.getSelection(0).toString();
-    if (copyFont.length > copyright.limitCount) {
-      textFont =
-        copyFont +
-        "\n" +
-        "\n" +
-        "\n" +
-        copyright.languages.author +
-        "\n" +
-        copyright.languages.link +
-        window.location.href +
-        "\n" +
-        copyright.languages.source +
-        "\n" +
-        copyright.languages.info;
-    } else {
-      textFont = copyFont;
-    }
-    if (e.clipboardData) {
-      return e.clipboardData.setData("text", textFont);
-    } else {
-      return window.clipboardData.setData("text", textFont);
-    }
-  };
-};
-
-/**
- * 网页运行时间
- */
-const addRuntime = () => {
-  const $runtimeCount = document.getElementById("runtimeshow");
-  if ($runtimeCount) {
-    const publishDate = $runtimeCount.getAttribute("data-publishDate");
-    $runtimeCount.innerText =
-      btf.diffDate(publishDate) + " " + GLOBAL_CONFIG.runtime;
-  }
-};
-
-/**
- * 最后更新时间
- */
-const addLastPushDate = () => {
-  const $lastPushDateItem = document.getElementById("last-push-date");
-  if ($lastPushDateItem) {
-    const lastPushDate = $lastPushDateItem.getAttribute("data-lastPushDate");
-    $lastPushDateItem.innerText = btf.diffDate(lastPushDate, true);
-  }
-};
-
-/**
- * 表格Overflow
- */
-const addTableWrap = () => {
-  const $table = document.querySelectorAll(
-    "#article-container :not(.highlight) > table, #article-container > table"
-  );
-  if ($table.length) {
-    $table.forEach((item) => {
-      btf.wrap(item, "div", { class: "table-wrap" });
+  enlargeEmoji: () => {
+    let flag = 1,
+      owo_time = "",
+      m = 3;
+    let div = document.createElement("div"),
+      body = document.querySelector("body");
+    div.id = "owo-big";
+    body.appendChild(div);
+    let observer = new MutationObserver((mutations) => {
+      for (let i = 0; i < mutations.length; i++) {
+        let dom = mutations[i].addedNodes,
+          owo_body = "";
+        if (dom.length == 2 && dom[1].className == "OwO-body")
+          owo_body = dom[1];
+        // 如果需要在评论内容中启用此功能请解除下面的注释
+        // else if (dom.length == 1 && dom[0].className == 'tk-comment') owo_body = dom[0];
+        else continue;
+        // 禁用右键（手机端长按会出现右键菜单，为了体验给禁用掉）
+        if (document.body.clientWidth <= 768)
+          owo_body.addEventListener("contextmenu", (e) => e.preventDefault());
+        // 鼠标移入
+        owo_body.onmouseover = (e) => {
+          if (flag && e.target.tagName == "IMG") {
+            flag = 0;
+            // 移入300毫秒后显示盒子
+            owo_time = setTimeout(() => {
+              let height = e.target.clientHeight * m,
+                width = e.target.clientWidth * m,
+                left = e.x - e.offsetX - (width - e.target.clientWidth) / 2,
+                top = e.y - e.offsetY;
+              if (left + width > body.clientWidth)
+                left -= left + width - body.clientWidth + 10;
+              if (left < 0) left = 10;
+              div.style.cssText = `display:flex; height:${height}px; width:${width}px; left:${left}px; top:${top}px;`;
+              div.innerHTML = `<img src="${e.target.src}">`;
+            }, 300);
+          }
+        };
+        // 鼠标移出
+        owo_body.onmouseout = () => {
+          (div.style.display = "none"), (flag = 1), clearTimeout(owo_time);
+        };
+      }
     });
-  }
-};
-
-/**
- * tag-hide
- */
-const clickFnOfTagHide = function () {
-  const $hideInline = document.querySelectorAll(
-    "#article-container .hide-button"
-  );
-  if ($hideInline.length) {
-    $hideInline.forEach(function (item) {
-      item.addEventListener("click", function (e) {
-        const $this = this;
-        $this.classList.add("open");
-        const $fjGallery =
-          $this.nextElementSibling.querySelectorAll(".fj-gallery");
-        $fjGallery.length && btf.initJustifiedGallery($fjGallery);
+    observer.observe(document.getElementById("post-comment"), {
+      subtree: true,
+      childList: true,
+    });
+  },
+  /**
+   * 复制加上版权信息
+   */
+  addCopyright: () => {
+    const copyright = GLOBAL_CONFIG.copyright;
+    document.body.oncopy = (e) => {
+      e.preventDefault();
+      let textFont;
+      const copyFont = window.getSelection(0).toString();
+      if (copyFont.length > copyright.limitCount) {
+        textFont =
+          copyFont +
+          "\n" +
+          "\n" +
+          "\n" +
+          copyright.languages.author +
+          "\n" +
+          copyright.languages.link +
+          window.location.href +
+          "\n" +
+          copyright.languages.source +
+          "\n" +
+          copyright.languages.info;
+      } else {
+        textFont = copyFont;
+      }
+      if (e.clipboardData) {
+        return e.clipboardData.setData("text", textFont);
+      } else {
+        return window.clipboardData.setData("text", textFont);
+      }
+    };
+  },
+  /**
+   * 网页运行时间
+   */
+  addRuntime: () => {
+    const $runtimeCount = document.getElementById("runtimeshow");
+    if ($runtimeCount) {
+      const publishDate = $runtimeCount.getAttribute("data-publishDate");
+      $runtimeCount.innerText =
+        btf.diffDate(publishDate) + " " + GLOBAL_CONFIG.runtime;
+    }
+  },
+  /**
+   * 最后更新时间
+   */
+  addLastPushDate: () => {
+    const $lastPushDateItem = document.getElementById("last-push-date");
+    if ($lastPushDateItem) {
+      const lastPushDate = $lastPushDateItem.getAttribute("data-lastPushDate");
+      $lastPushDateItem.innerText = btf.diffDate(lastPushDate, true);
+    }
+  },
+  /**
+   * 表格Overflow
+   */
+  addTableWrap: () => {
+    const $table = document.querySelectorAll(
+      "#article-container :not(.highlight) > table, #article-container > table"
+    );
+    if ($table.length) {
+      $table.forEach((item) => {
+        btf.wrap(item, "div", { class: "table-wrap" });
       });
-    });
-  }
-};
-
-//标签页控件
-const tabsFn = {
-  clickFnOfTabs: function () {
+    }
+  },
+  /**
+   * tag-hide
+   */
+  clickFnOfTagHide: () => {
+    const $hideInline = document.querySelectorAll(
+      "#article-container .hide-button"
+    );
+    if ($hideInline.length) {
+      $hideInline.forEach((item) => {
+        item.addEventListener("click", (e) => {
+          const $this = this;
+          $this.classList.add("open");
+          const $fjGallery =
+            $this.nextElementSibling.querySelectorAll(".fj-gallery");
+          $fjGallery.length && btf.initJustifiedGallery($fjGallery);
+        });
+      });
+    }
+  },
+  clickFnOfTabs: () => {
     document
       .querySelectorAll("#article-container .tab > button")
-      .forEach(function (item) {
-        item.addEventListener("click", function (e) {
+      .forEach((item) => {
+        item.addEventListener("click", (e) => {
           const $this = this;
           const $tabItem = $this.parentNode;
 
@@ -767,262 +851,308 @@ const tabsFn = {
   backToTop: () => {
     document
       .querySelectorAll("#article-container .tabs .tab-to-top")
-      .forEach(function (item) {
-        item.addEventListener("click", function () {
+      .forEach((item) => {
+        item.addEventListener("click", () => {
           btf.scrollToDest(btf.getEleTop(btf.getParents(this, ".tabs")), 300);
         });
       });
   },
-};
-
-//点击专栏卡片
-const toggleCardCategory = function () {
-  const $cardCategory = document.querySelectorAll(
-    "#aside-cat-list .card-category-list-item.parent i"
-  );
-  if ($cardCategory.length) {
-    $cardCategory.forEach(function (item) {
-      item.addEventListener("click", function (e) {
-        e.preventDefault();
-        const $this = this;
-        $this.classList.toggle("expand");
-        const $parentEle = $this.parentNode.nextElementSibling;
-        if (btf.isHidden($parentEle)) {
-          $parentEle.style.display = "block";
-        } else {
-          $parentEle.style.display = "none";
-        }
-      });
-    });
-  }
-};
-//跳转到评论
-const switchComments = function () {
-  let switchDone = false;
-  const $switchBtn = document.querySelector("#comment-switch > .switch-btn");
-  $switchBtn &&
-    $switchBtn.addEventListener("click", function () {
-      this.classList.toggle("move");
-      document
-        .querySelectorAll("#post-comment > .comment-wrap > div")
-        .forEach(function (item) {
-          if (btf.isHidden(item)) {
-            item.style.cssText = "display: block;animation: tabshow .5s";
+  //点击专栏卡片
+  toggleCardCategory: () => {
+    const $cardCategory = document.querySelectorAll(
+      "#aside-cat-list .card-category-list-item.parent i"
+    );
+    if ($cardCategory.length) {
+      $cardCategory.forEach((item) => {
+        item.addEventListener("click", (e) => {
+          e.preventDefault();
+          const $this = this;
+          $this.classList.toggle("expand");
+          const $parentEle = $this.parentNode.nextElementSibling;
+          if (btf.isHidden($parentEle)) {
+            $parentEle.style.display = "block";
           } else {
-            item.style.cssText = "display: none;animation: ''";
+            $parentEle.style.display = "none";
           }
         });
-
-      if (!switchDone && typeof loadOtherComment === "function") {
-        switchDone = true;
-        loadOtherComment();
-      }
-    });
-};
-
-//文章过期提醒
-const addPostOutdateNotice = function () {
-  const data = GLOBAL_CONFIG.noticeOutdate;
-  const diffDay = btf.diffDate(GLOBAL_CONFIG_SITE.postUpdate);
-  if (diffDay >= data.limitDay) {
-    const ele = document.createElement("div");
-    ele.className = "post-outdate-notice";
-    ele.textContent = data.messagePrev + " " + diffDay + " " + data.messageNext;
-    const $targetEle = document.getElementById("article-container");
-    if (data.position === "top") {
-      $targetEle.insertBefore(ele, $targetEle.firstChild);
-    } else {
-      $targetEle.appendChild(ele);
-    }
-  }
-};
-//懒加载图片
-const lazyloadImg = () => {
-  window.lazyLoadInstance = new LazyLoad({
-    elements_selector: "img",
-    threshold: 0,
-    data_src: "lazy-src",
-  });
-};
-
-//相对日期
-const relativeDate = function (selector) {
-  selector.forEach((item) => {
-    const $this = item;
-    const timeVal = $this.getAttribute("datetime");
-    $this.innerText = btf.diffDate(timeVal, true);
-    $this.style.display = "inline";
-  });
-};
-
-const sweetSnack = () => {
-  if (rmf.getCookie("daynight") == "NaN") rmf.day_night_count = 0;
-  else rmf.day_night_count = new Number(rmf.getCookie("daynight"));
-  setInterval(function () {
-    var initDay = -3;
-    if (rmf.day_night_count + initDay == 0)
-      GLOBAL_CONFIG.Snackbar !== undefined &&
-        btf.snackbarShowLong(
-          "冬至·伊始:我的心与爱是不是能够这般纯粹，经受住时空的考验"
-        ),
-        rmf.day_night_count++;
-    if (rmf.day_night_count + initDay == 20)
-      GLOBAL_CONFIG.Snackbar !== undefined &&
-        btf.snackbarShowLong(
-          "交替·新生:月徊而霜凝兮，良人伴我侧；月斜而影绰兮，明镜照我心"
-        ),
-        rmf.day_night_count++;
-    if (rmf.day_night_count + initDay == 60)
-      GLOBAL_CONFIG.Snackbar !== undefined &&
-        btf.snackbarShowLong(
-          "风起·渴盼:桐絮扰动着尘世，恋人缔造着世界；细腻不语的青苔，是我对你的爱恋"
-        ),
-        rmf.day_night_count++;
-    if (rmf.day_night_count + initDay == 120)
-      GLOBAL_CONFIG.Snackbar !== undefined &&
-        btf.snackbarShowLong(
-          "雾霭·探索:越来越浓的雾霭模糊着彼此的视线，越来越厚的障壁阻隔着彼此的心儿"
-        ),
-        rmf.day_night_count++;
-    if (rmf.day_night_count + initDay == 200)
-      GLOBAL_CONFIG.Snackbar !== undefined &&
-        btf.snackbarShowLong("拨云·成长:生活不全都是恋爱，恋爱却全都是生活"),
-        rmf.day_night_count++;
-    rmf.setCookie("daynight", rmf.day_night_count.toString());
-  }, 500);
-};
-
-const enhanceTwikoo = () => {
-  if (
-    document.getElementById("site-title") &&
-    document.getElementById("site-title").innerHTML.trim() ==
-      document
-        .querySelector("#menus > div.menus_items > div:nth-child(5) > a > span")
-        .innerHTML.trim()
-  ) {
-    document.querySelector(
-      "#post-comment > div.comment-head > div > span"
-    ).innerHTML = "  留言板  ";
-    var commentInterval = setInterval(function () {
-      document.querySelectorAll(".el-textarea__inner").forEach((item) => {
-        if (item.getAttribute("placeholder") != "请输入您的留言")
-          item.setAttribute("placeholder", "请输入您的留言");
       });
-      document
-        .querySelectorAll(
-          "#twikoo > div.tk-comments > div.tk-comments-container > div.tk-comments-no > span"
-        )
-        .forEach((item) => {
-          if (item.innerHTML == "没有评论") item.innerHTML = "没有留言";
-        });
-      document
-        .querySelectorAll(
-          "#twikoo > div.tk-comments > div.tk-comments-container > div.tk-comments-title > span.tk-comments-count > span:nth-child(2)"
-        )
-        .forEach((item) => {
-          if (item.innerHTML == " 条评论") item.innerHTML = " 条留言";
-        });
-    }, 300);
-  }
-  if (document.getElementById("post-comment")) {
-    setInterval(function () {
-      if (document.getElementById("CommentaryRegulations")) {
-        var element = document.createElement("div");
-        element.id = "CommentaryRegulations";
-        element.classList.add("tk-submit-action-icon");
-        element.innerHTML =
-          "<a href='/term/' target='_blank' title='评论条例'></a>";
-        if (document.querySelector(".tk-row-actions-start"))
-          document.querySelector(".tk-row-actions-start").appendChild(element);
-      }
-    }, 300);
-  }
-};
-/**
- * 杂乱功能
- */
-const messFunction = () => {
-  $(
-    "#aside-content > div.card-widget.card-info > div.card-info-social-icons.is-center > a:nth-child(1)"
-  ).attr("target", "");
-  if (btf.isHome()) {
-    $("#hide-aside-btn").hide();
-    const $htmlDom = document.documentElement.classList;
-    if ($htmlDom.contains("hide-aside")) {
-      saveToLocal.set("enableAside", "show", 2);
-      $htmlDom.toggle("hide-aside");
     }
-  }
-  $("a.social-icon").each(function () {
-    $(this).attr("target", "_blank");
-  });
-  // document
-  //   .querySelector("#wander-button")
-  //   .addEventListener("click", toRandomPost);
-  setInterval(function () {
-    $(".CtxtMenu_MenuArrow").html("");
-  }, 200);
-  localStorage.setItem("MathJax-Menu-Settings", '{"zoom":"Click","scale":"1"}');
-  if (Number(saveToLocal.get("translate-chn-cht")) == 2) {
-    $("#con-translate > i").attr("class", "iconfont icon-fanti");
-  } else if (Number(saveToLocal.get("translate-chn-cht")) == 1) {
-    $("#con-translate > i").attr("class", "iconfont icon-jianti");
-  }
-  if (saveToLocal.get("enableAside") == "hide")
-    $("#con-toggleaside").addClass("checked");
-  else $("#con-toggleaside").removeClass("checked");
-};
-/**
-   浏览进度百分比
-  **/
-const browsingProgress = () => {
-  window.addEventListener("scroll", percent);
-  function percent() {
-    let a = document.documentElement.scrollTop || window.scrollY, // 卷去高度
-      b =
-        Math.max(
-          document.body.scrollHeight,
-          document.documentElement.scrollHeight,
-          document.body.offsetHeight,
-          document.documentElement.offsetHeight,
-          document.body.clientHeight,
-          document.documentElement.clientHeight
-        ) - document.documentElement.clientHeight, // 整个网页高度
-      result = Math.round((a / b) * 100), // 计算百分比
-      up = document.querySelector("#go-up"); // 获取按钮
-    down = document.querySelector("#go-down"); // 获取按钮
-    if (up != null) {
-      if (result <= 95) {
-        up.childNodes[0].style.display = "none";
-        up.childNodes[1].style.display = "block";
-        down.style.display = "block";
-        up.childNodes[1].childNodes[0].innerHTML = result;
+  },
+  //跳转到评论
+  switchComments: () => {
+    let switchDone = false;
+    const $switchBtn = document.querySelector("#comment-switch > .switch-btn");
+    $switchBtn &&
+      $switchBtn.addEventListener("click", () => {
+        this.classList.toggle("move");
+        document
+          .querySelectorAll("#post-comment > .comment-wrap > div")
+          .forEach((item) => {
+            if (btf.isHidden(item)) {
+              item.style.cssText = "display: block;animation: tabshow .5s";
+            } else {
+              item.style.cssText = "display: none;animation: ''";
+            }
+          });
+
+        if (!switchDone && typeof loadOtherComment === "function") {
+          switchDone = true;
+          loadOtherComment();
+        }
+      });
+  },
+  //文章过期提醒
+  addPostOutdateNotice: () => {
+    const data = GLOBAL_CONFIG.noticeOutdate;
+    const diffDay = btf.diffDate(GLOBAL_CONFIG_SITE.postUpdate);
+    if (diffDay >= data.limitDay) {
+      const ele = document.createElement("div");
+      ele.className = "post-outdate-notice";
+      ele.textContent =
+        data.messagePrev + " " + diffDay + " " + data.messageNext;
+      const $targetEle = document.getElementById("article-container");
+      if (data.position === "top") {
+        $targetEle.insertBefore(ele, $targetEle.firstChild);
       } else {
-        down.style.display = "none";
-        up.childNodes[1].style.display = "none";
-        up.childNodes[0].style.display = "block";
+        $targetEle.appendChild(ele);
       }
     }
-  }
-};
-const randomPost = () => {
-  let e = saveToLocal.get("postLinks");
-  if (e)
-    for (;;) {
-      let t = e[Math.floor(Math.random() * e.length)];
-      if (t != location.pathname) return void pjax.loadUrl(t);
-    }
-  fetch("/sitemap.xml")
-    .then((e) => e.text())
-    .then((e) => new window.DOMParser().parseFromString(e, "text/xml"))
-    .then((e) => {
-      let t = e.querySelectorAll("url loc"),
-        n = [];
-      t.forEach((e) => {
-        let t = e.innerHTML.split("/");
-        n.push("/" + t[3] + "/" + t[4]);
-      }),
-        saveToLocal.set("postLinks", n, 0.02),
-        randomPost();
+  },
+  //懒加载图片
+  lazyloadImg: () => {
+    window.lazyLoadInstance = new LazyLoad({
+      elements_selector: "img",
+      threshold: 0,
+      data_src: "lazy-src",
     });
+  },
+  //相对日期
+  relativeDate: (selector) => {
+    selector.forEach((item) => {
+      const $this = item;
+      const timeVal = $this.getAttribute("datetime");
+      $this.innerText = btf.diffDate(timeVal, true);
+      $this.style.display = "inline";
+    });
+  },
+  sweetSnack: () => {
+    if (cloudchewieFn.getCookie("daynight") == "NaN")
+      cloudchewieFn.day_night_count = 0;
+    else
+      cloudchewieFn.day_night_count = new Number(
+        cloudchewieFn.getCookie("daynight")
+      );
+    setInterval(() => {
+      var initDay = -3;
+      if (cloudchewieFn.day_night_count + initDay == 0)
+        GLOBAL_CONFIG.Snackbar !== undefined &&
+          btf.snackbarShowLong(
+            "冬至·伊始:我的心与爱是不是能够这般纯粹，经受住时空的考验"
+          ),
+          cloudchewieFn.day_night_count++;
+      if (cloudchewieFn.day_night_count + initDay == 20)
+        GLOBAL_CONFIG.Snackbar !== undefined &&
+          btf.snackbarShowLong(
+            "交替·新生:月徊而霜凝兮，良人伴我侧；月斜而影绰兮，明镜照我心"
+          ),
+          cloudchewieFn.day_night_count++;
+      if (cloudchewieFn.day_night_count + initDay == 60)
+        GLOBAL_CONFIG.Snackbar !== undefined &&
+          btf.snackbarShowLong(
+            "风起·渴盼:桐絮扰动着尘世，恋人缔造着世界；细腻不语的青苔，是我对你的爱恋"
+          ),
+          cloudchewieFn.day_night_count++;
+      if (cloudchewieFn.day_night_count + initDay == 120)
+        GLOBAL_CONFIG.Snackbar !== undefined &&
+          btf.snackbarShowLong(
+            "雾霭·探索:越来越浓的雾霭模糊着彼此的视线，越来越厚的障壁阻隔着彼此的心儿"
+          ),
+          cloudchewieFn.day_night_count++;
+      if (cloudchewieFn.day_night_count + initDay == 200)
+        GLOBAL_CONFIG.Snackbar !== undefined &&
+          btf.snackbarShowLong("拨云·成长:生活不全都是恋爱，恋爱却全都是生活"),
+          cloudchewieFn.day_night_count++;
+      cloudchewieFn.setCookie(
+        "daynight",
+        cloudchewieFn.day_night_count.toString()
+      );
+    }, 500);
+  },
+  enhanceTwikoo: () => {
+    if (
+      document.getElementById("site-title") &&
+      document.getElementById("site-title").innerHTML.trim() ==
+        document
+          .querySelector(
+            "#menus > div.menus_items > div:nth-child(5) > a > span"
+          )
+          .innerHTML.trim()
+    ) {
+      document.querySelector(
+        "#post-comment > div.comment-head > div > span"
+      ).innerHTML = "  留言板  ";
+      var commentInterval = setInterval(() => {
+        document.querySelectorAll(".el-textarea__inner").forEach((item) => {
+          if (item.getAttribute("placeholder") != "请输入您的留言")
+            item.setAttribute("placeholder", "请输入您的留言");
+        });
+        document
+          .querySelectorAll(
+            "#twikoo > div.tk-comments > div.tk-comments-container > div.tk-comments-no > span"
+          )
+          .forEach((item) => {
+            if (item.innerHTML == "没有评论") item.innerHTML = "没有留言";
+          });
+        document
+          .querySelectorAll(
+            "#twikoo > div.tk-comments > div.tk-comments-container > div.tk-comments-title > span.tk-comments-count > span:nth-child(2)"
+          )
+          .forEach((item) => {
+            if (item.innerHTML == " 条评论") item.innerHTML = " 条留言";
+          });
+      }, 300);
+    }
+    if (document.getElementById("post-comment")) {
+      setInterval(() => {
+        if (document.getElementById("CommentaryRegulations")) {
+          var element = document.createElement("div");
+          element.id = "CommentaryRegulations";
+          element.classList.add("tk-submit-action-icon");
+          element.innerHTML =
+            "<a href='/term/' target='_blank' title='评论条例'></a>";
+          if (document.querySelector(".tk-row-actions-start"))
+            document
+              .querySelector(".tk-row-actions-start")
+              .appendChild(element);
+        }
+      }, 300);
+    }
+  },
+  /**
+   * 杂乱功能
+   */
+  messFunction: () => {
+    $(
+      "#aside-content > div.card-widget.card-info > div.card-info-social-icons.is-center > a:nth-child(1)"
+    ).attr("target", "");
+    if (btf.isHome()) {
+      $("#hide-aside-btn").hide();
+      const $htmlDom = document.documentElement.classList;
+      if ($htmlDom.contains("hide-aside")) {
+        saveToLocal.set("enableAside", "show", 2);
+        $htmlDom.toggle("hide-aside");
+      }
+    }
+    $("a.social-icon").each(() => {
+      $(this).attr("target", "_blank");
+    });
+    setInterval(() => {
+      $(".CtxtMenu_MenuArrow").html("");
+    }, 200);
+    localStorage.setItem(
+      "MathJax-Menu-Settings",
+      '{"zoom":"Click","scale":"1"}'
+    );
+    if (Number(saveToLocal.get("translate-chn-cht")) == 2) {
+      $("#con-translate > i").attr("class", "iconfont icon-fanti");
+    } else if (Number(saveToLocal.get("translate-chn-cht")) == 1) {
+      $("#con-translate > i").attr("class", "iconfont icon-jianti");
+    }
+    if (saveToLocal.get("enableAside") == "hide")
+      $("#con-toggleaside").addClass("checked");
+    else $("#con-toggleaside").removeClass("checked");
+  },
+  /**
+     浏览进度百分比
+    **/
+  browsingProgress: () => {
+    window.addEventListener("scroll", () => {
+      let a = document.documentElement.scrollTop || window.scrollY, // 卷去高度
+        b =
+          Math.max(
+            document.body.scrollHeight,
+            document.documentElement.scrollHeight,
+            document.body.offsetHeight,
+            document.documentElement.offsetHeight,
+            document.body.clientHeight,
+            document.documentElement.clientHeight
+          ) - document.documentElement.clientHeight, // 整个网页高度
+        result = Math.round((a / b) * 100), // 计算百分比
+        up = document.querySelector("#go-up"); // 获取按钮
+      down = document.querySelector("#go-down"); // 获取按钮
+      if (up != null) {
+        if (result <= 95) {
+          up.childNodes[0].style.display = "none";
+          up.childNodes[1].style.display = "block";
+          down.style.display = "block";
+          up.childNodes[1].childNodes[0].innerHTML = result;
+        } else {
+          down.style.display = "none";
+          up.childNodes[1].style.display = "none";
+          up.childNodes[0].style.display = "block";
+        }
+      }
+    });
+  },
+  randomPost: () => {
+    let e = saveToLocal.get("postLinks");
+    if (e)
+      for (;;) {
+        let t = e[Math.floor(Math.random() * e.length)];
+        console.log(t);
+        if (t != "/" && t != "/404.html")
+          return void pjax.loadUrl(t);
+      }
+    fetch("/sitemap.xml")
+      .then((e) => e.text())
+      .then((e) => new window.DOMParser().parseFromString(e, "text/xml"))
+      .then((e) => {
+        let t = e.querySelectorAll("url loc"),
+          n = [];
+        t.forEach((e) => {
+          let t = e.innerHTML.split("/");
+          let url = "/";
+          for (var i = 3; i < t.length; i++) {
+            if (i == t.length - 1) url += t[i];
+            else url += t[i] + "/";
+          }
+          n.push(url);
+        }),
+          saveToLocal.set("postLinks", n, 0.02),
+          cloudchewieFn.randomPost();
+      });
+  },
+};
+/**
+ * 绑定右键菜单事件
+ */
+bindRightSideButton = () => {
+  document.getElementById("rightside").addEventListener("click", (e) => {
+    const $target = e.target.id ? e.target : e.target.parentNode;
+    switch ($target.id) {
+      case "go-up":
+        cloudchewieFn.scrollToTop();
+        break;
+      case "go-down":
+        cloudchewieFn.scrollToBottom();
+        break;
+      case "rightside_config":
+        cloudchewieFn.showOrHideBtn($target);
+        break;
+      case "mobile-toc-button":
+        cloudchewieFn.runMobileToc();
+        break;
+      case "readmode":
+        cloudchewieFn.switchReadMode();
+        break;
+      case "darkmode":
+        cloudchewieFn.switchDarkMode();
+        break;
+      case "hide-aside-btn":
+        cloudchewieFn.hideAsideBtn();
+        break;
+      default:
+        break;
+    }
+  });
 };

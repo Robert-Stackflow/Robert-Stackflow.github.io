@@ -8,8 +8,8 @@ function startbarrage() {
   } catch (err) {}
   const commentBarrageConfig = {
     //浅色模式和深色模式颜色，务必保持一致长度，前面是背景颜色，后面是字体，随机选择，默认这个颜色还好
-    lightColors: [["#000a", "black"]],
-    darkColors: [["#000a", "white"]],
+    darkColors: [["#000a", "black"]],
+    lightColors: [["#fff", "white"]],
     //v3仅支持一个弹幕
     //弹幕show间隔时间，单位ms
     barrageTime: 3000,

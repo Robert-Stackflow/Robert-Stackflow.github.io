@@ -62,49 +62,59 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("menu-mask").addEventListener("click", (e) => {
       close();
     });
-    rightSideFn.clickFnOfSubMenu();
-    GLOBAL_CONFIG.islazyload && lazyloadImg();
-    GLOBAL_CONFIG.copyright !== undefined && addCopyright();
+    cloudchewieFn.clickFnOfSubMenu();
+    GLOBAL_CONFIG.islazyload && cloudchewieFn.lazyloadImg();
+    GLOBAL_CONFIG.copyright !== undefined && cloudchewieFn.addCopyright();
+    "/nowtime/" == location.pathname &&
+      (waterfall("#talk"),
+      setTimeout(() => {
+        "/nowtime/" == location.pathname && waterfall("#talk");
+      }, 300));
   };
 
   window.refreshFunction = function () {
     initAdjust();
-    sweetSnack();
-    enhanceTwikoo();
+    cloudchewieFn.sweetSnack();
+    cloudchewieFn.enhanceTwikoo();
     document
       .querySelector("#wander-button")
-      .addEventListener("click", randomPost);
+      .addEventListener("click", cloudchewieFn.randomPost);
     if (GLOBAL_CONFIG_SITE.isPost) {
-      GLOBAL_CONFIG.noticeOutdate !== undefined && addPostOutdateNotice();
+      GLOBAL_CONFIG.noticeOutdate !== undefined &&
+        cloudchewieFn.addPostOutdateNotice();
       GLOBAL_CONFIG.relativeDate.post &&
-        relativeDate(document.querySelectorAll("#post-meta time"));
+        cloudchewieFn.relativeDate(
+          document.querySelectorAll("#post-meta time")
+        );
     } else {
       GLOBAL_CONFIG.relativeDate.homepage &&
-        relativeDate(document.querySelectorAll("#recent-posts time"));
-      GLOBAL_CONFIG.runtime && addRuntime();
-      addLastPushDate();
-      toggleCardCategory();
+        cloudchewieFn.relativeDate(
+          document.querySelectorAll("#recent-posts time")
+        );
+      GLOBAL_CONFIG.runtime && cloudchewieFn.addRuntime();
+      cloudchewieFn.addLastPushDate();
+      cloudchewieFn.toggleCardCategory();
     }
     const rightsideHideClassList = document.getElementById(
       "rightside-button-list"
     ).classList;
     rightsideHideClassList.toggle("show");
     rightsideHideClassList.add("status");
-    scrollFn.scrollFunctionOfToc();
-    scrollFn.scrollFunction();
-    highlightFn.addHighlight();
+    cloudchewieFn.scrollFunctionOfToc();
+    cloudchewieFn.scrollFunction();
+    cloudchewieFn.addHighlight();
     bindRightSideButton();
-    GLOBAL_CONFIG.isPhotoFigcaption && galleryFn.addPhotoFigcaption();
+    GLOBAL_CONFIG.isPhotoFigcaption && cloudchewieFn.addPhotoFigcaption();
 
     const $jgEle = document.querySelectorAll("#article-container .fj-gallery");
-    $jgEle.length && galleryFn.runJustifiedGallery($jgEle);
+    $jgEle.length && cloudchewieFn.runJustifiedGallery($jgEle);
 
-    galleryFn.runLightbox();
-    addTableWrap();
-    clickFnOfTagHide();
-    tabsFn.clickFnOfTabs();
-    tabsFn.backToTop();
-    switchComments();
+    cloudchewieFn.runLightbox();
+    cloudchewieFn.addTableWrap();
+    cloudchewieFn.clickFnOfTagHide();
+    cloudchewieFn.clickFnOfTabs();
+    cloudchewieFn.backToTop();
+    cloudchewieFn.switchComments();
     document.getElementById("toggle-menu").addEventListener("click", () => {
       open();
     });
@@ -116,14 +126,16 @@ document.addEventListener("DOMContentLoaded", function () {
         ? saveToLocal.set("enableAside", "show", 2)
         : saveToLocal.set("enableAside", "show", 2);
     }
-    messFunction();
+    cloudchewieFn.messFunction();
   };
+  $(document).ready(function () {
+    checkURLAndRun();
+  });
+  document.addEventListener("pjax:complete", function () {
+    checkURLAndRun();
+  });
   refreshFunction();
   unRefreshFunction();
-  browsingProgress();
-  "/nowtime/" == location.pathname &&
-    (waterfall("#talk"),
-    setTimeout(() => {
-      "/nowtime/" == location.pathname && waterfall("#talk");
-    }, 300));
+  cloudchewieFn.browsingProgress();
+  if (document.getElementById("post-comment")) cloudchewieFn.enlargeEmoji();
 });

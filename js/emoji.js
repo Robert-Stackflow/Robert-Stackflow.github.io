@@ -1,1 +1,0 @@
-if (document.getElementById("post-comment")) enlargeEmoji();

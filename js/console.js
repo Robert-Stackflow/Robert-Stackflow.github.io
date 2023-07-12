@@ -1,8 +1,29 @@
-document.addEventListener("pjax:complete", tosetting);
-document.addEventListener("DOMContentLoaded", tosetting);
-function tosetting() {
+const consoleFn = {
+  setThemeColor: (r, g, b) => {
+    document.getElementById(
+      "themeColor"
+    ).innerText = `:root{--theme-color:rgb(${r}, ${g}, ${b})!important;--scrollbar-color:rgb(${r}, ${g}, ${b});--btn-bg:rgb(${r}, ${g}, ${b})!important;--btn-hover-color:rgba(${r}, ${g}, ${b},0.7)!important;--text-bg-hover:rgba(${r}, ${g}, ${b},0.7)!important;--km-toc-active:rgba(${r}, ${g}, ${b},0.7)!important;--km-toc-hover:rgba(${r}, ${g}, ${b},0.6)!important;}`;
+  },
+  toggleConsole: () => {
+    $("#settingWindow").fadeToggle("fast");
+    $("#console-mask").fadeToggle("fast");
+    if ($("#settingWindow").css("display") != "none")
+      $("#settingWindow").css("display", "flex");
+  },
+  showConsole: () => {
+    $("#settingWindow").fadeIn("fast");
+    $("#console-mask").fadeIn("fast");
+    if ($("#settingWindow").css("display") != "none")
+      $("#settingWindow").css("display", "flex");
+  },
+  closeConsole: () => {
+    $("#settingWindow").fadeOut("fast");
+    $("#console-mask").fadeOut("fast");
+    if ($("#settingWindow").css("display") != "none")
+      $("#settingWindow").css("display", "flex");
+  },
   //重置设置
-  resetSettings = function () {
+  resetSettings: () => {
     btf.removeData("blogBackground");
     btf.removeData("enableStarBackground");
     btf.removeData("isLeftAside");
@@ -13,14 +34,14 @@ function tosetting() {
     btf.removeData("enableContextMenu");
     btf.removeData("enableAPlayer");
     window.location.reload();
-  };
+  },
   //设置为默认背景
-  setDefaultBackground = function () {
+  setDefaultBackground: () => {
     btf.removeData("blogBackground");
     window.location.reload();
-  };
+  },
   // 切换背景
-  setBackground = function (s, flag) {
+  changeBackground: (s, flag) => {
     let bg = document.getElementById("web_bg");
     if (s.charAt(0) == "#") {
       bg.style.backgroundColor = s;
@@ -29,9 +50,9 @@ function tosetting() {
     if (!flag) {
       btf.saveData("blogBackground", s);
     }
-  };
+  },
   // 切换繁星效果
-  toggleStarBackground = function () {
+  toggleStarBackground: () => {
     if (btf.loadData("enableStarBackground") == "true") {
       btf.saveData("enableStarBackground", "false");
       $("#universe").hide();
@@ -39,9 +60,9 @@ function tosetting() {
       btf.saveData("enableStarBackground", "true");
       $("#universe").show();
     }
-  };
+  },
   // 切换歌单
-  changeAPlayerList = function (id, server) {
+  changeAPlayerList: (id, server) => {
     if (window.aplayers)
       for (let i = 0; i < window.aplayers.length; i++)
         window.aplayers[i].pause();
@@ -50,24 +71,19 @@ function tosetting() {
     $("#aplayer").attr("data-server", server);
     $("#aplayer").removeClass("no-reload");
     loadMeting();
-  };
+  },
   // 切换全屏
-  toggleFullScreen = function () {
-    if (isFullScreen()) {
+  toggleFullScreen: () => {
+    if (cloudchewieFn.isFullScreen()) {
       document.exitFullscreen();
       $("#con-fullscreen").removeClass("checked");
     } else {
       document.documentElement.requestFullscreen();
       $("#con-fullscreen").addClass("checked");
     }
-  };
-  window.onresize = function () {
-    if (!isFullScreen()) {
-      $("#con-fullscreen").removeClass("checked");
-    }
-  };
+  },
   // 切换单双栏
-  toggleAside = function () {
+  toggleAside: () => {
     const $htmlDom = document.documentElement.classList;
     $htmlDom.contains("hide-aside")
       ? saveToLocal.set("enableAside", "show", 2)
@@ -76,9 +92,9 @@ function tosetting() {
     if (btf.loadData("enableAside") == "hide")
       $("#con-toggleaside").addClass("checked");
     else $("#con-toggleaside").removeClass("checked");
-  };
+  },
   //控制侧栏位置
-  switchAside = function () {
+  switchAside: () => {
     if (left) {
       $("#aside-content").addClass("right");
       $(".layout > div:first-child").addClass("left");
@@ -91,9 +107,9 @@ function tosetting() {
       btf.saveData("isLeftAside", "true");
     }
     left = !left;
-  };
+  },
   // 切换右侧边栏
-  toggleRightSide = function () {
+  toggleRightSide: () => {
     if (btf.loadData("enableRightSide") == "true") {
       btf.saveData("enableRightSide", "false");
       $("#rightside").hide();
@@ -101,9 +117,9 @@ function tosetting() {
       btf.saveData("enableRightSide", "true");
       $("#rightside").show();
     }
-  };
+  },
   // 设置深浅色跟随系统模式
-  toggleAutoTheme = () => {
+  toggleAutoTheme: () => {
     if (btf.loadData("enableAutoTheme") == "true") {
       btf.saveData("enableAutoTheme", "false");
       $("#con-mode,.rightMenu-item:has(.fa-adjust)").show();
@@ -119,9 +135,9 @@ function tosetting() {
       }
       $("#con-mode,.rightMenu-item:has(.fa-adjust)").hide();
     }
-  };
+  },
   // 切换固定导航栏
-  toggleFixedNav = () => {
+  toggleFixedNav: () => {
     if (btf.loadData("enableFixedNav") == "false") {
       btf.saveData("enableFixedNav", "true");
       $("#page-header").addClass("nav-fixed nav-visible");
@@ -131,16 +147,16 @@ function tosetting() {
       $("#page-header").removeClass("nav-fixed nav-visible");
       $("#name-container").hide();
     }
-  };
+  },
   // 切换自动主题色
-  toggleAutoColor = () => {
+  toggleAutoColor: () => {
     if (btf.loadData("enableAutoColor") == "true")
       btf.saveData("enableAutoColor", "false");
     else btf.saveData("enableAutoColor", "true");
-    changeAutoColor(false);
-  };
+    cloudchewieFn.changeAutoColor(false);
+  },
   // 切换右键菜单
-  toggleContextMenu = () => {
+  toggleContextMenu: () => {
     if (btf.loadData("enableContextMenu") == "true") {
       btf.saveData("enableContextMenu", "false");
       $("#con-rightmouse").removeClass("checked");
@@ -150,9 +166,9 @@ function tosetting() {
       $("#con-rightmouse").addClass("checked");
       bindRightMenu(true, true);
     }
-  };
+  },
   // 切换APlayer
-  toggleAPlayer = () => {
+  toggleAPlayer: () => {
     if (btf.loadData("enableAPlayer") == "true") {
       btf.saveData("enableAPlayer", "false");
       $(".globalaplayer").hide();
@@ -165,9 +181,9 @@ function tosetting() {
       btf.saveData("enableAPlayer", "true");
       $(".globalaplayer").show();
     }
-  };
+  },
   // 解析歌单链接
-  resolveUrl = () => {
+  resolveUrl: () => {
     var id;
     var server;
     var url = document.getElementById("url-input").value;
@@ -197,7 +213,7 @@ function tosetting() {
       "&type=playlist&id=" +
       id;
     var o = new XMLHttpRequest();
-    (o.onreadystatechange = function () {
+    (o.onreadystatechange = () => {
       if (
         4 === o.readyState &&
         ((o.status >= 200 && o.status < 300) || 304 === o.status)
@@ -216,174 +232,131 @@ function tosetting() {
     }),
       o.open("get", t, !0),
       o.send(null);
-  };
-  // 加载设置
-  loadSetting = () => {
-    $("#backer").hide();
-    $(".asetting").hide();
-    $("#settingWindow").hide();
-    //取消模糊效果
-    document.getElementById("settingStyle").innerText = `
+  },
+};
+// 加载设置
+const loadSetting = () => {
+  $("#backer").hide();
+  $(".asetting").hide();
+  $("#settingWindow").hide();
+  //取消模糊效果
+  document.getElementById("settingStyle").innerText = `
   *,*:not(.card-info)::before,*::after{
       -webkit-backdrop-filter: none!important;
       backdrop-filter: none!important;
       -webkit-filter: none!important;
       filter: none!important;
   }`;
-    //加载是否适应文章封面颜色
-    if (btf.loadData("enableAutoColor") == undefined) {
-      btf.saveData("enableAutoColor", "false");
-    }
-    if (btf.loadData("enableAutoColor") == "true") {
-      $("#con-toggleAutoColor").checked = true;
-      changeAutoColor(true);
-    }
-    //固定导航栏
-    if (btf.loadData("enableFixedNav") == undefined) {
-      btf.saveData("enableFixedNav", "false");
-    }
-    if (btf.loadData("enableFixedNav") == "false") {
-      $("#page-header").removeClass("nav-fixed nav-visible");
-      $("#name-container").hide();
+  //加载是否适应文章封面颜色
+  if (btf.loadData("enableAutoColor") == undefined) {
+    btf.saveData("enableAutoColor", "false");
+  }
+  if (btf.loadData("enableAutoColor") == "true") {
+    $("#con-toggleAutoColor").checked = true;
+    cloudchewieFn.changeAutoColor(true);
+  }
+  //固定导航栏
+  if (btf.loadData("enableFixedNav") == undefined) {
+    btf.saveData("enableFixedNav", "false");
+  }
+  if (btf.loadData("enableFixedNav") == "false") {
+    $("#page-header").removeClass("nav-fixed nav-visible");
+    $("#name-container").hide();
+  } else {
+    $("#name-container").show();
+    $("#page-header").addClass("nav-fixed nav-visible");
+    document.getElementById("con-toggleFixedNav").checked = true;
+  }
+  //加载是否打开右键菜单功能
+  if (btf.loadData("enableContextMenu") == undefined) {
+    btf.saveData("enableContextMenu", "true");
+  }
+  if (btf.loadData("enableContextMenu") == "true") {
+    $("#con-rightmouse").addClass("checked");
+    bindRightMenu(true, false);
+  } else {
+    $("#con-rightmouse").removeClass("checked");
+    bindRightMenu(false, false);
+  }
+  //加载是否打开APlayer
+  if (btf.loadData("enableAPlayer") == undefined) {
+    btf.saveData("enableAPlayer", "false");
+  }
+  if (btf.loadData("enableAPlayer") == "true") {
+    $(".globalaplayer").show();
+    $(".music-wrapper .aplayer").show();
+    document.getElementById("con-toggleAPlayer").checked = true;
+  } else {
+    $(".globalaplayer").hide();
+    if (window.aplayers)
+      for (let i = 0; i < window.aplayers.length; i++)
+        window.aplayers[i].pause();
+  }
+  //加载是否显示右侧边栏
+  if (btf.loadData("enableRightSide") == undefined) {
+    btf.saveData("enableRightSide", "true");
+  }
+  // setInterval(function () {
+  if (btf.loadData("enableRightSide") == "false") {
+    $("#rightside").hide();
+  } else {
+    $("#rightside").show();
+    document.getElementById("con-toggleRightSide").checked = true;
+  }
+  // }, 500);
+  // 加载网页背景
+  try {
+    let data = btf.loadData("blogBackground", 1440);
+    if (data) consoleFn.changeBackground(data, 1);
+    else btf.removeData("blogBackground");
+  } catch (error) {
+    btf.removeData("blogBackground");
+  }
+  // //设置边栏
+  // left = 1;
+  // if (btf.loadData("isLeftAside") == "true" || btf.loadData("isLeftAside") == null) {
+  // } else {
+  //   switchAside();
+  // }
+  if (btf.loadData("enableAutoTheme") == "true") {
+    document.getElementById("con-toggleAutoTheme").checked = true;
+    $("#con-mode,.rightMenu-item:has(.fa-adjust)").hide();
+    var time = new Date();
+    if (time.getHours() <= 7 || time.getHours() >= 19) {
+      consoleFn.activateDarkMode();
+      btf.removeData("theme");
     } else {
-      $("#name-container").show();
-      $("#page-header").addClass("nav-fixed nav-visible");
-      document.getElementById("con-toggleFixedNav").checked = true;
+      consoleFn.activateLightMode();
+      btf.removeData("theme");
     }
-    //加载是否打开右键菜单功能
-    if (btf.loadData("enableContextMenu") == undefined) {
-      btf.saveData("enableContextMenu", "true");
-    }
-    if (btf.loadData("enableContextMenu") == "true") {
-      $("#con-rightmouse").addClass("checked");
-      bindRightMenu(true, false);
-    } else {
-      $("#con-rightmouse").removeClass("checked");
-      bindRightMenu(false, false);
-    }
-    //加载是否打开APlayer
-    if (btf.loadData("enableAPlayer") == undefined) {
-      btf.saveData("enableAPlayer", "false");
-    }
-    if (btf.loadData("enableAPlayer") == "true") {
-      $(".globalaplayer").show();
-      $(".music-wrapper .aplayer").show();
-      document.getElementById("con-toggleAPlayer").checked = true;
-    } else {
-      $(".globalaplayer").hide();
-      if (window.aplayers)
-        for (let i = 0; i < window.aplayers.length; i++)
-          window.aplayers[i].pause();
-    }
-    //加载是否显示右侧边栏
-    if (btf.loadData("enableRightSide") == undefined) {
-      btf.saveData("enableRightSide", "true");
-    }
-    // setInterval(function () {
-    if (btf.loadData("enableRightSide") == "false") {
-      $("#rightside").hide();
-    } else {
-      $("#rightside").show();
-      document.getElementById("con-toggleRightSide").checked = true;
-    }
-    // }, 500);
-    // 加载网页背景
-    try {
-      let data = btf.loadData("blogBackground", 1440);
-      if (data) setBackground(data, 1);
-      else btf.removeData("blogBackground");
-    } catch (error) {
-      btf.removeData("blogBackground");
-    }
-    // //设置边栏
-    // left = 1;
-    // if (btf.loadData("isLeftAside") == "true" || btf.loadData("isLeftAside") == null) {
-    // } else {
-    //   switchAside();
-    // }
-    if (btf.loadData("enableAutoTheme") == "true") {
-      document.getElementById("con-toggleAutoTheme").checked = true;
-      $("#con-mode,.rightMenu-item:has(.fa-adjust)").hide();
-      var time = new Date();
-      if (time.getHours() <= 7 || time.getHours() >= 19) {
-        activateDarkMode();
-        btf.removeData("theme");
-      } else {
-        activateLightMode();
-        btf.removeData("theme");
-      }
-    }
-    //加载繁星效果
-    if (btf.loadData("enableStarBackground") == undefined) {
-      btf.saveData("enableStarBackground", "true");
-    }
-    if (btf.loadData("enableStarBackground") == "true") {
-      $("#universe").show();
-      document.getElementById("con-toggleStarBackground").checked = true;
-    } else {
-      $("#universe").hide();
-      document.getElementById("con-toggleStarBackground").checked = false;
-    }
-    //加载播放列表
-    if (btf.loadData("playlist") != undefined) {
-      var json = JSON.parse(btf.loadData("playlist"));
-      changeAPlayerList(json.id, json.server);
+  }
+  //加载繁星效果
+  if (btf.loadData("enableStarBackground") == undefined) {
+    btf.saveData("enableStarBackground", "true");
+  }
+  if (btf.loadData("enableStarBackground") == "true") {
+    $("#universe").show();
+    document.getElementById("con-toggleStarBackground").checked = true;
+  } else {
+    $("#universe").hide();
+    document.getElementById("con-toggleStarBackground").checked = false;
+  }
+  //加载播放列表
+  if (btf.loadData("playlist") != undefined) {
+    var json = JSON.parse(btf.loadData("playlist"));
+    consoleFn.changeAPlayerList(json.id, json.server);
+  }
+  document
+    .getElementById("console-mask")
+    .addEventListener("click", consoleFn.closeConsole);
+  document
+    .getElementById("console-button")
+    .addEventListener("click", consoleFn.showConsole);
+  window.onresize = () => {
+    if (!cloudchewieFn.isFullScreen()) {
+      $("#con-fullscreen").removeClass("checked");
     }
   };
-  loadSetting();
-}
-function changeAutoColor(first) {
-  if (
-    btf.loadData("enableAutoColor") == "true" &&
-    document.querySelector("#page-header") != null &&
-    document.querySelector("#page-header").style.backgroundImage != null &&
-    document
-      .querySelector("#page-header")
-      .style.backgroundImage.split('url("')[1] != null
-  ) {
-    const colorThief = new ColorThief();
-    const image = new Image();
-    const xhr = new XMLHttpRequest();
-    var url = document
-      .querySelector("#page-header")
-      .style.backgroundImage.split('url("')[1]
-      .split('")')[0];
-    xhr.onload = function () {
-      let coverUrl = URL.createObjectURL(this.response);
-      image.onload = function () {
-        let color = colorThief.getColor(image);
-        setThemeColor(color[0], color[1], color[2]);
-        URL.revokeObjectURL(coverUrl);
-      };
-      image.src = coverUrl;
-    };
-    xhr.open("GET", url, true);
-    xhr.responseType = "blob";
-    xhr.send();
-  } else {
-    if (!first) setThemeColor(0, 153, 255);
-  }
-}
-
-function setThemeColor(r, g, b) {
-  document.getElementById(
-    "themeColor"
-  ).innerText = `:root{--theme-color:rgb(${r}, ${g}, ${b})!important;--scrollbar-color:rgb(${r}, ${g}, ${b});--btn-bg:rgb(${r}, ${g}, ${b})!important;--btn-hover-color:rgba(${r}, ${g}, ${b},0.7)!important;--text-bg-hover:rgba(${r}, ${g}, ${b},0.7)!important;--km-toc-active:rgba(${r}, ${g}, ${b},0.7)!important;--km-toc-hover:rgba(${r}, ${g}, ${b},0.6)!important;}`;
-}
-
-function isFullScreen() {
-  var isFull = document.fullScreen || document.fullscreenElement !== null;
-  if (isFull === undefined) isFull = false;
-  return isFull;
-}
-// 切换显示控制台
-toggleWinbox = function () {
-  $("#settingWindow").fadeToggle("fast");
-  $("#console-mask").fadeToggle("fast");
-  if ($("#settingWindow").css("display") != "none")
-    $("#settingWindow").css("display", "flex");
 };
-document.getElementById("console-mask").addEventListener("click", toggleWinbox);
-document
-  .getElementById("console-button")
-  .addEventListener("click", toggleWinbox);
+document.addEventListener("pjax:complete", loadSetting);
+document.addEventListener("DOMContentLoaded", loadSetting);

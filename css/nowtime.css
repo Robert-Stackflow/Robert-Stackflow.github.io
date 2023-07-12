@@ -1,11 +1,3 @@
-.talk_item img:not(.avatar) {
-  margin: 0px !important;
-}
-/* [data-theme="dark"] #page:has(#talk) #twikoo .tk-content,
-#page:has(#talk) #twikoo .tk-content {
-  padding: 0;
-  background: transparent;
-} */
 .talk_item {
   display: inline-block;
   width: 32.7%;
@@ -43,8 +35,9 @@
 .talk_content {
   line-height: 1.5;
   font-size: 1rem;
-  padding: 10px;
-  /* margin-bottom: 2rem; */
+}
+.talk_item {
+  padding: 1rem;
 }
 a.talk_comment {
   text-decoration: none;
@@ -53,7 +46,7 @@ a.talk_comment:hover {
   text-decoration: none !important;
   background: transparent !important;
 }
-.talk_content,
+.talk_item,
 #page:has(#talk) .tk-expand,
 #page:has(#talk) .tk-comments-container > .tk-comment,
 #page:has(#talk) .tk-submit:nth-child(1) {
@@ -72,7 +65,7 @@ a.talk_comment:hover {
   margin-top: 1rem;
   margin-bottom: 0rem;
 }
-.talk_content:hover,
+.talk_item:hover,
 #page:has(#talk) .tk-comments-container > .tk-comment:hover,
 #page:has(#talk) .tk-submit:nth-child(1):hover {
   -webkit-box-shadow: var(--card-hover-box-shadow);
@@ -122,9 +115,19 @@ a.talk_comment:hover {
 .talk_bottom {
   justify-content: space-between;
 }
-.info {
+.talk_item .info {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+  align-self: center;
+  justify-self: center;
+}
+.talk_spacer {
+  border: 1px dashed #4259ef23;
+  margin: 8px 0;
 }
 span.talk_nick {
   color: var(--font-color);
@@ -140,9 +143,10 @@ svg.is-badge.icon {
 }
 span.talk_date {
   color: var(--font-color);
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 2.2;
+  text-align: center;
 }
 span.talk_dot {
   color: var(--font-color);
@@ -242,17 +246,13 @@ span.talk_tag {
   .zone_imgbox {
     --w: calc(50% - 3px);
   }
-  span.talk_date {
-    font-size: 14px;
-  }
 }
 .video-wrapper {
   position: relative;
   padding-bottom: 55%;
   width: 100%;
   height: 0;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin: 0.5rem 0;
 }
 .video-wrapper iframe {
   position: absolute;
@@ -262,15 +262,14 @@ span.talk_tag {
   border-radius: 12px;
   border: var(--card-border);
 }
-.talk_content pre,
-.talk_content p {
-  margin: 0px !important;
+.talk_content {
+  padding-bottom: 3px !important;
 }
 .tag-span {
   color: var(--theme-color);
 }
 .music-wrapper .aplayer {
-  margin: 7px 0 0 0 !important;
+  margin: 0.5rem 0 !important;
   border: var(--card-border) !important;
   border-radius: 10px !important;
   box-shadow: var(--card-box-shadow) !important;
@@ -309,7 +308,7 @@ span.talk_tag {
 
 .music-wrapper .aplayer svg circle,
 .music-wrapper .aplayer svg path {
-  fill: #fff;
+  fill: #fff !important;
 }
 
 .music-wrapper .aplayer.aplayer-withlist .aplayer-list {
@@ -892,4 +891,15 @@ span.talk_tag {
 .music-wrapper span,
 .music-wrapper p {
   font-family: LXGW Wenkai !important;
+}
+.talk_content ul,
+.talk_content pre,
+.talk_content a:has(img) img:not(.avatar) {
+  margin: 5px 0px !important;
+}
+.talk_content p {
+  margin: 0px !important;
+}
+.talk_content a:has(img) {
+  padding: 0px !important;
 }

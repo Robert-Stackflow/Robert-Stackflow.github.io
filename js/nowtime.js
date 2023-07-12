@@ -22,15 +22,16 @@ function fetchMemos() {
       items.forEach((item) => {
         html += `
               <div class="talk_item">
-                  <div class="talk_meta">
-                      <img class="no-lightbox no-lazyload avatar" src="https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@master/img/index_img/avatar.jpg">
-                      <div class="info">
-                      <span class="talk_nick">${item.name}</span>
-                      <span class="talk_dot">·</span>
-                      <span class="talk_date">${item.date}</span>
+                <div class="talk_content">${item.content}</div>
+                <div class="talk_spacer"></div>
+                <div class="talk_meta">
+                  <img class="no-lightbox no-lazyload avatar" src="https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@master/img/index_img/avatar.jpg">
+                  <div class="info">
+                    <span class="talk_nick">${item.name}</span>
+                    <span class="talk_dot">·</span>
+                    <span class="talk_date">${item.date}</span>
                   </div>
-              </div>
-              <div class="talk_content">${item.content}</div>
+                </div>
               </div>
               `;
       });
@@ -41,6 +42,16 @@ function fetchMemos() {
         setTimeout(() => {
           waterfall("#talk");
         }, 300));
+      var times = 0;
+      var relayout = setInterval(function () {
+        "/nowtime/" == location.pathname &&
+          (waterfall("#talk"),
+          setTimeout(() => {
+            waterfall("#talk");
+          }, 300));
+        times++;
+        if (times > 5) clearInterval(relayout);
+      }, 300);
     });
 }
 

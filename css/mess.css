@@ -200,14 +200,3 @@
 .OwO .OwO-body .OwO-bar .OwO-packages li {
   margin: 0px;
 }
-.tianliGPT-tag,
-.blinking-cursor {
-  background-color: var(--theme-color) !important;
-}
-.tianliGPT-title {
-  color: var(--theme-color) !important;
-}
-.tianliGPT-title-icon svg,
-.tianliGPT-title-icon svg path {
-  fill: var(--theme-color) !important;
-}

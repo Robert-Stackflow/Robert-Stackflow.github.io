@@ -98,7 +98,7 @@
 }
 .barrageContent:not(.barrageContent:hover),
 .barrageNick:not(.barrageNick:hover) {
-  color: var(--global-font-color) !important;
+  color: var(--font-color) !important;
 }
 .barrageswiper {
   height: 150px;
@@ -139,28 +139,6 @@
   border: 1px solid var(--theme-color) !important;
   box-shadow: none !important;
 }
-/* .comment-barrage-item.out {
-  opacity: 0;
-} */
-
-/* @keyframes barrageIn {
-  0% {
-    transform: translateY(20%);
-    -webkit-transform: translateY(20%);
-    -moz-transform: translateY(20%);
-    -ms-transform: translateY(20%);
-    -o-transform: translateY(20%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0%);
-    -webkit-transform: translateY(0%);
-    -moz-transform: translateY(0%);
-    -ms-transform: translateY(0%);
-    -o-transform: translateY(0%);
-    opacity: 1;
-  }
-} */
 
 .comment-barrage-item .barrageHead {
   height: 30px;
@@ -208,5 +186,5 @@
 }
 .barrageContent:not(.barrageContent:hover),
 .barrageNick:not(.barrageNick:hover) {
-  color: var(--global-font-color) !important;
+  color: var(--font-color) !important;
 }

@@ -1,11 +1,8 @@
 @font-face {
   font-family: "iconfont";
-  src: url("../fonts/iconfont.woff2")
-      format("woff2"),
-    url("../fonts/iconfont.woff")
-      format("woff"),
-    url("../fonts/iconfont.ttf")
-      format("truetype");
+  src: url("../fonts/iconfont.woff2") format("woff2"),
+    url("../fonts/iconfont.woff") format("woff"),
+    url("../fonts/iconfont.ttf") format("truetype");
 }
 .iconfont {
   font-family: "iconfont" !important;
@@ -35,7 +32,7 @@
   content: "\e6d8";
 }
 .social-share .icon-wechat .wechat-qrcode h4,
-.social-share .icon-wechat .wechat-qrcode .help p{
+.social-share .icon-wechat .wechat-qrcode .help p {
   font-family: LXGW Wenkai !important;
 }
 .social-share .icon-wechat .wechat-qrcode h4 {
@@ -138,10 +135,13 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transform: translateZ(0);
-  background: rgba(255, 255, 255, 0.85);
   position: fixed;
   inset: 0px;
   z-index: 1000;
+}
+[data-theme="light"] #search-mask,
+[data-theme="light"] #console-mask {
+  background: rgba(255, 255, 255, 0.85);
 }
 #algolia-hits-empty {
   color: var(--font-color);
@@ -845,4 +845,19 @@ body {
   height: 110px;
   border-radius: 50%;
   border: 5px #fff solid;
+}
+body.read-mode .post-cloudchewieGPT,
+body.read-mode .post-meta,
+body.read-mode .aplayer,
+body.read-mode .main-hero-waves-area.waves-area {
+  display: none;
+}
+body.read-mode #post {
+  padding: 20px 40px;
+}
+body.read-mode #page-header #post-info {
+  bottom: 50px !important;
+}
+body.read-mode #page-header.post-bg {
+  height: 200px !important;
 }

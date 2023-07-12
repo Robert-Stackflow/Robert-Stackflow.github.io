@@ -93,7 +93,7 @@
 }
 #backer {
   font-size: 20px;
-  color: var(--global-font-color);
+  color: var(--font-color);
 }
 [data-theme="dark"] .settingx {
   background-color: var(--text-bg-hover);
@@ -103,7 +103,7 @@
   background-color: #888d;
 }
 [data-theme="dark"] #backer {
-  color: var(--global-font-color);
+  color: var(--font-color);
 }
 #settingWindow {
   position: fixed;
@@ -159,7 +159,7 @@
   margin-left: auto;
 }
 #close-console:not(#close-console:hover) {
-  color: var(--global-font-color);
+  color: var(--font-color);
 }
 [data-theme="dark"] #settingWindow {
   background-color: #000a;
@@ -386,7 +386,7 @@ setting-sides {
     display: none;
   }
 }
-.winbox {
+.Console {
   border-radius: 10px;
   overflow: hidden;
 }
