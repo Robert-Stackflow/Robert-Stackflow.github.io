@@ -83,160 +83,6 @@ const cloudchewieFn = {
       document.querySelectorAll("#article-container img:not(.no-lightbox)")
     );
   },
-  addHighlight: () => {
-    const highLight = GLOBAL_CONFIG.highlight;
-    if (!highLight) return;
-
-    const isHighlightCopy = highLight.highlightCopy;
-    const isHighlightLang = highLight.highlightLang;
-    const isHighlightShrink = GLOBAL_CONFIG_SITE.isHighlightShrink;
-    const highlightHeightLimit = highLight.highlightHeightLimit;
-    const isShowTool =
-      isHighlightCopy || isHighlightLang || isHighlightShrink !== undefined;
-    const $figureHighlight =
-      highLight.plugin === "highlighjs"
-        ? document.querySelectorAll("figure.highlight")
-        : document.querySelectorAll('pre[class*="language-"]');
-
-    if (!((isShowTool || highlightHeightLimit) && $figureHighlight.length))
-      return;
-
-    const isPrismjs = highLight.plugin === "prismjs";
-
-    let highlightShrinkEle = "";
-    let highlightCopyEle = "";
-    const highlightShrinkClass = isHighlightShrink === true ? "closed" : "";
-
-    if (isHighlightShrink !== undefined) {
-      highlightShrinkEle = `<i class="fas fa-angle-down expand ${highlightShrinkClass}"></i>`;
-    }
-
-    if (isHighlightCopy) {
-      highlightCopyEle =
-        '<div class="copy-notice"></div><i class="fas fa-paste copy-button"></i>';
-    }
-
-    //定义函数
-    const copy = (text, ctx) => {
-      if (
-        document.queryCommandSupported &&
-        document.queryCommandSupported("copy")
-      ) {
-        document.execCommand("copy");
-        if (GLOBAL_CONFIG.Snackbar !== undefined) {
-          btf.snackbarShow(GLOBAL_CONFIG.copy.success);
-        } else {
-          const prevEle = ctx.previousElementSibling;
-          prevEle.innerText = GLOBAL_CONFIG.copy.success;
-          prevEle.style.opacity = 1;
-          setTimeout(() => {
-            prevEle.style.opacity = 0;
-          }, 700);
-        }
-      } else {
-        if (GLOBAL_CONFIG.Snackbar !== undefined) {
-          btf.snackbarShow(GLOBAL_CONFIG.copy.noSupport);
-        } else {
-          ctx.previousElementSibling.innerText = GLOBAL_CONFIG.copy.noSupport;
-        }
-      }
-    };
-    const highlightCopyFn = (ele) => {
-      const $buttonParent = ele.parentNode;
-      $buttonParent.classList.add("copy-true");
-      const selection = window.getSelection();
-      const range = document.createRange();
-      if (isPrismjs)
-        range.selectNodeContents($buttonParent.querySelectorAll("pre code")[0]);
-      else
-        range.selectNodeContents(
-          $buttonParent.querySelectorAll("table .code pre")[0]
-        );
-      selection.removeAllRanges();
-      selection.addRange(range);
-      const text = selection.toString();
-      copy(text, ele.lastChild);
-      selection.removeAllRanges();
-      $buttonParent.classList.remove("copy-true");
-    };
-    const highlightShrinkFn = (ele) => {
-      const $nextEle = [...ele.parentNode.children].slice(1);
-      ele.firstChild.classList.toggle("closed");
-      if (btf.isHidden($nextEle[$nextEle.length - 1])) {
-        $nextEle.forEach((e) => {
-          e.style.display = "block";
-        });
-      } else {
-        $nextEle.forEach((e) => {
-          e.style.display = "none";
-        });
-      }
-    };
-    const highlightToolsFn = (e) => {
-      const $target = e.target.classList;
-      if ($target.contains("expand")) highlightShrinkFn(this);
-      else if ($target.contains("copy-button")) highlightCopyFn(this);
-    };
-    const expandCode = () => {
-      this.classList.toggle("expand-done");
-    };
-    const createEle = (lang, item, service) => {
-      const fragment = document.createDocumentFragment();
-      if (isShowTool) {
-        const hlTools = document.createElement("div");
-        hlTools.className = `highlight-tools ${highlightShrinkClass}`;
-        hlTools.innerHTML = highlightShrinkEle + lang + highlightCopyEle;
-        hlTools.addEventListener("click", highlightToolsFn);
-        fragment.appendChild(hlTools);
-      }
-      if (
-        highlightHeightLimit &&
-        item.offsetHeight > highlightHeightLimit + 30
-      ) {
-        const ele = document.createElement("div");
-        ele.className = "code-expand-btn";
-        ele.innerHTML = '<i class="fas fa-angle-double-down"></i>';
-        ele.addEventListener("click", expandCode);
-        fragment.appendChild(ele);
-      }
-      if (service === "hl") {
-        item.insertBefore(fragment, item.firstChild);
-      } else {
-        item.parentNode.insertBefore(fragment, item);
-      }
-    };
-
-    if (isHighlightLang) {
-      if (isPrismjs) {
-        $figureHighlight.forEach((item) => {
-          const langName = item.getAttribute("data-language")
-            ? item.getAttribute("data-language")
-            : "Code";
-          const highlightLangEle = `<div class="code-lang">${langName}</div>`;
-          btf.wrap(item, "figure", { class: "highlight" });
-          createEle(highlightLangEle, item);
-        });
-      } else {
-        $figureHighlight.forEach((item) => {
-          let langName = item.getAttribute("class").split(" ")[1];
-          if (langName === "plain" || langName === undefined) langName = "Code";
-          const highlightLangEle = `<div class="code-lang">${langName}</div>`;
-          createEle(highlightLangEle, item, "hl");
-        });
-      }
-    } else {
-      if (isPrismjs) {
-        $figureHighlight.forEach((item) => {
-          btf.wrap(item, "figure", { class: "highlight" });
-          createEle("", item);
-        });
-      } else {
-        $figureHighlight.forEach((item) => {
-          createEle("", item, "hl");
-        });
-      }
-    }
-  },
   switchReadMode: () => {
     const clickFn = () => {
       $body.classList.remove("read-mode");
@@ -272,38 +118,6 @@ const cloudchewieFn = {
       $(commentBarrage).fadeToggle();
     }
     newEle.addEventListener("click", clickFn);
-  },
-  changeAutoColor: (first) => {
-    if (
-      btf.loadData("enableAutoColor") == "true" &&
-      document.querySelector("#page-header") != null &&
-      document.querySelector("#page-header").style.backgroundImage != null &&
-      document
-        .querySelector("#page-header")
-        .style.backgroundImage.split('url("')[1] != null
-    ) {
-      const colorThief = new ColorThief();
-      const image = new Image();
-      const xhr = new XMLHttpRequest();
-      var url = document
-        .querySelector("#page-header")
-        .style.backgroundImage.split('url("')[1]
-        .split('")')[0];
-      xhr.onload = () => {
-        let coverUrl = URL.createObjectURL(this.response);
-        image.onload = () => {
-          let color = colorThief.getColor(image);
-          setThemeColor(color[0], color[1], color[2]);
-          URL.revokeObjectURL(coverUrl);
-        };
-        image.src = coverUrl;
-      };
-      xhr.open("GET", url, true);
-      xhr.responseType = "blob";
-      xhr.send();
-    } else {
-      if (!first) setThemeColor(0, 153, 255);
-    }
   },
   isFullScreen: () => {
     var isFull = document.fullScreen || document.fullscreenElement !== null;
@@ -457,8 +271,8 @@ const cloudchewieFn = {
     document
       .querySelectorAll("#sidebar-menus .site-page.group")
       .forEach((item) => {
-        item.addEventListener("click", () => {
-          this.classList.toggle("hide");
+        item.addEventListener("click", (e) => {
+          e.target.classList.toggle("hide");
         });
       });
   },
@@ -810,7 +624,7 @@ const cloudchewieFn = {
     if ($hideInline.length) {
       $hideInline.forEach((item) => {
         item.addEventListener("click", (e) => {
-          const $this = this;
+          const $this = e.target;
           $this.classList.add("open");
           const $fjGallery =
             $this.nextElementSibling.querySelectorAll(".fj-gallery");
@@ -824,7 +638,7 @@ const cloudchewieFn = {
       .querySelectorAll("#article-container .tab > button")
       .forEach((item) => {
         item.addEventListener("click", (e) => {
-          const $this = this;
+          const $this = e.target;
           const $tabItem = $this.parentNode;
 
           if (!$tabItem.classList.contains("active")) {
@@ -848,12 +662,15 @@ const cloudchewieFn = {
         });
       });
   },
-  backToTop: () => {
+  tabToTop: () => {
     document
       .querySelectorAll("#article-container .tabs .tab-to-top")
       .forEach((item) => {
-        item.addEventListener("click", () => {
-          btf.scrollToDest(btf.getEleTop(btf.getParents(this, ".tabs")), 300);
+        item.addEventListener("click", (e) => {
+          btf.scrollToDest(
+            btf.getEleTop(btf.getParents(e.target, ".tabs")),
+            300
+          );
         });
       });
   },
@@ -866,7 +683,7 @@ const cloudchewieFn = {
       $cardCategory.forEach((item) => {
         item.addEventListener("click", (e) => {
           e.preventDefault();
-          const $this = this;
+          const $this = e.target;
           $this.classList.toggle("expand");
           const $parentEle = $this.parentNode.nextElementSibling;
           if (btf.isHidden($parentEle)) {
@@ -1100,8 +917,7 @@ const cloudchewieFn = {
       for (;;) {
         let t = e[Math.floor(Math.random() * e.length)];
         console.log(t);
-        if (t != "/" && t != "/404.html")
-          return void pjax.loadUrl(t);
+        if (t != "/" && t != "/404.html") return void pjax.loadUrl(t);
       }
     fetch("/sitemap.xml")
       .then((e) => e.text())
@@ -1120,6 +936,129 @@ const cloudchewieFn = {
         }),
           saveToLocal.set("postLinks", n, 0.02),
           cloudchewieFn.randomPost();
+      });
+  },
+  danmu: () => {
+    const e = new EasyDanmaku({
+      el: "#danmu",
+      line: 10,
+      speed: 20,
+      hover: !0,
+      loop: !0,
+    });
+    let t = saveToLocal.get("danmu");
+    if (t) e.batchSend(t, !0);
+    else {
+      let n = [];
+      function a(e) {
+        return (e = (e = (e = (e = (e = e.replace(
+          /<\/*br>|[\s\uFEFF\xA0]+/g,
+          ""
+        )).replace(/<img.*?>/g, "[图片]")).replace(
+          /<a.*?>.*?<\/a>/g,
+          "[链接]"
+        )).replace(/<pre.*?>.*?<\/pre>/g, "[代码块]")).replace(/<.*?>/g, ""));
+      }
+      fetch("https://comment.cloudchewie.com/", {
+        method: "POST",
+        body: JSON.stringify({
+          event: "GET_RECENT_COMMENTS",
+          accessToken: "df242fe099bf81ec336572476fbdc208",
+          includeReply: !1,
+          pageSize: 100,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((e) => e.json())
+        .then(({ data: t }) => {
+          t.forEach((e) => {
+            null == e.avatar &&
+              (e.avatar =
+                "https://cravatar.cn/avatar/d615d5793929e8c7d70eab5f00f7f5f1?d=mp"),
+              n.push({
+                avatar: e.avatar,
+                content: e.nick + "：" + a(e.comment),
+              });
+          }),
+            e.batchSend(n, !0),
+            saveToLocal.set("danmu", n, 0.02);
+        });
+    }
+    document.getElementById("danmuBtn").innerHTML =
+      "<button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.remove('hidedanmu')\">显示弹幕</button> <button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.add('hidedanmu')\">隐藏弹幕</button>";
+  },
+  addScript: (e, t, n) => {
+    if (document.getElementById(e)) return n ? n() : void 0;
+    let a = document.createElement("script");
+    (a.src = t), (a.id = e), n && (a.onload = n), document.head.appendChild(a);
+  }, //切换音乐播放状态
+  musicToggle: function (changePaly = true) {
+    if (!cloudchewie_musicFirst) {
+      cloudchewieFn.musicBindEvent();
+      cloudchewie_musicFirst = true;
+    }
+    let msgPlay = '<i class="fas fa-play"></i><span>播放音乐</span>';
+    let msgPause = '<i class="fas fa-pause"></i><span>暂停音乐</span>';
+    if (cloudchewie_musicPlaying) {
+      navMusicEl.classList.remove("playing");
+      document.getElementById("menu-music-toggle").innerHTML = msgPlay;
+      document.getElementById("nav-music-hoverTips").innerHTML = "音乐已暂停";
+      document.querySelector("#con-music i").classList = "fas fa-play";
+      cloudchewie_musicPlaying = false;
+      navMusicEl.classList.remove("stretch");
+    } else {
+      navMusicEl.classList.add("playing");
+      document.getElementById("menu-music-toggle").innerHTML = msgPause;
+      document.querySelector("#con-music").classList.add("on");
+      document.querySelector("#con-music i").classList = "fas fa-pause";
+      cloudchewie_musicPlaying = true;
+      navMusicEl.classList.add("stretch");
+    }
+    if (changePaly)
+      document.querySelector("#nav-music meting-js").aplayer.toggle();
+  },
+  // 音乐伸缩
+  musicTelescopic: function () {
+    if (navMusicEl.classList.contains("stretch")) {
+      navMusicEl.classList.remove("stretch");
+    } else {
+      navMusicEl.classList.add("stretch");
+    }
+  },
+
+  //音乐上一曲
+  musicSkipBack: function () {
+    navMusicEl.querySelector("meting-js").aplayer.skipBack();
+    rm.hideRightMenu();
+  },
+
+  //音乐下一曲
+  musicSkipForward: function () {
+    navMusicEl.querySelector("meting-js").aplayer.skipForward();
+    rm.hideRightMenu();
+  },
+
+  //获取音乐中的名称
+  musicGetName: function () {
+    var x = document.querySelector(".aplayer-title");
+    var arr = [];
+    for (var i = x.length - 1; i >= 0; i--) {
+      arr[i] = x[i].innerText;
+    }
+    return arr[0];
+  },
+  musicBindEvent: function () {
+    document
+      .querySelector("#nav-music .aplayer-music")
+      .addEventListener("click", function () {
+        cloudchewieFn.musicTelescopic();
+      });
+    document
+      .querySelector("#nav-music .aplayer-button")
+      .addEventListener("click", function () {
+        cloudchewieFn.musicToggle(false);
       });
   },
 };
@@ -1155,4 +1094,161 @@ bindRightSideButton = () => {
         break;
     }
   });
+};
+const addHighlight = function () {
+  const highLight = GLOBAL_CONFIG.highlight;
+  if (!highLight) return;
+
+  const isHighlightCopy = highLight.highlightCopy;
+  const isHighlightLang = highLight.highlightLang;
+  const isHighlightShrink = GLOBAL_CONFIG_SITE.isHighlightShrink;
+  const highlightHeightLimit = highLight.highlightHeightLimit;
+  const isShowTool =
+    isHighlightCopy || isHighlightLang || isHighlightShrink !== undefined;
+  const $figureHighlight =
+    highLight.plugin === "highlighjs"
+      ? document.querySelectorAll("figure.highlight")
+      : document.querySelectorAll('pre[class*="language-"]');
+
+  if (!((isShowTool || highlightHeightLimit) && $figureHighlight.length))
+    return;
+
+  const isPrismjs = highLight.plugin === "prismjs";
+
+  let highlightShrinkEle = "";
+  let highlightCopyEle = "";
+  const highlightShrinkClass = isHighlightShrink === true ? "closed" : "";
+
+  if (isHighlightShrink !== undefined) {
+    highlightShrinkEle = `<i class="fas fa-angle-down expand ${highlightShrinkClass}"></i>`;
+  }
+
+  if (isHighlightCopy) {
+    highlightCopyEle =
+      '<div class="copy-notice"></div><i class="fas fa-paste copy-button"></i>';
+  }
+
+  const copy = (text, ctx) => {
+    if (
+      document.queryCommandSupported &&
+      document.queryCommandSupported("copy")
+    ) {
+      document.execCommand("copy");
+      if (GLOBAL_CONFIG.Snackbar !== undefined) {
+        btf.snackbarShow(GLOBAL_CONFIG.copy.success);
+      } else {
+        const prevEle = ctx.previousElementSibling;
+        prevEle.innerText = GLOBAL_CONFIG.copy.success;
+        prevEle.style.opacity = 1;
+        setTimeout(() => {
+          prevEle.style.opacity = 0;
+        }, 700);
+      }
+    } else {
+      if (GLOBAL_CONFIG.Snackbar !== undefined) {
+        btf.snackbarShow(GLOBAL_CONFIG.copy.noSupport);
+      } else {
+        ctx.previousElementSibling.innerText = GLOBAL_CONFIG.copy.noSupport;
+      }
+    }
+  };
+  // click events
+  const highlightCopyFn = (ele) => {
+    const $buttonParent = ele.parentNode;
+    $buttonParent.classList.add("copy-true");
+    const selection = window.getSelection();
+    const range = document.createRange();
+    if (isPrismjs)
+      range.selectNodeContents($buttonParent.querySelectorAll("pre code")[0]);
+    else
+      range.selectNodeContents(
+        $buttonParent.querySelectorAll("table .code pre")[0]
+      );
+    selection.removeAllRanges();
+    selection.addRange(range);
+    const text = selection.toString();
+    copy(text, ele.lastChild);
+    selection.removeAllRanges();
+    $buttonParent.classList.remove("copy-true");
+  };
+  const highlightShrinkFn = (ele) => {
+    const $nextEle = [...ele.parentNode.children].slice(1);
+    ele.firstChild.classList.toggle("closed");
+    if (btf.isHidden($nextEle[$nextEle.length - 1])) {
+      $nextEle.forEach((e) => {
+        e.style.display = "block";
+      });
+    } else {
+      $nextEle.forEach((e) => {
+        e.style.display = "none";
+      });
+    }
+  };
+
+  const highlightToolsFn = function (e) {
+    const $target = e.target.classList;
+    if ($target.contains("expand")) highlightShrinkFn(this);
+    else if ($target.contains("copy-button")) highlightCopyFn(this);
+  };
+
+  const expandCode = function () {
+    this.classList.toggle("expand-done");
+  };
+
+  function createEle(lang, item, service) {
+    const fragment = document.createDocumentFragment();
+
+    if (isShowTool) {
+      const hlTools = document.createElement("div");
+      hlTools.className = `highlight-tools ${highlightShrinkClass}`;
+      hlTools.innerHTML = highlightShrinkEle + lang + highlightCopyEle;
+      hlTools.addEventListener("click", highlightToolsFn);
+      fragment.appendChild(hlTools);
+    }
+
+    if (highlightHeightLimit && item.offsetHeight > highlightHeightLimit + 30) {
+      const ele = document.createElement("div");
+      ele.className = "code-expand-btn";
+      ele.innerHTML = '<i class="fas fa-angle-double-down"></i>';
+      ele.addEventListener("click", expandCode);
+      fragment.appendChild(ele);
+    }
+
+    if (service === "hl") {
+      item.insertBefore(fragment, item.firstChild);
+    } else {
+      item.parentNode.insertBefore(fragment, item);
+    }
+  }
+
+  if (isHighlightLang) {
+    if (isPrismjs) {
+      $figureHighlight.forEach(function (item) {
+        const langName = item.getAttribute("data-language")
+          ? item.getAttribute("data-language")
+          : "Code";
+        const highlightLangEle = `<div class="code-lang">${langName}</div>`;
+        btf.wrap(item, "figure", { class: "highlight" });
+        createEle(highlightLangEle, item);
+      });
+    } else {
+      $figureHighlight.forEach(function (item) {
+        let langName = item.getAttribute("class").split(" ")[1];
+        if (langName === "plain" || langName === undefined) langName = "Code";
+        const highlightLangEle = `<div class="code-lang">${langName}</div>`;
+        createEle(highlightLangEle, item, "hl");
+      });
+    }
+  } else {
+    if (isPrismjs) {
+      $figureHighlight.forEach(function (item) {
+        btf.wrap(item, "figure", { class: "highlight" });
+        createEle("", item);
+      });
+    } else {
+      $figureHighlight.forEach(function (item) {
+        createEle("", item, "hl");
+      });
+    }
+  }
 };

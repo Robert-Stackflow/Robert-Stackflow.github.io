@@ -11,9 +11,9 @@
   </url>
   
   <url>
-    <loc>https://cloudchewie.com/gallery/shoto/index.html</loc>
+    <loc>https://cloudchewie.com/guestbook/index.html</loc>
     
-    <lastmod>2023-07-11</lastmod>
+    <lastmod>2023-07-12</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -22,7 +22,25 @@
   <url>
     <loc>https://cloudchewie.com/gallery/index.html</loc>
     
-    <lastmod>2023-07-08</lastmod>
+    <lastmod>2023-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudchewie.com/video/index.html</loc>
+    
+    <lastmod>2023-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudchewie.com/gallery/shoto/index.html</loc>
+    
+    <lastmod>2023-07-11</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -335,15 +353,6 @@
   </url>
   
   <url>
-    <loc>https://cloudchewie.com/video/index.html</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://cloudchewie.com/archives/index.html</loc>
     
     <lastmod>2023-03-09</lastmod>
@@ -363,15 +372,6 @@
   
   <url>
     <loc>https://cloudchewie.com/categories/index.html</loc>
-    
-    <lastmod>2023-03-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudchewie.com/guestbook/index.html</loc>
     
     <lastmod>2023-03-09</lastmod>
     

@@ -1,4 +1,19 @@
 const consoleFn = {
+  setDefaultThemeColor: (mode) => {
+    let lightTheme = `:root {  --global-font-size: 14px;  --theme-color: #09f;  --global-bg: #fff;  --font-color: #4c4948;  --hr-border: #d2ebfd;  --hr-before-color: #bfe4fb;  --search-bg: #f6f8fa;  --search-input-color: #4c4948;  --search-result-title: #4c4948;  --preloader-bg: #37474f;  --preloader-color: #fff;  --tab-border-color: #f0f0f0;  --tab-botton-bg: #f0f0f0;  --tab-botton-color: #1f2d3d;  --tab-button-hover-bg: #dcdcdc;  --tab-button-active-bg: #fff;  --card-bg: #fff;  --sidebar-bg: #f6f8fa;  --btn-hover-color: #24b1ff;  --btn-color: #fff;  --btn-bg: #09f;  --text-bg-hover: rgba(0,153,255,0.7);  --light-grey: #eee;  --dark-grey: #cacaca;  --white: #fff;  --text-highlight-color: #1f2d3d;  --blockquote-color: #6a737d;  --blockquote-bg: rgba(0,153,255,0.1);  --reward-pop: #f5f5f5;  --toc-link-color: #666261;  --card-border: 1px solid var(--tab-botton-bg);  --card-box-shadow: 0 0px 0px 0px rgba(45,45,45,0.05);  --card-box-shadow-olded: 0 8px 12px -3px rgba(45,45,45,0.05);  --card-hover-box-shadow: 0 8px 12px -3px rgba(45,45,45,0.05);  --card-border-dashed: 2px dashed var(--tab-button-hover-bg);  --pseudo-hover: #24b1ff;  --headline-presudo: #a0a0a0;  --scrollbar-color: #09f;}`;
+    let darkTheme = `[data-theme='dark'] {  --global-bg: #0d0d0d;  --font-color: rgba(255,255,255,0.7);  --hr-border: rgba(255,255,255,0.4);  --hr-before-color: rgba(255,255,255,0.7);  --search-bg: #121212;  --search-input-color: rgba(255,255,255,0.7);  --search-result-title: rgba(255,255,255,0.9);  --preloader-bg: #0d0d0d;  --preloader-color: rgba(255,255,255,0.7);  --tab-border-color: #2c2c2c;  --tab-botton-bg: #2c2c2c;  --tab-botton-color: rgba(255,255,255,0.7);  --tab-button-hover-bg: #383838;  --tab-button-active-bg: #121212;  --card-bg: #121212;  --sidebar-bg: #121212;  --btn-hover-color: #787878;  --btn-color: rgba(255,255,255,0.7);  --btn-bg: #1f1f1f;  --text-bg-hover: #383838;  --light-grey: rgba(255,255,255,0.7);  --dark-grey: rgba(255,255,255,0.2);  --white: rgba(255,255,255,0.9);  --text-highlight-color: rgba(255,255,255,0.9);  --blockquote-color: rgba(255,255,255,0.7);  --blockquote-bg: #2c2c2c;  --reward-pop: #2c2c2c;  --toc-link-color: rgba(255,255,255,0.6);  --hl-color: rgba(255,255,255,0.7);  --hl-bg: #171717;  --hltools-bg: #1a1a1a;  --hltools-color: #90a4ae;  --hlnumber-bg: #171717;  --hlnumber-color: rgba(255,255,255,0.4);  --hlscrollbar-bg: #1f1f1f;  --hlexpand-bg: linear-gradient(180deg, rgba(23,23,23,0.6), rgba(23,23,23,0.9));  --scrollbar-color: #1f1f1f;  --timeline-bg: #1f1f1f;}`;
+    switch (mode) {
+      case 1:
+        document.getElementById("themeColor").innerText = lightTheme;
+        break;
+      case 2:
+        document.getElementById("themeColor").innerText = darkTheme;
+        break;
+      default:
+        document.getElementById("themeColor").innerText =
+          lightTheme + darkTheme;
+    }
+  },
   setThemeColor: (r, g, b) => {
     document.getElementById(
       "themeColor"
@@ -70,7 +85,7 @@ const consoleFn = {
     $("#aplayer").attr("data-id", id);
     $("#aplayer").attr("data-server", server);
     $("#aplayer").removeClass("no-reload");
-    loadMeting();
+    // loadMeting();
   },
   // 切换全屏
   toggleFullScreen: () => {
@@ -153,7 +168,7 @@ const consoleFn = {
     if (btf.loadData("enableAutoColor") == "true")
       btf.saveData("enableAutoColor", "false");
     else btf.saveData("enableAutoColor", "true");
-    cloudchewieFn.changeAutoColor(false);
+    changeAutoColor(false);
   },
   // 切换右键菜单
   toggleContextMenu: () => {
@@ -252,8 +267,13 @@ const loadSetting = () => {
     btf.saveData("enableAutoColor", "false");
   }
   if (btf.loadData("enableAutoColor") == "true") {
-    $("#con-toggleAutoColor").checked = true;
-    cloudchewieFn.changeAutoColor(true);
+    document.getElementById("con-toggleAutoColor").checked = true;
+    if (GLOBAL_CONFIG_SITE.isPost) {
+      changeAutoColor(true);
+    }
+  }
+  if (!GLOBAL_CONFIG_SITE.isPost) {
+    consoleFn.setDefaultThemeColor(3);
   }
   //固定导航栏
   if (btf.loadData("enableFixedNav") == undefined) {
@@ -296,14 +316,12 @@ const loadSetting = () => {
   if (btf.loadData("enableRightSide") == undefined) {
     btf.saveData("enableRightSide", "true");
   }
-  // setInterval(function () {
   if (btf.loadData("enableRightSide") == "false") {
     $("#rightside").hide();
   } else {
     $("#rightside").show();
     document.getElementById("con-toggleRightSide").checked = true;
   }
-  // }, 500);
   // 加载网页背景
   try {
     let data = btf.loadData("blogBackground", 1440);
@@ -357,6 +375,58 @@ const loadSetting = () => {
       $("#con-fullscreen").removeClass("checked");
     }
   };
+  $(document).ready(function () {
+    var observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        if (mutation.attributeName === "data-theme") {
+          if ($("html").attr("data-theme") == "dark") {
+            consoleFn.setDefaultThemeColor(2);
+          } else {
+            if (GLOBAL_CONFIG_SITE.isPost) {
+              changeAutoColor(false);
+            }
+          }
+        }
+      });
+    });
+    observer.observe($("html")[0], { attributes: true });
+  });
 };
+function changeAutoColor(first) {
+  if (
+    btf.loadData("enableAutoColor") == "true" &&
+    document.querySelector("#page-header") != null &&
+    document.querySelector("#page-header").style.backgroundImage != null &&
+    document
+      .querySelector("#page-header")
+      .style.backgroundImage.split('url("')[1] != null
+  ) {
+    const colorThief = new ColorThief();
+    const image = new Image();
+    const xhr = new XMLHttpRequest();
+    var url = document
+      .querySelector("#page-header")
+      .style.backgroundImage.split('url("')[1]
+      .split('")')[0];
+    xhr.onload = function () {
+      let coverUrl = URL.createObjectURL(this.response);
+      image.onload = function () {
+        let color = colorThief.getColor(image);
+        consoleFn.setThemeColor(color[0], color[1], color[2]);
+        if ($("html").attr("data-theme") == "dark") {
+          consoleFn.setDefaultThemeColor(2);
+        }
+        URL.revokeObjectURL(coverUrl);
+      };
+      image.src = coverUrl;
+    };
+    xhr.open("GET", url, true);
+    xhr.responseType = "blob";
+    xhr.send();
+  } else {
+    if (!first) consoleFn.setDefaultThemeColor(3);
+  }
+}
+
 document.addEventListener("pjax:complete", loadSetting);
 document.addEventListener("DOMContentLoaded", loadSetting);

@@ -180,3 +180,24 @@ div.tk-submit > div.tk-row.actions > a {
 .tk-pagination-pager {
   border-radius: 8px;
 }
+.tk-nick-link:hover,
+.el-button:not(.el-button--primary):not(.el-button--text):active,
+.el-button:not(.el-button--primary):not(.el-button--text):focus,
+.el-button:not(.el-button--primary):not(.el-button--text):hover {
+  color: var(--theme-color) !important;
+  border-color: var(--theme-color) !important;
+}
+.el-button--primary {
+  background-color: var(--theme-color) !important;
+}
+.el-button--primary.is-disabled {
+  opacity: 0.8;
+  background-color: var(--theme-color) !important;
+}
+.twikoo .el-input__inner:focus,
+.twikoo .el-textarea__inner:focus {
+  border-color: var(--theme-color) !important;
+}
+.tk-ruser {
+  color: var(--font-color);
+}
