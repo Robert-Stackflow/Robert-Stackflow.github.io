@@ -1,9 +1,5 @@
-//commentBarrage v3.0 By Ariasaka
-//for swiper and both(pjax or nopjax)
-//ainb?!!!! qwq
 document.addEventListener("pjax:complete", startbarrage); //不用pjax请注释掉这一行;
 document.addEventListener("DOMContentLoaded", startbarrage);
-
 function startbarrage() {
   try {
     clearInterval(timer);
@@ -34,25 +30,23 @@ function startbarrage() {
     avatarCDN: "cravatar.cn",
   };
   function initCommentBarrage() {
-    {
-      //加载设置
-      if (btf.loadData("enableCommentBarrage") == undefined) {
-        btf.saveData("enableCommentBarrage", "false");
+    //加载设置
+    if (btf.loadData("enableCommentBarrage") == undefined) {
+      btf.saveData("enableCommentBarrage", "false");
+    }
+    if (btf.loadData("enableCommentBarrage") == "true") {
+      commentBarrageConfig.displayBarrage = true;
+      let commentBarrage = document.querySelector(".barrageswiper");
+      if (commentBarrage) {
+        $("#con-barrage").addClass("checked");
+        $(commentBarrage).show();
       }
-      if (btf.loadData("enableCommentBarrage") == "true") {
-        commentBarrageConfig.displayBarrage = true;
-        let commentBarrage = document.querySelector(".barrageswiper");
-        if (commentBarrage) {
-          $("#con-barrage").addClass("checked");
-          $(commentBarrage).show();
-        }
-      } else {
-        commentBarrageConfig.displayBarrage = false;
-        let commentBarrage = document.querySelector(".barrageswiper");
-        if (commentBarrage) {
-          $("#con-barrage").removeClass("checked");
-          $(commentBarrage).hide();
-        }
+    } else {
+      commentBarrageConfig.displayBarrage = false;
+      let commentBarrage = document.querySelector(".barrageswiper");
+      if (commentBarrage) {
+        $("#con-barrage").removeClass("checked");
+        $(commentBarrage).hide();
       }
     }
     //获取数据

@@ -1058,7 +1058,7 @@ button.swiper-pagination-bullet {
   .blog-slider__button {
     display: inline-flex;
   }
-  .blog-slider__text {
+  /* .blog-slider__text {
     margin-bottom: 40px;
-  }
+  } */
 }

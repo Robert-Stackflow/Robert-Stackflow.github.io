@@ -5,7 +5,10 @@ function getStyle(obj, name) {
     return obj.currentStyle[name];
   }
 }
-var clientWidth = document.getElementById("content-inner").clientWidth;
+var clientWidth =
+  document.getElementById("content-inner") != null
+    ? document.getElementById("content-inner").clientWidth
+    : 0;
 var paddingLeft = Number(
   getStyle(document.getElementById("content-inner"), "paddingLeft").replace(
     /\s+|px/gi,
@@ -66,5 +69,5 @@ $(document).ready(function () {
     } catch (e) {}
   }
   window.addEventListener("resize", res);
-  setInterval(res,1000);
+  setInterval(res, 1000);
 });
