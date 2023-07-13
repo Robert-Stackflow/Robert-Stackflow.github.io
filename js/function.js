@@ -280,7 +280,10 @@ const cloudchewieFn = {
     const $rightside = document.getElementById("rightside");
     const innerHeight = window.innerHeight + 56;
     // 当滚动条小于56时
-    if (document.body.scrollHeight <= innerHeight) {
+    if (
+      document.body.scrollHeight <= innerHeight &&
+      "/nowtime/" != location.pathname
+    ) {
       $rightside.style.cssText = "opacity: 1; transform: translateX(-60px)";
       return;
     }
@@ -353,8 +356,7 @@ const cloudchewieFn = {
         }
       }, 200)();
     };
-
-    window.addEventListener("scroll", scrollCollect);
+    window.addEventListener("scroll", window.scrollCollect);
   },
   scrollFunctionOfToc: () => {
     const isToc = GLOBAL_CONFIG_SITE.isToc;
@@ -918,7 +920,7 @@ const cloudchewieFn = {
           up.childNodes[0].style.display = "block";
         }
       }
-      if (result <= 95) {
+      if (result <= 95 && document.documentElement.scrollTop > 20) {
         down.style.display = "block";
       } else {
         down.style.display = "none";
@@ -932,6 +934,11 @@ const cloudchewieFn = {
       }
       cloudchewieFn.percentageScrollFn(a);
     });
+    if (document.documentElement.scrollTop > 20) {
+      document.querySelector("#go-down").style.display = "block";
+    } else {
+      document.querySelector("#go-down").style.display = "none";
+    }
   },
   qrcodeCreate: function () {
     if (document.getElementById("qrcode")) {
@@ -986,7 +993,10 @@ const cloudchewieFn = {
       return top <= viewPortHeight;
     }
 
-    if (isInViewPortOfOneNoDis(pageBottomDomFlag) || percentage > 90) {
+    if (
+      (isInViewPortOfOneNoDis(pageBottomDomFlag) || percentage > 90) &&
+      document.documentElement.scrollTop > 20
+    ) {
       $navTotop.classList.add("long");
       $percentBtn.textContent = "返回顶部";
     } else {
@@ -1262,7 +1272,8 @@ const cloudchewieFn = {
   // 切换歌单
   changeMusicList: async function (server, id, type = "playlist") {
     const anMusicPage = document.getElementById("anMusic-page");
-    if (anMusicPage == null) return;
+    if (anMusicPage == null || anMusicPage.querySelector("meting-js") == null)
+      return;
     const metingAplayer = anMusicPage.querySelector("meting-js").aplayer;
     document
       .querySelector("#nav-music meting-js")

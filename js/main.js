@@ -93,6 +93,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("sidebar-menus").classList.remove("open");
     mobileSidebarOpen = false;
     $web_box.classList.remove("open");
+    $web_container.style.background = "none";
+    document.getElementById("nav-totop").classList.remove("long");
   };
   document.getElementById("menu-mask").addEventListener("click", close);
   const initAdjust = () => {
@@ -125,7 +127,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  const musicDom = document.getElementById("nav-music");
   const listenNavMusicPause = function () {
     const timer = setInterval(() => {
       if (navMusicEl.querySelector("#nav-music meting-js").aplayer) {
@@ -211,6 +212,9 @@ document.addEventListener("DOMContentLoaded", function () {
     rightsideHideClassList.add("status");
     cloudchewieFn.scrollFunctionOfToc();
     cloudchewieFn.scrollFunction();
+
+    window.scrollCollect && window.scrollCollect();
+
     addHighlight();
     bindRightSideButton();
     GLOBAL_CONFIG.isPhotoFigcaption && cloudchewieFn.addPhotoFigcaption();
@@ -240,10 +244,9 @@ document.addEventListener("DOMContentLoaded", function () {
   $(document).ready(function () {
     checkURLAndRun();
     "/guestbook/" == location.pathname &&
-      document.body.clientWidth > 768 &&
       cloudchewieFn.addScript(
         "Danmaku",
-        "/js/third-party/danmu.js",
+        "https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@master/js/third-party/danmu.js",
         cloudchewieFn.danmu
       );
     if (!cloudchewie_musicPlaying) {
@@ -255,10 +258,9 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("pjax:complete", function () {
     checkURLAndRun();
     "/guestbook/" == location.pathname &&
-      document.body.clientWidth > 768 &&
       cloudchewieFn.addScript(
         "Danmaku",
-        "/js/third-party/danmu.js",
+        "https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@master/js/third-party/danmu.js",
         cloudchewieFn.danmu
       );
     if (!cloudchewie_musicPlaying) {

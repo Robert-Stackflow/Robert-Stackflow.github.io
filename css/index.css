@@ -2589,11 +2589,6 @@ figure.highlight pre .javascript .function {
   animation: slide-in 0.6s 0.4s backwards;
   will-change: transform;
 }
-@media screen and (max-width: 768px) {
-  #recent-posts > .recent-post-item:not(:first-child) {
-    margin: 20px 20px 0;
-  }
-}
 #recent-posts > .recent-post-item {
   display: -webkit-box;
   display: -moz-box;
@@ -2700,8 +2695,6 @@ figure.highlight pre .javascript .function {
   }
   #recent-posts > .recent-post-item.lastestpost-item {
     margin-top: 10px !important;
-    margin-left: 20px !important;
-    margin-right: 20px !important;
   }
 }
 #recent-posts > .recent-post-item:hover img.post_bg {
@@ -3355,7 +3348,7 @@ body:has(#console.show) #nav-music {
     -webkit-box-orient: vertical;
   }
   #anMusic-page meting-js .aplayer .aplayer-list ol > li.aplayer-list-light {
-    background: #33a673;
+    background: var(--theme-color);
     padding: 5px 20px;
     border-radius: 10px;
   }
@@ -3381,7 +3374,7 @@ body:has(#console.show) #nav-music {
     mask-image: linear-gradient(to bottom, #000, #000, #000, #000, rgba(0,0,0,0), rgba(0,0,0,0));
   }
   #anMusic-page meting-js .aplayer .aplayer-body .aplayer-info .aplayer-lrc p.aplayer-lrc-current {
-    color: #33a673;
+    color: var(--theme-color);
   }
   #anMusic-page meting-js .aplayer .aplayer-body .aplayer-info .aplayer-controller {
     width: 100%;
@@ -4440,11 +4433,13 @@ li.categoryBar-list-item {
 #footer-wrap {
   position: relative;
   padding: 40px 20px;
-  color: var(--light-grey);
+  color: var(--black);
   text-align: center;
+  font-weight: 600;
 }
 #footer-wrap a {
-  color: var(--light-grey);
+  color: var(--black);
+  font-weight: 600;
 }
 #footer-wrap a:hover {
   text-decoration: underline;
@@ -6794,9 +6789,13 @@ ul.menus_item_child {
 #web_container #categoryBar {
   position: static;
 }
-.site-data > a .headline,
-.site-data > a .length-num {
+#sidebar .site-data > a .headline,
+#sidebar .site-data > a .length-num {
   color: var(--white);
+}
+#sidebar .site-data > a:hover .headline,
+#sidebar .site-data > a:hover .length-num {
+  color: var(--white) !important;
 }
 #vcomment {
   font-size: 1.1em;
@@ -10890,9 +10889,13 @@ p.p.gray {
   .reward-list-item {
     width: 100% !important;
   }
-  .layout > div:first-child:not(.recent-posts) {
-    /* border-radius: 0; */
+  .layout:not(:has(.transparentpage)) > div:first-child:not(.recent-posts) {
     padding: 1rem 1rem !important;
+    box-shadow: none !important;
+  }
+  .layout:has(.transparentpage) > div:first-child:not(.recent-posts) {
+    /* border-radius: 0; */
+    padding: 0px !important;
     box-shadow: none !important;
   }
   .author-content-item .card-content .banner-button-group .banner-button-text {

@@ -37,11 +37,6 @@ function fetchMemos() {
       });
       document.getElementById("talk").innerHTML = html;
       window.Lately && Lately.init({ target: ".talk_date" });
-      "/nowtime/" == location.pathname &&
-        (waterfall("#talk"),
-        setTimeout(() => {
-          waterfall("#talk");
-        }, 300));
       var times = 0;
       var relayout = setInterval(function () {
         "/nowtime/" == location.pathname &&

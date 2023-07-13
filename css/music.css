@@ -273,7 +273,7 @@ body:has(#anMusic-page)
     width: 30%;
   }
   #anMusic-page ol > li.aplayer-list-light {
-    background: #33a673;
+    background: var(--theme-color);
     padding: 5px 20px;
     border-radius: 10px;
   }
@@ -327,7 +327,7 @@ body:has(#anMusic-page)
     );
   }
   #anMusic-page .aplayer-info .aplayer-lrc p.aplayer-lrc-current {
-    color: #33a673;
+    color: var(--theme-color);
   }
   /* 控制按键和进度条 */
   #anMusic-page .aplayer-info .aplayer-controller {
