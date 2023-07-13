@@ -105,7 +105,7 @@ function startbarrage() {
     }
     //绑定滑动事件
     document.addEventListener("scroll", function () {
-      if (isInViewPortOfOne(document.getElementById("post-comment"))) {
+      if (cloudchewieFn.isInViewPortOfOne(document.getElementById("post-comment"))) {
         commentBarrageConfig.displayBarrage = false;
         let commentBarrage = document.querySelector(".barrageswiper");
         if (commentBarrage) {
@@ -243,17 +243,6 @@ function startbarrage() {
     } else {
       return false;
     }
-  }
-  function isInViewPortOfOne(el) {
-    if (el == null) return false;
-    const viewPortHeight =
-      window.innerHeight ||
-      document.documentElement.clientHeight ||
-      document.body.clientHeight;
-    const offsetTop = el.offsetTop;
-    const scrollTop = document.documentElement.scrollTop;
-    const top = offsetTop - scrollTop;
-    return top <= viewPortHeight;
   }
   initCommentBarrage();
 }

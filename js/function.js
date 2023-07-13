@@ -879,6 +879,17 @@ const cloudchewieFn = {
       $("#con-toggleaside").addClass("checked");
     else $("#con-toggleaside").removeClass("checked");
   },
+  isInViewPortOfOne: (el) => {
+    if (el == null) return false;
+    const viewPortHeight =
+      window.innerHeight ||
+      document.documentElement.clientHeight ||
+      document.body.clientHeight;
+    const offsetTop = el.offsetTop;
+    const scrollTop = document.documentElement.scrollTop;
+    const top = offsetTop - scrollTop;
+    return top <= viewPortHeight;
+  },
   /**
      浏览进度百分比
     **/
@@ -901,15 +912,74 @@ const cloudchewieFn = {
         if (result <= 95) {
           up.childNodes[0].style.display = "none";
           up.childNodes[1].style.display = "block";
-          down.style.display = "block";
           up.childNodes[1].childNodes[0].innerHTML = result;
         } else {
-          down.style.display = "none";
           up.childNodes[1].style.display = "none";
           up.childNodes[0].style.display = "block";
         }
       }
+      if (result <= 95) {
+        down.style.display = "block";
+      } else {
+        down.style.display = "none";
+      }
+      if (
+        cloudchewieFn.isInViewPortOfOne(document.getElementById("post-comment"))
+      ) {
+        $("#to_comment").hide();
+      } else {
+        $("#to_comment").show();
+      }
+      cloudchewieFn.percentageScrollFn(a);
     });
+  },
+  percentageScrollFn: (currentTop) => {
+    // 处理滚动百分比
+    const $percentBtn = document.getElementById("percent"),
+      $navTotop = document.getElementById("nav-totop"),
+      $bodyWrap = document.getElementById("body-wrap");
+    let docHeight = $bodyWrap.clientHeight;
+    let pageBottomDomFlag =
+      document.getElementById("post-comment") ||
+      document.getElementById("footer");
+    const winHeight = document.documentElement.clientHeight;
+    const contentMath =
+      docHeight > winHeight
+        ? docHeight - winHeight
+        : document.documentElement.scrollHeight - winHeight;
+    const scrollPercent = currentTop / contentMath;
+    const scrollPercentRounded = Math.round(scrollPercent * 100);
+    const percentage =
+      scrollPercentRounded > 100
+        ? 100
+        : scrollPercentRounded <= 0
+        ? 1
+        : scrollPercentRounded;
+    $percentBtn.textContent = percentage;
+
+    function isInViewPortOfOneNoDis(el) {
+      if (!el) return;
+      const elDisplay = window.getComputedStyle(el).getPropertyValue("display");
+      if (elDisplay == "none") {
+        return;
+      }
+      const viewPortHeight =
+        window.innerHeight ||
+        document.documentElement.clientHeight ||
+        document.body.clientHeight;
+      const offsetTop = el.offsetTop;
+      const scrollTop = document.documentElement.scrollTop;
+      const top = offsetTop - scrollTop;
+      return top <= viewPortHeight;
+    }
+
+    if (isInViewPortOfOneNoDis(pageBottomDomFlag) || percentage > 90) {
+      $navTotop.classList.add("long");
+      $percentBtn.textContent = "返回顶部";
+    } else {
+      $navTotop.classList.remove("long");
+      $percentBtn.textContent = percentage;
+    }
   },
   randomPost: () => {
     let e = saveToLocal.get("postLinks");

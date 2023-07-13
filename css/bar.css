@@ -30,7 +30,7 @@ $light-text: #24B1FF $border-radius: .5rem */
 .page #category .category-list-bar:hover,
 .page #category-bar .category-list-bar:hover,
 #tag .tag-list-bar:hover {
-  /* border: 1px solid #0099ff; */
+  /* border: 1px solid #3B70FC; */
   transition: 1s;
 }
 
@@ -190,8 +190,13 @@ $light-text: #24B1FF $border-radius: .5rem */
   #category-bar {
     border-radius: 0;
   }
+  #wander-button {
+    display: none !important;
+  }
+  #page-header #love-button {
+   display: none !important;
+  }
 }
-
 #category a.category-bar-item.select a {
   display: none;
 }
