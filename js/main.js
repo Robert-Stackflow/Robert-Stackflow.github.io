@@ -1,25 +1,100 @@
-// 第一次播放音乐
 var cloudchewie_musicFirst = false;
-// 音乐播放状态
 var cloudchewie_musicPlaying = false;
+var $web_container = document.getElementById("web_container");
+var $web_box = document.getElementById("web_box");
 document.addEventListener("DOMContentLoaded", function () {
+  function onDragStart(event) {
+    // event.preventDefault();
+    dragStartX = getEventX(event);
+    $web_box.style.transition = "all .3s";
+    addMoveEndListeners(onDragMove, onDragEnd);
+  }
+
+  function onDragMove(event) {
+    const deltaX = getEventX(event) - dragStartX;
+    if (deltaX < 0) {
+      const screenWidth = window.innerWidth;
+      const translateX = Math.min(-300, ((-1 * deltaX) / screenWidth) * 300);
+      const scale = Math.min(1, 0.86 + (deltaX / screenWidth) * (1 - 0.86));
+      $web_box.style.transform = `translate3d(-${translateX}px, 0px, 0px) scale3d(${scale}, ${scale}, 1)`;
+    }
+  }
+
+  function onDragEnd(event) {
+    const screenWidth = window.innerWidth;
+    if (getEventX(event) <= screenWidth / 1.5) {
+      completeTransition();
+    } else {
+      resetTransition();
+    }
+    removeMoveEndListeners(onDragMove, onDragEnd);
+  }
+
+  function completeTransition() {
+    $web_box.style.transition = "all 0.3s ease-out";
+    $web_box.style.transform = "none";
+    close();
+    removeMoveEndListeners(onDragMove, onDragEnd);
+  }
+
+  function resetTransition() {
+    $web_box.style.transition = "";
+    $web_box.style.transform = "";
+  }
+
+  function getEventX(event) {
+    return event.type.startsWith("touch")
+      ? event.changedTouches[0].clientX
+      : event.clientX;
+  }
+
+  function addMoveEndListeners(moveHandler, endHandler) {
+    document.addEventListener("mousemove", moveHandler);
+    document.addEventListener("mouseup", endHandler);
+    document.addEventListener("touchmove", moveHandler, { passive: false });
+    document.addEventListener("touchend", endHandler);
+  }
+
+  function removeMoveEndListeners(moveHandler, endHandler) {
+    document.removeEventListener("mousemove", moveHandler);
+    document.removeEventListener("mouseup", endHandler);
+    document.removeEventListener("touchmove", moveHandler);
+    document.removeEventListener("touchend", endHandler);
+  }
+
   let blogNameWidth, menusWidth, searchWidth, $nav;
   let mobileSidebarOpen = false;
+  const $sidebarMenus = document.getElementById("sidebar-menus");
+  const $rightside = document.getElementById("rightside");
   const open = () => {
     btf.sidebarPaddingR();
+    $sidebarMenus.classList.add("open");
+    $rightside.classList.add("hide");
     document.body.style.overflow = "hidden";
     btf.animateIn(document.getElementById("menu-mask"), "to_show 0.5s");
     document.getElementById("sidebar-menus").classList.add("open");
     mobileSidebarOpen = true;
+    $web_box.classList.add("open");
+    $web_box.addEventListener("mousedown", onDragStart);
+    $web_box.addEventListener("touchstart", onDragStart, { passive: false });
+    if (window.location.pathname.startsWith("/music/")) {
+      $web_container.style.background = "rgb(255 255 255 / 20%)";
+    } else {
+      $web_container.style.background = "var(--global-bg)";
+    }
   };
   const close = () => {
+    $sidebarMenus.classList.remove("open");
     const $body = document.body;
     $body.style.overflow = "";
+    $rightside.classList.remove("hide");
     $body.style.paddingRight = "";
     btf.animateOut(document.getElementById("menu-mask"), "to_hide 0.5s");
     document.getElementById("sidebar-menus").classList.remove("open");
     mobileSidebarOpen = false;
+    $web_box.classList.remove("open");
   };
+  document.getElementById("menu-mask").addEventListener("click", close);
   const initAdjust = () => {
     adjustMenu(true);
     $nav.classList.add("show");
@@ -94,9 +169,6 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => {
           "/nowtime/" == location.pathname && waterfall("#talk");
         }, 300));
-    });
-    document.getElementById("menu-mask").addEventListener("click", (e) => {
-      close();
     });
     cloudchewieFn.clickFnOfSubMenu();
     GLOBAL_CONFIG.islazyload && cloudchewieFn.lazyloadImg();

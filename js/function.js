@@ -933,6 +933,19 @@ const cloudchewieFn = {
       cloudchewieFn.percentageScrollFn(a);
     });
   },
+  qrcodeCreate: function () {
+    if (document.getElementById("qrcode")) {
+      document.getElementById("qrcode").innerHTML = "";
+      var qrcode = new QRCode(document.getElementById("qrcode"), {
+        text: window.location.href,
+        width: 250,
+        height: 250,
+        colorDark: "#000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H,
+      });
+    }
+  },
   percentageScrollFn: (currentTop) => {
     // 处理滚动百分比
     const $percentBtn = document.getElementById("percent"),
@@ -986,7 +999,6 @@ const cloudchewieFn = {
     if (e)
       for (;;) {
         let t = e[Math.floor(Math.random() * e.length)];
-        console.log(t);
         if (t != "/" && t != "/404.html") return void pjax.loadUrl(t);
       }
     fetch("/sitemap.xml")
@@ -1089,7 +1101,7 @@ const cloudchewieFn = {
     if (changePaly)
       document.querySelector("#nav-music meting-js").aplayer.toggle();
   },
-  // 音乐伸缩
+
   musicTelescopic: function () {
     if (navMusicEl.classList.contains("stretch")) {
       navMusicEl.classList.remove("stretch");
@@ -1098,19 +1110,16 @@ const cloudchewieFn = {
     }
   },
 
-  //音乐上一曲
   musicSkipBack: function () {
     navMusicEl.querySelector("meting-js").aplayer.skipBack();
     rm.hideRightMenu();
   },
 
-  //音乐下一曲
   musicSkipForward: function () {
     navMusicEl.querySelector("meting-js").aplayer.skipForward();
     rm.hideRightMenu();
   },
 
-  //获取音乐中的名称
   musicGetName: function () {
     var x = document.querySelector(".aplayer-title");
     var arr = [];
@@ -1119,6 +1128,7 @@ const cloudchewieFn = {
     }
     return arr[0];
   },
+
   musicBindEvent: function () {
     document
       .querySelector("#nav-music .aplayer-music")
@@ -1129,6 +1139,143 @@ const cloudchewieFn = {
       .querySelector("#nav-music .aplayer-button")
       .addEventListener("click", function () {
         cloudchewieFn.musicToggle(false);
+      });
+  },
+
+  playMusic() {
+    const anMusicPage = document.getElementById("anMusic-page");
+    const metingAplayer = anMusicPage.querySelector("meting-js").aplayer;
+    metingAplayer.play();
+  },
+
+  changeMusicBg: function (isChangeBg = true) {
+    const anMusicBg = document.getElementById("an_music_bg");
+    if (isChangeBg) {
+      const musiccover = document.querySelector("#anMusic-page .aplayer-pic");
+      anMusicBg.style.backgroundImage = musiccover.style.backgroundImage;
+      $web_container.style.background = "none";
+    } else {
+      let timer = setInterval(() => {
+        const musiccover = document.querySelector("#anMusic-page .aplayer-pic");
+        if (musiccover) {
+          clearInterval(timer);
+          cloudchewieFn.addEventListenerMusic();
+          cloudchewieFn.changeMusicBg();
+          if (
+            document.querySelector("#nav-music meting-js").aplayer &&
+            !document.querySelector("#nav-music meting-js").aplayer.audio.paused
+          ) {
+            cloudchewieFn.musicToggle();
+          }
+        }
+      }, 100);
+    }
+  },
+
+  initAnPlayer: function () {
+    if (!window.location.pathname.startsWith("/music/")) {
+      return;
+    }
+    const urlParams = new URLSearchParams(window.location.search);
+    var userId = "7185982924";
+    var userServer = "netease";
+    if (btf.loadData("playlist") != undefined) {
+      var json = JSON.parse(btf.loadData("playlist"));
+      userId = json.id;
+      userServer = json.server;
+    }
+    const anMusicPageMeting = document.getElementById("anMusic-page-meting");
+    if (urlParams.get("id") && urlParams.get("server")) {
+      const id = urlParams.get("id");
+      const server = urlParams.get("server");
+      anMusicPageMeting.innerHTML = `<meting-js id="${id}" server=${server} type="playlist" type="playlist" mutex="true" preload="auto" theme="var(--theme-color)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
+    } else {
+      anMusicPageMeting.innerHTML = `<meting-js id="${userId}" server="${userServer}" type="playlist" mutex="true" preload="auto" theme="var(--theme-color)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
+    }
+    cloudchewieFn.changeMusicBg(false);
+  },
+  addEventListenerMusic: function () {
+    const anMusicPage = document.getElementById("anMusic-page");
+    const aplayerIconMenu = anMusicPage.querySelector(
+      ".aplayer-info .aplayer-time .aplayer-icon-menu"
+    );
+    const anMusicSwitchingBtn = anMusicPage.querySelector("#anMusicSwitching");
+    const metingAplayer = anMusicPage.querySelector("meting-js").aplayer;
+    //初始化音量
+    metingAplayer.volume(0.8, true);
+    metingAplayer.on("loadeddata", function () {
+      cloudchewieFn.changeMusicBg();
+    });
+
+    aplayerIconMenu.addEventListener("click", function () {
+      document.getElementById("menu-mask").style.display = "block";
+      document.getElementById("menu-mask").style.animation =
+        "0.5s ease 0s 1 normal none running to_show";
+      anMusicPage.querySelector(
+        ".aplayer.aplayer-withlist .aplayer-list"
+      ).style.opacity = "1";
+    });
+
+    function anMusicPageMenuAask() {
+      if (window.location.pathname != "/music/") {
+        document
+          .getElementById("menu-mask")
+          .removeEventListener("click", anMusicPageMenuAask);
+        return;
+      }
+      anMusicPage
+        .querySelector(".aplayer-list")
+        .classList.remove("aplayer-list-hide");
+    }
+
+    document
+      .getElementById("menu-mask")
+      .addEventListener("click", anMusicPageMenuAask);
+
+    document.addEventListener("keydown", function (event) {
+      if (event.code === "Space") {
+        event.preventDefault();
+        metingAplayer.toggle();
+      }
+      if (event.keyCode === 39) {
+        event.preventDefault();
+        metingAplayer.skipForward();
+      }
+      if (event.keyCode === 37) {
+        event.preventDefault();
+        metingAplayer.skipBack();
+      }
+      if (event.keyCode === 38) {
+        if (musicVolume <= 1) {
+          musicVolume += 0.1;
+          metingAplayer.volume(musicVolume, true);
+        }
+      }
+      if (event.keyCode === 40) {
+        if (musicVolume >= 0) {
+          musicVolume += -0.1;
+          metingAplayer.volume(musicVolume, true);
+        }
+      }
+    });
+  },
+  // 切换歌单
+  changeMusicList: async function (server, id, type = "playlist") {
+    const anMusicPage = document.getElementById("anMusic-page");
+    if (anMusicPage == null) return;
+    const metingAplayer = anMusicPage.querySelector("meting-js").aplayer;
+    document
+      .querySelector("#nav-music meting-js")
+      ._fetchSongs(server, id, type)
+      .then((songs) => {
+        if (metingAplayer != null) {
+          let isPaused = metingAplayer.audio.paused;
+          metingAplayer.list.clear();
+          metingAplayer.list.add(songs);
+          if (!isPaused) {
+            cloudchewieFn.playMusic();
+          }
+        }
       });
   },
 };

@@ -204,7 +204,7 @@
   margin-left: auto;
   text-decoration: none !important;
 }
-@media screen and (max-width: 955px) {
+/* @media screen and (max-width: 955px) {
   .menus_items:not(#sidebar-menus .menus_items),
   #name-container {
     display: none !important;
@@ -212,7 +212,7 @@
   #nav #toggle-menu {
     display: inline-block !important;
   }
-}
+} */
 #name-container {
   width: 100%;
 }

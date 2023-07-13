@@ -66,17 +66,6 @@
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none;
 }
-[data-theme="light"] #sidebar #sidebar-menus.open {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px) !important;
-}
-[data-theme="dark"] #sidebar #sidebar-menus.open {
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(10px) !important;
-}
-#sidebar #menu-mask {
-  background: rgba(255, 255, 255, 0);
-}
 /* 文章日历 */
 .cal tbody .cal-ntoday a {
   border-radius: 5px;

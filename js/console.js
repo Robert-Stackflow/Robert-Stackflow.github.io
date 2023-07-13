@@ -82,10 +82,9 @@ const consoleFn = {
       for (let i = 0; i < window.aplayers.length; i++)
         window.aplayers[i].pause();
     btf.saveData("playlist", JSON.stringify({ id: id, server: server }));
-    $("#aplayer").attr("data-id", id);
-    $("#aplayer").attr("data-server", server);
-    $("#aplayer").removeClass("no-reload");
-    // loadMeting();
+    $("meting-js").attr("id", id);
+    $("meting-js").attr("server", server);
+    "/music/" == location.pathname && cloudchewieFn.changeMusicList(server, id);
   },
   // 切换全屏
   toggleFullScreen: () => {
