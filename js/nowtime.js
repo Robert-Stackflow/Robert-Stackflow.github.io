@@ -2,7 +2,7 @@
 if (typeof Lately === "undefined") {
   const script = document.createElement("script");
   script.src =
-    "https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@master/js/third-party/lately.min.js";
+    "https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@latest/js/third-party/lately.min.js";
   script.onload = () => {
     Lately.init({ target: ".talk_date" });
   };
@@ -25,7 +25,7 @@ function fetchMemos() {
                 <div class="talk_content">${item.content}</div>
                 <div class="talk_spacer"></div>
                 <div class="talk_meta">
-                  <img class="no-lightbox no-lazyload avatar" src="https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@master/img/index_img/avatar.jpg">
+                  <img class="no-lightbox no-lazyload avatar" src="https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@latest/img/index_img/avatar.jpg">
                   <div class="info">
                     <span class="talk_nick">${item.name}</span>
                     <span class="talk_dot">·</span>

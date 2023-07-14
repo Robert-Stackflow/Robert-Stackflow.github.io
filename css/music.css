@@ -231,6 +231,12 @@ body:has(#anMusic-page)
   margin-right: 15px;
 }
 
+.aplayer-list ol::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.aplayer-list ol::-webkit-scrollbar {
+  height: 5px;
+}
 [data-theme="dark"] .page:has(#anMusic-page) #page-header:before {
   background-color: transparent;
 }

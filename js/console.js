@@ -77,14 +77,14 @@ const consoleFn = {
     }
   },
   // 切换歌单
-  changeAPlayerList: (id, server) => {
+  changeAPlayerList: (id, server, reload = true) => {
     if (window.aplayers)
       for (let i = 0; i < window.aplayers.length; i++)
         window.aplayers[i].pause();
     btf.saveData("playlist", JSON.stringify({ id: id, server: server }));
     $("meting-js").attr("id", id);
     $("meting-js").attr("server", server);
-    cloudchewieFn.changeMusicList(server, id);
+    if (reload) cloudchewieFn.changeMusicList(server, id);
   },
   // 切换全屏
   toggleFullScreen: () => {
@@ -189,12 +189,16 @@ const consoleFn = {
     if (btf.loadData("enableAPlayer") == "true") {
       btf.saveData("enableAPlayer", "false");
       navMusic.hide();
+      $("#con-music").hide();
+      $("#menu-music-toggle").hide();
       $(".music-wrapper .aplayer").show();
       if (navMetingAplayer) {
         navMetingAplayer.pause();
       }
     } else {
       btf.saveData("enableAPlayer", "true");
+      $("#con-music").show();
+      $("#menu-music-toggle").show();
       if ("/music/" != location.pathname) {
         navMusic.show();
       } else {
@@ -242,7 +246,7 @@ const consoleFn = {
           $("#url-btn").html("解析成功");
           $("#url-btn").addClass("success");
           $("#url-btn").removeClass("fail");
-          changeAPlayerList(id, server);
+          consoleFn.changeAPlayerList(id, server, true);
         } else {
           $("#url-btn").html("解析失败");
           $("#url-btn").removeClass("success");
@@ -375,7 +379,7 @@ const loadSetting = () => {
   //加载播放列表
   if (btf.loadData("playlist") != undefined) {
     var json = JSON.parse(btf.loadData("playlist"));
-    consoleFn.changeAPlayerList(json.id, json.server);
+    consoleFn.changeAPlayerList(json.id, json.server, false);
   }
   document
     .getElementById("console-mask")

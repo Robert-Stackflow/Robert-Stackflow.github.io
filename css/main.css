@@ -28,7 +28,7 @@
   }
 } */
 #love-button > a > i {
-  color: red !important;
+  color: #dc143c !important;
 }
 #love-button:hover > a > i {
   color: rgba(255, 0, 0, 0.6) !important;
@@ -47,8 +47,10 @@
     border: none !important;
   }
   [data-theme="dark"] #post {
-    background: #040404 !important;
     border: none !important;
+  }
+  #body-wrap:has(.not-top-img) .layout {
+    padding-top: 0px;
   }
   #body-wrap:not(:has(.not-top-img)) .layout {
     padding: 0;
@@ -386,7 +388,7 @@ blockquote {
   transform: scale(1) !important;
 }
 .site-page.child:has(i.fa-heart) {
-  background-color: red !important;
+  background-color: #dc143c !important;
   border: none !important;
   color: #fff !important;
   display: none !important;

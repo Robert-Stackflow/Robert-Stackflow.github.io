@@ -355,7 +355,7 @@ setting-sides {
   color: #fff;
 }
 #url-btn.fail {
-  background-color: red;
+  background-color: #dc143c;
   color: #fff;
 }
 @media screen and (max-width: 768px) {

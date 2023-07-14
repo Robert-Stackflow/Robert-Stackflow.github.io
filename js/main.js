@@ -246,7 +246,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "/guestbook/" == location.pathname &&
       cloudchewieFn.addScript(
         "Danmaku",
-        "https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@master/js/third-party/danmu.js",
+        "https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@latest/js/third-party/danmu.js",
         cloudchewieFn.danmu
       );
     if (!cloudchewie_musicPlaying) {
@@ -260,7 +260,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "/guestbook/" == location.pathname &&
       cloudchewieFn.addScript(
         "Danmaku",
-        "https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@master/js/third-party/danmu.js",
+        "https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@latest/js/third-party/danmu.js",
         cloudchewieFn.danmu
       );
     if (!cloudchewie_musicPlaying) {

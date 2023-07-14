@@ -125,10 +125,6 @@ const cloudchewieFn = {
     return isFull;
   },
   switchDarkMode: () => {
-    // typeof utterancesTheme === "function" && utterancesTheme();
-    // typeof changeGiscusTheme === "function" && changeGiscusTheme();
-    // typeof FB === "object" && window.loadFBComment();
-    // typeof runMermaid === "function" && window.runMermaid();
     const nowMode =
       document.documentElement.getAttribute("data-theme") === "dark"
         ? "dark"
