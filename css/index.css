@@ -1431,7 +1431,7 @@ input::placeholder {
   z-index: -999;
   width: 100%;
   height: 100%;
-  background: https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@latest/img/index_img/index.png;
+  background: /img/index_img/index.png;
   background-attachment: local;
   background-position: center;
   background-size: cover;
@@ -4983,7 +4983,7 @@ li.categoryBar-list-item {
   -o-animation-direction: alternate;
   -ms-animation-direction: alternate;
   animation-direction: alternate;
-  background: url("https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@latest/img/index_img/avatar.jpg") no-repeat center center;
+  background: url("/img/index_img/avatar.jpg") no-repeat center center;
   background-size: cover;
 }
 #loading-box .loading-image-dot {
@@ -8983,7 +8983,7 @@ blockquote.pullquote.right {
   transition: 2s ease-in-out;
 }
 .author-content-item.game-yuanshen {
-  background: url(https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@latest/img/index_img/yuanshen.webp)
+  background: url(/img/index_img/yuanshen.webp)
     no-repeat top;
   background-size: cover;
   min-height: 240px;
@@ -9023,7 +9023,7 @@ blockquote.pullquote.right {
 
 .author-content-item.comic-content {
   width: 39%;
-  background: url(https://npm.elemecdn.com/anzhiyu-blog@1.1.6https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@latest/img/post/common/violet.jpg)
+  background: url(https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/violet.jpg)
     no-repeat top;
   background-size: cover;
   min-height: 300px;
@@ -9041,7 +9041,7 @@ blockquote.pullquote.right {
 }
 
 .author-content-item.beloved {
-  background: url(https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@latest/img/index_img/beloved.jpg)
+  background: url(/img/index_img/beloved.jpg)
     no-repeat;
   background-size: cover;
   min-height: 500px;
@@ -9049,7 +9049,7 @@ blockquote.pullquote.right {
 }
 
 .author-content-item.like-music {
-  background: url(https://cdn.jsdelivr.net/gh/Robert-Stackflow/robert-stackflow.github.io@latest/img/index_img/xusong.jpg)
+  background: url(/img/index_img/xusong.jpg)
     no-repeat top;
   background-size: cover;
   min-height: 400px;
