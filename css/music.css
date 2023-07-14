@@ -213,8 +213,9 @@ body:has(#anMusic-page) #nav-music {
 
 .page:has(#anMusic-page) #page-header.not-top-img #nav a.site-page:not(.child),
 .page:has(#anMusic-page) #page-header.not-top-img #nav a#site-name,
-.page:has(#anMusic-page) #page-header #nav .back-home-button {
-  color: var(--white);
+.page:has(#anMusic-page) #page-header #nav .back-home-button i {
+  color: var(--white) !important;
+  fill: var(--white) !important;
 }
 
 body:has(#anMusic-page) .s-sticker div {
