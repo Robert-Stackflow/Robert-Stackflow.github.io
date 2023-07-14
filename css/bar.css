@@ -53,14 +53,6 @@ $light-text: #24B1FF $border-radius: .5rem */
   width: calc(100%);
   overflow: scroll;
 }
-
-.page #category .category-list-bar .lists::-webkit-scrollbar,
-.page #category-bar .category-list-bar .lists::-webkit-scrollbar,
-#tag .tag-list-bar .lists::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-}
-
 .page #category .category-list-bar .lists ul,
 .page #category-bar .category-list-bar .lists ul,
 #tag .tag-list-bar .lists ul {
@@ -215,11 +207,6 @@ $light-text: #24B1FF $border-radius: .5rem */
   overflow-x: scroll;
   display: flex;
 }
-
-.category-bar-items::-webkit-scrollbar {
-  display: none;
-}
-
 .category-bar-item a {
   /* padding: 0.1rem 0.5rem;
     margin: 0 0.25rem; */

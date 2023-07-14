@@ -44,7 +44,7 @@
 @media screen and (max-width: 768px) {
   [data-theme="light"] #post {
     background: #f2f6fc !important;
-    border: none;
+    border: none !important;
   }
   [data-theme="dark"] #post {
     background: #040404 !important;
@@ -52,6 +52,9 @@
   }
   #body-wrap:not(:has(.not-top-img)) .layout {
     padding: 0;
+  }
+  #body-wrap:not(:has(.not-top-img)) .aside-content {
+    padding: 0px 20px;
   }
   #body-wrap:not(:has(.not-top-img))
     .layout
@@ -679,9 +682,6 @@ li.categoryBar-list-item {
   padding-bottom: 10px;
   overflow: auto;
   overflow: -moz-scrollbars-none;
-}
-#categoryBar::-webkit-scrollbar {
-  width: 0 !important;
 }
 @media screen and (max-width: 900px) {
   .contrib-column {

@@ -59,9 +59,6 @@
   border-radius: 8px;
   color: var(--white) !important;
 }
-#sidebar::-webkit-scrollbar {
-  width: 0 !important;
-}
 #sidebar {
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none;

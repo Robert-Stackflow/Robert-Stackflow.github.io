@@ -93,9 +93,9 @@ const cloudchewieFn = {
       $(".aplayer").show();
       $("#con-readmode").removeClass("checked");
       $(document.getElementById("post-meta")).show();
-      if (visible != "none") {
-        $(commentBarrage).fadeToggle();
-      }
+      // if (visible != "none") {
+      //   $(commentBarrage).fadeToggle();
+      // }
     };
 
     const $body = document.body;
@@ -112,11 +112,11 @@ const cloudchewieFn = {
     $("#con-readmode").addClass("checked");
     $(".aplayer").hide();
 
-    let commentBarrage = document.querySelector(".barrageswiper");
-    let visible = $(commentBarrage).css("display");
-    if (commentBarrage && !(visible == null || visible == "none")) {
-      $(commentBarrage).fadeToggle();
-    }
+    // let commentBarrage = document.querySelector(".barrageswiper");
+    // let visible = $(commentBarrage).css("display");
+    // if (commentBarrage && !(visible == null || visible == "none")) {
+    //   $(commentBarrage).fadeToggle();
+    // }
     newEle.addEventListener("click", clickFn);
   },
   isFullScreen: () => {
@@ -282,7 +282,8 @@ const cloudchewieFn = {
     // 当滚动条小于56时
     if (
       document.body.scrollHeight <= innerHeight &&
-      "/nowtime/" != location.pathname
+      "/nowtime/" != location.pathname &&
+      "/guestbook/" != location.pathname
     ) {
       $rightside.style.cssText = "opacity: 1; transform: translateX(-60px)";
       return;
@@ -998,10 +999,15 @@ const cloudchewieFn = {
       document.documentElement.scrollTop > 20
     ) {
       $navTotop.classList.add("long");
-      $percentBtn.textContent = "返回顶部";
+      $percentBtn.textContent = "回到顶部";
+      if (document.body.clientWidth <= 768)
+        document.getElementById("search-button").style.display = "none";
     } else {
       $navTotop.classList.remove("long");
       $percentBtn.textContent = percentage;
+      setTimeout(() => {
+        document.getElementById("search-button").style.display = "inline";
+      }, 300);
     }
   },
   randomPost: () => {
@@ -1086,30 +1092,46 @@ const cloudchewieFn = {
     let a = document.createElement("script");
     (a.src = t), (a.id = e), n && (a.onload = n), document.head.appendChild(a);
   }, //切换音乐播放状态
-  musicToggle: function (changePaly = true) {
-    if (!cloudchewie_musicFirst) {
-      cloudchewieFn.musicBindEvent();
-      cloudchewie_musicFirst = true;
-    }
-    let msgPlay = '<i class="fas fa-play"></i><span>播放音乐</span>';
-    let msgPause = '<i class="fas fa-pause"></i><span>暂停音乐</span>';
-    if (cloudchewie_musicPlaying) {
-      navMusicEl.classList.remove("playing");
-      document.getElementById("menu-music-toggle").innerHTML = msgPlay;
-      document.getElementById("nav-music-hoverTips").innerHTML = "音乐已暂停";
-      document.querySelector("#con-music i").classList = "fas fa-play";
-      cloudchewie_musicPlaying = false;
-      navMusicEl.classList.remove("stretch");
+  musicToggle: function (changePlay = true) {
+    if ("/music/" != location.pathname) {
+      if (!cloudchewie_musicFirst) {
+        cloudchewieFn.musicBindEvent();
+        cloudchewie_musicFirst = true;
+      }
+      let msgPlay = '<i class="fas fa-play"></i><span>播放音乐</span>';
+      let msgPause = '<i class="fas fa-pause"></i><span>暂停音乐</span>';
+      if (cloudchewie_musicPlaying) {
+        navMusicEl.classList.remove("playing");
+        document.getElementById("menu-music-toggle").innerHTML = msgPlay;
+        document.getElementById("nav-music-hoverTips").innerHTML = "音乐已暂停";
+        document.querySelector("#con-music i").classList = "fas fa-play";
+        cloudchewie_musicPlaying = false;
+        navMusicEl.classList.remove("stretch");
+      } else {
+        navMusicEl.classList.add("playing");
+        document.getElementById("menu-music-toggle").innerHTML = msgPause;
+        document.querySelector("#con-music").classList.add("on");
+        document.querySelector("#con-music i").classList = "fas fa-pause";
+        cloudchewie_musicPlaying = true;
+        navMusicEl.classList.add("stretch");
+      }
+      if (changePlay)
+        document.querySelector("#nav-music meting-js").aplayer.toggle();
     } else {
-      navMusicEl.classList.add("playing");
-      document.getElementById("menu-music-toggle").innerHTML = msgPause;
-      document.querySelector("#con-music").classList.add("on");
-      document.querySelector("#con-music i").classList = "fas fa-pause";
-      cloudchewie_musicPlaying = true;
-      navMusicEl.classList.add("stretch");
+      let msgPlay = '<i class="fas fa-play"></i><span>播放音乐</span>';
+      let msgPause = '<i class="fas fa-pause"></i><span>暂停音乐</span>';
+      if (cloudchewie_musicPlaying) {
+        document.getElementById("menu-music-toggle").innerHTML = msgPlay;
+        document.querySelector("#con-music i").classList = "fas fa-play";
+        cloudchewie_musicPlaying = false;
+      } else {
+        document.getElementById("menu-music-toggle").innerHTML = msgPause;
+        document.querySelector("#con-music").classList.add("on");
+        document.querySelector("#con-music i").classList = "fas fa-pause";
+        cloudchewie_musicPlaying = true;
+      }
+      if (changePlay) anMusicEl.querySelector("meting-js").aplayer.toggle();
     }
-    if (changePaly)
-      document.querySelector("#nav-music meting-js").aplayer.toggle();
   },
 
   musicTelescopic: function () {
@@ -1153,9 +1175,15 @@ const cloudchewieFn = {
   },
 
   playMusic() {
-    const anMusicPage = document.getElementById("anMusic-page");
-    const metingAplayer = anMusicPage.querySelector("meting-js").aplayer;
-    metingAplayer.play();
+    if ("/music/" != location.pathname) {
+      const navMusic = document.getElementById("nav-music");
+      const navMetingAplayer = navMusic.querySelector("meting-js").aplayer;
+      navMetingAplayer.play();
+    } else {
+      const anMusicPage = document.getElementById("anMusic-page");
+      const metingAplayer = anMusicPage.querySelector("meting-js").aplayer;
+      metingAplayer.play();
+    }
   },
 
   changeMusicBg: function (isChangeBg = true) {
@@ -1179,6 +1207,16 @@ const cloudchewieFn = {
           }
         }
       }, 100);
+    }
+    if (
+      document.querySelector("#anMusic-page .aplayer-title") != null &&
+      document.querySelector("#anMusic-page .aplayer-title").innerHTML !=
+        undefined &&
+      document.querySelector("#anMusic-page .aplayer-title").innerHTML != ""
+    ) {
+      document.title =
+        document.querySelector("#anMusic-page .aplayer-title").innerHTML +
+        " - 天籁 | Cloudchewie";
     }
   },
 
@@ -1216,7 +1254,6 @@ const cloudchewieFn = {
     metingAplayer.on("loadeddata", function () {
       cloudchewieFn.changeMusicBg();
     });
-
     aplayerIconMenu.addEventListener("click", function () {
       document.getElementById("menu-mask").style.display = "block";
       document.getElementById("menu-mask").style.animation =
@@ -1233,9 +1270,10 @@ const cloudchewieFn = {
           .removeEventListener("click", anMusicPageMenuAask);
         return;
       }
-      anMusicPage
-        .querySelector(".aplayer-list")
-        .classList.remove("aplayer-list-hide");
+      anMusicPage.querySelector(".aplayer-list") != null &&
+        anMusicPage
+          .querySelector(".aplayer-list")
+          .classList.remove("aplayer-list-hide");
     }
 
     document
@@ -1271,23 +1309,43 @@ const cloudchewieFn = {
   },
   // 切换歌单
   changeMusicList: async function (server, id, type = "playlist") {
-    const anMusicPage = document.getElementById("anMusic-page");
-    if (anMusicPage == null || anMusicPage.querySelector("meting-js") == null)
-      return;
-    const metingAplayer = anMusicPage.querySelector("meting-js").aplayer;
-    document
-      .querySelector("#nav-music meting-js")
-      ._fetchSongs(server, id, type)
-      .then((songs) => {
-        if (metingAplayer != null) {
-          let isPaused = metingAplayer.audio.paused;
-          metingAplayer.list.clear();
-          metingAplayer.list.add(songs);
-          if (!isPaused) {
-            cloudchewieFn.playMusic();
+    if ("/music/" != location.pathname) {
+      const navMusic = document.getElementById("nav-music");
+      if (navMusic == null || navMusic.querySelector("meting-js") == null)
+        return;
+      const navMetingAplayer = navMusic.querySelector("meting-js").aplayer;
+      navMusic
+        .querySelector("meting-js")
+        ._fetchSongs(server, id, type)
+        .then((songs) => {
+          if (navMetingAplayer != null) {
+            let isPaused = navMetingAplayer.audio.paused;
+            navMetingAplayer.list.clear();
+            navMetingAplayer.list.add(songs);
+            if (!isPaused) {
+              cloudchewieFn.playMusic();
+            }
           }
-        }
-      });
+        });
+    } else {
+      const anMusicPage = document.getElementById("anMusic-page");
+      if (anMusicPage == null || anMusicPage.querySelector("meting-js") == null)
+        return;
+      const metingAplayer = anMusicPage.querySelector("meting-js").aplayer;
+      anMusicPage
+        .querySelector("meting-js")
+        ._fetchSongs(server, id, type)
+        .then((songs) => {
+          if (metingAplayer != null) {
+            let isPaused = metingAplayer.audio.paused;
+            metingAplayer.list.clear();
+            metingAplayer.list.add(songs);
+            if (!isPaused) {
+              cloudchewieFn.playMusic();
+            }
+          }
+        });
+    }
   },
 };
 /**

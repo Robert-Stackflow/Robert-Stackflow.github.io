@@ -1,7 +1,7 @@
 const consoleFn = {
   setDefaultThemeColor: (mode) => {
-    let lightTheme = `:root {  --global-font-size: 14px;  --theme-color: #3B70FC;  --global-bg: #fff;  --font-color: #4c4948;  --hr-border: #d2ebfd;  --hr-before-color: #bfe4fb;  --search-bg: #f6f8fa;  --search-input-color: #4c4948;  --search-result-title: #4c4948;  --preloader-bg: #37474f;  --preloader-color: #fff;  --tab-border-color: #f0f0f0;  --tab-botton-bg: #f0f0f0;  --tab-botton-color: #1f2d3d;  --tab-button-hover-bg: #dcdcdc;  --tab-button-active-bg: #fff;  --card-bg: #fff;  --sidebar-bg: #f6f8fa;  --btn-hover-color: #24b1ff;  --btn-color: #fff;  --btn-bg: #3B70FC;  --text-bg-hover: rgba(0,153,255,0.7);  --light-grey: #eee;  --dark-grey: #cacaca;  --white: #fff;  --text-highlight-color: #1f2d3d;  --blockquote-color: #6a737d;  --blockquote-bg: rgba(0,153,255,0.1);  --reward-pop: #f5f5f5;  --toc-link-color: #666261;  --card-border: 1px solid var(--tab-botton-bg);  --card-box-shadow: 0 0px 0px 0px rgba(45,45,45,0.05);  --card-box-shadow-olded: 0 8px 12px -3px rgba(45,45,45,0.05);  --card-hover-box-shadow: 0 8px 12px -3px rgba(45,45,45,0.05);  --card-border-dashed: 2px dashed var(--tab-button-hover-bg);  --pseudo-hover: #24b1ff;  --headline-presudo: #a0a0a0;  --scrollbar-color: #3B70FC;}`;
-    let darkTheme = `[data-theme='dark'] {  --global-bg: #0d0d0d;  --font-color: rgba(255,255,255,0.7);  --hr-border: rgba(255,255,255,0.4);  --hr-before-color: rgba(255,255,255,0.7);  --search-bg: #121212;  --search-input-color: rgba(255,255,255,0.7);  --search-result-title: rgba(255,255,255,0.9);  --preloader-bg: #0d0d0d;  --preloader-color: rgba(255,255,255,0.7);  --tab-border-color: #2c2c2c;  --tab-botton-bg: #2c2c2c;  --tab-botton-color: rgba(255,255,255,0.7);  --tab-button-hover-bg: #383838;  --tab-button-active-bg: #121212;  --card-bg: #121212;  --sidebar-bg: #121212;  --btn-hover-color: #787878;  --btn-color: rgba(255,255,255,0.7);  --btn-bg: #1f1f1f;  --text-bg-hover: #383838;  --light-grey: rgba(255,255,255,0.7);  --dark-grey: rgba(255,255,255,0.2);  --white: rgba(255,255,255,0.9);  --text-highlight-color: rgba(255,255,255,0.9);  --blockquote-color: rgba(255,255,255,0.7);  --blockquote-bg: #2c2c2c;  --reward-pop: #2c2c2c;  --toc-link-color: rgba(255,255,255,0.6);  --hl-color: rgba(255,255,255,0.7);  --hl-bg: #171717;  --hltools-bg: #1a1a1a;  --hltools-color: #90a4ae;  --hlnumber-bg: #171717;  --hlnumber-color: rgba(255,255,255,0.4);  --hlscrollbar-bg: #1f1f1f;  --hlexpand-bg: linear-gradient(180deg, rgba(23,23,23,0.6), rgba(23,23,23,0.9));  --scrollbar-color: #1f1f1f;  --timeline-bg: #1f1f1f;}`;
+    let lightTheme = `:root {  --global-font-size: 14px;  --theme-color: #3B70FC; --font-color: #4c4948;  --hr-border: #d2ebfd;  --hr-before-color: #bfe4fb;  --search-bg: #f6f8fa;  --search-input-color: #4c4948;  --search-result-title: #4c4948;  --preloader-bg: #37474f;  --preloader-color: #fff;  --tab-border-color: #f0f0f0;  --tab-botton-bg: #f0f0f0;  --tab-botton-color: #1f2d3d;  --tab-button-hover-bg: #dcdcdc;  --tab-button-active-bg: #fff;  --card-bg: #fff;  --sidebar-bg: #f6f8fa;  --btn-hover-color: #24b1ff;  --btn-color: #fff;  --btn-bg: #3B70FC;  --text-bg-hover: rgba(0,153,255,0.7);  --light-grey: #eee;  --dark-grey: #cacaca;  --white: #fff;  --text-highlight-color: #1f2d3d;  --blockquote-color: #6a737d;  --blockquote-bg: rgba(0,153,255,0.1);  --reward-pop: #f5f5f5;  --toc-link-color: #666261;  --card-border: 1px solid var(--tab-botton-bg);  --card-box-shadow: 0 0px 0px 0px rgba(45,45,45,0.05);  --card-box-shadow-olded: 0 8px 12px -3px rgba(45,45,45,0.05);  --card-hover-box-shadow: 0 8px 12px -3px rgba(45,45,45,0.05);  --card-border-dashed: 2px dashed var(--tab-button-hover-bg);  --pseudo-hover: #24b1ff;  --headline-presudo: #a0a0a0;}`;
+    let darkTheme = `[data-theme='dark'] {  --global-bg: #0d0d0d;  --font-color: rgba(255,255,255,0.7);  --hr-border: rgba(255,255,255,0.4);  --hr-before-color: rgba(255,255,255,0.7);  --search-bg: #121212;  --search-input-color: rgba(255,255,255,0.7);  --search-result-title: rgba(255,255,255,0.9);  --preloader-bg: #0d0d0d;  --preloader-color: rgba(255,255,255,0.7);  --tab-border-color: #2c2c2c;  --tab-botton-bg: #2c2c2c;  --tab-botton-color: rgba(255,255,255,0.7);  --tab-button-hover-bg: #383838;  --tab-button-active-bg: #121212;  --card-bg: #121212;  --sidebar-bg: #121212;  --btn-hover-color: #787878;  --btn-color: rgba(255,255,255,0.7);  --btn-bg: #1f1f1f;  --text-bg-hover: #383838;  --light-grey: rgba(255,255,255,0.7);  --dark-grey: rgba(255,255,255,0.2);  --white: rgba(255,255,255,0.9);  --text-highlight-color: rgba(255,255,255,0.9);  --blockquote-color: rgba(255,255,255,0.7);  --blockquote-bg: #2c2c2c;  --reward-pop: #2c2c2c;  --toc-link-color: rgba(255,255,255,0.6);  --hl-color: rgba(255,255,255,0.7);  --hl-bg: #171717;  --hltools-bg: #1a1a1a;  --hltools-color: #90a4ae;  --hlnumber-bg: #171717;  --hlnumber-color: rgba(255,255,255,0.4);  --hlscrollbar-bg: #1f1f1f;  --hlexpand-bg: linear-gradient(180deg, rgba(23,23,23,0.6), rgba(23,23,23,0.9)); --timeline-bg: #1f1f1f;}`;
     switch (mode) {
       case 1:
         document.getElementById("themeColor").innerText = lightTheme;
@@ -17,7 +17,7 @@ const consoleFn = {
   setThemeColor: (r, g, b) => {
     document.getElementById(
       "themeColor"
-    ).innerText = `:root{--theme-color:rgb(${r}, ${g}, ${b})!important;--scrollbar-color:rgb(${r}, ${g}, ${b});--btn-bg:rgb(${r}, ${g}, ${b})!important;--btn-hover-color:rgba(${r}, ${g}, ${b},0.7)!important;--text-bg-hover:rgba(${r}, ${g}, ${b},0.7)!important;--km-toc-active:rgba(${r}, ${g}, ${b},0.7)!important;--km-toc-hover:rgba(${r}, ${g}, ${b},0.6)!important;}`;
+    ).innerText = `:root{--theme-color:rgb(${r}, ${g}, ${b})!important;--btn-bg:rgb(${r}, ${g}, ${b})!important;--btn-hover-color:rgba(${r}, ${g}, ${b},0.7)!important;--text-bg-hover:rgba(${r}, ${g}, ${b},0.7)!important;--km-toc-active:rgba(${r}, ${g}, ${b},0.7)!important;--km-toc-hover:rgba(${r}, ${g}, ${b},0.6)!important;}`;
   },
   toggleConsole: () => {
     $("#settingWindow").fadeToggle("fast");
@@ -84,7 +84,7 @@ const consoleFn = {
     btf.saveData("playlist", JSON.stringify({ id: id, server: server }));
     $("meting-js").attr("id", id);
     $("meting-js").attr("server", server);
-    "/music/" == location.pathname && cloudchewieFn.changeMusicList(server, id);
+    cloudchewieFn.changeMusicList(server, id);
   },
   // 切换全屏
   toggleFullScreen: () => {
@@ -183,17 +183,23 @@ const consoleFn = {
   },
   // 切换APlayer
   toggleAPlayer: () => {
+    const navMusic = $("#nav-music");
+    if (navMusic == null || navMusic.find("meting-js") == null) return;
+    const navMetingAplayer = navMusic.find("meting-js").aplayer;
     if (btf.loadData("enableAPlayer") == "true") {
       btf.saveData("enableAPlayer", "false");
-      $(".globalaplayer").hide();
+      navMusic.hide();
       $(".music-wrapper .aplayer").show();
-      if (window.aplayers) {
-        for (let i = 0; i < window.aplayers.length; i++)
-          window.aplayers[i].pause();
+      if (navMetingAplayer) {
+        navMetingAplayer.pause();
       }
     } else {
       btf.saveData("enableAPlayer", "true");
-      $(".globalaplayer").show();
+      if ("/music/" != location.pathname) {
+        navMusic.show();
+      } else {
+        navMusic.hide();
+      }
     }
   },
   // 解析歌单链接
@@ -301,15 +307,23 @@ const loadSetting = () => {
   if (btf.loadData("enableAPlayer") == undefined) {
     btf.saveData("enableAPlayer", "false");
   }
-  if (btf.loadData("enableAPlayer") == "true") {
-    $(".globalaplayer").show();
-    $(".music-wrapper .aplayer").show();
-    document.getElementById("con-toggleAPlayer").checked = true;
-  } else {
-    $(".globalaplayer").hide();
-    if (window.aplayers)
-      for (let i = 0; i < window.aplayers.length; i++)
-        window.aplayers[i].pause();
+  const navMusic = $("#nav-music");
+  if (navMusic != null && navMusic.find("meting-js") != null) {
+    const navMetingAplayer = navMusic.find("meting-js").aplayer;
+    if (btf.loadData("enableAPlayer") == "true") {
+      if ("/music/" != location.pathname) {
+        navMusic.show();
+      } else {
+        navMusic.hide();
+      }
+      $(".music-wrapper .aplayer").show();
+      document.getElementById("con-toggleAPlayer").checked = true;
+    } else {
+      navMusic.hide();
+      if (navMetingAplayer) {
+        navMetingAplayer.pause();
+      }
+    }
   }
   //加载是否显示右侧边栏
   if (btf.loadData("enableRightSide") == undefined) {

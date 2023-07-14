@@ -87,12 +87,10 @@
   height: calc(100% - 30px);
   overflow: scroll;
 }
-
 .comment-barrage-item .barrageContent::-webkit-scrollbar {
   height: 0;
   width: 4px;
 }
-
 .comment-barrage-item .barrageContent::-webkit-scrollbar-button {
   display: none;
 }
@@ -176,14 +174,6 @@
   overflow: scroll;
 }
 
-.comment-barrage-item .barrageContent::-webkit-scrollbar {
-  height: 0;
-  width: 4px;
-}
-
-.comment-barrage-item .barrageContent::-webkit-scrollbar-button {
-  display: none;
-}
 .barrageContent:not(.barrageContent:hover),
 .barrageNick:not(.barrageNick:hover) {
   color: var(--font-color) !important;

@@ -571,16 +571,6 @@
   padding: 0;
   overflow-y: auto;
 }
-.aplayer .aplayer-list ol::-webkit-scrollbar {
-  width: 5px;
-}
-.aplayer .aplayer-list ol::-webkit-scrollbar-thumb {
-  border-radius: 3px;
-  background-color: #eee;
-}
-.aplayer .aplayer-list ol::-webkit-scrollbar-thumb:hover {
-  background-color: #ccc;
-}
 .aplayer .aplayer-list ol li {
   position: relative;
   height: 32px;
