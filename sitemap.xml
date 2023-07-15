@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://cloudchewie.com/log/index.html</loc>
+    <loc>https://cloudchewie.com/cloud/javascript/index.html</loc>
     
     <lastmod>2023-07-15</lastmod>
     
@@ -11,7 +11,16 @@
   </url>
   
   <url>
-    <loc>https://cloudchewie.com/treasure/recommend/%E6%94%B6%E8%97%8F%E5%A4%B9.html</loc>
+    <loc>https://cloudchewie.com/cloud/index.html</loc>
+    
+    <lastmod>2023-07-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudchewie.com/help/index.html</loc>
     
     <lastmod>2023-07-15</lastmod>
     
@@ -29,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://cloudchewie.com/nowtime/index.html</loc>
+    <loc>https://cloudchewie.com/log/index.html</loc>
     
     <lastmod>2023-07-15</lastmod>
     
@@ -38,7 +47,25 @@
   </url>
   
   <url>
-    <loc>https://cloudchewie.com/help/index.html</loc>
+    <loc>https://cloudchewie.com/2023/03/12/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0(%E4%BA%8C)/</loc>
+    
+    <lastmod>2023-07-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudchewie.com/treasure/recommend/%E6%94%B6%E8%97%8F%E5%A4%B9.html</loc>
+    
+    <lastmod>2023-07-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudchewie.com/nowtime/index.html</loc>
     
     <lastmod>2023-07-15</lastmod>
     
@@ -290,15 +317,6 @@
   </url>
   
   <url>
-    <loc>https://cloudchewie.com/2023/03/12/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0(%E4%BA%8C)/</loc>
-    
-    <lastmod>2023-07-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://cloudchewie.com/term/index.html</loc>
     
     <lastmod>2023-07-15</lastmod>
@@ -329,24 +347,6 @@
     <loc>https://cloudchewie.com/about/index.html</loc>
     
     <lastmod>2023-07-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudchewie.com/cloud/javascript/index.html</loc>
-    
-    <lastmod>2023-03-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudchewie.com/cloud/index.html</loc>
-    
-    <lastmod>2023-03-27</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
