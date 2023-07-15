@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pick Pic!</title>
-    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./common.css">
 </head>
 
@@ -23,14 +23,14 @@
         const stop = document.querySelector('.stop')
         const reset = document.querySelector('.reset')
         const img = document.querySelector('.img')
-        let ptr=["/img/background_img/pc/shoto1.png",
-        "/img/background_img/pc/shoto2.jpg",
-        "/img/background_img/pc/tinali1.png",
-        "/img/background_img/pc/wanye1.jpeg",
-        "/img/background_img/pc/wanye2.jpg",
-        "/img/background_img/pc/wanye3.jpg",
-        "/img/background_img/pc/xiao1.jpeg",
-        "/img/background_img/pc/yibang1.jpg",]
+        let ptr=["https://picbed.cloudchewie.com/img/background_img/pc/shoto1.png",
+        "https://picbed.cloudchewie.com/img/background_img/pc/shoto2.jpg",
+        "https://picbed.cloudchewie.com/img/background_img/pc/tinali1.png",
+        "https://picbed.cloudchewie.com/img/background_img/pc/wanye1.jpeg",
+        "https://picbed.cloudchewie.com/img/background_img/pc/wanye2.jpg",
+        "https://picbed.cloudchewie.com/img/background_img/pc/wanye3.jpg",
+        "https://picbed.cloudchewie.com/img/background_img/pc/xiao1.jpeg",
+        "https://picbed.cloudchewie.com/img/background_img/pc/yibang1.jpg",]
         let random = 0
         let timeId
         start.addEventListener('click', function () {
@@ -54,14 +54,14 @@
             reset.disabled = false
         })
         reset.addEventListener('click', function () {
-            ptr = ["/img/background_img/pc/shoto1.png",
-        "/img/background_img/pc/shoto2.jpg",
-        "/img/background_img/pc/tinali1.png",
-        "/img/background_img/pc/wanye1.jpeg",
-        "/img/background_img/pc/wanye2.jpg",
-        "/img/background_img/pc/wanye3.jpg",
-        "/img/background_img/pc/xiao1.jpeg",
-        "/img/background_img/pc/yibang1.jpg",]
+            ptr = ["https://picbed.cloudchewie.com/img/background_img/pc/shoto1.png",
+        "https://picbed.cloudchewie.com/img/background_img/pc/shoto2.jpg",
+        "https://picbed.cloudchewie.com/img/background_img/pc/tinali1.png",
+        "https://picbed.cloudchewie.com/img/background_img/pc/wanye1.jpeg",
+        "https://picbed.cloudchewie.com/img/background_img/pc/wanye2.jpg",
+        "https://picbed.cloudchewie.com/img/background_img/pc/wanye3.jpg",
+        "https://picbed.cloudchewie.com/img/background_img/pc/xiao1.jpeg",
+        "https://picbed.cloudchewie.com/img/background_img/pc/yibang1.jpg",]
             start.disabled = false
             stop.disabled = true
             reset.disabled = true
