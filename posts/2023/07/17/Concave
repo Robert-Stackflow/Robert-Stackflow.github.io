@@ -1,0 +1,940 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>凸凹 | Cloudchewie</title><meta name="keywords" content="小说"><meta name="author" content="余湍"><meta name="copyright" content="余湍"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="最初，万物都在洞穴里，处在同一个时空中，过着相同的生活。然而，某种东西的扩张却撕裂了它，于是，一切注定了他们几乎不能正常交流，甚至，是敌对，是驯服，是杀戮，是蚕食。 　　“后来，时空的撕裂让万物彼此分离，习性大变，就比如猫会毫不留情地吃掉我们。最后，我们只能缩在这小小的洞穴里，来避免猫的抓捕。” 　　莱恩被祖母的话吓得呆在了那里，从未出去过的他不能想象猫究竟是什么样子的。 　　“猫真的是像你说">
+<meta property="og:type" content="article">
+<meta property="og:title" content="凸凹">
+<meta property="og:url" content="https://blog.cloudchewie.com/posts/2023/07/17/Concave">
+<meta property="og:site_name" content="Cloudchewie">
+<meta property="og:description" content="最初，万物都在洞穴里，处在同一个时空中，过着相同的生活。然而，某种东西的扩张却撕裂了它，于是，一切注定了他们几乎不能正常交流，甚至，是敌对，是驯服，是杀戮，是蚕食。 　　“后来，时空的撕裂让万物彼此分离，习性大变，就比如猫会毫不留情地吃掉我们。最后，我们只能缩在这小小的洞穴里，来避免猫的抓捕。” 　　莱恩被祖母的话吓得呆在了那里，从未出去过的他不能想象猫究竟是什么样子的。 　　“猫真的是像你说">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://picbed.cloudchewie.com/img/gallery/Umibe-No-Etranger/yibang4.png">
+<meta property="article:published_time" content="2023-07-17T09:59:05.000Z">
+<meta property="article:modified_time" content="2023-07-17T10:13:08.426Z">
+<meta property="article:author" content="余湍">
+<meta property="article:tag" content="小说">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://picbed.cloudchewie.com/img/gallery/Umibe-No-Etranger/yibang4.png"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://blog.cloudchewie.com/posts/2023/07/17/Concave"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://npm.elemecdn.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@5.0.20/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: {"appId":"6IRW362MI1","apiKey":"a4043bbe3b536f100259866d9ff0ed57","indexName":"search_index_cloudchewie","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  navMusic: true,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 余湍","link":"链接: ","source":"来源: Cloudchewie","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"copy_success":"复制成功","chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","comment_barrage_open":"打开评论弹幕","comment_barrage_close":"关闭评论弹幕","browser_version_low":"浏览器版本过低，网站样式可能错乱","welcome":"欢迎访问Cloudchewie","cookie_notice":"本站使用Cookie和本地/会话存储保证浏览体验和网站统计","bgLight":"#3B70FC","bgDark":"#1f1f1f","position":"top-right"},
+  source: {
+    justifiedGallery: {
+      js: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '凸凹',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-07-17 18:13:08'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          data: value,
+          time: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.time) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.data
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('enableAside')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><script src="https://npm.elemecdn.com/echarts@5.4.2/dist/echarts.min.js"></script><canvas id="universe"></canvas><style id="settingStyle"></style><style id="barragesColor"></style><style id="themeColor"></style><meta name="baidu-site-verification" content="codeva-KoHQLKwmYl" /><link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont@1.7.0/lxgwwenkaiscreenr.css" media="all" onload="this.media='all'"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Cloudchewie" type="application/atom+xml">
+</head><body data-type="cloudchewie"><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="an_music_bg"></div><div id="web_box"><div id="web_container"><div id="menu-mask"></div><div class="post" id="body-wrap"><header class="post-bg  nav-top" id="page-header" style="background-image: url('https://picbed.cloudchewie.com/img/gallery/Umibe-No-Etranger/yibang4.png')"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="fas fa-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">线路</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="主站" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/favicon.ico" alt="主站"/><span class="back-menu-item-text">主站</span></a><a class="back-menu-item" href="https://vercel.blog.cloudchewie.com" rel="external nofollow noreferrer" title="Vercel" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/vercel.png" alt="Vercel"/><span class="back-menu-item-text">Vercel</span></a><a class="back-menu-item" href="https://robert-stackflow.github.io" rel="external nofollow noreferrer" title="Github" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/github.png" alt="Github"/><span class="back-menu-item-text">Github</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">外链</div><div class="back-menu-list"><a class="back-menu-item" href="https://chat.cloudchewie.com" rel="external nofollow noreferrer" title="聊天" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/chat.ico" alt="聊天"/><span class="back-menu-item-text">聊天</span></a><a class="back-menu-item" href="https://reader.cloudchewie.com" rel="external nofollow noreferrer" title="阅读" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/reader.png" alt="阅读"/><span class="back-menu-item-text">阅读</span></a><a class="back-menu-item" href="https://memos.cloudchewie.com" rel="external nofollow noreferrer" title="Memos" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/memos.webp" alt="Memos"/><span class="back-menu-item-text">Memos</span></a><a class="back-menu-item" href="https://bing.cloudchewie.com" rel="external nofollow noreferrer" title="BingAI" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/bingai.svg" alt="BingAI"/><span class="back-menu-item-text">BingAI</span></a><a class="back-menu-item" href="https://status.cloudchewie.com" rel="external nofollow noreferrer" title="网站监控" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/uptime.webp" alt="网站监控"/><span class="back-menu-item-text">网站监控</span></a></div></div></div></div><a id="site-name" href="/">Cloudchewie</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 专栏</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 空间</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/nowtime/"><i class="fa-fw fas fa-rocket"></i><span> 即刻</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 画廊</span></a></li><li><a class="site-page child" href="/treasure/"><i class="fa-fw fas fa-video"></i><span> 藏宝</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 天籁</span></a></li><li><a class="site-page child" href="/air/"><i class="fa-fw cloudchewiefont cloudchewie-icon-fan"></i><span> 小空调</span></a></li><li><a class="site-page child" href="/cat/"><i class="fa-fw fas fa-cat"></i><span> Purril</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 站点</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/atom.xml"><i class="fa-fw fas fa-rss"></i><span> RSS</span></a></li><li><a class="site-page child" href="/log/"><i class="fa-fw fa-fw fas fa-wrench"></i><span> 日志</span></a></li><li><a class="site-page child" href="/term/"><i class="fa-fw fa-fw fas fa-balance-scale"></i><span> 协议</span></a></li><li><a class="site-page child" href="/help/"><i class="fa-fw fa-fw fas fa-circle-question"></i><span> 指南</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-circle-info"></i><span> 关于我</span></a></li><li><a class="site-page child" href="/guestbook/"><i class="fa-fw fas fa-address-book"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/cloud/"><i class="fa-fw fas fa-heart"></i><span> 挚爱</span></a></li></ul></div></div></div><center id="name-container"><a id="page-name" href="javascript:cloudchewieFn.scrollToTop()" rel="external nofollow noreferrer"></a></center><div id="nav-right"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i></a></div><div id="wander-button"><a class="site-page social-icon wander"><i class="fas fa-subway fa-fw"></i></a></div><div id="console-button"><a class="site-page social-icon console"><i class="fas fa-cog fa-fw"></i></a></div><div id="love-button"><a class="site-page social-icon love" href="/cloud"><i class="fas fa-heart fa-fw"></i></a></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-arrow-up"></i><span id="percent" onclick="cloudchewieFn.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></div></nav><div id="post-info"><h1 class="post-title">凸凹</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-17T09:59:05.000Z" title="发表于 2023-07-17 17:59:05">2023-07-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-17T10:13:08.426Z" title="更新于 2023-07-17 18:13:08">2023-07-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%8F%A0%E7%8E%91/">珠玑</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>19分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/2023/07/17/Concave#post-comment"><span id="twikoo-count"></span></a></span><span class="post-meta-separator">|&nbsp<span class="post-meta-dianzan"><a class="dianzan" href="javascript:void(0)" rel="external nofollow noreferrer" onclick="dianzan()"><i class="fas fa-thumbs-up"></i></a><span class="post-meta-label"> 点赞:</span><span class="dianzan-count">0</span></span></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>　　最初，万物都在洞穴里，处在同一个时空中，过着相同的生活。然而，某种东西的扩张却撕裂了它，于是，一切注定了他们几乎不能正常交流，甚至，是敌对，是驯服，是杀戮，是蚕食。</p>
+<p>　　“后来，时空的撕裂让万物彼此分离，习性大变，就比如猫会毫不留情地吃掉我们。最后，我们只能缩在这小小的洞穴里，来避免猫的抓捕。”</p>
+<p>　　莱恩被祖母的话吓得呆在了那里，从未出去过的他不能想象猫究竟是什么样子的。</p>
+<p>　　“猫真的是像你说的那样吗？”莱恩望向正在收拾桌子的祖母。</p>
+<p>　　莱恩急切地想要知道答案，可是她并没有回答。</p>
+<p>　　“哲理书里说猫是善良的动物啊，猫怎么会像你说的那样呢？”莱恩不依不饶。</p>
+<p>　　祖母放下手中正在整理的残羹，摸了摸莱恩的头。</p>
+<p>　　“可书都是骗人的啊，孩子。”</p>
+<p>　　祖母转过身去，喃喃道：“你的祖父也曾这样啊。”</p>
+<p>　　</p>
+<p>　　周围的一切都是静悄悄的。</p>
+<p>　　莱恩捻了根灯芯插进偷来的蜡油中，偌大的洞穴里亮起了一点烛光。</p>
+<p>　　他蹑手蹑脚地靠近洞口，跳动的烛光一照，那是用一块破木板裁成的洞门。</p>
+<p>　　洞门被很结实地钉在墙上，还有几根沉重的铁木支着。</p>
+<p>　　莱恩使出全身的力气移开挡着洞门的铁木。</p>
+<p>　　之后，莱恩拍了拍自己的布袋子，里面的东西还在。</p>
+<p>　　他回头看了看自己自出生起便从未离开过的洞穴，吹熄了蜡烛。</p>
+<p>　　拉开洞门，莱恩愣在了原地。</p>
+<p>　　窗外的月光正好洒向洞口，一个崭新的世界在莱恩眼前毕露无疑。</p>
+<p>　　就这样，莱恩逃出了那个洞穴。他从没想到会如此简单，却也仍旧是怀着满心的向往和自以为无穷无尽的胆量远别了身后的洞穴。</p>
+<p>　　</p>
+<p>　　莱恩顺着流泻的月光小心翼翼地摸索着。</p>
+<p>　　先是冰凉的地板，接着是桌脚，莱恩前进的速度越来越快。他穿过门缝，踩着软绵绵的地毯，经过尚未完全熄灭的壁炉，爬上沙发，最后一跃跳到了他认为的月光源头。</p>
+<p>　　寂静的夜晚中，莱恩的心跳显得格外突出。他瘫软在冰冷的窗台上，攥紧了自己的布袋子，慢慢地让自己的心情平复。直到忽然感到身后的墙壁似乎开始发烫，他才缓过神来。</p>
+<p>　　莱恩扶着墙慢慢地直起身子来，当看到外面一望无际的草野时，他又瘫倒下来。在这以前，关于洞穴外面的一切，莱恩只是道听途说，却从未如此近地感受过。莱恩打了个趔趄，他害怕自己会掉下去，却被某种东西猛地挡住。莱恩吓得直哆嗦，他当然不知道，那是透明的玻璃。</p>
+<p>　　此时正是秋末冬初，外面啊，无尽的都是枯黄的草。在这晴朗的夜晚，寒风趟过去，这草野便变成了银白色的霜。月光跳动在霜上，于是漫山遍野凛然而温润。剔透的世界在天幕下随风凸凹，无穷无尽的波浪远去又归来。</p>
+<p>　　不知过了多久，莱恩才将思绪从眼前的景象中剥离出来，他打开自己的布袋子，在几张巨大的残页上找到空白的地方，用指尖蘸着自制的黑墨水，在纸上写下了自己出逃后写的第一首诗——</p>
+<p>　　走出洞穴</p>
+<p>　　</p>
+<p>　　天花板倏然间高了许多</p>
+<p>　　洞外清冽的光胜过烛火</p>
+<p>　　看啊那漫山遍野</p>
+<p>　　你还觉得孤单吗</p>
+<p>　　</p>
+<p>　　除此之外，那残页上还有许多错乱歪扭的字，看得出来，那是一首首诗：</p>
+<p>　　追忆祖父</p>
+<p>　　</p>
+<p>　　清与浊，该如何取舍</p>
+<p>　　追寻与苟活，该如何选择</p>
+<p>　　未知的危险是否只是谣传？</p>
+<p>　　还是心中杜撰的一个谎言？</p>
+<p>　　</p>
+<p>　　我的哲理体悟</p>
+<p>　　</p>
+<p>　　慈悲不应是个贬义词</p>
+<p>　　善良也不应含有偏见</p>
+<p>　　是令人窒息的洞穴啊</p>
+<p>　　还是危机四伏的洞外</p>
+<p>　　</p>
+<p>　　诗与歌</p>
+<p>　　</p>
+<p>　　若是诗不押韵</p>
+<p>　　你还能读懂它吗</p>
+<p>　　若是歌不成调</p>
+<p>　　你还能领会它吗</p>
+<p>　　</p>
+<p>　　决绝</p>
+<p>　　</p>
+<p>　　谁说时空的撕裂无法弥补</p>
+<p>　　慵懒与胆怯终只无济于事</p>
+<p>　　打开尘封的那扇门啊</p>
+<p>　　无论门外如何 令人心悸</p>
+<p>　　</p>
+<p>　　莱恩做了个梦，梦中，他的影子被清冽的光拉得很长。莱恩的影子旁边还有一个更大的影子。莱恩看着自己身旁的影子像是张开了巨口，慢慢靠近自己的影子，最后莱恩眼睁睁地看着它突然间将自己的影子覆盖住，而当身旁的影子移开时自己的影子已经不见了。空荡荡的，仿佛自己的身体已经消失了。</p>
+<p>　　这时，窗外，冬阳慢慢地升起，枯草上凝结着的霜闪闪发光，又逐渐融化成水，最后消失地无影无踪。</p>
+<p>　　而当梦中的莱恩想要扭头看自己的旁边是谁时，一声尖叫却将莱恩拉回现实。</p>
+<p>　　莱恩下意识的捂紧布袋子。</p>
+<p>　　他看到，那是一个庞然大物在指着自己尖叫。</p>
+<p>　　莱恩慌乱地跳下了窗台，躲到了沙发后面。周围变得嘈杂起来，他缩了缩身子，尽量把自己藏在沙发下面。许久，周围渐渐沉寂，又过了一会儿，房子里只剩下窸窸窣窣的声音。可莱恩并不敢松懈，他听祖母讲过，祖父出去觅食时也曾被人类逮个正着，之后便再也没有回来。 </p>
+<p>　　可是，情况不妙，这窸窸窣窣的声音越来越近，莱恩逐渐听出那是鼻息。鼻息声更大了，莱恩甚至感觉自己听到了两个心跳声。</p>
+<p>　　紧接着，沙发突然被挪开，略微炙热的阳光直照在莱恩身上。在他棕灰色的毛发下，血管急剧扩张。耀眼的阳光中，莱恩模糊地看到，一个庞大的生物用一对硕大的眼睛死死盯着自己。莱恩被它柔软的胡须磨蹭着，恐惧感渐渐地攫取他的呼吸，以及他的心跳，最后，莱恩晕了过去。</p>
+<p>　　莱恩又做了一个和昨晚相同的梦，他扭头去看身旁是谁时，看到了和自己晕过去前看到的一样庞大的东西，他揉了揉眼睛，极力去看清楚它，渐渐地，他看到了，那是</p>
+<p>　　——猫。</p>
+<p>　　莱恩被吓醒了，可是当他睁开眼睛时他看到的仍然是——猫。</p>
+<p>　　莱恩瘫倒在地，他不知道自己是害怕还是紧张。因为，尽管从小被灌输这种思想，但作为一个从未真正见过猫的而且坚信着哲理书的老鼠，哦，不，也许可以称之为哲理家，他宁愿相信自己被哲理告诉的那样——猫是善良的动物。</p>
+<p>　　毫无经验的莱恩也不允许自己的偏见胜过自己的理智。</p>
+<p>　　经过这番思考，莱恩终于战胜了自己。现在，他认为，自己之所以面对猫时想要逃跑，是因为一时的紧张。</p>
+<p>　　“嘿，我想你便是猫吧？”莱恩略显幼稚地问道，企图打破沉闷而尴尬的氛围。</p>
+<p>　　可是，猫并不懂他在说什么，只是用爪子挠了挠鼻子。显然，他对一只对着自己叽叽地叫着的老鼠感到可笑。</p>
+<p>　　莱恩正对猫的举动感到困惑，忽然间，他看到自己的布袋子被撂在一边，里面的几张残页散乱地落在地上。莱恩恼怒地想要夺回残页，却被猫一掌摁在地上。</p>
+<p>　　莱恩被吓坏了，现在他的意识里已经将猫的危险度提高了一个等级。他不断地挣扎着，随之，猫挪了挪前爪，只是把莱恩的尾巴死死按住。</p>
+<p>　　这时，莱恩已经可以碰到残页，他迅速把残页紧紧攥到自己手中。</p>
+<p>　　猫死死地盯着莱恩。</p>
+<p>　　良久，他才试探性地又略带碰运气心理地用爪子蘸着墨水在残页上写道：</p>
+<p>　　“我知道，猫是善良的动物。”</p>
+<p>　　猫却竟也能看懂文字，他喵呜地叫了几声，似乎是在表达惊讶与嘲笑。</p>
+<p>　　莱恩继续写着：“想必，你也是一只懂哲理的猫吧？”</p>
+<p>　　这的确是个令人毫无头绪的问题。</p>
+<p>　　猫没有做出任何的声音回应，却也用笨拙的爪子在木质地板上写起了字。</p>
+<p>　　“你很像我的爸爸讲的他之前碰到的一只老鼠，一样胆大包天。”</p>
+<p>　　莱恩顿时兴奋了起来，猫看起来并不像祖母说的那样危险嘛，至少到现在为止是这样的。</p>
+<p>　　莱恩继续写：“你会吃我吗？”</p>
+<p>　　“当然会，这可是命定的规则，你注定要被我吃掉。”猫轻蔑地笑了笑。</p>
+<p>　　莱恩有些惊惧。</p>
+<p>　　这时，残页上已经不允许莱恩继续写字了，他只好在地板上写：“你知道吗？其实在故事的开端，我们都在洞穴里，处在同一个时空中，过着相同的生活。但是，某种东西的扩张却撕裂了它，于是，一切注定了我们几乎不能正常交流，甚至，是敌对，是杀戮，是蚕食。” </p>
+<p>　　莱恩顿了一会儿，又继续写：“也许就像你和我现在这样。”</p>
+<p>　　猫看了看，若有所思，却又忍俊不禁：“即使如此，不管同处一个洞穴的故事荒诞与否，现在规则摆在那，我们之间的关系就必须是这样，而且，你跟我谈这个，不显得很可笑么。”</p>
+<p>　　莱恩有些抓狂：“规则，规则，你一直说规则，什么是规则？难道你说的话就是世界的准则吗？”</p>
+<p>　　猫看到莱恩的样子，又不禁狠狠地将他摁在地上，用力地在地板上写着：“真没想到，我的食物死到临头了还能如此嚣张。”</p>
+<p>　　写完，猫又轻蔑地笑了笑。</p>
+<p>　　莱恩对猫盛气凌人的姿态置之不理，转而问起来猫之前说的那只老鼠：“你爸爸碰到的那只老鼠呢？他也是这样吗？你爸爸把它毫不留情地吃了吗？”</p>
+<p>　　“当然了，我说过了，命定的规则就是这样，谁也无法挽回，谁也不能违背。”猫依旧是一副轻蔑的姿态。</p>
+<p>　　听完，莱恩一直怔着，他想到了自己的祖父。</p>
+<p>　　他宁愿相信那就是自己的祖父，哪怕自己重蹈覆辙。</p>
+<p>　　</p>
+<p>　　这时，地板上已经写满了各种歪歪扭扭的字。</p>
+<p>　　猫一阵乱扑，将尚未完全干透的墨迹擦去，原本褐色的地板颜色变得更深了。</p>
+<p>　　接着，猫看着愣着不动的老鼠，在地板上写下一行模模糊糊的字：“不如你学我说话吧。”</p>
+<p>　　于是，也许某天，在冬天的第一场雪中，你会在一个周围都是草野的木屋里，听到一只老鼠在喵呜喵呜地叫着。壁炉里的火星不时溅到地板上，又瞬间熄灭，就像屋外的雪砂，落入枯草中瞬间湮灭。</p>
+<p>　　</p>
+<p>　　猫说：“那纸上歪七八扭的都是什么？” </p>
+<p>　　“我写的诗啊，没人的时候，我都会点着烛灯，把自己的感受和思考写在我捡到的一本哲理书上。可是有一次，烛灯把纸烧着了，最后只剩下了现在的残页。”</p>
+<p>　　“这也算是诗？”猫小声嘀咕。</p>
+<p>　　猫指着“你还觉得孤独吗”，轻蔑地说：“只会满腹牢骚。”</p>
+<p>　　莱恩愣了愣，默默地写下一首诗：</p>
+<p>　　我是一只住在地洞里的老鼠</p>
+<p>　　有天偶然拾到一本哲理书</p>
+<p>　　我点燃了尾巴仔细阅读</p>
+<p>　　不知不觉之中却被它束缚</p>
+<p>　　它告诉我猫是善良的动物</p>
+<p>　　在这个世界上其实我很孤独</p>
+<p>　　我不胆小，这点像我的祖父</p>
+<p>　　我决定追求心中的幸福</p>
+<p>　　</p>
+<p>　　猫感觉自己似乎戳中了莱恩的痛点，他有那么一瞬间，觉得自己不应该吃掉这只老鼠，可是自己又好像没有理由这样做，况且，自己可不能违背规则，也绝不可能违背规则。</p>
+<p>　　莱恩的目光不断游离在地板上，最后他慢慢地说：“自从读过那本哲理书，我就开始向往着洞外的生活，想要走出那个幽暗的洞穴去寻找心中的幸福。我不相信猫会如此凶残地，毫不犹豫地吃掉我们，所以我一直被别人称为披着鼠皮的猫，没有人愿意接近我，他们都害怕自己被‘哲理’蛊惑。有一次，我的祖父离开洞穴后，就再也没回来。我想，他不是为了觅食，而是为了去寻找心中的幸福，但可能最终他不幸成为了某只猫的腹中餐吧。”</p>
+<p>　　猫无言。</p>
+<p>　　接着，莱恩又开始在残页上写东西，可是残页已经写满了，现在他只能在原来的诗上继续写——</p>
+<p>　　认识猫</p>
+<p>　　</p>
+<p>　　看过漫山遍野的霜</p>
+<p>　　见过肯陪我聊天的猫</p>
+<p>　　可是世界的凹凸</p>
+<p>　　谁来告诉我</p>
+<p>　　</p>
+<p>　　写完，莱恩问猫：“你会写诗吗？”</p>
+<p>　　“诗有什么好写的，你写这种东西，纯粹就是无病呻吟的。”</p>
+<p>　　莱恩涨红了脸：“你太片面了，你可以赋予诗暗喻，情感，甚至是某种信息。”</p>
+<p>　　“哦？那大诗人，大哲理家，你告诉我，什么是诗？”猫把他的胡须靠在莱恩棕灰色的面颊上。</p>
+<p>　　“诗就是不能被翻译的文字，一旦被翻译成其他语言，诗就会失去它原本的含义。”</p>
+<p>　　“荒谬至极！”猫不屑地回答。</p>
+<p>　　莱恩无言。</p>
+<p>　　“那你那么拼命保护你的布袋子，就是为了保护你写的那几首诗？”</p>
+<p>　　莱恩依旧没有回答。</p>
+<p>　　沉默了一会儿，莱恩突然冒出来一个问题：“你还会吃掉我吗？”</p>
+<p>　　猫不假思索：“为什么不呢？”</p>
+<p>　　“那什么时候？”</p>
+<p>　　“这得看我心情，不过你大可以逃掉，我不会拴着你的。”</p>
+<p>　　这时已是深夜，窗外的雪簌簌地落着，壁炉里的火星几乎就要消失殆尽。进入冬天越来越久，曾经清冽的光已经很少露面。</p>
+<p>　　过了很久，莱恩又突然冒出来一个问题：“你父亲碰到的那只老鼠真的被吃掉了吗？”</p>
+<p>　　“这有什么值得怀疑的。”</p>
+<p>　　</p>
+<p>　　认识猫后的第三天，莱恩决定要逃走。</p>
+<p>　　莱恩问猫：“你想过离开这里吗？”</p>
+<p>　　“为什么要离开？这世界是环套着环的，当你走出一个洞穴时，就来到了另一个洞穴里，总是走不出去的。” </p>
+<p>　　“荒谬至极！”</p>
+<p>　　猫乜着眼：“我可是个伟大的预言家。”</p>
+<p>　　“没有终点？”</p>
+<p>　　“没有，有的话，终点也只会是堵墙。”</p>
+<p>　　“荒谬至极！”莱恩不满地重复道。</p>
+<p>　　“那何不走出去看看，看看最终谁是对的。”猫将头撇向窗外。</p>
+<p>　　莱恩很是吃惊。</p>
+<p>　　这下连逃都不用逃了。</p>
+<p>　　“你不会吃掉我吗？”</p>
+<p>　　“当然会，我可是个从不违背规则的人，但我也是有原则的。”</p>
+<p>　　“等你发现走不出洞穴时，也许你就会乖乖地爬到我的肚子里的。”猫扭头看着莱恩。</p>
+<p>　　莱恩没有说话，他翻了翻自己的几张残页，抚摸着上面的文字，许久。</p>
+<p>　　</p>
+<p>　　这是一个大雪初停的早晨。万籁俱寂，壁炉早已熄灭。猫推开了小门，伸出右前爪踏在门外的雪上。莱恩也伸出脑袋探向门外，这是他第一次看到雪，触碰到雪。他抓了一把雪，紧紧握着，好久才松开，可雪早已都化成了水消逝得无影无踪。</p>
+<p>　　猫把莱恩绑在自己的项圈上，踏着漫山遍野的雪，出发了。</p>
+<p>　　过了很久，回头望去，木屋已经小的还没有莱恩大，一路上的脚印清晰可见。雪又匆匆地落下，整个世界渐渐被世界被雪抚平，没有凸，也没有凹。隆冬的风尤为冷冽，莱恩竭力地缩在猫的身边。不一会儿，猫和莱恩便被大雪淹没在偌大的原野上。</p>
+<p>　　就这样，雪下了又停，停了又下，冬天一点一点地溜走。最后不知过了多久，猫和莱恩到了一条小河边上。</p>
+<p>　　小河里，冬冰紧紧地护佑着水下的鱼儿，原来冬天也有着温暖啊。</p>
+<p>　　猫停下了，他竭力地在冰面上用爪子抓着挠着，可是冰层就是不肯屈服。莱恩扯着绑着他的绳子顺着项圈滑下来，也帮着猫刨冰。</p>
+<p>　　最后不知过了多久，冰面才被掏出一个小窟窿。</p>
+<p>　　猫累了，莱恩也累了。</p>
+<p>　　猫盯着莱恩，说：“说不定，我饿的不行了，也会毫不留情的把你吃掉。”</p>
+<p>　　莱恩撇了撇嘴，又去刨冰。</p>
+<p>　　又过了不知多久，猫终于从小河里捕出来几条小鱼。</p>
+<p>　　可是莱恩并没有东西吃，在洞穴里的时候，他总是分到很少的食物，他已经习惯了没有东西吃。</p>
+<p>　　这时候，冬天渐渐地露出了尾巴。</p>
+<p>　　猫用爪子刨开残雪，揪出下面长出的嫩嫩的根茎递给莱恩。</p>
+<p>　　莱恩先是一愣，紧接着开始大快朵颐。</p>
+<p>　　此时此刻，从天空中俯视，我们可以看到，空阔的雪野上，泥土与残雪杂乱地围绕在一大一小两个黑影旁。小河里的冰已经薄了许多，不时有鱼儿顺着冰游动。</p>
+<p>　　猫说：“春天不远了。”</p>
+<p>　　莱恩应着：“你说，等到春天真正到来的时候，我们能够走出这个洞穴吗？”</p>
+<p>　　猫摸了摸饱饱的肚子，漫不经心地回答：“洞穴是很深的，我们现在还在洞穴的深处。” </p>
+<p>　　</p>
+<p>　　当他们沿着小河走到原野边缘的时候，春天已经彻彻底底地来了。</p>
+<p>　　前面是光秃秃的白桦林。此时，雪已经消融殆尽，我们可以听到灌木下面的雪水缓缓地流入小河中。</p>
+<p>　　不久，春天的第一场雨来了。</p>
+<p>　　雨很小，淅淅沥沥的，像是天上有谁在断断续续地哭。</p>
+<p>　　白桦林的花芽开始蠢蠢欲动，上一个秋天的落叶下新的生命正在孕育。</p>
+<p>　　猫和莱恩继续走着，春雨来了一场又一场。</p>
+<p>　　林子里面，慢慢地开出许多奇异的花儿，大得像荷叶一样的叶片长着掌状的脉络，柔软的绒毛蓄满了一颗又一颗的露珠，珍珠似的白色小花在伞形叶的庇佑下簇拥着。</p>
+<p>　　猫说，那是骷髅花，他在书上见到过。</p>
+<p>　　莱恩不解，这小花并不像骷髅的样子啊。</p>
+<p>　　当春雨落在骷髅花上，花儿神奇般地变得透明，像水晶一样，花瓣里的花络清晰可见。</p>
+<p>　　猫又言，这花还有个名字，叫冰莲。</p>
+<p>　　莱恩又不解。</p>
+<p>　　“名字并不代表什么，它只是个记号罢了。”猫似乎知道莱恩的疑惑。</p>
+<p>　　他们在白桦林里走着，吃浆果，吃蘑菇，这着实委屈了猫。</p>
+<p>　　莱恩采了几多花，小心翼翼地放在自己的布袋子里。</p>
+<p>　　而猫却在林子里横冲直撞，把几株冰莲上的花儿塞到嘴里咀嚼。</p>
+<p>　　三月底的时候，白桦林的花儿已经先于叶子见到春天，柔软下垂的花穗伸展成瀑布。</p>
+<p>　　在林子深处，猫和莱恩碰到一头鹿。</p>
+<p>　　鹿低头饮着小河中的水，抬头看到他们，惊异地叫了一声，匆忙地叫着逃走了。</p>
+<p>　　鹿的鸣叫声就像鸟鸣一样清澈，感到惊奇的莱恩追了上去，可是鹿眨眼间便在林子里隐去了踪迹。</p>
+<p>　　猫慢慢地跟在后面，好久才赶上莱恩：“别追了，追不上的。我们本来就不属于这个林子，他见到我们自然会逃走。”</p>
+<p>　　莱恩没有说话，失落地自顾自走着。</p>
+<p>　　春天的风拂弄着白桦的花序，夕阳金色的余晖打在花穗上，一树树的花便开始缓缓地掉落。在夜色的掩盖下，骷髅花也开始凋落。</p>
+<p>　　又走了好久，一阵急促的咕咕声打破了深夜的沉寂。</p>
+<p>　　猫借着月光看向白桦林梢头，是猫头鹰。</p>
+<p>　　猫下意识地朝莱恩望去，可垂头丧气的莱恩丝毫没有意识到危险将临。</p>
+<p>　　猫头鹰一个俯冲直接飞向莱恩，将莱恩扑倒在旁边的灌木丛里。</p>
+<p>　　猫一跃跳到猫头鹰背上，喵呜着张开爪子抓着猫头鹰翅膀滚到了一旁。而莱恩吓得呆在原地。</p>
+<p>　　春寒仍旧料峭，夜晚冷冽的风刮得白桦树的花散乱地落下。</p>
+<p>　　猫头鹰咕咕叫着，猫也不甘示弱地用爪子狠狠拍打猫头鹰。</p>
+<p>　　趁猫有些力不从心，猫头鹰脱身飞到空中，落在树梢上又突然俯冲，这次，猫被扑倒在地上。</p>
+<p>　　猫竭力伸出前爪抓挠着猫头鹰的眼睛，同时后爪用力蹬着猫头鹰。</p>
+<p>　　渐渐地，猫和猫头鹰都没了力气，猫的肚皮上渗出了血，猫头鹰的面部也伤痕累累。</p>
+<p>　　最后，猫头鹰拖曳着受伤的翅膀消失在了夜幕里。</p>
+<p>　　莱恩依然被激烈的打斗场景吓得呆在原地。</p>
+<p>　　白桦树的嫩芽似乎在这短短的几分钟里匆匆地长成了嫩叶，逐渐将天空分割成一瓣又一瓣，清冽的月光默默地隐却在其中。</p>
+<p>　　林下的猫和莱恩被汹涌的黑暗吞噬，万物都被这黑暗吞噬，声音亦然。</p>
+<p>　　</p>
+<p>　　当早晨的第一缕阳光透过嫩叶的间隙照向莱恩时，我们看到，莱恩仍旧呆若木鸡。</p>
+<p>　　湿漉漉的空地上，错乱地写着一行行字，那是莱恩在黑暗中摸索着用爪子划出来的。</p>
+<p>　　</p>
+<p>　　无题</p>
+<p>　　明明走出了洞穴</p>
+<p>　　光还是不能为我而亮</p>
+<p>　　是有一堵墙吗？</p>
+<p>　　还是我仍在洞中？</p>
+<p>　　</p>
+<p>　　难道夜晚就不配拥有晴天？</p>
+<p>　　难道撕裂的时空不能愈合？</p>
+<p>　　怕不是世界的凸凹太多</p>
+<p>　　阻隔了角角落落</p>
+<p>　　</p>
+<p>　　醒来的猫舔了舔伤口，踉踉跄跄地站了起来。</p>
+<p>　　莱恩上前，却欲言又止。</p>
+<p>　　猫仿佛是笑了笑：“我只不过担心到手的食物落了空。”</p>
+<p>　　他们又向前出发了。</p>
+<p>　　一路上，到处都是散落的白桦树花穗和凋零的白色花瓣，春天温暖的阳光透过白桦林浓密的叶子，洒下支离破碎的光影。</p>
+<p>　　猫问莱恩：“你还相信自己能够走出洞穴吗？”</p>
+<p>　　莱恩没有回答，转而反问：“这有什么值得怀疑的。”</p>
+<p>　　猫又仿佛是笑了笑。</p>
+<p>　　有太多的问题，一时间不能有答案，也许到最后，也不会有答案。</p>
+<p>　　在林子里，他们又遇到了蛇，遇到了野猪，甚至遇到了猎人。</p>
+<p>　　猫和老鼠躲了又躲，猫为救老鼠受了一次又一次伤，莱恩在路上写了一首又一首诗。</p>
+<p>　　最后，在暮春的一个月夜，他们终于走出了白桦林，来到悬崖边上。</p>
+<p>　　莱恩和猫并排坐着，望着月亮，俯视悬崖下的潺潺小溪。</p>
+<p>　　夜幕下，月光流泻在白桦林上，淌在猫和莱恩的身上。莱恩的影子被清冽的光拉得很长，他的影子旁边是一个更大的影子。就像莱恩曾经梦到的一样，他看着自己身旁的影子像是张开了巨口，慢慢靠近自己的影子，最后莱恩眼睁睁地看着它突然间将自己的影子覆盖住，不同的是，当身旁的影子移开时自己的影子还在那里。</p>
+<p>　　莱恩拿出布袋子里的哲理书残页，仔仔细细地看了一遍，又叠好放回布袋子，最后将布袋子扔下了悬崖。</p>
+<p>　　猫很是吃惊，莱恩笑了笑：“这不过是个寄托罢了。”</p>
+<p>　　接着他们沉默了许久。</p>
+<p>　　暮春的风浮动着，白桦林的枝叶婆娑作响。</p>
+<p>　　莱恩突然又问起猫那个问题：“你还会吃掉我吗？”</p>
+<p>　　“不知道。”</p>
+<p>　　“那你之前说的那只老鼠真的被吃掉了吗？”</p>
+<p>　　猫沉思半晌。</p>
+<p>　　“其实并没有，我的父亲和他一起离开了房子。” </p>
+<p>　　莱恩惊讶地问道：“就像我们一样？”</p>
+<p>　　“不知道。”</p>
+<p>　　猫停顿了一会儿，又说：“我只依稀记得母亲说过，那只老鼠有着棕灰色的毛。”</p>
+<p>　　莱恩低头看了看自己，也是棕灰色的毛。</p>
+<p>　　良久，猫又说：“走了这么久，我们一直只走出了一个洞穴，现在，我们仍旧在另一个更大的洞穴深处徘徊。”</p>
+<p>　　莱恩想了很久，若有若无地点了点头。</p>
+<p>　　猫说：“洞穴是无形的，又是有形的，总是让我们感到窒息。”</p>
+<p>　　“就像规则一样吗？我们看不见它，可它总是在那，决定着一切。”莱恩似懂非懂。</p>
+<p>　　猫嘲讽似的笑了笑：“可谁说必须要受制于它？要知道，不管谁说的话，都不是这个世界的准则。”</p>
+<p>　　莱恩不语。</p>
+<p>　　显而易见，世界的凸凹不平造就了洞穴的存在，而迄今为止，猫和莱恩只走出了一个洞穴，只打破了一堵墙，那就是他们之间的墙。</p>
+<p>　　莱恩拿起一个小石子，在岩石上刻下一首诗：</p>
+<p>　　                            凸凹</p>
+<p>　　从一个洞穴到另一个洞穴的距离</p>
+<p>　　从不该用脚步丈量</p>
+<p>　　凸凹之间的故事</p>
+<p>　　又怎是诗所能言说？</p>
+<p>　　</p>
+<p>　　彼时彼刻应正如此时此刻</p>
+<p>　　此时此刻亦正如彼时彼刻</p>
+<p>　　你看啊那漫山遍野</p>
+<p>　　你可还觉得孤单？</p>
+<p>　　写完诗，莱恩突然间看到，岩石的下面，刻着一些图案，依稀可辨。</p>
+<p>　　一只猫和一只老鼠。</p>
+<p>　　莱恩喃喃：“书都是骗人的。”</p>
+<p>　　接着，在清冽的月光中，恣意流泪。</p>
+</article><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="fas fa-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://blog.cloudchewie.com/posts/2023/07/17/Concave"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=凸凹&amp;url=https://blog.cloudchewie.com/posts/2023/07/17/Concave&amp;pic=https://picbed.cloudchewie.com/img/gallery/Umibe-No-Etranger/yibang4.png" rel="external nofollow noreferrer noopener"><i class="fa-brands fa-weibo"></i></a></div><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="cloudchewieFn.copyArticleLink()"><i class="fas fa-link"></i></div></div></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E5%B0%8F%E8%AF%B4/"><span class="tags-punctuation"><i class="cloudchewiefont cloudchewie-icon-hashtag"></i></span>小说<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"></div><div class="post_share"></div></div></div><div class="post-copyright"><div class="post-copyright__author"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://blog.cloudchewie.com/posts/2023/07/17/Concave">原创</a><a class="post-copyright-title"><span>凸凹</span></a></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://blog.cloudchewie.com/posts/2023/07/17/Concave">https://blog.cloudchewie.com/posts/2023/07/17/Concave</a></span></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.cloudchewie.com" target="_blank">Cloudchewie</a>！</span></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/2023/03/12/Operating-System-Principles-1"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/post_img/database.jpg" onerror="onerror=null;src='https://picbed.cloudchewie.com/img/index_img/404.png'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">操作系统原理笔记(一)</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><span> 评论</span></div><div class="comment-randomInfo"><a onclick="cloudchewieFn.addRandomCommentInfo()" href="javascript:void(0)" rel="external nofollow noreferrer">匿名评论</a></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div></main><footer id="footer"><div class="js-pjax" id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By 余湍</div><div class="footer_custom_text">昼夜交替的低语，暗藏着谁人的心迹</div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站试用Hexo博客框架" title="本站试用Hexo博客框架"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/Frame-Hexo.svg" alt="本站试用Hexo博客框架"/></a><a class="github-badge" target="_blank" href="https://cloud.tencent.com/product/cos" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站使用腾讯云对象存储提供服务" title="本站使用腾讯云对象存储提供服务"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/COS-腾讯云-3894F3.svg" alt="本站使用腾讯云对象存储提供服务"/></a><a class="github-badge" target="_blank" href="https://github.com/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://beian.miit.gov.cn/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站备案号为鄂ICP备2023005999号" title="本站备案号为鄂ICP备2023005999号"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/备案-鄂ICP备2023005999号-13ce66.svg" alt="本站备案号为鄂ICP备2023005999号"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div></footer></div></div></div><div id="sidebar"><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/index_img/avatar.jpg" onerror="onerror=null;src='https://picbed.cloudchewie.com/img/index_img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">专栏</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 专栏</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 空间</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/nowtime/"><i class="fa-fw fas fa-rocket"></i><span> 即刻</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 画廊</span></a></li><li><a class="site-page child" href="/treasure/"><i class="fa-fw fas fa-video"></i><span> 藏宝</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 天籁</span></a></li><li><a class="site-page child" href="/air/"><i class="fa-fw cloudchewiefont cloudchewie-icon-fan"></i><span> 小空调</span></a></li><li><a class="site-page child" href="/cat/"><i class="fa-fw fas fa-cat"></i><span> Purril</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 站点</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/atom.xml"><i class="fa-fw fas fa-rss"></i><span> RSS</span></a></li><li><a class="site-page child" href="/log/"><i class="fa-fw fa-fw fas fa-wrench"></i><span> 日志</span></a></li><li><a class="site-page child" href="/term/"><i class="fa-fw fa-fw fas fa-balance-scale"></i><span> 协议</span></a></li><li><a class="site-page child" href="/help/"><i class="fa-fw fa-fw fas fa-circle-question"></i><span> 指南</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-circle-info"></i><span> 关于我</span></a></li><li><a class="site-page child" href="/guestbook/"><i class="fa-fw fas fa-address-book"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/cloud/"><i class="fa-fw fas fa-heart"></i><span> 挚爱</span></a></li></ul></div></div></div></div><div class="js-pjax" id="rightside"><div id="rightside-button-list"><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><a id="switch_commentBarrage" href="javascript:cloudchewieFn.switchCommentBarrage();" rel="external nofollow noreferrer" title="开关弹幕"><i class="cloudchewiefont cloudchewie-icon-danmu"></i></a><button id="go-down" type="button" title="直达底部"><i class="fas fa-arrow-down"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="cloudchewieFn.toggleMusic()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="7185982924" server="netease" type="playlist" mutex="true" preload="none" theme="var(--theme-color)" data-lrctype="0" order="random"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:pjax.loadUrl(&quot;/&quot;);" rel="external nofollow noreferrer"><i class="fas fa-home"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();" rel="external nofollow noreferrer"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="javascript:consoleFn.showConsole();" rel="external nofollow noreferrer"><i class="fas fa-cog"></i></a><a class="rightMenu-item" href="javascript:cloudchewieFn.scrollToTop();" rel="external nofollow noreferrer"><i class="fa fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line" id="menu-general"><a class="rightMenu-item" href="javascript:window.location.href=&quot;/archives/&quot;;" rel="external nofollow noreferrer"><i class="fas fa-archive"></i><span>归档</span></a><a class="rightMenu-item" href="javascript:window.location.href=&quot;/tags/&quot;;" rel="external nofollow noreferrer"><i class="fas fa-tags"></i><span>标签</span></a><a class="rightMenu-item" href="javascript:window.location.href=&quot;/categories/&quot;;" rel="external nofollow noreferrer"><i class="fas fa-folder-open"></i><span>专栏</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-text"><a class="rightMenu-item" href="javascript:cloudchewieFn.copySelect();" rel="external nofollow noreferrer"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://cn.bing.com/search?q=&quot;+window.getSelection().toString());" rel="external nofollow noreferrer"><i class="fas fa-magnifying-glass"></i><span>必应搜索</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://www.baidu.com/s?wd=&quot;+window.getSelection().toString());" rel="external nofollow noreferrer"><i class="fas fa-magnifying-glass"></i><span>百度搜索</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-paste"><a class="rightMenu-item" href="javascript:cloudchewieFn.paste()" rel="external nofollow noreferrer"><i class="fa fa-copy"></i><span>粘贴</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-post"><a class="rightMenu-item" href="#post-comment"><i class="fas fa-comments"></i><span>转到评论</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.copyArticleLink()" rel="external nofollow noreferrer"><i class="fa fa-link"></i><span>复制本文地址</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-to"><a class="rightMenu-item" href="javascript:cloudchewieFn.openWithNewTab()" rel="external nofollow noreferrer"><i class="fa fa-window-restore"></i><span>新窗口打开</span></a><a class="rightMenu-item" id="menu-too" href="javascript:cloudchewieFn.open()" rel="external nofollow noreferrer"><i class="fa fa-link"></i><span>转到链接</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.copyLink()" rel="external nofollow noreferrer"><i class="fa fa-copy"></i><span>复制链接</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-img"><a class="rightMenu-item" href="javascript:cloudchewieFn.openWithNewTab()" rel="external nofollow noreferrer"><i class="fa fa-window-restore"></i><span>在新窗口打开</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.copyLink()" rel="external nofollow noreferrer"><i class="fa fa-copy"></i><span>复制图片链接</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.click()" rel="external nofollow noreferrer"><i class="fa fa-arrows-alt"></i><span>全屏显示</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-other"><a class="rightMenu-item" href="javascript:cloudchewieFn.toggleReadMode();" rel="external nofollow noreferrer"><i class="fas fa-book-open"></i><span>阅读模式</span></a><a class="rightMenu-item" id="menuCommentBarrage" href="javascript:cloudchewieFn.switchCommentBarrage();" rel="external nofollow noreferrer"><i class="cloudchewiefont cloudchewie-icon-danmu"></i><span class="menu-commentBarrage-text">打开弹幕</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.toggleAside();" rel="external nofollow noreferrer"><i class="fas fa-arrows-alt-h"></i><span class="menu-toggleAside-text">显示/隐藏侧栏</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-global"><a class="rightMenu-item" href="javascript:cloudchewieFn.translate();" rel="external nofollow noreferrer"><i class="fas fa-language"></i><span>简繁转换</span></a><a class="rightMenu-item" href="javascript:pjax.loadUrl(&quot;/term/&quot;);" rel="external nofollow noreferrer"><i class="fa fa-info-circle"></i><span>协议声明</span></a><a class="rightMenu-item" id="menu-music-toggle" href="javascript:cloudchewieFn.toggleMusic();" rel="external nofollow noreferrer"><i class="fas fa-play"></i><span>播放音乐</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.toggleDarkMode();" rel="external nofollow noreferrer"><i class="fas fa-adjust"></i><span>深色/浅色模式</span></a></div></div><div id="console-page"><div class="js-pjax" id="settingWindow"><span class="setting-title"><button id="backer" onclick="$('.asetting').hide();$('.settingx').show();$('#backer').hide()"><i class="fa fa-chevron-left"></i></button><span id="stt">控制面板</span><a id="close-console" onclick="consoleFn.closeConsole();">×</a></span><div class="settings"><div id="setting-buttons"><button class="settingx" onclick="$('#theme-settings').show();$('.settingx').hide();$('#backer').show();"><i class="fas fa-layer-group"></i><span>外观</span></button><button class="settingx" onclick="$('#background-settings').show();$('.settingx').hide();$('#backer').show();"><i class="far fa-image"></i><span>背景</span></button><button class="settingx" onclick="$('#aplayer-settings').show();$('.settingx').hide();$('#backer').show();"><i class="fas fa-music"></i><span> APlayer</span></button></div><div id="setting-hides"><div class="asetting" id="theme-settings"><p><h2 class="content-head">主题设置</h2><div class="content" style="display:flex"><input id="con-toggleFixedNav" type="checkbox" onclick="consoleFn.toggleFixedNav()"/><div class="content-text">固定导航栏</div></div><div class="content" style="display:flex"><input id="con-toggleRightSide" type="checkbox" onclick="consoleFn.toggleRightSide()"/><div class="content-text">显示侧边按钮</div></div><div class="content" style="display:flex"><input id="con-toggleAutoTheme" type="checkbox" onclick="consoleFn.toggleAutoTheme()"/><div class="content-text">深色/浅色模式自动切换</div></div><div class="content" style="display:flex"><input id="con-toggleStarBackground" type="checkbox" onclick="consoleFn.toggleStarBackground()"/><div class="content-text">繁星效果(深色模式下)</div></div></p><p><h2 class="content-head">实验特性</h2><div class="content" style="display:flex"><input id="con-toggleAutoColor" type="checkbox" onclick="consoleFn.toggleAutoColor()"/><div class="content-text">文章页自动主题色（仅支持浅色模式）</div></div></p></div><div class="asetting" id="aplayer-settings"><p><h2 class="content-head">播放设置</h2><div class="content" style="display:flex"><input id="con-toggleAPlayer" type="checkbox" onclick="consoleFn.toggleAPlayer()"/><div class="content-text">打开APlayer</div></div></p><p><h2 class="content-head">切换歌单</h2><div class="playlist-container"><a class="playlist-item" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/index_img/index.png)" onclick="consoleFn.changeAPlayerList(7185982924,&quot;netease&quot;,true)"><span>默认歌单</span></a><a class="playlist-item" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/index_img/xusong.jpg)" onclick="consoleFn.changeAPlayerList(7081513713,&quot;netease&quot;,true)"><span>许嵩专辑</span></a><a class="playlist-item" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/background_img/pc/wanye1.jpeg)" onclick="consoleFn.changeAPlayerList(7366289244,&quot;netease&quot;,true)"><span>噬云兽特辑</span></a></div></p><p><h2 class="content-head">自定义歌单<a href="/2023/03/15/导入自定义歌单/">(查看指南)</a></h2><input id="url-input" oninput="$(&quot;#url-btn&quot;).html(&quot;解析&quot;);$(&quot;#url-btn&quot;).removeClass(&quot;success&quot;);$(&quot;#url-btn&quot;).removeClass(&quot;fail&quot;);" placeholder="输入歌单链接"/><a id="url-btn" onclick="consoleFn.resolveUrl()">解析</a></p></div><div class="asetting" id="background-settings"><h2 class="content-head">默认背景</h2><div class="bgbox default-bg"><a class="boxl" href="javascript:;" rel="noopener external nofollow" style="background: #f2f6fc" onclick="consoleFn.setDefaultBackground()"></a><a class="boxr" href="javascript:;" rel="noopener external nofollow" style="background: #040404" onclick="consoleFn.setDefaultBackground()"></a></div><h2 class="content-head">图片（PC端）</h2><div class="bgbox"><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/background_img/pc/shoto1.png)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/background_img/pc/shoto1.png)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/background_img/pc/shoto2.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/background_img/pc/shoto2.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/background_img/pc/tinali1.png)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/background_img/pc/tinali1.png)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/background_img/pc/wanye1.jpeg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/background_img/pc/wanye1.jpeg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/background_img/pc/wanye2.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/background_img/pc/wanye2.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/background_img/pc/wanye3.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/background_img/pc/wanye3.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/background_img/pc/xiao1.jpeg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/background_img/pc/xiao1.jpeg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/background_img/pc/yibang1.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/background_img/pc/yibang1.jpg)')"></a></div><h2 class="content-head">图片（移动端）</h2><div class="bgbox"><a class="pimgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/background_img/mobile/wanye1.png)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/background_img/mobile/wanye1.png)')"></a><a class="pimgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/background_img/mobile/xiao1.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/background_img/mobile/xiao1.jpg)')"></a><a class="pimgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/background_img/mobile/xiao2.png)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/background_img/mobile/xiao2.png)')"></a></div><h2 class="content-head">渐变色</h2><div class="bgbox"><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #eecda3, #ef629f)" onclick="consoleFn.changeBackground('linear-gradient(to right, #eecda3, #ef629f)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #B7D31E, #42CE1E)" onclick="consoleFn.changeBackground('linear-gradient(to right, #B7D31E, #42CE1E)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #06DE86, #06A5DE)" onclick="consoleFn.changeBackground('linear-gradient(to right, #06DE86, #06A5DE)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #189BC4, #183DC4)" onclick="consoleFn.changeBackground('linear-gradient(to right, #189BC4, #183DC4)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #C018C4, #C41818)" onclick="consoleFn.changeBackground('linear-gradient(to right, #C018C4, #C41818)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #8B00BB, #030094)" onclick="consoleFn.changeBackground('linear-gradient(to right, #8B00BB, #030094)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #eecda3, #ef629f)" onclick="consoleFn.changeBackground('linear-gradient(to right, #eecda3, #ef629f)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(90deg, #ffd7e4 0%, #c8f1ff 100%)" onclick="consoleFn.changeBackground('linear-gradient(90deg, #ffd7e4 0%, #c8f1ff 100%)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(45deg, #e5737b, #c6999e, #96b9c2, #00d6e8)" onclick="consoleFn.changeBackground('linear-gradient(45deg, #e5737b, #c6999e, #96b9c2, #00d6e8)')"></a></div><h2 class="content-head">纯色</h2><div class="bgbox"><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #ffffff" onclick="consoleFn.changeBackground('#ffffff')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #000000" onclick="consoleFn.changeBackground('#000000')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #7D9D9C" onclick="consoleFn.changeBackground('#7D9D9C')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #49A6E9" onclick="consoleFn.changeBackground('#49A6E9')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #F7CEFF" onclick="consoleFn.changeBackground('#F7CEFF')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #FFFFCE" onclick="consoleFn.changeBackground('#FFFFCE')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #CFFFCE" onclick="consoleFn.changeBackground('#CFFFCE')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #17EFE9" onclick="consoleFn.changeBackground('#17EFE9')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #9F17EF" onclick="consoleFn.changeBackground('#9F17EF')"></a></div></div></div></div><div id="setting-sidesl"><button class="reSettings con-rightside" title="恢复默认设置" id="con-reset" onclick="consoleFn.resetSettings();"><i class="fa fa-repeat"></i></button><div id="setting-sides"><button class="con-rightside" title="繁简转换" id="con-translate"><i class="iconfont icon-fanti"></i></button><button class="con-rightside" title="昼夜切换" id="con-mode" onclick="cloudchewieFn.toggleDarkMode();"><i class="fa fa-adjust"></i></button><button class="con-rightside" title="阅读模式" id="con-readmode" onclick="cloudchewieFn.toggleReadMode();"><i class="fa fa-book-open"></i></button><button class="con-rightside" title="单双栏切换" id="con-toggleaside" onclick="consoleFn.toggleAside();"><i class="fas fa-arrows-alt-h"></i></button><button class="con-rightside" title="开关弹幕" id="con-barrage" onclick="cloudchewieFn.switchCommentBarrage()"><i class="cloudchewiefont cloudchewie-icon-danmu"></i></button><button class="con-rightside" title="音乐" id="con-music" onclick="cloudchewieFn.toggleMusic();"><i class="fas fa-play"></i></button><button class="con-rightside" title="全屏" id="con-fullscreen" onclick="consoleFn.toggleFullScreen();"><i class="fas fa-expand"></i></button><button class="con-rightside" title="右键菜单" id="con-rightmouse" onclick="consoleFn.toggleContextMenu();"><i class="fas fa-computer-mouse"></i></button></div></div></div><div id="console-mask"></div></div><div><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/qrcode.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/marked.min.js"></script><script async data-pjax src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/waterfall.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/pace.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/color-thief.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/aplayer.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/meting.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/lately.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/universe.min.js"></script><script src="/js/tw_cn.js"></script><script src="https://npm.elemecdn.com/@fancyapps/ui@5.0.20/dist/fancybox/fancybox.umd.js"></script><script src="https://npm.elemecdn.com/instant.page@5.1.1/instantpage.js" type="module"></script><script src="https://npm.elemecdn.com/vanilla-lazyload@17.3.1/dist/lazyload.iife.min.js"></script><script src="https://npm.elemecdn.com/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://npm.elemecdn.com/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="https://npm.elemecdn.com/algoliasearch@4.14.2/dist/algoliasearch-lite.umd.js"></script><script src="https://npm.elemecdn.com/instantsearch.js@4.46.1/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://npm.elemecdn.com/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://comment.cloudchewie.com/',
+      region: 'ap-shanghai',
+      onCommentLoaded: function () {
+        cloudchewieFn.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://comment.cloudchewie.com/',
+      region: 'ap-shanghai',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      cloudchewieFn.snackbarShow("评论系统过载,请稍后访问");
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    }
+    getScript('https://npm.elemecdn.com/twikoo@1.6.16/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) cloudchewieFn.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script data-pjax>var pageHeaderEl = document.getElementById("page-header");
+var navMusicEl = document.getElementById("nav-music");
+var anMusicEl = document.getElementById("anMusic-page");
+var musicVolume = 0.8;
+
+cloudchewieFn.qrcodeCreate();
+cloudchewieFn.initAnPlayer();
+cloudchewieFn.categoriesBarActive();
+cloudchewieFn.topCategoriesBarScroll();
+cloudchewieFn.catalogActive();
+cloudchewieFn.tagsPageActive();</script><script>var visitorMail = "visitor@cloudchewie.com";
+</script><script data-pjax="true">if (document.querySelector(".comment-barrage")){
+  var commentBarrageConfig = {
+    maxBarrage: 1,
+    barrageTime: 4000,
+    twikooUrl: "https://comment.cloudchewie.com/",
+    accessToken: "",
+    mailMd5: "",
+    pageUrl: window.location.pathname,
+    barrageTimer: [],
+    barrageList: [],
+    barrageIndex: 0,
+    dom: document.querySelector(".comment-barrage"),
+  };
+  var commentInterval = null;
+  var hoverOnCommentBarrage = false;
+
+  document.querySelector(".comment-barrage").addEventListener("mouseenter", function() {
+    hoverOnCommentBarrage = true;
+  });
+  document.querySelector(".comment-barrage").addEventListener("mouseleave", function() {
+    hoverOnCommentBarrage = false;
+  });
+
+  function initCommentBarrage() {
+    if (!commentBarrageConfig.dom) return;
+
+    var data = JSON.stringify({
+      event: "COMMENT_GET",
+      "commentBarrageConfig.accessToken": commentBarrageConfig.accessToken,
+      url: commentBarrageConfig.pageUrl,
+    });
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    xhr.addEventListener("readystatechange", function () {
+      if (this.readyState === 4 && this.responseText) {
+        commentBarrageConfig.barrageList = commentLinkFilter(JSON.parse(this.responseText).data);
+        commentBarrageConfig.dom.innerHTML = "";
+      }
+    });
+    xhr.addEventListener('error',()=>{
+     cloudchewieFn.snackbarShow("评论系统过载,请稍后访问");
+    });
+    xhr.open("POST", commentBarrageConfig.twikooUrl);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(data);
+
+    clearInterval(commentInterval);
+    commentInterval = null;
+
+    commentInterval = setInterval(() => {
+      if (commentBarrageConfig.barrageList.length && !hoverOnCommentBarrage) {
+        popCommentBarrage(commentBarrageConfig.barrageList[commentBarrageConfig.barrageIndex]);
+        commentBarrageConfig.barrageIndex += 1;
+        commentBarrageConfig.barrageIndex %= commentBarrageConfig.barrageList.length;
+      }
+      if (
+        commentBarrageConfig.barrageTimer.length >
+          (commentBarrageConfig.barrageList.length > commentBarrageConfig.maxBarrage
+            ? commentBarrageConfig.maxBarrage
+            : commentBarrageConfig.barrageList.length) &&
+        !hoverOnCommentBarrage
+      ) {
+        removeCommentBarrage(commentBarrageConfig.barrageTimer.shift());
+      }
+    }, commentBarrageConfig.barrageTime);
+  }
+
+  function commentLinkFilter(data) {
+    data.sort((a, b) => {
+      return a.created - b.created;
+    });
+    let newData = [];
+    data.forEach(item => {
+      newData.push(...getCommentReplies(item));
+    });
+    return newData;
+  }
+
+  function getCommentReplies(item) {
+    if (item.replies) {
+      let replies = [item];
+      item.replies.forEach(item => {
+        replies.push(...getCommentReplies(item));
+      });
+      return replies;
+    } else {
+      return [];
+    }
+  }
+
+  function popCommentBarrage(data) {
+    let barrage = document.createElement("div");
+    barrage.className = "comment-barrage-item";
+    barrage.innerHTML = `
+        <div class="barrageHead">
+          <a class="barrageTitle ${
+            data.mailMd5 === commentBarrageConfig.mailMd5 ? "barrageBloggerTitle" : ""
+          }" href="javascript:cloudchewieFn.scrollTo('#post-comment')"">
+            ${data.mailMd5 === commentBarrageConfig.mailMd5 ? "博主" : "热评"}
+          </a>
+          <div class="barrageNick">${data.nick}</div>
+          <img class="nolazyload barrageAvatar" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cravatar.cn/avatar/${data.mailMd5}"/>
+          <a class="comment-barrage-close" href="javascript:cloudchewieFn.switchCommentBarrage()" rel="external nofollow noreferrer"><i class="cloudchewiefont cloudchewie-icon-xmark"></i></a>
+        </div>
+        <a class="barrageContent" href="#${data.id}">
+          <object>${data.comment}</object>
+        </a>
+      `;
+    commentBarrageConfig.barrageTimer.push(barrage);
+    commentBarrageConfig.dom.append(barrage);
+  }
+
+  function removeCommentBarrage(barrage) {
+    barrage.className = "comment-barrage-item out";
+
+    setTimeout(() => {
+      if (commentBarrageConfig.dom && commentBarrageConfig.dom.contains(barrage)) {
+        commentBarrageConfig.dom.removeChild(barrage);
+      }
+      }, 1000);
+    }
+
+    // 自动隐藏
+    const commentEntryCallback = (entries) => {
+      const commentBarrage = document.querySelector(".comment-barrage");
+      const postComment = document.getElementById("post-comment");
+
+      entries.forEach(entry => {
+        if (postComment && commentBarrage && document.body.clientWidth > 768) {
+          commentBarrage.style.bottom = entry.isIntersecting ? "-200px" : "0";
+        }
+      });
+    };
+    // 创建IntersectionObserver实例
+    const observer = new IntersectionObserver(commentEntryCallback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0
+    });
+    // 监视目标元素
+    const postCommentTarget = document.getElementById("post-comment");
+    if (postCommentTarget) {
+      observer.observe(postCommentTarget);
+    }
+
+    initCommentBarrage();
+
+    if (cloudchewieFn.loadData("enableCommentBarrage") == "true") {
+      document.querySelector(".comment-barrage").style.display = "flex";
+      document.querySelector(".menu-commentBarrage-text").textContent = "关闭弹幕";
+    } else {
+      document.querySelector(".comment-barrage").style.display = "none";
+      document.querySelector(".menu-commentBarrage-text").textContent = "打开弹幕";
+    }
+
+    document.addEventListener("pjax:send", function () {
+      clearInterval(commentInterval);
+    });
+
+    window.addEventListener("scroll", ()=>{
+            if (
+      cloudchewieFn.isInViewPortOfOne(document.getElementById("post-comment"))
+    ) {
+      $("#con-barrage")&&$("#con-barrage").hide();
+      $("#switch_commentBarrage")&&$("#switch_commentBarrage").hide();
+      $("#menuCommentBarrage")&&$("#menuCommentBarrage").hide();
+    } else {
+      $("#con-barrage")&&$("#con-barrage").show();
+      $("#switch_commentBarrage")&&$("#switch_commentBarrage").show();
+      $("#menuCommentBarrage")&&$("#menuCommentBarrage").show();
+    }
+    });
+
+  }</script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://comment.cloudchewie.com/',
+        region: 'ap-shanghai',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        if($dom!=null)
+          $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://npm.elemecdn.com/twikoo@1.6.16/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${cloudchewieFn.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/icon/ali_iconfont_css.css"><script src="https://npm.elemecdn.com/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll
+  window.resolveTocScrollFunction && window.removeEventListener('scroll', window.resolveTocScrollFunction)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFunction()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

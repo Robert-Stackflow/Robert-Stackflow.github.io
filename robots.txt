@@ -11,5 +11,5 @@ Disallow: /fancybox/
 Disallow: /*.css
 Disallow: /*.js
 
-Sitemap: http://cloudchewie.com/sitemap.xml
-Sitemap: http://cloudchewie.com/baidusitemap.xml
+Sitemap: http://blog.cloudchewie.com/sitemap.xml
+Sitemap: http://blog.cloudchewie.com/baidusitemap.xml
