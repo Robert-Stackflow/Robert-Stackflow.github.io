@@ -1,1 +1,388 @@
-!function(t){var e=function(e,a,n){var l,r=new Date,s=r.getDate(),o=r.getMonth(),p=r.getFullYear(),u=s,d=o,i=p,c=n,f=null,h=null,g={posts:[],prev:null,next:null},y="en";(l=e)&&"undefined"!=typeof calLanguages&&calLanguages[l]&&(y=l);var v=t.extend({},t.fn.aCalendar.defaults,"undefined"==typeof calLanguages?{}:calLanguages[y],a);function m(){d<11?d++:(d=0,i++),T()}function x(){d>0?d--:(d=11,i--),T()}function M(t){t&&(i=t.getFullYear(),d=t.getMonth(),T())}function k(){v.single?null!=v.url&&""!=v.url&&(null===f&&t.ajax({url:v.url,async:!1,success:function(t){f=t,D(Object.keys(f))}}),null!==f&&w()&&(g.posts=f[i+"-"+(d+1)])):function(){null===h&&t.ajax({url:v.root+"list.json",async:!1,success:function(t){D(t)}});w()&&t.ajax({url:v.root+i+"-"+(d+1)+".json",async:!1,success:function(t){g.posts=t}})}()}function D(t){h=t.map((function(t){var e=t.split("-");return new Date(Date.UTC(+e[0],+e[1]-1))}))}function w(){var t=Date.UTC(i,d);if(null===h||0===h.length)return!1;if(0===g.posts.length&&(null===g.prev&&null!==g.next&&g.next.getTime()>t||null===g.next&&null!==g.prev&&g.prev.getTime()<t))return!1;g.posts=[];for(var e=0;e<h.length;e++){var a=h[e].getTime();if(t===a)return g.prev=0===e?null:h[e-1],g.next=e===h.length-1?null:h[e+1],!0;if(t<a){g.prev=0===e?null:h[e-1],g.next=h[e];break}g.prev=h[e],g.next=null}return!1}function C(t,e){var a={"LMM+":v.months[t.getMonth()],"MM+":t.getMonth()+1};for(var n in/(y+)/.test(e)&&(e=e.replace(RegExp.$1,(t.getFullYear()+"").substr(4-RegExp.$1.length))),a)new RegExp("("+n+")").test(e)&&(e=e.replace(RegExp.$1,"LMM+"===n?a[n]:("00"+a[n]).substr((""+a[n]).length)));return e}function T(){k();var e=new Date(i,d,1).getDay()-v.weekOffset;e<=0&&(e=6- -1*(e+1));var a=new Date(i,d+1,0).getDate(),n=new Date(i,d,0).getDate()-e+1,l=t("<div/>").addClass("cal-head"),r=t("<div/>"),s=t("<div/>"),f=t("<div/>").addClass("cal-title");s.html(v.headArrows.previous),r.html(v.headArrows.next),curDate=new Date(Date.UTC(i,d)),0===g.posts.length?f.html(C(curDate,v.titleFormat)):(cTitleLink=t("<a/>").attr("href",C(curDate,v.titleLinkFormat)).attr("title",C(curDate,v.postsMonthTip)).html(C(curDate,v.titleFormat)),f.html(cTitleLink)),s.on("click",x),r.on("click",m),l.append(s),l.append(f),l.append(r);for(var h=t("<table/>").addClass("cal"),y=v.weekOffset,D=t("<thead/>"),w=t("<tr/>"),T=0;T<7;T++){y>6&&(y=0);var L=t("<th/>").attr("class","cal_week").attr("scope","col").attr("title",v.dayOfWeek[y]);L.html(v.dayOfWeekShort[y]),w.append(L),y++}D.append(w),h.append(D);var F=t("<tfoot/>"),j=t("<tr/>"),O=t("<td/>").attr("colspan",3),b=t("<td/>").html("&nbsp;"),A=t("<td/>").attr("colspan",3);g.prev&&O.html(v.footArrows.previous+v.months[g.prev.getMonth()]).addClass("cal-foot").attr("title",C(g.prev,v.postsMonthTip)),g.next&&A.html(v.months[g.next.getMonth()]+v.footArrows.next).addClass("cal-foot").attr("title",C(g.next,v.postsMonthTip)),O.on("click",(function(){M(g.prev)})),A.on("click",(function(){M(g.next)})),j.append(O),j.append(b),j.append(A),F.append(j);var W=t("<tbody/>"),$=1,E=1;for(T=0;T<6;T++){for(var R=t("<tr/>"),S=0;S<7;S++){var U=t("<td/>");if(7*T+S<e)U.addClass("cal-gray"),U.html(n++);else if($<=a){$==u&&o==d&&p==i?U.addClass("cal-today"):U.addClass("cal-ntoday");for(var Y={num:0,keys:[]},z=0;z<g.posts.length;z++){new Date(Date.parse(g.posts[z].date)).getDate()==$&&(Y.keys[Y.num++]=z)}if(0!==Y.num){var N=Y.keys[0],Q=t("<a>").attr("href",g.posts[N].link).attr("title",g.posts[N].title).html($++);U.append(Q)}else if($==u&&o==d&&p==i){Q=t("<a>").html($++);U.append(Q)}else U.html($++)}else U.addClass("cal-gray"),U.html(E++);R.append(U)}W.append(R)}h.append(D),h.append(F),h.append(W),t(c).html(l),t(c).append(h)}return"/"!==v.root[0]&&(v.root="/"+v.root),"/"!==v.root[v.root.length-1]&&(v.root+="/"),T()};t.fn.aCalendar=function(a,n){return this.each((function(){return e(a,n,t(this))}))},t.fn.aCalendar.defaults={months:["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],dayOfWeekShort:["日","一","二","三","四","五","六"],dayOfWeek:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],postsMonthTip:"yyyy年LMM发布的文章",titleFormat:"yyyy年LMM",titleLinkFormat:"/archives/yyyy/MM/",headArrows:{previous:'<span class="cal-prev"></span>',next:'<span class="cal-next"></span>'},footArrows:{previous:"« ",next:" »"},weekOffset:0,single:!0,root:"/calendar/",url:"/calendar.json"}}(jQuery),$(document).ready((function(){$("#calendar").aCalendar("zh-CN")}));
+/**
+ * Calendar - displays a calendar of the current month. Dates appear links if there are posts for that day.
+ */
+
+(function($) {
+
+    var aCalendar = function(language, options, object) {
+        var now = new Date();
+        var nDay = now.getDate();
+        var nMonth = now.getMonth();
+        var nYear = now.getFullYear();
+        var dDay = nDay;
+        var dMonth = nMonth;
+        var dYear = nYear;
+        var instance = object;
+        var allPosts = null;
+        var months = null;
+        /* Current month's posts */
+        var current = {
+            posts: [],
+            prev: null,
+            next: null
+        };
+        var currentLanguage = 'en';
+
+        initLanguage(language);
+
+        var settings = $.extend({}, $.fn.aCalendar.defaults, typeof calLanguages === 'undefined' ? {} : calLanguages[currentLanguage], options);
+
+        if (settings.root[0] !== '/') {
+            settings.root = '/' + settings.root;
+        }
+
+        if (settings.root[settings.root.length - 1] !== '/') {
+            settings.root += '/';
+        }
+
+        /**
+         * Initial language.
+         */
+        function initLanguage(key) {
+            if (key && typeof calLanguages !== 'undefined' && calLanguages[key]) {
+                currentLanguage = key;
+            }
+        }
+
+        /**
+         * Click handler for next month arrow button.
+         */
+        function nextMonth() {
+            if (dMonth < 11) {
+                dMonth++;
+            } else {
+                dMonth = 0;
+                dYear++;
+            }
+
+            draw();
+        };
+
+        /**
+         * Click handler for previous month arrow button.
+         */
+        function previousMonth() {
+            if (dMonth > 0) {
+                dMonth--;
+            } else {
+                dMonth = 11;
+                dYear--;
+            }
+
+            draw();
+        };
+
+        /**
+         * Click handler for navigating to a month if there are posts.
+         */
+        function toPostsMonth(date) {
+            if (date) {
+                dYear = date.getFullYear();
+                dMonth = date.getMonth();
+                draw();
+            }
+        }
+
+        /**
+         * Load current month's posts.
+         */
+        function loadPosts() {
+            if (settings.single) {
+                loadAllPosts();
+            } else {
+                loadPostsByMonth();
+            }
+        }
+
+        /**
+         * Load all month's posts.
+         */
+        function loadAllPosts() {
+            if (settings.url != null && settings.url != '') {
+                if (allPosts === null) {
+                    $.ajax({
+                        url: settings.url,
+                        async: false,
+                        success: function(data) {
+                            allPosts = data;
+                            initMonths(Object.keys(allPosts));
+                        }
+                    });
+                }
+
+                if (allPosts !== null) {
+                    if (parse()) {
+                        current.posts = allPosts[dYear + '-' + (dMonth + 1)];
+                    }
+                }
+            }
+        }
+
+        /**
+         * Load posts by the month.
+         */
+        function loadPostsByMonth() {
+            if (months === null) {
+                $.ajax({
+                    url: settings.root + 'list.json',
+                    async: false,
+                    success: function(data) {
+                        initMonths(data);
+                    }
+                });
+            }
+
+            if (parse()) {
+                $.ajax({
+                    url: settings.root + dYear + '-' + (dMonth + 1) + '.json',
+                    async: false,
+                    success: function(data) {
+                        current.posts = data;
+                    }
+                });
+            }
+        }
+
+        /**
+         * Initial months array.
+         */
+        function initMonths(array) {
+            months = array.map(function(item) {
+                var ym = item.split('-');
+                return new Date(Date.UTC(+ym[0], +ym[1] - 1));
+            });
+        }
+
+        /**
+         * Parse posts month array, and set current.next and current.prev.
+         *
+         * @return if there are posts in this month, return true. ortherwise return false.
+         */
+        function parse() {
+            var time = Date.UTC(dYear, dMonth);
+
+            if (months === null || months.length === 0) {
+                return false;
+            }
+
+            //If no posts in the current month, and before (or after) the current month yet not published articles, then the response to click previous month's (or next month's) event don't need to parse months array
+            if (current.posts.length === 0 && (current.prev === null && current.next !== null && current.next.getTime() > time || current.next === null && current.prev !== null && current.prev.getTime() < time)) {
+                return false;
+            }
+
+            current.posts = [];
+
+            for (var i = 0; i < months.length; i++) {
+                var cTime = months[i].getTime();
+                if (time === cTime) {
+                    current.prev = i === 0 ? null : months[i - 1];
+                    current.next = i === months.length - 1 ? null : months[i + 1];
+                    return true;
+                } else if (time < cTime) {
+                    current.prev = i === 0 ? null : months[i - 1];
+                    current.next = months[i];
+                    break;
+                } else {
+                    current.prev = months[i];
+                    current.next = null;
+                }
+            }
+
+            return false;
+        }
+
+        /**
+         * Format date object.
+         */
+        function simpleDateFormat(date, fmt) {
+            var o = {
+                'LMM+': settings.months[date.getMonth()],
+                'MM+': date.getMonth() + 1
+            };
+
+            if (/(y+)/.test(fmt)) {
+                fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
+            }
+
+            for (var k in o) {
+                if (new RegExp('(' + k + ')').test(fmt)) {
+                    fmt = fmt.replace(RegExp.$1, (k === 'LMM+') ? (o[k]) : (('00' + o[k]).substr(('' + o[k]).length)));
+                }
+            }
+
+            return fmt;
+        }
+
+        /**
+         * Draw calendar.
+         *
+         */
+        function draw() {
+            loadPosts();
+            var dWeekDayOfMonthStart = new Date(dYear, dMonth, 1).getDay() - settings.weekOffset;
+            if (dWeekDayOfMonthStart <= 0) {
+                dWeekDayOfMonthStart = 6 - ((dWeekDayOfMonthStart + 1) * -1);
+            }
+
+            var dLastDayOfMonth = new Date(dYear, dMonth + 1, 0).getDate();
+            var dLastDayOfPreviousMonth = new Date(dYear, dMonth, 0).getDate() - dWeekDayOfMonthStart + 1;
+
+            var cHead = $('<div/>').addClass('cal-head');
+            var cNext = $('<div/>');
+            var cPrevious = $('<div/>');
+            var cTitle = $('<div/>').addClass('cal-title');
+            cPrevious.html(settings.headArrows.previous);
+            cNext.html(settings.headArrows.next);
+            curDate = new Date(Date.UTC(dYear, dMonth));
+            if (current.posts.length === 0) {
+                cTitle.html(simpleDateFormat(curDate, settings.titleFormat));
+            } else {
+                cTitleLink = $('<a/>').attr('href', simpleDateFormat(curDate, settings.titleLinkFormat))
+                    .attr('title', simpleDateFormat(curDate, settings.postsMonthTip))
+                    .html(simpleDateFormat(curDate, settings.titleFormat));
+                cTitle.html(cTitleLink);
+            }
+
+            cPrevious.on('click', previousMonth);
+            cNext.on('click', nextMonth);
+
+            cHead.append(cPrevious);
+            cHead.append(cTitle);
+            cHead.append(cNext);
+
+            var cBody = $('<table/>').addClass('cal');
+
+            var dayOfWeek = settings.weekOffset;
+            var cWeekHead = $('<thead/>');
+            var cWeekHeadRow = $('<tr/>');
+            for (var i = 0; i < 7; i++) {
+                if (dayOfWeek > 6) {
+                    dayOfWeek = 0;
+                }
+
+                var cWeekDay = $('<th/>').attr('class', 'cal_week').attr('scope', 'col').attr('title', settings.dayOfWeek[dayOfWeek]);
+                cWeekDay.html(settings.dayOfWeekShort[dayOfWeek]);
+                cWeekHeadRow.append(cWeekDay);
+                dayOfWeek++;
+            }
+
+            cWeekHead.append(cWeekHeadRow);
+            cBody.append(cWeekHead);
+
+            var cFoot = $('<tfoot/>');
+            var cFootRow = $('<tr/>');
+            var cPrevPosts = $('<td/>').attr('colspan', 3);
+            var cPad = $('<td/>').html('&nbsp;');
+            var cNextPosts = $('<td/>').attr('colspan', 3);
+            if (current.prev) {
+                cPrevPosts.html(settings.footArrows.previous + settings.months[current.prev.getMonth()])
+                    .addClass('cal-foot')
+                    .attr('title', simpleDateFormat(current.prev, settings.postsMonthTip));
+            }
+
+            if (current.next) {
+                cNextPosts.html(settings.months[current.next.getMonth()] + settings.footArrows.next)
+                    .addClass('cal-foot')
+                    .attr('title', simpleDateFormat(current.next, settings.postsMonthTip));
+            }
+
+            cPrevPosts.on('click', function() {
+                toPostsMonth(current.prev);
+            });
+
+            cNextPosts.on('click', function() {
+                toPostsMonth(current.next);
+            });
+
+            cFootRow.append(cPrevPosts);
+            cFootRow.append(cPad);
+            cFootRow.append(cNextPosts);
+            cFoot.append(cFootRow);
+
+            var cMainPad = $('<tbody/>');
+            var day = 1;
+            var dayOfNextMonth = 1;
+            for (var i = 0; i < 6; i++) {
+                var cWeek = $('<tr/>');
+                for (var j = 0; j < 7; j++) {
+                    var cDay = $('<td/>');
+                    if (i * 7 + j < dWeekDayOfMonthStart) {
+                        cDay.addClass('cal-gray');
+                        cDay.html(dLastDayOfPreviousMonth++);
+                    } else if (day <= dLastDayOfMonth) {
+                        if (day == dDay && nMonth == dMonth && nYear == dYear) {
+                            cDay.addClass('cal-today');
+                        }else{
+                            cDay.addClass('cal-ntoday');
+                        }
+                        var count = {
+                            num: 0,
+                            keys: []
+                        };
+                        for (var k = 0; k < current.posts.length; k++) {
+                            var d = new Date(Date.parse(current.posts[k].date));
+                            if (d.getDate() == day) {
+                                count.keys[count.num++] = k;
+                            }
+                        }
+
+                        if (count.num !== 0) {
+                            var index = count.keys[0];
+                            var cLink = $('<a>').attr('href', current.posts[index].link).attr('title', current.posts[index].title).html(day++);
+                            cDay.append(cLink);
+                        } else {
+                            if (day == dDay && nMonth == dMonth && nYear == dYear) {
+                                var cLink = $('<a>').html(day++);
+                                cDay.append(cLink);
+                            }else{
+                                cDay.html(day++);
+                            }
+                        }
+                    } else {
+                        cDay.addClass('cal-gray');
+                        cDay.html(dayOfNextMonth++);
+                    }
+
+                    cWeek.append(cDay);
+                }
+
+                cMainPad.append(cWeek);
+            }
+
+            cBody.append(cWeekHead);
+            cBody.append(cFoot);
+            cBody.append(cMainPad);
+
+            $(instance).html(cHead);
+            $(instance).append(cBody);
+        }
+
+        return draw();
+    };
+
+    $.fn.aCalendar = function(Lang, oInit) {
+        return this.each(function() {
+            return aCalendar(Lang, oInit, $(this));
+        });
+    };
+
+    // plugin defaults
+    $.fn.aCalendar.defaults = {
+        months: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+        dayOfWeekShort: ['日', '一', '二', '三', '四', '五', '六'],
+        dayOfWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        postsMonthTip: 'yyyy年LMM发布的文章',
+        titleFormat: 'yyyy年LMM',
+        titleLinkFormat: '/archives/yyyy/MM/',
+        headArrows: { previous: '<span class="cal-prev"></span>', next: '<span class="cal-next"></span>' },
+        footArrows: { previous: '« ', next: ' »' },
+        weekOffset: 0,
+        single: true,
+        root: '/calendar/',
+        url: '/calendar.json'
+    };
+
+}(jQuery));
+$(document).ready(function() {
+    $("#calendar").aCalendar("zh-CN");
+});

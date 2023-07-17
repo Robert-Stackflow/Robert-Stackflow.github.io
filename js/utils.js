@@ -1,1 +1,3988 @@
-var adjectives=["美丽的","英俊的","聪明的","勇敢的","可爱的","慷慨的","善良的","可靠的","开朗的","成熟的","稳重的","真诚的","幽默的","豁达的","有趣的","活泼的","优雅的","敏捷的","温柔的","温暖的","敬业的","细心的","耐心的","深沉的","朴素的","含蓄的","率直的","开放的","务实的","坚强的","自信的","谦虚的","文静的","深刻的","纯真的","朝气蓬勃的","慎重的","大方的","顽强的","迷人的","机智的","善解人意的","富有想象力的","有魅力的","独立的","好奇的","干净的","宽容的","尊重他人的","体贴的","守信的","有耐性的","有责任心的","有担当的","有远见的","有智慧的","有眼光的","有冒险精神的","有爱心的","有同情心的","喜欢思考的","喜欢学习的","具有批判性思维的","善于表达的","善于沟通的","善于合作的","善于领导的","有激情的","有幽默感的","有思想的","有个性的","有正义感的","有责任感的","有创造力的","有想象力的","有艺术细胞的","有团队精神的","有协调能力的","有决策能力的","有组织能力的","有学习能力的","有执行能力的","有分析能力的","有逻辑思维的","有创新能力的","有专业素养的","有商业头脑的"],vegetablesAndFruits=["萝卜","白菜","芹菜","生菜","青椒","辣椒","茄子","豆角","黄瓜","西红柿","洋葱","大蒜","土豆","南瓜","豆腐","韭菜","花菜","西兰花","蘑菇","金针菇","苹果","香蕉","橙子","柠檬","猕猴桃","草莓","葡萄","桃子","杏子","李子","石榴","西瓜","哈密瓜","蜜瓜","樱桃","蓝莓","柿子","橄榄","柚子","火龙果"];const cloudchewieFn={day_night_count:0,isReadMode:!1,saveData:function(e,t){localStorage.setItem(e,JSON.stringify({time:Date.now(),data:t}))},removeData:function(e){localStorage.removeItem(e)},loadData:function(e,t){let n=JSON.parse(localStorage.getItem(e));if(n){let e=Date.now()-n.time;if(e<60*t*1e3&&e>-1)return n.data}return n?n.data:void 0},setCookie:(e,t,n=365)=>{var o=new Date;o.setTime(o.getTime()+24*n*60*60*1e3);var a="expires="+o.toGMTString();document.cookie=e+"="+t+"; "+a},delCookie:e=>{var t=new Date;t.setTime(t.getTime()-1);var n=getCookie(e);null!=n&&(document.cookie=e+"="+n+";expires="+t.toGMTString())},getCookie:e=>{for(var t=e+"=",n=document.cookie.split(";"),o=0;o<n.length;o++){var a=n[o].trim();if(0==a.indexOf(t))return a.substring(t.length,a.length)}return""},isHome:function(){return"/"==window.location.pathname},isMusic:function(){return"/music/"==window.location.pathname},isNowtime:function(){return"/nowtime/"==window.location.pathname},isGuestbook:function(){return"/guestbook/"==window.location.pathname},isFullScreen:()=>{var e=document.fullScreen||null!==document.fullscreenElement;return void 0===e&&(e=!1),e},addScript:(e,t,n)=>{if(document.getElementById(e))return n?n():void 0;let o=document.createElement("script");o.src=t,o.id=e,n&&(o.onload=n),document.head.appendChild(o)},copy:function(e,t){var n=new ClipboardJS(e,{text:function(e){return t}});n.on("success",(function(e){e.clearSelection()})),n.on("error",(function(e){}))},copySelect:()=>{document.execCommand("Copy",!1,null),void 0!==GLOBAL_CONFIG.Snackbar&&cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success)},insertAtCursor:(e,t)=>{if(document.selection)e.focus(),sel=document.selection.createRange(),sel.text=t,sel.select();else if(e.selectionStart||"0"==e.selectionStart){var n=e.selectionStart,o=e.selectionEnd,a=e.scrollTop;e.value=e.value.substring(0,n)+t+e.value.substring(o,e.value.length),a>0&&(e.scrollTop=a),e.focus(),e.selectionStart=n+t.length,e.selectionEnd=n+t.length}else e.value+=t,e.focus()},goToPage:()=>{let e=document.querySelector("#textnumer");e&&(e.addEventListener("input",(()=>{let t=document.querySelectorAll(".page-number"),n=t[t.length-1].innerHTML;Number(e.value)>n&&(e.value=n)})),e.addEventListener("keyup",(t=>{"Enter"==t.key&&""!=e.value&&"0"!=e.value&&pjax.loadUrl("1"==e.value?"/":`/page/${e.value}/`)})))},debounce:function(e,t,n){let o;return function(){const a=this,c=arguments,l=n&&!o;clearTimeout(o),o=setTimeout((function(){o=null,n||e.apply(a,c)}),t),l&&e.apply(a,c)}},throttle:function(e,t,n){let o,a,c,l=0;n||(n={});const i=function(){l=!1===n.leading?0:(new Date).getTime(),o=null,e.apply(a,c),o||(a=c=null)};return function(){const s=(new Date).getTime();l||!1!==n.leading||(l=s);const r=t-(s-l);a=this,c=arguments,r<=0||r>t?(o&&(clearTimeout(o),o=null),l=s,e.apply(a,c),o||(a=c=null)):o||!1===n.trailing||(o=setTimeout(i,r))}},fadeIn:(e,t)=>{e.style.cssText=`display:block;animation: to_show ${t}s`},fadeOut:(e,t)=>{e.addEventListener("animationend",(function t(){e.style.cssText="display: none; animation: '' ",e.removeEventListener("animationend",t)})),e.style.animation=`to_hide ${t}s`},animateIn:(e,t)=>{e.style.display="block",e.style.animation=t},animateOut:(e,t)=>{e.addEventListener("animationend",(function t(){e.style.display="",e.style.animation="",e.removeEventListener("animationend",t)})),e.style.animation=t},sidebarPaddingR:()=>{const e=window.innerWidth,t=document.body.clientWidth,n=e-t;e!==t&&(document.body.style.paddingRight=n+"px")},snackbarShow:(e,t=!1,n=2e3)=>{const{position:o,bgLight:a,bgDark:c}=GLOBAL_CONFIG.Snackbar,l="light"===document.documentElement.getAttribute("data-theme")?a:c;Snackbar.show({text:e,backgroundColor:l,showAction:t,duration:n,pos:o,customClass:"snackbar-css"})},snackbarShowLong:(e,t=!1,n=1e4)=>{const{position:o,bgLight:a,bgDark:c}=GLOBAL_CONFIG.Snackbar,l="light"===document.documentElement.getAttribute("data-theme")?a:c;Snackbar.show({text:e,backgroundColor:l,showAction:t,duration:n,pos:o,customClass:"snackbar-css"})},diffDate:(e,t=!1)=>{const n=new Date,o=new Date(e),a=n.getTime()-o.getTime(),c=36e5,l=24*c;let i;if(t){const e=a/2592e6,t=a/l,n=a/c,s=a/6e4;i=e>12?o.toLocaleDateString().replace(/\//g,"-"):e>=1?parseInt(e)+" "+GLOBAL_CONFIG.date_suffix.month:t>=1?parseInt(t)+" "+GLOBAL_CONFIG.date_suffix.day:n>=1?parseInt(n)+" "+GLOBAL_CONFIG.date_suffix.hour:s>=1?parseInt(s)+" "+GLOBAL_CONFIG.date_suffix.min:GLOBAL_CONFIG.date_suffix.just}else i=parseInt(a/l);return i},loadComment:(e,t)=>{if("IntersectionObserver"in window){const n=new IntersectionObserver((e=>{e[0].isIntersecting&&(t(),n.disconnect())}),{threshold:[0]});n.observe(e)}else t()},scrollToDest:(e,t=500)=>{const n=window.scrollY;if(n>e&&(e-=70),"scrollBehavior"in document.documentElement.style)return void window.scrollTo({top:e,behavior:"smooth"});let o=null;e=+e,window.requestAnimationFrame((function a(c){o=o||c;const l=c-o;n<e?window.scrollTo(0,(e-n)*l/t+n):window.scrollTo(0,n-(n-e)*l/t),l<t?window.requestAnimationFrame(a):window.scrollTo(0,e)}))},scrollToTop:()=>{cloudchewieFn.scrollToDest(0,500)},scrollToBottom:()=>{cloudchewieFn.scrollToDest(document.body.scrollHeight,500)},getParents:(e,t)=>{for(;e&&e!==document;e=e.parentNode)if(e.matches(t))return e;return null},siblings:(e,t)=>[...e.parentNode.children].filter((n=>t?n!==e&&n.matches(t):n!==e)),wrap:(e,t,n)=>{const o=document.createElement(t);for(const[e,t]of Object.entries(n))o.setAttribute(e,t);e.parentNode.insertBefore(o,e),o.appendChild(e)},unwrap:e=>{const t=e.parentNode;t!==document.body&&(t.parentNode.insertBefore(e,t),t.parentNode.removeChild(t))},isHidden:e=>0===e.offsetHeight&&0===e.offsetWidth,getEleTop:e=>{let t=e.offsetTop,n=e.offsetParent;for(;null!==n;)t+=n.offsetTop,n=n.offsetParent;return t},loadLightbox:e=>{const t=GLOBAL_CONFIG.lightbox;if("mediumZoom"===t){const t=mediumZoom(e);t.on("open",(e=>{const n="dark"===document.documentElement.getAttribute("data-theme")?"#121212":"#fff";t.update({background:n})}))}"fancybox"===t&&(e.forEach((e=>{if("A"!==e.parentNode.tagName){const t=e.dataset.lazySrc||e.src,n=e.title||e.alt||"";cloudchewieFn.wrap(e,"a",{href:t,"data-fancybox":"gallery","data-caption":n,"data-thumb":t,"data-download-src":t})}})),window.fancyboxRun||(Fancybox.bind("[data-fancybox]",{Hash:!1,Thumbs:{autoStart:!1},helpers:{overlay:{locked:!1}},Toolbar:{display:{left:["infobar"],middle:["zoomIn","zoomOut","toggle1to1","rotateCCW","rotateCW","flipX","flipY"],right:["slideshow","download","thumbs","fullscreen","close"]}}}),window.fancyboxRun=!0))},initJustifiedGallery:function(e){e.forEach((function(e){cloudchewieFn.isHidden(e)||fjGallery(e,{itemSelector:".fj-gallery-item",rowHeight:220,gutter:4,onJustify:function(){this.$container.style.opacity="1"}})}))},updateAnchor:e=>{if(e!==window.location.hash){e||(e=location.pathname);const t=GLOBAL_CONFIG_SITE.title;window.history.replaceState({url:location.href,title:t},t,e)}},getStyle:(e,t)=>window.getComputedStyle?getComputedStyle(e,null)[t]:e.currentStyle[t],resizeTop:()=>{var e=(null!=document.getElementById("content-inner")?document.getElementById("content-inner").clientWidth:0)-Number(cloudchewieFn.getStyle(document.getElementById("content-inner"),"paddingLeft").replace(/\s+|px/gi,""))-Number(cloudchewieFn.getStyle(document.getElementById("content-inner"),"paddingRight").replace(/\s+|px/gi,""));try{document.getElementById("top").setAttribute("style","width:"+e.toString()+"px")}catch(e){}},fixNav:()=>{if("true"==cloudchewieFn.loadData("enableFixedNav")){$("#name-container").show();var e=$(window).scrollTop();$(window).scroll((function(){if("true"==cloudchewieFn.loadData("enableFixedNav")&&"Cloudchewie"!=document.title.split(" | Cloudchewie")[0]){var t=$(window).scrollTop();t>e?$("#page-header").addClass("nav-down"):$("#page-header").removeClass("nav-down"),e=t}})),document.getElementById("page-name").innerText=document.title.split(" | Cloudchewie")[0]}else $("#name-container").hide()},isInViewPortOfOne:e=>{if(null==e)return!1;if("none"==window.getComputedStyle(e).getPropertyValue("display"))return!1;const t=window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight;return e.offsetTop-document.documentElement.scrollTop<=t},alertTooLow:()=>{void 0!==GLOBAL_CONFIG.Snackbar&&cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.browser_version_low)},browserVersion:()=>{var e=navigator.userAgent,t=e.indexOf("compatible")>-1&&e.indexOf("MSIE")>-1,n=(e.indexOf("Trident")>-1&&e.indexOf("rv:11.0"),e.indexOf("Edge")>-1&&!t),o=e.indexOf("Firefox")>-1,a=e.indexOf("Opera")>-1||e.indexOf("OPR")>-1,c=e.indexOf("Chrome")>-1&&e.indexOf("Safari")>-1&&-1==e.indexOf("Edge")&&-1==e.indexOf("OPR");e.indexOf("Safari")>-1&&-1==e.indexOf("Chrome")&&-1==e.indexOf("Edge")&&e.indexOf("OPR");n?e.split("Edge/")[1].split(".")[0]<90&&cloudchewieFn.alertTooLow():o?e.split("Firefox/")[1].split(".")[0]<90&&cloudchewieFn.alertTooLow():a?e.split("OPR/")[1].split(".")[0]<80&&cloudchewieFn.alertTooLow():c&&e.split("Chrome/")[1].split(".")[0]<90&&cloudchewieFn.alertTooLow()},checkVersion:()=>{1!=cloudchewieFn.getCookie("browser_version_checked")&&(cloudchewieFn.browserVersion(),cloudchewieFn.setCookie("browser_version_checked",!0,1))},bindContextMenu:(e,t)=>{e&&document.body.clientWidth>900?(t&&cloudchewieFn.snackbarShow("已启用自定义右键菜单,可使用Ctrl+右键单击呼出默认右键菜单"),window.oncontextmenu=function(e){if(e.ctrlKey||document.body.clientWidth<900)return!0;document.querySelectorAll(".rightMenu-line").forEach((e=>{$(e).hide()})),document.getSelection().toString()&&$("#menu-text").show(),document.getElementById("post")&&($("#menu-post").show(),$("#menu-other").show()),$("#menu-global").show();var t=window.document.body;"A"==(t=e.target).tagName&&($("#menu-to").show(),cloudchewieFn.open=function(){location.href=t.href},cloudchewieFn.openWithNewTab=function(){window.open(t.href)},cloudchewieFn.copyLink=function(){let e=t.href,n=document.createElement("textarea");n.value=e,document.body.appendChild(n),n.select(),document.execCommand("Copy"),document.body.removeChild(n),void 0!==GLOBAL_CONFIG.Snackbar&&cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success)}),"IMG"==t.tagName?($("#menu-img").show(),cloudchewieFn.openWithNewTab=function(){window.open(t.src)},cloudchewieFn.downloadImage=function(){t.click()},cloudchewieFn.click=function(){t.click()},cloudchewieFn.copyLink=function(){let e=t.src,n=document.createElement("textarea");n.value=e,document.body.appendChild(n),n.select(),document.execCommand("Copy"),document.body.removeChild(n),void 0!==GLOBAL_CONFIG.Snackbar&&cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success)}):"TEXTAREA"!=t.tagName&&"INPUT"!=t.tagName||($("#menu-paste").show(),cloudchewieFn.paste=function(){navigator.permissions.query({name:"clipboard-read"}).then((e=>{"granted"==e.state||"prompt"==e.state?navigator.clipboard.readText().then((e=>{cloudchewieFn.insertAtCursor(t,e)})):alert("请允许读取剪贴板！")}))});let n=e.clientX+10,o=e.clientY,a=$("#rightMenu").width(),c=$("#rightMenu").height();n+a>window.innerWidth&&(n-=a+10),o+c>window.innerHeight&&(o-=o+c-window.innerHeight);var l=!0;return document.querySelectorAll(".rightMenu-line").forEach((e=>{"none"!=$(e).css("display")&&(l=!1)})),l&&$("#menu-general").show(),cloudchewieFn.isReadMode&&document.querySelectorAll(".rightMenu-line").forEach((e=>{$(e).hide()})),cloudchewieFn.toggleRightMenu(!0,o,n),!1},window.addEventListener("click",(function(){cloudchewieFn.toggleRightMenu(!1)}))):window.oncontextmenu=function(){return!0}},toggleRightMenu:(e,t=0,n=0)=>{let o=$("#rightMenu");o.css("top",t+"px").css("left",n+"px"),e?o.show():o.hide()},addLongtabListener:(e,t)=>{let n=0;e.ontouchstart=()=>{n=0,n=setTimeout((()=>{t(),n=0}),380)},e.ontouchmove=()=>{clearTimeout(n),n=0},e.ontouchend=()=>{n&&clearTimeout(n)}},addPhotoFigcaption:()=>{document.querySelectorAll("#article-container img").forEach((e=>{const t=e.parentNode,n=e.title||e.alt;if(n&&!t.parentNode.classList.contains("justified-gallery")){const o=document.createElement("div");o.className="img-alt is-center",o.textContent=n,t.insertBefore(o,e.nextSibling)}}))},runJustifiedGallery:e=>{if(e.forEach((e=>{e.querySelectorAll("img").forEach((e=>{const t=e.getAttribute("data-lazy-src");t&&(e.src=t),cloudchewieFn.wrap(e,"div",{class:"fj-gallery-item"})}))})),window.fjGallery)return void setTimeout((()=>{cloudchewieFn.initJustifiedGallery(e)}),100);const t=document.createElement("link");t.rel="stylesheet",t.href=GLOBAL_CONFIG.source.justifiedGallery.css,document.body.appendChild(t),getScript(`${GLOBAL_CONFIG.source.justifiedGallery.js}`).then((()=>{cloudchewieFn.initJustifiedGallery(e)}))},runLightbox:()=>{cloudchewieFn.loadLightbox(document.querySelectorAll("#article-container img:not(.no-lightbox):not(.air-conditioner-main-content-bottom-logo)"))},toggleReadMode:()=>{const e=()=>{t.classList.remove("read-mode"),document.getElementById("post").classList.remove("read-mode"),n.remove(),n.removeEventListener("click",e),cloudchewieFn.isReadMode=!1,$(".aplayer").show(),$("#con-readmode").removeClass("checked"),$(document.getElementById("post-meta")).show()},t=document.body;t.classList.add("read-mode"),document.getElementById("post").classList.add("read-mode");const n=document.createElement("button");n.type="button",n.className="fas fa-sign-out-alt exit-readmode",n.removeEventListener("click",e),t.appendChild(n),consoleFn.closeConsole(),$(document.getElementById("post-meta")).hide(),cloudchewieFn.isReadMode=!0,$("#con-readmode").addClass("checked"),$(".aplayer").hide(),n.addEventListener("click",e)},toggleDarkMode:()=>{const e="dark"===document.documentElement.getAttribute("data-theme")?"dark":"light";$("#menus > div.menus_items > div:nth-child(7) > a > span"),$("#sidebar-menus > div.menus_items > div:nth-child(7) > a > span");"light"===e?(activateDarkMode(),saveToLocal.set("theme","dark",2),void 0!==GLOBAL_CONFIG.Snackbar&&cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night)):(activateLightMode(),saveToLocal.set("theme","light",2),cloudchewieFn.day_night_count++,void 0!==GLOBAL_CONFIG.Snackbar&&cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day)),"function"==typeof utterancesTheme&&utterancesTheme(),"object"==typeof FB&&window.loadFBComment(),window.DISQUS&&document.getElementById("disqus_thread").children.length&&setTimeout((()=>window.disqusReset()),200)},copyArticleLink:function(){let e=window.location.href,t=document.createElement("textarea");t.value=e,document.body.appendChild(t),t.select(),document.execCommand("Copy"),document.body.removeChild(t),void 0!==GLOBAL_CONFIG.Snackbar&&cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success)},translate:()=>{document.getElementById("con-translate").click()},toggleSideBtn:e=>{const t=document.getElementById("rightside-button-list").classList;t.toggle("show"),e.classList.contains("show")&&(t.add("status"),setTimeout((()=>{t.remove("status")}),300)),e.classList.toggle("show")},toggleAside:()=>{if(!cloudchewieFn.isHome()){const e=document.documentElement.classList;e.contains("hide-aside")?saveToLocal.set("enableAside","show",2):saveToLocal.set("enableAside","hide",2),e.toggle("hide-aside"),"hide"==saveToLocal.get("enableAside")?$("#con-toggleaside").addClass("checked"):$("#con-toggleaside").removeClass("checked")}},toggleMobileToc:()=>{"0"===window.getComputedStyle(document.getElementById("card-toc")).getPropertyValue("opacity")?(window.mobileToc.open(),$("#mobile-toc-button").addClass("checked")):(window.mobileToc.close(),$("#mobile-toc-button").removeClass("checked"))},toggleSidebar:()=>{document.querySelectorAll("#sidebar-menus .site-page.group").forEach((e=>{e.addEventListener("click",(e=>{e.target.classList.toggle("hide")}))}))},enlargeEmoji:()=>{let e=1,t="",n=document.createElement("div"),o=document.querySelector("body");n.id="owo-big",o.appendChild(n),new MutationObserver((a=>{for(let c=0;c<a.length;c++){let l=a[c].addedNodes,i="";if(2==l.length&&"OwO-body"==l[1].className)i=l[1];else{if(1!=l.length||"tk-comment"!=l[0].className)continue;i=l[0]}document.body.clientWidth<=768&&i.addEventListener("contextmenu",(e=>e.preventDefault())),i.onmouseover=a=>{e&&"IMG"==a.target.tagName&&(e=0,t=setTimeout((()=>{let e=3*a.target.clientHeight,t=3*a.target.clientWidth,c=a.x-a.offsetX-(t-a.target.clientWidth)/2,l=a.y-a.offsetY;c+t>o.clientWidth&&(c-=c+t-o.clientWidth+10),c<0&&(c=10),n.style.cssText=`display:flex; height:${e}px; width:${t}px; left:${c}px; top:${l}px;`,n.innerHTML=`<img src="${a.target.src}">`}),300))},i.onmouseout=()=>{n.style.display="none",e=1,clearTimeout(t)}}})).observe(document.getElementById("post-comment"),{subtree:!0,childList:!0})},switchComments:()=>{let e=!1;const t=document.querySelector("#comment-switch > .switch-btn");t&&t.addEventListener("click",(()=>{this.classList.toggle("move"),document.querySelectorAll("#post-comment > .comment-wrap > div").forEach((e=>{cloudchewieFn.isHidden(e)?e.style.cssText="display: block;animation: tabshow .5s":e.style.cssText="display: none;animation: ''"})),e||"function"!=typeof loadOtherComment||(e=!0,loadOtherComment())}))},enhanceTwikoo:()=>{if(document.getElementById("site-title")&&document.getElementById("site-title").innerHTML.trim()==document.querySelector("#menus > div.menus_items > div:nth-child(5) > a > span").innerHTML.trim()){document.querySelector("#post-comment > div.comment-head > div > span").innerHTML="  留言板  ";setInterval((()=>{document.querySelectorAll(".el-textarea__inner").forEach((e=>{"请输入您的留言"!=e.getAttribute("placeholder")&&e.setAttribute("placeholder","请输入您的留言")})),document.querySelectorAll("#twikoo > div.tk-comments > div.tk-comments-container > div.tk-comments-no > span").forEach((e=>{"没有评论"==e.innerHTML&&(e.innerHTML="没有留言")})),document.querySelectorAll("#twikoo > div.tk-comments > div.tk-comments-container > div.tk-comments-title > span.tk-comments-count > span:nth-child(2)").forEach((e=>{" 条评论"==e.innerHTML&&(e.innerHTML=" 条留言")}))}),300)}document.getElementById("post-comment")&&setInterval((()=>{if(document.getElementById("CommentaryRegulations")){var e=document.createElement("div");e.id="CommentaryRegulations",e.classList.add("tk-submit-action-icon"),e.innerHTML="<a href='/term/' target='_blank' title='评论条例'></a>",document.querySelector(".tk-row-actions-start")&&document.querySelector(".tk-row-actions-start").appendChild(e)}}),300)},addRandomCommentInfo:function(){const e=`${adjectives[Math.floor(Math.random()*adjectives.length)]}${vegetablesAndFruits[Math.floor(Math.random()*vegetablesAndFruits.length)]}`;!function(){for(var t=["#author","input[name='comname']","#inpName","input[name='author']","#ds-dialog-name","#name","input[name='nick']","#comment_author"],n=["#mail","#email","input[name='commail']","#inpEmail","input[name='email']","#ds-dialog-email","input[name='mail']","#comment_email"],o=0;o<t.length;o++){var a=document.querySelector(t[o]);if(null!=a){a.value=e,a.dispatchEvent(new Event("input")),a.dispatchEvent(new Event("change"));break}}for(var c=0;c<n.length;c++){var l=document.querySelector(n[c]);if(null!=l){l.value=visitorMail,l.dispatchEvent(new Event("input")),l.dispatchEvent(new Event("change"));break}}}();var t=document.getElementsByClassName("el-textarea__inner")[0];t.focus(),t.setSelectionRange(-1,-1)},bindListener:()=>{$("#categoryBar > ul > li").each((function(){this.addEventListener("click",(()=>{pjax.loadUrl($(this).find("a").attr("href"))}))}))},categoriesBarActive:()=>{var e=window.location.pathname;if(e=decodeURIComponent(e),cloudchewieFn.isHome())document.querySelector("#category-bar")&&document.getElementById("首页").classList.add("select");else{if(/\/categories\/.*?\//.test(e)){var t=e.split("/")[2];document.querySelector("#category-bar")&&document.getElementById(t).classList.add("select")}}},topCategoriesBarScroll:()=>{if(document.getElementById("category-bar-items")){let e=document.getElementById("category-bar-items");e.addEventListener("mousewheel",(function(t){let n=-t.wheelDelta/2;e.scrollLeft+=n,t.preventDefault()}),!1)}},scrollFunction:()=>{const e=document.getElementById("rightside"),t=window.innerHeight+56;if(document.body.scrollHeight<=t&&"/nowtime/"!=location.pathname&&"/guestbook/"!=location.pathname)return void(e.style.cssText="opacity: 1; transform: translateX(-60px)");let n=0,o=!0;const a=document.getElementById("page-header"),c="function"==typeof chatBtnHide,l="function"==typeof chatBtnShow;window.scrollCollect=()=>cloudchewieFn.throttle((i=>{const s=window.scrollY||document.documentElement.scrollTop,r=function(e){const t=e>n;return n=e,t}(s);s<10?a.classList.add("nav-top"):a.classList.remove("nav-top"),s>56?("false"==cloudchewieFn.loadData("enableFixedNav")&&(r?(a.classList.contains("nav-visible")&&a.classList.remove("nav-visible"),l&&!0===o&&(chatBtnHide(),o=!1)):(a.classList.contains("nav-visible")||a.classList.add("nav-visible"),c&&!1===o&&(chatBtnShow(),o=!0)),a.classList.add("nav-fixed")),"0"===window.getComputedStyle(e).getPropertyValue("opacity")&&"true"==cloudchewieFn.loadData("enableRightSide")&&(e.style.cssText="opacity: 0.8; transform: translateX(-60px)")):(0===s&&"false"==cloudchewieFn.loadData("enableFixedNav")&&a.classList.remove("nav-fixed","nav-visible"),"true"==cloudchewieFn.loadData("enableRightSide")&&(e.style.cssText="opacity: ''; transform: ''")),document.body.scrollHeight<=t&&"true"==cloudchewieFn.loadData("enableRightSide")&&(e.style.cssText="opacity: 0.8; transform: translateX(-60px)")}),200)(),window.addEventListener("scroll",window.scrollCollect)},scrollFunctionOfToc:()=>{const e=GLOBAL_CONFIG_SITE.isToc,t=GLOBAL_CONFIG.isAnchor,n=document.getElementById("article-container");if(!n||!e&&!t)return;let o,a,c,l,i;if(e){const e=document.getElementById("card-toc");a=e.getElementsByClassName("toc-content")[0],o=a.querySelectorAll(".toc-link");const t=e.querySelector(".toc-percentage");i=a.classList.contains("is-expand"),c=e=>{const o=n.clientHeight,a=document.documentElement.clientHeight,c=(e-n.offsetTop)/(o>a?o-a:document.documentElement.scrollHeight-a),l=Math.round(100*c),i=l>100?100:l<=0?0:l;t.textContent=i},window.mobileToc={open:()=>{e.style.cssText="animation: toc-open .3s; opacity: 1; right: 55px"},close:()=>{e.style.animation="toc-close .2s",setTimeout((()=>{e.style.cssText="opacity:''; animation: ''; right: ''"}),100)}},a.addEventListener("click",(e=>{e.preventDefault();const t=e.target.classList;if(t.contains("toc-content"))return;const n=t.contains("toc-link")?e.target:e.target.parentElement;cloudchewieFn.scrollToDest(cloudchewieFn.getEleTop(document.getElementById(decodeURI(n.getAttribute("href")).replace("#",""))),300),window.innerWidth<900&&(window.mobileToc.close(),$("#mobile-toc-button").removeClass("checked"))})),l=e=>{const t=e.getBoundingClientRect().top,n=a.scrollTop;t>document.documentElement.clientHeight-100&&(a.scrollTop=n+150),t<100&&(a.scrollTop=n-150)}}const s=n.querySelectorAll("h1,h2,h3,h4,h5,h6");let r="";window.resolveTocScrollFunction=()=>cloudchewieFn.throttle((()=>{const n=window.scrollY||document.documentElement.scrollTop;e&&c(n),(n=>{if(0===n)return!1;let c="",d="";if(s.forEach(((e,t)=>{if(n>cloudchewieFn.getEleTop(e)-80){const n=e.id;c=n?"#"+encodeURI(n):"",d=t}})),r!==d&&(t&&cloudchewieFn.updateAnchor(c),r=d,e)){if(a.querySelectorAll(".active").forEach((e=>{e.classList.remove("active")})),""===c)return;const e=o[d];if(e.classList.add("active"),setTimeout((()=>{l(e)}),0),i)return;let t=e.parentNode;for(;!t.matches(".toc");t=t.parentNode)t.matches("li")&&t.classList.add("active")}})(n)}),100)(),window.addEventListener("scroll",resolveTocScrollFunction)},browsingProgress:()=>{window.addEventListener("scroll",(()=>{let e=document.documentElement.scrollTop||window.scrollY,t=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight,document.body.offsetHeight,document.documentElement.offsetHeight,document.body.clientHeight,document.documentElement.clientHeight)-document.documentElement.clientHeight,n=Math.round(e/t*100),o=document.querySelector("#go-up");down=document.querySelector("#go-down"),null!=o&&(n<=95?(o.childNodes[0].style.display="none",o.childNodes[1].style.display="block",o.childNodes[1].childNodes[0].innerHTML=n):(o.childNodes[1].style.display="none",o.childNodes[0].style.display="block")),n<=95&&document.documentElement.scrollTop>20?down.style.display="block":down.style.display="none",cloudchewieFn.isInViewPortOfOne(document.getElementById("post-comment"))?$("#to_comment").hide():$("#to_comment").show(),cloudchewieFn.percentageScrollFn(e)})),document.documentElement.scrollTop>20?document.querySelector("#go-down").style.display="block":document.querySelector("#go-down").style.display="none"},qrcodeCreate:function(){if(document.getElementById("qrcode")){document.getElementById("qrcode").innerHTML="";new QRCode(document.getElementById("qrcode"),{text:window.location.href,width:250,height:250,colorDark:"#000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H})}},percentageScrollFn:e=>{const t=document.getElementById("percent"),n=document.getElementById("nav-totop");let o=document.getElementById("body-wrap").clientHeight,a=document.getElementById("post-comment")||document.getElementById("footer");const c=document.documentElement.clientHeight,l=e/(o>c?o-c:document.documentElement.scrollHeight-c),i=Math.round(100*l),s=i>100?100:i<=0?1:i;t.textContent=s,(cloudchewieFn.isInViewPortOfOne(a)||s>90)&&document.documentElement.scrollTop>20?(n.classList.add("long"),t.textContent="回到顶部",document.body.clientWidth<=768&&(document.getElementById("search-button").style.display="none")):(n.classList.remove("long"),t.textContent=s,setTimeout((()=>{document.getElementById("search-button").style.display="inline"}),300))},addCopyright:()=>{const e=GLOBAL_CONFIG.copyright;document.body.oncopy=t=>{let n;t.preventDefault();const o=window.getSelection(0).toString();return n=o.length>e.limitCount?o+"\n\n\n"+e.languages.author+"\n"+e.languages.link+window.location.href+"\n"+e.languages.source+"\n"+e.languages.info:o,t.clipboardData?t.clipboardData.setData("text",n):window.clipboardData.setData("text",n)}},addRuntime:()=>{const e=document.getElementById("runtimeshow");if(e){const t=e.getAttribute("data-publishDate");e.innerText=cloudchewieFn.diffDate(t)+" "+GLOBAL_CONFIG.runtime}},addLastPushDate:()=>{const e=document.getElementById("last-push-date");if(e){const t=e.getAttribute("data-lastPushDate");e.innerText=cloudchewieFn.diffDate(t,!0)}},addTableWrap:()=>{const e=document.querySelectorAll("#article-container :not(.highlight) > table, #article-container > table");e.length&&e.forEach((e=>{cloudchewieFn.wrap(e,"div",{class:"table-wrap"})}))},clickFnOfTagHide:()=>{const e=document.querySelectorAll("#article-container .hide-button");e.length&&e.forEach((e=>{e.addEventListener("click",(e=>{const t=e.target;t.classList.add("open");const n=t.nextElementSibling.querySelectorAll(".fj-gallery");n.length&&cloudchewieFn.initJustifiedGallery(n)}))}))},clickFnOfTabs:()=>{document.querySelectorAll("#article-container .tab > button").forEach((e=>{e.addEventListener("click",(e=>{const t=e.target,n=t.parentNode;if(!n.classList.contains("active")){const e=n.parentNode.nextElementSibling,o=cloudchewieFn.siblings(n,".active")[0];o&&o.classList.remove("active"),n.classList.add("active");const a=t.getAttribute("data-href").replace("#","");[...e.children].forEach((e=>{e.id===a?e.classList.add("active"):e.classList.remove("active")}));const c=e.querySelectorAll(`#${a} .fj-gallery`);c.length>0&&cloudchewieFn.initJustifiedGallery(c)}}))}))},tabToTop:()=>{document.querySelectorAll("#article-container .tabs .tab-to-top").forEach((e=>{e.addEventListener("click",(e=>{cloudchewieFn.scrollToDest(cloudchewieFn.getEleTop(cloudchewieFn.getParents(e.target,".tabs")),300)}))}))},toggleCardCategory:()=>{const e=document.querySelectorAll("#aside-cat-list .card-category-list-item.parent i");e.length&&e.forEach((e=>{e.addEventListener("click",(e=>{e.preventDefault();const t=e.target;t.classList.toggle("expand");const n=t.parentNode.nextElementSibling;cloudchewieFn.isHidden(n)?n.style.display="block":n.style.display="none"}))}))},addPostOutdateNotice:()=>{const e=GLOBAL_CONFIG.noticeOutdate,t=cloudchewieFn.diffDate(GLOBAL_CONFIG_SITE.postUpdate);if(t>=e.limitDay){const n=document.createElement("div");n.className="post-outdate-notice",n.textContent=e.messagePrev+" "+t+" "+e.messageNext;const o=document.getElementById("article-container");"top"===e.position?o.insertBefore(n,o.firstChild):o.appendChild(n)}},lazyloadImg:()=>{window.lazyLoadInstance=new LazyLoad({elements_selector:"img",threshold:0,data_src:"lazy-src"})},relativeDate:e=>{e.forEach((e=>{const t=e,n=t.getAttribute("datetime");t.innerText=cloudchewieFn.diffDate(n,!0),t.style.display="inline"}))},randomPost:()=>{let e=saveToLocal.get("postLinks");if(e)for(;;){let t=e[Math.floor(Math.random()*e.length)];if("/"!=t&&"/404.html"!=t)return void pjax.loadUrl(t)}fetch("/sitemap.xml").then((e=>e.text())).then((e=>(new window.DOMParser).parseFromString(e,"text/xml"))).then((e=>{let t=e.querySelectorAll("url loc"),n=[];t.forEach((e=>{let t=e.innerHTML.split("/"),o="/";for(var a=3;a<t.length;a++)a==t.length-1?o+=t[a]:o+=t[a]+"/";n.push(o)})),saveToLocal.set("postLinks",n,.02),cloudchewieFn.randomPost()}))},sweetSnack:()=>{"NaN"==cloudchewieFn.getCookie("daynight")?cloudchewieFn.day_night_count=0:cloudchewieFn.day_night_count=new Number(cloudchewieFn.getCookie("daynight")),setInterval((()=>{cloudchewieFn.day_night_count+-3==0&&(void 0!==GLOBAL_CONFIG.Snackbar&&cloudchewieFn.snackbarShowLong("冬至·伊始:我的心与爱是不是能够这般纯粹，经受住时空的考验"),cloudchewieFn.day_night_count++),cloudchewieFn.day_night_count+-3==20&&(void 0!==GLOBAL_CONFIG.Snackbar&&cloudchewieFn.snackbarShowLong("交替·新生:月徊而霜凝兮，良人伴我侧；月斜而影绰兮，明镜照我心"),cloudchewieFn.day_night_count++),cloudchewieFn.day_night_count+-3==60&&(void 0!==GLOBAL_CONFIG.Snackbar&&cloudchewieFn.snackbarShowLong("风起·渴盼:桐絮扰动着尘世，恋人缔造着世界；细腻不语的青苔，是我对你的爱恋"),cloudchewieFn.day_night_count++),cloudchewieFn.day_night_count+-3==120&&(void 0!==GLOBAL_CONFIG.Snackbar&&cloudchewieFn.snackbarShowLong("雾霭·探索:越来越浓的雾霭模糊着彼此的视线，越来越厚的障壁阻隔着彼此的心儿"),cloudchewieFn.day_night_count++),cloudchewieFn.day_night_count+-3==200&&(void 0!==GLOBAL_CONFIG.Snackbar&&cloudchewieFn.snackbarShowLong("拨云·成长:生活不全都是恋爱，恋爱却全都是生活"),cloudchewieFn.day_night_count++),cloudchewieFn.setCookie("daynight",cloudchewieFn.day_night_count.toString())}),500)},switchPostChart:()=>{let e="light"===document.documentElement.getAttribute("data-theme")?"#4C4948":"rgba(255,255,255,0.7)";if(document.getElementById("posts-chart")&&postsOption)try{let t=postsOption;t.title.textStyle.color=e,t.xAxis.nameTextStyle.color=e,t.yAxis.nameTextStyle.color=e,t.xAxis.axisLabel.color=e,t.yAxis.axisLabel.color=e,t.xAxis.axisLine.lineStyle.color=e,t.yAxis.axisLine.lineStyle.color=e,t.series[0].markLine.data[0].label.color=e,postsChart.setOption(t)}catch(e){}if(document.getElementById("tags-chart")&&tagsOption)try{let t=tagsOption;t.title.textStyle.color=e,t.xAxis.nameTextStyle.color=e,t.yAxis.nameTextStyle.color=e,t.xAxis.axisLabel.color=e,t.yAxis.axisLabel.color=e,t.xAxis.axisLine.lineStyle.color=e,t.yAxis.axisLine.lineStyle.color=e,t.series[0].markLine.data[0].label.color=e,tagsChart.setOption(t)}catch(e){}if(document.getElementById("categories-chart")&&categoriesOption)try{let t=categoriesOption;t.title.textStyle.color=e,t.legend.textStyle.color=e,categoryParentFlag||(t.series[0].label.color=e),categoriesChart.setOption(t)}catch(e){}},switchCommentBarrage:function(){let e=document.querySelector(".comment-barrage");e&&("flex"===window.getComputedStyle(e).display?(e.style.display="none",cloudchewieFn.snackbarShow("已关闭评论弹幕"),document.querySelector(".menu-commentBarrage-text").textContent="显示弹幕",document.getElementById("con-barrage")&&document.getElementById("con-barrage").classList.remove("checked"),document.getElementById("switch_commentBarrage")&&document.getElementById("switch_commentBarrage").classList.remove("checked"),cloudchewieFn.saveData("enableCommentBarrage","false")):(e.style.display="flex",document.querySelector(".menu-commentBarrage-text").textContent="关闭弹幕",document.getElementById("con-barrage")&&document.getElementById("con-barrage").classList.add("checked"),document.getElementById("switch_commentBarrage")&&document.getElementById("switch_commentBarrage").classList.add("checked"),cloudchewieFn.snackbarShow("已开启评论弹幕"),cloudchewieFn.saveData("enableCommentBarrage","true"))),cloudchewieFn.toggleRightMenu(!1)},switchRightClickMenuHotReview:function(){const e=document.getElementById("post-comment"),t=document.getElementById("menu-commentBarrage");t.style.display=e?"flex":"none"},loadDamaku:()=>{const e=new EasyDanmaku({el:"#danmu",line:10,speed:20,hover:!0,loop:!0});let t=saveToLocal.get("danmu");if(t)e.batchSend(t,!0);else{let o=[];function n(e){return(e=(e=(e=(e=e.replace(/<\/*br>|[\s\uFEFF\xA0]+/g,"")).replace(/<img.*?>/g,"[图片]")).replace(/<a.*?>.*?<\/a>/g,"[链接]")).replace(/<pre.*?>.*?<\/pre>/g,"[代码块]")).replace(/<.*?>/g,"")}fetch("https://comment.cloudchewie.com/",{method:"POST",body:JSON.stringify({event:"GET_RECENT_COMMENTS",accessToken:"df242fe099bf81ec336572476fbdc208",includeReply:!1,pageSize:100}),headers:{"Content-Type":"application/json"}}).then((e=>e.json())).then((({data:t})=>{t.forEach((e=>{null==e.avatar&&(e.avatar="https://cravatar.cn/avatar/d615d5793929e8c7d70eab5f00f7f5f1?d=mp"),o.push({avatar:e.avatar,content:e.nick+"："+n(e.comment)})})),e.batchSend(o,!0),saveToLocal.set("danmu",o,.02)})).catch((()=>cloudchewieFn.snackbarShow("评论系统过载,请稍后访问")))}document.getElementById("danmuBtn").innerHTML="<button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.remove('hidedanmu')\">显示弹幕</button> <button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.add('hidedanmu')\">隐藏弹幕</button>"},toggleMusic:function(e=!0){if(cloudchewieFn.isMusic()){let t='<i class="fas fa-play"></i><span>播放音乐</span>',n='<i class="fas fa-pause"></i><span>暂停音乐</span>';cloudchewie_musicPlaying?(document.getElementById("menu-music-toggle").innerHTML=t,document.querySelector("#con-music i").classList="fas fa-play",cloudchewie_musicPlaying=!1):(document.getElementById("menu-music-toggle").innerHTML=n,document.querySelector("#con-music").classList.add("on"),document.querySelector("#con-music i").classList="fas fa-pause",cloudchewie_musicPlaying=!0),e&&anMusicEl.querySelector("meting-js").aplayer.toggle()}else{cloudchewie_musicFirst||(cloudchewieFn.musicBindEvent(),cloudchewie_musicFirst=!0);let t='<i class="fas fa-play"></i><span>播放音乐</span>',n='<i class="fas fa-pause"></i><span>暂停音乐</span>';cloudchewie_musicPlaying?(navMusicEl.classList.remove("playing"),document.getElementById("menu-music-toggle").innerHTML=t,document.getElementById("nav-music-hoverTips").innerHTML="音乐已暂停",document.querySelector("#con-music i").classList="fas fa-play",cloudchewie_musicPlaying=!1,navMusicEl.classList.remove("stretch")):(navMusicEl.classList.add("playing"),document.getElementById("menu-music-toggle").innerHTML=n,document.querySelector("#con-music").classList.add("on"),document.querySelector("#con-music i").classList="fas fa-pause",cloudchewie_musicPlaying=!0,navMusicEl.classList.add("stretch")),e&&document.querySelector("#nav-music meting-js").aplayer.toggle()}},musicTelescopic:function(){navMusicEl.classList.contains("stretch")?navMusicEl.classList.remove("stretch"):navMusicEl.classList.add("stretch")},musicSkipBack:function(){navMusicEl.querySelector("meting-js").aplayer.skipBack(),cloudchewieFn.toggleRightMenu(!1)},musicSkipForward:function(){navMusicEl.querySelector("meting-js").aplayer.skipForward(),cloudchewieFn.toggleRightMenu(!1)},musicGetName:function(){for(var e=document.querySelector(".aplayer-title"),t=[],n=e.length-1;n>=0;n--)t[n]=e[n].innerText;return t[0]},musicBindEvent:function(){document.querySelector("#nav-music .aplayer-music").addEventListener("click",(function(){cloudchewieFn.musicTelescopic()})),document.querySelector("#nav-music .aplayer-button").addEventListener("click",(function(){cloudchewieFn.toggleMusic(!1)}))},listenNavMusicPause:function(){const e=setInterval((()=>{if(navMusicEl.querySelector("#nav-music meting-js").aplayer){clearInterval(e);let t='<i class="fas fa-play"></i><span>播放音乐</span>',n='<i class="fas fa-pause"></i><span>暂停音乐</span>';navMusicEl.querySelector("#nav-music meting-js").aplayer.on("pause",(function(){navMusicEl.classList.remove("playing"),document.getElementById("menu-music-toggle").innerHTML=t,document.getElementById("nav-music-hoverTips").innerHTML="音乐已暂停",document.querySelector("#con-music i").classList="fas fa-play",cloudchewie_musicPlaying=!1,navMusicEl.classList.remove("stretch")})),navMusicEl.querySelector("#nav-music meting-js").aplayer.on("play",(function(){navMusicEl.classList.add("playing"),document.getElementById("menu-music-toggle").innerHTML=n,document.querySelector("#con-music i").classList="fas fa-pause",cloudchewie_musicPlaying=!0}))}}),16)},playMusic(){if(cloudchewieFn.isMusic()){document.getElementById("anMusic-page").querySelector("meting-js").aplayer.play()}else{document.getElementById("nav-music").querySelector("meting-js").aplayer.play()}},changeMusicBg:function(e=!0){const t=document.getElementById("an_music_bg");if(e){const e=document.querySelector("#anMusic-page .aplayer-pic");t.style.backgroundImage=e.style.backgroundImage,$web_container.style.background="none"}else{let e=setInterval((()=>{document.querySelector("#anMusic-page .aplayer-pic")&&(clearInterval(e),cloudchewieFn.addEventListenerMusic(),cloudchewieFn.changeMusicBg(),document.querySelector("#nav-music meting-js").aplayer&&!document.querySelector("#nav-music meting-js").aplayer.audio.paused&&cloudchewieFn.toggleMusic())}),100)}null!=document.querySelector("#anMusic-page .aplayer-title")&&null!=document.querySelector("#anMusic-page .aplayer-title").innerHTML&&""!=document.querySelector("#anMusic-page .aplayer-title").innerHTML&&(document.title=document.querySelector("#anMusic-page .aplayer-title").innerHTML+" - 天籁 | Cloudchewie")},initAnPlayer:function(){if(!cloudchewieFn.isMusic())return;const e=new URLSearchParams(window.location.search);var t="7185982924",n="netease";if(null!=cloudchewieFn.loadData("playlist")){var o=JSON.parse(cloudchewieFn.loadData("playlist"));t=o.id,n=o.server}const a=document.getElementById("anMusic-page-meting");if(e.get("id")&&e.get("server")){const t=e.get("id"),n=e.get("server");a.innerHTML=`<meting-js id="${t}" server=${n} type="playlist" type="playlist" mutex="true" preload="auto" theme="var(--theme-color)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`}else a.innerHTML=`<meting-js id="${t}" server="${n}" type="playlist" mutex="true" preload="auto" theme="var(--theme-color)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`;cloudchewieFn.changeMusicBg(!1)},addEventListenerMusic:function(){const e=document.getElementById("anMusic-page"),t=e.querySelector(".aplayer-info .aplayer-time .aplayer-icon-menu"),n=e.querySelector("meting-js").aplayer;n.volume(.8,!0),n.on("loadeddata",(function(){cloudchewieFn.changeMusicBg()})),t.addEventListener("click",(function(){document.getElementById("menu-mask").style.display="block",document.getElementById("menu-mask").style.animation="0.5s ease 0s 1 normal none running to_show",e.querySelector(".aplayer.aplayer-withlist .aplayer-list").style.opacity="1"})),document.getElementById("menu-mask").addEventListener("click",(function t(){cloudchewieFn.isMusic()?null!=e.querySelector(".aplayer-list")&&e.querySelector(".aplayer-list").classList.remove("aplayer-list-hide"):document.getElementById("menu-mask").removeEventListener("click",t)})),document.addEventListener("keydown",(function(e){"Space"===e.code&&(e.preventDefault(),n.toggle()),39===e.keyCode&&(e.preventDefault(),n.skipForward()),37===e.keyCode&&(e.preventDefault(),n.skipBack()),38===e.keyCode&&musicVolume<=1&&(musicVolume+=.1,n.volume(musicVolume,!0)),40===e.keyCode&&musicVolume>=0&&(musicVolume+=-.1,n.volume(musicVolume,!0))}))},changeMusicList:async function(e,t,n="playlist"){if(cloudchewieFn.isMusic()){const o=document.getElementById("anMusic-page");if(null==o||null==o.querySelector("meting-js"))return;const a=o.querySelector("meting-js").aplayer;o.querySelector("meting-js")._fetchSongs(e,t,n).then((e=>{if(null!=a){let t=a.audio.paused;a.list.clear(),a.list.add(e),t||cloudchewieFn.playMusic()}}))}else{const o=document.getElementById("nav-music");if(null==o||null==o.querySelector("meting-js"))return;const a=o.querySelector("meting-js").aplayer;o.querySelector("meting-js")._fetchSongs(e,t,n).then((e=>{if(null!=a){let t=a.audio.paused;a.list.clear(),a.list.add(e),t||cloudchewieFn.playMusic()}}))}},bindRightSideBtn:()=>{document.getElementById("rightside").addEventListener("click",(e=>{const t=e.target.id?e.target:e.target.parentNode;switch(t.id){case"go-up":cloudchewieFn.scrollToTop();break;case"go-down":cloudchewieFn.scrollToBottom();break;case"rightside_config":cloudchewieFn.toggleSideBtn(t);break;case"mobile-toc-button":cloudchewieFn.toggleMobileToc();break;case"readmode":cloudchewieFn.toggleReadMode();break;case"darkmode":cloudchewieFn.toggleDarkMode();break;case"hide-aside-btn":cloudchewieFn.toggleAside()}}))},parseImage:e=>`<a href="${e}" data-fancybox="gallery" class="fancybox" data-thumb="${e}"><img class="no-lazyload" src="${e}"></a>`,jumpToComment:e=>{var t=document.querySelector(".el-textarea__inner");t.value=`> ${e}\n\n`,t.focus(),cloudchewieFn.snackbarShow("无需删除空行，直接输入评论即可",!1,2e3)},fetchMemos:async()=>{var e=[],t={};fetch("/memos_user.json").then((e=>e.json())).then((async n=>{await Promise.allSettled(n.map((e=>((e,t)=>{const n=new Promise(((t,n)=>setTimeout((()=>n("Timed out after ms.")),e)));return Promise.race([t,n])})(2e3,fetch("https://memos.cloudchewie.com/api/v1/memo?creatorId="+e.id+"&rowStatus=NORMAL&limit=10").then((e=>e.json())).then((e=>e)))))).then((o=>{for(var a=0;a<o.length;a++){if("fulfilled"==o[a].status)for(var c=o[a].value,l=0;l<c.length;l++){var i=c[l];if(Math.floor(((new Date).getTime()-1e3*i.updatedTs)/864e5)<365){let o="";n.forEach((e=>{e.id==i.creatorId&&(o=e.avatar)})),t={id:i.id,avatar:o&&""!=o?o:"https://picbed.cloudchewie.com/img/badge/memos.webp",updatedTs:i.updatedTs,creatorId:i.creatorId,creator:i.creatorName,content:i.content,resourceList:i.resourceList},e.push(t)}}}var s;e.sort((s="updatedTs",function(e,t){var n=e[s];return t[s]-n})),cloudchewieFn.loadMemos(e)}))}))},loadMemos:e=>{let t=[],n="";e.forEach((e=>{t.push(cloudchewieFn.formatMemo(e))})),t.forEach((e=>{n+=`\n                <div class="talk_item">\n                  <div class="talk_content">${e.content}</div>\n                  <div class="talk_spacer"></div>\n                  <div class="talk_meta">\n                    <img class="no-lightbox no-lazyload avatar" src="${e.avatar}">\n                    <div class="info">\n                      <span class="talk_nick">${e.name}</span>\n                      <span class="talk_dot">·</span>\n                      <span class="talk_date">${e.date}</span>\n                    </div>\n                  </div>\n                </div>\n                `})),document.getElementById("talk").innerHTML=n,window.Lately&&Lately.init({target:".talk_date"});var o=0,a=setInterval((function(){cloudchewieFn.isNowtime()&&(waterfall("#talk"),setTimeout((()=>{waterfall("#talk")}),300)),++o>5&&clearInterval(a)}),300)},formatMemo:e=>{BILIBILI_REG=/<a.*?href="https:\/\/www\.bilibili\.com\/video\/((av[\d]{1,10})|(BV([\w]{10})))\/?".*?>.*<\/a>/g,NETEASE_MUSIC_REG=/<a.*?href="https:\/\/music\.163\.com\/.*id=([0-9]+)".*?>.*<\/a>/g,QQMUSIC_REG=/<a.*?href="https\:\/\/y\.qq\.com\/n\/ryqq\/songDetail.*\/([0-9a-zA-Z]+)?".*?>.*?<\/a>/g,QQVIDEO_REG=/<a.*?href="https:\/\/v\.qq\.com\/.*\/([a-z|A-Z|0-9]+)\.html".*?>.*<\/a>/g,YOUKU_REG=/<a.*?href="https:\/\/v\.youku\.com\/.*\/id_([a-z|A-Z|0-9|==]+)\.html".*?>.*<\/a>/g,YOUTUBE_REG=/<a.*?href="https:\/\/www\.youtube\.com\/watch\?v\=([a-z|A-Z|0-9]{11})\".*?>.*<\/a>/g,marked.setOptions({breaks:!0,smartypants:!1,langPrefix:"language-",mangle:!1,headerIds:!1});const t=new marked.Renderer,n=t.link;t.link=(e,o,a)=>{const c=e.startsWith(`${location.protocol}//${location.hostname}`),l=n.call(t,e,o,a);return c?l:l.replace(/^<a /,'<a target="_blank" rel="noreferrer noopener nofollow" ')},marked.use({renderer:t});let o=e.content,a=[];return o=o.replace(/#([^\s#]+)/,"<span class='tag-span'>#$1</span> ").replace(/\!\[(.*?)\]\((.*?)\)/g,'<a href="$2" data-fancybox="gallery" class="fancybox" data-thumb="$2"><img class="no-lazyload" src="$2"></a>'),o=marked.parse(o).replace(BILIBILI_REG,"<div class='video-wrapper'><iframe src='//www.bilibili.com/blackboard/html5mobileplayer.html?bvid=$1&as_wide=1&high_quality=1&danmaku=1' scrolling='no' border='0' frameborder='no' framespacing='0' allowfullscreen='true'></iframe></div>").replace(NETEASE_MUSIC_REG,"<meting-js class='music-wrapper' auto='https://music.163.com/#/song?id=$1'></meting-js>").replace(QQMUSIC_REG,"<meting-js class='music-wrapper' auto='https://y.qq.com/n/yqq/song/$1.html'></meting-js>").replace(QQVIDEO_REG,"<div class='video-wrapper'><iframe src='//v.qq.com/iframe/player.html?vid=$1' allowFullScreen='true' frameborder='no'></iframe></div>").replace(YOUKU_REG,"<div class='video-wrapper'><iframe src='https://player.youku.com/embed/$1' frameborder=0 'allowfullscreen'></iframe></div>").replace(YOUTUBE_REG,"<div class='video-wrapper'><iframe src='https://www.youtube.com/embed/$1' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen title='YouTube Video'></iframe></div>"),null!=e.resourceList&&e.resourceList.forEach((e=>{null!=e.externalLink&&null!=e.externalLink&&""!=e.externalLink?a.push(e.externalLink):a.push(`https://memos.cloudchewie.com/o/r/${e.id}/${e.publicId}/${e.filename}`)})),a.length>0&&(o+='<div class="zone_imgbox">',a.map((e=>e.replace(/!\[.*\]\((.*?)\)/,"$1"))).forEach((e=>o+=`<a href="${e}" data-fancybox="gallery" class="fancybox" data-thumb="${e}"><img class="no-lazyload" src="${e}"></a>`)),o+="</div>"),{content:o,date:new Date(1e3*e.updatedTs).toLocaleString(),text:"".replace(/\[(.*?)\]\((.*?)\)/g,"[链接]"+(a?"[图片]":"")),name:e.creator,avatar:e.avatar}},insertAIDiv:e=>{cloudchewieFn.removeExistingAIDiv();const t=document.querySelector(e);if(!t)return;const n=document.createElement("div");n.className="post-cloudGPT";const o=document.createElement("div");o.className="cloudGPT-title",n.appendChild(o);const a=document.createElement("i");a.className="cloudGPT-title-icon",o.appendChild(a),a.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48px" height="48px" viewBox="0 0 48 48">\n      <title>机器人</title>\n      <g id="&#x673A;&#x5668;&#x4EBA;" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\n        <path d="M34.717885,5.03561087 C36.12744,5.27055371 37.079755,6.60373651 36.84481,8.0132786 L35.7944,14.3153359 L38.375,14.3153359 C43.138415,14.3153359 47,18.1768855 47,22.9402569 L47,34.4401516 C47,39.203523 43.138415,43.0650727 38.375,43.0650727 L9.625,43.0650727 C4.861585,43.0650727 1,39.203523 1,34.4401516 L1,22.9402569 C1,18.1768855 4.861585,14.3153359 9.625,14.3153359 L12.2056,14.3153359 L11.15519,8.0132786 C10.920245,6.60373651 11.87256,5.27055371 13.282115,5.03561087 C14.69167,4.80066802 16.024865,5.7529743 16.25981,7.16251639 L17.40981,14.0624532 C17.423955,14.1470924 17.43373,14.2315017 17.43948,14.3153359 L30.56052,14.3153359 C30.56627,14.2313867 30.576045,14.1470924 30.59019,14.0624532 L31.74019,7.16251639 C31.975135,5.7529743 33.30833,4.80066802 34.717885,5.03561087 Z M38.375,19.4902885 L9.625,19.4902885 C7.719565,19.4902885 6.175,21.0348394 6.175,22.9402569 L6.175,34.4401516 C6.175,36.3455692 7.719565,37.89012 9.625,37.89012 L38.375,37.89012 C40.280435,37.89012 41.825,36.3455692 41.825,34.4401516 L41.825,22.9402569 C41.825,21.0348394 40.280435,19.4902885 38.375,19.4902885 Z M14.8575,23.802749 C16.28649,23.802749 17.445,24.9612484 17.445,26.3902253 L17.445,28.6902043 C17.445,30.1191812 16.28649,31.2776806 14.8575,31.2776806 C13.42851,31.2776806 12.27,30.1191812 12.27,28.6902043 L12.27,26.3902253 C12.27,24.9612484 13.42851,23.802749 14.8575,23.802749 Z M33.1425,23.802749 C34.57149,23.802749 35.73,24.9612484 35.73,26.3902253 L35.73,28.6902043 C35.73,30.1191812 34.57149,31.2776806 33.1425,31.2776806 C31.71351,31.2776806 30.555,30.1191812 30.555,28.6902043 L30.555,26.3902253 C30.555,24.9612484 31.71351,23.802749 33.1425,23.802749 Z" id="&#x5F62;&#x72B6;&#x7ED3;&#x5408;" fill="#444444" fill-rule="nonzero"></path>\n      </g>\n      </svg>';const c=document.createElement("div");c.className="cloudGPT-title-text",c.textContent="AI摘要",o.appendChild(c);const l=document.createElement("div");l.className="cloudGPT-tag",l.id="cloudGPT-tag",l.textContent="CloudGPT",o.appendChild(l);const i=document.createElement("div");i.className="cloudGPT-explanation",i.innerHTML='生成中...<span class="blinking-cursor"></span>',n.appendChild(i),t.insertBefore(n,t.firstChild)},removeExistingAIDiv:()=>{const e=document.querySelector(".post-cloudGPT");e&&e.parentElement.removeChild(e)},getTitleAndContent:function(){try{const e=document.title,t=document.querySelector(cloudGPT_postSelector);if(!t)return"";const n=t.getElementsByTagName("p"),o=t.querySelectorAll("h1, h2, h3, h4, h5");let a="";for(let e of o)a+=e.innerText+" ";for(let e of n){a+=e.innerText.replace(/https?:\/\/[^\s]+/g,"")}let c=1e3;"undefined"!=typeof cloudGPT_wordLimit&&(c=cloudGPT_wordLimit);return(e+" "+a).slice(0,c)}catch(e){return""}},fetchcloudGPT:async function(e){if(!cloudGPT_key)return"没有获取到key，代码可能没有安装正确。如果你需要在cloudchewieCPT文件引用前定义cloudGPT_key变量。详细请查看文档。";if("5Q5mpqRK5DkwT1X9Gi5e"===cloudGPT_key)return"请购买 key 使用，如果你能看到此条内容，则说明代码安装正确。";const t=`https://summary.tianli0.top/?content=${encodeURIComponent(e)}&key=${encodeURIComponent(cloudGPT_key)}`;try{const e=new AbortController,n=(setTimeout((()=>e.abort()),2e4),await fetch(t,{signal:e.signal}));if(n.ok){return(await n.json()).summary}throw 402===n.status&&document.querySelectorAll(".post-cloudGPT").forEach((e=>{e.style.display="none"})),new Error("CloudGPT：余额不足，请充值后请求新的文章")}catch(e){return"AbortError"===e.name?"localhost"===window.location.hostname?"获取文章摘要超时。请勿在本地主机上测试 API 密钥。":"获取文章摘要超时。当你出现这个问题时，可能是key或者绑定的域名不正确。也可能是因为文章过长导致的 AI 运算量过大，您可以稍等一下然后刷新页面重试。":"获取文章摘要失败，请稍后再试。"}},aiShowAnimation:function(e){const t=document.querySelector(".cloudGPT-explanation");if(!t)return;if(cloudGPTIsRunning)return;cloudGPTIsRunning=!0;const n=25,o=6;t.style.display="block",t.innerHTML='生成中...<span class="blinking-cursor"></span>';let a=!1,c=0,l=!0;function i(e){const t=e.getBoundingClientRect();return t.top>=0&&t.left>=0&&t.bottom<=(window.innerHeight||document.documentElement.clientHeight)&&t.right<=(window.innerWidth||document.documentElement.clientWidth)}let s=performance.now();function r(){if(c<e.length&&a){const a=performance.now(),l=a-s,i=e.slice(c,c+1);l>=(/[，。！、？,.!?]/.test(i)?n*o:n)&&(t.innerText=e.slice(0,c+1),s=a,c++,c<e.length?t.innerHTML=e.slice(0,c)+'<span class="blinking-cursor"></span>':(t.innerHTML=e,t.style.display="block",cloudGPTIsRunning=!1)),requestAnimationFrame(r)}}function d(){i(t)?a||(a=!0,l?setTimeout((()=>{r(),l=!1}),1e3):r()):a=!1}function d(){i(t)?a||(a=!0,l?setTimeout((()=>{r(),l=!1}),1e3):r()):a=!1}window.addEventListener("scroll",d),window.addEventListener("resize",d),window.addEventListener("scroll",d),window.addEventListener("resize",d);const u=setInterval(d,500);cloudGPTIsRunning||clearInterval(u),d()},runcloudGPT:()=>{cloudchewieFn.insertAIDiv(cloudGPT_postSelector);const e=cloudchewieFn.getTitleAndContent();cloudchewieFn.fetchcloudGPT(e).then((e=>{cloudchewieFn.aiShowAnimation(e)}))},checkURLAndRunGPT:()=>{if("undefined"!=typeof cloudGPT_postURL)try{const e=e=>new RegExp("^"+e.split(/\*+/).map(t).join(".*")+"$"),t=e=>e.replace(/[|\\{}()[\]^$+*?.]/g,"\\$&"),n=e(cloudGPT_postURL),o=window.location.href;n.test(o)&&cloudchewieFn.runcloudGPT()}catch(e){}else cloudchewieFn.runcloudGPT()}},addHighlight=function(){const e=GLOBAL_CONFIG.highlight;if(!e)return;const t=e.highlightCopy,n=e.highlightLang,o=GLOBAL_CONFIG_SITE.isHighlightShrink,a=e.highlightHeightLimit,c=t||n||void 0!==o,l="highlighjs"===e.plugin?document.querySelectorAll("figure.highlight"):document.querySelectorAll('pre[class*="language-"]');if(!c&&!a||!l.length)return;const i="prismjs"===e.plugin;let s="",r="";const d=!0===o?"closed":"";void 0!==o&&(s=`<i class="fas fa-angle-down expand ${d}"></i>`),t&&(r='<div class="copy-notice"></div><i class="fas fa-paste copy-button"></i>');const u=e=>{const t=e.parentNode;t.classList.add("copy-true");const n=window.getSelection(),o=document.createRange();i?o.selectNodeContents(t.querySelectorAll("pre code")[0]):o.selectNodeContents(t.querySelectorAll("table .code pre")[0]),n.removeAllRanges(),n.addRange(o);n.toString();((e,t)=>{if(document.queryCommandSupported&&document.queryCommandSupported("copy"))if(document.execCommand("copy"),void 0!==GLOBAL_CONFIG.Snackbar)cloudchewieFn.snackbarShow(GLOBAL_CONFIG.copy.success);else{const e=t.previousElementSibling;e.innerText=GLOBAL_CONFIG.copy.success,e.style.opacity=1,setTimeout((()=>{e.style.opacity=0}),700)}else void 0!==GLOBAL_CONFIG.Snackbar?cloudchewieFn.snackbarShow(GLOBAL_CONFIG.copy.noSupport):t.previousElementSibling.innerText=GLOBAL_CONFIG.copy.noSupport})(0,e.lastChild),n.removeAllRanges(),t.classList.remove("copy-true")},m=function(e){const t=e.target.classList;t.contains("expand")?(e=>{const t=[...e.parentNode.children].slice(1);e.firstChild.classList.toggle("closed"),cloudchewieFn.isHidden(t[t.length-1])?t.forEach((e=>{e.style.display="block"})):t.forEach((e=>{e.style.display="none"}))})(this):t.contains("copy-button")&&u(this)},h=function(){this.classList.toggle("expand-done")};function g(e,t,n){const o=document.createDocumentFragment();if(c){const t=document.createElement("div");t.className=`highlight-tools ${d}`,t.innerHTML=s+e+r,t.addEventListener("click",m),o.appendChild(t)}if(a&&t.offsetHeight>a+30){const e=document.createElement("div");e.className="code-expand-btn",e.innerHTML='<i class="fas fa-angle-double-down"></i>',e.addEventListener("click",h),o.appendChild(e)}"hl"===n?t.insertBefore(o,t.firstChild):t.parentNode.insertBefore(o,t)}n?i?l.forEach((function(e){const t=`<div class="code-lang">${e.getAttribute("data-language")?e.getAttribute("data-language"):"Code"}</div>`;cloudchewieFn.wrap(e,"figure",{class:"highlight"}),g(t,e)})):l.forEach((function(e){let t=e.getAttribute("class").split(" ")[1];"plain"!==t&&void 0!==t||(t="Code");g(`<div class="code-lang">${t}</div>`,e,"hl")})):i?l.forEach((function(e){cloudchewieFn.wrap(e,"figure",{class:"highlight"}),g("",e)})):l.forEach((function(e){g("",e,"hl")}))},mobileSidebarFn={dragStartX:0,mobileSidebarOpen:!1,onDragStart:e=>{mobileSidebarFn.dragStartX=mobileSidebarFn.getEventX(e),$web_box.style.transition="all .3s",mobileSidebarFn.addMoveEndListeners(mobileSidebarFn.onDragMove,mobileSidebarFn.onDragEnd)},onDragMove:e=>{const t=mobileSidebarFn.getEventX(e)-mobileSidebarFn.dragStartX;if(t<0){const e=window.innerWidth,n=Math.min(-300,-1*t/e*300),o=Math.min(1,.86+t/e*.14);$web_box.style.transform=`translate3d(-${n}px, 0px, 0px) scale3d(${o}, ${o}, 1)`}},onDragMove:e=>{const t=mobileSidebarFn.getEventX(e)-mobileSidebarFn.dragStartX;if(t<0){const e=window.innerWidth,n=Math.min(-300,-1*t/e*300),o=Math.min(1,.86+t/e*.14);$web_box.style.transform=`translate3d(-${n}px, 0px, 0px) scale3d(${o}, ${o}, 1)`}},onDragEnd:e=>{const t=window.innerWidth;mobileSidebarFn.getEventX(e)<=t/1.5?mobileSidebarFn.completeTransition():mobileSidebarFn.resetTransition(),mobileSidebarFn.removeMoveEndListeners(mobileSidebarFn.onDragMove,mobileSidebarFn.onDragEnd)},completeTransition:()=>{$web_box.style.transition="all 0.3s ease-out",$web_box.style.transform="none",mobileSidebarFn.close(),mobileSidebarFn.removeMoveEndListeners(mobileSidebarFn.onDragMove,mobileSidebarFn.onDragEnd)},resetTransition:()=>{$web_box.style.transition="",$web_box.style.transform=""},getEventX:e=>e.type.startsWith("touch")?e.changedTouches[0].clientX:e.clientX,addMoveEndListeners:(e,t)=>{document.addEventListener("mousemove",e),document.addEventListener("mouseup",t),document.addEventListener("touchmove",e,{passive:!1}),document.addEventListener("touchend",t)},removeMoveEndListeners:(e,t)=>{document.removeEventListener("mousemove",e),document.removeEventListener("mouseup",t),document.removeEventListener("touchmove",e),document.removeEventListener("touchend",t)},open:()=>{cloudchewieFn.sidebarPaddingR(),$sidebarMenus.classList.add("open"),$rightside.classList.add("hide"),document.body.style.overflow="hidden",cloudchewieFn.animateIn(document.getElementById("menu-mask"),"to_show 0.5s"),document.getElementById("sidebar-menus").classList.add("open"),mobileSidebarFn.mobileSidebarOpen=!0,$web_box.classList.add("open"),$web_box.addEventListener("mousedown",mobileSidebarFn.onDragStart),$web_box.addEventListener("touchstart",mobileSidebarFn.onDragStart,{passive:!1}),cloudchewieFn.isMusic()?$web_container.style.background="rgb(255 255 255 / 20%)":$web_container.style.background="var(--global-bg)"},close:()=>{$sidebarMenus.classList.remove("open");const e=document.body;e.style.overflow="",$rightside.classList.remove("hide"),e.style.paddingRight="",cloudchewieFn.animateOut(document.getElementById("menu-mask"),"to_hide 0.5s"),document.getElementById("sidebar-menus").classList.remove("open"),mobileSidebarFn.mobileSidebarOpen=!1,$web_box.classList.remove("open"),$web_container.style.background="none",document.getElementById("nav-totop").classList.remove("long")}},consoleFn={toggleConsole:()=>{$("#settingWindow").fadeToggle("fast"),$("#console-mask").fadeToggle("fast"),"none"!=$("#settingWindow").css("display")&&$("#settingWindow").css("display","flex")},showConsole:()=>{$("#settingWindow").fadeIn("fast"),$("#console-mask").fadeIn("fast"),"none"!=$("#settingWindow").css("display")&&$("#settingWindow").css("display","flex")},closeConsole:()=>{$("#settingWindow").fadeOut("fast"),$("#console-mask").fadeOut("fast"),"none"!=$("#settingWindow").css("display")&&$("#settingWindow").css("display","flex")},loadSetting:()=>{$("#backer").hide(),$(".asetting").hide(),$("#settingWindow").hide(),document.getElementById("settingStyle").innerText="\n  *,*:not(.card-info)::before,*::after{\n      -webkit-backdrop-filter: none!important;\n      backdrop-filter: none!important;\n      -webkit-filter: none!important;\n      filter: none!important;\n  }",null==cloudchewieFn.loadData("enableAutoColor")&&cloudchewieFn.saveData("enableAutoColor","false"),"true"==cloudchewieFn.loadData("enableAutoColor")&&(document.getElementById("con-toggleAutoColor").checked=!0,GLOBAL_CONFIG_SITE.isPost&&consoleFn.changeAutoColor(!0)),GLOBAL_CONFIG_SITE.isPost||consoleFn.setDefaultThemeColor(3),null==cloudchewieFn.loadData("enableFixedNav")&&cloudchewieFn.saveData("enableFixedNav","false"),"false"==cloudchewieFn.loadData("enableFixedNav")?($("#page-header").removeClass("nav-fixed nav-visible"),$("#name-container").hide()):($("#name-container").show(),$("#page-header").addClass("nav-fixed nav-visible"),document.getElementById("con-toggleFixedNav").checked=!0),null==cloudchewieFn.loadData("enableContextMenu")&&cloudchewieFn.saveData("enableContextMenu","true"),"true"==cloudchewieFn.loadData("enableContextMenu")?($("#con-rightmouse").addClass("checked"),cloudchewieFn.bindContextMenu(!0,!1)):($("#con-rightmouse").removeClass("checked"),cloudchewieFn.bindContextMenu(!1,!1)),null==cloudchewieFn.loadData("enableAPlayer")&&cloudchewieFn.saveData("enableAPlayer","false");const e=$("#nav-music");if(null!=e&&null!=e.find("meting-js")){const t=e.find("meting-js").aplayer;"true"==cloudchewieFn.loadData("enableAPlayer")?("/music/"!=location.pathname?e.show():e.hide(),$(".music-wrapper .aplayer").show(),document.getElementById("con-toggleAPlayer").checked=!0):(e.hide(),t&&t.pause())}null==cloudchewieFn.loadData("enableRightSide")&&cloudchewieFn.saveData("enableRightSide","true"),"false"==cloudchewieFn.loadData("enableRightSide")?$("#rightside").hide():($("#rightside").show(),document.getElementById("con-toggleRightSide").checked=!0),null==cloudchewieFn.loadData("enableCommentBarrage")&&cloudchewieFn.saveData("enableCommentBarrage","true"),"false"==cloudchewieFn.loadData("enableCommentBarrage")||(document.getElementById("con-barrage")&&document.getElementById("con-barrage").classList.add("checked"),document.getElementById("switch_commentBarrage")&&document.getElementById("switch_commentBarrage").classList.add("checked"));try{let e=cloudchewieFn.loadData("blogBackground",1440);e?consoleFn.changeBackground(e,1):cloudchewieFn.removeData("blogBackground")}catch(e){cloudchewieFn.removeData("blogBackground")}if("true"==cloudchewieFn.loadData("enableAutoTheme")){document.getElementById("con-toggleAutoTheme").checked=!0,$("#con-mode,.rightMenu-item:has(.fa-adjust)").hide();var t=new Date;t.getHours()<=7||t.getHours()>=19?(consoleFn.activateDarkMode(),cloudchewieFn.removeData("theme")):(consoleFn.activateLightMode(),cloudchewieFn.removeData("theme"))}if(null==cloudchewieFn.loadData("enableStarBackground")&&cloudchewieFn.saveData("enableStarBackground","true"),"true"==cloudchewieFn.loadData("enableStarBackground")?($("#universe").show(),document.getElementById("con-toggleStarBackground").checked=!0):($("#universe").hide(),document.getElementById("con-toggleStarBackground").checked=!1),null!=cloudchewieFn.loadData("playlist")){var n=JSON.parse(cloudchewieFn.loadData("playlist"));consoleFn.changeAPlayerList(n.id,n.server,!1)}document.getElementById("console-mask").addEventListener("click",consoleFn.closeConsole),document.getElementById("console-button").addEventListener("click",consoleFn.showConsole),window.onresize=()=>{cloudchewieFn.isFullScreen()||$("#con-fullscreen").removeClass("checked")},$(document).ready((function(){new MutationObserver((function(e){e.forEach((function(e){"data-theme"===e.attributeName&&("dark"==$("html").attr("data-theme")?consoleFn.setDefaultThemeColor(2):GLOBAL_CONFIG_SITE.isPost&&consoleFn.changeAutoColor(!1))}))})).observe($("html")[0],{attributes:!0})}))},resetSettings:()=>{cloudchewieFn.removeData("blogBackground"),cloudchewieFn.removeData("enableStarBackground"),cloudchewieFn.removeData("isLeftAside"),cloudchewieFn.removeData("enableRightSide"),cloudchewieFn.removeData("enableAutoTheme"),cloudchewieFn.removeData("enableFixedNav"),cloudchewieFn.removeData("enableAutoColor"),cloudchewieFn.removeData("enableContextMenu"),cloudchewieFn.removeData("enableAPlayer"),window.location.reload()},setDefaultBackground:()=>{cloudchewieFn.removeData("blogBackground"),window.location.reload()},changeBackground:(e,t)=>{let n=document.getElementById("web_bg");"#"==e.charAt(0)?(n.style.backgroundColor=e,n.style.background="none"):n.style.background=e,t||cloudchewieFn.saveData("blogBackground",e)},setDefaultThemeColor:e=>{let t=":root {  --global-font-size: 14px;  --theme-color: #3B70FC; --font-color: #4c4948;  --hr-border: #d2ebfd;  --hr-before-color: #bfe4fb;  --search-bg: #f6f8fa;  --search-input-color: #4c4948;  --search-result-title: #4c4948;  --preloader-bg: #37474f;  --preloader-color: #fff;  --tab-border-color: #f0f0f0;  --tab-botton-bg: #f0f0f0;  --tab-botton-color: #1f2d3d;  --tab-button-hover-bg: #dcdcdc;  --tab-button-active-bg: #fff;  --card-bg: #fff;  --sidebar-bg: #f6f8fa;  --btn-hover-color: #24b1ff;  --btn-color: #fff;  --btn-bg: #3B70FC;  --text-bg-hover: rgba(0,153,255,0.7);  --light-grey: #eee;  --dark-grey: #cacaca;  --white: #fff;  --text-highlight-color: #1f2d3d;  --blockquote-color: #6a737d;  --blockquote-bg: rgba(0,153,255,0.1);  --reward-pop: #f5f5f5;  --toc-link-color: #666261;  --card-border: 1px solid var(--tab-botton-bg);  --card-box-shadow: 0 0px 0px 0px rgba(45,45,45,0.05);  --card-box-shadow-olded: 0 8px 12px -3px rgba(45,45,45,0.05);  --card-hover-box-shadow: 0 8px 12px -3px rgba(45,45,45,0.05);  --card-border-dashed: 2px dashed var(--tab-button-hover-bg);  --pseudo-hover: #24b1ff;  --headline-presudo: #a0a0a0;}",n="[data-theme='dark'] {  --global-bg: #0d0d0d;  --font-color: rgba(255,255,255,0.7);  --hr-border: rgba(255,255,255,0.4);  --hr-before-color: rgba(255,255,255,0.7);  --search-bg: #121212;  --search-input-color: rgba(255,255,255,0.7);  --search-result-title: rgba(255,255,255,0.9);  --preloader-bg: #0d0d0d;  --preloader-color: rgba(255,255,255,0.7);  --tab-border-color: #2c2c2c;  --tab-botton-bg: #2c2c2c;  --tab-botton-color: rgba(255,255,255,0.7);  --tab-button-hover-bg: #383838;  --tab-button-active-bg: #121212;  --card-bg: #121212;  --sidebar-bg: #121212;  --btn-hover-color: #787878;  --btn-color: rgba(255,255,255,0.7);  --btn-bg: #1f1f1f;  --text-bg-hover: #383838;  --light-grey: rgba(255,255,255,0.7);  --dark-grey: rgba(255,255,255,0.2);  --white: rgba(255,255,255,0.9);  --text-highlight-color: rgba(255,255,255,0.9);  --blockquote-color: rgba(255,255,255,0.7);  --blockquote-bg: #2c2c2c;  --reward-pop: #2c2c2c;  --toc-link-color: rgba(255,255,255,0.6);  --hl-color: rgba(255,255,255,0.7);  --hl-bg: #171717;  --hltools-bg: #1a1a1a;  --hltools-color: #90a4ae;  --hlnumber-bg: #171717;  --hlnumber-color: rgba(255,255,255,0.4);  --hlscrollbar-bg: #1f1f1f;  --hlexpand-bg: linear-gradient(180deg, rgba(23,23,23,0.6), rgba(23,23,23,0.9)); --timeline-bg: #1f1f1f;}";switch(e){case 1:document.getElementById("themeColor").innerText=t;break;case 2:document.getElementById("themeColor").innerText=n;break;default:document.getElementById("themeColor").innerText=t+n}},setThemeColor:(e,t,n)=>{document.getElementById("themeColor").innerText=`:root{--theme-color:rgb(${e}, ${t}, ${n})!important;--btn-bg:rgb(${e}, ${t}, ${n})!important;--btn-hover-color:rgba(${e}, ${t}, ${n},0.7)!important;--text-bg-hover:rgba(${e}, ${t}, ${n},0.7)!important;--km-toc-active:rgba(${e}, ${t}, ${n},0.7)!important;--km-toc-hover:rgba(${e}, ${t}, ${n},0.6)!important;}`},toggleStarBackground:()=>{"true"==cloudchewieFn.loadData("enableStarBackground")?(cloudchewieFn.saveData("enableStarBackground","false"),$("#universe").hide()):(cloudchewieFn.saveData("enableStarBackground","true"),$("#universe").show())},changeAPlayerList:(e,t,n=!0)=>{if(window.aplayers)for(let e=0;e<window.aplayers.length;e++)window.aplayers[e].pause();cloudchewieFn.saveData("playlist",JSON.stringify({id:e,server:t})),$("meting-js").attr("id",e),$("meting-js").attr("server",t),n&&cloudchewieFn.changeMusicList(t,e)},toggleFullScreen:()=>{cloudchewieFn.isFullScreen()?(document.exitFullscreen(),$("#con-fullscreen").removeClass("checked")):(document.documentElement.requestFullscreen(),$("#con-fullscreen").addClass("checked"))},toggleAside:()=>{const e=document.documentElement.classList;e.contains("hide-aside")?saveToLocal.set("enableAside","show",2):saveToLocal.set("enableAside","hide",2),e.toggle("hide-aside"),"hide"==cloudchewieFn.loadData("enableAside")?$("#con-toggleaside").addClass("checked"):$("#con-toggleaside").removeClass("checked")},switchAside:()=>{left?($("#aside-content").addClass("right"),$(".layout > div:first-child").addClass("left"),cloudchewieFn.saveData("isLeftAside","false")):($("aside-content").className="aside-content",$(".layout > div:first-child").className="",null!=$("#recent-posts")&&($("#recent-posts").className="recent-posts"),cloudchewieFn.saveData("isLeftAside","true")),left=!left},toggleRightSide:()=>{"true"==cloudchewieFn.loadData("enableRightSide")?(cloudchewieFn.saveData("enableRightSide","false"),$("#rightside").hide()):(cloudchewieFn.saveData("enableRightSide","true"),$("#rightside").show())},toggleAutoTheme:()=>{if("true"==cloudchewieFn.loadData("enableAutoTheme"))cloudchewieFn.saveData("enableAutoTheme","false"),$("#con-mode,.rightMenu-item:has(.fa-adjust)").show();else{cloudchewieFn.saveData("enableAutoTheme","true");var e=new Date;e.getHours()<=7||e.getHours()>=19?(activateDarkMode(),localStorage.removeItem("theme")):(activateLightMode(),localStorage.removeItem("theme")),$("#con-mode,.rightMenu-item:has(.fa-adjust)").hide()}},toggleFixedNav:()=>{"false"==cloudchewieFn.loadData("enableFixedNav")?(cloudchewieFn.saveData("enableFixedNav","true"),$("#page-header").addClass("nav-fixed nav-visible"),$("#name-container").show()):(cloudchewieFn.saveData("enableFixedNav","false"),$("#page-header").removeClass("nav-fixed nav-visible"),$("#name-container").hide())},toggleAutoColor:()=>{"true"==cloudchewieFn.loadData("enableAutoColor")?cloudchewieFn.saveData("enableAutoColor","false"):cloudchewieFn.saveData("enableAutoColor","true"),consoleFn.changeAutoColor(!1)},toggleContextMenu:()=>{"true"==cloudchewieFn.loadData("enableContextMenu")?(cloudchewieFn.saveData("enableContextMenu","false"),$("#con-rightmouse").removeClass("checked"),cloudchewieFn.bindContextMenu(!1,!0)):(cloudchewieFn.saveData("enableContextMenu","true"),$("#con-rightmouse").addClass("checked"),cloudchewieFn.bindContextMenu(!0,!0))},toggleAPlayer:()=>{const e=$("#nav-music");if(null==e||null==e.find("meting-js"))return;const t=e.find("meting-js").aplayer;"true"==cloudchewieFn.loadData("enableAPlayer")?(cloudchewieFn.saveData("enableAPlayer","false"),e.hide(),$("#con-music").hide(),$("#menu-music-toggle").hide(),$(".music-wrapper .aplayer").show(),t&&t.pause()):(cloudchewieFn.saveData("enableAPlayer","true"),$("#con-music").show(),$("#menu-music-toggle").show(),cloudchewieFn.isMusic()?e.hide():e.show())},resolveUrl:()=>{var e,t,n=document.getElementById("url-input").value;if(""!=n){if(isNaN(n)||(e=n),-1!=n.indexOf("music.163.com/#/playlist?id="))e=n.split("id=")[1].replace("/",""),t="netease";else if(-1!=n.indexOf("y.qq.com/n/ryqq/playlist/"))e=n.split("playlist/")[1].replace("/",""),t="tencent";else if(-1!=n.indexOf("https://www.kugou.com/songlist/"))e=n.split("songlist/")[1].replace("/",""),t="kugou";else{if(-1==n.indexOf("https://music.91q.com/songlist/"))return $("#url-btn").html("解析失败"),$("#url-btn").removeClass("success"),void $("#url-btn").addClass("fail");e=n.split("songlist/")[1].replace("/",""),t="baidu"}var o="https://api.i-meto.com/meting/api?server="+t+"&type=playlist&id="+e,a=new XMLHttpRequest;a.onreadystatechange=()=>{4===a.readyState&&(a.status>=200&&a.status<300||304===a.status)&&(0!=JSON.parse(a.responseText).length?($("#url-btn").html("解析成功"),$("#url-btn").addClass("success"),$("#url-btn").removeClass("fail"),consoleFn.changeAPlayerList(e,t,!0)):($("#url-btn").html("解析失败"),$("#url-btn").removeClass("success"),$("#url-btn").addClass("fail")))},a.open("get",o,!0),a.send(null)}},changeAutoColor:e=>{if("true"==cloudchewieFn.loadData("enableAutoColor")&&null!=document.querySelector("#page-header")&&null!=document.querySelector("#page-header").style.backgroundImage&&null!=document.querySelector("#page-header").style.backgroundImage.split('url("')[1]){const e=new ColorThief,n=new Image,o=new XMLHttpRequest;var t=document.querySelector("#page-header").style.backgroundImage.split('url("')[1].split('")')[0];o.onload=function(){let t=URL.createObjectURL(o.response);n.onload=function(){let o=e.getColor(n);consoleFn.setThemeColor(o[0],o[1],o[2]),"dark"==$("html").attr("data-theme")&&consoleFn.setDefaultThemeColor(2),URL.revokeObjectURL(t)},n.src=t},o.open("GET",t,!0),o.responseType="blob",o.send()}else e||consoleFn.setDefaultThemeColor(3)}};function runOne(){if("undefined"==typeof Lately){const e=document.createElement("script");e.src="https://npm.elemecdn.com/hexo-theme-cloudchewie@latest/source/js/third-party/lately.min.js",e.onload=()=>{Lately.init({target:".talk_date"})},document.head.appendChild(e)}else Lately.init({target:".talk_date"});document.getElementById("con-mode").addEventListener("click",(function(){setTimeout(cloudchewieFn.switchPostChart,100)})),document.onkeydown=function(e){(e=e||window.event).keyCode},navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)||cloudchewieFn.bindContextMenu(!0),cloudchewieFn.addLongtabListener(document.documentElement,(()=>cloudchewieFn.bindContextMenu(!0))),cloudchewieFn.resizeTop(),cloudchewieFn.categoriesBarActive(),cloudchewieFn.topCategoriesBarScroll(),cloudchewieFn.bindListener()}
+var adjectives = [
+  "美丽的",
+  "英俊的",
+  "聪明的",
+  "勇敢的",
+  "可爱的",
+  "慷慨的",
+  "善良的",
+  "可靠的",
+  "开朗的",
+  "成熟的",
+  "稳重的",
+  "真诚的",
+  "幽默的",
+  "豁达的",
+  "有趣的",
+  "活泼的",
+  "优雅的",
+  "敏捷的",
+  "温柔的",
+  "温暖的",
+  "敬业的",
+  "细心的",
+  "耐心的",
+  "深沉的",
+  "朴素的",
+  "含蓄的",
+  "率直的",
+  "开放的",
+  "务实的",
+  "坚强的",
+  "自信的",
+  "谦虚的",
+  "文静的",
+  "深刻的",
+  "纯真的",
+  "朝气蓬勃的",
+  "慎重的",
+  "大方的",
+  "顽强的",
+  "迷人的",
+  "机智的",
+  "善解人意的",
+  "富有想象力的",
+  "有魅力的",
+  "独立的",
+  "好奇的",
+  "干净的",
+  "宽容的",
+  "尊重他人的",
+  "体贴的",
+  "守信的",
+  "有耐性的",
+  "有责任心的",
+  "有担当的",
+  "有远见的",
+  "有智慧的",
+  "有眼光的",
+  "有冒险精神的",
+  "有爱心的",
+  "有同情心的",
+  "喜欢思考的",
+  "喜欢学习的",
+  "具有批判性思维的",
+  "善于表达的",
+  "善于沟通的",
+  "善于合作的",
+  "善于领导的",
+  "有激情的",
+  "有幽默感的",
+  "有思想的",
+  "有个性的",
+  "有正义感的",
+  "有责任感的",
+  "有创造力的",
+  "有想象力的",
+  "有艺术细胞的",
+  "有团队精神的",
+  "有协调能力的",
+  "有决策能力的",
+  "有组织能力的",
+  "有学习能力的",
+  "有执行能力的",
+  "有分析能力的",
+  "有逻辑思维的",
+  "有创新能力的",
+  "有专业素养的",
+  "有商业头脑的",
+];
+
+var vegetablesAndFruits = [
+  "萝卜",
+  "白菜",
+  "芹菜",
+  "生菜",
+  "青椒",
+  "辣椒",
+  "茄子",
+  "豆角",
+  "黄瓜",
+  "西红柿",
+  "洋葱",
+  "大蒜",
+  "土豆",
+  "南瓜",
+  "豆腐",
+  "韭菜",
+  "花菜",
+  "西兰花",
+  "蘑菇",
+  "金针菇",
+  "苹果",
+  "香蕉",
+  "橙子",
+  "柠檬",
+  "猕猴桃",
+  "草莓",
+  "葡萄",
+  "桃子",
+  "杏子",
+  "李子",
+  "石榴",
+  "西瓜",
+  "哈密瓜",
+  "蜜瓜",
+  "樱桃",
+  "蓝莓",
+  "柿子",
+  "橄榄",
+  "柚子",
+  "火龙果",
+];
+const cloudchewieFn = {
+  day_night_count: 0,
+  isReadMode: false,
+  /**
+   * =================================================
+   *
+   * 有关网页存储的函数
+   *
+   * =================================================
+   */
+  /**
+   * 操作LocalStorage
+   */
+  saveData: function (name, data) {
+    localStorage.setItem(
+      name,
+      JSON.stringify({ time: Date.now(), data: data })
+    );
+  },
+  removeData: function (name) {
+    localStorage.removeItem(name);
+  },
+  loadData: function (name, time) {
+    let d = JSON.parse(localStorage.getItem(name));
+    if (d) {
+      let t = Date.now() - d.time;
+      if (t < time * 60 * 1000 && t > -1) return d.data;
+    }
+    return d ? d.data : undefined;
+  },
+  /**
+   * 操作Cookie
+   */
+  setCookie: (cname, cvalue, exdays = 365) => {
+    var d = new Date();
+    d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+  },
+  delCookie: (name) => {
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval = getCookie(name);
+    if (cval != null)
+      document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+  },
+  getCookie: (cname) => {
+    var name = cname + "=";
+    var ca = document.cookie.split(";");
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i].trim();
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  },
+  /**
+   * =================================================
+   *
+   * 辅助函数
+   *
+   * =================================================
+   */
+  /**
+   * 是否为首页
+   */
+  isHome: function () {
+    return window.location.pathname == "/";
+  },
+  /**
+   * 是否为音乐页
+   */
+  isMusic: function () {
+    return window.location.pathname == "/music/";
+  },
+  /**
+   * 是否为即刻页
+   */
+  isNowtime: function () {
+    return window.location.pathname == "/nowtime/";
+  },
+  /**
+   * 是否为留言板页
+   */
+  isGuestbook: function () {
+    return window.location.pathname == "/guestbook/";
+  },
+  /**
+   * 是否为全屏
+   */
+  isFullScreen: () => {
+    var isFull = document.fullScreen || document.fullscreenElement !== null;
+    if (isFull === undefined) isFull = false;
+    return isFull;
+  },
+  /**
+   * 添加脚本
+   */
+  addScript: (e, t, n) => {
+    if (document.getElementById(e)) return n ? n() : void 0;
+    let a = document.createElement("script");
+    (a.src = t), (a.id = e), n && (a.onload = n), document.head.appendChild(a);
+  },
+  /**
+   * 复制内容
+   */
+  copy: function (obj, text) {
+    var clipboard = new ClipboardJS(obj, {
+      text: function (trigger) {
+        return text;
+      },
+    });
+    clipboard.on("success", function (e) {
+      e.clearSelection();
+    });
+    clipboard.on("error", function (e) {});
+  },
+  /**
+   * 复制选择的内容
+   */
+  copySelect: () => {
+    document.execCommand("Copy", false, null);
+    GLOBAL_CONFIG.Snackbar !== undefined &&
+      cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success);
+  },
+  /**
+   * 在光标处插入
+   */
+  insertAtCursor: (myField, myValue) => {
+    if (document.selection) {
+      myField.focus();
+      sel = document.selection.createRange();
+      sel.text = myValue;
+      sel.select();
+    } else if (myField.selectionStart || myField.selectionStart == "0") {
+      var startPos = myField.selectionStart;
+      var endPos = myField.selectionEnd;
+      var restoreTop = myField.scrollTop;
+      myField.value =
+        myField.value.substring(0, startPos) +
+        myValue +
+        myField.value.substring(endPos, myField.value.length);
+
+      if (restoreTop > 0) {
+        myField.scrollTop = restoreTop;
+      }
+      myField.focus();
+      myField.selectionStart = startPos + myValue.length;
+      myField.selectionEnd = startPos + myValue.length;
+    } else {
+      myField.value += myValue;
+      myField.focus();
+    }
+  },
+  /**
+   * 跳转到某页
+   */
+  goToPage: () => {
+    let e = document.querySelector("#textnumer");
+    e &&
+      (e.addEventListener("input", () => {
+        let t = document.querySelectorAll(".page-number"),
+          n = t[t.length - 1].innerHTML;
+        Number(e.value) > n && (e.value = n);
+      }),
+      e.addEventListener("keyup", (t) => {
+        "Enter" == t.key &&
+          "" != e.value &&
+          "0" != e.value &&
+          pjax.loadUrl("1" == e.value ? "/" : `/page/${e.value}/`);
+      }));
+  },
+  /**
+   * 防抖
+   */
+  debounce: function (func, wait, immediate) {
+    let timeout;
+    return function () {
+      const context = this;
+      const args = arguments;
+      const later = function () {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      const callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  },
+  /**
+   * 节流
+   */
+  throttle: function (func, wait, options) {
+    let timeout, context, args;
+    let previous = 0;
+    if (!options) options = {};
+
+    const later = function () {
+      previous = options.leading === false ? 0 : new Date().getTime();
+      timeout = null;
+      func.apply(context, args);
+      if (!timeout) context = args = null;
+    };
+
+    const throttled = function () {
+      const now = new Date().getTime();
+      if (!previous && options.leading === false) previous = now;
+      const remaining = wait - (now - previous);
+      context = this;
+      args = arguments;
+      if (remaining <= 0 || remaining > wait) {
+        if (timeout) {
+          clearTimeout(timeout);
+          timeout = null;
+        }
+        previous = now;
+        func.apply(context, args);
+        if (!timeout) context = args = null;
+      } else if (!timeout && options.trailing !== false) {
+        timeout = setTimeout(later, remaining);
+      }
+    };
+
+    return throttled;
+  },
+  /**
+   * 淡入
+   */
+  fadeIn: (ele, time) => {
+    ele.style.cssText = `display:block;animation: to_show ${time}s`;
+  },
+  /**
+   * 淡出
+   */
+  fadeOut: (ele, time) => {
+    ele.addEventListener("animationend", function f() {
+      ele.style.cssText = "display: none; animation: '' ";
+      ele.removeEventListener("animationend", f);
+    });
+    ele.style.animation = `to_hide ${time}s`;
+  },
+  /**
+   * 动画进入
+   */
+  animateIn: (ele, text) => {
+    ele.style.display = "block";
+    ele.style.animation = text;
+  },
+  /**
+   * 动画离开
+   */
+  animateOut: (ele, text) => {
+    ele.addEventListener("animationend", function f() {
+      ele.style.display = "";
+      ele.style.animation = "";
+      ele.removeEventListener("animationend", f);
+    });
+    ele.style.animation = text;
+  },
+
+  /**
+   * 侧边栏移出页面
+   */
+  sidebarPaddingR: () => {
+    const innerWidth = window.innerWidth;
+    const clientWidth = document.body.clientWidth;
+    const paddingRight = innerWidth - clientWidth;
+    if (innerWidth !== clientWidth) {
+      document.body.style.paddingRight = paddingRight + "px";
+    }
+  },
+  /**
+   * 消息弹窗
+   */
+  snackbarShow: (text, showAction = false, duration = 2000) => {
+    const { position, bgLight, bgDark } = GLOBAL_CONFIG.Snackbar;
+    const bg =
+      document.documentElement.getAttribute("data-theme") === "light"
+        ? bgLight
+        : bgDark;
+    Snackbar.show({
+      text: text,
+      backgroundColor: bg,
+      showAction: showAction,
+      duration: duration,
+      pos: position,
+      customClass: "snackbar-css",
+    });
+  },
+  /**
+   * 长时间消息弹窗
+   */
+  snackbarShowLong: (text, showAction = false, duration = 10000) => {
+    const { position, bgLight, bgDark } = GLOBAL_CONFIG.Snackbar;
+    const bg =
+      document.documentElement.getAttribute("data-theme") === "light"
+        ? bgLight
+        : bgDark;
+    Snackbar.show({
+      text: text,
+      backgroundColor: bg,
+      showAction: showAction,
+      duration: duration,
+      pos: position,
+      customClass: "snackbar-css",
+    });
+  },
+  /**
+   *  日期之差
+   */
+  diffDate: (d, more = false) => {
+    const dateNow = new Date();
+    const datePost = new Date(d);
+    const dateDiff = dateNow.getTime() - datePost.getTime();
+    const minute = 1000 * 60;
+    const hour = minute * 60;
+    const day = hour * 24;
+    const month = day * 30;
+
+    let result;
+    if (more) {
+      const monthCount = dateDiff / month;
+      const dayCount = dateDiff / day;
+      const hourCount = dateDiff / hour;
+      const minuteCount = dateDiff / minute;
+
+      if (monthCount > 12) {
+        result = datePost.toLocaleDateString().replace(/\//g, "-");
+      } else if (monthCount >= 1) {
+        result = parseInt(monthCount) + " " + GLOBAL_CONFIG.date_suffix.month;
+      } else if (dayCount >= 1) {
+        result = parseInt(dayCount) + " " + GLOBAL_CONFIG.date_suffix.day;
+      } else if (hourCount >= 1) {
+        result = parseInt(hourCount) + " " + GLOBAL_CONFIG.date_suffix.hour;
+      } else if (minuteCount >= 1) {
+        result = parseInt(minuteCount) + " " + GLOBAL_CONFIG.date_suffix.min;
+      } else {
+        result = GLOBAL_CONFIG.date_suffix.just;
+      }
+    } else {
+      result = parseInt(dateDiff / day);
+    }
+    return result;
+  },
+  /**
+   * 加载评论
+   */
+  loadComment: (dom, callback) => {
+    if ("IntersectionObserver" in window) {
+      const observerItem = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            callback();
+            observerItem.disconnect();
+          }
+        },
+        { threshold: [0] }
+      );
+      observerItem.observe(dom);
+    } else {
+      callback();
+    }
+  },
+  /**
+   * 滑动至某处
+   */
+  scrollToDest: (pos, time = 500) => {
+    const currentPos = window.scrollY;
+    if (currentPos > pos) pos = pos - 70;
+
+    if ("scrollBehavior" in document.documentElement.style) {
+      window.scrollTo({
+        top: pos,
+        behavior: "smooth",
+      });
+      return;
+    }
+
+    let start = null;
+    pos = +pos;
+    window.requestAnimationFrame(function step(currentTime) {
+      start = !start ? currentTime : start;
+      const progress = currentTime - start;
+      if (currentPos < pos) {
+        window.scrollTo(0, ((pos - currentPos) * progress) / time + currentPos);
+      } else {
+        window.scrollTo(0, currentPos - ((currentPos - pos) * progress) / time);
+      }
+      if (progress < time) {
+        window.requestAnimationFrame(step);
+      } else {
+        window.scrollTo(0, pos);
+      }
+    });
+  },
+  scrollToTop: () => {
+    cloudchewieFn.scrollToDest(0, 500);
+  },
+  scrollToBottom: () => {
+    cloudchewieFn.scrollToDest(document.body.scrollHeight, 500);
+  },
+  /**
+   * 获取父元素
+   */
+  getParents: (elem, selector) => {
+    for (; elem && elem !== document; elem = elem.parentNode) {
+      if (elem.matches(selector)) return elem;
+    }
+    return null;
+  },
+  /**
+   * 获取兄弟元素
+   */
+  siblings: (ele, selector) => {
+    return [...ele.parentNode.children].filter((child) => {
+      if (selector) {
+        return child !== ele && child.matches(selector);
+      }
+      return child !== ele;
+    });
+  },
+  /**
+   * @param {*} selector
+   * @param {*} eleType the type of create element
+   * @param {*} options object key: value
+   */
+  wrap: (selector, eleType, options) => {
+    const creatEle = document.createElement(eleType);
+    for (const [key, value] of Object.entries(options)) {
+      creatEle.setAttribute(key, value);
+    }
+    selector.parentNode.insertBefore(creatEle, selector);
+    creatEle.appendChild(selector);
+  },
+  unwrap: (el) => {
+    const elParentNode = el.parentNode;
+    if (elParentNode !== document.body) {
+      elParentNode.parentNode.insertBefore(el, elParentNode);
+      elParentNode.parentNode.removeChild(elParentNode);
+    }
+  },
+  /**
+   * 元素是否隐藏
+   */
+  isHidden: (ele) => ele.offsetHeight === 0 && ele.offsetWidth === 0,
+  /**
+   * 获取元素顶部
+   */
+  getEleTop: (ele) => {
+    let actualTop = ele.offsetTop;
+    let current = ele.offsetParent;
+    while (current !== null) {
+      actualTop += current.offsetTop;
+      current = current.offsetParent;
+    }
+    return actualTop;
+  },
+  /**
+   * 加载大图查看
+   */
+  loadLightbox: (ele) => {
+    const service = GLOBAL_CONFIG.lightbox;
+    if (service === "mediumZoom") {
+      const zoom = mediumZoom(ele);
+      zoom.on("open", (e) => {
+        const photoBg =
+          document.documentElement.getAttribute("data-theme") === "dark"
+            ? "#121212"
+            : "#fff";
+        zoom.update({
+          background: photoBg,
+        });
+      });
+    }
+    if (service === "fancybox") {
+      ele.forEach((i) => {
+        if (i.parentNode.tagName !== "A") {
+          const dataSrc = i.dataset.lazySrc || i.src;
+          const dataCaption = i.title || i.alt || "";
+          cloudchewieFn.wrap(i, "a", {
+            href: dataSrc,
+            "data-fancybox": "gallery",
+            "data-caption": dataCaption,
+            "data-thumb": dataSrc,
+            "data-download-src": dataSrc,
+          });
+        }
+      });
+      if (!window.fancyboxRun) {
+        Fancybox.bind("[data-fancybox]", {
+          Hash: false,
+          Thumbs: {
+            autoStart: false,
+          },
+          helpers: {
+            overlay: {
+              locked: false,
+            },
+          },
+          Toolbar: {
+            display: {
+              left: ["infobar"],
+              middle: [
+                "zoomIn",
+                "zoomOut",
+                "toggle1to1",
+                "rotateCCW",
+                "rotateCW",
+                "flipX",
+                "flipY",
+              ],
+              right: ["slideshow", "download", "thumbs", "fullscreen", "close"],
+            },
+          },
+        });
+        window.fancyboxRun = true;
+      }
+    }
+  },
+  /**
+   * 初始化图库排版
+   */
+  initJustifiedGallery: function (selector) {
+    selector.forEach(function (i) {
+      if (!cloudchewieFn.isHidden(i)) {
+        fjGallery(i, {
+          itemSelector: ".fj-gallery-item",
+          rowHeight: 220,
+          gutter: 4,
+          onJustify: function () {
+            this.$container.style.opacity = "1";
+          },
+        });
+      }
+    });
+  },
+  /**
+   * 更新文章锚点
+   */
+  updateAnchor: (anchor) => {
+    if (anchor !== window.location.hash) {
+      if (!anchor) anchor = location.pathname;
+      const title = GLOBAL_CONFIG_SITE.title;
+      window.history.replaceState(
+        {
+          url: location.href,
+          title: title,
+        },
+        title,
+        anchor
+      );
+    }
+  },
+  /**
+   * 获取样式
+   */
+  getStyle: (obj, name) => {
+    if (window.getComputedStyle) {
+      return getComputedStyle(obj, null)[name];
+    } else {
+      return obj.currentStyle[name];
+    }
+  },
+  /**
+   * 重新计算顶栏大小
+   */
+  resizeTop: () => {
+    var clientWidth =
+      document.getElementById("content-inner") != null
+        ? document.getElementById("content-inner").clientWidth
+        : 0;
+    var paddingLeft = Number(
+      cloudchewieFn
+        .getStyle(document.getElementById("content-inner"), "paddingLeft")
+        .replace(/\s+|px/gi, "")
+    );
+    var paddingRight = Number(
+      cloudchewieFn
+        .getStyle(document.getElementById("content-inner"), "paddingRight")
+        .replace(/\s+|px/gi, "")
+    );
+    var width = clientWidth - paddingLeft - paddingRight;
+    try {
+      document
+        .getElementById("top")
+        .setAttribute("style", "width:" + width.toString() + "px");
+    } catch (e) {}
+  },
+  /**
+   * 固定导航栏
+   */
+  fixNav: () => {
+    if (cloudchewieFn.loadData("enableFixedNav") == "true") {
+      $("#name-container").show();
+      var position = $(window).scrollTop();
+      $(window).scroll(function () {
+        if (
+          cloudchewieFn.loadData("enableFixedNav") == "true" &&
+          document.title.split(" | Cloudchewie")[0] != "Cloudchewie"
+        ) {
+          var scroll = $(window).scrollTop();
+          if (scroll > position) {
+            $("#page-header").addClass("nav-down");
+          } else {
+            $("#page-header").removeClass("nav-down");
+          }
+          position = scroll;
+        }
+      });
+      document.getElementById("page-name").innerText =
+        document.title.split(" | Cloudchewie")[0];
+    } else {
+      $("#name-container").hide();
+    }
+  },
+  /**
+   * 元素是否在视野中
+   */
+  isInViewPortOfOne: (el) => {
+    if (el == null) return false;
+    if (window.getComputedStyle(el).getPropertyValue("display") == "none")
+      return false;
+    const viewPortHeight =
+      window.innerHeight ||
+      document.documentElement.clientHeight ||
+      document.body.clientHeight;
+    const offsetTop = el.offsetTop;
+    const scrollTop = document.documentElement.scrollTop;
+    const top = offsetTop - scrollTop;
+    return top <= viewPortHeight;
+  },
+  /**
+   * =================================================
+   *
+   * 检查浏览器版本
+   *
+   * =================================================
+   */
+  alertTooLow: () => {
+    GLOBAL_CONFIG.Snackbar !== undefined &&
+      cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.browser_version_low);
+  },
+  browserVersion: () => {
+    var userAgent = navigator.userAgent;
+    var isIE =
+      userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1;
+    var isIE11 =
+      userAgent.indexOf("Trident") > -1 && userAgent.indexOf("rv:11.0") > -1;
+    var isEdge = userAgent.indexOf("Edge") > -1 && !isIE;
+    var isFirefox = userAgent.indexOf("Firefox") > -1;
+    var isOpera =
+      userAgent.indexOf("Opera") > -1 || userAgent.indexOf("OPR") > -1;
+    var isChrome =
+      userAgent.indexOf("Chrome") > -1 &&
+      userAgent.indexOf("Safari") > -1 &&
+      userAgent.indexOf("Edge") == -1 &&
+      userAgent.indexOf("OPR") == -1;
+    var isSafari =
+      userAgent.indexOf("Safari") > -1 &&
+      userAgent.indexOf("Chrome") == -1 &&
+      userAgent.indexOf("Edge") == -1 &&
+      userAgent.indexOf("OPR") == -1;
+    if (isEdge) {
+      if (userAgent.split("Edge/")[1].split(".")[0] < 90) {
+        cloudchewieFn.alertTooLow();
+      }
+    } else if (isFirefox) {
+      if (userAgent.split("Firefox/")[1].split(".")[0] < 90) {
+        cloudchewieFn.alertTooLow();
+      }
+    } else if (isOpera) {
+      if (userAgent.split("OPR/")[1].split(".")[0] < 80) {
+        cloudchewieFn.alertTooLow();
+      }
+    } else if (isChrome) {
+      if (userAgent.split("Chrome/")[1].split(".")[0] < 90) {
+        cloudchewieFn.alertTooLow();
+      }
+    } else if (isSafari) {
+    }
+  },
+  checkVersion: () => {
+    if (cloudchewieFn.getCookie("browser_version_checked") != true) {
+      cloudchewieFn.browserVersion();
+      cloudchewieFn.setCookie("browser_version_checked", true, 1);
+    }
+  },
+  /**
+   * =================================================
+   *
+   * 右键菜单
+   *
+   * =================================================
+   */
+  /**
+   * 绑定右键菜单事件
+   */
+  bindContextMenu: (enable, tip) => {
+    if (enable && document.body.clientWidth > 900) {
+      if (tip) {
+        cloudchewieFn.snackbarShow(
+          "已启用自定义右键菜单,可使用Ctrl+右键单击呼出默认右键菜单"
+        );
+      }
+      window.oncontextmenu = function (event) {
+        if (event.ctrlKey || document.body.clientWidth < 900) return true;
+        //隐藏所有菜单项
+        document.querySelectorAll(".rightMenu-line").forEach((item) => {
+          $(item).hide();
+        });
+        //如果有文字选中，则显示文字选中相关的菜单项
+        if (document.getSelection().toString()) {
+          $("#menu-text").show();
+        }
+        //如果是文章，则显示文章相关的菜单项
+        if (document.getElementById("post")) {
+          $("#menu-post").show();
+          $("#menu-other").show();
+        }
+        $("#menu-global").show();
+        var el = window.document.body;
+        el = event.target;
+        var a =
+          /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\*\+,;=.]+$/;
+        //如果是链接，则显示链接相关的菜单项
+        if (el.tagName == "A") {
+          $("#menu-to").show();
+          cloudchewieFn.open = function () {
+            location.href = el.href;
+          };
+          cloudchewieFn.openWithNewTab = function () {
+            window.open(el.href);
+            // window.location.reload();
+          };
+          cloudchewieFn.copyLink = function () {
+            let url = el.href;
+            let txa = document.createElement("textarea");
+            txa.value = url;
+            document.body.appendChild(txa);
+            txa.select();
+            document.execCommand("Copy");
+            document.body.removeChild(txa);
+            GLOBAL_CONFIG.Snackbar !== undefined &&
+              cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success);
+          };
+        }
+        //如果是图片
+        if (el.tagName == "IMG") {
+          $("#menu-img").show();
+          cloudchewieFn.openWithNewTab = function () {
+            window.open(el.src);
+          };
+          cloudchewieFn.downloadImage = function () {
+            el.click();
+          };
+          cloudchewieFn.click = function () {
+            el.click();
+          };
+          cloudchewieFn.copyLink = function () {
+            let url = el.src;
+            let txa = document.createElement("textarea");
+            txa.value = url;
+            document.body.appendChild(txa);
+            txa.select();
+            document.execCommand("Copy");
+            document.body.removeChild(txa);
+            GLOBAL_CONFIG.Snackbar !== undefined &&
+              cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success);
+          };
+        } else if (el.tagName == "TEXTAREA" || el.tagName == "INPUT") {
+          //如果是输入框/文本框
+          $("#menu-paste").show();
+          cloudchewieFn.paste = function () {
+            navigator.permissions
+              .query({
+                name: "clipboard-read",
+              })
+              .then((result) => {
+                if (result.state == "granted" || result.state == "prompt") {
+                  navigator.clipboard.readText().then((text) => {
+                    cloudchewieFn.insertAtCursor(el, text);
+                  });
+                } else {
+                  alert("请允许读取剪贴板！");
+                }
+              });
+          };
+        }
+        let pageX = event.clientX + 10;
+        let pageY = event.clientY;
+        let rmWidth = $("#rightMenu").width();
+        let rmHeight = $("#rightMenu").height();
+        if (pageX + rmWidth > window.innerWidth) {
+          pageX -= rmWidth + 10;
+        }
+        if (pageY + rmHeight > window.innerHeight) {
+          pageY -= pageY + rmHeight - window.innerHeight;
+        }
+        //判断是否只有小菜单，如果是则显示通用菜单项
+        var isOnlySmall = true;
+        document.querySelectorAll(".rightMenu-line").forEach((item) => {
+          if ($(item).css("display") != "none") isOnlySmall = false;
+        });
+        if (isOnlySmall) $("#menu-general").show();
+        //如果是阅读模式，则隐藏所有菜单项
+        if (cloudchewieFn.isReadMode)
+          document.querySelectorAll(".rightMenu-line").forEach((item) => {
+            $(item).hide();
+          });
+        cloudchewieFn.toggleRightMenu(true, pageY, pageX);
+        return false;
+      };
+      window.addEventListener("click", function () {
+        cloudchewieFn.toggleRightMenu(false);
+      });
+    } else {
+      window.oncontextmenu = function () {
+        return true;
+      };
+    }
+  },
+  /**
+   * 显示/隐藏右键菜单
+   */
+  toggleRightMenu: (isTrue, x = 0, y = 0) => {
+    let $rightMenu = $("#rightMenu");
+    $rightMenu.css("top", x + "px").css("left", y + "px");
+    if (isTrue) {
+      $rightMenu.show();
+    } else {
+      $rightMenu.hide();
+    }
+  },
+  /**
+   * 监测长按事件
+   */
+  addLongtabListener: (target, callback) => {
+    let timer = 0;
+    target.ontouchstart = () => {
+      timer = 0;
+      timer = setTimeout(() => {
+        callback();
+        timer = 0;
+      }, 380);
+    };
+    target.ontouchmove = () => {
+      clearTimeout(timer);
+      timer = 0;
+    };
+    target.ontouchend = () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    };
+  },
+  /**
+   * =================================================
+   *
+   * 图片排版
+   *
+   * =================================================
+   */
+  /**
+   * 操作文章中的图片
+   */
+  addPhotoFigcaption: () => {
+    document.querySelectorAll("#article-container img").forEach((item) => {
+      const parentEle = item.parentNode;
+      const altValue = item.title || item.alt;
+      if (
+        altValue &&
+        !parentEle.parentNode.classList.contains("justified-gallery")
+      ) {
+        const ele = document.createElement("div");
+        ele.className = "img-alt is-center";
+        ele.textContent = altValue;
+        parentEle.insertBefore(ele, item.nextSibling);
+      }
+    });
+  },
+  /**
+   * 图片排版
+   */
+  runJustifiedGallery: (ele) => {
+    ele.forEach((item) => {
+      const $imgList = item.querySelectorAll("img");
+      $imgList.forEach((i) => {
+        const dataLazySrc = i.getAttribute("data-lazy-src");
+        if (dataLazySrc) i.src = dataLazySrc;
+        cloudchewieFn.wrap(i, "div", { class: "fj-gallery-item" });
+      });
+    });
+    if (window.fjGallery) {
+      setTimeout(() => {
+        cloudchewieFn.initJustifiedGallery(ele);
+      }, 100);
+      return;
+    }
+    const newEle = document.createElement("link");
+    newEle.rel = "stylesheet";
+    newEle.href = GLOBAL_CONFIG.source.justifiedGallery.css;
+    document.body.appendChild(newEle);
+    getScript(`${GLOBAL_CONFIG.source.justifiedGallery.js}`).then(() => {
+      cloudchewieFn.initJustifiedGallery(ele);
+    });
+  },
+  /**
+   * 挂载fancybox
+   */
+  runLightbox: () => {
+    cloudchewieFn.loadLightbox(
+      document.querySelectorAll(
+        "#article-container img:not(.no-lightbox):not(.air-conditioner-main-content-bottom-logo)"
+      )
+    );
+  },
+  /**
+   * =================================================
+   *
+   * 文章页功能
+   *
+   * =================================================
+   */
+  /**
+   * 切换阅读模式
+   */
+  toggleReadMode: () => {
+    const clickFn = () => {
+      $body.classList.remove("read-mode");
+      document.getElementById("post").classList.remove("read-mode");
+      newEle.remove();
+      newEle.removeEventListener("click", clickFn);
+      cloudchewieFn.isReadMode = false;
+      $(".aplayer").show();
+      $("#con-readmode").removeClass("checked");
+      $(document.getElementById("post-meta")).show();
+      // if (visible != "none") {
+      //   $(commentBarrage).fadeToggle();
+      // }
+    };
+    const $body = document.body;
+    $body.classList.add("read-mode");
+    document.getElementById("post").classList.add("read-mode");
+    const newEle = document.createElement("button");
+    newEle.type = "button";
+    newEle.className = "fas fa-sign-out-alt exit-readmode";
+    newEle.removeEventListener("click", clickFn);
+    $body.appendChild(newEle);
+    consoleFn.closeConsole();
+    $(document.getElementById("post-meta")).hide();
+    cloudchewieFn.isReadMode = true;
+    $("#con-readmode").addClass("checked");
+    $(".aplayer").hide();
+
+    // let commentBarrage = document.querySelector(".barrageswiper");
+    // let visible = $(commentBarrage).css("display");
+    // if (commentBarrage && !(visible == null || visible == "none")) {
+    //   $(commentBarrage).fadeToggle();
+    // }
+    newEle.addEventListener("click", clickFn);
+  },
+  /**
+   * 切换深浅色模式
+   */
+  toggleDarkMode: () => {
+    const nowMode =
+      document.documentElement.getAttribute("data-theme") === "dark"
+        ? "dark"
+        : "light";
+    let $rightMenu = $(
+      "#menus > div.menus_items > div:nth-child(7) > a > span"
+    );
+    let $rightMenu_mobile = $(
+      "#sidebar-menus > div.menus_items > div:nth-child(7) > a > span"
+    );
+    if (nowMode === "light") {
+      // $rightMenu.html("浅色模式")
+      // $rightMenu_mobile.html("浅色模式")
+      activateDarkMode();
+      saveToLocal.set("theme", "dark", 2);
+      GLOBAL_CONFIG.Snackbar !== undefined &&
+        cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night);
+    } else {
+      // $rightMenu.html("深色模式")
+      // $rightMenu_mobile.html("深色模式")
+      activateLightMode();
+      saveToLocal.set("theme", "light", 2);
+      cloudchewieFn.day_night_count++;
+      GLOBAL_CONFIG.Snackbar !== undefined &&
+        cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day);
+    }
+    // handle some cases
+    typeof utterancesTheme === "function" && utterancesTheme();
+    typeof FB === "object" && window.loadFBComment();
+    window.DISQUS &&
+      document.getElementById("disqus_thread").children.length &&
+      setTimeout(() => window.disqusReset(), 200);
+  },
+  /**
+   * 复制本文链接
+   */
+  copyArticleLink: function () {
+    let url = window.location.href;
+    let txa = document.createElement("textarea");
+    txa.value = url;
+    document.body.appendChild(txa);
+    txa.select();
+    document.execCommand("Copy");
+    document.body.removeChild(txa);
+    GLOBAL_CONFIG.Snackbar !== undefined &&
+      cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success);
+  },
+  /**
+   * 翻译
+   */
+  translate: () => {
+    document.getElementById("con-translate").click();
+  },
+  /**
+   * 显示/隐藏侧边按钮
+   */
+  toggleSideBtn: (e) => {
+    const rightsideHideClassList = document.getElementById(
+      "rightside-button-list"
+    ).classList;
+    rightsideHideClassList.toggle("show");
+    if (e.classList.contains("show")) {
+      rightsideHideClassList.add("status");
+      setTimeout(() => {
+        rightsideHideClassList.remove("status");
+      }, 300);
+    }
+    e.classList.toggle("show");
+  },
+  /**
+   * 显示/隐藏左/右侧栏
+   */
+  toggleAside: () => {
+    if (!cloudchewieFn.isHome()) {
+      const $htmlDom = document.documentElement.classList;
+      $htmlDom.contains("hide-aside")
+        ? saveToLocal.set("enableAside", "show", 2)
+        : saveToLocal.set("enableAside", "hide", 2);
+      $htmlDom.toggle("hide-aside");
+      if (saveToLocal.get("enableAside") == "hide")
+        $("#con-toggleaside").addClass("checked");
+      else $("#con-toggleaside").removeClass("checked");
+    }
+  },
+  /**
+   * 显示/隐藏移动端目录
+   */
+  toggleMobileToc: () => {
+    if (
+      window
+        .getComputedStyle(document.getElementById("card-toc"))
+        .getPropertyValue("opacity") === "0"
+    ) {
+      window.mobileToc.open();
+      $("#mobile-toc-button").addClass("checked");
+    } else {
+      window.mobileToc.close();
+      $("#mobile-toc-button").removeClass("checked");
+    }
+  },
+  /**
+   * 展开/收缩移动端侧边栏
+   */
+  toggleSidebar: () => {
+    document
+      .querySelectorAll("#sidebar-menus .site-page.group")
+      .forEach((item) => {
+        item.addEventListener("click", (e) => {
+          e.target.classList.toggle("hide");
+        });
+      });
+  },
+  /**
+   * 表情放大
+   */
+  enlargeEmoji: () => {
+    let flag = 1,
+      owo_time = "",
+      m = 3;
+    let div = document.createElement("div"),
+      body = document.querySelector("body");
+    div.id = "owo-big";
+    body.appendChild(div);
+    let observer = new MutationObserver((mutations) => {
+      for (let i = 0; i < mutations.length; i++) {
+        let dom = mutations[i].addedNodes,
+          owo_body = "";
+        if (dom.length == 2 && dom[1].className == "OwO-body")
+          owo_body = dom[1];
+        else if (dom.length == 1 && dom[0].className == "tk-comment")
+          owo_body = dom[0];
+        else continue;
+        if (document.body.clientWidth <= 768)
+          owo_body.addEventListener("contextmenu", (e) => e.preventDefault());
+        // 鼠标移入
+        owo_body.onmouseover = (e) => {
+          if (flag && e.target.tagName == "IMG") {
+            flag = 0;
+            owo_time = setTimeout(() => {
+              let height = e.target.clientHeight * m,
+                width = e.target.clientWidth * m,
+                left = e.x - e.offsetX - (width - e.target.clientWidth) / 2,
+                top = e.y - e.offsetY;
+              if (left + width > body.clientWidth)
+                left -= left + width - body.clientWidth + 10;
+              if (left < 0) left = 10;
+              div.style.cssText = `display:flex; height:${height}px; width:${width}px; left:${left}px; top:${top}px;`;
+              div.innerHTML = `<img src="${e.target.src}">`;
+            }, 300);
+          }
+        };
+        // 鼠标移出
+        owo_body.onmouseout = () => {
+          (div.style.display = "none"), (flag = 1), clearTimeout(owo_time);
+        };
+      }
+    });
+    observer.observe(document.getElementById("post-comment"), {
+      subtree: true,
+      childList: true,
+    });
+  },
+  /**
+   * 跳转到评论
+   */
+  switchComments: () => {
+    let switchDone = false;
+    const $switchBtn = document.querySelector("#comment-switch > .switch-btn");
+    $switchBtn &&
+      $switchBtn.addEventListener("click", () => {
+        this.classList.toggle("move");
+        document
+          .querySelectorAll("#post-comment > .comment-wrap > div")
+          .forEach((item) => {
+            if (cloudchewieFn.isHidden(item)) {
+              item.style.cssText = "display: block;animation: tabshow .5s";
+            } else {
+              item.style.cssText = "display: none;animation: ''";
+            }
+          });
+
+        if (!switchDone && typeof loadOtherComment === "function") {
+          switchDone = true;
+          loadOtherComment();
+        }
+      });
+  },
+  /**
+   * 增强Twikoo评论
+   */
+  enhanceTwikoo: () => {
+    if (
+      document.getElementById("site-title") &&
+      document.getElementById("site-title").innerHTML.trim() ==
+        document
+          .querySelector(
+            "#menus > div.menus_items > div:nth-child(5) > a > span"
+          )
+          .innerHTML.trim()
+    ) {
+      document.querySelector(
+        "#post-comment > div.comment-head > div > span"
+      ).innerHTML = "  留言板  ";
+      var commentInterval = setInterval(() => {
+        document.querySelectorAll(".el-textarea__inner").forEach((item) => {
+          if (item.getAttribute("placeholder") != "请输入您的留言")
+            item.setAttribute("placeholder", "请输入您的留言");
+        });
+        document
+          .querySelectorAll(
+            "#twikoo > div.tk-comments > div.tk-comments-container > div.tk-comments-no > span"
+          )
+          .forEach((item) => {
+            if (item.innerHTML == "没有评论") item.innerHTML = "没有留言";
+          });
+        document
+          .querySelectorAll(
+            "#twikoo > div.tk-comments > div.tk-comments-container > div.tk-comments-title > span.tk-comments-count > span:nth-child(2)"
+          )
+          .forEach((item) => {
+            if (item.innerHTML == " 条评论") item.innerHTML = " 条留言";
+          });
+      }, 300);
+    }
+    if (document.getElementById("post-comment")) {
+      setInterval(() => {
+        if (document.getElementById("CommentaryRegulations")) {
+          var element = document.createElement("div");
+          element.id = "CommentaryRegulations";
+          element.classList.add("tk-submit-action-icon");
+          element.innerHTML =
+            "<a href='/term/' target='_blank' title='评论条例'></a>";
+          if (document.querySelector(".tk-row-actions-start"))
+            document
+              .querySelector(".tk-row-actions-start")
+              .appendChild(element);
+        }
+      }, 300);
+    }
+  },
+  /**
+   * 匿名评论
+   */
+  addRandomCommentInfo: function () {
+    // 从形容词数组中随机取一个值
+    const randomAdjective =
+      adjectives[Math.floor(Math.random() * adjectives.length)];
+
+    // 从蔬菜水果动物名字数组中随机取一个值
+    const randomName =
+      vegetablesAndFruits[
+        Math.floor(Math.random() * vegetablesAndFruits.length)
+      ];
+
+    // 将两个值组合成一个字符串
+    const name = `${randomAdjective}${randomName}`;
+
+    function dr_js_autofill_commentinfos() {
+      var lauthor = [
+          "#author",
+          "input[name='comname']",
+          "#inpName",
+          "input[name='author']",
+          "#ds-dialog-name",
+          "#name",
+          "input[name='nick']",
+          "#comment_author",
+        ],
+        lmail = [
+          "#mail",
+          "#email",
+          "input[name='commail']",
+          "#inpEmail",
+          "input[name='email']",
+          "#ds-dialog-email",
+          "input[name='mail']",
+          "#comment_email",
+        ],
+        lurl = [
+          "#url",
+          "input[name='comurl']",
+          "#inpHomePage",
+          "#ds-dialog-url",
+          "input[name='url']",
+          "input[name='website']",
+          "#website",
+          "input[name='link']",
+          "#comment_url",
+        ];
+      for (var i = 0; i < lauthor.length; i++) {
+        var author = document.querySelector(lauthor[i]);
+        if (author != null) {
+          author.value = name;
+          author.dispatchEvent(new Event("input"));
+          author.dispatchEvent(new Event("change"));
+          break;
+        }
+      }
+      for (var j = 0; j < lmail.length; j++) {
+        var mail = document.querySelector(lmail[j]);
+        if (mail != null) {
+          mail.value = visitorMail;
+          mail.dispatchEvent(new Event("input"));
+          mail.dispatchEvent(new Event("change"));
+          break;
+        }
+      }
+      return !1;
+    }
+
+    dr_js_autofill_commentinfos();
+    var input = document.getElementsByClassName("el-textarea__inner")[0];
+    input.focus();
+    input.setSelectionRange(-1, -1);
+  },
+  /**
+   * =================================================
+   *
+   * categorybar事件
+   *
+   * =================================================
+   */
+  bindListener: () => {
+    $("#categoryBar > ul > li").each(function () {
+      this.addEventListener("click", () => {
+        pjax.loadUrl($(this).find("a").attr("href"));
+      });
+    });
+  },
+  //专栏条
+  categoriesBarActive: () => {
+    var urlinfo = window.location.pathname;
+    urlinfo = decodeURIComponent(urlinfo);
+    //判断是否是首页
+    if (cloudchewieFn.isHome()) {
+      if (document.querySelector("#category-bar")) {
+        document.getElementById("首页").classList.add("select");
+      }
+    } else {
+      // 验证是否是专栏链接
+      var pattern = /\/categories\/.*?\//;
+      var patbool = pattern.test(urlinfo);
+      // 获取当前的专栏
+      if (patbool) {
+        var valuegroup = urlinfo.split("/");
+        // 获取当前专栏
+        var nowCategorie = valuegroup[2];
+        if (document.querySelector("#category-bar")) {
+          document.getElementById(nowCategorie).classList.add("select");
+        }
+      }
+    }
+  },
+  //鼠标控制横向滚动
+  topCategoriesBarScroll: () => {
+    if (document.getElementById("category-bar-items")) {
+      let xscroll = document.getElementById("category-bar-items");
+      xscroll.addEventListener(
+        "mousewheel",
+        function (e) {
+          //计算鼠标滚轮滚动的距离
+          let v = -e.wheelDelta / 2;
+          xscroll.scrollLeft += v;
+          //阻止浏览器默认方法
+          e.preventDefault();
+        },
+        false
+      );
+    }
+  },
+  /**
+   * =================================================
+   *
+   * 滑动事件
+   *
+   * =================================================
+   */
+  scrollFunction: () => {
+    const $rightside = document.getElementById("rightside");
+    const innerHeight = window.innerHeight + 56;
+    // 当滚动条小于56时
+    if (
+      document.body.scrollHeight <= innerHeight &&
+      "/nowtime/" != location.pathname &&
+      "/guestbook/" != location.pathname
+    ) {
+      $rightside.style.cssText = "opacity: 1; transform: translateX(-60px)";
+      return;
+    }
+    //返回滑动方向
+    function scrollDirection(currentTop) {
+      const result = currentTop > initTop; // true is down & false is up
+      initTop = currentTop;
+      return result;
+    }
+
+    let initTop = 0;
+    let isChatShow = true;
+    const $header = document.getElementById("page-header");
+    const isChatBtnHide = typeof chatBtnHide === "function";
+    const isChatBtnShow = typeof chatBtnShow === "function";
+
+    window.scrollCollect = () => {
+      return cloudchewieFn.throttle((e) => {
+        const currentTop = window.scrollY || document.documentElement.scrollTop;
+        const isDown = scrollDirection(currentTop);
+        if (currentTop < 10) {
+          $header.classList.add("nav-top");
+        } else {
+          $header.classList.remove("nav-top");
+        }
+        if (currentTop > 56) {
+          if (cloudchewieFn.loadData("enableFixedNav") == "false") {
+            if (isDown) {
+              if ($header.classList.contains("nav-visible"))
+                $header.classList.remove("nav-visible");
+              if (isChatBtnShow && isChatShow === true) {
+                chatBtnHide();
+                isChatShow = false;
+              }
+            } else {
+              if (!$header.classList.contains("nav-visible"))
+                $header.classList.add("nav-visible");
+              if (isChatBtnHide && isChatShow === false) {
+                chatBtnShow();
+                isChatShow = true;
+              }
+            }
+            $header.classList.add("nav-fixed");
+          }
+          if (
+            window.getComputedStyle($rightside).getPropertyValue("opacity") ===
+              "0" &&
+            cloudchewieFn.loadData("enableRightSide") == "true"
+          ) {
+            $rightside.style.cssText =
+              "opacity: 0.8; transform: translateX(-60px)";
+          }
+        } else {
+          if (currentTop === 0) {
+            if (cloudchewieFn.loadData("enableFixedNav") == "false") {
+              $header.classList.remove("nav-fixed", "nav-visible");
+            }
+          }
+          if (cloudchewieFn.loadData("enableRightSide") == "true") {
+            $rightside.style.cssText = "opacity: ''; transform: ''";
+          }
+        }
+
+        if (
+          document.body.scrollHeight <= innerHeight &&
+          cloudchewieFn.loadData("enableRightSide") == "true"
+        ) {
+          $rightside.style.cssText =
+            "opacity: 0.8; transform: translateX(-60px)";
+        }
+      }, 200)();
+    };
+    window.addEventListener("scroll", window.scrollCollect);
+  },
+  scrollFunctionOfToc: () => {
+    const isToc = GLOBAL_CONFIG_SITE.isToc;
+    const isAnchor = GLOBAL_CONFIG.isAnchor;
+    const $article = document.getElementById("article-container");
+
+    if (!($article && (isToc || isAnchor))) return;
+
+    let $tocLink, $cardToc, scrollPercent, autoScrollToc, isExpand;
+
+    if (isToc) {
+      const $cardTocLayout = document.getElementById("card-toc");
+      $cardToc = $cardTocLayout.getElementsByClassName("toc-content")[0];
+      $tocLink = $cardToc.querySelectorAll(".toc-link");
+      const $tocPercentage = $cardTocLayout.querySelector(".toc-percentage");
+      isExpand = $cardToc.classList.contains("is-expand");
+
+      scrollPercent = (currentTop) => {
+        const docHeight = $article.clientHeight;
+        const winHeight = document.documentElement.clientHeight;
+        const headerHeight = $article.offsetTop;
+        const contentMath =
+          docHeight > winHeight
+            ? docHeight - winHeight
+            : document.documentElement.scrollHeight - winHeight;
+        const scrollPercent = (currentTop - headerHeight) / contentMath;
+        const scrollPercentRounded = Math.round(scrollPercent * 100);
+        const percentage =
+          scrollPercentRounded > 100
+            ? 100
+            : scrollPercentRounded <= 0
+            ? 0
+            : scrollPercentRounded;
+        $tocPercentage.textContent = percentage;
+      };
+
+      window.mobileToc = {
+        open: () => {
+          $cardTocLayout.style.cssText =
+            "animation: toc-open .3s; opacity: 1; right: 55px";
+        },
+
+        close: () => {
+          $cardTocLayout.style.animation = "toc-close .2s";
+          setTimeout(() => {
+            $cardTocLayout.style.cssText =
+              "opacity:''; animation: ''; right: ''";
+          }, 100);
+        },
+      };
+
+      // toc元素点击
+      $cardToc.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = e.target.classList;
+        if (target.contains("toc-content")) return;
+        const $target = target.contains("toc-link")
+          ? e.target
+          : e.target.parentElement;
+        cloudchewieFn.scrollToDest(
+          cloudchewieFn.getEleTop(
+            document.getElementById(
+              decodeURI($target.getAttribute("href")).replace("#", "")
+            )
+          ),
+          300
+        );
+        if (window.innerWidth < 900) {
+          window.mobileToc.close();
+          $("#mobile-toc-button").removeClass("checked");
+        }
+      });
+
+      autoScrollToc = (item) => {
+        const activePosition = item.getBoundingClientRect().top;
+        const sidebarScrollTop = $cardToc.scrollTop;
+        if (activePosition > document.documentElement.clientHeight - 100) {
+          $cardToc.scrollTop = sidebarScrollTop + 150;
+        }
+        if (activePosition < 100) {
+          $cardToc.scrollTop = sidebarScrollTop - 150;
+        }
+      };
+    }
+
+    const list = $article.querySelectorAll("h1,h2,h3,h4,h5,h6");
+    let detectItem = "";
+    const findHeadPosition = (top) => {
+      if (top === 0) {
+        return false;
+      }
+
+      let currentId = "";
+      let currentIndex = "";
+
+      list.forEach((ele, index) => {
+        if (top > cloudchewieFn.getEleTop(ele) - 80) {
+          const id = ele.id;
+          currentId = id ? "#" + encodeURI(id) : "";
+          currentIndex = index;
+        }
+      });
+
+      if (detectItem === currentIndex) return;
+
+      if (isAnchor) cloudchewieFn.updateAnchor(currentId);
+
+      detectItem = currentIndex;
+
+      if (isToc) {
+        $cardToc.querySelectorAll(".active").forEach((i) => {
+          i.classList.remove("active");
+        });
+
+        if (currentId === "") {
+          return;
+        }
+
+        const currentActive = $tocLink[currentIndex];
+        currentActive.classList.add("active");
+
+        setTimeout(() => {
+          autoScrollToc(currentActive);
+        }, 0);
+
+        if (isExpand) return;
+        let parent = currentActive.parentNode;
+
+        for (; !parent.matches(".toc"); parent = parent.parentNode) {
+          if (parent.matches("li")) parent.classList.add("active");
+        }
+      }
+    };
+
+    window.resolveTocScrollFunction = () => {
+      return cloudchewieFn.throttle(() => {
+        const currentTop = window.scrollY || document.documentElement.scrollTop;
+        isToc && scrollPercent(currentTop);
+        findHeadPosition(currentTop);
+      }, 100)();
+    };
+    window.addEventListener("scroll", resolveTocScrollFunction);
+  },
+  /**
+     浏览进度百分比
+    **/
+  browsingProgress: () => {
+    window.addEventListener("scroll", () => {
+      let a = document.documentElement.scrollTop || window.scrollY, // 卷去高度
+        b =
+          Math.max(
+            document.body.scrollHeight,
+            document.documentElement.scrollHeight,
+            document.body.offsetHeight,
+            document.documentElement.offsetHeight,
+            document.body.clientHeight,
+            document.documentElement.clientHeight
+          ) - document.documentElement.clientHeight, // 整个网页高度
+        result = Math.round((a / b) * 100), // 计算百分比
+        up = document.querySelector("#go-up"); // 获取按钮
+      down = document.querySelector("#go-down"); // 获取按钮
+      if (up != null) {
+        if (result <= 95) {
+          up.childNodes[0].style.display = "none";
+          up.childNodes[1].style.display = "block";
+          up.childNodes[1].childNodes[0].innerHTML = result;
+        } else {
+          up.childNodes[1].style.display = "none";
+          up.childNodes[0].style.display = "block";
+        }
+      }
+      if (result <= 95 && document.documentElement.scrollTop > 20) {
+        down.style.display = "block";
+      } else {
+        down.style.display = "none";
+      }
+      if (
+        cloudchewieFn.isInViewPortOfOne(document.getElementById("post-comment"))
+      ) {
+        $("#to_comment").hide();
+      } else {
+        $("#to_comment").show();
+      }
+      cloudchewieFn.percentageScrollFn(a);
+    });
+    if (document.documentElement.scrollTop > 20) {
+      document.querySelector("#go-down").style.display = "block";
+    } else {
+      document.querySelector("#go-down").style.display = "none";
+    }
+  },
+  qrcodeCreate: function () {
+    if (document.getElementById("qrcode")) {
+      document.getElementById("qrcode").innerHTML = "";
+      var qrcode = new QRCode(document.getElementById("qrcode"), {
+        text: window.location.href,
+        width: 250,
+        height: 250,
+        colorDark: "#000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H,
+      });
+    }
+  },
+  percentageScrollFn: (currentTop) => {
+    // 处理滚动百分比
+    const $percentBtn = document.getElementById("percent"),
+      $navTotop = document.getElementById("nav-totop"),
+      $bodyWrap = document.getElementById("body-wrap");
+    let docHeight = $bodyWrap.clientHeight;
+    let pageBottomDomFlag =
+      document.getElementById("post-comment") ||
+      document.getElementById("footer");
+    const winHeight = document.documentElement.clientHeight;
+    const contentMath =
+      docHeight > winHeight
+        ? docHeight - winHeight
+        : document.documentElement.scrollHeight - winHeight;
+    const scrollPercent = currentTop / contentMath;
+    const scrollPercentRounded = Math.round(scrollPercent * 100);
+    const percentage =
+      scrollPercentRounded > 100
+        ? 100
+        : scrollPercentRounded <= 0
+        ? 1
+        : scrollPercentRounded;
+    $percentBtn.textContent = percentage;
+
+    if (
+      (cloudchewieFn.isInViewPortOfOne(pageBottomDomFlag) || percentage > 90) &&
+      document.documentElement.scrollTop > 20
+    ) {
+      $navTotop.classList.add("long");
+      $percentBtn.textContent = "回到顶部";
+      if (document.body.clientWidth <= 768)
+        document.getElementById("search-button").style.display = "none";
+    } else {
+      $navTotop.classList.remove("long");
+      $percentBtn.textContent = percentage;
+      setTimeout(() => {
+        document.getElementById("search-button").style.display = "inline";
+      }, 300);
+    }
+  },
+  /**
+   * =================================================
+   *
+   * 全局功能
+   *
+   * =================================================
+   */
+  /**
+   * 复制加上版权信息
+   */
+  addCopyright: () => {
+    const copyright = GLOBAL_CONFIG.copyright;
+    document.body.oncopy = (e) => {
+      e.preventDefault();
+      let textFont;
+      const copyFont = window.getSelection(0).toString();
+      if (copyFont.length > copyright.limitCount) {
+        textFont =
+          copyFont +
+          "\n" +
+          "\n" +
+          "\n" +
+          copyright.languages.author +
+          "\n" +
+          copyright.languages.link +
+          window.location.href +
+          "\n" +
+          copyright.languages.source +
+          "\n" +
+          copyright.languages.info;
+      } else {
+        textFont = copyFont;
+      }
+      if (e.clipboardData) {
+        return e.clipboardData.setData("text", textFont);
+      } else {
+        return window.clipboardData.setData("text", textFont);
+      }
+    };
+  },
+  /**
+   * 网页运行时间
+   */
+  addRuntime: () => {
+    const $runtimeCount = document.getElementById("runtimeshow");
+    if ($runtimeCount) {
+      const publishDate = $runtimeCount.getAttribute("data-publishDate");
+      $runtimeCount.innerText =
+        cloudchewieFn.diffDate(publishDate) + " " + GLOBAL_CONFIG.runtime;
+    }
+  },
+  /**
+   * 最后更新时间
+   */
+  addLastPushDate: () => {
+    const $lastPushDateItem = document.getElementById("last-push-date");
+    if ($lastPushDateItem) {
+      const lastPushDate = $lastPushDateItem.getAttribute("data-lastPushDate");
+      $lastPushDateItem.innerText = cloudchewieFn.diffDate(lastPushDate, true);
+    }
+  },
+  /**
+   * 表格Overflow
+   */
+  addTableWrap: () => {
+    const $table = document.querySelectorAll(
+      "#article-container :not(.highlight) > table, #article-container > table"
+    );
+    if ($table.length) {
+      $table.forEach((item) => {
+        cloudchewieFn.wrap(item, "div", { class: "table-wrap" });
+      });
+    }
+  },
+  /**
+   * tag-hide
+   */
+  clickFnOfTagHide: () => {
+    const $hideInline = document.querySelectorAll(
+      "#article-container .hide-button"
+    );
+    if ($hideInline.length) {
+      $hideInline.forEach((item) => {
+        item.addEventListener("click", (e) => {
+          const $this = e.target;
+          $this.classList.add("open");
+          const $fjGallery =
+            $this.nextElementSibling.querySelectorAll(".fj-gallery");
+          $fjGallery.length && cloudchewieFn.initJustifiedGallery($fjGallery);
+        });
+      });
+    }
+  },
+  /**
+   * 分栏控件点击事件
+   */
+  clickFnOfTabs: () => {
+    document
+      .querySelectorAll("#article-container .tab > button")
+      .forEach((item) => {
+        item.addEventListener("click", (e) => {
+          const $this = e.target;
+          const $tabItem = $this.parentNode;
+
+          if (!$tabItem.classList.contains("active")) {
+            const $tabContent = $tabItem.parentNode.nextElementSibling;
+            const $siblings = cloudchewieFn.siblings($tabItem, ".active")[0];
+            $siblings && $siblings.classList.remove("active");
+            $tabItem.classList.add("active");
+            const tabId = $this.getAttribute("data-href").replace("#", "");
+            const childList = [...$tabContent.children];
+            childList.forEach((item) => {
+              if (item.id === tabId) item.classList.add("active");
+              else item.classList.remove("active");
+            });
+            const $isTabJustifiedGallery = $tabContent.querySelectorAll(
+              `#${tabId} .fj-gallery`
+            );
+            if ($isTabJustifiedGallery.length > 0) {
+              cloudchewieFn.initJustifiedGallery($isTabJustifiedGallery);
+            }
+          }
+        });
+      });
+  },
+  /**
+   * 分栏控件返回顶部
+   */
+  tabToTop: () => {
+    document
+      .querySelectorAll("#article-container .tabs .tab-to-top")
+      .forEach((item) => {
+        item.addEventListener("click", (e) => {
+          cloudchewieFn.scrollToDest(
+            cloudchewieFn.getEleTop(
+              cloudchewieFn.getParents(e.target, ".tabs")
+            ),
+            300
+          );
+        });
+      });
+  },
+  /**
+   * 显示/隐藏侧栏专栏卡片
+   */
+  toggleCardCategory: () => {
+    const $cardCategory = document.querySelectorAll(
+      "#aside-cat-list .card-category-list-item.parent i"
+    );
+    if ($cardCategory.length) {
+      $cardCategory.forEach((item) => {
+        item.addEventListener("click", (e) => {
+          e.preventDefault();
+          const $this = e.target;
+          $this.classList.toggle("expand");
+          const $parentEle = $this.parentNode.nextElementSibling;
+          if (cloudchewieFn.isHidden($parentEle)) {
+            $parentEle.style.display = "block";
+          } else {
+            $parentEle.style.display = "none";
+          }
+        });
+      });
+    }
+  },
+  /**
+   * 文章过期提醒
+   */
+  addPostOutdateNotice: () => {
+    const data = GLOBAL_CONFIG.noticeOutdate;
+    const diffDay = cloudchewieFn.diffDate(GLOBAL_CONFIG_SITE.postUpdate);
+    if (diffDay >= data.limitDay) {
+      const ele = document.createElement("div");
+      ele.className = "post-outdate-notice";
+      ele.textContent =
+        data.messagePrev + " " + diffDay + " " + data.messageNext;
+      const $targetEle = document.getElementById("article-container");
+      if (data.position === "top") {
+        $targetEle.insertBefore(ele, $targetEle.firstChild);
+      } else {
+        $targetEle.appendChild(ele);
+      }
+    }
+  },
+  /**
+   * 懒加载图片
+   */
+  lazyloadImg: () => {
+    window.lazyLoadInstance = new LazyLoad({
+      elements_selector: "img",
+      threshold: 0,
+      data_src: "lazy-src",
+    });
+  },
+  /**
+   * 相对日期
+   */
+  relativeDate: (selector) => {
+    selector.forEach((item) => {
+      const $this = item;
+      const timeVal = $this.getAttribute("datetime");
+      $this.innerText = cloudchewieFn.diffDate(timeVal, true);
+      $this.style.display = "inline";
+    });
+  },
+  /**
+   * 跳转到随机文章
+   */
+  randomPost: () => {
+    let e = saveToLocal.get("postLinks");
+    if (e)
+      for (;;) {
+        let t = e[Math.floor(Math.random() * e.length)];
+        if (t != "/" && t != "/404.html") return void pjax.loadUrl(t);
+      }
+    fetch("/sitemap.xml")
+      .then((e) => e.text())
+      .then((e) => new window.DOMParser().parseFromString(e, "text/xml"))
+      .then((e) => {
+        let t = e.querySelectorAll("url loc"),
+          n = [];
+        t.forEach((e) => {
+          let t = e.innerHTML.split("/");
+          let url = "/";
+          for (var i = 3; i < t.length; i++) {
+            if (i == t.length - 1) url += t[i];
+            else url += t[i] + "/";
+          }
+          n.push(url);
+        }),
+          saveToLocal.set("postLinks", n, 0.02),
+          cloudchewieFn.randomPost();
+      });
+  },
+  /**
+   * 彩蛋
+   */
+  sweetSnack: () => {
+    if (cloudchewieFn.getCookie("daynight") == "NaN")
+      cloudchewieFn.day_night_count = 0;
+    else
+      cloudchewieFn.day_night_count = new Number(
+        cloudchewieFn.getCookie("daynight")
+      );
+    setInterval(() => {
+      var initDay = -3;
+      if (cloudchewieFn.day_night_count + initDay == 0)
+        GLOBAL_CONFIG.Snackbar !== undefined &&
+          cloudchewieFn.snackbarShowLong(
+            "冬至·伊始:我的心与爱是不是能够这般纯粹，经受住时空的考验"
+          ),
+          cloudchewieFn.day_night_count++;
+      if (cloudchewieFn.day_night_count + initDay == 20)
+        GLOBAL_CONFIG.Snackbar !== undefined &&
+          cloudchewieFn.snackbarShowLong(
+            "交替·新生:月徊而霜凝兮，良人伴我侧；月斜而影绰兮，明镜照我心"
+          ),
+          cloudchewieFn.day_night_count++;
+      if (cloudchewieFn.day_night_count + initDay == 60)
+        GLOBAL_CONFIG.Snackbar !== undefined &&
+          cloudchewieFn.snackbarShowLong(
+            "风起·渴盼:桐絮扰动着尘世，恋人缔造着世界；细腻不语的青苔，是我对你的爱恋"
+          ),
+          cloudchewieFn.day_night_count++;
+      if (cloudchewieFn.day_night_count + initDay == 120)
+        GLOBAL_CONFIG.Snackbar !== undefined &&
+          cloudchewieFn.snackbarShowLong(
+            "雾霭·探索:越来越浓的雾霭模糊着彼此的视线，越来越厚的障壁阻隔着彼此的心儿"
+          ),
+          cloudchewieFn.day_night_count++;
+      if (cloudchewieFn.day_night_count + initDay == 200)
+        GLOBAL_CONFIG.Snackbar !== undefined &&
+          cloudchewieFn.snackbarShowLong(
+            "拨云·成长:生活不全都是恋爱，恋爱却全都是生活"
+          ),
+          cloudchewieFn.day_night_count++;
+      cloudchewieFn.setCookie(
+        "daynight",
+        cloudchewieFn.day_night_count.toString()
+      );
+    }, 500);
+  },
+  /**
+   * 文章统计
+   */
+  switchPostChart: () => {
+    let color =
+      document.documentElement.getAttribute("data-theme") === "light"
+        ? "#4C4948"
+        : "rgba(255,255,255,0.7)";
+    if (document.getElementById("posts-chart") && postsOption) {
+      try {
+        let postsOptionNew = postsOption;
+        postsOptionNew.title.textStyle.color = color;
+        postsOptionNew.xAxis.nameTextStyle.color = color;
+        postsOptionNew.yAxis.nameTextStyle.color = color;
+        postsOptionNew.xAxis.axisLabel.color = color;
+        postsOptionNew.yAxis.axisLabel.color = color;
+        postsOptionNew.xAxis.axisLine.lineStyle.color = color;
+        postsOptionNew.yAxis.axisLine.lineStyle.color = color;
+        postsOptionNew.series[0].markLine.data[0].label.color = color;
+        postsChart.setOption(postsOptionNew);
+      } catch (error) {}
+    }
+    if (document.getElementById("tags-chart") && tagsOption) {
+      try {
+        let tagsOptionNew = tagsOption;
+        tagsOptionNew.title.textStyle.color = color;
+        tagsOptionNew.xAxis.nameTextStyle.color = color;
+        tagsOptionNew.yAxis.nameTextStyle.color = color;
+        tagsOptionNew.xAxis.axisLabel.color = color;
+        tagsOptionNew.yAxis.axisLabel.color = color;
+        tagsOptionNew.xAxis.axisLine.lineStyle.color = color;
+        tagsOptionNew.yAxis.axisLine.lineStyle.color = color;
+        tagsOptionNew.series[0].markLine.data[0].label.color = color;
+        tagsChart.setOption(tagsOptionNew);
+      } catch (error) {}
+    }
+    if (document.getElementById("categories-chart") && categoriesOption) {
+      try {
+        let categoriesOptionNew = categoriesOption;
+        categoriesOptionNew.title.textStyle.color = color;
+        categoriesOptionNew.legend.textStyle.color = color;
+        if (!categoryParentFlag) {
+          categoriesOptionNew.series[0].label.color = color;
+        }
+        categoriesChart.setOption(categoriesOptionNew);
+      } catch (error) {}
+    }
+  },
+  switchCommentBarrage: function () {
+    let commentBarrage = document.querySelector(".comment-barrage");
+    if (commentBarrage) {
+      if (window.getComputedStyle(commentBarrage).display === "flex") {
+        commentBarrage.style.display = "none";
+        cloudchewieFn.snackbarShow("已关闭评论弹幕");
+        document.querySelector(".menu-commentBarrage-text").textContent =
+          "显示弹幕";
+        document.getElementById("con-barrage") &&
+          document.getElementById("con-barrage").classList.remove("checked");
+        document.getElementById("switch_commentBarrage") &&
+          document
+            .getElementById("switch_commentBarrage")
+            .classList.remove("checked");
+        cloudchewieFn.saveData("enableCommentBarrage", "false");
+      } else {
+        commentBarrage.style.display = "flex";
+        document.querySelector(".menu-commentBarrage-text").textContent =
+          "关闭弹幕";
+        document.getElementById("con-barrage") &&
+          document.getElementById("con-barrage").classList.add("checked");
+        document.getElementById("switch_commentBarrage") &&
+          document
+            .getElementById("switch_commentBarrage")
+            .classList.add("checked");
+        cloudchewieFn.snackbarShow("已开启评论弹幕");
+        cloudchewieFn.saveData("enableCommentBarrage", "true");
+      }
+    }
+    cloudchewieFn.toggleRightMenu(false);
+  },
+  // 切换菜单显示热评
+  switchRightClickMenuHotReview: function () {
+    const postComment = document.getElementById("post-comment");
+    const menuCommentBarrageDom = document.getElementById(
+      "menu-commentBarrage"
+    );
+    if (postComment) {
+      menuCommentBarrageDom.style.display = "flex";
+    } else {
+      menuCommentBarrageDom.style.display = "none";
+    }
+  },
+  /**
+   * 留言板全屏弹幕
+   */
+  loadDamaku: () => {
+    const e = new EasyDanmaku({
+      el: "#danmu",
+      line: 10,
+      speed: 20,
+      hover: !0,
+      loop: !0,
+    });
+    let t = saveToLocal.get("danmu");
+    if (t) e.batchSend(t, !0);
+    else {
+      let n = [];
+      function a(e) {
+        return (e = (e = (e = (e = (e = e.replace(
+          /<\/*br>|[\s\uFEFF\xA0]+/g,
+          ""
+        )).replace(/<img.*?>/g, "[图片]")).replace(
+          /<a.*?>.*?<\/a>/g,
+          "[链接]"
+        )).replace(/<pre.*?>.*?<\/pre>/g, "[代码块]")).replace(/<.*?>/g, ""));
+      }
+      fetch("https://comment.cloudchewie.com/", {
+        method: "POST",
+        body: JSON.stringify({
+          event: "GET_RECENT_COMMENTS",
+          accessToken: "df242fe099bf81ec336572476fbdc208",
+          includeReply: !1,
+          pageSize: 100,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((e) => e.json())
+        .then(({ data: t }) => {
+          t.forEach((e) => {
+            null == e.avatar &&
+              (e.avatar =
+                "https://cravatar.cn/avatar/d615d5793929e8c7d70eab5f00f7f5f1?d=mp"),
+              n.push({
+                avatar: e.avatar,
+                content: e.nick + "：" + a(e.comment),
+              });
+          }),
+            e.batchSend(n, !0),
+            saveToLocal.set("danmu", n, 0.02);
+        })
+        .catch(() => cloudchewieFn.snackbarShow("评论系统过载,请稍后访问"));
+    }
+    document.getElementById("danmuBtn").innerHTML =
+      "<button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.remove('hidedanmu')\">显示弹幕</button> <button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.add('hidedanmu')\">隐藏弹幕</button>";
+  },
+  /**
+   * =================================================
+   *
+   * 音乐播放
+   *
+   * =================================================
+   */
+  /**
+   * 播放/暂停音乐
+   */
+  toggleMusic: function (changePlay = true) {
+    if (!cloudchewieFn.isMusic()) {
+      if (!cloudchewie_musicFirst) {
+        cloudchewieFn.musicBindEvent();
+        cloudchewie_musicFirst = true;
+      }
+      let msgPlay = '<i class="fas fa-play"></i><span>播放音乐</span>';
+      let msgPause = '<i class="fas fa-pause"></i><span>暂停音乐</span>';
+      if (cloudchewie_musicPlaying) {
+        navMusicEl.classList.remove("playing");
+        document.getElementById("menu-music-toggle").innerHTML = msgPlay;
+        document.getElementById("nav-music-hoverTips").innerHTML = "音乐已暂停";
+        document.querySelector("#con-music i").classList = "fas fa-play";
+        cloudchewie_musicPlaying = false;
+        navMusicEl.classList.remove("stretch");
+      } else {
+        navMusicEl.classList.add("playing");
+        document.getElementById("menu-music-toggle").innerHTML = msgPause;
+        document.querySelector("#con-music").classList.add("on");
+        document.querySelector("#con-music i").classList = "fas fa-pause";
+        cloudchewie_musicPlaying = true;
+        navMusicEl.classList.add("stretch");
+      }
+      if (changePlay)
+        document.querySelector("#nav-music meting-js").aplayer.toggle();
+    } else {
+      let msgPlay = '<i class="fas fa-play"></i><span>播放音乐</span>';
+      let msgPause = '<i class="fas fa-pause"></i><span>暂停音乐</span>';
+      if (cloudchewie_musicPlaying) {
+        document.getElementById("menu-music-toggle").innerHTML = msgPlay;
+        document.querySelector("#con-music i").classList = "fas fa-play";
+        cloudchewie_musicPlaying = false;
+      } else {
+        document.getElementById("menu-music-toggle").innerHTML = msgPause;
+        document.querySelector("#con-music").classList.add("on");
+        document.querySelector("#con-music i").classList = "fas fa-pause";
+        cloudchewie_musicPlaying = true;
+      }
+      if (changePlay) anMusicEl.querySelector("meting-js").aplayer.toggle();
+    }
+  },
+  /**
+   * 左下角播放器切换长度
+   */
+  musicTelescopic: function () {
+    if (navMusicEl.classList.contains("stretch")) {
+      navMusicEl.classList.remove("stretch");
+    } else {
+      navMusicEl.classList.add("stretch");
+    }
+  },
+  /**
+   * 上一首
+   */
+  musicSkipBack: function () {
+    navMusicEl.querySelector("meting-js").aplayer.skipBack();
+    cloudchewieFn.toggleRightMenu(false);
+  },
+  /**
+   * 下一首
+   */
+  musicSkipForward: function () {
+    navMusicEl.querySelector("meting-js").aplayer.skipForward();
+    cloudchewieFn.toggleRightMenu(false);
+  },
+  /**
+   * 获取音乐名称
+   */
+  musicGetName: function () {
+    var x = document.querySelector(".aplayer-title");
+    var arr = [];
+    for (var i = x.length - 1; i >= 0; i--) {
+      arr[i] = x[i].innerText;
+    }
+    return arr[0];
+  },
+  /**
+   * 绑定左下角播放器事件
+   */
+  musicBindEvent: function () {
+    document
+      .querySelector("#nav-music .aplayer-music")
+      .addEventListener("click", function () {
+        cloudchewieFn.musicTelescopic();
+      });
+    document
+      .querySelector("#nav-music .aplayer-button")
+      .addEventListener("click", function () {
+        cloudchewieFn.toggleMusic(false);
+      });
+  },
+  /**
+   * 左下角播放器事件
+   */
+  listenNavMusicPause: function () {
+    const timer = setInterval(() => {
+      if (navMusicEl.querySelector("#nav-music meting-js").aplayer) {
+        clearInterval(timer);
+        let msgPlay = '<i class="fas fa-play"></i><span>播放音乐</span>';
+        let msgPause = '<i class="fas fa-pause"></i><span>暂停音乐</span>';
+        navMusicEl
+          .querySelector("#nav-music meting-js")
+          .aplayer.on("pause", function () {
+            navMusicEl.classList.remove("playing");
+            document.getElementById("menu-music-toggle").innerHTML = msgPlay;
+            document.getElementById("nav-music-hoverTips").innerHTML =
+              "音乐已暂停";
+            document.querySelector("#con-music i").classList = "fas fa-play";
+            cloudchewie_musicPlaying = false;
+            navMusicEl.classList.remove("stretch");
+          });
+        navMusicEl
+          .querySelector("#nav-music meting-js")
+          .aplayer.on("play", function () {
+            navMusicEl.classList.add("playing");
+            document.getElementById("menu-music-toggle").innerHTML = msgPause;
+            document.querySelector("#con-music i").classList = "fas fa-pause";
+            cloudchewie_musicPlaying = true;
+            // navMusicEl.classList.add("stretch");
+          });
+      }
+    }, 16);
+  },
+  /**
+   * 播放音乐
+   */
+  playMusic() {
+    if (!cloudchewieFn.isMusic()) {
+      const navMusic = document.getElementById("nav-music");
+      const navMetingAplayer = navMusic.querySelector("meting-js").aplayer;
+      navMetingAplayer.play();
+    } else {
+      const anMusicPage = document.getElementById("anMusic-page");
+      const metingAplayer = anMusicPage.querySelector("meting-js").aplayer;
+      metingAplayer.play();
+    }
+  },
+  /**
+   * 天籁界面更改背景
+   */
+  changeMusicBg: function (isChangeBg = true) {
+    const anMusicBg = document.getElementById("an_music_bg");
+    if (isChangeBg) {
+      const musiccover = document.querySelector("#anMusic-page .aplayer-pic");
+      anMusicBg.style.backgroundImage = musiccover.style.backgroundImage;
+      $web_container.style.background = "none";
+    } else {
+      let timer = setInterval(() => {
+        const musiccover = document.querySelector("#anMusic-page .aplayer-pic");
+        if (musiccover) {
+          clearInterval(timer);
+          cloudchewieFn.addEventListenerMusic();
+          cloudchewieFn.changeMusicBg();
+          if (
+            document.querySelector("#nav-music meting-js").aplayer &&
+            !document.querySelector("#nav-music meting-js").aplayer.audio.paused
+          ) {
+            cloudchewieFn.toggleMusic();
+          }
+        }
+      }, 100);
+    }
+    if (
+      document.querySelector("#anMusic-page .aplayer-title") != null &&
+      document.querySelector("#anMusic-page .aplayer-title").innerHTML !=
+        undefined &&
+      document.querySelector("#anMusic-page .aplayer-title").innerHTML != ""
+    ) {
+      document.title =
+        document.querySelector("#anMusic-page .aplayer-title").innerHTML +
+        " - 天籁 | Cloudchewie";
+    }
+  },
+  /**
+   * 天籁界面播放器初始化
+   */
+  initAnPlayer: function () {
+    if (!cloudchewieFn.isMusic()) {
+      return;
+    }
+    const urlParams = new URLSearchParams(window.location.search);
+    var userId = "7185982924";
+    var userServer = "netease";
+    if (cloudchewieFn.loadData("playlist") != undefined) {
+      var json = JSON.parse(cloudchewieFn.loadData("playlist"));
+      userId = json.id;
+      userServer = json.server;
+    }
+    const anMusicPageMeting = document.getElementById("anMusic-page-meting");
+    if (urlParams.get("id") && urlParams.get("server")) {
+      const id = urlParams.get("id");
+      const server = urlParams.get("server");
+      anMusicPageMeting.innerHTML = `<meting-js id="${id}" server=${server} type="playlist" type="playlist" mutex="true" preload="auto" theme="var(--theme-color)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
+    } else {
+      anMusicPageMeting.innerHTML = `<meting-js id="${userId}" server="${userServer}" type="playlist" mutex="true" preload="auto" theme="var(--theme-color)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
+    }
+    cloudchewieFn.changeMusicBg(false);
+  },
+  /**
+   * 天籁界面播放器事件
+   */
+  addEventListenerMusic: function () {
+    const anMusicPage = document.getElementById("anMusic-page");
+    const aplayerIconMenu = anMusicPage.querySelector(
+      ".aplayer-info .aplayer-time .aplayer-icon-menu"
+    );
+    const metingAplayer = anMusicPage.querySelector("meting-js").aplayer;
+    //初始化音量
+    metingAplayer.volume(0.8, true);
+    metingAplayer.on("loadeddata", function () {
+      cloudchewieFn.changeMusicBg();
+    });
+    aplayerIconMenu.addEventListener("click", function () {
+      document.getElementById("menu-mask").style.display = "block";
+      document.getElementById("menu-mask").style.animation =
+        "0.5s ease 0s 1 normal none running to_show";
+      anMusicPage.querySelector(
+        ".aplayer.aplayer-withlist .aplayer-list"
+      ).style.opacity = "1";
+    });
+
+    function anMusicPageMenuMask() {
+      if (!cloudchewieFn.isMusic()) {
+        document
+          .getElementById("menu-mask")
+          .removeEventListener("click", anMusicPageMenuMask);
+        return;
+      }
+      anMusicPage.querySelector(".aplayer-list") != null &&
+        anMusicPage
+          .querySelector(".aplayer-list")
+          .classList.remove("aplayer-list-hide");
+    }
+
+    document
+      .getElementById("menu-mask")
+      .addEventListener("click", anMusicPageMenuMask);
+
+    document.addEventListener("keydown", function (event) {
+      if (event.code === "Space") {
+        event.preventDefault();
+        metingAplayer.toggle();
+      }
+      if (event.keyCode === 39) {
+        event.preventDefault();
+        metingAplayer.skipForward();
+      }
+      if (event.keyCode === 37) {
+        event.preventDefault();
+        metingAplayer.skipBack();
+      }
+      if (event.keyCode === 38) {
+        if (musicVolume <= 1) {
+          musicVolume += 0.1;
+          metingAplayer.volume(musicVolume, true);
+        }
+      }
+      if (event.keyCode === 40) {
+        if (musicVolume >= 0) {
+          musicVolume += -0.1;
+          metingAplayer.volume(musicVolume, true);
+        }
+      }
+    });
+  },
+  /**
+   * 切换歌单
+   */
+  changeMusicList: async function (server, id, type = "playlist") {
+    if (!cloudchewieFn.isMusic()) {
+      const navMusic = document.getElementById("nav-music");
+      if (navMusic == null || navMusic.querySelector("meting-js") == null)
+        return;
+      const navMetingAplayer = navMusic.querySelector("meting-js").aplayer;
+      navMusic
+        .querySelector("meting-js")
+        ._fetchSongs(server, id, type)
+        .then((songs) => {
+          if (navMetingAplayer != null) {
+            let isPaused = navMetingAplayer.audio.paused;
+            navMetingAplayer.list.clear();
+            navMetingAplayer.list.add(songs);
+            if (!isPaused) {
+              cloudchewieFn.playMusic();
+            }
+          }
+        });
+    } else {
+      const anMusicPage = document.getElementById("anMusic-page");
+      if (anMusicPage == null || anMusicPage.querySelector("meting-js") == null)
+        return;
+      const metingAplayer = anMusicPage.querySelector("meting-js").aplayer;
+      anMusicPage
+        .querySelector("meting-js")
+        ._fetchSongs(server, id, type)
+        .then((songs) => {
+          if (metingAplayer != null) {
+            let isPaused = metingAplayer.audio.paused;
+            metingAplayer.list.clear();
+            metingAplayer.list.add(songs);
+            if (!isPaused) {
+              cloudchewieFn.playMusic();
+            }
+          }
+        });
+    }
+  },
+  /**
+   * 绑定侧边栏按钮事件
+   */
+  bindRightSideBtn: () => {
+    document.getElementById("rightside").addEventListener("click", (e) => {
+      const $target = e.target.id ? e.target : e.target.parentNode;
+      switch ($target.id) {
+        case "go-up":
+          cloudchewieFn.scrollToTop();
+          break;
+        case "go-down":
+          cloudchewieFn.scrollToBottom();
+          break;
+        case "rightside_config":
+          cloudchewieFn.toggleSideBtn($target);
+          break;
+        case "mobile-toc-button":
+          cloudchewieFn.toggleMobileToc();
+          break;
+        case "readmode":
+          cloudchewieFn.toggleReadMode();
+          break;
+        case "darkmode":
+          cloudchewieFn.toggleDarkMode();
+          break;
+        case "hide-aside-btn":
+          cloudchewieFn.toggleAside();
+          break;
+        default:
+          break;
+      }
+    });
+  },
+  /**
+   * =================================================
+   *
+   * Memos
+   *
+   * =================================================
+   */
+  parseImage: (e) => {
+    return `<a href="${e}" data-fancybox="gallery" class="fancybox" data-thumb="${e}"><img class="no-lazyload" src="${e}"></a>`;
+  },
+  jumpToComment: (e) => {
+    var n = document.querySelector(".el-textarea__inner");
+    n.value = `> ${e}\n\n`;
+    n.focus();
+    cloudchewieFn.snackbarShow("无需删除空行，直接输入评论即可", !1, 2e3);
+  },
+  fetchMemos: async () => {
+    var items = [],
+      item = {},
+      nextDatas = [],
+      nextData = {},
+      limit = 2;
+    var page = 1,
+      offset = 0,
+      nextLength = 0,
+      nextDom = "",
+      bbUrlNow = "",
+      imgsrcNow = "",
+      hostNow = "",
+      creIdNow = "",
+      commentNow = "",
+      twiEnvNow = "",
+      artEnvNow = "",
+      artSiteNow = "";
+    const withTimeout = (millis, promise) => {
+      const timeout = new Promise((resolve, reject) =>
+        setTimeout(() => reject(`Timed out after ms.`), millis)
+      );
+      return Promise.race([promise, timeout]);
+    };
+    function compare(p) {
+      return function (m, n) {
+        var a = m[p];
+        var b = n[p];
+        return b - a;
+      };
+    }
+    fetch("/memos_user.json")
+      .then((res) => res.json())
+      .then(async (users) => {
+        const results = await Promise.allSettled(
+          users.map((user) =>
+            withTimeout(
+              2000,
+              fetch(
+                "https://memos.cloudchewie.com/api/v1/memo?creatorId=" +
+                  user.id +
+                  "&rowStatus=NORMAL&limit=" +
+                  10
+              )
+                .then((response) => response.json())
+                .then((resdata) => {
+                  // var qsLive = ".bbs-urls.bbs-url[data-hostid='"+url.host+"u/"+url.creatorId+"']"
+                  // document.querySelector(qsLive).classList.add("liveon");
+                  return resdata;
+                })
+            )
+          )
+        ).then((results) => {
+          for (var i = 0; i < results.length; i++) {
+            var status = results[i].status;
+            if (status == "fulfilled") {
+              var resultsRes = results[i].value;
+              for (var j = 0; j < resultsRes.length; j++) {
+                var resValue = resultsRes[j];
+                var dayDiff = Math.floor(
+                  (new Date().getTime() - resValue.updatedTs * 1000) /
+                    (24 * 3600 * 1000)
+                );
+                if (dayDiff < 365) {
+                  let avatarUrl = "";
+                  users.forEach((user) => {
+                    if (user.id == resValue.creatorId) avatarUrl = user.avatar;
+                  });
+                  item = {
+                    id: resValue.id,
+                    avatar:
+                      avatarUrl && avatarUrl != ""
+                        ? avatarUrl
+                        : "https://picbed.cloudchewie.com/img/badge/memos.webp",
+                    updatedTs: resValue.updatedTs,
+                    creatorId: resValue.creatorId,
+                    creator: resValue.creatorName,
+                    content: resValue.content,
+                    resourceList: resValue.resourceList,
+                  };
+                  items.push(item);
+                }
+              }
+            }
+          }
+          items.sort(compare("updatedTs"));
+          cloudchewieFn.loadMemos(items);
+        });
+      });
+  },
+  loadMemos: (data) => {
+    let items = [],
+      html = "";
+    data.forEach((item) => {
+      items.push(cloudchewieFn.formatMemo(item));
+    });
+    items.forEach((item) => {
+      html += `
+                <div class="talk_item">
+                  <div class="talk_content">${item.content}</div>
+                  <div class="talk_spacer"></div>
+                  <div class="talk_meta">
+                    <img class="no-lightbox no-lazyload avatar" src="${item.avatar}">
+                    <div class="info">
+                      <span class="talk_nick">${item.name}</span>
+                      <span class="talk_dot">·</span>
+                      <span class="talk_date">${item.date}</span>
+                    </div>
+                  </div>
+                </div>
+                `;
+    });
+    document.getElementById("talk").innerHTML = html;
+    window.Lately && Lately.init({ target: ".talk_date" });
+    var times = 0;
+    var relayout = setInterval(function () {
+      cloudchewieFn.isNowtime() &&
+        (waterfall("#talk"),
+        setTimeout(() => {
+          waterfall("#talk");
+        }, 300));
+      times++;
+      if (times > 5) clearInterval(relayout);
+    }, 300);
+  },
+  formatMemo: (item) => {
+    //正则式
+    const TAG_REG = /#([^\s#]+)/;
+    const IMG_REG = /\!\[(.*?)\]\((.*?)\)/g;
+    BILIBILI_REG =
+      /<a.*?href="https:\/\/www\.bilibili\.com\/video\/((av[\d]{1,10})|(BV([\w]{10})))\/?".*?>.*<\/a>/g;
+    NETEASE_MUSIC_REG =
+      /<a.*?href="https:\/\/music\.163\.com\/.*id=([0-9]+)".*?>.*<\/a>/g;
+    // QQMUSIC_REG = /<a.*?href="https\:\/\/y\.qq\.com\/.*(\/[0-9a-zA-Z]+)(\.html)?".*?>.*?<\/a>/g;
+    QQMUSIC_REG =
+      /<a.*?href="https\:\/\/y\.qq\.com\/n\/ryqq\/songDetail.*\/([0-9a-zA-Z]+)?".*?>.*?<\/a>/g;
+    QQVIDEO_REG =
+      /<a.*?href="https:\/\/v\.qq\.com\/.*\/([a-z|A-Z|0-9]+)\.html".*?>.*<\/a>/g;
+    YOUKU_REG =
+      /<a.*?href="https:\/\/v\.youku\.com\/.*\/id_([a-z|A-Z|0-9|==]+)\.html".*?>.*<\/a>/g;
+    YOUTUBE_REG =
+      /<a.*?href="https:\/\/www\.youtube\.com\/watch\?v\=([a-z|A-Z|0-9]{11})\".*?>.*<\/a>/g;
+    //marked设置
+    marked.setOptions({
+      breaks: true,
+      smartypants: false,
+      langPrefix: "language-",
+      mangle: false,
+      headerIds: false,
+    });
+    const renderer = new marked.Renderer();
+    const linkRenderer = renderer.link;
+    renderer.link = (href, title, text) => {
+      const localLink = href.startsWith(
+        `${location.protocol}//${location.hostname}`
+      );
+      const html = linkRenderer.call(renderer, href, title, text);
+      return localLink
+        ? html
+        : html.replace(
+            /^<a /,
+            `<a target="_blank" rel="noreferrer noopener nofollow" `
+          );
+    };
+    marked.use({ renderer });
+    //处理内容
+    let content = item.content,
+      imgls = [],
+      text = "";
+    content = content
+      .replace(TAG_REG, "<span class='tag-span'>#$1</span> ")
+      .replace(
+        IMG_REG,
+        `<a href="$2" data-fancybox="gallery" class="fancybox" data-thumb="$2"><img class="no-lazyload" src="$2"></a>`
+      );
+    content = marked
+      .parse(content)
+      .replace(
+        BILIBILI_REG,
+        "<div class='video-wrapper'><iframe src='//www.bilibili.com/blackboard/html5mobileplayer.html?bvid=$1&as_wide=1&high_quality=1&danmaku=1' scrolling='no' border='0' frameborder='no' framespacing='0' allowfullscreen='true'></iframe></div>"
+      )
+      .replace(
+        NETEASE_MUSIC_REG,
+        "<meting-js class='music-wrapper' auto='https://music.163.com/#/song?id=$1'></meting-js>"
+      )
+      .replace(
+        QQMUSIC_REG,
+        "<meting-js class='music-wrapper' auto='https://y.qq.com/n/yqq/song/$1.html'></meting-js>"
+      )
+      .replace(
+        QQVIDEO_REG,
+        "<div class='video-wrapper'><iframe src='//v.qq.com/iframe/player.html?vid=$1' allowFullScreen='true' frameborder='no'></iframe></div>"
+      )
+      .replace(
+        YOUKU_REG,
+        "<div class='video-wrapper'><iframe src='https://player.youku.com/embed/$1' frameborder=0 'allowfullscreen'></iframe></div>"
+      )
+      .replace(
+        YOUTUBE_REG,
+        "<div class='video-wrapper'><iframe src='https://www.youtube.com/embed/$1' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen title='YouTube Video'></iframe></div>"
+      );
+    //处理资源文件
+    if (item.resourceList != undefined) {
+      item.resourceList.forEach((e) => {
+        if (
+          e.externalLink != undefined &&
+          e.externalLink != null &&
+          e.externalLink != ""
+        ) {
+          imgls.push(e.externalLink);
+        } else {
+          imgls.push(
+            `https://memos.cloudchewie.com/o/r/${e.id}/${e.publicId}/${e.filename}`
+          );
+        }
+      });
+    }
+    if (imgls.length > 0) {
+      content += `<div class="zone_imgbox">`;
+      imgls
+        .map((item) => {
+          return item.replace(/!\[.*\]\((.*?)\)/, "$1");
+        })
+        .forEach(
+          (e) =>
+            (content += `<a href="${e}" data-fancybox="gallery" class="fancybox" data-thumb="${e}"><img class="no-lazyload" src="${e}"></a>`)
+        );
+      content += "</div>";
+    }
+    return {
+      content: content,
+      date: new Date(item.updatedTs * 1000).toLocaleString(),
+      text: text.replace(
+        /\[(.*?)\]\((.*?)\)/g,
+        "[链接]" + `${imgls ? "[图片]" : ""}`
+      ),
+      name: item.creator,
+      avatar: item.avatar,
+    };
+  },
+  /**
+   * =================================================
+   *
+   * CloudGPT
+   *
+   * =================================================
+   */
+  /**
+   * 插入挂载DOM
+   */
+  insertAIDiv: (selector) => {
+    // 首先移除现有的 "post-cloudGPT" 类元素（如果有的话）
+    cloudchewieFn.removeExistingAIDiv();
+    // 获取目标元素
+    const targetElement = document.querySelector(selector);
+    // 如果没有找到目标元素，不执行任何操作
+    if (!targetElement) {
+      return;
+    }
+    // 创建要插入的HTML元素
+    const aiDiv = document.createElement("div");
+    aiDiv.className = "post-cloudGPT";
+
+    const aiTitleDiv = document.createElement("div");
+    aiTitleDiv.className = "cloudGPT-title";
+    aiDiv.appendChild(aiTitleDiv);
+
+    const aiIcon = document.createElement("i");
+    aiIcon.className = "cloudGPT-title-icon";
+    aiTitleDiv.appendChild(aiIcon);
+
+    // 插入 SVG 图标
+    aiIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48px" height="48px" viewBox="0 0 48 48">
+      <title>机器人</title>
+      <g id="&#x673A;&#x5668;&#x4EBA;" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M34.717885,5.03561087 C36.12744,5.27055371 37.079755,6.60373651 36.84481,8.0132786 L35.7944,14.3153359 L38.375,14.3153359 C43.138415,14.3153359 47,18.1768855 47,22.9402569 L47,34.4401516 C47,39.203523 43.138415,43.0650727 38.375,43.0650727 L9.625,43.0650727 C4.861585,43.0650727 1,39.203523 1,34.4401516 L1,22.9402569 C1,18.1768855 4.861585,14.3153359 9.625,14.3153359 L12.2056,14.3153359 L11.15519,8.0132786 C10.920245,6.60373651 11.87256,5.27055371 13.282115,5.03561087 C14.69167,4.80066802 16.024865,5.7529743 16.25981,7.16251639 L17.40981,14.0624532 C17.423955,14.1470924 17.43373,14.2315017 17.43948,14.3153359 L30.56052,14.3153359 C30.56627,14.2313867 30.576045,14.1470924 30.59019,14.0624532 L31.74019,7.16251639 C31.975135,5.7529743 33.30833,4.80066802 34.717885,5.03561087 Z M38.375,19.4902885 L9.625,19.4902885 C7.719565,19.4902885 6.175,21.0348394 6.175,22.9402569 L6.175,34.4401516 C6.175,36.3455692 7.719565,37.89012 9.625,37.89012 L38.375,37.89012 C40.280435,37.89012 41.825,36.3455692 41.825,34.4401516 L41.825,22.9402569 C41.825,21.0348394 40.280435,19.4902885 38.375,19.4902885 Z M14.8575,23.802749 C16.28649,23.802749 17.445,24.9612484 17.445,26.3902253 L17.445,28.6902043 C17.445,30.1191812 16.28649,31.2776806 14.8575,31.2776806 C13.42851,31.2776806 12.27,30.1191812 12.27,28.6902043 L12.27,26.3902253 C12.27,24.9612484 13.42851,23.802749 14.8575,23.802749 Z M33.1425,23.802749 C34.57149,23.802749 35.73,24.9612484 35.73,26.3902253 L35.73,28.6902043 C35.73,30.1191812 34.57149,31.2776806 33.1425,31.2776806 C31.71351,31.2776806 30.555,30.1191812 30.555,28.6902043 L30.555,26.3902253 C30.555,24.9612484 31.71351,23.802749 33.1425,23.802749 Z" id="&#x5F62;&#x72B6;&#x7ED3;&#x5408;" fill="#444444" fill-rule="nonzero"></path>
+      </g>
+      </svg>`;
+
+    const aiTitleTextDiv = document.createElement("div");
+    aiTitleTextDiv.className = "cloudGPT-title-text";
+    aiTitleTextDiv.textContent = "AI摘要";
+    aiTitleDiv.appendChild(aiTitleTextDiv);
+
+    const aiTagDiv = document.createElement("div");
+    aiTagDiv.className = "cloudGPT-tag";
+    aiTagDiv.id = "cloudGPT-tag";
+    aiTagDiv.textContent = "CloudGPT";
+    aiTitleDiv.appendChild(aiTagDiv);
+
+    const aiExplanationDiv = document.createElement("div");
+    aiExplanationDiv.className = "cloudGPT-explanation";
+    aiExplanationDiv.innerHTML =
+      "生成中..." + '<span class="blinking-cursor"></span>';
+    aiDiv.appendChild(aiExplanationDiv); // 将 cloudGPT-explanation 插入到 aiDiv，而不是 aiTitleDiv
+
+    // 将创建的元素插入到目标元素的顶部
+    targetElement.insertBefore(aiDiv, targetElement.firstChild);
+  },
+  /**
+   * 移除已有DOM
+   */
+  removeExistingAIDiv: () => {
+    // 查找具有 "post-cloudGPT" 类的元素
+    const existingAIDiv = document.querySelector(".post-cloudGPT");
+    // 如果找到了这个元素，就从其父元素中删除它
+    if (existingAIDiv) {
+      existingAIDiv.parentElement.removeChild(existingAIDiv);
+    }
+  },
+  /**
+   * 读取文章中的所有文本
+   */
+  getTitleAndContent: function () {
+    try {
+      const title = document.title;
+      const container = document.querySelector(cloudGPT_postSelector);
+      if (!container) {
+        return "";
+      }
+      const paragraphs = container.getElementsByTagName("p");
+      const headings = container.querySelectorAll("h1, h2, h3, h4, h5");
+      let content = "";
+
+      for (let h of headings) {
+        content += h.innerText + " ";
+      }
+
+      for (let p of paragraphs) {
+        // 移除包含'http'的链接
+        const filteredText = p.innerText.replace(/https?:\/\/[^\s]+/g, "");
+        content += filteredText;
+      }
+
+      const combinedText = title + " " + content;
+      let wordLimit = 1000;
+      if (typeof cloudGPT_wordLimit !== "undefined") {
+        wordLimit = cloudGPT_wordLimit;
+      }
+      const truncatedText = combinedText.slice(0, wordLimit);
+      return truncatedText;
+    } catch (e) {
+      //   console.error('cloudGPT错误：可能由于一个或多个错误导致没有正常运行，原因出在获取文章容器中的内容失败，或者可能是在文章转换过程中失败。', e);
+      return "";
+    }
+  },
+  /**
+   * 获取数据
+   */
+  fetchcloudGPT: async function (content) {
+    if (!cloudGPT_key) {
+      return "没有获取到key，代码可能没有安装正确。如果你需要在cloudchewieCPT文件引用前定义cloudGPT_key变量。详细请查看文档。";
+    }
+
+    if (cloudGPT_key === "5Q5mpqRK5DkwT1X9Gi5e") {
+      return "请购买 key 使用，如果你能看到此条内容，则说明代码安装正确。";
+    }
+
+    const apiUrl = `https://summary.tianli0.top/?content=${encodeURIComponent(
+      content
+    )}&key=${encodeURIComponent(cloudGPT_key)}`;
+    const timeout = 20000;
+
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), timeout);
+      const response = await fetch(apiUrl, { signal: controller.signal });
+      if (response.ok) {
+        const data = await response.json();
+        return data.summary;
+      } else {
+        if (response.status === 402) {
+          document.querySelectorAll(".post-cloudGPT").forEach((el) => {
+            el.style.display = "none";
+          });
+        }
+        throw new Error("CloudGPT：余额不足，请充值后请求新的文章");
+      }
+    } catch (error) {
+      if (error.name === "AbortError") {
+        if (window.location.hostname === "localhost") {
+          return "获取文章摘要超时。请勿在本地主机上测试 API 密钥。";
+        } else {
+          return "获取文章摘要超时。当你出现这个问题时，可能是key或者绑定的域名不正确。也可能是因为文章过长导致的 AI 运算量过大，您可以稍等一下然后刷新页面重试。";
+        }
+      } else {
+        return "获取文章摘要失败，请稍后再试。";
+      }
+    }
+  },
+  /**
+   * 内容展示动画
+   */
+  aiShowAnimation: function (text) {
+    const element = document.querySelector(".cloudGPT-explanation");
+    if (!element) {
+      return;
+    }
+
+    if (cloudGPTIsRunning) {
+      return;
+    }
+    cloudGPTIsRunning = true;
+    const typingDelay = 25;
+    const waitingTime = 1000;
+    const punctuationDelayMultiplier = 6;
+
+    element.style.display = "block";
+    element.innerHTML = "生成中..." + '<span class="blinking-cursor"></span>';
+
+    let animationRunning = false;
+    let currentIndex = 0;
+    let initialAnimation = true;
+
+    function isInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <=
+          (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <=
+          (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+    let lastUpdateTime = performance.now();
+
+    function type() {
+      if (currentIndex < text.length && animationRunning) {
+        const currentTime = performance.now();
+        const timeDiff = currentTime - lastUpdateTime;
+
+        const letter = text.slice(currentIndex, currentIndex + 1);
+        const isPunctuation = /[，。！、？,.!?]/.test(letter);
+        const delay = isPunctuation
+          ? typingDelay * punctuationDelayMultiplier
+          : typingDelay;
+
+        if (timeDiff >= delay) {
+          element.innerText = text.slice(0, currentIndex + 1);
+          lastUpdateTime = currentTime;
+          currentIndex++;
+
+          if (currentIndex < text.length) {
+            element.innerHTML =
+              text.slice(0, currentIndex) +
+              '<span class="blinking-cursor"></span>';
+          } else {
+            element.innerHTML = text;
+            element.style.display = "block";
+            cloudGPTIsRunning = false;
+          }
+        }
+        requestAnimationFrame(type);
+      }
+    }
+
+    function checkVisibility() {
+      if (isInViewport(element)) {
+        if (!animationRunning) {
+          animationRunning = true;
+          if (initialAnimation) {
+            setTimeout(() => {
+              type();
+              initialAnimation = false;
+            }, waitingTime);
+          } else {
+            type();
+          }
+        }
+      } else {
+        animationRunning = false;
+      }
+    }
+
+    window.addEventListener("scroll", checkVisibility);
+    window.addEventListener("resize", checkVisibility);
+
+    function checkVisibility() {
+      if (isInViewport(element)) {
+        if (!animationRunning) {
+          animationRunning = true;
+          if (initialAnimation) {
+            setTimeout(() => {
+              type();
+              initialAnimation = false;
+            }, waitingTime);
+          } else {
+            type();
+          }
+        }
+      } else {
+        animationRunning = false;
+      }
+    }
+
+    window.addEventListener("scroll", checkVisibility);
+    window.addEventListener("resize", checkVisibility);
+
+    // 使用 setInterval 添加定时器，周期性检查元素可见性
+    const visibilityCheckInterval = setInterval(checkVisibility, 500);
+
+    // 当动画完成后，清除定时器
+    if (!cloudGPTIsRunning) {
+      clearInterval(visibilityCheckInterval);
+    }
+
+    // Trigger initial visibility check
+    checkVisibility();
+  },
+  /**
+   * 运行CloudGPT
+   */
+  runcloudGPT: () => {
+    cloudchewieFn.insertAIDiv(cloudGPT_postSelector);
+    const content = cloudchewieFn.getTitleAndContent();
+    cloudchewieFn.fetchcloudGPT(content).then((summary) => {
+      cloudchewieFn.aiShowAnimation(summary);
+    });
+  },
+  /**
+   * 检查并运行CloudGPT
+   */
+  checkURLAndRunGPT: () => {
+    if (typeof cloudGPT_postURL === "undefined") {
+      cloudchewieFn.runcloudGPT();
+      return;
+    }
+    try {
+      const wildcardToRegExp = (s) => {
+        return new RegExp(
+          "^" + s.split(/\*+/).map(regExpEscape).join(".*") + "$"
+        );
+      };
+
+      const regExpEscape = (s) => {
+        return s.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&");
+      };
+
+      const urlPattern = wildcardToRegExp(cloudGPT_postURL);
+      const currentURL = window.location.href;
+
+      if (urlPattern.test(currentURL)) {
+        cloudchewieFn.runcloudGPT();
+      }
+    } catch (error) {}
+  },
+};
+/**
+ * =================================================
+ *
+ * 代码高亮
+ *
+ * =================================================
+ */
+const addHighlight = function () {
+  const highLight = GLOBAL_CONFIG.highlight;
+  if (!highLight) return;
+
+  const isHighlightCopy = highLight.highlightCopy;
+  const isHighlightLang = highLight.highlightLang;
+  const isHighlightShrink = GLOBAL_CONFIG_SITE.isHighlightShrink;
+  const highlightHeightLimit = highLight.highlightHeightLimit;
+  const isShowTool =
+    isHighlightCopy || isHighlightLang || isHighlightShrink !== undefined;
+  const $figureHighlight =
+    highLight.plugin === "highlighjs"
+      ? document.querySelectorAll("figure.highlight")
+      : document.querySelectorAll('pre[class*="language-"]');
+
+  if (!((isShowTool || highlightHeightLimit) && $figureHighlight.length))
+    return;
+
+  const isPrismjs = highLight.plugin === "prismjs";
+
+  let highlightShrinkEle = "";
+  let highlightCopyEle = "";
+  const highlightShrinkClass = isHighlightShrink === true ? "closed" : "";
+
+  if (isHighlightShrink !== undefined) {
+    highlightShrinkEle = `<i class="fas fa-angle-down expand ${highlightShrinkClass}"></i>`;
+  }
+
+  if (isHighlightCopy) {
+    highlightCopyEle =
+      '<div class="copy-notice"></div><i class="fas fa-paste copy-button"></i>';
+  }
+
+  const copy = (text, ctx) => {
+    if (
+      document.queryCommandSupported &&
+      document.queryCommandSupported("copy")
+    ) {
+      document.execCommand("copy");
+      if (GLOBAL_CONFIG.Snackbar !== undefined) {
+        cloudchewieFn.snackbarShow(GLOBAL_CONFIG.copy.success);
+      } else {
+        const prevEle = ctx.previousElementSibling;
+        prevEle.innerText = GLOBAL_CONFIG.copy.success;
+        prevEle.style.opacity = 1;
+        setTimeout(() => {
+          prevEle.style.opacity = 0;
+        }, 700);
+      }
+    } else {
+      if (GLOBAL_CONFIG.Snackbar !== undefined) {
+        cloudchewieFn.snackbarShow(GLOBAL_CONFIG.copy.noSupport);
+      } else {
+        ctx.previousElementSibling.innerText = GLOBAL_CONFIG.copy.noSupport;
+      }
+    }
+  };
+  // click events
+  const highlightCopyFn = (ele) => {
+    const $buttonParent = ele.parentNode;
+    $buttonParent.classList.add("copy-true");
+    const selection = window.getSelection();
+    const range = document.createRange();
+    if (isPrismjs)
+      range.selectNodeContents($buttonParent.querySelectorAll("pre code")[0]);
+    else
+      range.selectNodeContents(
+        $buttonParent.querySelectorAll("table .code pre")[0]
+      );
+    selection.removeAllRanges();
+    selection.addRange(range);
+    const text = selection.toString();
+    copy(text, ele.lastChild);
+    selection.removeAllRanges();
+    $buttonParent.classList.remove("copy-true");
+  };
+  const highlightShrinkFn = (ele) => {
+    const $nextEle = [...ele.parentNode.children].slice(1);
+    ele.firstChild.classList.toggle("closed");
+    if (cloudchewieFn.isHidden($nextEle[$nextEle.length - 1])) {
+      $nextEle.forEach((e) => {
+        e.style.display = "block";
+      });
+    } else {
+      $nextEle.forEach((e) => {
+        e.style.display = "none";
+      });
+    }
+  };
+
+  const highlightToolsFn = function (e) {
+    const $target = e.target.classList;
+    if ($target.contains("expand")) highlightShrinkFn(this);
+    else if ($target.contains("copy-button")) highlightCopyFn(this);
+  };
+
+  const expandCode = function () {
+    this.classList.toggle("expand-done");
+  };
+
+  function createEle(lang, item, service) {
+    const fragment = document.createDocumentFragment();
+
+    if (isShowTool) {
+      const hlTools = document.createElement("div");
+      hlTools.className = `highlight-tools ${highlightShrinkClass}`;
+      hlTools.innerHTML = highlightShrinkEle + lang + highlightCopyEle;
+      hlTools.addEventListener("click", highlightToolsFn);
+      fragment.appendChild(hlTools);
+    }
+
+    if (highlightHeightLimit && item.offsetHeight > highlightHeightLimit + 30) {
+      const ele = document.createElement("div");
+      ele.className = "code-expand-btn";
+      ele.innerHTML = '<i class="fas fa-angle-double-down"></i>';
+      ele.addEventListener("click", expandCode);
+      fragment.appendChild(ele);
+    }
+
+    if (service === "hl") {
+      item.insertBefore(fragment, item.firstChild);
+    } else {
+      item.parentNode.insertBefore(fragment, item);
+    }
+  }
+
+  if (isHighlightLang) {
+    if (isPrismjs) {
+      $figureHighlight.forEach(function (item) {
+        const langName = item.getAttribute("data-language")
+          ? item.getAttribute("data-language")
+          : "Code";
+        const highlightLangEle = `<div class="code-lang">${langName}</div>`;
+        cloudchewieFn.wrap(item, "figure", { class: "highlight" });
+        createEle(highlightLangEle, item);
+      });
+    } else {
+      $figureHighlight.forEach(function (item) {
+        let langName = item.getAttribute("class").split(" ")[1];
+        if (langName === "plain" || langName === undefined) langName = "Code";
+        const highlightLangEle = `<div class="code-lang">${langName}</div>`;
+        createEle(highlightLangEle, item, "hl");
+      });
+    }
+  } else {
+    if (isPrismjs) {
+      $figureHighlight.forEach(function (item) {
+        cloudchewieFn.wrap(item, "figure", { class: "highlight" });
+        createEle("", item);
+      });
+    } else {
+      $figureHighlight.forEach(function (item) {
+        createEle("", item, "hl");
+      });
+    }
+  }
+};
+/**
+ * =================================================
+ *
+ * 移动端侧栏事件
+ *
+ * =================================================
+ */
+const mobileSidebarFn = {
+  dragStartX: 0,
+  mobileSidebarOpen: false,
+  onDragStart: (event) => {
+    // event.preventDefault();
+    mobileSidebarFn.dragStartX = mobileSidebarFn.getEventX(event);
+    $web_box.style.transition = "all .3s";
+    mobileSidebarFn.addMoveEndListeners(
+      mobileSidebarFn.onDragMove,
+      mobileSidebarFn.onDragEnd
+    );
+  },
+  onDragMove: (event) => {
+    const deltaX =
+      mobileSidebarFn.getEventX(event) - mobileSidebarFn.dragStartX;
+    if (deltaX < 0) {
+      const screenWidth = window.innerWidth;
+      const translateX = Math.min(-300, ((-1 * deltaX) / screenWidth) * 300);
+      const scale = Math.min(1, 0.86 + (deltaX / screenWidth) * (1 - 0.86));
+      $web_box.style.transform = `translate3d(-${translateX}px, 0px, 0px) scale3d(${scale}, ${scale}, 1)`;
+    }
+  },
+  onDragMove: (event) => {
+    const deltaX =
+      mobileSidebarFn.getEventX(event) - mobileSidebarFn.dragStartX;
+    if (deltaX < 0) {
+      const screenWidth = window.innerWidth;
+      const translateX = Math.min(-300, ((-1 * deltaX) / screenWidth) * 300);
+      const scale = Math.min(1, 0.86 + (deltaX / screenWidth) * (1 - 0.86));
+      $web_box.style.transform = `translate3d(-${translateX}px, 0px, 0px) scale3d(${scale}, ${scale}, 1)`;
+    }
+  },
+  onDragEnd: (event) => {
+    const screenWidth = window.innerWidth;
+    if (mobileSidebarFn.getEventX(event) <= screenWidth / 1.5) {
+      mobileSidebarFn.completeTransition();
+    } else {
+      mobileSidebarFn.resetTransition();
+    }
+    mobileSidebarFn.removeMoveEndListeners(
+      mobileSidebarFn.onDragMove,
+      mobileSidebarFn.onDragEnd
+    );
+  },
+  completeTransition: () => {
+    $web_box.style.transition = "all 0.3s ease-out";
+    $web_box.style.transform = "none";
+    mobileSidebarFn.close();
+    mobileSidebarFn.removeMoveEndListeners(
+      mobileSidebarFn.onDragMove,
+      mobileSidebarFn.onDragEnd
+    );
+  },
+  resetTransition: () => {
+    $web_box.style.transition = "";
+    $web_box.style.transform = "";
+  },
+  getEventX: (event) => {
+    return event.type.startsWith("touch")
+      ? event.changedTouches[0].clientX
+      : event.clientX;
+  },
+  addMoveEndListeners: (moveHandler, endHandler) => {
+    document.addEventListener("mousemove", moveHandler);
+    document.addEventListener("mouseup", endHandler);
+    document.addEventListener("touchmove", moveHandler, { passive: false });
+    document.addEventListener("touchend", endHandler);
+  },
+  removeMoveEndListeners: (moveHandler, endHandler) => {
+    document.removeEventListener("mousemove", moveHandler);
+    document.removeEventListener("mouseup", endHandler);
+    document.removeEventListener("touchmove", moveHandler);
+    document.removeEventListener("touchend", endHandler);
+  },
+  open: () => {
+    cloudchewieFn.sidebarPaddingR();
+    $sidebarMenus.classList.add("open");
+    $rightside.classList.add("hide");
+    document.body.style.overflow = "hidden";
+    cloudchewieFn.animateIn(
+      document.getElementById("menu-mask"),
+      "to_show 0.5s"
+    );
+    document.getElementById("sidebar-menus").classList.add("open");
+    mobileSidebarFn.mobileSidebarOpen = true;
+    $web_box.classList.add("open");
+    $web_box.addEventListener("mousedown", mobileSidebarFn.onDragStart);
+    $web_box.addEventListener("touchstart", mobileSidebarFn.onDragStart, {
+      passive: false,
+    });
+    if (cloudchewieFn.isMusic()) {
+      $web_container.style.background = "rgb(255 255 255 / 20%)";
+    } else {
+      $web_container.style.background = "var(--global-bg)";
+    }
+  },
+  close: () => {
+    $sidebarMenus.classList.remove("open");
+    const $body = document.body;
+    $body.style.overflow = "";
+    $rightside.classList.remove("hide");
+    $body.style.paddingRight = "";
+    cloudchewieFn.animateOut(
+      document.getElementById("menu-mask"),
+      "to_hide 0.5s"
+    );
+    document.getElementById("sidebar-menus").classList.remove("open");
+    mobileSidebarFn.mobileSidebarOpen = false;
+    $web_box.classList.remove("open");
+    $web_container.style.background = "none";
+    document.getElementById("nav-totop").classList.remove("long");
+    // $web_box.removeEventListener("mousedown", mobileSidebarFn.onDragStart);
+    // $web_box.removeEventListener("touchstart", mobileSidebarFn.onDragStart, {
+    //   passive: false,
+    // });
+  },
+};
+/**
+ * =================================================
+ *
+ * 控制台相关
+ *
+ * =================================================
+ */
+const consoleFn = {
+  /**
+   * 打开/关闭功能
+   */
+  toggleConsole: () => {
+    $("#settingWindow").fadeToggle("fast");
+    $("#console-mask").fadeToggle("fast");
+    if ($("#settingWindow").css("display") != "none")
+      $("#settingWindow").css("display", "flex");
+  },
+  showConsole: () => {
+    $("#settingWindow").fadeIn("fast");
+    $("#console-mask").fadeIn("fast");
+    if ($("#settingWindow").css("display") != "none")
+      $("#settingWindow").css("display", "flex");
+  },
+  closeConsole: () => {
+    $("#settingWindow").fadeOut("fast");
+    $("#console-mask").fadeOut("fast");
+    if ($("#settingWindow").css("display") != "none")
+      $("#settingWindow").css("display", "flex");
+  },
+  /**
+   * 加载设置
+   */
+  // 加载设置
+  loadSetting: () => {
+    $("#backer").hide();
+    $(".asetting").hide();
+    $("#settingWindow").hide();
+    //取消模糊效果
+    document.getElementById("settingStyle").innerText = `
+  *,*:not(.card-info)::before,*::after{
+      -webkit-backdrop-filter: none!important;
+      backdrop-filter: none!important;
+      -webkit-filter: none!important;
+      filter: none!important;
+  }`;
+    //加载是否适应文章封面颜色
+    if (cloudchewieFn.loadData("enableAutoColor") == undefined) {
+      cloudchewieFn.saveData("enableAutoColor", "false");
+    }
+    if (cloudchewieFn.loadData("enableAutoColor") == "true") {
+      document.getElementById("con-toggleAutoColor").checked = true;
+      if (GLOBAL_CONFIG_SITE.isPost) {
+        consoleFn.changeAutoColor(true);
+      }
+    }
+    if (!GLOBAL_CONFIG_SITE.isPost) {
+      consoleFn.setDefaultThemeColor(3);
+    }
+    //固定导航栏
+    if (cloudchewieFn.loadData("enableFixedNav") == undefined) {
+      cloudchewieFn.saveData("enableFixedNav", "false");
+    }
+    if (cloudchewieFn.loadData("enableFixedNav") == "false") {
+      $("#page-header").removeClass("nav-fixed nav-visible");
+      $("#name-container").hide();
+    } else {
+      $("#name-container").show();
+      $("#page-header").addClass("nav-fixed nav-visible");
+      document.getElementById("con-toggleFixedNav").checked = true;
+    }
+    //加载是否打开右键菜单功能
+    if (cloudchewieFn.loadData("enableContextMenu") == undefined) {
+      cloudchewieFn.saveData("enableContextMenu", "true");
+    }
+    if (cloudchewieFn.loadData("enableContextMenu") == "true") {
+      $("#con-rightmouse").addClass("checked");
+      cloudchewieFn.bindContextMenu(true, false);
+    } else {
+      $("#con-rightmouse").removeClass("checked");
+      cloudchewieFn.bindContextMenu(false, false);
+    }
+    //加载是否打开APlayer
+    if (cloudchewieFn.loadData("enableAPlayer") == undefined) {
+      cloudchewieFn.saveData("enableAPlayer", "false");
+    }
+    const navMusic = $("#nav-music");
+    if (navMusic != null && navMusic.find("meting-js") != null) {
+      const navMetingAplayer = navMusic.find("meting-js").aplayer;
+      if (cloudchewieFn.loadData("enableAPlayer") == "true") {
+        if ("/music/" != location.pathname) {
+          navMusic.show();
+        } else {
+          navMusic.hide();
+        }
+        $(".music-wrapper .aplayer").show();
+        document.getElementById("con-toggleAPlayer").checked = true;
+      } else {
+        navMusic.hide();
+        if (navMetingAplayer) {
+          navMetingAplayer.pause();
+        }
+      }
+    }
+    //加载是否显示右侧边栏
+    if (cloudchewieFn.loadData("enableRightSide") == undefined) {
+      cloudchewieFn.saveData("enableRightSide", "true");
+    }
+    if (cloudchewieFn.loadData("enableRightSide") == "false") {
+      $("#rightside").hide();
+    } else {
+      $("#rightside").show();
+      document.getElementById("con-toggleRightSide").checked = true;
+    }
+    //加载是否显示弹幕
+    if (cloudchewieFn.loadData("enableCommentBarrage") == undefined) {
+      cloudchewieFn.saveData("enableCommentBarrage", "true");
+    }
+    if (cloudchewieFn.loadData("enableCommentBarrage") == "false") {
+    } else {
+      document.getElementById("con-barrage") &&
+        document.getElementById("con-barrage").classList.add("checked");
+      document.getElementById("switch_commentBarrage") &&
+        document
+          .getElementById("switch_commentBarrage")
+          .classList.add("checked");
+    }
+    // 加载网页背景
+    try {
+      let data = cloudchewieFn.loadData("blogBackground", 1440);
+      if (data) consoleFn.changeBackground(data, 1);
+      else cloudchewieFn.removeData("blogBackground");
+    } catch (error) {
+      cloudchewieFn.removeData("blogBackground");
+    }
+    // //设置边栏
+    // left = 1;
+    // if (cloudchewieFn.loadData("isLeftAside") == "true" || cloudchewieFn.loadData("isLeftAside") == null) {
+    // } else {
+    //   switchAside();
+    // }
+    // 自动主题色
+    if (cloudchewieFn.loadData("enableAutoTheme") == "true") {
+      document.getElementById("con-toggleAutoTheme").checked = true;
+      $("#con-mode,.rightMenu-item:has(.fa-adjust)").hide();
+      var time = new Date();
+      if (time.getHours() <= 7 || time.getHours() >= 19) {
+        consoleFn.activateDarkMode();
+        cloudchewieFn.removeData("theme");
+      } else {
+        consoleFn.activateLightMode();
+        cloudchewieFn.removeData("theme");
+      }
+    }
+    //加载繁星效果
+    if (cloudchewieFn.loadData("enableStarBackground") == undefined) {
+      cloudchewieFn.saveData("enableStarBackground", "true");
+    }
+    if (cloudchewieFn.loadData("enableStarBackground") == "true") {
+      $("#universe").show();
+      document.getElementById("con-toggleStarBackground").checked = true;
+    } else {
+      $("#universe").hide();
+      document.getElementById("con-toggleStarBackground").checked = false;
+    }
+    //加载播放列表
+    if (cloudchewieFn.loadData("playlist") != undefined) {
+      var json = JSON.parse(cloudchewieFn.loadData("playlist"));
+      consoleFn.changeAPlayerList(json.id, json.server, false);
+    }
+    document
+      .getElementById("console-mask")
+      .addEventListener("click", consoleFn.closeConsole);
+    document
+      .getElementById("console-button")
+      .addEventListener("click", consoleFn.showConsole);
+    window.onresize = () => {
+      if (!cloudchewieFn.isFullScreen()) {
+        $("#con-fullscreen").removeClass("checked");
+      }
+    };
+    $(document).ready(function () {
+      var observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+          if (mutation.attributeName === "data-theme") {
+            if ($("html").attr("data-theme") == "dark") {
+              consoleFn.setDefaultThemeColor(2);
+            } else {
+              if (GLOBAL_CONFIG_SITE.isPost) {
+                consoleFn.changeAutoColor(false);
+              }
+            }
+          }
+        });
+      });
+      observer.observe($("html")[0], { attributes: true });
+    });
+  },
+  /**
+   * 重置设置
+   */
+  resetSettings: () => {
+    cloudchewieFn.removeData("blogBackground");
+    cloudchewieFn.removeData("enableStarBackground");
+    cloudchewieFn.removeData("isLeftAside");
+    cloudchewieFn.removeData("enableRightSide");
+    cloudchewieFn.removeData("enableAutoTheme");
+    cloudchewieFn.removeData("enableFixedNav");
+    cloudchewieFn.removeData("enableAutoColor");
+    cloudchewieFn.removeData("enableContextMenu");
+    cloudchewieFn.removeData("enableAPlayer");
+    window.location.reload();
+  },
+  /**
+   * 重置为默认背景
+   */
+  setDefaultBackground: () => {
+    cloudchewieFn.removeData("blogBackground");
+    window.location.reload();
+  },
+  /**
+   * 切换背景
+   */
+  changeBackground: (s, flag) => {
+    let bg = document.getElementById("web_bg");
+    if (s.charAt(0) == "#") {
+      bg.style.backgroundColor = s;
+      bg.style.background = "none";
+    } else bg.style.background = s;
+    if (!flag) {
+      cloudchewieFn.saveData("blogBackground", s);
+    }
+  },
+  /**
+   * 设置默认主题色
+   */
+  setDefaultThemeColor: (mode) => {
+    let lightTheme = `:root {  --global-font-size: 14px;  --theme-color: #3B70FC; --font-color: #4c4948;  --hr-border: #d2ebfd;  --hr-before-color: #bfe4fb;  --search-bg: #f6f8fa;  --search-input-color: #4c4948;  --search-result-title: #4c4948;  --preloader-bg: #37474f;  --preloader-color: #fff;  --tab-border-color: #f0f0f0;  --tab-botton-bg: #f0f0f0;  --tab-botton-color: #1f2d3d;  --tab-button-hover-bg: #dcdcdc;  --tab-button-active-bg: #fff;  --card-bg: #fff;  --sidebar-bg: #f6f8fa;  --btn-hover-color: #24b1ff;  --btn-color: #fff;  --btn-bg: #3B70FC;  --text-bg-hover: rgba(0,153,255,0.7);  --light-grey: #eee;  --dark-grey: #cacaca;  --white: #fff;  --text-highlight-color: #1f2d3d;  --blockquote-color: #6a737d;  --blockquote-bg: rgba(0,153,255,0.1);  --reward-pop: #f5f5f5;  --toc-link-color: #666261;  --card-border: 1px solid var(--tab-botton-bg);  --card-box-shadow: 0 0px 0px 0px rgba(45,45,45,0.05);  --card-box-shadow-olded: 0 8px 12px -3px rgba(45,45,45,0.05);  --card-hover-box-shadow: 0 8px 12px -3px rgba(45,45,45,0.05);  --card-border-dashed: 2px dashed var(--tab-button-hover-bg);  --pseudo-hover: #24b1ff;  --headline-presudo: #a0a0a0;}`;
+    let darkTheme = `[data-theme='dark'] {  --global-bg: #0d0d0d;  --font-color: rgba(255,255,255,0.7);  --hr-border: rgba(255,255,255,0.4);  --hr-before-color: rgba(255,255,255,0.7);  --search-bg: #121212;  --search-input-color: rgba(255,255,255,0.7);  --search-result-title: rgba(255,255,255,0.9);  --preloader-bg: #0d0d0d;  --preloader-color: rgba(255,255,255,0.7);  --tab-border-color: #2c2c2c;  --tab-botton-bg: #2c2c2c;  --tab-botton-color: rgba(255,255,255,0.7);  --tab-button-hover-bg: #383838;  --tab-button-active-bg: #121212;  --card-bg: #121212;  --sidebar-bg: #121212;  --btn-hover-color: #787878;  --btn-color: rgba(255,255,255,0.7);  --btn-bg: #1f1f1f;  --text-bg-hover: #383838;  --light-grey: rgba(255,255,255,0.7);  --dark-grey: rgba(255,255,255,0.2);  --white: rgba(255,255,255,0.9);  --text-highlight-color: rgba(255,255,255,0.9);  --blockquote-color: rgba(255,255,255,0.7);  --blockquote-bg: #2c2c2c;  --reward-pop: #2c2c2c;  --toc-link-color: rgba(255,255,255,0.6);  --hl-color: rgba(255,255,255,0.7);  --hl-bg: #171717;  --hltools-bg: #1a1a1a;  --hltools-color: #90a4ae;  --hlnumber-bg: #171717;  --hlnumber-color: rgba(255,255,255,0.4);  --hlscrollbar-bg: #1f1f1f;  --hlexpand-bg: linear-gradient(180deg, rgba(23,23,23,0.6), rgba(23,23,23,0.9)); --timeline-bg: #1f1f1f;}`;
+    switch (mode) {
+      case 1:
+        document.getElementById("themeColor").innerText = lightTheme;
+        break;
+      case 2:
+        document.getElementById("themeColor").innerText = darkTheme;
+        break;
+      default:
+        document.getElementById("themeColor").innerText =
+          lightTheme + darkTheme;
+    }
+  },
+  /**
+   * 设置主题色
+   */
+  setThemeColor: (r, g, b) => {
+    document.getElementById(
+      "themeColor"
+    ).innerText = `:root{--theme-color:rgb(${r}, ${g}, ${b})!important;--btn-bg:rgb(${r}, ${g}, ${b})!important;--btn-hover-color:rgba(${r}, ${g}, ${b},0.7)!important;--text-bg-hover:rgba(${r}, ${g}, ${b},0.7)!important;--km-toc-active:rgba(${r}, ${g}, ${b},0.7)!important;--km-toc-hover:rgba(${r}, ${g}, ${b},0.6)!important;}`;
+  },
+  /**
+   * 打开/关闭繁星效果
+   */
+  toggleStarBackground: () => {
+    if (cloudchewieFn.loadData("enableStarBackground") == "true") {
+      cloudchewieFn.saveData("enableStarBackground", "false");
+      $("#universe").hide();
+    } else {
+      cloudchewieFn.saveData("enableStarBackground", "true");
+      $("#universe").show();
+    }
+  },
+  /**
+   * 切换歌单
+   */
+  changeAPlayerList: (id, server, reload = true) => {
+    if (window.aplayers)
+      for (let i = 0; i < window.aplayers.length; i++)
+        window.aplayers[i].pause();
+    cloudchewieFn.saveData(
+      "playlist",
+      JSON.stringify({ id: id, server: server })
+    );
+    $("meting-js").attr("id", id);
+    $("meting-js").attr("server", server);
+    if (reload) cloudchewieFn.changeMusicList(server, id);
+  },
+  /**
+   * 切换全屏
+   */
+  toggleFullScreen: () => {
+    if (cloudchewieFn.isFullScreen()) {
+      document.exitFullscreen();
+      $("#con-fullscreen").removeClass("checked");
+    } else {
+      document.documentElement.requestFullscreen();
+      $("#con-fullscreen").addClass("checked");
+    }
+  },
+  /**
+   * 切换单双栏
+   */
+  toggleAside: () => {
+    const $htmlDom = document.documentElement.classList;
+    $htmlDom.contains("hide-aside")
+      ? saveToLocal.set("enableAside", "show", 2)
+      : saveToLocal.set("enableAside", "hide", 2);
+    $htmlDom.toggle("hide-aside");
+    if (cloudchewieFn.loadData("enableAside") == "hide")
+      $("#con-toggleaside").addClass("checked");
+    else $("#con-toggleaside").removeClass("checked");
+  },
+  /**
+   * 侧栏位置
+   */
+  switchAside: () => {
+    if (left) {
+      $("#aside-content").addClass("right");
+      $(".layout > div:first-child").addClass("left");
+      cloudchewieFn.saveData("isLeftAside", "false");
+    } else {
+      $("aside-content").className = "aside-content";
+      $(".layout > div:first-child").className = "";
+      if ($("#recent-posts") != null)
+        $("#recent-posts").className = "recent-posts";
+      cloudchewieFn.saveData("isLeftAside", "true");
+    }
+    left = !left;
+  },
+  /**
+   * 显示隐藏右侧边栏
+   */
+  toggleRightSide: () => {
+    if (cloudchewieFn.loadData("enableRightSide") == "true") {
+      cloudchewieFn.saveData("enableRightSide", "false");
+      $("#rightside").hide();
+    } else {
+      cloudchewieFn.saveData("enableRightSide", "true");
+      $("#rightside").show();
+    }
+  },
+  /**
+   * 设置深浅色跟随系统模式
+   */
+  toggleAutoTheme: () => {
+    if (cloudchewieFn.loadData("enableAutoTheme") == "true") {
+      cloudchewieFn.saveData("enableAutoTheme", "false");
+      $("#con-mode,.rightMenu-item:has(.fa-adjust)").show();
+    } else {
+      cloudchewieFn.saveData("enableAutoTheme", "true");
+      var time = new Date();
+      if (time.getHours() <= 7 || time.getHours() >= 19) {
+        activateDarkMode();
+        localStorage.removeItem("theme");
+      } else {
+        activateLightMode();
+        localStorage.removeItem("theme");
+      }
+      $("#con-mode,.rightMenu-item:has(.fa-adjust)").hide();
+    }
+  },
+  /**
+   * 是否固定导航栏
+   */
+  toggleFixedNav: () => {
+    if (cloudchewieFn.loadData("enableFixedNav") == "false") {
+      cloudchewieFn.saveData("enableFixedNav", "true");
+      $("#page-header").addClass("nav-fixed nav-visible");
+      $("#name-container").show();
+    } else {
+      cloudchewieFn.saveData("enableFixedNav", "false");
+      $("#page-header").removeClass("nav-fixed nav-visible");
+      $("#name-container").hide();
+    }
+  },
+  /**
+   * 是否自动主题色
+   */
+  toggleAutoColor: () => {
+    if (cloudchewieFn.loadData("enableAutoColor") == "true")
+      cloudchewieFn.saveData("enableAutoColor", "false");
+    else cloudchewieFn.saveData("enableAutoColor", "true");
+    consoleFn.changeAutoColor(false);
+  },
+  /**
+   * 是否打开右键菜单
+   */
+  toggleContextMenu: () => {
+    if (cloudchewieFn.loadData("enableContextMenu") == "true") {
+      cloudchewieFn.saveData("enableContextMenu", "false");
+      $("#con-rightmouse").removeClass("checked");
+      cloudchewieFn.bindContextMenu(false, true);
+    } else {
+      cloudchewieFn.saveData("enableContextMenu", "true");
+      $("#con-rightmouse").addClass("checked");
+      cloudchewieFn.bindContextMenu(true, true);
+    }
+  },
+  /**
+   * 是否打开APlayer
+   */
+  toggleAPlayer: () => {
+    const navMusic = $("#nav-music");
+    if (navMusic == null || navMusic.find("meting-js") == null) return;
+    const navMetingAplayer = navMusic.find("meting-js").aplayer;
+    if (cloudchewieFn.loadData("enableAPlayer") == "true") {
+      cloudchewieFn.saveData("enableAPlayer", "false");
+      navMusic.hide();
+      $("#con-music").hide();
+      $("#menu-music-toggle").hide();
+      $(".music-wrapper .aplayer").show();
+      if (navMetingAplayer) {
+        navMetingAplayer.pause();
+      }
+    } else {
+      cloudchewieFn.saveData("enableAPlayer", "true");
+      $("#con-music").show();
+      $("#menu-music-toggle").show();
+      if (!cloudchewieFn.isMusic()) {
+        navMusic.show();
+      } else {
+        navMusic.hide();
+      }
+    }
+  },
+  /**
+   * 解析歌单链接
+   */
+  resolveUrl: () => {
+    var id;
+    var server;
+    var url = document.getElementById("url-input").value;
+    if (url == "") return;
+    if (!isNaN(url)) id = url;
+    if (url.indexOf("music.163.com/#/playlist?id=") != -1) {
+      id = url.split("id=")[1].replace("/", "");
+      server = "netease";
+    } else if (url.indexOf("y.qq.com/n/ryqq/playlist/") != -1) {
+      id = url.split("playlist/")[1].replace("/", "");
+      server = "tencent";
+    } else if (url.indexOf("https://www.kugou.com/songlist/") != -1) {
+      id = url.split("songlist/")[1].replace("/", "");
+      server = "kugou";
+    } else if (url.indexOf("https://music.91q.com/songlist/") != -1) {
+      id = url.split("songlist/")[1].replace("/", "");
+      server = "baidu";
+    } else {
+      $("#url-btn").html("解析失败");
+      $("#url-btn").removeClass("success");
+      $("#url-btn").addClass("fail");
+      return;
+    }
+    var t =
+      "https://api.i-meto.com/meting/api?server=" +
+      server +
+      "&type=playlist&id=" +
+      id;
+    var o = new XMLHttpRequest();
+    (o.onreadystatechange = () => {
+      if (
+        4 === o.readyState &&
+        ((o.status >= 200 && o.status < 300) || 304 === o.status)
+      ) {
+        if (JSON.parse(o.responseText).length != 0) {
+          $("#url-btn").html("解析成功");
+          $("#url-btn").addClass("success");
+          $("#url-btn").removeClass("fail");
+          consoleFn.changeAPlayerList(id, server, true);
+        } else {
+          $("#url-btn").html("解析失败");
+          $("#url-btn").removeClass("success");
+          $("#url-btn").addClass("fail");
+        }
+      }
+    }),
+      o.open("get", t, !0),
+      o.send(null);
+  },
+  changeAutoColor: (first) => {
+    if (
+      cloudchewieFn.loadData("enableAutoColor") == "true" &&
+      document.querySelector("#page-header") != null &&
+      document.querySelector("#page-header").style.backgroundImage != null &&
+      document
+        .querySelector("#page-header")
+        .style.backgroundImage.split('url("')[1] != null
+    ) {
+      const colorThief = new ColorThief();
+      const image = new Image();
+      const xhr = new XMLHttpRequest();
+      var url = document
+        .querySelector("#page-header")
+        .style.backgroundImage.split('url("')[1]
+        .split('")')[0];
+      xhr.onload = function () {
+        let coverUrl = URL.createObjectURL(xhr.response);
+        image.onload = function () {
+          let color = colorThief.getColor(image);
+          consoleFn.setThemeColor(color[0], color[1], color[2]);
+          if ($("html").attr("data-theme") == "dark") {
+            consoleFn.setDefaultThemeColor(2);
+          }
+          URL.revokeObjectURL(coverUrl);
+        };
+        image.src = coverUrl;
+      };
+      xhr.open("GET", url, true);
+      xhr.responseType = "blob";
+      xhr.send();
+    } else {
+      if (!first) consoleFn.setDefaultThemeColor(3);
+    }
+  },
+};
+/**
+ * =================================================
+ *
+ * 杂乱功能
+ *
+ * =================================================
+ */
+function runOne() {
+  //加载lately.js
+  if (typeof Lately === "undefined") {
+    const script = document.createElement("script");
+    script.src =
+      "https://npm.elemecdn.com/hexo-theme-cloudchewie@latest/source/js/third-party/lately.min.js";
+    script.onload = () => {
+      Lately.init({ target: ".talk_date" });
+    };
+    document.head.appendChild(script);
+  } else {
+    Lately.init({ target: ".talk_date" });
+  }
+  document.getElementById("con-mode").addEventListener("click", function () {
+    setTimeout(cloudchewieFn.switchPostChart, 100);
+  });
+  document.onkeydown = function (event) {
+    event = event || window.event;
+    if (event.keyCode == 17) {
+      return;
+    }
+  };
+  if (
+    !navigator.userAgent.match(
+      /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+    )
+  ) {
+    cloudchewieFn.bindContextMenu(true);
+  }
+  cloudchewieFn.addLongtabListener(document.documentElement, () =>
+    cloudchewieFn.bindContextMenu(true)
+  );
+  cloudchewieFn.resizeTop();
+  cloudchewieFn.categoriesBarActive();
+  cloudchewieFn.topCategoriesBarScroll();
+  cloudchewieFn.bindListener();
+}
