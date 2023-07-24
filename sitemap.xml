@@ -173,7 +173,7 @@
   </url>
   
   <url>
-    <loc>https://blog.cloudchewie.com/posts/2022/11/12/Computer-Network-and-Communication-4/</loc>
+    <loc>https://blog.cloudchewie.com/posts/2022/11/12/Computer-Network-and-Communication-5/</loc>
     
     <lastmod>2023-07-24</lastmod>
     
@@ -182,7 +182,7 @@
   </url>
   
   <url>
-    <loc>https://blog.cloudchewie.com/posts/2022/11/12/Computer-Network-and-Communication-5/</loc>
+    <loc>https://blog.cloudchewie.com/posts/2022/11/12/Computer-Network-and-Communication-4/</loc>
     
     <lastmod>2023-07-24</lastmod>
     
@@ -414,14 +414,14 @@
   </url>
   
   <url>
-    <loc>https://blog.cloudchewie.com/tags/%E5%B0%8F%E8%AF%B4/</loc>
+    <loc>https://blog.cloudchewie.com/tags/WSL/</loc>
     <lastmod>2023-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.cloudchewie.com/tags/WSL/</loc>
+    <loc>https://blog.cloudchewie.com/tags/%E5%B0%8F%E8%AF%B4/</loc>
     <lastmod>2023-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -437,14 +437,14 @@
   </url>
   
   <url>
-    <loc>https://blog.cloudchewie.com/categories/%E7%8F%A0%E7%8E%91/</loc>
+    <loc>https://blog.cloudchewie.com/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2023-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.cloudchewie.com/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
+    <loc>https://blog.cloudchewie.com/categories/%E7%8F%A0%E7%8E%91/</loc>
     <lastmod>2023-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
