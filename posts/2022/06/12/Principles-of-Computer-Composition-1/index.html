@@ -198,7 +198,8 @@ if (true) {
 <li><p>由运算器、控制器、存储器、输入设备和输出设备五部分组成</p>
 </li>
 <li><p>图解如下：</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/post/Principles-of-Computer-Composition-1/Chp1-%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png" class="" width="400" title="冯诺依曼体系结构"></li>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/post/Principles-of-Computer-Composition-1/Chp1-%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png" class="" width="400" title="冯诺依曼体系结构">
+</li>
 </ul>
 <h3 id="2-计算机系统的组成"><a href="#2-计算机系统的组成" class="headerlink" title="2. 计算机系统的组成"></a>2. 计算机系统的组成</h3><ul>
 <li>硬件系统组成<ul>
@@ -229,50 +230,53 @@ if (true) {
 </li>
 <li><p>$CPI$：执行每条指令所需的平均时钟周期数；</p>
 <blockquote>
-<p>约定$IC$表示所有指令的总条数，$m$表示程序执行所需时钟周期数，$P_{i}$表示某类指令的使用频率，$IC_{i}$表示某类指令的条数，则满足$CPI&#x3D;\frac{m}{IC}&#x3D;\sum\limits_{i&#x3D;1}^{n}(CPI_{i}\times P_{i})&#x3D;\sum\limits_{i&#x3D;1}^{n}(CPI_{i}\times \frac{IC_{i}}{IC}).$</p>
+<p>约定$IC$表示所有指令的总条数，$m$表示程序执行所需时钟周期数，$P<em>{i}$表示某类指令的使用频率，$IC</em>{i}$表示某类指令的条数，则满足$CPI=\frac{m}{IC}=\sum\limits<em>{i=1}^{n}(CPI</em>{i}\times P<em>{i})=\sum\limits</em>{i=1}^{n}(CPI<em>{i}\times \frac{IC</em>{i}}{IC}).$</p>
 </blockquote>
 </li>
 <li><p>$IPC$：每个时钟周期$CPU$能执行的指令条数；</p>
 <blockquote>
-<p>$IPC$满足：$IPC&#x3D;\frac{1}{CPI}.$</p>
+<p>$IPC$满足：$IPC=\frac{1}{CPI}.$</p>
 </blockquote>
 </li>
 <li><p>$CPU$时间：程序执行期间真正消耗$CPU$的时间（包括用户$CPU$时间和系统$CPU$时间）；</p>
 <blockquote>
-<p>约定$T$表示时钟周期时长，$f$表示$CPU$主频，则某段程序$CPU$时间可表示为$T_{cpu}&#x3D;m\times T&#x3D;\frac{m}{f}&#x3D;CPI\times IC\times T&#x3D;\frac{CPI\times IC}{f}.$</p>
+<p>约定$T$表示时钟周期时长，$f$表示$CPU$主频，则某段程序$CPU$时间可表示为$T_{cpu}=m\times T=\frac{m}{f}=CPI\times IC\times T=\frac{CPI\times IC}{f}.$</p>
 </blockquote>
 </li>
 <li><p>$MIPS$：每秒钟执行的百万条指令数；</p>
 <blockquote>
-<p>约定$f’&#x3D;f\times 10^{6}$，则$MIPS&#x3D;\frac{IC}{T_{cpu}\times 10^{6}}&#x3D;\frac{f}{CPI\times 10^{6}}&#x3D;IPC\times f’.$</p>
+<p>约定$f’=f\times 10^{6}$，则$MIPS=\frac{IC}{T_{cpu}\times 10^{6}}=\frac{f}{CPI\times 10^{6}}=IPC\times f’.$</p>
 </blockquote>
 </li>
 <li><p>$MFLOPS$：每秒钟执行的浮点运算次数。</p>
 </li>
 </ul>
 <h3 id="4-计算机系统的层次结构"><a href="#4-计算机系统的层次结构" class="headerlink" title="4.计算机系统的层次结构"></a>4.计算机系统的层次结构</h3><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/post/Principles-of-Computer-Composition-1/Chp1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84.png" class="" width="400" title="计算机系统的层次结构">
-
 <div style="page-break-after:always;"></div>
 
 <h2 id="二、数据信息的表示"><a href="#二、数据信息的表示" class="headerlink" title="二、数据信息的表示"></a>二、数据信息的表示</h2><h3 id="1-数值数据的表示"><a href="#1-数值数据的表示" class="headerlink" title="1.数值数据的表示"></a>1.数值数据的表示</h3><h4 id="1-数值与机器码"><a href="#1-数值与机器码" class="headerlink" title="(1)数值与机器码"></a>(1)数值与机器码</h4><ul>
 <li>数据格式是指<strong>使用二进制编码表示实际数据</strong>的结构形式，分类如下：</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">分类依据</th>
-<th align="center">具体分类</th>
+<th style="text-align:center">分类依据</th>
+<th style="text-align:center">具体分类</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">是否有符号位</td>
-<td align="center">无符号数和有符号数</td>
+<tbody>
+<tr>
+<td style="text-align:center">是否有符号位</td>
+<td style="text-align:center">无符号数和有符号数</td>
 </tr>
 <tr>
-<td align="center">小数点位置</td>
-<td align="center">定点数和浮点数</td>
+<td style="text-align:center">小数点位置</td>
+<td style="text-align:center">定点数和浮点数</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <ul>
 <li><p>定点数和浮点数比较如下：</p>
 <ul>
@@ -287,57 +291,59 @@ if (true) {
 <li>表示方法：两个<u><strong>定点数</strong></u>分别表示<strong>阶码和尾数</strong></li>
 <li>溢出问题：存在上溢和下溢问题，也存在精度溢出问题</li>
 <li>数据分布：浮点数在数轴上的分布并不均匀，<strong>越远离原点，浮点数越稀疏</strong></li>
-<li>浮点运算<u>不满足结合律</u>，小数+大数&#x3D;大数</li>
+<li>浮点运算<u>不满足结合律</u>，小数+大数=大数</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>真值与机器码比较如下：</p>
-</li>
+<li>真值与机器码比较如下：</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center"></th>
-<th align="center">表示形式</th>
-<th align="center">机器零</th>
-<th align="center">用途</th>
+<th style="text-align:center"></th>
+<th style="text-align:center">表示形式</th>
+<th style="text-align:center">机器零</th>
+<th style="text-align:center">用途</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">真值</td>
-<td align="center">用”$+$”和“$-$”表示符号</td>
-<td align="center">无</td>
-<td align="center">无</td>
+<tbody>
+<tr>
+<td style="text-align:center">真值</td>
+<td style="text-align:center">用”$+$”和“$-$”表示符号</td>
+<td style="text-align:center">无</td>
+<td style="text-align:center">无</td>
 </tr>
 <tr>
-<td align="center">原码</td>
-<td align="center">将符号位加上二进制数的绝对值</td>
-<td align="center">$+0&#x3D;000$$-0&#x3D;100$</td>
-<td align="center">表示浮点数的尾码</td>
+<td style="text-align:center">原码</td>
+<td style="text-align:center">将符号位加上二进制数的绝对值</td>
+<td style="text-align:center">$+0=000$$-0=100$</td>
+<td style="text-align:center">表示浮点数的尾码</td>
 </tr>
 <tr>
-<td align="center">反码</td>
-<td align="center">符号位同原码，真值为负数时数值位逐位取反</td>
-<td align="center">$+0&#x3D;000$$-0&#x3D;111$</td>
-<td align="center">无</td>
+<td style="text-align:center">反码</td>
+<td style="text-align:center">符号位同原码，真值为负数时数值位逐位取反</td>
+<td style="text-align:center">$+0=000$$-0=111$</td>
+<td style="text-align:center">无</td>
 </tr>
 <tr>
-<td align="center">补码</td>
-<td align="center">真值为负时反码末位加一得到补码</td>
-<td align="center">$0&#x3D;000$</td>
-<td align="center">计算机中采用补码进行存储、表示和运算</td>
+<td style="text-align:center">补码</td>
+<td style="text-align:center">真值为负时反码末位加一得到补码</td>
+<td style="text-align:center">$0=000$</td>
+<td style="text-align:center">计算机中采用补码进行存储、表示和运算</td>
 </tr>
 <tr>
-<td align="center">移码</td>
-<td align="center">与补码的符号位相反，数值位相同</td>
-<td align="center">$0&#x3D;100$</td>
-<td align="center">表示浮点数的阶码</td>
+<td style="text-align:center">移码</td>
+<td style="text-align:center">与补码的符号位相反，数值位相同</td>
+<td style="text-align:center">$0=100$</td>
+<td style="text-align:center">表示浮点数的阶码</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <ul>
-<li><p>有关补码：</p>
-<ul>
+<li>有关补码：<ul>
 <li>补码又称为<strong>模2的补码</strong>，定点小数的模值为$2$，定点整数的模值为$2^{n+1}$；</li>
 <li>补码的机器零唯一，<strong>多表示一个绝对值最大的负数</strong>，小数为$-1$，整数为$-2^n$；</li>
 <li>反码法<ul>
@@ -356,7 +362,7 @@ if (true) {
 <ul>
 <li>又称为双符号补码，指采用<u><strong>两个符号位</strong></u>表示数据的符号，其余位与补码相同；</li>
 <li>当符号位为$00$时表示正数，为$11$时表示负数；</li>
-<li>在运算时，即使产生溢出，变形补码的<u><strong>最高位</u><strong>也</strong><u>永远</strong></u>表示正确的符号位；</li>
+<li>在运算时，即使产生溢出，变形补码的<u>**最高位</u><strong>也</strong><u>永远**</u>表示正确的符号位；</li>
 <li>符号位为$01$表示运算出现正溢出，为$10$时表示出现负溢出。</li>
 </ul>
 </li>
@@ -364,6 +370,7 @@ if (true) {
 <h4 id="2-定点数表示"><a href="#2-定点数表示" class="headerlink" title="(2)定点数表示"></a>(2)定点数表示</h4><ul>
 <li>数据表示范围</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -374,7 +381,8 @@ if (true) {
 <th>最小负数</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>定点小数</td>
 <td>$1-2^{-n}$</td>
 <td>$2^{-n}$</td>
@@ -388,48 +396,58 @@ if (true) {
 <td>$-1$</td>
 <td>$-(2^n-1)$，补码表示时为$-2^n$</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <ul>
 <li>机器码计算公式</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">机器码</th>
-<th align="center">$-2^n&lt;x\leq0$（定点整数）</th>
-<th align="center">$-1&lt;x\leq0$（定点小数）</th>
-<th align="center">$0\leq x\leq 2^n-1$或$0\leq x\leq 1-2^{-n}$</th>
+<th style="text-align:center">机器码</th>
+<th style="text-align:center">$-2^n&lt;x\leq0$（定点整数）</th>
+<th style="text-align:center">$-1&lt;x\leq0$（定点小数）</th>
+<th style="text-align:center">$0\leq x\leq 2^n-1$或$0\leq x\leq 1-2^{-n}$</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">原码</td>
-<td align="center">$2^n+</td>
-<td align="center">x</td>
-<td align="center">$</td>
+<tbody>
+<tr>
+<td style="text-align:center">原码</td>
+<td style="text-align:center">$2^n+</td>
+<td style="text-align:center">x</td>
+<td style="text-align:center">$</td>
+<td>$2+</td>
+<td>x</td>
+<td>$</td>
+<td>$x$</td>
 </tr>
 <tr>
-<td align="center">反码</td>
-<td align="center">$2^{n+1}+x-1$</td>
-<td align="center">$2+x-2^{-n}$</td>
-<td align="center">$x$</td>
+<td style="text-align:center">反码</td>
+<td style="text-align:center">$2^{n+1}+x-1$</td>
+<td style="text-align:center">$2+x-2^{-n}$</td>
+<td style="text-align:center">$x$</td>
 </tr>
 <tr>
-<td align="center">补码</td>
-<td align="center">$2^{n+1}+x$</td>
-<td align="center">$2+x$</td>
-<td align="center">$x$</td>
+<td style="text-align:center">补码</td>
+<td style="text-align:center">$2^{n+1}+x$</td>
+<td style="text-align:center">$2+x$</td>
+<td style="text-align:center">$x$</td>
 </tr>
 <tr>
-<td align="center">移码</td>
-<td align="center">$2^n+x$</td>
-<td align="center">无</td>
-<td align="center">$2^n+x$（整数）</td>
+<td style="text-align:center">移码</td>
+<td style="text-align:center">$2^n+x$</td>
+<td style="text-align:center">无</td>
+<td style="text-align:center">$2^n+x$（整数）</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h4 id="3-浮点数表示"><a href="#3-浮点数表示" class="headerlink" title="(3)浮点数表示"></a>(3)浮点数表示</h4><ul>
 <li><p>表示规则</p>
 <ul>
-<li>$N&#x3D;2^{E}\times M&#x3D;2^E\times\pm(1.m)$</li>
+<li>$N=2^{E}\times M=2^E\times\pm(1.m)$</li>
 <li>$IEEE754$规则下，浮点数由数符$S$、阶码$E$、尾数$M$三部分组成，阶码采用<u>移码</u>表示，尾数采用<u>原码</u>表示；</li>
 <li>尾数为定点小数，小数点固定在最左侧，且隐藏小数点左边的$1$，运算时还原为$1.M$形式；</li>
 <li>对于$32$位浮点数($float$)而言：$S$为$1$位，$E$为$8$位，移码偏移为$2^7-1$，$M$为$23$位；</li>
@@ -438,77 +456,78 @@ if (true) {
 </li>
 <li><p>转换方法（以$32$位浮点数$float$为例）</p>
 <ul>
-<li>将十进制数$N$转换为$(-1)^s\times 2^e\times 1.M$，令$E&#x3D;e+01111111$，保存$S$、$E$、$M$；</li>
-<li>从$32$位二进制串分离出$S$、$E$、$M$，令$e&#x3D;E-01111111$，代入$(-1)^s\times 2^e\times 1.M$，按权展开。</li>
+<li>将十进制数$N$转换为$(-1)^s\times 2^e\times 1.M$，令$E=e+01111111$，保存$S$、$E$、$M$；</li>
+<li>从$32$位二进制串分离出$S$、$E$、$M$，令$e=E-01111111$，代入$(-1)^s\times 2^e\times 1.M$，按权展开。</li>
 </ul>
 </li>
-<li><p>具体形式说明</p>
-<ul>
+<li>具体形式说明<ul>
 <li>当阶码为$1\sim 254$时，表示规格化数据；</li>
 <li>当阶码为$255$时，表示非数或者$\infty$；</li>
 <li>当阶码为$0$时，表示机器零或者非规格化数。</li>
 </ul>
 </li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">符号位$S$</th>
-<th align="center">阶码$E$</th>
-<th align="center">尾数$M$</th>
-<th align="center">表示</th>
+<th style="text-align:center">符号位$S$</th>
+<th style="text-align:center">阶码$E$</th>
+<th style="text-align:center">尾数$M$</th>
+<th style="text-align:center">表示</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">$0&#x2F;1$</td>
-<td align="center">$255$</td>
-<td align="center">非零</td>
-<td align="center">$NaN$</td>
+<tbody>
+<tr>
+<td style="text-align:center">$0/1$</td>
+<td style="text-align:center">$255$</td>
+<td style="text-align:center">非零</td>
+<td style="text-align:center">$NaN$</td>
 </tr>
 <tr>
-<td align="center">$0$</td>
-<td align="center">$255$</td>
-<td align="center">$0$</td>
-<td align="center">$+\infty$</td>
+<td style="text-align:center">$0$</td>
+<td style="text-align:center">$255$</td>
+<td style="text-align:center">$0$</td>
+<td style="text-align:center">$+\infty$</td>
 </tr>
 <tr>
-<td align="center">$1$</td>
-<td align="center">$255$</td>
-<td align="center">$0$</td>
-<td align="center">$-\infty$</td>
+<td style="text-align:center">$1$</td>
+<td style="text-align:center">$255$</td>
+<td style="text-align:center">$0$</td>
+<td style="text-align:center">$-\infty$</td>
 </tr>
 <tr>
-<td align="center">$0&#x2F;1$</td>
-<td align="center">$1\sim 254$</td>
-<td align="center">$M$</td>
-<td align="center">$(-1)^s\times 2^{E-127}\times 1.M$</td>
+<td style="text-align:center">$0/1$</td>
+<td style="text-align:center">$1\sim 254$</td>
+<td style="text-align:center">$M$</td>
+<td style="text-align:center">$(-1)^s\times 2^{E-127}\times 1.M$</td>
 </tr>
 <tr>
-<td align="center">$0&#x2F;1$</td>
-<td align="center">0</td>
-<td align="center">$M$(非零)</td>
-<td align="center">$(-1)^s\times 2^{-127}\times 0.M$(非规格化数)</td>
+<td style="text-align:center">$0/1$</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">$M$(非零)</td>
+<td style="text-align:center">$(-1)^s\times 2^{-127}\times 0.M$(非规格化数)</td>
 </tr>
 <tr>
-<td align="center">$0&#x2F;1$</td>
-<td align="center">$0$</td>
-<td align="center">$0$</td>
-<td align="center">$+0&#x2F;-0$</td>
+<td style="text-align:center">$0/1$</td>
+<td style="text-align:center">$0$</td>
+<td style="text-align:center">$0$</td>
+<td style="text-align:center">$+0/-0$</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="2-非数值数据的表示"><a href="#2-非数值数据的表示" class="headerlink" title="2.非数值数据的表示"></a>2.非数值数据的表示</h3><h4 id="1-字符表示"><a href="#1-字符表示" class="headerlink" title="(1)字符表示"></a>(1)字符表示</h4><p>$ASCII$码是国际通用的字符码，包含$128$个字符，用<strong>一个字节</strong>表示，最高位为<u>零</u>。</p>
 <h4 id="2-汉字编码"><a href="#2-汉字编码" class="headerlink" title="(2)汉字编码"></a>(2)汉字编码</h4><ul>
-<li><p>汉字编码包含<strong>输入码、机内码和字形码</strong>，分别用于汉字的输入、汉字在计算机内的存储与处理、汉字的显示和打印；</p>
-</li>
+<li>汉字编码包含<strong>输入码、机内码和字形码</strong>，分别用于汉字的输入、汉字在计算机内的存储与处理、汉字的显示和打印；</li>
 <li><p>汉字<u>机内码</u>主要包括$GB2312$、$GBK$、$GB18030$、$Unicode$、$B1G5$等标准。</p>
 </li>
 <li><p>$GB2312$编码</p>
 <ul>
-<li><p>以$2$<strong>个字节</strong>编码，最高位$MSB$为$1$；</p>
-</li>
+<li>以$2$<strong>个字节</strong>编码，最高位$MSB$为$1$；</li>
 <li><p>实际用$14$位表示汉字，采用$94\times94$矩阵表示，每一行为区号，每一列为位号，采用<u><strong>区号+位号</strong></u>的方式得到区位码。</p>
 </li>
-<li><p>$GB2312$机内码$&#x3D;$区位码$+A0A0H$</p>
+<li><p>$GB2312$机内码$=$区位码$+A0A0H$</p>
 </li>
 </ul>
 </li>
@@ -521,17 +540,18 @@ if (true) {
 </ul>
 </li>
 <li><p>校验码：原始数据$+$校验数据</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/post/Principles-of-Computer-Composition-1/Chp2-%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%9A%84%E5%BA%94%E7%94%A8%E6%A8%A1%E5%BC%8F.png" class="" width="400" title="数据校验的应用模式"></li>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/post/Principles-of-Computer-Composition-1/Chp2-%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%9A%84%E5%BA%94%E7%94%A8%E6%A8%A1%E5%BC%8F.png" class="" width="400" title="数据校验的应用模式">
+</li>
 </ul>
 <h4 id="2-奇偶校验"><a href="#2-奇偶校验" class="headerlink" title="(2)奇偶校验"></a>(2)奇偶校验</h4><ul>
 <li>编码规则：增加一位校验位，使得数据中的$1$的个数保持奇偶性，利用编码中$1$的个数的奇偶性进行校验；</li>
 <li>检错性能：奇偶校验码距为$2$，只能检测<strong>奇数位</strong>错误；</li>
 <li>可采用交叉奇偶校验提高奇偶校验码的检错与纠错能力，交叉奇偶校验可以检测出所有的$3$位以下错误以及大多数$4$位错误。</li>
 <li>简单奇偶校验公式：<ul>
-<li>偶校验位：$P&#x3D;D_{1}\oplus D_{2}\cdots\oplus D_{n}$</li>
-<li>偶校验检错位：$G&#x3D;D_{1}’\oplus D_{2}’\cdots\oplus D_{n}’\oplus P’$</li>
-<li>奇校验位：$P&#x3D;\overline{D_{1}\oplus D_{2}\cdots\oplus D_{n}}$</li>
-<li>奇校验检错位：$G&#x3D;\overline{D_{1}’\oplus D_{2}’\cdots\oplus D_{n}’\oplus P’}$</li>
+<li>偶校验位：$P=D<em>{1}\oplus D</em>{2}\cdots\oplus D_{n}$</li>
+<li>偶校验检错位：$G=D<em>{1}’\oplus D</em>{2}’\cdots\oplus D_{n}’\oplus P’$</li>
+<li>奇校验位：$P=\overline{D<em>{1}\oplus D</em>{2}\cdots\oplus D_{n}}$</li>
+<li>奇校验检错位：$G=\overline{D<em>{1}’\oplus D</em>{2}’\cdots\oplus D_{n}’\oplus P’}$</li>
 </ul>
 </li>
 <li>交叉奇偶校验<ul>
@@ -549,121 +569,129 @@ if (true) {
 <li>检错码为零，表示数据<u>高概率</u>正确，检错码不为零，则检错码值就是一位错的位置，通过检错码的值就可以实现编码的纠错。</li>
 </ul>
 <h5 id="②校验位的位数"><a href="#②校验位的位数" class="headerlink" title="②校验位的位数"></a>②校验位的位数</h5><ul>
-<li><p>设海明码$N$位，其中数据位$k$位，校验位$r$位，有$N&#x3D;k+r$，称为$(n,k)$码；</p>
+<li><p>设海明码$N$位，其中数据位$k$位，校验位$r$位，有$N=k+r$，称为$(n,k)$码；</p>
 </li>
 <li><p>海明码包含$r$个偶校验组，$r$个偶校验组的$r$检错信息构成一个检错码$G_r\cdots G_2G_1$；</p>
 </li>
-<li><p>为了使其能指出所有一位错，应有$N&#x3D;k+r\leq 2^r-1$，这便是常见的$ECC$纠错码。</p>
+<li><p>为了使其能指出所有一位错，应有$N=k+r\leq 2^r-1$，这便是常见的$ECC$纠错码。</p>
 </li>
 </ul>
 <h5 id="③编码分组规则"><a href="#③编码分组规则" class="headerlink" title="③编码分组规则"></a>③编码分组规则</h5><ul>
 <li><p>设有海明码$H_n\cdots H_2H_1$，原始数据$D_k\cdots D_2D_1$，校验位$P_r\cdots P_2P_1$；</p>
 </li>
-<li><p>为满足编码分组要求，校验位$P_i$放在$H_{2^{i-1}}$位置上，剩余位置由数据位依次填充；</p>
+<li><p>为满足编码分组要求，校验位$P<em>i$放在$H</em>{2^{i-1}}$位置上，剩余位置由数据位依次填充；</p>
 </li>
 <li><p>$H_i$的数据被编号小于$i$的若干个海明码位号之和等于$i$的校验位所校验；</p>
 <p>如对于$(11,7)$码，其编码分组如下：</p>
 </li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">$H_i$</th>
-<th align="center">1</th>
-<th align="center">2</th>
-<th align="center">3</th>
-<th align="center">4</th>
-<th align="center">5</th>
-<th align="center">6</th>
-<th align="center">7</th>
-<th align="center">8</th>
-<th align="center">9</th>
-<th align="center">10</th>
-<th align="center">11</th>
+<th style="text-align:center">$H_i$</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+<th style="text-align:center">10</th>
+<th style="text-align:center">11</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">映射</td>
-<td align="center">$P_1$</td>
-<td align="center">$P_2$</td>
-<td align="center">$D_1$</td>
-<td align="center">$P_3$</td>
-<td align="center">$D_2$</td>
-<td align="center">$D_3$</td>
-<td align="center">$D_4$</td>
-<td align="center">$P_4$</td>
-<td align="center">$D_5$</td>
-<td align="center">$D_6$</td>
-<td align="center">$D_7$</td>
+<tbody>
+<tr>
+<td style="text-align:center">映射</td>
+<td style="text-align:center">$P_1$</td>
+<td style="text-align:center">$P_2$</td>
+<td style="text-align:center">$D_1$</td>
+<td style="text-align:center">$P_3$</td>
+<td style="text-align:center">$D_2$</td>
+<td style="text-align:center">$D_3$</td>
+<td style="text-align:center">$D_4$</td>
+<td style="text-align:center">$P_4$</td>
+<td style="text-align:center">$D_5$</td>
+<td style="text-align:center">$D_6$</td>
+<td style="text-align:center">$D_7$</td>
 </tr>
 <tr>
-<td align="center">分组</td>
-<td align="center">$1$</td>
-<td align="center">$2$</td>
-<td align="center">$1,2$</td>
-<td align="center">$4$</td>
-<td align="center">$1,4$</td>
-<td align="center">$2,4$</td>
-<td align="center">$1,2,4$</td>
-<td align="center">$8$</td>
-<td align="center">$1,8$</td>
-<td align="center">$2,8$</td>
-<td align="center">$1,2,8$</td>
+<td style="text-align:center">分组</td>
+<td style="text-align:center">$1$</td>
+<td style="text-align:center">$2$</td>
+<td style="text-align:center">$1,2$</td>
+<td style="text-align:center">$4$</td>
+<td style="text-align:center">$1,4$</td>
+<td style="text-align:center">$2,4$</td>
+<td style="text-align:center">$1,2,4$</td>
+<td style="text-align:center">$8$</td>
+<td style="text-align:center">$1,8$</td>
+<td style="text-align:center">$2,8$</td>
+<td style="text-align:center">$1,2,8$</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <ul>
 <li><p>由此根据偶校验规则和各个校验位所校验的数据位，可以得到校验位计算公式：</p>
-<p>$P_1&#x3D;D_1\oplus D_2\oplus D_4\oplus D_5\oplus D_7$</p>
-<p>$P_2&#x3D;D_1\oplus D_3\oplus D_4\oplus D_6\oplus D_7$</p>
-<p>$P_3&#x3D;D_2\oplus D_3\oplus D_4$</p>
-<p>$P_4&#x3D;D_5\oplus D_6\oplus D_7$</p>
+<p>$P_1=D_1\oplus D_2\oplus D_4\oplus D_5\oplus D_7$</p>
+<p>$P_2=D_1\oplus D_3\oplus D_4\oplus D_6\oplus D_7$</p>
+<p>$P_3=D_2\oplus D_3\oplus D_4$</p>
+<p>$P_4=D_5\oplus D_6\oplus D_7$</p>
 </li>
 <li><p>同样可以得到检错位：</p>
-<p>$G_1&#x3D;D_1’\oplus D_2’\oplus D_4’\oplus D_5’\oplus D_7’\oplus P_1’$</p>
-<p>$G_2&#x3D;D_1’\oplus D_3’\oplus D_4’\oplus D_6’\oplus D_7’\oplus P_2’$</p>
-<p>$G_3&#x3D;D_2’\oplus D_3’\oplus D_4’\oplus P_3’$</p>
-<p>$G_4&#x3D;D_5’\oplus D_6’\oplus D_7’\oplus P_4’$</p>
+<p>$G_1=D_1’\oplus D_2’\oplus D_4’\oplus D_5’\oplus D_7’\oplus P_1’$</p>
+<p>$G_2=D_1’\oplus D_3’\oplus D_4’\oplus D_6’\oplus D_7’\oplus P_2’$</p>
+<p>$G_3=D_2’\oplus D_3’\oplus D_4’\oplus P_3’$</p>
+<p>$G_4=D_5’\oplus D_6’\oplus D_7’\oplus P_4’$</p>
 </li>
 </ul>
 <h5 id="⑤检错与纠错"><a href="#⑤检错与纠错" class="headerlink" title="⑤检错与纠错"></a>⑤检错与纠错</h5><ul>
-<li>当检错码$G_r\cdots G_2G_1&#x3D;0$时，表示海明码大概率正确（当出错位数大于等于最小码距时，检错码也可以为$0$）；</li>
+<li>当检错码$G_r\cdots G_2G_1=0$时，表示海明码大概率正确（当出错位数大于等于最小码距时，检错码也可以为$0$）；</li>
 <li>$SEC$码无法区分一位错和两位错；</li>
 <li>当出现一位错时，检错码的值对应出错的海明码位号，直接取反即可纠错。</li>
 </ul>
 <h5 id="⑥扩展海明码"><a href="#⑥扩展海明码" class="headerlink" title="⑥扩展海明码"></a>⑥扩展海明码</h5><ul>
 <li>又称为$SECDED$码，最小码距为4，可以区分一位错和两位错，并能纠一位错；</li>
-<li>在$SEC$码的基础上添加总偶校验位$P_{all}&#x3D;(D_1\oplus D_2\cdots\oplus D_k)\oplus(P_1\oplus P_2\cdots\oplus P_k)$；</li>
-<li>总偶校验检错码$G_{all}&#x3D;P_{all}’\oplus(D_1’\oplus D_2’\cdots\oplus D_k’)\oplus(P_1’\oplus P_2’\cdots\oplus P_k’)$；</li>
+<li>在$SEC$码的基础上添加总偶校验位$P_{all}=(D_1\oplus D_2\cdots\oplus D_k)\oplus(P_1\oplus P_2\cdots\oplus P_k)$；</li>
+<li>总偶校验检错码$G<em>{all}=P</em>{all}’\oplus(D_1’\oplus D_2’\cdots\oplus D_k’)\oplus(P_1’\oplus P_2’\cdots\oplus P_k’)$；</li>
 <li>检错方法：<ul>
-<li>$G_{all}&#x3D;0$且$G&#x3D;0$时，无错误发生；</li>
-<li>$G_{all}&#x3D;1$时，出现一位错，此时如果$G&#x3D;0$，说明$P_{all}$发生错误，数据部分正确，如果$G\ne 0$，说明数据部分发生一位错，可以根据检错码进行纠错；</li>
-<li>$G_{all}&#x3D;0$且$G\ne 0$时，出现两位错。</li>
+<li>$G_{all}=0$且$G=0$时，无错误发生；</li>
+<li>$G<em>{all}=1$时，出现一位错，此时如果$G=0$，说明$P</em>{all}$发生错误，数据部分正确，如果$G\ne 0$，说明数据部分发生一位错，可以根据检错码进行纠错；</li>
+<li>$G_{all}=0$且$G\ne 0$时，出现两位错。</li>
 </ul>
 </li>
 </ul>
 <h4 id="4-CRC校验"><a href="#4-CRC校验" class="headerlink" title="(4)CRC校验"></a>(4)CRC校验</h4><h5 id="①编码规则"><a href="#①编码规则" class="headerlink" title="①编码规则"></a>①编码规则</h5><ul>
 <li>利用模$2$运算增加若干位校验位，使得该编码能够被指定的多项式整除；</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">模$2$运算</th>
-<th align="left">运算法则</th>
+<th style="text-align:center">模$2$运算</th>
+<th style="text-align:left">运算法则</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">加减法</td>
-<td align="left">没有进位和借位的二进制加法和减法运算</td>
+<tbody>
+<tr>
+<td style="text-align:center">加减法</td>
+<td style="text-align:left">没有进位和借位的二进制加法和减法运算</td>
 </tr>
 <tr>
-<td align="center">乘法</td>
-<td align="left">根据模$2$加法运算求部分积之和，运算过程中不考虑进位</td>
+<td style="text-align:center">乘法</td>
+<td style="text-align:left">根据模$2$加法运算求部分积之和，运算过程中不考虑进位</td>
 </tr>
 <tr>
-<td align="center">除法</td>
-<td align="left">根据模$2$减法求部分余数</td>
+<td style="text-align:center">除法</td>
+<td style="text-align:left">根据模$2$减法求部分余数</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <blockquote>
 <p> 除法运算法则：</p>
 <ul>
@@ -672,11 +700,10 @@ if (true) {
 <li>部分余数小于除数的位数时，该余数即为最后余数；</li>
 </ul>
 </blockquote>
-<h5 id="②-CRC-校验流程"><a href="#②-CRC-校验流程" class="headerlink" title="②$CRC$校验流程"></a>②$CRC$校验流程</h5><p>设有$CRC$码$N$位，原始数据$C_{k-1}\cdots C_1C_0$共$k$位，校验位$P_{r-1}\cdots P_1P_0$共$r$位，则$CRC$码为$C_{k-1}\cdots C_1C_0P_{r-1}\cdots P_1P_0$，称为$(n,k)$码，满足$N&#x3D;k+r\leq 2^r-1$。</p>
+<h5 id="②-CRC-校验流程"><a href="#②-CRC-校验流程" class="headerlink" title="②$CRC$校验流程"></a>②$CRC$校验流程</h5><p>设有$CRC$码$N$位，原始数据$C<em>{k-1}\cdots C_1C_0$共$k$位，校验位$P</em>{r-1}\cdots P<em>1P_0$共$r$位，则$CRC$码为$C</em>{k-1}\cdots C<em>1C_0P</em>{r-1}\cdots P_1P_0$，称为$(n,k)$码，满足$N=k+r\leq 2^r-1$。</p>
 <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/post/Principles-of-Computer-Composition-1/Chp2-CRC%E6%A0%A1%E9%AA%8C%E6%B5%81%E7%A8%8B.png" class="" width="400" title="CRC校验流程">
-
 <h5 id="③生成-CRC-编码"><a href="#③生成-CRC-编码" class="headerlink" title="③生成$CRC$编码"></a>③生成$CRC$编码</h5><ul>
-<li><p>假设待发送的$k$位二进制数据用信息多项式$M(x)$表示：$M(x)&#x3D;C_{k-1}x^{k-1}+C_{k-2}x^{k-2}+\cdots+C_{1}x+C_{0}$；</p>
+<li><p>假设待发送的$k$位二进制数据用信息多项式$M(x)$表示：$M(x)=C<em>{k-1}x^{k-1}+C</em>{k-2}x^{k-2}+\cdots+C<em>{1}x+C</em>{0}$；</p>
 </li>
 <li><p>将$M(x)$左移$r$位，得到$M(x)\cdot 2^r$，右侧空置的$r$位用来放置校验位；</p>
 </li>
@@ -684,7 +711,7 @@ if (true) {
 </li>
 <li><p>用$M(x)\cdot 2^r$按照模$2$的规则除以$G(x)$，得到的余数$R(x)$即为校验码；</p>
 <blockquote>
-<p>设商为$Q(x)$，则有$M(x)\cdot 2^r+R(x)&#x3D;Q(x)G(x)+R(x)+R(X)$，根据模$2$运算有$R(x)+R(x)&#x3D;0$，因此$M(x)\cdot 2^r+R(x)&#x3D;Q(x)G(x)$，表明$CRC$码一定能被$G(x)$整除，这也是$CRC$码的编码规则。</p>
+<p>设商为$Q(x)$，则有$M(x)\cdot 2^r+R(x)=Q(x)G(x)+R(x)+R(X)$，根据模$2$运算有$R(x)+R(x)=0$，因此$M(x)\cdot 2^r+R(x)=Q(x)G(x)$，表明$CRC$码一定能被$G(x)$整除，这也是$CRC$码的编码规则。</p>
 </blockquote>
 </li>
 <li><p>生成多项式的规则</p>
@@ -700,103 +727,106 @@ if (true) {
 <li>$CRC$编码的非$0$余数具有循环特性，即<strong>将余数左移一位除以生成多项式，将得到下一个余数</strong>，继续重复在新余数基础上左移一位除以生成多项式，多次循环后余数最终能循环为最开始的余数；</li>
 <li>例如对于$(7,3)$码，设生成多项式为$11101$，数据位为$3$位，校验码为$4$位，则余数表如下所示：</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">序号</th>
-<th align="center">编码</th>
-<th align="center">余数</th>
-<th align="center">余数值</th>
-<th align="center">出错位</th>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">编码</th>
+<th style="text-align:center">余数</th>
+<th style="text-align:center">余数值</th>
+<th style="text-align:center">出错位</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">1</td>
-<td align="center">$0000000$</td>
-<td align="center">$0000$</td>
-<td align="center">$0$</td>
-<td align="center">无</td>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">$0000000$</td>
+<td style="text-align:center">$0000$</td>
+<td style="text-align:center">$0$</td>
+<td style="text-align:center">无</td>
 </tr>
 <tr>
-<td align="center">2</td>
-<td align="center">$000000\pmb{\underline{1}}$</td>
-<td align="center">$0001$</td>
-<td align="center">$1$</td>
-<td align="center">$1$</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">$000000\pmb{\underline{1}}$</td>
+<td style="text-align:center">$0001$</td>
+<td style="text-align:center">$1$</td>
+<td style="text-align:center">$1$</td>
 </tr>
 <tr>
-<td align="center">3</td>
-<td align="center">$00000\pmb{\underline{1}}0$</td>
-<td align="center">$0010$</td>
-<td align="center">$2$</td>
-<td align="center">$2$</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">$00000\pmb{\underline{1}}0$</td>
+<td style="text-align:center">$0010$</td>
+<td style="text-align:center">$2$</td>
+<td style="text-align:center">$2$</td>
 </tr>
 <tr>
-<td align="center">4</td>
-<td align="center">$0000\pmb{\underline{1}}00$</td>
-<td align="center">$0100$</td>
-<td align="center">$\pmb{\underline{4}}$</td>
-<td align="center">$3$</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">$0000\pmb{\underline{1}}00$</td>
+<td style="text-align:center">$0100$</td>
+<td style="text-align:center">$\pmb{\underline{4}}$</td>
+<td style="text-align:center">$3$</td>
 </tr>
 <tr>
-<td align="center">5</td>
-<td align="center">$000\pmb{\underline{1}}000$</td>
-<td align="center">$1000$</td>
-<td align="center">$8$</td>
-<td align="center">$4$</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">$000\pmb{\underline{1}}000$</td>
+<td style="text-align:center">$1000$</td>
+<td style="text-align:center">$8$</td>
+<td style="text-align:center">$4$</td>
 </tr>
 <tr>
-<td align="center">6</td>
-<td align="center">$00\pmb{\underline{1}}0000$</td>
-<td align="center">$1101$</td>
-<td align="center">$13$</td>
-<td align="center">$5$</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">$00\pmb{\underline{1}}0000$</td>
+<td style="text-align:center">$1101$</td>
+<td style="text-align:center">$13$</td>
+<td style="text-align:center">$5$</td>
 </tr>
 <tr>
-<td align="center">7</td>
-<td align="center">$0\pmb{\underline{1}}00000$</td>
-<td align="center">$0111$</td>
-<td align="center">$7$</td>
-<td align="center">$6$</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">$0\pmb{\underline{1}}00000$</td>
+<td style="text-align:center">$0111$</td>
+<td style="text-align:center">$7$</td>
+<td style="text-align:center">$6$</td>
 </tr>
 <tr>
-<td align="center">8</td>
-<td align="center">$\pmb{\underline{1}}000000$</td>
-<td align="center">$1110$</td>
-<td align="center">$14$</td>
-<td align="center">$7$</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">$\pmb{\underline{1}}000000$</td>
+<td style="text-align:center">$1110$</td>
+<td style="text-align:center">$14$</td>
+<td style="text-align:center">$7$</td>
 </tr>
 <tr>
-<td align="center">9</td>
-<td align="center">$00000\pmb{\underline{11}}$</td>
-<td align="center">$0011$</td>
-<td align="center">$3$</td>
-<td align="center">$1+2$</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">$00000\pmb{\underline{11}}$</td>
+<td style="text-align:center">$0011$</td>
+<td style="text-align:center">$3$</td>
+<td style="text-align:center">$1+2$</td>
 </tr>
 <tr>
-<td align="center">10</td>
-<td align="center">$\pmb{\underline{111}}0000$</td>
-<td align="center">$0100$</td>
-<td align="center">$\pmb{\underline{4}}$</td>
-<td align="center">$5+6+7$</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">$\pmb{\underline{111}}0000$</td>
+<td style="text-align:center">$0100$</td>
+<td style="text-align:center">$\pmb{\underline{4}}$</td>
+<td style="text-align:center">$5+6+7$</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h5 id="⑤-CRC-串行编解码"><a href="#⑤-CRC-串行编解码" class="headerlink" title="⑤$CRC$串行编解码"></a>⑤$CRC$串行编解码</h5><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/post/Principles-of-Computer-Composition-1/Chp2-CRC%E4%B8%B2%E8%A1%8C%E7%BC%96%E8%A7%A3%E7%A0%81.png" class="" width="400" title="CRC串行编解码">
-
 <ul>
 <li>触发器的初始状态均为$0$；</li>
-<li>有异或门的位置为生成多项式为$1$的位置，如图例得到$G(x)&#x3D;x^4+x+1$，对应编码为$10011$；</li>
-<li>当$Q_4&#x3D;0$时，不够除，异或门相当于直通，下一个时钟时，数据左移一位；</li>
-<li>当$Q_4&#x3D;1$时，够除，商上$1$，进行$Q_4Q_3Q_2Q_1Serial_in\oplus G(x)$，结果左移。</li>
+<li>有异或门的位置为生成多项式为$1$的位置，如图例得到$G(x)=x^4+x+1$，对应编码为$10011$；</li>
+<li>当$Q_4=0$时，不够除，异或门相当于直通，下一个时钟时，数据左移一位；</li>
+<li>当$Q_4=1$时，够除，商上$1$，进行$Q_4Q_3Q_2Q_1Serial_in\oplus G(x)$，结果左移。</li>
 </ul>
 <h5 id="⑥-CRC-并行编解码"><a href="#⑥-CRC-并行编解码" class="headerlink" title="⑥$CRC$并行编解码"></a>⑥$CRC$并行编解码</h5><ul>
 <li><p>模$2$除法余数运算满足结合律：<strong>两数的余数异或等于两数异或后的余数</strong></p>
-<p>$(M(x)%G(x))\oplus(N(x)%G(x))&#x3D;(M(x)\oplus N(x))%G(x)$</p>
+<p>$(M(x)\%G(x))\oplus(N(x)\%G(x))=(M(x)\oplus N(x))\%G(x)$</p>
 </li>
-<li><p>例如：设生成多项式$G(x)&#x3D;1011$，原始数据为$M(x)&#x3D;1101$，传输后的编码为$1101\underline{011}$，试求$CRC$编码和传输后的余数：</p>
+<li><p>例如：设生成多项式$G(x)=1011$，原始数据为$M(x)=1101$，传输后的编码为$1101\underline{011}$，试求$CRC$编码和传输后的余数：</p>
 <ul>
-<li><strong>发送方编码</strong>：$1101\underline{000}&#x3D;\pmb{1}000\underline{000}\oplus0\pmb{1}00\underline{000}\oplus000\pmb{1}\underline{000}$，则余数可以由三个数分别对$G(x)$进行模$2$运算后的余数异或得到；</li>
-<li><strong>接收方解码</strong>：$1101\underline{011}&#x3D;\pmb{1}000\underline{000}\oplus0\pmb{1}00\underline{000}\oplus000\pmb{1}\underline{000}\oplus0000\underline{011}$，同样可以得到对应的余数，其中$0000\underline{011}$对$G(x)$进行模$2$运算后的余数即为$\underline{011}$；</li>
+<li><strong>发送方编码</strong>：$1101\underline{000}=\pmb{1}000\underline{000}\oplus0\pmb{1}00\underline{000}\oplus000\pmb{1}\underline{000}$，则余数可以由三个数分别对$G(x)$进行模$2$运算后的余数异或得到；</li>
+<li><strong>接收方解码</strong>：$1101\underline{011}=\pmb{1}000\underline{000}\oplus0\pmb{1}00\underline{000}\oplus000\pmb{1}\underline{000}\oplus0000\underline{011}$，同样可以得到对应的余数，其中$0000\underline{011}$对$G(x)$进行模$2$运算后的余数即为$\underline{011}$；</li>
 </ul>
 </li>
 <li><p>计算流程</p>
@@ -806,7 +836,7 @@ if (true) {
 </ul>
 </li>
 </ul>
-</article><script>enableGPT=true;</script><script>enableAside=true;</script><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="fas fa-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://blog.cloudchewie.com/posts/2022/06/12/Principles-of-Computer-Composition-1/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=计算机组成原理笔记(一)&amp;url=https://blog.cloudchewie.com/posts/2022/06/12/Principles-of-Computer-Composition-1/&amp;pic=https://picbed.cloudchewie.com/img/cover/post/network.png" rel="external nofollow noreferrer noopener"><i class="fa-brands fa-weibo"></i></a></div><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="cloudchewieFn.copyArticleLink()"><i class="fas fa-link"></i></div></div></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E7%AC%94%E8%AE%B0/"><span class="tags-punctuation"><i class="cloudchewiefont cloudchewie-icon-hashtag"></i></span>笔记<span class="tagsPageCount">21</span></a></div></div></div><div class="post_share"></div><div class="post_share"></div></div></div><div class="post-copyright"><div class="post-copyright__author"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://blog.cloudchewie.com/posts/2022/06/12/Principles-of-Computer-Composition-1/">原创</a><a class="post-copyright-title"><span>计算机组成原理笔记(一)</span></a></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://blog.cloudchewie.com/posts/2022/06/12/Principles-of-Computer-Composition-1/">https://blog.cloudchewie.com/posts/2022/06/12/Principles-of-Computer-Composition-1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.cloudchewie.com" target="_blank">Cloudchewie</a>！</span></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/2022/08/19/Install-WSL2-on-Windows/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/cover/post/wsl.jpg" onerror="onerror=null;src='https://picbed.cloudchewie.com/img/index/404.png'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Windows下安装WSL 2</div></div></a></div><div class="next-post pull-right"><a href="/posts/2022/06/12/Principles-of-Computer-Composition-2/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/cover/post/network.png" onerror="onerror=null;src='https://picbed.cloudchewie.com/img/index/404.png'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机组成原理笔记(二)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><span>阅读建议</span></div><div class="relatedPosts-list"><div class="relatedPosts-list-item"><a href="/posts/2022/08/21/Algorithm-Design-and-Analysis-1/" title="算法设计与分析笔记(一)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/cover/post/algorithms.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-21</div><div class="title">算法设计与分析笔记(一)</div></div></a></div><div class="relatedPosts-list-item"><a href="/posts/2022/08/21/Algorithm-Design-and-Analysis-2/" title="算法设计与分析笔记(二)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/cover/post/algorithms.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-21</div><div class="title">算法设计与分析笔记(二)</div></div></a></div><div class="relatedPosts-list-item"><a href="/posts/2022/08/21/Algorithm-Design-and-Analysis-3/" title="算法设计与分析笔记(三)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/cover/post/algorithms.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-21</div><div class="title">算法设计与分析笔记(三)</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><span> 评论</span></div><div class="comment-randomInfo"><a onclick="cloudchewieFn.addRandomCommentInfo()" href="javascript:void(0)" rel="external nofollow noreferrer">匿名评论</a></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/index/avatar.jpg" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/img/index/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">余湍</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">专栏</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Robert-stackflow"><i class="fab fa-github"></i><span>Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://space.bilibili.com/651449217" rel="external nofollow noreferrer" target="_blank" title="Bilibili"><i class="fab fa-bilibili"></i></a><a class="social-icon" href="mailto:2014027378@qq.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-square-rss"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="toc-text">一、计算机系统概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-text">1.冯诺依曼体系结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-text">2. 计算机系统的组成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-text">3.计算机的性能指标</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-text">(1)基本性能指标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%B8%8E%E6%97%B6%E9%97%B4%E6%9C%89%E5%85%B3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-text">(2)与时间有关的性能指标</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="toc-text">4.计算机系统的层次结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%95%B0%E6%8D%AE%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-text">二、数据信息的表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-text">1.数值数据的表示</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%95%B0%E5%80%BC%E4%B8%8E%E6%9C%BA%E5%99%A8%E7%A0%81"><span class="toc-text">(1)数值与机器码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AE%9A%E7%82%B9%E6%95%B0%E8%A1%A8%E7%A4%BA"><span class="toc-text">(2)定点数表示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%B5%AE%E7%82%B9%E6%95%B0%E8%A1%A8%E7%A4%BA"><span class="toc-text">(3)浮点数表示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%9D%9E%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-text">2.非数值数据的表示</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AD%97%E7%AC%A6%E8%A1%A8%E7%A4%BA"><span class="toc-text">(1)字符表示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%B1%89%E5%AD%97%E7%BC%96%E7%A0%81"><span class="toc-text">(2)汉字编码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E4%BF%A1%E6%81%AF%E7%9A%84%E6%A0%A1%E9%AA%8C"><span class="toc-text">3.数据信息的校验</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A0%81%E8%B7%9D"><span class="toc-text">(1)码距</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C"><span class="toc-text">(2)奇偶校验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%B5%B7%E6%98%8E%E6%A0%A1%E9%AA%8C"><span class="toc-text">(3)海明校验</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A0%E6%B5%B7%E6%98%8E%E7%BC%96%E7%A0%81%E6%A6%82%E8%BF%B0"><span class="toc-text">①海明编码概述</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A1%E6%A0%A1%E9%AA%8C%E4%BD%8D%E7%9A%84%E4%BD%8D%E6%95%B0"><span class="toc-text">②校验位的位数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A2%E7%BC%96%E7%A0%81%E5%88%86%E7%BB%84%E8%A7%84%E5%88%99"><span class="toc-text">③编码分组规则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A4%E6%A3%80%E9%94%99%E4%B8%8E%E7%BA%A0%E9%94%99"><span class="toc-text">⑤检错与纠错</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A5%E6%89%A9%E5%B1%95%E6%B5%B7%E6%98%8E%E7%A0%81"><span class="toc-text">⑥扩展海明码</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-CRC%E6%A0%A1%E9%AA%8C"><span class="toc-text">(4)CRC校验</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A0%E7%BC%96%E7%A0%81%E8%A7%84%E5%88%99"><span class="toc-text">①编码规则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A1-CRC-%E6%A0%A1%E9%AA%8C%E6%B5%81%E7%A8%8B"><span class="toc-text">②$CRC$校验流程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A2%E7%94%9F%E6%88%90-CRC-%E7%BC%96%E7%A0%81"><span class="toc-text">③生成$CRC$编码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A3-CRC-%E7%BC%96%E7%A0%81%E7%9A%84%E5%BE%AA%E7%8E%AF%E7%89%B9%E6%80%A7"><span class="toc-text">④$CRC$编码的循环特性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A4-CRC-%E4%B8%B2%E8%A1%8C%E7%BC%96%E8%A7%A3%E7%A0%81"><span class="toc-text">⑤$CRC$串行编解码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A5-CRC-%E5%B9%B6%E8%A1%8C%E7%BC%96%E8%A7%A3%E7%A0%81"><span class="toc-text">⑥$CRC$并行编解码</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/2023/07/24/Compilation-Principle/" title="编译原理笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/cover/post/compile.jpg" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/img/index/404.png'" alt="编译原理笔记"/></a><div class="content"><a class="title" href="/posts/2023/07/24/Compilation-Principle/" title="编译原理笔记">编译原理笔记</a><time datetime="2023-07-24T08:04:23.000Z" title="发表于 2023-07-24 16:04:23">2023-07-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2023/07/17/Concave/" title="凸凹"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/gallery/Umibe-No-Etranger/yibang4.png" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/img/index/404.png'" alt="凸凹"/></a><div class="content"><a class="title" href="/posts/2023/07/17/Concave/" title="凸凹">凸凹</a><time datetime="2023-07-17T09:59:05.000Z" title="发表于 2023-07-17 17:59:05">2023-07-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2023/03/12/Operating-System-Principles-1/" title="操作系统原理笔记(一)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/cover/post/database.jpg" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/img/index/404.png'" alt="操作系统原理笔记(一)"/></a><div class="content"><a class="title" href="/posts/2023/03/12/Operating-System-Principles-1/" title="操作系统原理笔记(一)">操作系统原理笔记(一)</a><time datetime="2023-03-12T04:29:45.000Z" title="发表于 2023-03-12 12:29:45">2023-03-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2023/03/12/Operating-System-Principles-2/" title="操作系统原理笔记(二)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/cover/post/database.jpg" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/img/index/404.png'" alt="操作系统原理笔记(二)"/></a><div class="content"><a class="title" href="/posts/2023/03/12/Operating-System-Principles-2/" title="操作系统原理笔记(二)">操作系统原理笔记(二)</a><time datetime="2023-03-12T04:29:40.000Z" title="发表于 2023-03-12 12:29:40">2023-03-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2023/03/12/Operating-System-Principles-3/" title="操作系统原理笔记(三)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/cover/post/database.jpg" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/img/index/404.png'" alt="操作系统原理笔记(三)"/></a><div class="content"><a class="title" href="/posts/2023/03/12/Operating-System-Principles-3/" title="操作系统原理笔记(三)">操作系统原理笔记(三)</a><time datetime="2023-03-12T04:29:33.000Z" title="发表于 2023-03-12 12:29:33">2023-03-12</time></div></div></div></div></div></div></main><footer id="footer"><div class="js-pjax" id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By 余湍</div><div class="footer_custom_text">昼夜交替的低语，暗藏着谁人的心迹</div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站试用Hexo博客框架" title="本站试用Hexo博客框架"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/Frame-Hexo.svg" alt="本站试用Hexo博客框架"/></a><a class="github-badge" target="_blank" href="https://cloud.tencent.com/product/cos" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站使用腾讯云对象存储提供服务" title="本站使用腾讯云对象存储提供服务"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/COS-腾讯云-3894F3.svg" alt="本站使用腾讯云对象存储提供服务"/></a><a class="github-badge" target="_blank" href="https://github.com/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://beian.miit.gov.cn/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站备案号为鄂ICP备2023005999号" title="本站备案号为鄂ICP备2023005999号"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/备案-鄂ICP备2023005999号-13ce66.svg" alt="本站备案号为鄂ICP备2023005999号"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div></footer></div></div></div><div id="sidebar"><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/index/avatar.jpg" onerror="onerror=null;src='https://picbed.cloudchewie.com/img/index/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">专栏</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 专栏</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 空间</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/nowtime/"><i class="fa-fw fas fa-rocket"></i><span> 即刻</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 画廊</span></a></li><li><a class="site-page child" href="/treasure/"><i class="fa-fw fas fa-video"></i><span> 藏宝</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 天籁</span></a></li><li><a class="site-page child" href="/air/"><i class="fa-fw cloudchewiefont cloudchewie-icon-fan"></i><span> 小空调</span></a></li><li><a class="site-page child" href="/cat/"><i class="fa-fw fas fa-cat"></i><span> Purril</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 站点</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/atom.xml"><i class="fa-fw fas fa-rss"></i><span> RSS</span></a></li><li><a class="site-page child" href="/log/"><i class="fa-fw fa-fw fas fa-wrench"></i><span> 日志</span></a></li><li><a class="site-page child" href="/term/"><i class="fa-fw fa-fw fas fa-balance-scale"></i><span> 协议</span></a></li><li><a class="site-page child" href="/help/"><i class="fa-fw fa-fw fas fa-circle-question"></i><span> 指南</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-circle-info"></i><span> 关于我</span></a></li><li><a class="site-page child" href="/guestbook/"><i class="fa-fw fas fa-address-book"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/cloud/"><i class="fa-fw fas fa-heart"></i><span> 挚爱</span></a></li></ul></div></div></div></div><div class="js-pjax" id="rightside"><div id="rightside-button-list"><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><a id="switch_commentBarrage" href="javascript:cloudchewieFn.switchCommentBarrage();" rel="external nofollow noreferrer" title="开关弹幕"><i class="cloudchewiefont cloudchewie-icon-danmu"></i></a><button id="go-down" type="button" title="直达底部"><i class="fas fa-arrow-down"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="cloudchewieFn.toggleMusic()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="7185982924" server="netease" type="playlist" mutex="true" preload="none" theme="var(--theme-color)" data-lrctype="0" order="random"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:pjax.loadUrl(&quot;/&quot;);" rel="external nofollow noreferrer"><i class="fas fa-home"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();" rel="external nofollow noreferrer"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="javascript:consoleFn.showConsole();" rel="external nofollow noreferrer"><i class="fas fa-cog"></i></a><a class="rightMenu-item" href="javascript:cloudchewieFn.scrollToTop();" rel="external nofollow noreferrer"><i class="fa fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line" id="menu-general"><a class="rightMenu-item" href="javascript:window.location.href=&quot;/archives/&quot;;" rel="external nofollow noreferrer"><i class="fas fa-archive"></i><span>归档</span></a><a class="rightMenu-item" href="javascript:window.location.href=&quot;/tags/&quot;;" rel="external nofollow noreferrer"><i class="fas fa-tags"></i><span>标签</span></a><a class="rightMenu-item" href="javascript:window.location.href=&quot;/categories/&quot;;" rel="external nofollow noreferrer"><i class="fas fa-folder-open"></i><span>专栏</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-text"><a class="rightMenu-item" href="javascript:cloudchewieFn.copySelect();" rel="external nofollow noreferrer"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://cn.bing.com/search?q=&quot;+window.getSelection().toString());" rel="external nofollow noreferrer"><i class="fas fa-magnifying-glass"></i><span>必应搜索</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://www.baidu.com/s?wd=&quot;+window.getSelection().toString());" rel="external nofollow noreferrer"><i class="fas fa-magnifying-glass"></i><span>百度搜索</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-paste"><a class="rightMenu-item" href="javascript:cloudchewieFn.paste()" rel="external nofollow noreferrer"><i class="fa fa-copy"></i><span>粘贴</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-post"><a class="rightMenu-item" href="#post-comment"><i class="fas fa-comments"></i><span>转到评论</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.copyArticleLink()" rel="external nofollow noreferrer"><i class="fa fa-link"></i><span>复制本文地址</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-to"><a class="rightMenu-item" href="javascript:cloudchewieFn.openWithNewTab()" rel="external nofollow noreferrer"><i class="fa fa-window-restore"></i><span>新窗口打开</span></a><a class="rightMenu-item" id="menu-too" href="javascript:cloudchewieFn.open()" rel="external nofollow noreferrer"><i class="fa fa-link"></i><span>转到链接</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.copyLink()" rel="external nofollow noreferrer"><i class="fa fa-copy"></i><span>复制链接</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-img"><a class="rightMenu-item" href="javascript:cloudchewieFn.openWithNewTab()" rel="external nofollow noreferrer"><i class="fa fa-window-restore"></i><span>在新窗口打开</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.copyLink()" rel="external nofollow noreferrer"><i class="fa fa-copy"></i><span>复制图片链接</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.click()" rel="external nofollow noreferrer"><i class="fa fa-arrows-alt"></i><span>全屏显示</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-other"><a class="rightMenu-item" href="javascript:cloudchewieFn.toggleReadMode();" rel="external nofollow noreferrer"><i class="fas fa-book-open"></i><span>阅读模式</span></a><a class="rightMenu-item" id="menuCommentBarrage" href="javascript:cloudchewieFn.switchCommentBarrage();" rel="external nofollow noreferrer"><i class="cloudchewiefont cloudchewie-icon-danmu"></i><span class="menu-commentBarrage-text">打开弹幕</span></a><a class="rightMenu-item" id="menuAside" href="javascript:cloudchewieFn.toggleAside();" rel="external nofollow noreferrer"><i class="fas fa-arrows-alt-h"></i><span class="menu-toggleAside-text">显示/隐藏侧栏</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-global"><a class="rightMenu-item" href="javascript:cloudchewieFn.translate();" rel="external nofollow noreferrer"><i class="fas fa-language"></i><span>简繁转换</span></a><a class="rightMenu-item" href="javascript:pjax.loadUrl(&quot;/term/&quot;);" rel="external nofollow noreferrer"><i class="fa fa-info-circle"></i><span>协议声明</span></a><a class="rightMenu-item" id="menuMusic" href="javascript:cloudchewieFn.toggleMusic();" rel="external nofollow noreferrer"><i class="fas fa-play"></i><span>播放音乐</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.toggleDarkMode();" rel="external nofollow noreferrer"><i class="fas fa-adjust"></i><span>深色/浅色模式</span></a></div></div><div id="console-page"><div class="js-pjax" id="settingWindow"><span class="setting-title"><button id="backer" onclick="$('.asetting').hide();$('.settingx').show();$('#backer').hide()"><i class="cloudchewiefont cloudchewie-icon-arrow-left"></i></button><span id="stt">控制面板</span><button id="close-console" onclick="consoleFn.closeConsole();"><i class="cloudchewiefont cloudchewie-icon-xmark"></i></button></span><div class="settings"><div id="setting-buttons"><button class="settingx" onclick="$('#theme-settings').show();$('.settingx').hide();$('#backer').show();"><i class="fas fa-layer-group"></i><span>外观</span></button><button class="settingx" onclick="$('#background-settings').show();$('.settingx').hide();$('#backer').show();"><i class="far fa-image"></i><span>背景</span></button><button class="settingx" onclick="$('#aplayer-settings').show();$('.settingx').hide();$('#backer').show();"><i class="fas fa-music"></i><span> APlayer</span></button></div><div id="setting-hides"><div class="asetting" id="theme-settings"><p><h2 class="content-head">主题设置</h2><div class="content" style="display:flex"><input id="con-toggleFixedNav" type="checkbox" onclick="consoleFn.toggleFixedNav()"/><div class="content-text">固定导航栏</div></div><div class="content" style="display:flex"><input id="con-toggleRightSide" type="checkbox" onclick="consoleFn.toggleRightSide()"/><div class="content-text">显示侧边按钮</div></div><div class="content" style="display:flex"><input id="con-toggleAutoTheme" type="checkbox" onclick="consoleFn.toggleAutoTheme()"/><div class="content-text">深色/浅色模式自动切换</div></div><div class="content" style="display:flex"><input id="con-toggleStarBackground" type="checkbox" onclick="consoleFn.toggleStarBackground()"/><div class="content-text">繁星效果(深色模式下)</div></div></p><p><h2 class="content-head">实验特性</h2><div class="content" style="display:flex"><input id="con-toggleAutoColor" type="checkbox" onclick="consoleFn.toggleAutoColor()"/><div class="content-text">文章页自动主题色（仅支持浅色模式）</div></div></p></div><div class="asetting" id="aplayer-settings"><p><h2 class="content-head">播放设置</h2><div class="content" style="display:flex"><input id="con-toggleAPlayer" type="checkbox" onclick="consoleFn.toggleAPlayer()"/><div class="content-text">打开APlayer</div></div></p><p><h2 class="content-head">切换歌单</h2><div class="playlist-container"><a class="playlist-item" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/index/index.png)" onclick="consoleFn.changeAPlayerList(7185982924,&quot;netease&quot;,true)"><span>默认歌单</span></a><a class="playlist-item" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/index/xusong.jpg)" onclick="consoleFn.changeAPlayerList(7081513713,&quot;netease&quot;,true)"><span>许嵩专辑</span></a><a class="playlist-item" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye1.jpeg)" onclick="consoleFn.changeAPlayerList(7366289244,&quot;netease&quot;,true)"><span>噬云兽特辑</span></a></div></p><p><h2 class="content-head">自定义歌单</h2><input id="url-input" oninput="$(&quot;#url-btn&quot;).html(&quot;解析&quot;);$(&quot;#url-btn&quot;).removeClass(&quot;success&quot;);$(&quot;#url-btn&quot;).removeClass(&quot;fail&quot;);" placeholder="输入歌单链接"/><a id="url-btn" onclick="consoleFn.resolveUrl()">解析</a></p></div><div class="asetting" id="background-settings"><h2 class="content-head">默认背景</h2><div class="bgbox default-bg"><a class="boxl" href="javascript:;" rel="noopener external nofollow" style="background: #f2f6fc" onclick="consoleFn.setDefaultBackground()"></a><a class="boxr" href="javascript:;" rel="noopener external nofollow" style="background: #040404" onclick="consoleFn.setDefaultBackground()"></a></div><h2 class="content-head pc-background">图片（PC端）</h2><div class="bgbox pc-background"><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/shoto/shoto8.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/shoto/shoto8.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/cute/wander1.png)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/cute/wander1.png)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/danheng/danheng7.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/danheng/danheng7.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye1.jpeg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye1.jpeg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye2.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye2.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye3.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye3.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/xiao/xiao1.jpeg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/xiao/xiao1.jpeg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/Umibe-No-Etranger/yibang1.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/Umibe-No-Etranger/yibang1.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/Umibe-No-Etranger/yibang2.png)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/Umibe-No-Etranger/yibang2.png)')"></a></div><h2 class="content-head mobile-background">图片（移动端）</h2><div class="bgbox mobile-background"><a class="pimgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye8.png)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye8.png)')"></a><a class="pimgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/xiao/xiao5.jpeg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/xiao/xiao5.jpeg)')"></a><a class="pimgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/xiao/xiao10.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/xiao/xiao10.jpg)')"></a></div><h2 class="content-head">渐变色</h2><div class="bgbox"><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #eecda3, #ef629f)" onclick="consoleFn.changeBackground('linear-gradient(to right, #eecda3, #ef629f)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #B7D31E, #42CE1E)" onclick="consoleFn.changeBackground('linear-gradient(to right, #B7D31E, #42CE1E)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #06DE86, #06A5DE)" onclick="consoleFn.changeBackground('linear-gradient(to right, #06DE86, #06A5DE)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #189BC4, #183DC4)" onclick="consoleFn.changeBackground('linear-gradient(to right, #189BC4, #183DC4)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #C018C4, #C41818)" onclick="consoleFn.changeBackground('linear-gradient(to right, #C018C4, #C41818)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #8B00BB, #030094)" onclick="consoleFn.changeBackground('linear-gradient(to right, #8B00BB, #030094)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #eecda3, #ef629f)" onclick="consoleFn.changeBackground('linear-gradient(to right, #eecda3, #ef629f)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(90deg, #ffd7e4 0%, #c8f1ff 100%)" onclick="consoleFn.changeBackground('linear-gradient(90deg, #ffd7e4 0%, #c8f1ff 100%)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(45deg, #e5737b, #c6999e, #96b9c2, #00d6e8)" onclick="consoleFn.changeBackground('linear-gradient(45deg, #e5737b, #c6999e, #96b9c2, #00d6e8)')"></a></div><h2 class="content-head">纯色</h2><div class="bgbox"><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #ffffff" onclick="consoleFn.changeBackground('#ffffff')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #000000" onclick="consoleFn.changeBackground('#000000')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #7D9D9C" onclick="consoleFn.changeBackground('#7D9D9C')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #49A6E9" onclick="consoleFn.changeBackground('#49A6E9')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #F7CEFF" onclick="consoleFn.changeBackground('#F7CEFF')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #FFFFCE" onclick="consoleFn.changeBackground('#FFFFCE')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #CFFFCE" onclick="consoleFn.changeBackground('#CFFFCE')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #17EFE9" onclick="consoleFn.changeBackground('#17EFE9')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #9F17EF" onclick="consoleFn.changeBackground('#9F17EF')"></a></div></div></div></div><div id="setting-sidesl"><button class="reSettings con-rightside" title="恢复默认设置" id="con-reset" onclick="consoleFn.resetSettings();"><i class="fa fa-repeat"></i></button><div id="setting-sides"><button class="con-rightside" title="繁简转换" id="con-translate"><i class="iconfont icon-fanti"></i></button><button class="con-rightside" title="昼夜切换" id="con-mode" onclick="cloudchewieFn.toggleDarkMode();"><i class="fa fa-adjust"></i></button><button class="con-rightside" title="音乐" id="con-music" onclick="cloudchewieFn.toggleMusic();"><i class="fas fa-play"></i></button><button class="con-rightside" title="阅读模式" id="con-readmode" onclick="cloudchewieFn.toggleReadMode();"><i class="fa fa-book-open"></i></button><button class="con-rightside" title="单双栏切换" id="con-toggleaside" onclick="consoleFn.toggleAside();"><i class="fas fa-arrows-alt-h"></i></button><button class="con-rightside" title="开关弹幕" id="con-barrage" onclick="cloudchewieFn.switchCommentBarrage()"><i class="cloudchewiefont cloudchewie-icon-danmu"></i></button><button class="con-rightside" title="全屏" id="con-fullscreen" onclick="consoleFn.toggleFullScreen();"><i class="fas fa-expand"></i></button><button class="con-rightside" title="右键菜单" id="con-rightmouse" onclick="consoleFn.toggleContextMenu();"><i class="fas fa-computer-mouse"></i></button></div></div></div><div id="console-mask"></div></div><div><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/jquery.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.3.0/source/js/utils.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.3.0/source/js/main.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/qrcode.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/marked.min.js"></script><script async data-pjax src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/waterfall.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/pace.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/color-thief.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/aplayer.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/meting.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/lately.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/universe.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.3.0/source/js/tw_cn.js"></script><script src="https://npm.elemecdn.com/@fancyapps/ui@5.0.20/dist/fancybox/fancybox.umd.js"></script><script src="https://npm.elemecdn.com/instant.page@5.1.1/instantpage.js" type="module"></script><script src="https://npm.elemecdn.com/vanilla-lazyload@17.3.1/dist/lazyload.iife.min.js"></script><script src="https://npm.elemecdn.com/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+</article><script>enableGPT=true;</script><script>enableAside=true;</script><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="fas fa-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://blog.cloudchewie.com/posts/2022/06/12/Principles-of-Computer-Composition-1/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=计算机组成原理笔记(一)&amp;url=https://blog.cloudchewie.com/posts/2022/06/12/Principles-of-Computer-Composition-1/&amp;pic=https://picbed.cloudchewie.com/img/cover/post/network.png" rel="external nofollow noreferrer noopener"><i class="fa-brands fa-weibo"></i></a></div><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="cloudchewieFn.copyArticleLink()"><i class="fas fa-link"></i></div></div></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E7%AC%94%E8%AE%B0/"><span class="tags-punctuation"><i class="cloudchewiefont cloudchewie-icon-hashtag"></i></span>笔记<span class="tagsPageCount">21</span></a></div></div></div><div class="post_share"></div><div class="post_share"></div></div></div><div class="post-copyright"><div class="post-copyright__author"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://blog.cloudchewie.com/posts/2022/06/12/Principles-of-Computer-Composition-1/">原创</a><a class="post-copyright-title"><span>计算机组成原理笔记(一)</span></a></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://blog.cloudchewie.com/posts/2022/06/12/Principles-of-Computer-Composition-1/">https://blog.cloudchewie.com/posts/2022/06/12/Principles-of-Computer-Composition-1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.cloudchewie.com" target="_blank">Cloudchewie</a>！</span></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/2022/08/19/Install-WSL2-on-Windows/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/cover/post/wsl.jpg" onerror="onerror=null;src='https://picbed.cloudchewie.com/img/index/404.png'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Windows下安装WSL 2</div></div></a></div><div class="next-post pull-right"><a href="/posts/2022/06/12/Principles-of-Computer-Composition-2/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/cover/post/network.png" onerror="onerror=null;src='https://picbed.cloudchewie.com/img/index/404.png'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机组成原理笔记(二)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><span>阅读建议</span></div><div class="relatedPosts-list"><div class="relatedPosts-list-item"><a href="/posts/2022/08/21/Algorithm-Design-and-Analysis-1/" title="算法设计与分析笔记(一)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/cover/post/algorithms.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-21</div><div class="title">算法设计与分析笔记(一)</div></div></a></div><div class="relatedPosts-list-item"><a href="/posts/2022/08/21/Algorithm-Design-and-Analysis-3/" title="算法设计与分析笔记(三)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/cover/post/algorithms.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-21</div><div class="title">算法设计与分析笔记(三)</div></div></a></div><div class="relatedPosts-list-item"><a href="/posts/2022/08/21/Algorithm-Design-and-Analysis-2/" title="算法设计与分析笔记(二)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/cover/post/algorithms.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-21</div><div class="title">算法设计与分析笔记(二)</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><span> 评论</span></div><div class="comment-randomInfo"><a onclick="cloudchewieFn.addRandomCommentInfo()" href="javascript:void(0)" rel="external nofollow noreferrer">匿名评论</a></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/index/avatar.jpg" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/img/index/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">余湍</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">专栏</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Robert-stackflow"><i class="fab fa-github"></i><span>Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://space.bilibili.com/651449217" rel="external nofollow noreferrer" target="_blank" title="Bilibili"><i class="fab fa-bilibili"></i></a><a class="social-icon" href="mailto:2014027378@qq.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-square-rss"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="toc-text">一、计算机系统概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-text">1.冯诺依曼体系结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-text">2. 计算机系统的组成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-text">3.计算机的性能指标</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-text">(1)基本性能指标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%B8%8E%E6%97%B6%E9%97%B4%E6%9C%89%E5%85%B3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-text">(2)与时间有关的性能指标</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="toc-text">4.计算机系统的层次结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%95%B0%E6%8D%AE%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-text">二、数据信息的表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-text">1.数值数据的表示</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%95%B0%E5%80%BC%E4%B8%8E%E6%9C%BA%E5%99%A8%E7%A0%81"><span class="toc-text">(1)数值与机器码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AE%9A%E7%82%B9%E6%95%B0%E8%A1%A8%E7%A4%BA"><span class="toc-text">(2)定点数表示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%B5%AE%E7%82%B9%E6%95%B0%E8%A1%A8%E7%A4%BA"><span class="toc-text">(3)浮点数表示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%9D%9E%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-text">2.非数值数据的表示</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AD%97%E7%AC%A6%E8%A1%A8%E7%A4%BA"><span class="toc-text">(1)字符表示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%B1%89%E5%AD%97%E7%BC%96%E7%A0%81"><span class="toc-text">(2)汉字编码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E4%BF%A1%E6%81%AF%E7%9A%84%E6%A0%A1%E9%AA%8C"><span class="toc-text">3.数据信息的校验</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A0%81%E8%B7%9D"><span class="toc-text">(1)码距</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C"><span class="toc-text">(2)奇偶校验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%B5%B7%E6%98%8E%E6%A0%A1%E9%AA%8C"><span class="toc-text">(3)海明校验</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A0%E6%B5%B7%E6%98%8E%E7%BC%96%E7%A0%81%E6%A6%82%E8%BF%B0"><span class="toc-text">①海明编码概述</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A1%E6%A0%A1%E9%AA%8C%E4%BD%8D%E7%9A%84%E4%BD%8D%E6%95%B0"><span class="toc-text">②校验位的位数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A2%E7%BC%96%E7%A0%81%E5%88%86%E7%BB%84%E8%A7%84%E5%88%99"><span class="toc-text">③编码分组规则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A4%E6%A3%80%E9%94%99%E4%B8%8E%E7%BA%A0%E9%94%99"><span class="toc-text">⑤检错与纠错</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A5%E6%89%A9%E5%B1%95%E6%B5%B7%E6%98%8E%E7%A0%81"><span class="toc-text">⑥扩展海明码</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-CRC%E6%A0%A1%E9%AA%8C"><span class="toc-text">(4)CRC校验</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A0%E7%BC%96%E7%A0%81%E8%A7%84%E5%88%99"><span class="toc-text">①编码规则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A1-CRC-%E6%A0%A1%E9%AA%8C%E6%B5%81%E7%A8%8B"><span class="toc-text">②$CRC$校验流程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A2%E7%94%9F%E6%88%90-CRC-%E7%BC%96%E7%A0%81"><span class="toc-text">③生成$CRC$编码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A3-CRC-%E7%BC%96%E7%A0%81%E7%9A%84%E5%BE%AA%E7%8E%AF%E7%89%B9%E6%80%A7"><span class="toc-text">④$CRC$编码的循环特性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A4-CRC-%E4%B8%B2%E8%A1%8C%E7%BC%96%E8%A7%A3%E7%A0%81"><span class="toc-text">⑤$CRC$串行编解码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A5-CRC-%E5%B9%B6%E8%A1%8C%E7%BC%96%E8%A7%A3%E7%A0%81"><span class="toc-text">⑥$CRC$并行编解码</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/2023/07/24/Compilation-Principle/" title="编译原理笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/cover/post/compile.jpg" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/img/index/404.png'" alt="编译原理笔记"/></a><div class="content"><a class="title" href="/posts/2023/07/24/Compilation-Principle/" title="编译原理笔记">编译原理笔记</a><time datetime="2023-07-24T08:04:23.000Z" title="发表于 2023-07-24 16:04:23">2023-07-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2023/07/17/Concave/" title="凸凹"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/gallery/Umibe-No-Etranger/yibang4.png" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/img/index/404.png'" alt="凸凹"/></a><div class="content"><a class="title" href="/posts/2023/07/17/Concave/" title="凸凹">凸凹</a><time datetime="2023-07-17T09:59:05.000Z" title="发表于 2023-07-17 17:59:05">2023-07-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2023/03/12/Operating-System-Principles-1/" title="操作系统原理笔记(一)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/cover/post/database.jpg" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/img/index/404.png'" alt="操作系统原理笔记(一)"/></a><div class="content"><a class="title" href="/posts/2023/03/12/Operating-System-Principles-1/" title="操作系统原理笔记(一)">操作系统原理笔记(一)</a><time datetime="2023-03-12T04:29:45.000Z" title="发表于 2023-03-12 12:29:45">2023-03-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2023/03/12/Operating-System-Principles-2/" title="操作系统原理笔记(二)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/cover/post/database.jpg" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/img/index/404.png'" alt="操作系统原理笔记(二)"/></a><div class="content"><a class="title" href="/posts/2023/03/12/Operating-System-Principles-2/" title="操作系统原理笔记(二)">操作系统原理笔记(二)</a><time datetime="2023-03-12T04:29:40.000Z" title="发表于 2023-03-12 12:29:40">2023-03-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2023/03/12/Operating-System-Principles-3/" title="操作系统原理笔记(三)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/cover/post/database.jpg" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/img/index/404.png'" alt="操作系统原理笔记(三)"/></a><div class="content"><a class="title" href="/posts/2023/03/12/Operating-System-Principles-3/" title="操作系统原理笔记(三)">操作系统原理笔记(三)</a><time datetime="2023-03-12T04:29:33.000Z" title="发表于 2023-03-12 12:29:33">2023-03-12</time></div></div></div></div></div></div></main><footer id="footer"><div class="js-pjax" id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By 余湍</div><div class="footer_custom_text">昼夜交替的低语，暗藏着谁人的心迹</div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站试用Hexo博客框架" title="本站试用Hexo博客框架"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/Frame-Hexo.svg" alt="本站试用Hexo博客框架"/></a><a class="github-badge" target="_blank" href="https://cloud.tencent.com/product/cos" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站使用腾讯云对象存储提供服务" title="本站使用腾讯云对象存储提供服务"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/COS-腾讯云-3894F3.svg" alt="本站使用腾讯云对象存储提供服务"/></a><a class="github-badge" target="_blank" href="https://github.com/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://beian.miit.gov.cn/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站备案号为鄂ICP备2023005999号" title="本站备案号为鄂ICP备2023005999号"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/备案-鄂ICP备2023005999号-13ce66.svg" alt="本站备案号为鄂ICP备2023005999号"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div></footer></div></div></div><div id="sidebar"><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/img/index/avatar.jpg" onerror="onerror=null;src='https://picbed.cloudchewie.com/img/index/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">专栏</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 专栏</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 空间</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/nowtime/"><i class="fa-fw fas fa-rocket"></i><span> 即刻</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 画廊</span></a></li><li><a class="site-page child" href="/treasure/"><i class="fa-fw fas fa-video"></i><span> 藏宝</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 天籁</span></a></li><li><a class="site-page child" href="/air/"><i class="fa-fw cloudchewiefont cloudchewie-icon-fan"></i><span> 小空调</span></a></li><li><a class="site-page child" href="/cat/"><i class="fa-fw fas fa-cat"></i><span> Purril</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 站点</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/atom.xml"><i class="fa-fw fas fa-rss"></i><span> RSS</span></a></li><li><a class="site-page child" href="/log/"><i class="fa-fw fa-fw fas fa-wrench"></i><span> 日志</span></a></li><li><a class="site-page child" href="/term/"><i class="fa-fw fa-fw fas fa-balance-scale"></i><span> 协议</span></a></li><li><a class="site-page child" href="/help/"><i class="fa-fw fa-fw fas fa-circle-question"></i><span> 指南</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-circle-info"></i><span> 关于我</span></a></li><li><a class="site-page child" href="/guestbook/"><i class="fa-fw fas fa-address-book"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/cloud/"><i class="fa-fw fas fa-heart"></i><span> 挚爱</span></a></li></ul></div></div></div></div><div class="js-pjax" id="rightside"><div id="rightside-button-list"><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><a id="switch_commentBarrage" href="javascript:cloudchewieFn.switchCommentBarrage();" rel="external nofollow noreferrer" title="开关弹幕"><i class="cloudchewiefont cloudchewie-icon-danmu"></i></a><button id="go-down" type="button" title="直达底部"><i class="fas fa-arrow-down"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="cloudchewieFn.toggleMusic()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="7185982924" server="netease" type="playlist" mutex="true" preload="none" theme="var(--theme-color)" data-lrctype="0" order="random"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:pjax.loadUrl(&quot;/&quot;);" rel="external nofollow noreferrer"><i class="fas fa-home"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();" rel="external nofollow noreferrer"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="javascript:consoleFn.showConsole();" rel="external nofollow noreferrer"><i class="fas fa-cog"></i></a><a class="rightMenu-item" href="javascript:cloudchewieFn.scrollToTop();" rel="external nofollow noreferrer"><i class="fa fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line" id="menu-general"><a class="rightMenu-item" href="javascript:window.location.href=&quot;/archives/&quot;;" rel="external nofollow noreferrer"><i class="fas fa-archive"></i><span>归档</span></a><a class="rightMenu-item" href="javascript:window.location.href=&quot;/tags/&quot;;" rel="external nofollow noreferrer"><i class="fas fa-tags"></i><span>标签</span></a><a class="rightMenu-item" href="javascript:window.location.href=&quot;/categories/&quot;;" rel="external nofollow noreferrer"><i class="fas fa-folder-open"></i><span>专栏</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-text"><a class="rightMenu-item" href="javascript:cloudchewieFn.copySelect();" rel="external nofollow noreferrer"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://cn.bing.com/search?q=&quot;+window.getSelection().toString());" rel="external nofollow noreferrer"><i class="fas fa-magnifying-glass"></i><span>必应搜索</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://www.baidu.com/s?wd=&quot;+window.getSelection().toString());" rel="external nofollow noreferrer"><i class="fas fa-magnifying-glass"></i><span>百度搜索</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-paste"><a class="rightMenu-item" href="javascript:cloudchewieFn.paste()" rel="external nofollow noreferrer"><i class="fa fa-copy"></i><span>粘贴</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-post"><a class="rightMenu-item" href="#post-comment"><i class="fas fa-comments"></i><span>转到评论</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.copyArticleLink()" rel="external nofollow noreferrer"><i class="fa fa-link"></i><span>复制本文地址</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-to"><a class="rightMenu-item" href="javascript:cloudchewieFn.openWithNewTab()" rel="external nofollow noreferrer"><i class="fa fa-window-restore"></i><span>新窗口打开</span></a><a class="rightMenu-item" id="menu-too" href="javascript:cloudchewieFn.open()" rel="external nofollow noreferrer"><i class="fa fa-link"></i><span>转到链接</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.copyLink()" rel="external nofollow noreferrer"><i class="fa fa-copy"></i><span>复制链接</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-img"><a class="rightMenu-item" href="javascript:cloudchewieFn.openWithNewTab()" rel="external nofollow noreferrer"><i class="fa fa-window-restore"></i><span>在新窗口打开</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.copyLink()" rel="external nofollow noreferrer"><i class="fa fa-copy"></i><span>复制图片链接</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.click()" rel="external nofollow noreferrer"><i class="fa fa-arrows-alt"></i><span>全屏显示</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-other"><a class="rightMenu-item" href="javascript:cloudchewieFn.toggleReadMode();" rel="external nofollow noreferrer"><i class="fas fa-book-open"></i><span>阅读模式</span></a><a class="rightMenu-item" id="menuCommentBarrage" href="javascript:cloudchewieFn.switchCommentBarrage();" rel="external nofollow noreferrer"><i class="cloudchewiefont cloudchewie-icon-danmu"></i><span class="menu-commentBarrage-text">打开弹幕</span></a><a class="rightMenu-item" id="menuAside" href="javascript:cloudchewieFn.toggleAside();" rel="external nofollow noreferrer"><i class="fas fa-arrows-alt-h"></i><span class="menu-toggleAside-text">显示/隐藏侧栏</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-global"><a class="rightMenu-item" href="javascript:cloudchewieFn.translate();" rel="external nofollow noreferrer"><i class="fas fa-language"></i><span>简繁转换</span></a><a class="rightMenu-item" href="javascript:pjax.loadUrl(&quot;/term/&quot;);" rel="external nofollow noreferrer"><i class="fa fa-info-circle"></i><span>协议声明</span></a><a class="rightMenu-item" id="menuMusic" href="javascript:cloudchewieFn.toggleMusic();" rel="external nofollow noreferrer"><i class="fas fa-play"></i><span>播放音乐</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.toggleDarkMode();" rel="external nofollow noreferrer"><i class="fas fa-adjust"></i><span>深色/浅色模式</span></a></div></div><div id="console-page"><div class="js-pjax" id="settingWindow"><span class="setting-title"><button id="backer" onclick="$('.asetting').hide();$('.settingx').show();$('#backer').hide()"><i class="cloudchewiefont cloudchewie-icon-arrow-left"></i></button><span id="stt">控制面板</span><button id="close-console" onclick="consoleFn.closeConsole();"><i class="cloudchewiefont cloudchewie-icon-xmark"></i></button></span><div class="settings"><div id="setting-buttons"><button class="settingx" onclick="$('#theme-settings').show();$('.settingx').hide();$('#backer').show();"><i class="fas fa-layer-group"></i><span>外观</span></button><button class="settingx" onclick="$('#background-settings').show();$('.settingx').hide();$('#backer').show();"><i class="far fa-image"></i><span>背景</span></button><button class="settingx" onclick="$('#aplayer-settings').show();$('.settingx').hide();$('#backer').show();"><i class="fas fa-music"></i><span> APlayer</span></button></div><div id="setting-hides"><div class="asetting" id="theme-settings"><p><h2 class="content-head">主题设置</h2><div class="content" style="display:flex"><input id="con-toggleFixedNav" type="checkbox" onclick="consoleFn.toggleFixedNav()"/><div class="content-text">固定导航栏</div></div><div class="content" style="display:flex"><input id="con-toggleRightSide" type="checkbox" onclick="consoleFn.toggleRightSide()"/><div class="content-text">显示侧边按钮</div></div><div class="content" style="display:flex"><input id="con-toggleAutoTheme" type="checkbox" onclick="consoleFn.toggleAutoTheme()"/><div class="content-text">深色/浅色模式自动切换</div></div><div class="content" style="display:flex"><input id="con-toggleStarBackground" type="checkbox" onclick="consoleFn.toggleStarBackground()"/><div class="content-text">繁星效果(深色模式下)</div></div></p><p><h2 class="content-head">实验特性</h2><div class="content" style="display:flex"><input id="con-toggleAutoColor" type="checkbox" onclick="consoleFn.toggleAutoColor()"/><div class="content-text">文章页自动主题色（仅支持浅色模式）</div></div></p></div><div class="asetting" id="aplayer-settings"><p><h2 class="content-head">播放设置</h2><div class="content" style="display:flex"><input id="con-toggleAPlayer" type="checkbox" onclick="consoleFn.toggleAPlayer()"/><div class="content-text">打开APlayer</div></div></p><p><h2 class="content-head">切换歌单</h2><div class="playlist-container"><a class="playlist-item" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/index/index.png)" onclick="consoleFn.changeAPlayerList(7185982924,&quot;netease&quot;,true)"><span>默认歌单</span></a><a class="playlist-item" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/index/xusong.jpg)" onclick="consoleFn.changeAPlayerList(7081513713,&quot;netease&quot;,true)"><span>许嵩专辑</span></a><a class="playlist-item" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye1.jpeg)" onclick="consoleFn.changeAPlayerList(7366289244,&quot;netease&quot;,true)"><span>噬云兽特辑</span></a></div></p><p><h2 class="content-head">自定义歌单</h2><input id="url-input" oninput="$(&quot;#url-btn&quot;).html(&quot;解析&quot;);$(&quot;#url-btn&quot;).removeClass(&quot;success&quot;);$(&quot;#url-btn&quot;).removeClass(&quot;fail&quot;);" placeholder="输入歌单链接"/><a id="url-btn" onclick="consoleFn.resolveUrl()">解析</a></p></div><div class="asetting" id="background-settings"><h2 class="content-head">默认背景</h2><div class="bgbox default-bg"><a class="boxl" href="javascript:;" rel="noopener external nofollow" style="background: #f2f6fc" onclick="consoleFn.setDefaultBackground()"></a><a class="boxr" href="javascript:;" rel="noopener external nofollow" style="background: #040404" onclick="consoleFn.setDefaultBackground()"></a></div><h2 class="content-head pc-background">图片（PC端）</h2><div class="bgbox pc-background"><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/shoto/shoto8.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/shoto/shoto8.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/cute/wander1.png)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/cute/wander1.png)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/danheng/danheng7.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/danheng/danheng7.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye1.jpeg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye1.jpeg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye2.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye2.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye3.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye3.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/xiao/xiao1.jpeg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/xiao/xiao1.jpeg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/Umibe-No-Etranger/yibang1.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/Umibe-No-Etranger/yibang1.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/Umibe-No-Etranger/yibang2.png)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/Umibe-No-Etranger/yibang2.png)')"></a></div><h2 class="content-head mobile-background">图片（移动端）</h2><div class="bgbox mobile-background"><a class="pimgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye8.png)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye8.png)')"></a><a class="pimgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/xiao/xiao5.jpeg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/xiao/xiao5.jpeg)')"></a><a class="pimgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/xiao/xiao10.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/xiao/xiao10.jpg)')"></a></div><h2 class="content-head">渐变色</h2><div class="bgbox"><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #eecda3, #ef629f)" onclick="consoleFn.changeBackground('linear-gradient(to right, #eecda3, #ef629f)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #B7D31E, #42CE1E)" onclick="consoleFn.changeBackground('linear-gradient(to right, #B7D31E, #42CE1E)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #06DE86, #06A5DE)" onclick="consoleFn.changeBackground('linear-gradient(to right, #06DE86, #06A5DE)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #189BC4, #183DC4)" onclick="consoleFn.changeBackground('linear-gradient(to right, #189BC4, #183DC4)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #C018C4, #C41818)" onclick="consoleFn.changeBackground('linear-gradient(to right, #C018C4, #C41818)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #8B00BB, #030094)" onclick="consoleFn.changeBackground('linear-gradient(to right, #8B00BB, #030094)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #eecda3, #ef629f)" onclick="consoleFn.changeBackground('linear-gradient(to right, #eecda3, #ef629f)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(90deg, #ffd7e4 0%, #c8f1ff 100%)" onclick="consoleFn.changeBackground('linear-gradient(90deg, #ffd7e4 0%, #c8f1ff 100%)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(45deg, #e5737b, #c6999e, #96b9c2, #00d6e8)" onclick="consoleFn.changeBackground('linear-gradient(45deg, #e5737b, #c6999e, #96b9c2, #00d6e8)')"></a></div><h2 class="content-head">纯色</h2><div class="bgbox"><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #ffffff" onclick="consoleFn.changeBackground('#ffffff')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #000000" onclick="consoleFn.changeBackground('#000000')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #7D9D9C" onclick="consoleFn.changeBackground('#7D9D9C')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #49A6E9" onclick="consoleFn.changeBackground('#49A6E9')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #F7CEFF" onclick="consoleFn.changeBackground('#F7CEFF')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #FFFFCE" onclick="consoleFn.changeBackground('#FFFFCE')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #CFFFCE" onclick="consoleFn.changeBackground('#CFFFCE')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #17EFE9" onclick="consoleFn.changeBackground('#17EFE9')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #9F17EF" onclick="consoleFn.changeBackground('#9F17EF')"></a></div></div></div></div><div id="setting-sidesl"><button class="reSettings con-rightside" title="恢复默认设置" id="con-reset" onclick="consoleFn.resetSettings();"><i class="fa fa-repeat"></i></button><div id="setting-sides"><button class="con-rightside" title="繁简转换" id="con-translate"><i class="iconfont icon-fanti"></i></button><button class="con-rightside" title="昼夜切换" id="con-mode" onclick="cloudchewieFn.toggleDarkMode();"><i class="fa fa-adjust"></i></button><button class="con-rightside" title="音乐" id="con-music" onclick="cloudchewieFn.toggleMusic();"><i class="fas fa-play"></i></button><button class="con-rightside" title="阅读模式" id="con-readmode" onclick="cloudchewieFn.toggleReadMode();"><i class="fa fa-book-open"></i></button><button class="con-rightside" title="单双栏切换" id="con-toggleaside" onclick="consoleFn.toggleAside();"><i class="fas fa-arrows-alt-h"></i></button><button class="con-rightside" title="开关弹幕" id="con-barrage" onclick="cloudchewieFn.switchCommentBarrage()"><i class="cloudchewiefont cloudchewie-icon-danmu"></i></button><button class="con-rightside" title="全屏" id="con-fullscreen" onclick="consoleFn.toggleFullScreen();"><i class="fas fa-expand"></i></button><button class="con-rightside" title="右键菜单" id="con-rightmouse" onclick="consoleFn.toggleContextMenu();"><i class="fas fa-computer-mouse"></i></button></div></div></div><div id="console-mask"></div></div><div><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/qrcode.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/marked.min.js"></script><script async data-pjax src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/waterfall.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/pace.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/color-thief.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/aplayer.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/meting.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/lately.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/universe.min.js"></script><script src="/js/tw_cn.js"></script><script src="https://npm.elemecdn.com/@fancyapps/ui@5.0.20/dist/fancybox/fancybox.umd.js"></script><script src="https://npm.elemecdn.com/instant.page@5.1.1/instantpage.js" type="module"></script><script src="https://npm.elemecdn.com/vanilla-lazyload@17.3.1/dist/lazyload.iife.min.js"></script><script src="https://npm.elemecdn.com/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {
     getScript('https://npm.elemecdn.com/pangu@4.0.7/dist/browser/pangu.min.js')
@@ -824,7 +854,7 @@ function panguInit () {
   }
 }
 
-document.addEventListener('DOMContentLoaded', panguInit)</script><script src="https://npm.elemecdn.com/algoliasearch@4.14.2/dist/algoliasearch-lite.umd.js"></script><script src="https://npm.elemecdn.com/instantsearch.js@4.46.1/dist/instantsearch.production.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.3.0/source/js/search/algolia.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="https://npm.elemecdn.com/algoliasearch@4.14.2/dist/algoliasearch-lite.umd.js"></script><script src="https://npm.elemecdn.com/instantsearch.js@4.46.1/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
   window.MathJax = {
     tex: {
       inlineMath: [ ['$','$'], ["\\(","\\)"]],

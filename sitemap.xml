@@ -65,15 +65,6 @@
   </url>
   
   <url>
-    <loc>https://blog.cloudchewie.com/posts/2023/03/12/Operating-System-Principles-2/</loc>
-    
-    <lastmod>2023-07-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.cloudchewie.com/posts/2022/06/12/Principles-of-Computer-Composition-1/</loc>
     
     <lastmod>2023-07-24</lastmod>
@@ -84,6 +75,15 @@
   
   <url>
     <loc>https://blog.cloudchewie.com/posts/2022/06/12/Principles-of-Computer-Composition-2/</loc>
+    
+    <lastmod>2023-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cloudchewie.com/posts/2023/03/12/Operating-System-Principles-2/</loc>
     
     <lastmod>2023-07-24</lastmod>
     
@@ -173,7 +173,7 @@
   </url>
   
   <url>
-    <loc>https://blog.cloudchewie.com/posts/2022/11/12/Computer-Network-and-Communication-5/</loc>
+    <loc>https://blog.cloudchewie.com/posts/2022/11/12/Computer-Network-and-Communication-4/</loc>
     
     <lastmod>2023-07-24</lastmod>
     
@@ -182,7 +182,7 @@
   </url>
   
   <url>
-    <loc>https://blog.cloudchewie.com/posts/2022/11/12/Computer-Network-and-Communication-4/</loc>
+    <loc>https://blog.cloudchewie.com/posts/2022/11/12/Computer-Network-and-Communication-5/</loc>
     
     <lastmod>2023-07-24</lastmod>
     
@@ -200,7 +200,7 @@
   </url>
   
   <url>
-    <loc>https://blog.cloudchewie.com/posts/2022/11/12/Computer-Network-and-Communication-1/</loc>
+    <loc>https://blog.cloudchewie.com/posts/2022/11/12/Computer-Network-and-Communication-3/</loc>
     
     <lastmod>2023-07-24</lastmod>
     
@@ -209,7 +209,7 @@
   </url>
   
   <url>
-    <loc>https://blog.cloudchewie.com/posts/2022/11/12/Computer-Network-and-Communication-3/</loc>
+    <loc>https://blog.cloudchewie.com/posts/2022/11/12/Computer-Network-and-Communication-1/</loc>
     
     <lastmod>2023-07-24</lastmod>
     
