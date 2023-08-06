@@ -5280,6 +5280,9 @@ li.categoryBar-list-item {
   color: var(--font-color);
   text-shadow: none;
 }
+#page-header.not-top-img #nav a:hover {
+  color: #fff;
+}
 #page-header.nav-fixed #nav {
   position: fixed;
   top: -60px;

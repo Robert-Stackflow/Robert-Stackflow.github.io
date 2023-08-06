@@ -758,6 +758,8 @@ const cloudchewieFn = {
             $("#page-header").removeClass("nav-down");
           }
           position = scroll;
+        }else{
+          $("#page-header").removeClass("nav-down");
         }
       });
       if (document.title.split(" | Cloudchewie")[0] != "Cloudchewie")
