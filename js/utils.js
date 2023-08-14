@@ -1575,9 +1575,9 @@ const cloudchewieFn = {
         const currentTop = window.scrollY || document.documentElement.scrollTop;
         const isDown = scrollDirection(currentTop);
         if (currentTop < 10) {
-          $header.classList.add("nav-top");
+          $("#page-header").addClass("nav-top");
         } else {
-          $header.classList.remove("nav-top");
+          $("#page-header").removeClass("nav-top");
         }
         if (currentTop > 56) {
           if (cloudchewieFn.loadData("enableFixedNav") == "false") {

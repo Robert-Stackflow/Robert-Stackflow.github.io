@@ -2,7 +2,7 @@
     {
         "id": 4,
         "name": "cloudchewie",
-        "avatar": ""
+        "avatar": "https://picbed.cloudchewie.com/img/memos/cloudchewie.jpg"
     },
     {
         "id": 3,
@@ -12,6 +12,6 @@
     {
         "id": 1,
         "name": "Ruida",
-        "avatar": "https://picbed.cloudchewie.com/img/index/avatar.jpg"
+        "avatar": "https://picbed.cloudchewie.com/img/memos/admin.jpg"
     }
 ]

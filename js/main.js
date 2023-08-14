@@ -124,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
     cloudchewieFn.browsingProgress();
 
     window.scrollCollect && window.scrollCollect();
+    window.addEventListener("scroll", window.scrollCollect);
     cloudchewieFn.isNowtime() && cloudchewieFn.fetchMemos();
     GLOBAL_CONFIG.isPhotoFigcaption && cloudchewieFn.addPhotoFigcaption();
     document.getElementById("post-comment") && cloudchewieFn.enlargeEmoji();
