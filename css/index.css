@@ -228,7 +228,7 @@ template {
 }
 .fontawesomeIcon,
 span.categoryBar-list-count::before,
-#article-container a.headerlink:after,
+.announcement_content a.headerlink:after,
 #post .post-copyright:before,
 #post .post-outdate-notice:before {
   display: inline-block;
@@ -6574,7 +6574,24 @@ ul.menus_item_child {
   background: var(--theme-color);
   color: #fff;
 }
-#article-container img {
+.github-badge img {
+  border-radius: 4px !important;
+}
+.announcement_content {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.announcement_content a:not(.banner-button):not(.tag-Link) {
+  color: #3b70fc;
+  padding: 2px 0px;
+}
+.announcement_content a:not(.banner-button):not(.tag-Link):hover {
+  text-decoration: none;
+  border-radius: 5px;
+  background: var(--theme-color);
+  color: #fff;
+}
+.announcement_content img {
   display: block;
   margin: 0 auto 20px;
   max-width: 100%;
@@ -6584,13 +6601,13 @@ ul.menus_item_child {
   -ms-transition: filter 375ms ease-in 0.2s;
   transition: filter 375ms ease-in 0.2s;
 }
-#article-container p {
+.announcement_content p {
   margin: 0 0 16px;
 }
-#article-container iframe {
+.announcement_content iframe {
   margin: 0 0 20px;
 }
-#article-container kbd {
+.announcement_content kbd {
   margin: 0 3px;
   padding: 3px 5px;
   border: 1px solid #b4b4b4;
@@ -6605,10 +6622,10 @@ ul.menus_item_child {
   font-family: Monaco, 'Ubuntu Mono', monospace;
   line-height: 1em;
 }
-#article-container a.headerlink {
+.announcement_content a.headerlink {
   padding: 0px !important;
 }
-#article-container a.headerlink:after {
+.announcement_content a.headerlink:after {
   float: right;
   color: var(--headline-presudo);
   content: '¶';
@@ -6622,37 +6639,37 @@ ul.menus_item_child {
   -ms-transition: all 0.3s;
   transition: all 0.3s;
 }
-#article-container a.headerlink:hover {
+.announcement_content a.headerlink:hover {
   background-color: transparent !important;
 }
-#article-container a.headerlink:hover:after {
+.announcement_content a.headerlink:hover:after {
   color: var(--theme-color);
 }
-#article-container h1:hover a.headerlink:after,
-#article-container h2:hover a.headerlink:after,
-#article-container h3:hover a.headerlink:after,
-#article-container h4:hover a.headerlink:after,
-#article-container h5:hover a.headerlink:after,
-#article-container h6:hover a.headerlink:after {
+.announcement_content h1:hover a.headerlink:after,
+.announcement_content h2:hover a.headerlink:after,
+.announcement_content h3:hover a.headerlink:after,
+.announcement_content h4:hover a.headerlink:after,
+.announcement_content h5:hover a.headerlink:after,
+.announcement_content h6:hover a.headerlink:after {
   opacity: 1;
   -ms-filter: none;
   filter: none;
 }
-#article-container ol ol,
-#article-container ul ol,
-#article-container ol ul,
-#article-container ul ul {
+.announcement_content ol ol,
+.announcement_content ul ol,
+.announcement_content ol ul,
+.announcement_content ul ul {
   padding-left: 20px;
 }
-#article-container ol li,
-#article-container ul li {
+.announcement_content ol li,
+.announcement_content ul li {
   margin: 4px 0;
 }
-#article-container ol p,
-#article-container ul p {
+.announcement_content ol p,
+.announcement_content ul p {
   margin: 0 0 8px;
 }
-#article-container > :last-child {
+.announcement_content > :last-child {
   margin-bottom: 0 !important;
 }
 #post .tag_share:after {
@@ -7126,7 +7143,7 @@ ul.menus_item_child {
 }
 @media screen and (max-width: 768px) {
   .relatedPosts > .relatedPosts-list > div {
-    margin: 2px;
+    margin: 4px 0px;
     width: calc(50% - 4px);
     height: 150px;
   }
@@ -16211,7 +16228,24 @@ mjx-container {
     display: none;
   }
 }
-
+/* 密码输入框 */
+.hbe-graphic-surge {
+  /* fill: var(--global-bg) !important; */
+  height: 100% !important;
+  border-radius: 8px;
+}
+input[type="password"]::-ms-reveal {
+  display: none;
+}
+.hbe-input-field-surge {
+  margin-top: 1.6em !important;
+}
+.hbe-input-label-surge {
+  transform: translate3d(1em, 3.1em, 0) !important;
+}
+.hbe-input-label-content-surge::after{
+  content: "" !important;
+}
 /* Wave CSS */
 .main-hero-waves-area {
   width: 100%;
