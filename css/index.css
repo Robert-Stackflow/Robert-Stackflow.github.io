@@ -10108,11 +10108,13 @@ p.p.gray {
   position: relative;
   padding: 12px 15px;
   border-radius: 0.5rem;
+  background: var(--timeline-bg, #e2eaff);
   border: var(--style-border-always);
   font-size: 0.93em;
 }
 #article-container .timeline .timeline-item .timeline-item-content > :last-child {
   margin-bottom: 0;
+  margin-top: 0;
 }
 #article-container .timeline + .timeline {
   margin-top: -20px;
@@ -15007,6 +15009,7 @@ setting-sides {
   line-height: 2.5em;
   background: var(--card-bg);
   border: var(--card-border);
+  color: var(--font-color);
 }
 #url-btn {
   border-radius: 8px;
@@ -15020,6 +15023,7 @@ setting-sides {
   height: 2.5em;
   line-height: 2.5em;
   text-align: center;
+  color: var(--font-color);
 }
 #url-btn:hover {
   background: var(--theme-color);
@@ -20009,6 +20013,8 @@ body:not(.read-mode) #post #article-container h6:hover {
 }
 #post #article-container img {
   border-radius: 10px;
+  display: block;
+  margin: 0 auto 20px;
 }
 #post #article-container .table-wrap table {
   border: 2px solid var(--km-tab-border);
