@@ -16250,9 +16250,9 @@ input[type="password"]::-ms-reveal {
 .hbe-input-label-content-surge::after{
   content: "" !important;
 }
-img{
+.tab-item-content img{
   display: block;
-  margin: 0 auto 20px;
+  margin: auto;
 }
 /* Wave CSS */
 .main-hero-waves-area {
