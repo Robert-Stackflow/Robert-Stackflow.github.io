@@ -16250,6 +16250,10 @@ input[type="password"]::-ms-reveal {
 .hbe-input-label-content-surge::after{
   content: "" !important;
 }
+img{
+  display: block;
+  margin: 0 auto 20px;
+}
 /* Wave CSS */
 .main-hero-waves-area {
   width: 100%;
