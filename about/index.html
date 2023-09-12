@@ -333,7 +333,7 @@ if (true) {
             color: color
           }
         },
-        data: ["笔记","WSL","小说"]
+        data: ["笔记","小说","WSL"]
       },
       yAxis: {
         name: '文章篇数',
@@ -361,7 +361,7 @@ if (true) {
       series: [{
         name: '文章篇数',
         type: 'bar',
-        data: [{"name":"笔记","value":21,"path":"tags/笔记/"},{"name":"WSL","value":1,"path":"tags/WSL/"},{"name":"小说","value":1,"path":"tags/小说/"}],
+        data: [{"name":"笔记","value":21,"path":"tags/笔记/"},{"name":"小说","value":1,"path":"tags/小说/"},{"name":"WSL","value":1,"path":"tags/WSL/"}],
         itemStyle: {
           borderRadius: [5, 5, 0, 0],
           color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
@@ -418,7 +418,7 @@ if (true) {
       },
       legend: {
         top: 'bottom',
-        data: ["专业核心","安装教程","珠玑"],
+        data: ["专业核心","珠玑","安装教程"],
         textStyle: {
           color: color
         }
@@ -437,7 +437,7 @@ if (true) {
         radius: ['15%', '90%'],
         center: ['50%', '55%'],
         sort: 'desc',
-        data: [{"name":"专业核心","value":21,"path":"categories/专业核心/","id":"clmg4y6890004ycm3g5ww590o","parentId":"0"},{"name":"安装教程","value":1,"path":"categories/安装教程/","id":"clmg4y69b002jycm31n1k6tlu","parentId":"0"},{"name":"珠玑","value":1,"path":"categories/珠玑/","id":"clmg4y69c002mycm3d8cffz2w","parentId":"0"}],
+        data: [{"name":"专业核心","value":21,"path":"categories/专业核心/","id":"clmg5hpu10004xsm3cm8r36z7","parentId":"0"},{"name":"珠玑","value":1,"path":"categories/珠玑/","id":"clmg5hpv0002jxsm3bz642fo3","parentId":"0"},{"name":"安装教程","value":1,"path":"categories/安装教程/","id":"clmg5hpv1002mxsm32cov9zme","parentId":"0"}],
         itemStyle: {
           borderColor: '#fff',
           borderWidth: 2,
@@ -459,7 +459,7 @@ if (true) {
           color: color,
           formatter: '{b} : {c} ({d}%)'
         },
-        data: [{"name":"专业核心","value":21,"path":"categories/专业核心/","id":"clmg4y6890004ycm3g5ww590o","parentId":"0"},{"name":"安装教程","value":1,"path":"categories/安装教程/","id":"clmg4y69b002jycm31n1k6tlu","parentId":"0"},{"name":"珠玑","value":1,"path":"categories/珠玑/","id":"clmg4y69c002mycm3d8cffz2w","parentId":"0"}],
+        data: [{"name":"专业核心","value":21,"path":"categories/专业核心/","id":"clmg5hpu10004xsm3cm8r36z7","parentId":"0"},{"name":"珠玑","value":1,"path":"categories/珠玑/","id":"clmg5hpv0002jxsm3bz642fo3","parentId":"0"},{"name":"安装教程","value":1,"path":"categories/安装教程/","id":"clmg5hpv1002mxsm32cov9zme","parentId":"0"}],
         itemStyle: {
           emphasis: {
             shadowBlur: 10,
@@ -480,6 +480,8 @@ if (true) {
   var pursuitInterval = null;
   pursuitInterval = setInterval(function () {
     const show = document.querySelector("span[data-show]");
+    if(show==null)
+      return;
     const next = show.nextElementSibling || document.querySelector(".first-tips");
     const up = document.querySelector("span[data-up]");
 
