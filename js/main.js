@@ -83,9 +83,20 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
     setInterval(() => {
-      $(".CtxtMenu_MenuArrow").html(
-        "<i class='cloudchewiefont cloudchewie-icon-angle-right'></i>"
-      );
+      $(".CtxtMenu_MenuArrow").each((index,element) => {
+        if ($(element).html() == "►") {
+          $(element).html(
+            "<i class='cloudchewiefont cloudchewie-icon-angle-right'></i>"
+          );
+        }
+      });
+      $(".CtxtMenu_MenuClose").each((index,element) => {
+        if ($(element).html() == "<span>×</span>") {
+          $(element).html(
+            "<i class='cloudchewiefont cloudchewie-icon-xmark'></i>"
+          );
+        }
+      });
     }, 200);
     localStorage.setItem(
       "MathJax-Menu-Settings",

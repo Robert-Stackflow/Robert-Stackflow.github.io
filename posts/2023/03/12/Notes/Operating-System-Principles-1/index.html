@@ -1,0 +1,1355 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>操作系统原理笔记(一) | Cloudchewie</title><meta name="keywords" content="操作系统,笔记"><meta name="author" content="余湍"><meta name="copyright" content="余湍"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="华中科技大学计算机科学与技术学院操作系统原理课程笔记，包括绪论、操作系统的结构和硬件支持、进程管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统原理笔记(一)">
+<meta property="og:url" content="https://blog.cloudchewie.com/posts/2023/03/12/Notes/Operating-System-Principles-1/">
+<meta property="og:site_name" content="Cloudchewie">
+<meta property="og:description" content="华中科技大学计算机科学与技术学院操作系统原理课程笔记，包括绪论、操作系统的结构和硬件支持、进程管理">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://picbed.cloudchewie.com/img/cover/post/database.jpg">
+<meta property="article:published_time" content="2023-03-12T04:29:45.000Z">
+<meta property="article:modified_time" content="2023-07-24T14:47:28.171Z">
+<meta property="article:author" content="余湍">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://picbed.cloudchewie.com/img/cover/post/database.jpg"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://blog.cloudchewie.com/posts/2023/03/12/Notes/Operating-System-Principles-1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://npm.elemecdn.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@5.0.20/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: {"appId":"6IRW362MI1","apiKey":"a4043bbe3b536f100259866d9ff0ed57","indexName":"search_index_cloudchewie","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  navMusic: true,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 余湍","link":"链接: ","source":"来源: Cloudchewie","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"copy_success":"复制成功","chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","comment_barrage_open":"打开评论弹幕","comment_barrage_close":"关闭评论弹幕","browser_version_low":"浏览器版本过低，网站样式可能错乱","welcome":"欢迎访问Cloudchewie","cookie_notice":"本站使用Cookie和本地/会话存储保证浏览体验和网站统计","bgLight":"#3B70FC","bgDark":"#1f1f1f","position":"top-right"},
+  source: {
+    justifiedGallery: {
+      js: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '操作系统原理笔记(一)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-24 22:47:28'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          data: value,
+          time: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.time) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.data
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('enableAside')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><script src="https://npm.elemecdn.com/echarts@5.4.2/dist/echarts.min.js"></script><canvas id="universe"></canvas><style id="settingStyle"></style><style id="barragesColor"></style><style id="themeColor"></style><meta name="baidu-site-verification" content="codeva-KoHQLKwmYl" /><link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont@1.7.0/lxgwwenkaiscreenr.css" media="all" onload="this.media='all'"><script>let cloudGPT_postSelector = '\#post \#article-container';let cloudGPT_key = 'bdd33bb6bd96c908b41f';let enableGPT=true;let enableAside=true;</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Cloudchewie" type="application/atom+xml">
+</head><body data-type="cloudchewie"><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="an_music_bg"></div><div id="web_box"><div id="web_container"><div id="menu-mask"></div><div class="post" id="body-wrap"><header class="post-bg  nav-top" id="page-header" style="background-image: url('https://picbed.cloudchewie.com/img/cover/post/database.jpg')"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="fas fa-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list"><a class="back-menu-item" href="https://www.cloudchewie.com" rel="external nofollow noreferrer" title="主页" target="_blank"><img class="back-menu-item-icon" src="/favicon.ico" alt="主页"/><span class="back-menu-item-text">主页</span></a><a class="back-menu-item" href="https://blog.cloudchewie.com" title="腾讯云" target="_blank"><img class="back-menu-item-icon" src="https://picbed.cloudchewie.com/img/badge/cos.ico" alt="腾讯云"/><span class="back-menu-item-text">腾讯云</span></a><a class="back-menu-item" href="https://vercel.blog.cloudchewie.com" rel="external nofollow noreferrer" title="Vercel" target="_blank"><img class="back-menu-item-icon" src="https://picbed.cloudchewie.com/img/badge/vercel.png" alt="Vercel"/><span class="back-menu-item-text">Vercel</span></a><a class="back-menu-item" href="https://robert-stackflow.github.io" rel="external nofollow noreferrer" title="Github" target="_blank"><img class="back-menu-item-icon" src="https://picbed.cloudchewie.com/img/badge/github.png" alt="Github"/><span class="back-menu-item-text">Github</span></a></div></div></div></div><a id="site-name" href="/">Cloudchewie</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 专栏</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 空间</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/nowtime/"><i class="fa-fw fas fa-rocket"></i><span> 即刻</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 画廊</span></a></li><li><a class="site-page child" href="/treasure/"><i class="fa-fw fas fa-video"></i><span> 藏宝</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 天籁</span></a></li><li><a class="site-page child" href="/air/"><i class="fa-fw fas fa-wind"></i><span> 小空调</span></a></li><li><a class="site-page child" href="/cat/"><i class="fa-fw fas fa-cat"></i><span> Purril</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 站点</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/atom.xml"><i class="fa-fw fas fa-rss"></i><span> RSS</span></a></li><li><a class="site-page child" href="/log/"><i class="fa-fw fa-fw fas fa-wrench"></i><span> 日志</span></a></li><li><a class="site-page child" href="/term/"><i class="fa-fw fa-fw fas fa-balance-scale"></i><span> 协议</span></a></li><li><a class="site-page child" href="/help/"><i class="fa-fw fa-fw fas fa-circle-question"></i><span> 指南</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-circle-info"></i><span> 关于我</span></a></li><li><a class="site-page child" href="/guestbook/"><i class="fa-fw fas fa-address-book"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/cloud/"><i class="fa-fw fas fa-heart"></i><span> 挚爱</span></a></li></ul></div></div></div><center id="name-container"><a id="page-name" href="javascript:cloudchewieFn.scrollToTop()" rel="external nofollow noreferrer"></a></center><div id="nav-right"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i></a></div><div id="wander-button"><a class="site-page social-icon wander"><i class="fas fa-subway fa-fw"></i></a></div><div id="console-button"><a class="site-page social-icon console"><i class="fas fa-cog fa-fw"></i></a></div><div id="love-button"><a class="site-page social-icon love" href="/cloud"><i class="fas fa-heart fa-fw"></i></a></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-arrow-up"></i><span id="percent" onclick="cloudchewieFn.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></div></nav><div id="post-info"><h1 class="post-title">操作系统原理笔记(一)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-12T04:29:45.000Z" title="发表于 2023-03-12 12:29:45">2023-03-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-24T14:47:28.171Z" title="更新于 2023-07-24 22:47:28">2023-07-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%B8%93%E4%B8%9A%E6%A0%B8%E5%BF%83/">专业核心</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>19分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/2023/03/12/Notes/Operating-System-Principles-1/#post-comment"><span id="twikoo-count">0</span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div calss='anzhiyu-tag-link'><a class="tag-Link" target="_blank" href="/downloads/Notes-on-Operating-System-Principles.pdf">
+    <div class="tag-link-tips">站内地址</div>
+    <div class="tag-link-bottom">
+        <div class="tag-link-left" style="background-image: url(https://picbed.cloudchewie.com/img/cover/post/logo.png);"></div>
+        <div class="tag-link-right">
+            <div class="tag-link-title">操作系统原理笔记</div>
+            <div class="tag-link-sitename"> 点击下载操作系统原理笔记PDF版 </div>
+        </div>
+        <i class="cloudchewiefont cloudchewie-icon-angle-right"></i>
+    </div>
+    </a></div>
+
+<h2 id="一、绪论"><a href="#一、绪论" class="headerlink" title="一、绪论"></a>一、绪论</h2><h3 id="1-1-操作系统与计算机体系结构的关系"><a href="#1-1-操作系统与计算机体系结构的关系" class="headerlink" title="1.1 操作系统与计算机体系结构的关系"></a>1.1 操作系统与计算机体系结构的关系</h3><ul>
+<li><p>操作系统的地位</p>
+<ul>
+<li>不解决具体问题，不负责生成解决应用问题的程序</li>
+<li>所有硬件之上，所有软件之下，是各种软件的基础运行平台</li>
+</ul>
+</li>
+<li><p>计算机系统的体系结构</p>
+<ul>
+<li><p>应用软件</p>
+</li>
+<li><p>编译器，数据库，网络等组件</p>
+</li>
+<li><p>操作系统</p>
+</li>
+<li><p>硬件</p>
+</li>
+</ul>
+</li>
+<li><p>操作系统与各层之间的关系</p>
+<ul>
+<li><p>操作系统对各层的管理和控制</p>
+<ul>
+<li>管理控制硬件：控制CPU的工作、访问存储器、设备驱动、中断处理</li>
+<li>管理控制应用软件：提供方便简单得用户接口</li>
+</ul>
+</li>
+<li><p>各层对OS的制约和影响</p>
+<ul>
+<li>下层硬件环境的制约：提供操作系统的运行环境、限制了操作系统的功能实现</li>
+<li>上层用户和软件的要求：操作系统需要满足不同的应用需求</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>操作系统的功能</p>
+<ul>
+<li>进程管理<ul>
+<li>进程控制：创建，暂停，唤醒，撤销；</li>
+<li>进程调度：调度策略，优先级；</li>
+<li>进程通信：进程间通信</li>
+</ul>
+</li>
+<li>内存管理<ul>
+<li>内存分配</li>
+<li>内存共享</li>
+<li>内存保护</li>
+<li>虚拟内存</li>
+</ul>
+</li>
+<li>设备管理<ul>
+<li>设备的分配和调度</li>
+<li>设备无关性</li>
+<li>设备传输控制</li>
+<li>设备驱动</li>
+</ul>
+</li>
+<li>文件管理<ul>
+<li>存储空间管理</li>
+<li>文件的操作</li>
+<li>目录的操作</li>
+<li>文件和目录的存取权限管理</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-操作系统的形成与发展-★"><a href="#1-2-操作系统的形成与发展-★" class="headerlink" title="1.2 操作系统的形成与发展(★)"></a>1.2 操作系统的形成与发展(★)</h3><h4 id="1-2-1-手工操作阶段"><a href="#1-2-1-手工操作阶段" class="headerlink" title="1.2.1 手工操作阶段"></a>1.2.1 手工操作阶段</h4><ul>
+<li>人工操作</li>
+<li>作业<strong>独占</strong>计算机</li>
+<li>作业<strong>串行</strong>执行</li>
+</ul>
+<h4 id="1-2-2-批处理阶段"><a href="#1-2-2-批处理阶段" class="headerlink" title="1.2.2 批处理阶段"></a>1.2.2 批处理阶段</h4><h5 id="联机批处理"><a href="#联机批处理" class="headerlink" title="联机批处理"></a>联机批处理</h5><ul>
+<li>作业的I&#x2F;O操作由CPU来处理：慢速I&#x2F;O设备严重浪费CPU处理时间</li>
+</ul>
+<h5 id="脱机批处理"><a href="#脱机批处理" class="headerlink" title="脱机批处理"></a>脱机批处理</h5><ul>
+<li>作业的I&#x2F;O操作由廉价的卫星机处理</li>
+<li>主处理器只与高速存储设备交互</li>
+<li>DMA的原型</li>
+</ul>
+<h5 id="单道批处理技术"><a href="#单道批处理技术" class="headerlink" title="单道批处理技术"></a>单道批处理技术</h5><ul>
+<li>批量：将多个程序打包形成<strong>作业队列</strong></li>
+<li>自动：常驻监督程序（可视为操作系统）依次<strong>自动</strong>处理队列中的每个作业</li>
+<li>单道：作业只能按照顺序依次被执行，是<strong>串行</strong>的</li>
+<li>利用效率低：当需要执行I&#x2F;O操作时，CPU空闲，而不能被其他作业使用；当需要CPU工作时，外设空闲，而不能被其他作业使用</li>
+</ul>
+<h5 id="多道批处理技术"><a href="#多道批处理技术" class="headerlink" title="多道批处理技术"></a>多道批处理技术</h5><ul>
+<li><p>多道：内存中同时存放<strong>多道</strong>相互独立的程序，以<strong>脱机</strong>方式工作</p>
+</li>
+<li><p>提高CPU利用效率：当某道程序因某种原因（如进行I&#x2F;O操作）不能继续运行下去时，操作系统便将另一道程序投入运行</p>
+</li>
+<li><p>宏观上并行：多个程序同时占用多个资源同时执行</p>
+</li>
+<li><p>微观上串行：在某个时间点，最多一个程序占用CPU；多个程序交替占用CPU</p>
+</li>
+<li><p>无法交互：平均周转时间长，无交互能力</p>
+</li>
+<li><p>辅助技术：中断、通道（DMA、达成脱机方式）</p>
+</li>
+</ul>
+<h4 id="1-2-3-分时系统阶段"><a href="#1-2-3-分时系统阶段" class="headerlink" title="1.2.3 分时系统阶段"></a>1.2.3 分时系统阶段</h4><ul>
+<li>以<strong>联机</strong>方式使用计算机</li>
+</ul>
+<h5 id="分时技术"><a href="#分时技术" class="headerlink" title="分时技术"></a>分时技术</h5><ul>
+<li>把处理机时间划分成很短的时间片（如几百毫秒）轮流地分配给各个应用程序使用</li>
+<li>如果某个程序在分配的时间片用完之前计算还未完成，该程序就暂停执行，等待下一次获得时间片后再继续计算</li>
+</ul>
+<h5 id="实时技术"><a href="#实时技术" class="headerlink" title="实时技术"></a>实时技术</h5><ul>
+<li>系统能及时响应外部事件的请求，在规定的时间（deadline）范围内完成对该事件的处理，并控制实时任务协调一致运行<ul>
+<li>强调可预测而非迅速</li>
+<li>硬实时：若实时约束不被满足，则会导致灾难性后果</li>
+<li>软实时：若实时约束不被满足，则会导致服务质量的降级</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3-操作系统的定义与特征"><a href="#1-3-操作系统的定义与特征" class="headerlink" title="1.3 操作系统的定义与特征"></a>1.3 操作系统的定义与特征</h3><ul>
+<li><p>定义</p>
+<ul>
+<li><p>大型<strong>软件系统</strong></p>
+</li>
+<li><p>负责计算机系统软、硬件资源的分配</p>
+</li>
+<li><p>控制和协调并发活动</p>
+</li>
+<li><p>提供用户接口，使用户获得良好的工作环境</p>
+</li>
+</ul>
+</li>
+<li><p>特征</p>
+<ul>
+<li>并发<ul>
+<li>并行是指两个或者多个事件在<strong>同一时刻</strong>发生，而并发是指两个或多个事件在<strong>同一时间间隔</strong>发生</li>
+<li>并行是在<strong>不同实体</strong>上的多个事件，并发是在同一实体上的多个事件</li>
+</ul>
+</li>
+<li>共享：系统中的资源可供多个并发执行的进程共同使用</li>
+<li>虚拟：把一个物理上的实体变为若干个逻辑上的对应物</li>
+<li>不确定：为多个作业的执行顺序和每个作业的执行时间是不确定的</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、操作系统的结构和硬件支持"><a href="#二、操作系统的结构和硬件支持" class="headerlink" title="二、操作系统的结构和硬件支持"></a>二、操作系统的结构和硬件支持</h2><h3 id="2-1-操作系统的物质基础-★"><a href="#2-1-操作系统的物质基础-★" class="headerlink" title="2.1 操作系统的物质基础(★)"></a>2.1 操作系统的物质基础(★)</h3><h4 id="2-1-1-CPU特权级"><a href="#2-1-1-CPU特权级" class="headerlink" title="2.1.1 CPU特权级"></a>2.1.1 CPU特权级</h4><ul>
+<li><p>设立特权级的目的：保护操作系统</p>
+</li>
+<li><p>CPU的两种状态</p>
+<ul>
+<li>管态（核态、特权态）<ul>
+<li>操作系统的<strong>管理程序</strong>执行时机器所处的状态</li>
+<li>可使用全部指令（<strong>包括一组特权指令</strong>）</li>
+<li>可使用全部系统资源（<strong>包括整个存储区域</strong>）</li>
+</ul>
+</li>
+<li>用户态<ul>
+<li><strong>用户程序</strong>执行时机器所处的状态</li>
+<li><strong>禁止使用特权指令</strong>，不能直接取用资源与改变机器状态</li>
+<li><strong>只允许访问自己的存储区域</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>CPU特权指令</p>
+<ul>
+<li>I&#x2F;O指令</li>
+<li>停机halt指令</li>
+<li>从核态转回用户态</li>
+<li>改变状态寄存器（MSR）的指令</li>
+</ul>
+</li>
+<li><p>CPU特权级</p>
+</li>
+</ul>
+<h4 id="2-1-2-中断技术"><a href="#2-1-2-中断技术" class="headerlink" title="2.1.2  中断技术"></a>2.1.2  中断技术</h4><h5 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h5><ul>
+<li><p>中断的本质是受保护的状态转换——<strong>确保CPU安全地由用户态转到核态</strong>，转换的过程中不允许存在让用户程序干预的可能</p>
+</li>
+<li><p>CPU收到外部中断信号后，停止当前工作，转去处理该外部事件 ，处理完毕后回到原来的中断处继续运行</p>
+</li>
+<li><p>相关概念</p>
+<ul>
+<li>中断源：引起中断的事件</li>
+<li>断点：发生中断时正在运行的程序被暂时停止，程序的暂停点称为断点。</li>
+<li>中断是硬件和软件协同的处理的，由硬件发现中断并进入中断，进入中断后，然后让软件来执行对中断事件的处理。</li>
+</ul>
+</li>
+</ul>
+<h5 id="中断分类"><a href="#中断分类" class="headerlink" title="中断分类"></a>中断分类</h5><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">IRQ</th>
+<th align="center">Exception</th>
+<th align="center">Syscall</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">产生原因</td>
+<td align="center">CPU以外的外部设备产生的异步事件</td>
+<td align="center">当前程序的执行所导致的同步事件</td>
+<td align="center">当前执行的程序需调用操作系统的功能</td>
+</tr>
+<tr>
+<td align="center">处理时机</td>
+<td align="center">指令执行的间隙</td>
+<td align="center">发生异常的指令执行过程中</td>
+<td align="center">访管指令</td>
+</tr>
+<tr>
+<td align="center">返回地址</td>
+<td align="center">下一条指令</td>
+<td align="center">发生异常的指令</td>
+<td align="center">下一条指令</td>
+</tr>
+<tr>
+<td align="center">举例</td>
+<td align="center">敲击键盘、磁盘数据传输完成</td>
+<td align="center">除零、非法内存访问</td>
+<td align="center">ecall指令</td>
+</tr>
+</tbody></table>
+<h5 id="中断响应"><a href="#中断响应" class="headerlink" title="中断响应"></a>中断响应</h5><ul>
+<li><p>中断响应的过程</p>
+<ul>
+<li>识别中断源</li>
+<li>保护断点和现场：保存断点地址、程序状态字PSW</li>
+<li>装入中断服务程序的入口地址</li>
+<li>进入中断服务程序</li>
+<li>恢复现场和断点</li>
+<li>中断返回</li>
+</ul>
+</li>
+<li><p>中断响应的实质</p>
+<ul>
+<li>交换CPU的态</li>
+<li>交换指令执行地址</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-1-3-时钟"><a href="#2-1-3-时钟" class="headerlink" title="2.1.3 时钟"></a>2.1.3 时钟</h4><h3 id="2-2-操作系统的组织结构"><a href="#2-2-操作系统的组织结构" class="headerlink" title="2.2 操作系统的组织结构"></a>2.2 操作系统的组织结构</h3><ul>
+<li><p>操作系统的组件</p>
+<ul>
+<li>核心组件：中断管理、进程管理、内存管理</li>
+<li>外围组件：文件管理、设备管理</li>
+</ul>
+</li>
+<li><p>操作系统的内核结构</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">单内核</th>
+<th align="center">微内核</th>
+<th align="center">伴生内核</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">特点</td>
+<td align="center">所有组件均运行在内核态</td>
+<td align="center">核心组件运行在内核态，外围组件运行在用户态</td>
+<td align="center">同一台机器运行多个OS，包括主OS和伴生OS</td>
+</tr>
+<tr>
+<td align="center">优点</td>
+<td align="center">结构简单，执行效率高</td>
+<td align="center">内核小，稳定</td>
+<td align="center">伴生OS结构简单</td>
+</tr>
+<tr>
+<td align="center">缺点</td>
+<td align="center">内核庞大，难以维护</td>
+<td align="center">采用IPC通讯，效率低</td>
+<td align="center">完整系统结构复杂</td>
+</tr>
+<tr>
+<td align="center">例子</td>
+<td align="center">UNIX、Linux</td>
+<td align="center">Windows</td>
+<td align="center">PKE、Docker容器</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>IPC通讯：内核把用户请求服务的消息传给服务进程；服务进程接受并执行用户服务请求；内核用消息把结果返回给用户</p>
+<img src="https://picbed.cloudchewie.com/post/Operating-System-Principles-1/Chp1-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E7%BB%93%E6%9E%84%E5%AF%B9%E6%AF%94.png" class="" width="400" title="操作系统内核结构对比"></li>
+</ul>
+<h3 id="2-3-程序的链接-★"><a href="#2-3-程序的链接-★" class="headerlink" title="2.3 程序的链接(★)"></a>2.3 程序的链接(★)</h3><h3 id="2-4-用户接口-★"><a href="#2-4-用户接口-★" class="headerlink" title="2.4 用户接口(★)"></a>2.4 用户接口(★)</h3><ul>
+<li><p>批处理操作系统：作业控制语言</p>
+</li>
+<li><p>分时操作系统、个人计算机操作系统：作业控制语言、键盘命令、图形用户界面</p>
+</li>
+<li><p>操作系统如何提供服务（<strong>系统调用</strong>）：</p>
+<ul>
+<li>操作系统提供实现各种功能的例行子程序，每个功能对应一个功能号；</li>
+<li>CPU提供<strong>访管指令</strong>：svc n，其中svc表示访管指令的记忆符，n为功能号；</li>
+<li>应用程序通过访管指令调用操作系统例程；</li>
+<li>处理机执行到访管指令时发生中断，该中断称为访管中断。</li>
+</ul>
+</li>
+<li><p>系统调用与一般库函数的区别</p>
+<ul>
+<li>系统调用代码驻留在内存中，属于操作系统，其执行回引起CPU状态由用户态转到核态，如getchar()函数</li>
+<li>一般库函数由开发软件提供，不会引起CPU状态的变化，如max()函数</li>
+</ul>
+</li>
+<li><p>系统调用的实现</p>
+<ul>
+<li>每个系统调用对应一个系统调用号；</li>
+<li>每个系统调用对应一个执行程序段；</li>
+<li>每个系统调用要求一定数量的输入参数和返回值</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">UNIX&#x2F;Linux</th>
+<th align="center">Win32</th>
+<th align="center">Usage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">fork</td>
+<td align="center">CreatProcess</td>
+<td align="center">创建进程</td>
+</tr>
+<tr>
+<td align="center">waitpid</td>
+<td align="center">WaitForSingleObject</td>
+<td align="center">等待进程终止</td>
+</tr>
+<tr>
+<td align="center">open&#x2F;close</td>
+<td align="center">CreatFile&#x2F;CloseHandle</td>
+<td align="center">创建或打开&#x2F;关闭文件</td>
+</tr>
+<tr>
+<td align="center">read&#x2F;write</td>
+<td align="center">ReadFile&#x2F;WriteFile</td>
+<td align="center">读&#x2F;写文件</td>
+</tr>
+<tr>
+<td align="center">lseek</td>
+<td align="center">SetFilePointer</td>
+<td align="center">移动文件指针</td>
+</tr>
+<tr>
+<td align="center">mkdir&#x2F;rmdir</td>
+<td align="center">Creat&#x2F;Remove  Directory</td>
+<td align="center">建立&#x2F;删除目录</td>
+</tr>
+<tr>
+<td align="center">stat</td>
+<td align="center">GetFileAttributesEx</td>
+<td align="center">获得文件属性</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Linux的内核陷入指令为int 80h中断指令</li>
+</ul>
+<h2 id="三、进程管理"><a href="#三、进程管理" class="headerlink" title="三、进程管理"></a>三、进程管理</h2><h3 id="3-1-进程引入"><a href="#3-1-进程引入" class="headerlink" title="3.1 进程引入"></a>3.1 进程引入</h3><ul>
+<li><p>顺序程序（单道系统）</p>
+<ul>
+<li><p>程序的一次执行过程称为一次计算，它由许多简单的操作组成</p>
+</li>
+<li><p>一个计算的若干操作必须按照严格的先后次序顺序地执行，这个计算过程就是程序的顺序执行过程</p>
+</li>
+<li><p>特点</p>
+<ul>
+<li><p>顺序性：处理机的操作严格<strong>按照程序所规定的顺序依次执行</strong></p>
+</li>
+<li><p>封闭性：程序一旦开始执行，就<strong>不会受到外界因素的影响</strong></p>
+</li>
+<li><p>可再现性：程序执行的结果与它的执行速度无关 (即与时间无关)，而只与初始条件有关；初始条件相同，程序执行的结果一定相同</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>并发程序</p>
+<ul>
+<li><p>若干个程序段同时在系统中运行，这些程序段的执行<strong>在时间上重叠</strong></p>
+</li>
+<li><p>一个程序段的执行尚未结束，另一个程序段的执行已经开始，称这几个程序段是<strong>并发执行</strong>的</p>
+</li>
+<li><p>并发语句记号</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cobegin</span><br><span class="line">	S1,S2,S3,...,Sn</span><br><span class="line">coend</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>特点</p>
+<ul>
+<li><p>失去封闭性和可再现性：两个并发程序若干操作的先后顺序</p>
+<ul>
+<li>程序并发执行时的结果与各并发程序的相对速度有关</li>
+<li>即给定相同的初始条件，若不加以控制，也可能得到不同的结果，此为与时间有关的错误</li>
+</ul>
+</li>
+<li><p>一个程序可以对应多个计算</p>
+</li>
+<li><p>多个计算之间会有并发执行的相互制约</p>
+<ul>
+<li>直接制约：共享变量</li>
+<li>间接制约：资源共享</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-2-进程概念"><a href="#3-2-进程概念" class="headerlink" title="3.2 进程概念"></a>3.2 进程概念</h3><h4 id="3-2-1-进程定义"><a href="#3-2-1-进程定义" class="headerlink" title="3.2.1 进程定义"></a>3.2.1 进程定义</h4><ul>
+<li><p>指一个具有一定独立功能的程序关于某个数据集合的一次运行活动，即程序的一次执行</p>
+</li>
+<li><p>进程与程序的区别</p>
+<ul>
+<li><p>程序是静态的（存储在内存&#x2F;外存中的代码），进程是动态的（程序在处理机运行的过程，是运行中的程序）；</p>
+</li>
+<li><p>进程是一个独立运行的活动单位，是竞争系统资源的基本单位；</p>
+</li>
+<li><p>一个程序可以对应多个进程，一个进程至少包含一个程序</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-2-2-进程状态-★"><a href="#3-2-2-进程状态-★" class="headerlink" title="3.2.2 进程状态(★)"></a>3.2.2 进程状态(★)</h4><ul>
+<li><p>三种基本状态</p>
+<ul>
+<li>运行态：该进程已获得运行所必需的资源，它的程序<strong>正在处理机上执行</strong>；</li>
+<li>等待态：进程正等<strong>待着某一事件的发生而暂时停止执行</strong>。这时，即使给它CPU控制权，它也<strong>无法执行</strong>；</li>
+<li>就绪态：进程已获得除CPU之外的运行所必需的资源，<strong>一旦得到CPU控制权，立即可以运行</strong></li>
+</ul>
+<img src="https://picbed.cloudchewie.com/post/Operating-System-Principles-1/Chp1-%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81%E5%8F%98%E8%BF%81%E5%9B%BE.png" class="" width="400" title="进程状态变迁图">
+</li>
+<li><p>进程的变迁原因</p>
+<ul>
+<li>就绪-&gt;执行：进程调度即可就绪状态转为运行状态</li>
+<li>等待-&gt;就绪：处于等待状态的进程中相关服务完成或者相关资源获得完成</li>
+<li>运行-&gt;等待：进程提出某种服务请求，比如说I&#x2F;O</li>
+<li>运行-&gt;就绪：<strong>在分时系统中，时间片到</strong>，才会发生这种变迁</li>
+</ul>
+</li>
+<li><p>进程基本状态的拓展</p>
+<ul>
+<li>拓展1：程序执行完了，进程还可以被回收；</li>
+<li>拓展2：添加挂起操作，添加静止状态，静止表示当前进程不在主存里面，在虚存里面；</li>
+<li>Unix进程，运行态分成用户态运行和核心态运行</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-2-3-进程描述"><a href="#3-2-3-进程描述" class="headerlink" title="3.2.3 进程描述"></a>3.2.3 进程描述</h4><ul>
+<li>进程的组成<ul>
+<li>进程内部的程序和数据：描述进程本身所应完成的功能</li>
+<li>进程控制块PCB：描述进程与其他进程、系统资源的关系，以及进程所处的状态</li>
+</ul>
+</li>
+<li>进程控制块的内容<ul>
+<li>进程标志符：进程符号名或ID</li>
+<li>进程当前状态</li>
+<li>进程队列的指针next：处于同一状态的下一个进程的PCB地址</li>
+<li>进程优先级</li>
+<li>CPU现场保护区</li>
+<li>通信信息、家族联系、占有资源清单</li>
+</ul>
+</li>
+<li>Linux中的PCB结构称为task_struct，所有进程均以task_struct链表的形式存储在内存中</li>
+<li>PCB队列的组织<ul>
+<li>就绪队列：所有处于就绪状态的队列</li>
+<li>等待队列：有多个等待队列，每个队列表示所有因为<strong>同个某种原因</strong>而等待的进程</li>
+<li>运行指针：当前是什么进程正在运行</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-进程控制原语-★"><a href="#3-3-进程控制原语-★" class="headerlink" title="3.3 进程控制原语(★)"></a>3.3 进程控制原语(★)</h3><h4 id="3-3-1-进程创建"><a href="#3-3-1-进程创建" class="headerlink" title="3.3.1 进程创建"></a>3.3.1 进程创建</h4><ul>
+<li><p>进程创建原语：create(name，priority)</p>
+<ul>
+<li>其中name为标识符，priority是优先级</li>
+<li>创建一个具有指定标识符的进程，建立进程的PCB结构</li>
+</ul>
+</li>
+<li><p>实现方法</p>
+<ul>
+<li>查找PCB池，是否出现同名现象</li>
+<li>向系统申请一个空闲PCB，没有空闲PCB则出错退出</li>
+<li>将入口信息填入PCB</li>
+<li>PCB入就绪队列</li>
+<li>返回进程PID</li>
+</ul>
+</li>
+<li><p>进程创建：Linux中的fork()</p>
+<ul>
+<li>创建一个子进程，它从父进程继承整个进程的地址空间，包括：进程上下文、进程堆栈、内存信息、打开的文件描述符、信号控制设置、进程优先级、进程组号、当前工作目录、根目录、资源限制、控制终端等。</li>
+<li>创建过程<ul>
+<li>为新进程分配一个新的PCB结构；</li>
+<li>为子进程赋一个唯一的进程标识号 (PID)；</li>
+<li>为子进程复制一个父进程上下文的逻辑副本——父子进程将执行完全相同的代码；</li>
+<li>增加与该进程相关联的文件表和索引节点表的引用数——父进程打开的文<br>件子进程可以继续使用；</li>
+<li>对父进程返回子进程的进程号，对子进程返回零</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>进程更换：Linux中的exec()</p>
+<ul>
+<li>更换进程执行代码，<strong>更换正文段，数据段</strong></li>
+<li>格式：exec(文件名，参数表，环境变量表)</li>
+<li>例如：execlp(“max”,15,18,10,0)；execvp(“max”,argp)</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-3-2-进程撤销"><a href="#3-3-2-进程撤销" class="headerlink" title="3.3.2 进程撤销"></a>3.3.2 进程撤销</h4><ul>
+<li><p>进程撤销原语：kill()，exit()</p>
+<ul>
+<li>撤消当前运行的进程并转进程调度程序</li>
+</ul>
+</li>
+<li><p>实现方法</p>
+<ul>
+<li>由运行指针获得当前进程pid</li>
+<li>释放本进程占用的资源给父进程</li>
+<li>从总链队列中删除该进程</li>
+<li>释放PCB结构</li>
+<li>转进程调度</li>
+</ul>
+</li>
+<li><p>进程撤销：Linux中的exit()</p>
+<ul>
+<li>撤销一个进程，它停止当前进程的运行，清除其使用的内存空间， 销毁其在内核中的各种数据结构；</li>
+<li>进程状态变为zombie僵尸态：<strong>仍保留其PCB结构，等待父进程回收</strong></li>
+<li>若其父进程正在等待该进程的终止，则父进程可立即得到其返回的整数status</li>
+<li>僵尸进程：若子进程调用exit()，而父进程并没有调用wait()或waitpid()获取子进程的状态信息，那么子进程的PCB仍然保存在系统中，此时该子进程称为僵尸进程；</li>
+<li>孤儿进程：当一个父进程由于正常完成工作而退出或由于其他情况被终止，它的一个或多个子进程却还在运行，这些子进程将成为孤儿进程；</li>
+<li>孤儿进程将被1号进程接管，且1号进程定期清除僵尸进程</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-3-3-进程等待"><a href="#3-3-3-进程等待" class="headerlink" title="3.3.3 进程等待"></a>3.3.3 进程等待</h4><ul>
+<li><p>进程等待原语：susp(chan)</p>
+<ul>
+<li>其中chan为进程等待的原因</li>
+<li>中止调用susp的进程的执行，并将其加入到等待chan的等待队列中，转进程调度</li>
+</ul>
+</li>
+<li><p>实现方法</p>
+<ul>
+<li>保护当前进程的CPU现场到其PCB结构中</li>
+<li>设置该进程为<strong>等待态</strong></li>
+<li>将该进程的PCB结构插入到chan对应的等待队列中</li>
+<li>转进程调度</li>
+</ul>
+</li>
+<li><p>进程等待：Linux中的wait()</p>
+<ul>
+<li>父进程通过调用wait(int* status)函数使其暂停执行，直到它的一个子进程结束为止；</li>
+<li>其返回值是终止运行的子进程的PID；</li>
+<li>参数status所指向的变量存放子进程的退出码，即从子进程的main函数返回的值或子进程中exit()函数的参数</li>
+</ul>
+</li>
+<li><p>进程等待：Linux中的waitpid()</p>
+<ul>
+<li>父进程通过调用wait(pid_t pid, int * status, int options)函数使其暂停执行，直到特定子进程结束为止</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-3-4-进程唤醒"><a href="#3-3-4-进程唤醒" class="headerlink" title="3.3.4 进程唤醒"></a>3.3.4 进程唤醒</h4><ul>
+<li>wakeup(chan)<ul>
+<li>其中chan为被唤醒进程等待的原因</li>
+<li>当进程等待的事件发生时，由发现者进程唤醒等待该事件的进程</li>
+</ul>
+</li>
+<li>实现方法<ul>
+<li>找到chan对应的等待队列</li>
+<li>将该队列的首个进程移出等待队列</li>
+<li>设置该进程为<strong>就绪态</strong></li>
+<li>将该进程插入到就绪队列</li>
+<li>进程调度</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-4-进程的相互制约关系"><a href="#3-4-进程的相互制约关系" class="headerlink" title="3.4 进程的相互制约关系"></a>3.4 进程的相互制约关系</h3><ul>
+<li><p>临界资源：一次只允许一个进程使用的资源</p>
+<ul>
+<li>硬件：输入机，打印机，磁带机</li>
+<li>软件：公共变量，队列</li>
+</ul>
+<blockquote>
+<p>当两个进程公用一个变量时，它们必须顺序地使用，一个进程对公用变量操作完成后，另一个进程才能访问修改该变量</p>
+</blockquote>
+</li>
+<li><p>临界区：对于公共变量或公共存储区进行访问和修改的程序段</p>
+</li>
+<li><p>临界区访问规则</p>
+<ul>
+<li>空闲则入：没有进程在临界区时，任何进程都可以进入临界区；</li>
+<li>忙则等待：有进程在临界区时，其他进程均不能进入临界区；</li>
+<li>有限等待：等待进入临界区的进程不能无限等待；</li>
+<li>让权等待：不能进入临界区的进程应释放CPU</li>
+</ul>
+</li>
+<li><p>进程互斥</p>
+<ul>
+<li><p>当某一进程正在访问某一存储区时，不允许其他进程访问或者修改该存储区的内容，这种制约关系称为进程互斥</p>
+</li>
+<li><p><strong>同一临界资源</strong>的临界区才需要互斥进入</p>
+</li>
+</ul>
+</li>
+<li><p>进程同步</p>
+<ul>
+<li><p><strong>并发</strong>进程在一些关键点上可能需要<strong>互相等待与互通消息</strong>， 这种制约关系称为进程同步</p>
+</li>
+<li><p>在病人看病过程中，<u>看病活动</u>需要等待<u>化验活动</u>作出的化验结果，而<u>化验活动</u>需要等待来自<u>看病活动</u>的化验请求</p>
+</li>
+</ul>
+</li>
+<li><p>同步反映的是合作关系；互斥反映的是竞争关系</p>
+</li>
+</ul>
+<h3 id="3-5-进程同步机构-★"><a href="#3-5-进程同步机构-★" class="headerlink" title="3.5 进程同步机构(★)"></a>3.5 进程同步机构(★)</h3><h4 id="3-5-1-锁"><a href="#3-5-1-锁" class="headerlink" title="3.5.1 锁"></a>3.5.1 锁</h4><ul>
+<li>用一个变量w代表某种资源的状态：w&#x3D;1表示资源被占用，否则表示资源没有被占用</li>
+<li>上锁原语：lock(w)<ul>
+<li>执行到lock的时候判断w是多少</li>
+<li>如果w&#x3D;1，就被阻塞，进程无法往下继续运行，直到什么时候w&#x3D;0</li>
+<li>如果w&#x3D;0，不会被阻塞，进程可以继续执行，并且会把w赋值为1</li>
+</ul>
+</li>
+<li>开锁原语：unlock(w)<ul>
+<li>执行到unlock的时候，把w赋值为0即可</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-5-2-信号灯"><a href="#3-5-2-信号灯" class="headerlink" title="3.5.2 信号灯"></a>3.5.2 信号灯</h4><ul>
+<li><p>信号灯是一个确定的二元组(s,q)，其中s是一个具有非负初值的整型变量，q是一个初始状态为空的队列。</p>
+<ul>
+<li>变量值s≥0时，表示绿灯，进程执行；</li>
+<li>变量值s＜0 时，表示红灯，进程停止执行；</li>
+<li>创建信号灯时应说明信号灯的意义和s的初值，且初值绝不能为负值</li>
+</ul>
+</li>
+<li><p>P操作</p>
+<ul>
+<li>把信号灯变量s的值<strong>减一</strong></li>
+<li>操作后，如果s为负，调用P操作的进程阻塞，并插入到信号灯变量s对应的等待队列中，否则继续运行</li>
+</ul>
+</li>
+<li><p>V操作</p>
+<ul>
+<li>把信号灯变量s的值<strong>加一</strong></li>
+<li>操作后，如果s非正，则从信号灯变量s对应的等待队列中取出一个进程放入就绪队列，否则继续运行</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-5-3-进程互斥的实现"><a href="#3-5-3-进程互斥的实现" class="headerlink" title="3.5.3 进程互斥的实现"></a>3.5.3 进程互斥的实现</h4><ul>
+<li><p>对于每一个锁，进入临界区之前上锁，离开临界区的时候解锁</p>
+</li>
+<li><p>每个临界区都有有一个临界信号灯管理，进入临界区就P(s)，离开临界区就V(s)</p>
+</li>
+<li><p>基本原则</p>
+<ul>
+<li><p>信号灯的初值为非负整数</p>
+</li>
+<li><p>除初始化外，只能使用P、V原语对信号灯进行操作</p>
+</li>
+<li><p>P、V操作一定成对出现</p>
+<blockquote>
+<p>遗漏P操作则不能保证互斥访问，遗漏V操作则不能在使用临界资源之后将其释放（给其他等待的进程）</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-5-4-进程同步问题"><a href="#3-5-4-进程同步问题" class="headerlink" title="3.5.4 进程同步问题"></a>3.5.4 进程同步问题</h4><ul>
+<li>进程流图<ul>
+<li>表示进程之间执行的先后次序，某些进程的完成代表某些进程可以开始执行的顺序</li>
+<li>可以用多个信号灯表示，在每个进程前面加上若干个P操作，在每个进程后面加上若干个V操作</li>
+<li>其中V操作用于通知其他进程本进程已经执行完毕（相当于消息发送者）</li>
+<li>P操作用于接受上一层V操作发送来的消息</li>
+<li>假如说有一个关系p1-&gt;p2，p1执行完了才能执行p2，那么就有一个信号灯，初值为0，在p2的开始加上P操作，p1的末尾加上V操作，有多少对这样的关系就有多少个信号灯</li>
+</ul>
+</li>
+<li>共享缓冲区<ul>
+<li>问题概述：一个读进程，一个写进程，一个缓冲区</li>
+<li>转化成进程流图：只有读完了，才能写，只能写完了，才能读</li>
+<li>信号灯<ul>
+<li>sb代表缓冲区的空位置数，初值为1</li>
+<li>sa代表缓冲区的数据数，初值为0</li>
+</ul>
+</li>
+<li>写进程<ul>
+<li>p（sb）</li>
+<li>数据放入buf</li>
+<li>v（sa）</li>
+</ul>
+</li>
+<li>读进程<ul>
+<li>p（sa）</li>
+<li>取数据</li>
+<li>v（sb）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>生产者消费者<ul>
+<li>问题概述<ul>
+<li><strong>若干个生产者</strong>和若干个消费者共享一个<strong>可同时容纳多个产品的缓冲区</strong></li>
+<li>生产者不断生产产品放入缓冲区，消费者不断从缓冲区取出产品并消耗</li>
+<li>任何时刻最多只能有一个生产者或消费者访问缓冲区</li>
+<li>禁止生产者向满缓冲区放入产品</li>
+<li>禁止消费者从空缓冲区取出产品</li>
+</ul>
+</li>
+<li>缓冲区有界<ul>
+<li>同步问题分析<ul>
+<li><strong>互斥</strong>访问缓冲区</li>
+<li>由于缓冲区无界，生产者可以一直生产产品</li>
+<li>消费者需要根据<strong>满缓冲区的数量</strong>决定是否消费</li>
+</ul>
+</li>
+<li>信号灯<ul>
+<li>同步信号灯nfull：表示满缓冲区的数量，初值为0</li>
+<li>互斥信号灯mutex：表示缓冲区是否被占用，初值为1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>缓冲区无界<ul>
+<li>同步问题分析<ul>
+<li><strong>互斥</strong>访问缓冲区</li>
+<li>生产者需要根据<strong>空缓冲区的数量</strong>决定是否生产</li>
+<li>消费者需要根据<strong>满缓冲区的数量</strong>决定是否消费</li>
+</ul>
+</li>
+<li>信号灯<ul>
+<li>同步信号灯nfull：表示满缓冲区的数量，初值为0</li>
+<li>同步信号灯nempty：表示空缓冲区的数量，初值为n</li>
+<li>互斥信号灯mutex：表示缓冲区是否被占用，初值为1</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-6-线程"><a href="#3-6-线程" class="headerlink" title="3.6 线程"></a>3.6 线程</h3><ul>
+<li><p>进程模型</p>
+<ul>
+<li><p>进程是资源占用的基本单位：进程拥有主存、设备、文件等系统资源的使用权</p>
+</li>
+<li><p>进程是调度执行的基本单位：操作系统以进程为单位进行处理机的调度</p>
+</li>
+<li><p>不足：进程创建、切换、通信开销大</p>
+</li>
+</ul>
+</li>
+<li><p>多线程模型</p>
+<ul>
+<li>在进程内增加一类实体——<strong>线程作为调度的基本单位</strong></li>
+<li><strong>同一进程内的线程共享相同的地址空间</strong></li>
+<li>对于共享的数据，线程使用的同步机制与进程一样</li>
+<li>不足：一个线程崩溃，会导致其所属进程内的所有线程崩溃</li>
+</ul>
+</li>
+<li><p>多核处理器</p>
+<ul>
+<li>设$f$为程序中能够并行的部分的运行时间在整个程序运行时间中的占比</li>
+<li>加速比&#x3D;在单处理器上执行程序的时间&#x2F;在N个处理器上执行程序的时间&#x3D;$\frac{1}{(1-f)+\frac{f}{N}}$</li>
+</ul>
+</li>
+<li><p>两种线程模型</p>
+<img src="https://picbed.cloudchewie.com/post/Operating-System-Principles-1/Chp1-%E4%B8%A4%E7%A7%8D%E7%BA%BF%E7%A8%8B%E5%AF%B9%E6%AF%94%E5%9B%BE.png" class="" width="400" title="两种线程对比图">
+</li>
+<li><p>Linux中的线程</p>
+<ul>
+<li>线程创建：pthread_create(pthread_t *thread,pthread_attr_t *attr,void *(*start_routine)(void *),void *arg)<ul>
+<li>其中thread为指向创建的线程标识符的指针；attr设置线程属性；start_routine为线程运行函数地址；arg为运行函数的参数</li>
+</ul>
+</li>
+<li>线程等待： pthread_join(pthread_t thread,void **thread_return)<ul>
+<li>其中thread为被等待的线程标识符；thread_return为一个用户定义的指针，用来存储被等待线程的返回值</li>
+<li>调用该函数的线程将一直等待到被等待的线程结束为止，当函数返回时，被等待线程的资源被收回</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</article><script>enableGPT=true;</script><script>enableAside=true;</script><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="fas fa-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://blog.cloudchewie.com/posts/2023/03/12/Notes/Operating-System-Principles-1/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=操作系统原理笔记(一)&amp;url=https://blog.cloudchewie.com/posts/2023/03/12/Notes/Operating-System-Principles-1/&amp;pic=https://picbed.cloudchewie.com/img/cover/post/database.jpg" rel="external nofollow noreferrer noopener"><i class="fa-brands fa-weibo"></i></a></div><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="cloudchewieFn.copyArticleLink()"><i class="fas fa-link"></i></div></div></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E7%AC%94%E8%AE%B0/"><span class="tags-punctuation"><i class="cloudchewiefont cloudchewie-icon-hashtag"></i></span>笔记<span class="tagsPageCount">21</span></a></div></div></div><div class="post_share"></div><div class="post_share"></div></div></div><div class="post-copyright"><div class="post-copyright__author"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://blog.cloudchewie.com/posts/2023/03/12/Notes/Operating-System-Principles-1/">原创</a><span class="post-copyright-title"><span>操作系统原理笔记(一)</span></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://blog.cloudchewie.com/posts/2023/03/12/Notes/Operating-System-Principles-1/">https://blog.cloudchewie.com/posts/2023/03/12/Notes/Operating-System-Principles-1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.cloudchewie.com" target="_blank">Cloudchewie</a>！</span></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/2023/07/17/Novel/Concave/"><img class="prev-cover" src="https://picbed.cloudchewie.com/img/gallery/Umibe-No-Etranger/yibang4.png" onerror="onerror=null;src='https://picbed.cloudchewie.com/img/index/404.png'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">凸凹</div></div></a></div><div class="next-post pull-right"><a href="/posts/2023/03/12/Notes/Operating-System-Principles-2/"><img class="next-cover" src="https://picbed.cloudchewie.com/img/cover/post/database.jpg" onerror="onerror=null;src='https://picbed.cloudchewie.com/img/index/404.png'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">操作系统原理笔记(二)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><span>阅读建议</span></div><div class="relatedPosts-list"><div class="relatedPosts-list-item"><a href="/posts/2022/08/21/Notes/Algorithm-Design-and-Analysis-1/" title="算法设计与分析笔记(一)"><img class="cover" src="https://picbed.cloudchewie.com/img/cover/post/algorithms.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-21</div><div class="title">算法设计与分析笔记(一)</div></div></a></div><div class="relatedPosts-list-item"><a href="/posts/2022/08/21/Notes/Algorithm-Design-and-Analysis-2/" title="算法设计与分析笔记(二)"><img class="cover" src="https://picbed.cloudchewie.com/img/cover/post/algorithms.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-21</div><div class="title">算法设计与分析笔记(二)</div></div></a></div><div class="relatedPosts-list-item"><a href="/posts/2022/08/21/Notes/Algorithm-Design-and-Analysis-3/" title="算法设计与分析笔记(三)"><img class="cover" src="https://picbed.cloudchewie.com/img/cover/post/algorithms.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-21</div><div class="title">算法设计与分析笔记(三)</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><span> 评论</span></div><div class="comment-randomInfo"><a onclick="cloudchewieFn.addRandomCommentInfo()" href="javascript:void(0)" rel="external nofollow noreferrer">匿名评论</a></div><div class="comment-meta-split"><span>|</span></div><div class="comment-commentTerm"><a href="javascript:pjax.loadUrl(&quot;/term&quot;);" rel="external nofollow noreferrer">评论条例</a></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://picbed.cloudchewie.com/img/index/avatar.jpg" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/img/index/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">余湍</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">归档</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">专栏</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Robert-stackflow"><i class="fab fa-github"></i><span>Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://space.bilibili.com/651449217" rel="external nofollow noreferrer" target="_blank" title="Bilibili"><i class="fab fa-bilibili"></i></a><a class="social-icon" href="mailto:2014027378@qq.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-square-rss"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%BB%AA%E8%AE%BA"><span class="toc-text">一、绪论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">1.1 操作系统与计算机体系结构的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BD%A2%E6%88%90%E4%B8%8E%E5%8F%91%E5%B1%95-%E2%98%85"><span class="toc-text">1.2 操作系统的形成与发展(★)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-%E6%89%8B%E5%B7%A5%E6%93%8D%E4%BD%9C%E9%98%B6%E6%AE%B5"><span class="toc-text">1.2.1 手工操作阶段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-%E6%89%B9%E5%A4%84%E7%90%86%E9%98%B6%E6%AE%B5"><span class="toc-text">1.2.2 批处理阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%81%94%E6%9C%BA%E6%89%B9%E5%A4%84%E7%90%86"><span class="toc-text">联机批处理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%84%B1%E6%9C%BA%E6%89%B9%E5%A4%84%E7%90%86"><span class="toc-text">脱机批处理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%95%E9%81%93%E6%89%B9%E5%A4%84%E7%90%86%E6%8A%80%E6%9C%AF"><span class="toc-text">单道批处理技术</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%9A%E9%81%93%E6%89%B9%E5%A4%84%E7%90%86%E6%8A%80%E6%9C%AF"><span class="toc-text">多道批处理技术</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-3-%E5%88%86%E6%97%B6%E7%B3%BB%E7%BB%9F%E9%98%B6%E6%AE%B5"><span class="toc-text">1.2.3 分时系统阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%86%E6%97%B6%E6%8A%80%E6%9C%AF"><span class="toc-text">分时技术</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E6%97%B6%E6%8A%80%E6%9C%AF"><span class="toc-text">实时技术</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E7%89%B9%E5%BE%81"><span class="toc-text">1.3 操作系统的定义与特征</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E7%A1%AC%E4%BB%B6%E6%94%AF%E6%8C%81"><span class="toc-text">二、操作系统的结构和硬件支持</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%89%A9%E8%B4%A8%E5%9F%BA%E7%A1%80-%E2%98%85"><span class="toc-text">2.1 操作系统的物质基础(★)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-CPU%E7%89%B9%E6%9D%83%E7%BA%A7"><span class="toc-text">2.1.1 CPU特权级</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-%E4%B8%AD%E6%96%AD%E6%8A%80%E6%9C%AF"><span class="toc-text">2.1.2  中断技术</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-text">相关概念</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E5%88%86%E7%B1%BB"><span class="toc-text">中断分类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E5%93%8D%E5%BA%94"><span class="toc-text">中断响应</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3-%E6%97%B6%E9%92%9F"><span class="toc-text">2.1.3 时钟</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84"><span class="toc-text">2.2 操作系统的组织结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%93%BE%E6%8E%A5-%E2%98%85"><span class="toc-text">2.3 程序的链接(★)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E7%94%A8%E6%88%B7%E6%8E%A5%E5%8F%A3-%E2%98%85"><span class="toc-text">2.4 用户接口(★)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="toc-text">三、进程管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E8%BF%9B%E7%A8%8B%E5%BC%95%E5%85%A5"><span class="toc-text">3.1 进程引入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E8%BF%9B%E7%A8%8B%E6%A6%82%E5%BF%B5"><span class="toc-text">3.2 进程概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-%E8%BF%9B%E7%A8%8B%E5%AE%9A%E4%B9%89"><span class="toc-text">3.2.1 进程定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81-%E2%98%85"><span class="toc-text">3.2.2 进程状态(★)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-3-%E8%BF%9B%E7%A8%8B%E6%8F%8F%E8%BF%B0"><span class="toc-text">3.2.3 进程描述</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%8E%9F%E8%AF%AD-%E2%98%85"><span class="toc-text">3.3 进程控制原语(★)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-1-%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA"><span class="toc-text">3.3.1 进程创建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-2-%E8%BF%9B%E7%A8%8B%E6%92%A4%E9%94%80"><span class="toc-text">3.3.2 进程撤销</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-3-%E8%BF%9B%E7%A8%8B%E7%AD%89%E5%BE%85"><span class="toc-text">3.3.3 进程等待</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-4-%E8%BF%9B%E7%A8%8B%E5%94%A4%E9%86%92"><span class="toc-text">3.3.4 进程唤醒</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%9B%B8%E4%BA%92%E5%88%B6%E7%BA%A6%E5%85%B3%E7%B3%BB"><span class="toc-text">3.4 进程的相互制约关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E6%9C%BA%E6%9E%84-%E2%98%85"><span class="toc-text">3.5 进程同步机构(★)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-1-%E9%94%81"><span class="toc-text">3.5.1 锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-2-%E4%BF%A1%E5%8F%B7%E7%81%AF"><span class="toc-text">3.5.2 信号灯</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-3-%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">3.5.3 进程互斥的实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-4-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98"><span class="toc-text">3.5.4 进程同步问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-%E7%BA%BF%E7%A8%8B"><span class="toc-text">3.6 线程</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/2023/09/11/Tutorial/Install-WSL2-on-Windows/" title="Windows下安装WSL 2"><img src="https://picbed.cloudchewie.com/img/cover/post/wsl.jpg" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/img/index/404.png'" alt="Windows下安装WSL 2"/></a><div class="content"><a class="title" href="/posts/2023/09/11/Tutorial/Install-WSL2-on-Windows/" title="Windows下安装WSL 2">Windows下安装WSL 2</a><time datetime="2023-09-11T10:09:05.000Z" title="发表于 2023-09-11 18:09:05">2023-09-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2023/07/24/Notes/Compilation-Principle/" title="编译原理笔记"><img src="https://picbed.cloudchewie.com/img/cover/post/compile.jpg" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/img/index/404.png'" alt="编译原理笔记"/></a><div class="content"><a class="title" href="/posts/2023/07/24/Notes/Compilation-Principle/" title="编译原理笔记">编译原理笔记</a><time datetime="2023-07-24T08:04:23.000Z" title="发表于 2023-07-24 16:04:23">2023-07-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2023/07/17/Novel/Concave/" title="凸凹"><img src="https://picbed.cloudchewie.com/img/gallery/Umibe-No-Etranger/yibang4.png" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/img/index/404.png'" alt="凸凹"/></a><div class="content"><a class="title" href="/posts/2023/07/17/Novel/Concave/" title="凸凹">凸凹</a><time datetime="2023-07-17T09:59:05.000Z" title="发表于 2023-07-17 17:59:05">2023-07-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2023/03/12/Notes/Operating-System-Principles-1/" title="操作系统原理笔记(一)"><img src="https://picbed.cloudchewie.com/img/cover/post/database.jpg" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/img/index/404.png'" alt="操作系统原理笔记(一)"/></a><div class="content"><a class="title" href="/posts/2023/03/12/Notes/Operating-System-Principles-1/" title="操作系统原理笔记(一)">操作系统原理笔记(一)</a><time datetime="2023-03-12T04:29:45.000Z" title="发表于 2023-03-12 12:29:45">2023-03-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2023/03/12/Notes/Operating-System-Principles-2/" title="操作系统原理笔记(二)"><img src="https://picbed.cloudchewie.com/img/cover/post/database.jpg" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/img/index/404.png'" alt="操作系统原理笔记(二)"/></a><div class="content"><a class="title" href="/posts/2023/03/12/Notes/Operating-System-Principles-2/" title="操作系统原理笔记(二)">操作系统原理笔记(二)</a><time datetime="2023-03-12T04:29:40.000Z" title="发表于 2023-03-12 12:29:40">2023-03-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By 余湍</div><div class="footer_custom_text">昼夜交替的低语，暗藏着谁人的心迹</div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站试用Hexo博客框架" title="本站试用Hexo博客框架"><img src="https://picbed.cloudchewie.com/img/badge/Frame-Hexo.svg" alt="本站试用Hexo博客框架"/></a><a class="github-badge" target="_blank" href="https://cloud.tencent.com/product/cos" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站使用腾讯云对象存储提供服务" title="本站使用腾讯云对象存储提供服务"><img src="https://picbed.cloudchewie.com/img/badge/COS-腾讯云-3894F3.svg" alt="本站使用腾讯云对象存储提供服务"/></a><a class="github-badge" target="_blank" href="https://github.com/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src="https://picbed.cloudchewie.com/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://beian.miit.gov.cn/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站备案号为鄂ICP备2023005999号" title="本站备案号为鄂ICP备2023005999号"><img src="https://picbed.cloudchewie.com/img/badge/备案-鄂ICP备2023005999号-13ce66.svg" alt="本站备案号为鄂ICP备2023005999号"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://picbed.cloudchewie.com/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div></footer></div></div></div><div id="sidebar"><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://picbed.cloudchewie.com/img/index/avatar.jpg" onerror="onerror=null;src='https://picbed.cloudchewie.com/img/index/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">归档</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">专栏</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 专栏</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 空间</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/nowtime/"><i class="fa-fw fas fa-rocket"></i><span> 即刻</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 画廊</span></a></li><li><a class="site-page child" href="/treasure/"><i class="fa-fw fas fa-video"></i><span> 藏宝</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 天籁</span></a></li><li><a class="site-page child" href="/air/"><i class="fa-fw fas fa-wind"></i><span> 小空调</span></a></li><li><a class="site-page child" href="/cat/"><i class="fa-fw fas fa-cat"></i><span> Purril</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 站点</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/atom.xml"><i class="fa-fw fas fa-rss"></i><span> RSS</span></a></li><li><a class="site-page child" href="/log/"><i class="fa-fw fa-fw fas fa-wrench"></i><span> 日志</span></a></li><li><a class="site-page child" href="/term/"><i class="fa-fw fa-fw fas fa-balance-scale"></i><span> 协议</span></a></li><li><a class="site-page child" href="/help/"><i class="fa-fw fa-fw fas fa-circle-question"></i><span> 指南</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-circle-info"></i><span> 关于我</span></a></li><li><a class="site-page child" href="/guestbook/"><i class="fa-fw fas fa-address-book"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/cloud/"><i class="fa-fw fas fa-heart"></i><span> 挚爱</span></a></li></ul></div></div></div></div><div class="js-pjax" id="rightside"><div id="rightside-button-list"><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><a id="switch_commentBarrage" href="javascript:cloudchewieFn.switchCommentBarrage();" rel="external nofollow noreferrer" title="开关弹幕"><i class="cloudchewiefont cloudchewie-icon-danmu"></i></a><button id="go-down" type="button" title="直达底部"><i class="fas fa-arrow-down"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="cloudchewieFn.toggleMusic()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="7185982924" server="netease" type="playlist" mutex="true" preload="none" theme="var(--theme-color)" data-lrctype="0" order="random"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:pjax.loadUrl(&quot;/&quot;);" rel="external nofollow noreferrer"><i class="fas fa-home"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();" rel="external nofollow noreferrer"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="javascript:consoleFn.showConsole();" rel="external nofollow noreferrer"><i class="fas fa-cog"></i></a><a class="rightMenu-item" href="javascript:cloudchewieFn.scrollToTop();" rel="external nofollow noreferrer"><i class="fa fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line" id="menu-general"><a class="rightMenu-item" href="javascript:window.location.href=&quot;/archives/&quot;;" rel="external nofollow noreferrer"><i class="fas fa-archive"></i><span>归档</span></a><a class="rightMenu-item" href="javascript:window.location.href=&quot;/tags/&quot;;" rel="external nofollow noreferrer"><i class="fas fa-tags"></i><span>标签</span></a><a class="rightMenu-item" href="javascript:window.location.href=&quot;/categories/&quot;;" rel="external nofollow noreferrer"><i class="fas fa-folder-open"></i><span>专栏</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-text"><a class="rightMenu-item" href="javascript:cloudchewieFn.copySelect();" rel="external nofollow noreferrer"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://cn.bing.com/search?q=&quot;+window.getSelection().toString());" rel="external nofollow noreferrer"><i class="fas fa-magnifying-glass"></i><span>必应搜索</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://www.baidu.com/s?wd=&quot;+window.getSelection().toString());" rel="external nofollow noreferrer"><i class="fas fa-magnifying-glass"></i><span>百度搜索</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-paste"><a class="rightMenu-item" href="javascript:cloudchewieFn.paste()" rel="external nofollow noreferrer"><i class="fa fa-copy"></i><span>粘贴</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-post"><a class="rightMenu-item" href="#post-comment"><i class="fas fa-comments"></i><span>转到评论</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.copyArticleLink()" rel="external nofollow noreferrer"><i class="fa fa-link"></i><span>复制本文地址</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-to"><a class="rightMenu-item" href="javascript:cloudchewieFn.openWithNewTab()" rel="external nofollow noreferrer"><i class="fa fa-window-restore"></i><span>新窗口打开</span></a><a class="rightMenu-item" id="menu-too" href="javascript:cloudchewieFn.open()" rel="external nofollow noreferrer"><i class="fa fa-link"></i><span>转到链接</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.copyLink()" rel="external nofollow noreferrer"><i class="fa fa-copy"></i><span>复制链接</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-img"><a class="rightMenu-item" href="javascript:cloudchewieFn.openWithNewTab()" rel="external nofollow noreferrer"><i class="fa fa-window-restore"></i><span>在新窗口打开</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.copyLink()" rel="external nofollow noreferrer"><i class="fa fa-copy"></i><span>复制图片链接</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.click()" rel="external nofollow noreferrer"><i class="fa fa-arrows-alt"></i><span>全屏显示</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-other"><a class="rightMenu-item" href="javascript:cloudchewieFn.toggleReadMode();" rel="external nofollow noreferrer"><i class="fas fa-book-open"></i><span>阅读模式</span></a><a class="rightMenu-item" id="menuCommentBarrage" href="javascript:cloudchewieFn.switchCommentBarrage();" rel="external nofollow noreferrer"><i class="cloudchewiefont cloudchewie-icon-danmu"></i><span class="menu-commentBarrage-text">打开弹幕</span></a><a class="rightMenu-item" id="menuAside" href="javascript:cloudchewieFn.toggleAside();" rel="external nofollow noreferrer"><i class="fas fa-arrows-alt-h"></i><span class="menu-toggleAside-text">显示/隐藏侧栏</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-global"><a class="rightMenu-item" href="javascript:cloudchewieFn.translate();" rel="external nofollow noreferrer"><i class="fas fa-language"></i><span>简繁转换</span></a><a class="rightMenu-item" href="javascript:pjax.loadUrl(&quot;/term/&quot;);" rel="external nofollow noreferrer"><i class="fa fa-info-circle"></i><span>协议声明</span></a><a class="rightMenu-item" id="menuMusic" href="javascript:cloudchewieFn.toggleMusic();" rel="external nofollow noreferrer"><i class="fas fa-play"></i><span>播放音乐</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.toggleDarkMode();" rel="external nofollow noreferrer"><i class="fas fa-adjust"></i><span>深色/浅色模式</span></a></div></div><div id="console-page"><div class="js-pjax" id="settingWindow"><span class="setting-title"><button id="backer" onclick="$('.asetting').hide();$('.settingx').show();$('#backer').hide()"><i class="cloudchewiefont cloudchewie-icon-arrow-left"></i></button><span id="stt">控制面板</span><button id="close-console" onclick="consoleFn.closeConsole();"><i class="cloudchewiefont cloudchewie-icon-xmark"></i></button></span><div class="settings"><div id="setting-buttons"><button class="settingx" onclick="$('#theme-settings').show();$('.settingx').hide();$('#backer').show();"><i class="fas fa-layer-group"></i><span>外观</span></button><button class="settingx" onclick="$('#background-settings').show();$('.settingx').hide();$('#backer').show();"><i class="far fa-image"></i><span>背景</span></button><button class="settingx" onclick="$('#aplayer-settings').show();$('.settingx').hide();$('#backer').show();"><i class="fas fa-music"></i><span> APlayer</span></button></div><div id="setting-hides"><div class="asetting" id="theme-settings"><p><h2 class="content-head">主题设置</h2><div class="content" style="display:flex"><input id="con-toggleFixedNav" type="checkbox" onclick="consoleFn.toggleFixedNav()"/><div class="content-text">固定导航栏</div></div><div class="content" style="display:flex"><input id="con-toggleRightSide" type="checkbox" onclick="consoleFn.toggleRightSide()"/><div class="content-text">显示侧边按钮</div></div><div class="content" style="display:flex"><input id="con-toggleAutoTheme" type="checkbox" onclick="consoleFn.toggleAutoTheme()"/><div class="content-text">深色/浅色模式自动切换</div></div><div class="content" style="display:flex"><input id="con-toggleStarBackground" type="checkbox" onclick="consoleFn.toggleStarBackground()"/><div class="content-text">繁星效果(深色模式下)</div></div></p><p><h2 class="content-head">实验特性</h2><div class="content" style="display:flex"><input id="con-toggleAutoColor" type="checkbox" onclick="consoleFn.toggleAutoColor()"/><div class="content-text">文章页自动主题色（仅支持浅色模式）</div></div></p></div><div class="asetting" id="aplayer-settings"><p><h2 class="content-head">播放设置</h2><div class="content" style="display:flex"><input id="con-toggleAPlayer" type="checkbox" onclick="consoleFn.toggleAPlayer()"/><div class="content-text">打开APlayer</div></div></p><p><h2 class="content-head">切换歌单</h2><div class="playlist-container"><a class="playlist-item" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/index/index.png)" onclick="consoleFn.changeAPlayerList(7185982924,&quot;netease&quot;,true)"><span>默认歌单</span></a><a class="playlist-item" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/index/xusong.jpg)" onclick="consoleFn.changeAPlayerList(7081513713,&quot;netease&quot;,true)"><span>许嵩专辑</span></a><a class="playlist-item" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye1.jpeg)" onclick="consoleFn.changeAPlayerList(7366289244,&quot;netease&quot;,true)"><span>噬云兽特辑</span></a></div></p><p><h2 class="content-head">自定义歌单</h2><input id="url-input" oninput="$(&quot;#url-btn&quot;).html(&quot;解析&quot;);$(&quot;#url-btn&quot;).removeClass(&quot;success&quot;);$(&quot;#url-btn&quot;).removeClass(&quot;fail&quot;);" placeholder="输入歌单链接"/><a id="url-btn" onclick="consoleFn.resolveUrl()">解析</a></p></div><div class="asetting" id="background-settings"><h2 class="content-head">默认背景</h2><div class="bgbox default-bg"><a class="boxl" href="javascript:;" rel="noopener external nofollow" style="background: #f2f6fc" onclick="consoleFn.setDefaultBackground()"></a><a class="boxr" href="javascript:;" rel="noopener external nofollow" style="background: #040404" onclick="consoleFn.setDefaultBackground()"></a></div><h2 class="content-head pc-background">图片（PC端）</h2><div class="bgbox pc-background"><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/shoto/shoto8.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/shoto/shoto8.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/cute/wander1.png)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/cute/wander1.png)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/danheng/danheng7.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/danheng/danheng7.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye1.jpeg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye1.jpeg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye2.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye2.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye3.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye3.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/xiao/xiao1.jpeg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/xiao/xiao1.jpeg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/Umibe-No-Etranger/yibang1.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/Umibe-No-Etranger/yibang1.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/Umibe-No-Etranger/yibang2.png)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/Umibe-No-Etranger/yibang2.png)')"></a></div><h2 class="content-head mobile-background">图片（移动端）</h2><div class="bgbox mobile-background"><a class="pimgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye8.png)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/kaedehara-kazuha/wanye8.png)')"></a><a class="pimgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/xiao/xiao5.jpeg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/xiao/xiao5.jpeg)')"></a><a class="pimgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/img/gallery/xiao/xiao10.jpg)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/img/gallery/xiao/xiao10.jpg)')"></a></div><h2 class="content-head">渐变色</h2><div class="bgbox"><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #eecda3, #ef629f)" onclick="consoleFn.changeBackground('linear-gradient(to right, #eecda3, #ef629f)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #B7D31E, #42CE1E)" onclick="consoleFn.changeBackground('linear-gradient(to right, #B7D31E, #42CE1E)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #06DE86, #06A5DE)" onclick="consoleFn.changeBackground('linear-gradient(to right, #06DE86, #06A5DE)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #189BC4, #183DC4)" onclick="consoleFn.changeBackground('linear-gradient(to right, #189BC4, #183DC4)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #C018C4, #C41818)" onclick="consoleFn.changeBackground('linear-gradient(to right, #C018C4, #C41818)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #8B00BB, #030094)" onclick="consoleFn.changeBackground('linear-gradient(to right, #8B00BB, #030094)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #eecda3, #ef629f)" onclick="consoleFn.changeBackground('linear-gradient(to right, #eecda3, #ef629f)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(90deg, #ffd7e4 0%, #c8f1ff 100%)" onclick="consoleFn.changeBackground('linear-gradient(90deg, #ffd7e4 0%, #c8f1ff 100%)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(45deg, #e5737b, #c6999e, #96b9c2, #00d6e8)" onclick="consoleFn.changeBackground('linear-gradient(45deg, #e5737b, #c6999e, #96b9c2, #00d6e8)')"></a></div><h2 class="content-head">纯色</h2><div class="bgbox"><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #ffffff" onclick="consoleFn.changeBackground('#ffffff')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #000000" onclick="consoleFn.changeBackground('#000000')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #7D9D9C" onclick="consoleFn.changeBackground('#7D9D9C')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #49A6E9" onclick="consoleFn.changeBackground('#49A6E9')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #F7CEFF" onclick="consoleFn.changeBackground('#F7CEFF')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #FFFFCE" onclick="consoleFn.changeBackground('#FFFFCE')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #CFFFCE" onclick="consoleFn.changeBackground('#CFFFCE')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #17EFE9" onclick="consoleFn.changeBackground('#17EFE9')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #9F17EF" onclick="consoleFn.changeBackground('#9F17EF')"></a></div></div></div></div><div id="setting-sidesl"><button class="reSettings con-rightside" title="恢复默认设置" id="con-reset" onclick="consoleFn.resetSettings();"><i class="fa fa-repeat"></i></button><div id="setting-sides"><button class="con-rightside" title="繁简转换" id="con-translate"><i class="iconfont icon-fanti"></i></button><button class="con-rightside" title="昼夜切换" id="con-mode" onclick="cloudchewieFn.toggleDarkMode();"><i class="fa fa-adjust"></i></button><button class="con-rightside" title="音乐" id="con-music" onclick="cloudchewieFn.toggleMusic();"><i class="fas fa-play"></i></button><button class="con-rightside" title="阅读模式" id="con-readmode" onclick="cloudchewieFn.toggleReadMode();"><i class="fa fa-book-open"></i></button><button class="con-rightside" title="单双栏切换" id="con-toggleaside" onclick="consoleFn.toggleAside();"><i class="fas fa-arrows-alt-h"></i></button><button class="con-rightside" title="开关弹幕" id="con-barrage" onclick="cloudchewieFn.switchCommentBarrage()"><i class="cloudchewiefont cloudchewie-icon-danmu"></i></button><button class="con-rightside" title="全屏" id="con-fullscreen" onclick="consoleFn.toggleFullScreen();"><i class="fas fa-expand"></i></button><button class="con-rightside" title="右键菜单" id="con-rightmouse" onclick="consoleFn.toggleContextMenu();"><i class="fas fa-computer-mouse"></i></button></div></div></div><div id="console-mask"></div></div><div><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/qrcode.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/marked.min.js"></script><script async data-pjax src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/waterfall.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/pace.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/color-thief.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/aplayer.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/meting.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/lately.min.js"></script><script src="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/js/third-party/universe.min.js"></script><script src="/js/tw_cn.js"></script><script src="https://npm.elemecdn.com/@fancyapps/ui@5.0.20/dist/fancybox/fancybox.umd.js"></script><script src="https://npm.elemecdn.com/instant.page@5.1.1/instantpage.js" type="module"></script><script src="https://npm.elemecdn.com/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://npm.elemecdn.com/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="https://npm.elemecdn.com/algoliasearch@4.14.2/dist/algoliasearch-lite.umd.js"></script><script src="https://npm.elemecdn.com/instantsearch.js@4.46.1/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://npm.elemecdn.com/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://comment.cloudchewie.com/',
+      region: 'ap-shanghai',
+      onCommentLoaded: function () {
+        cloudchewieFn.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://comment.cloudchewie.com/',
+      region: 'ap-shanghai',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      cloudchewieFn.snackbarShow("评论系统过载,请稍后访问");
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    }
+    getScript('https://npm.elemecdn.com/twikoo@1.6.16/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) cloudchewieFn.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script data-pjax>var pageHeaderEl = document.getElementById("page-header");
+var navMusicEl = document.getElementById("nav-music");
+var anMusicEl = document.getElementById("anMusic-page");
+var musicVolume = 0.8;
+
+cloudchewieFn.qrcodeCreate();
+cloudchewieFn.initAnPlayer();
+cloudchewieFn.categoriesBarActive();
+cloudchewieFn.topCategoriesBarScroll();
+cloudchewieFn.catalogActive();
+cloudchewieFn.tagsPageActive();</script><script>var visitorMail = "visitor@cloudchewie.com";
+</script><script data-pjax="true">if (document.querySelector(".comment-barrage")){
+  var commentBarrageConfig = {
+    maxBarrage: 1,
+    barrageTime: 4000,
+    twikooUrl: "https://comment.cloudchewie.com/",
+    accessToken: "",
+    mailMd5: "",
+    pageUrl: window.location.pathname,
+    barrageTimer: [],
+    barrageList: [],
+    barrageIndex: 0,
+    dom: document.querySelector(".comment-barrage"),
+  };
+  var commentInterval = null;
+  var hoverOnCommentBarrage = false;
+
+  document.querySelector(".comment-barrage").addEventListener("mouseenter", function() {
+    hoverOnCommentBarrage = true;
+  });
+  document.querySelector(".comment-barrage").addEventListener("mouseleave", function() {
+    hoverOnCommentBarrage = false;
+  });
+
+  function initCommentBarrage() {
+    if (!commentBarrageConfig.dom) return;
+
+    var data = JSON.stringify({
+      event: "COMMENT_GET",
+      "commentBarrageConfig.accessToken": commentBarrageConfig.accessToken,
+      url: commentBarrageConfig.pageUrl,
+    });
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    xhr.addEventListener("readystatechange", function () {
+      if (this.readyState === 4 && this.responseText) {
+        commentBarrageConfig.barrageList = commentLinkFilter(JSON.parse(this.responseText).data);
+        commentBarrageConfig.dom.innerHTML = "";
+      }
+    });
+    xhr.addEventListener('error',()=>{
+     cloudchewieFn.snackbarShow("评论系统过载,请稍后访问");
+    });
+    xhr.open("POST", commentBarrageConfig.twikooUrl);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(data);
+
+    clearInterval(commentInterval);
+    commentInterval = null;
+
+    commentInterval = setInterval(() => {
+      if (commentBarrageConfig.barrageList.length && !hoverOnCommentBarrage) {
+        popCommentBarrage(commentBarrageConfig.barrageList[commentBarrageConfig.barrageIndex]);
+        commentBarrageConfig.barrageIndex += 1;
+        commentBarrageConfig.barrageIndex %= commentBarrageConfig.barrageList.length;
+      }
+      if (
+        commentBarrageConfig.barrageTimer.length >
+          (commentBarrageConfig.barrageList.length > commentBarrageConfig.maxBarrage
+            ? commentBarrageConfig.maxBarrage
+            : commentBarrageConfig.barrageList.length) &&
+        !hoverOnCommentBarrage
+      ) {
+        removeCommentBarrage(commentBarrageConfig.barrageTimer.shift());
+      }
+    }, commentBarrageConfig.barrageTime);
+  }
+
+  function commentLinkFilter(data) {
+    data.sort((a, b) => {
+      return a.created - b.created;
+    });
+    let newData = [];
+    data.forEach(item => {
+      newData.push(...getCommentReplies(item));
+    });
+    return newData;
+  }
+
+  function getCommentReplies(item) {
+    if (item.replies) {
+      let replies = [item];
+      item.replies.forEach(item => {
+        replies.push(...getCommentReplies(item));
+      });
+      return replies;
+    } else {
+      return [];
+    }
+  }
+
+  function popCommentBarrage(data) {
+    let barrage = document.createElement("div");
+    barrage.className = "comment-barrage-item";
+    barrage.innerHTML = `
+        <div class="barrageHead">
+          <a class="barrageTitle ${
+            data.mailMd5 === commentBarrageConfig.mailMd5 ? "barrageBloggerTitle" : ""
+          }" href="javascript:cloudchewieFn.scrollTo('#post-comment')"">
+            ${data.mailMd5 === commentBarrageConfig.mailMd5 ? "博主" : "热评"}
+          </a>
+          <div class="barrageNick">${data.nick}</div>
+          <img class="nolazyload barrageAvatar" src="https://cravatar.cn/avatar/${data.mailMd5}"/>
+          <a class="comment-barrage-close" href="javascript:cloudchewieFn.switchCommentBarrage()" rel="external nofollow noreferrer"><i class="cloudchewiefont cloudchewie-icon-xmark"></i></a>
+        </div>
+        <a class="barrageContent" href="#${data.id}">
+          <object>${data.comment}</object>
+        </a>
+      `;
+    commentBarrageConfig.barrageTimer.push(barrage);
+    commentBarrageConfig.dom.append(barrage);
+  }
+
+  function removeCommentBarrage(barrage) {
+    barrage.className = "comment-barrage-item out";
+
+    setTimeout(() => {
+      if (commentBarrageConfig.dom && commentBarrageConfig.dom.contains(barrage)) {
+        commentBarrageConfig.dom.removeChild(barrage);
+      }
+      }, 1000);
+    }
+
+    // 自动隐藏
+    const commentEntryCallback = (entries) => {
+      const commentBarrage = document.querySelector(".comment-barrage");
+      const postComment = document.getElementById("post-comment");
+
+      entries.forEach(entry => {
+        if (postComment && commentBarrage && document.body.clientWidth > 768) {
+          commentBarrage.style.bottom = entry.isIntersecting ? "-200px" : "0";
+        }
+      });
+    };
+    // 创建IntersectionObserver实例
+    const observer = new IntersectionObserver(commentEntryCallback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0
+    });
+    // 监视目标元素
+    const postCommentTarget = document.getElementById("post-comment");
+    if (postCommentTarget) {
+      observer.observe(postCommentTarget);
+    }
+
+    initCommentBarrage();
+
+    if (cloudchewieFn.loadData("enableCommentBarrage") == "true") {
+      document.querySelector(".comment-barrage").style.display = "flex";
+      document.querySelector(".menu-commentBarrage-text").textContent = "关闭弹幕";
+    } else {
+      document.querySelector(".comment-barrage").style.display = "none";
+      document.querySelector(".menu-commentBarrage-text").textContent = "打开弹幕";
+    }
+
+    document.addEventListener("pjax:send", function () {
+      clearInterval(commentInterval);
+    });
+
+    window.addEventListener("scroll", ()=>{
+            if (
+      cloudchewieFn.isInViewPortOfOne(document.getElementById("post-comment"))
+    ) {
+      $("#con-barrage")&&$("#con-barrage").hide();
+      $("#switch_commentBarrage")&&$("#switch_commentBarrage").hide();
+      $("#menuCommentBarrage")&&$("#menuCommentBarrage").hide();
+    } else {
+      $("#con-barrage")&&$("#con-barrage").show();
+      $("#switch_commentBarrage")&&$("#switch_commentBarrage").show();
+      $("#menuCommentBarrage")&&$("#menuCommentBarrage").show();
+    }
+    });
+
+  }</script><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/icon/ali_iconfont_css.css"><script src="https://npm.elemecdn.com/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll
+  window.resolveTocScrollFunction && window.removeEventListener('scroll', window.resolveTocScrollFunction)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFunction()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
