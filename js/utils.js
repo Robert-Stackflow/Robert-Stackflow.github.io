@@ -3535,18 +3535,54 @@ const consoleFn = {
     $("#console-mask").fadeToggle("fast");
     if ($("#settingWindow").css("display") != "none")
       $("#settingWindow").css("display", "flex");
+    if ($("#settingWindow").css("display") == "none") {
+      //取消模糊效果
+      document.getElementById("settingStyle").innerText = `
+    *,*:not(.card-info)::before,*::after{
+        -webkit-backdrop-filter: none!important;
+        backdrop-filter: none!important;
+        -webkit-filter: none!important;
+        filter: none!important;
+    }`;
+    } else {
+      document.getElementById("settingStyle").innerText = "";
+    }
   },
   showConsole: () => {
     $("#settingWindow").fadeIn("fast");
     $("#console-mask").fadeIn("fast");
     if ($("#settingWindow").css("display") != "none")
       $("#settingWindow").css("display", "flex");
+    if ($("#settingWindow").css("display") == "none") {
+      //取消模糊效果
+      document.getElementById("settingStyle").innerText = `
+  *,*:not(.card-info)::before,*::after{
+      -webkit-backdrop-filter: none!important;
+      backdrop-filter: none!important;
+      -webkit-filter: none!important;
+      filter: none!important;
+  }`;
+    } else {
+      document.getElementById("settingStyle").innerText = "";
+    }
   },
   closeConsole: () => {
     $("#settingWindow").fadeOut("fast");
     $("#console-mask").fadeOut("fast");
     if ($("#settingWindow").css("display") != "none")
       $("#settingWindow").css("display", "flex");
+    if ($("#settingWindow").css("display") == "none") {
+      //取消模糊效果
+      document.getElementById("settingStyle").innerText = `
+  *,*:not(.card-info)::before,*::after{
+      -webkit-backdrop-filter: none!important;
+      backdrop-filter: none!important;
+      -webkit-filter: none!important;
+      filter: none!important;
+  }`;
+    } else {
+      document.getElementById("settingStyle").innerText = "";
+    }
   },
   /**
    * 加载设置
@@ -3556,14 +3592,6 @@ const consoleFn = {
     $("#backer").hide();
     $(".asetting").hide();
     $("#settingWindow").hide();
-    //取消模糊效果
-    //   document.getElementById("settingStyle").innerText = `
-    // *,*:not(.card-info)::before,*::after{
-    //     -webkit-backdrop-filter: none!important;
-    //     backdrop-filter: none!important;
-    //     -webkit-filter: none!important;
-    //     filter: none!important;
-    // }`;
     //加载是否适应文章封面颜色
     if (cloudchewieFn.loadData("enableAutoColor") == undefined) {
       cloudchewieFn.saveData("enableAutoColor", "false");
