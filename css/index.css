@@ -1841,7 +1841,7 @@ figure.highlight pre .javascript .function {
 }
 #article-container code {
   padding: 2px 4px;
-  background: var(--cloudchewie-code-stress);
+  background: var(--theme-color);
   color: var(--white);
 }
 #article-container pre {
@@ -6582,7 +6582,7 @@ ul.menus_item_child {
   overflow-wrap: break-word;
 }
 #article-container a:not(.banner-button):not(.tag-Link) {
-  color: #3b70fc;
+  color: var(--theme-color);
   padding: 3px;
 }
 #article-container a:not(.banner-button):not(.tag-Link):hover {
@@ -11787,7 +11787,7 @@ p.p.gray {
     filter: drop-shadow(0 -500px 0 var(--loadingbar-prospect-color));
     width: 500px;
     height: 62.5px;
-    background: url("https://yuanshen.site/imgs/loading-bar.png") no-repeat left 100%;
+    background: url("https://picbed.cloudchewie.com/img/badge/yuanshen-loading-bar.webp") no-repeat left 100%;
     background-size: 500px 62.5px;
     background-position-x: 0;
   }
