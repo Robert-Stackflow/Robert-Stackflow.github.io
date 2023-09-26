@@ -165,7 +165,7 @@ const cloudchewieFn = {
    */
   setCookie: (cname, cvalue, exdays = 365) => {
     var d = new Date();
-    d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+    d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 10000);
     var expires = "expires=" + d.toGMTString();
     document.cookie = cname + "=" + cvalue + "; " + expires;
   },
@@ -199,6 +199,12 @@ const cloudchewieFn = {
    */
   isHome: function () {
     return window.location.pathname == "/";
+  },
+  /**
+   * 是否为空白页
+   */
+  isBlank: function () {
+    return window.location.pathname == "/blank/";
   },
   /**
    * 是否为音乐页
@@ -2315,6 +2321,44 @@ const cloudchewieFn = {
     }
     document.getElementById("danmuBtn").innerHTML =
       "<button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.remove('hidedanmu')\">显示弹幕</button> <button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.add('hidedanmu')\">隐藏弹幕</button>";
+  },
+  /**
+   * 空白页
+   */
+  waitBlank: () => {
+    let blankTextEle = $("#blank-text");
+    if (cloudchewieFn.isBlank() && blankTextEle) {
+      setTimeout(function () {
+        blankTextEle.html("你找到了我，等一等吧");
+      }, 30000);
+      setTimeout(function () {
+        blankTextEle.html("空白下是什么？");
+      }, 60000);
+      setTimeout(function () {
+        blankTextEle.html("你在等待什么？");
+      }, 90000);
+      setTimeout(function () {
+        blankTextEle.html("你希望看到什么？");
+      }, 120000);
+      setTimeout(function () {
+        blankTextEle.html("平静的水面下是什么？");
+      }, 150000);
+      setTimeout(function () {
+        blankTextEle.html("你的心里有答案了吗？");
+      }, 180000);
+      setTimeout(function () {
+        blankTextEle.html("去寻找吧，不要回头！");
+      }, 210000);
+      setTimeout(function () {
+        blankTextEle.html("不要回头！！");
+      }, 240000);
+      setTimeout(function () {
+        blankTextEle.html("不要回头！！！");
+      }, 270000);
+      setTimeout(function () {
+        blankTextEle.html("");
+      }, 300000);
+    }
   },
   /**
    * =================================================

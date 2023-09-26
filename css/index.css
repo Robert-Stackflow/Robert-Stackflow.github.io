@@ -1841,6 +1841,7 @@ figure.highlight pre .javascript .function {
 }
 #article-container code {
   padding: 2px 4px;
+  border-radius: 5px;
   background: var(--theme-color);
   color: var(--white);
 }
@@ -3730,7 +3731,7 @@ body[data-type="categories"] #tag #tag-page-tags {
 }
 body[data-type="tags"] #tag #tag-page-tags a,
 body[data-type="categories"] #tag #tag-page-tags a {
-  font-size: 1.3rem;
+  font-size: 1rem;
   margin: 0.3rem 0.65rem;
 }
 @media screen and (max-width: 768px) {
@@ -6829,7 +6830,7 @@ ul.menus_item_child {
 #post .post-copyright #post .post-copyright__reprint {
   background: var(--theme-color);
   color: var(--white);
-  border-radius: 8px;
+  border-radius: 5px;
   margin-right: 0.5rem;
   line-height: 1.5;
   padding: 0.2rem 0.5rem;
@@ -16489,6 +16490,7 @@ input[type="password"]::-ms-reveal {
 }
 .OwO-body {
   border-radius: 10px !important;
+  border: var(--card-border) !important;
   backdrop-filter: blur(20px) !important;
   background: var(--card-bg) !important;
 }
@@ -16498,11 +16500,26 @@ input[type="password"]::-ms-reveal {
   box-shadow: none !important;
 }
 .OwO .OwO-body .OwO-bar .OwO-packages li:nth-child(1) {
-  border-radius: 0px 0px 0px 10px;
+  border-radius: 0px 0px 0px 10px !important;
 }
 .OwO .OwO-body .OwO-bar .OwO-packages li {
-  margin: 0px;
+  margin: 0px !important;
+  margin-right: 0px !important;
 }
+.OwO .OwO-body .OwO-bar {
+  border-top: 1px dashed #4259ef23 !important;
+}
+#blank-text {
+  margin: 40px auto 0px;
+  font-size: larger;
+  opacity: 0;
+  text-align: center;
+  cursor: pointer;
+}
+#blank-text:hover {
+  opacity: 1;
+}
+
 #page:has(#anMusic-page) {
   border: 0;
   box-shadow: none !important;

@@ -197,11 +197,15 @@ if (true) {
     var color = document.documentElement.getAttribute('data-theme') === 'light' ? '#4c4948' : 'rgba(255,255,255,0.7)'
     var postsChart = echarts.init(document.getElementById('posts-chart'), 'light');
     var postsOption = {
+      textStyle: {
+        fontFamily: 'LXGW WenKai Screen R'
+      },
       title: {
         text: '文章发布统计图',
         x: 'center',
         textStyle: {
-          color: color
+          color: color,
+          fontFamily: 'LXGW WenKai Screen R'
         }
       },
       tooltip: {
@@ -212,7 +216,8 @@ if (true) {
         type: 'category',
         boundaryGap: false,
         nameTextStyle: {
-          color: color
+          color: color,
+          fontFamily: 'LXGW WenKai Screen R'
         },
         axisTick: {
           show: false
@@ -233,7 +238,8 @@ if (true) {
         name: '文章篇数',
         type: 'value',
         nameTextStyle: {
-          color: color
+          color: color,
+          fontFamily: 'LXGW WenKai Screen R'
         },
         splitLine: {
           show: false
@@ -305,11 +311,15 @@ if (true) {
     var color = document.documentElement.getAttribute('data-theme') === 'light' ? '#4c4948' : 'rgba(255,255,255,0.7)'
     var tagsChart = echarts.init(document.getElementById('tags-chart'), 'light');
     var tagsOption = {
+      textStyle: {
+        fontFamily: 'LXGW WenKai Screen R'
+      },
       title: {
-        text: 'Top 3 标签统计图',
+        text: '标签统计图',
         x: 'center',
         textStyle: {
-          color: color
+          color: color,
+          fontFamily: 'LXGW WenKai Screen R'
         }
       },
       tooltip: {},
@@ -317,7 +327,8 @@ if (true) {
         name: '标签',
         type: 'category',
         nameTextStyle: {
-          color: color
+          color: color,
+          fontFamily: 'LXGW WenKai Screen R'
         },
         axisTick: {
           show: false
@@ -333,7 +344,7 @@ if (true) {
             color: color
           }
         },
-        data: ["笔记","小说","WSL"]
+        data: ["笔记","WSL","小说"]
       },
       yAxis: {
         name: '文章篇数',
@@ -342,7 +353,8 @@ if (true) {
           show: false
         },
         nameTextStyle: {
-          color: color
+          color: color,
+          fontFamily: 'LXGW WenKai Screen R'
         },
         axisTick: {
           show: false
@@ -361,7 +373,7 @@ if (true) {
       series: [{
         name: '文章篇数',
         type: 'bar',
-        data: [{"name":"笔记","value":21,"path":"tags/笔记/"},{"name":"小说","value":1,"path":"tags/小说/"},{"name":"WSL","value":1,"path":"tags/WSL/"}],
+        data: [{"name":"笔记","value":21,"path":"tags/笔记/"},{"name":"WSL","value":1,"path":"tags/WSL/"},{"name":"小说","value":1,"path":"tags/小说/"}],
         itemStyle: {
           borderRadius: [5, 5, 0, 0],
           color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
@@ -409,18 +421,23 @@ if (true) {
     var categoriesChart = echarts.init(document.getElementById('categories-chart'), 'light');
     var categoryParentFlag = false
     var categoriesOption = {
+      textStyle: {
+        fontFamily: 'LXGW WenKai Screen R'
+      },
       title: {
         text: '文章分类统计图',
         x: 'center',
         textStyle: {
-          color: color
+          color: color,
+          fontFamily: 'LXGW WenKai Screen R'
         }
       },
       legend: {
         top: 'bottom',
-        data: ["专业核心","珠玑","安装教程"],
+        data: ["专业核心","安装教程","珠玑"],
         textStyle: {
-          color: color
+          color: color,
+          fontFamily: 'LXGW WenKai Screen R'
         }
       },
       tooltip: {
@@ -437,7 +454,7 @@ if (true) {
         radius: ['15%', '90%'],
         center: ['50%', '55%'],
         sort: 'desc',
-        data: [{"name":"专业核心","value":21,"path":"categories/专业核心/","id":"clmrwxv7t000caom39nxe87r9","parentId":"0"},{"name":"珠玑","value":1,"path":"categories/珠玑/","id":"clmrwxv7o0004aom3elx325o8","parentId":"0"},{"name":"安装教程","value":1,"path":"categories/安装教程/","id":"clmrwxv8e0021aom36yu9e5vz","parentId":"0"}],
+        data: [{"name":"专业核心","value":21,"path":"categories/专业核心/","id":"cln0i2rbp0004f0m3bd9qb9i2","parentId":"0"},{"name":"安装教程","value":1,"path":"categories/安装教程/","id":"cln0i2rck002lf0m3a7kbds0v","parentId":"0"},{"name":"珠玑","value":1,"path":"categories/珠玑/","id":"cln0i2rcl002nf0m3cq8qe2cn","parentId":"0"}],
         itemStyle: {
           borderColor: '#fff',
           borderWidth: 2,
@@ -459,7 +476,7 @@ if (true) {
           color: color,
           formatter: '{b} : {c} ({d}%)'
         },
-        data: [{"name":"专业核心","value":21,"path":"categories/专业核心/","id":"clmrwxv7t000caom39nxe87r9","parentId":"0"},{"name":"珠玑","value":1,"path":"categories/珠玑/","id":"clmrwxv7o0004aom3elx325o8","parentId":"0"},{"name":"安装教程","value":1,"path":"categories/安装教程/","id":"clmrwxv8e0021aom36yu9e5vz","parentId":"0"}],
+        data: [{"name":"专业核心","value":21,"path":"categories/专业核心/","id":"cln0i2rbp0004f0m3bd9qb9i2","parentId":"0"},{"name":"安装教程","value":1,"path":"categories/安装教程/","id":"cln0i2rck002lf0m3a7kbds0v","parentId":"0"},{"name":"珠玑","value":1,"path":"categories/珠玑/","id":"cln0i2rcl002nf0m3cq8qe2cn","parentId":"0"}],
         itemStyle: {
           emphasis: {
             shadowBlur: 10,

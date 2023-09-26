@@ -116,6 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initAdjust();
     addHighlight();
     messFunction();
+    cloudchewieFn.waitBlank();
     cloudchewieFn.changeDataType();
     cloudchewieFn.tabToTop();
     cloudchewieFn.goToPage();
