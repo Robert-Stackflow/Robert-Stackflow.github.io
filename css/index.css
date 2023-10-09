@@ -3699,7 +3699,6 @@ span.categoryes-punctuation .icon-biaoqian {
   border-radius: 12px;
 }
 #tag #tag-page-tags a {
-  margin: 0.3rem 0.65rem;
   padding: 3px 5px;
 }
 body[data-type="tags"] #page,
@@ -3796,10 +3795,8 @@ h1.page-title + .tag-cloud-list {
   }
 }
 #error-wrap .error-content {
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
   border-radius: 12px;
-  background: var(--card-bg) !important;
+  background: var(--card-bg);
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flex;
@@ -6577,6 +6574,10 @@ ul.menus_item_child {
   text-align: center;
   line-height: 24px;
   cursor: pointer;
+}
+.layout #category .pagination .page-number,
+.layout #tag .pagination .page-number {
+  border-radius: 3px !important;
 }
 #article-container {
   word-wrap: break-word;
@@ -15286,10 +15287,7 @@ div#danmuBtn button {
   padding-left: 0;
 }
 i.cloudchewie-icon-hashtag {
-  opacity: 0.6;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
-  filter: alpha(opacity=60);
-  font-size: 13px;
+  font-size: 12px;
 }
 .article-sort-item-info .article-meta-wrap .article-sort-item-tags a span {
   font-size: 12px;
@@ -15305,11 +15303,13 @@ i.cloudchewie-icon-hashtag {
   border: var(--cloudchewie-border-radius);
   margin-bottom: 1rem;
   justify-content: flex-start;
+  border: var(--style-border-always);
+  background-color: var(--global-bg);
+  padding: 10px 5px;
 }
 #catalog-list {
   display: flex;
   white-space: nowrap;
-  overflow-x: scroll;
 }
 #category #catalog-list .catalog-list-item:first-child {
   margin-left: 5px;
@@ -15371,6 +15371,19 @@ body[data-type="tags"] #tag #tag-page-tags {
   -webkit-flex-flow: row wrap;
   -ms-flex-flow: row wrap;
   flex-flow: row wrap;
+  border-radius: var(--cloudchewie-border-radius);
+  display: flex;
+  border: var(--cloudchewie-border-radius);
+  margin-bottom: 1rem;
+  justify-content: flex-start;
+  border: var(--style-border-always);
+  background-color: var(--global-bg);
+  padding: 10px 5px;
+}
+.tag-cloud-list #tag #tag-page-tags{
+  border: none;
+  background-color: transparent;
+  padding: unset;
 }
 .category-lists a:hover {
   color: #3b70fc !important;
