@@ -207,7 +207,6 @@ if (true) {
 </li>
 <li><p>在<strong>管理员模式下</strong>PowerShell或Windows命令提示符中输入以下命令以启用<strong>虚拟机平台</strong>可选功能</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dism.exe /online /<span class="built_in">enable-feature</span> /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>如果只使用WSL 1的功能，则仅需开启第一个可选功能；如果需要使用WSL 2的功能，则两个可选功能均需要开启。</p>
 </blockquote>
@@ -225,10 +224,8 @@ if (true) {
 <li>并为您安装Linux发行版（默认情况下为<strong>Ubuntu</strong>）</li>
 </ul>
 </li>
-<li><p>首次启动新安装的 Linux 发行版时，将打开一个控制台窗口，等待默认发行版安装完毕</p>
-</li>
-<li><p>输入用户名和密码，初始化设置</p>
-</li>
+<li>首次启动新安装的 Linux 发行版时，将打开一个控制台窗口，等待默认发行版安装完毕</li>
+<li>输入用户名和密码，初始化设置</li>
 </ul>
 <h3 id="2-2-Microsoft-Store安装"><a href="#2-2-Microsoft-Store安装" class="headerlink" title="2.2 Microsoft Store安装"></a>2.2 Microsoft Store安装</h3><ul>
 <li>在Microsoft Store中搜索<code>Windows Subsystem for Linux</code>以安装WSL</li>
@@ -251,7 +248,8 @@ if (true) {
   <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-o</span></span><br><span class="line">wsl <span class="literal">--list</span> <span class="literal">--online</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>通过在PowerShell或Windows 命令提示符中输入以下命令查看<strong>已安装分发的状态和版本</strong></p>
-  <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-v</span></span><br><span class="line">wsl <span class="literal">--list</span> <span class="literal">--verbose</span></span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-v</span></span><br><span class="line">wsl <span class="literal">--list</span> <span class="literal">--verbose</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <h3 id="3-2-更改发行版"><a href="#3-2-更改发行版" class="headerlink" title="3.2 更改发行版"></a>3.2 更改发行版</h3><ul>
 <li><p>通过在PowerShell或Windows命令提示符中输入以下命令<strong>安装新分发</strong></p>
@@ -259,17 +257,20 @@ if (true) {
 </li>
 <li><p>通过在PowerShell或Windows命令提示符中输入以下命令<strong>用新分发替换旧分发</strong></p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--install</span> <span class="literal">-d</span> &lt;Distribution Name&gt; &lt;Distribution Name&gt;</span><br></pre></td></tr></table></figure>
-
 </li>
+</ul>
+<ul>
 <li><p>通过在PowerShell或Windows命令提示符中输入以下命令<strong>设置默认发行版</strong></p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">-s</span> &lt;DistributionName&gt;</span><br><span class="line">wsl <span class="literal">--setdefault</span> &lt;Distribution Name&gt;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">-s</span> &lt;DistributionName&gt;</span><br><span class="line">wsl <span class="literal">--setdefault</span> &lt;Distribution Name&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <h3 id="3-3-更改版本"><a href="#3-3-更改版本" class="headerlink" title="3.3 更改版本"></a>3.3 更改版本</h3><ul>
 <li><p>通过在PowerShell或Windows命令提示符中输入以下命令<strong>设置默认版本</strong>，其中<code>Version</code>可选<code>1</code>或<code>2</code></p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--set-default-version</span> &lt;Version&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>通过在PowerShell或Windows命令提示符中输入以下命令<strong>更改某发行版的版本</strong>，其中<code>Version</code>可选<code>1</code>或<code>2</code></p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--set-version</span> &lt;Distribution Name&gt; &lt;Version&gt;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--set-version</span> &lt;Distribution Name&gt; &lt;Version&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <h3 id="3-4-关闭、卸载发行版"><a href="#3-4-关闭、卸载发行版" class="headerlink" title="3.4 关闭、卸载发行版"></a>3.4 关闭、卸载发行版</h3><ul>
 <li><p>通过在PowerShell或Windows命令提示符中输入以下命令<strong>关闭所有发行版</strong></p>
@@ -279,14 +280,16 @@ if (true) {
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--terminate</span> &lt;Distribution Name&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>通过在PowerShell或Windows命令提示符中输入以下命令<strong>注销（卸载）某发行版</strong></p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--unregister</span> &lt;Distribution Name&gt;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--unregister</span> &lt;Distribution Name&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <h3 id="3-5-导入、导出发行版"><a href="#3-5-导入、导出发行版" class="headerlink" title="3.5 导入、导出发行版"></a>3.5 导入、导出发行版</h3><ul>
 <li><p>通过在PowerShell或Windows命令提示符中输入以下命令<strong>导出某发行版</strong></p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--export</span> &lt;Distribution Name&gt; &lt;FilePath&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>通过在PowerShell或Windows命令提示符中输入以下命令<strong>导入某发行版</strong></p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--import</span> &lt;Distribution Name&gt; &lt;InstallLocation&gt; &lt;FilePath&gt;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--import</span> &lt;Distribution Name&gt; &lt;InstallLocation&gt; &lt;FilePath&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <h2 id="四、其他命令"><a href="#四、其他命令" class="headerlink" title="四、其他命令"></a>四、其他命令</h2><h3 id="4-1-更新WSL"><a href="#4-1-更新WSL" class="headerlink" title="4.1 更新WSL"></a>4.1 更新WSL</h3><ul>
 <li><p>通过在PowerShell或Windows命令提示符中输入以下命令<strong>更新WSL</strong></p>
@@ -299,11 +302,13 @@ if (true) {
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--version</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>通过在PowerShell或Windows命令提示符中输入以下命令<strong>查看WSL命令列表</strong></p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--help</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--help</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <h3 id="4-2-用户"><a href="#4-2-用户" class="headerlink" title="4.2 用户"></a>4.2 用户</h3><ul>
 <li><p>通过在PowerShell或Windows命令提示符中输入以下命令<strong>设置某发行版的默认用户</strong></p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Distribution Name&gt; config <span class="literal">--default-user</span> &lt;Username&gt;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Distribution Name&gt; config <span class="literal">--default-user</span> &lt;Username&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <h3 id="4-3-挂载"><a href="#4-3-挂载" class="headerlink" title="4.3 挂载"></a>4.3 挂载</h3><ul>
 <li><p>通过在文件资源管理器的地址栏输入<code>\\wsl$\&lt;Distribution Name&gt;</code>以下地址<strong>访问WSL文件夹</strong></p>
@@ -317,7 +322,8 @@ if (true) {
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd root</span><br><span class="line">su</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>设置Root用户的命令行颜色</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span></span><br><span class="line"><span class="built_in">ls</span> -al</span><br><span class="line">sudo <span class="built_in">cp</span> ~/.bashrc /root/.bashrc</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span></span><br><span class="line"><span class="built_in">ls</span> -al</span><br><span class="line">sudo <span class="built_in">cp</span> ~/.bashrc /root/.bashrc</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <h2 id="五、参考"><a href="#五、参考" class="headerlink" title="五、参考"></a>五、参考</h2><div calss='anzhiyu-tag-link'><a class="tag-Link" target="_blank" href="https://learn.microsoft.com/zh-cn/windows/wsl/" rel="external nofollow noreferrer">
     <div class="tag-link-tips">引用站外地址</div>
@@ -330,7 +336,6 @@ if (true) {
         <i class="cloudchewiefont cloudchewie-icon-angle-right"></i>
     </div>
     </a></div>
-
 <div calss='anzhiyu-tag-link'><a class="tag-Link" target="_blank" href="https://zhuanlan.zhihu.com/p/224753478" rel="external nofollow noreferrer">
     <div class="tag-link-tips">引用站外地址</div>
     <div class="tag-link-bottom">
