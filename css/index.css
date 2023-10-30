@@ -10783,6 +10783,10 @@ p.p.gray {
   animation: none;
 }
 .read-mode #article-container code {
+  color: #fff;
+}
+.read-mode #article-container .tag-link-title,
+.read-mode #article-container .tag-link-sitename {
   color: var(--font-color);
 }
 .read-mode #article-container blockquote {
