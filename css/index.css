@@ -1469,9 +1469,9 @@ canvas:not(#ribbon-canvas),
   --cloudchewie-shadow-border: 0 8px 16px -4px rgba(44,45,48,0.047);
   --cloudchewie-shadow-blackdeep: 0 2px 16px -3px rgba(0,0,0,0.15);
   --cloudchewie-logo-color: linear-gradient(215deg, #4584ff 30%, #ff7676 70%);
-  --cloudchewie-code-stress: var(--cloudchewie-main);
   --style-border: 1px solid var(--cloudchewie-card-border);
   --cloudchewie-blue-main: #3b70fc;
+  --cloudchewie-code-stress: var(--cloudchewie-code-stress);
   --style-border-hover: 1px solid var(--cloudchewie-main);
   --style-border-dashed: 1px dashed var(--cloudchewie-theme-op);
   --style-border-avatar: 4px solid var(--cloudchewie-background);
@@ -1497,6 +1497,7 @@ canvas:not(#ribbon-canvas),
   --cloudchewie-fontcolor: #363636;
   --cloudchewie-background: #f7f9fe;
   --cloudchewie-reverse: #000;
+  --cloudchewie-code-stress: #f1f3f8;
   --cloudchewie-maskbg: rgba(255,255,255,0.6);
   --cloudchewie-maskbgdeep: rgba(255,255,255,0.85);
   --cloudchewie-scrollbar: rgba(60,60,67,0.4);
@@ -1534,6 +1535,7 @@ canvas:not(#ribbon-canvas),
   --cloudchewie-fontcolor: #f7f7fa;
   --cloudchewie-background: #18171d;
   --cloudchewie-reverse: #fff;
+  --cloudchewie-code-stress: #1f1f1f;
   --cloudchewie-maskbg: rgba(0,0,0,0.6);
   --cloudchewie-maskbgdeep: rgba(0,0,0,0.85);
   --cloudchewie-hovertext: #0a84ff;
@@ -1842,8 +1844,9 @@ figure.highlight pre .javascript .function {
 #article-container code {
   padding: 2px 4px;
   border-radius: 5px;
-  background: var(--theme-color);
-  color: var(--white);
+  background: var(--cloudchewie-code-stress);
+  color: var(--font-color);
+  border: var(--card-border);
 }
 #article-container pre {
   padding: 10px 20px;
@@ -10512,7 +10515,7 @@ p.p.gray {
   content: '';
 }
 [data-theme='dark'] #article-container code {
-  background: #2c2c2c;
+  background: var(--cloudchewie-code-stress);
 }
 [data-theme='dark'] #article-container pre > code {
   background: #171717;
@@ -10805,9 +10808,6 @@ p.p.gray {
   -o-animation: none;
   -ms-animation: none;
   animation: none;
-}
-.read-mode #article-container code {
-  color: #fff;
 }
 .read-mode #article-container .tag-link-title,
 .read-mode #article-container .tag-link-sitename {
