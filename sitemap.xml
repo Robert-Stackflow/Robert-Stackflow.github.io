@@ -2,15 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.cloudchewie.com/gallery/danheng/</loc>
-    
-    <lastmod>2023-12-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.cloudchewie.com/gallery/kaedehara-kazuha/</loc>
     
     <lastmod>2023-12-25</lastmod>
@@ -21,6 +12,15 @@
   
   <url>
     <loc>https://blog.cloudchewie.com/gallery/xiao/</loc>
+    
+    <lastmod>2023-12-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cloudchewie.com/gallery/danheng/</loc>
     
     <lastmod>2023-12-25</lastmod>
     
@@ -441,14 +441,21 @@
   </url>
   
   <url>
-    <loc>https://blog.cloudchewie.com/tags/API%E6%96%87%E6%A1%A3/</loc>
+    <loc>https://blog.cloudchewie.com/tags/WSL/</loc>
     <lastmod>2023-12-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.cloudchewie.com/tags/%E5%B0%8F%E8%AF%B4/</loc>
+    <loc>https://blog.cloudchewie.com/tags/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2023-12-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cloudchewie.com/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2023-12-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -463,6 +470,20 @@
   
   <url>
     <loc>https://blog.cloudchewie.com/tags/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2023-12-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cloudchewie.com/tags/API%E6%96%87%E6%A1%A3/</loc>
+    <lastmod>2023-12-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cloudchewie.com/tags/%E5%B0%8F%E8%AF%B4/</loc>
     <lastmod>2023-12-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -503,27 +524,6 @@
     <priority>0.2</priority>
   </url>
   
-  <url>
-    <loc>https://blog.cloudchewie.com/tags/WSL/</loc>
-    <lastmod>2023-12-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.cloudchewie.com/tags/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2023-12-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.cloudchewie.com/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
-    <lastmod>2023-12-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
 
   
   <url>
@@ -534,7 +534,7 @@
   </url>
   
   <url>
-    <loc>https://blog.cloudchewie.com/categories/%E6%96%87%E6%A1%A3/</loc>
+    <loc>https://blog.cloudchewie.com/categories/%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2023-12-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -548,7 +548,7 @@
   </url>
   
   <url>
-    <loc>https://blog.cloudchewie.com/categories/%E6%95%99%E7%A8%8B/</loc>
+    <loc>https://blog.cloudchewie.com/categories/%E6%96%87%E6%A1%A3/</loc>
     <lastmod>2023-12-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
