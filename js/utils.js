@@ -2829,7 +2829,7 @@ const cloudchewieFn = {
       date: new Date(1700452319000).toLocaleString(),
       text: "",
       name: "余湍",
-      avatar: "https://picbed.cloudchewie.com/img/index/avatar.jpg",
+      avatar: "https://picbed.cloudchewie.com/img/index/avatar.png",
     });
     items.forEach((item) => {
       html += `

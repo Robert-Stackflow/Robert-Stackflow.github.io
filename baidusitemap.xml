@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.cloudchewie.com/posts/2023/03/12/Notes/Operating-System-Principles-3/</loc>
+    <lastmod>2023-12-25</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.cloudchewie.com/posts/2023/03/12/Notes/Operating-System-Principles-2/</loc>
+    <lastmod>2023-12-25</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.cloudchewie.com/posts/2023/03/12/Notes/Operating-System-Principles-1/</loc>
+    <lastmod>2023-12-25</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.cloudchewie.com/posts/2022/06/12/Notes/Principles-of-Computer-Composition-5/</loc>
+    <lastmod>2023-12-25</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.cloudchewie.com/posts/2022/06/12/Notes/Principles-of-Computer-Composition-4/</loc>
+    <lastmod>2023-12-25</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.cloudchewie.com/posts/2022/06/12/Notes/Principles-of-Computer-Composition-3/</loc>
+    <lastmod>2023-12-25</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.cloudchewie.com/posts/2022/06/12/Notes/Principles-of-Computer-Composition-2/</loc>
+    <lastmod>2023-12-25</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.cloudchewie.com/posts/2022/06/12/Notes/Principles-of-Computer-Composition-1/</loc>
+    <lastmod>2023-12-25</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.cloudchewie.com/posts/2023/09/11/Tutorial/Install-WSL2-on-Windows/</loc>
+    <lastmod>2023-12-25</lastmod>
+  </url>
+  <url>
     <loc>https://blog.cloudchewie.com/posts/2023/11/30/Documention/Pytest-Learning/</loc>
     <lastmod>2023-11-30</lastmod>
   </url>
@@ -10,10 +46,6 @@
   </url>
   <url>
     <loc>https://blog.cloudchewie.com/posts/2023/11/20/Essay/Colorful-Season/</loc>
-    <lastmod>2023-11-20</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.cloudchewie.com/posts/2023/09/11/Tutorial/Install-WSL2-on-Windows/</loc>
     <lastmod>2023-11-20</lastmod>
   </url>
   <url>
@@ -38,38 +70,6 @@
   </url>
   <url>
     <loc>https://blog.cloudchewie.com/posts/2022/08/21/Notes/Algorithm-Design-and-Analysis-1/</loc>
-    <lastmod>2023-11-20</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.cloudchewie.com/posts/2022/06/12/Notes/Principles-of-Computer-Composition-5/</loc>
-    <lastmod>2023-11-20</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.cloudchewie.com/posts/2022/06/12/Notes/Principles-of-Computer-Composition-4/</loc>
-    <lastmod>2023-11-20</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.cloudchewie.com/posts/2022/06/12/Notes/Principles-of-Computer-Composition-3/</loc>
-    <lastmod>2023-11-20</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.cloudchewie.com/posts/2022/06/12/Notes/Principles-of-Computer-Composition-2/</loc>
-    <lastmod>2023-11-20</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.cloudchewie.com/posts/2022/06/12/Notes/Principles-of-Computer-Composition-1/</loc>
-    <lastmod>2023-11-20</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.cloudchewie.com/posts/2023/03/12/Notes/Operating-System-Principles-3/</loc>
-    <lastmod>2023-11-20</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.cloudchewie.com/posts/2023/03/12/Notes/Operating-System-Principles-2/</loc>
-    <lastmod>2023-11-20</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.cloudchewie.com/posts/2023/03/12/Notes/Operating-System-Principles-1/</loc>
     <lastmod>2023-11-20</lastmod>
   </url>
   <url>
