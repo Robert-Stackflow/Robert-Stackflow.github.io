@@ -2824,8 +2824,9 @@ const cloudchewieFn = {
     data.forEach((item) => {
       items.push(cloudchewieFn.formatMemo(item));
     });
-    items.push( {
-      content: "服务器到期了，等明年9月份研究生入学了再买服务器，这段时间Memos就暂停营业啦。",
+    items.push({
+      content:
+        "服务器到期了，等明年9月份研究生入学了再买服务器，这段时间Memos就暂停营业啦。",
       date: new Date(1700452319000).toLocaleString(),
       text: "",
       name: "余湍",
@@ -3656,7 +3657,7 @@ const consoleFn = {
       }
     }
     if (!GLOBAL_CONFIG_SITE.isPost) {
-      consoleFn.setDefaultThemeColor(3);
+      consoleFn.setDefaultThemeColor();
     }
     //固定导航栏
     if (cloudchewieFn.loadData("enableFixedNav") == undefined) {
@@ -3783,12 +3784,8 @@ const consoleFn = {
       var observer = new MutationObserver(function (mutations) {
         mutations.forEach(function (mutation) {
           if (mutation.attributeName === "data-theme") {
-            if ($("html").attr("data-theme") == "dark") {
-              consoleFn.setDefaultThemeColor(2);
-            } else {
-              if (GLOBAL_CONFIG_SITE.isPost) {
-                consoleFn.changeAutoColor(false);
-              }
+            if (GLOBAL_CONFIG_SITE.isPost) {
+              consoleFn.changeAutoColor(false);
             }
           }
         });
@@ -3838,20 +3835,8 @@ const consoleFn = {
   /**
    * 设置默认主题色
    */
-  setDefaultThemeColor: (mode) => {
-    let lightTheme = `:root {  --global-font-size: 15px;  --theme-color: #3B70FC; --font-color: #4c4948;  --hr-border: #d2ebfd;  --hr-before-color: #bfe4fb;  --search-bg: #f6f8fa;  --search-input-color: #4c4948;  --search-result-title: #4c4948;  --preloader-bg: #37474f;  --preloader-color: #fff;  --tab-border-color: #f0f0f0;  --tab-botton-bg: #f0f0f0;  --tab-botton-color: #1f2d3d;  --tab-button-hover-bg: #dcdcdc;  --tab-button-active-bg: #fff;  --card-bg: #fff;  --sidebar-bg: #f6f8fa;  --btn-hover-color: #24b1ff;  --btn-color: #fff;  --btn-bg: #3B70FC;  --text-bg-hover: rgba(0,153,255,0.7);  --light-grey: #eee;  --dark-grey: #cacaca;  --white: #fff;  --text-highlight-color: #1f2d3d;  --blockquote-color: #6a737d;  --blockquote-bg: rgba(0,153,255,0.1);  --reward-pop: #f5f5f5;  --toc-link-color: #666261;  --card-border: 1px solid var(--tab-botton-bg);  --card-box-shadow: 0 0px 0px 0px rgba(45,45,45,0.05);  --card-box-shadow-olded: 0 8px 12px -3px rgba(45,45,45,0.05);  --card-hover-box-shadow: 0 8px 12px -3px rgba(45,45,45,0.05);  --card-border-dashed: 2px dashed var(--tab-button-hover-bg);  --pseudo-hover: #24b1ff;  --headline-presudo: #a0a0a0;}`;
-    let darkTheme = `[data-theme='dark'] {  --global-bg: #0d0d0d;  --font-color: rgba(255,255,255,0.7);  --hr-border: rgba(255,255,255,0.4);  --hr-before-color: rgba(255,255,255,0.7);  --search-bg: #121212;  --search-input-color: rgba(255,255,255,0.7);  --search-result-title: rgba(255,255,255,0.9);  --preloader-bg: #0d0d0d;  --preloader-color: rgba(255,255,255,0.7);  --tab-border-color: #2c2c2c;  --tab-botton-bg: #2c2c2c;  --tab-botton-color: rgba(255,255,255,0.7);  --tab-button-hover-bg: #383838;  --tab-button-active-bg: #121212;  --card-bg: #121212;  --sidebar-bg: #121212;  --btn-hover-color: #787878;  --btn-color: rgba(255,255,255,0.7);  --btn-bg: #1f1f1f;  --text-bg-hover: #383838;  --light-grey: rgba(255,255,255,0.7);  --dark-grey: rgba(255,255,255,0.2);  --white: rgba(255,255,255,0.9);  --text-highlight-color: rgba(255,255,255,0.9);  --blockquote-color: rgba(255,255,255,0.7);  --blockquote-bg: #2c2c2c;  --reward-pop: #2c2c2c;  --toc-link-color: rgba(255,255,255,0.6);  --hl-color: rgba(255,255,255,0.7);  --hl-bg: #171717;  --hltools-bg: #1a1a1a;  --hltools-color: #90a4ae;  --hlnumber-bg: #171717;  --hlnumber-color: rgba(255,255,255,0.4);  --hlscrollbar-bg: #1f1f1f;  --hlexpand-bg: linear-gradient(180deg, rgba(23,23,23,0.6), rgba(23,23,23,0.9)); --timeline-bg: #1f1f1f;}`;
-    switch (mode) {
-      case 1:
-        document.getElementById("themeColor").innerText = lightTheme;
-        break;
-      case 2:
-        document.getElementById("themeColor").innerText = darkTheme;
-        break;
-      default:
-        document.getElementById("themeColor").innerText =
-          lightTheme + darkTheme;
-    }
+  setDefaultThemeColor: () => {
+    document.getElementById("themeColor").innerText = "";
   },
   /**
    * 设置主题色
@@ -4105,7 +4090,7 @@ const consoleFn = {
         }
       } catch (e) {}
     } else {
-      if (!first) consoleFn.setDefaultThemeColor(3);
+      if (!first) consoleFn.setDefaultThemeColor();
     }
   },
 };
