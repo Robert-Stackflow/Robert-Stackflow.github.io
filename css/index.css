@@ -16897,7 +16897,7 @@ input[type="password"]::-ms-reveal {
 [data-theme="dark"] .parallax > use:nth-child(4) {
   animation-delay: -5s;
   animation-duration: 20s;
-  fill: #040404;
+  fill: #0d0d0d;
 }
 
 @keyframes move-forever {
