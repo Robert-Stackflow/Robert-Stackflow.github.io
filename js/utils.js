@@ -3519,17 +3519,7 @@ const addHighlight = function () {
     $buttonParent.classList.remove("copy-true");
   };
   const highlightShrinkFn = (ele) => {
-    const $nextEle = [...ele.parentNode.children].slice(1);
-    ele.firstChild.classList.toggle("closed");
-    if (cloudchewieFn.isHidden($nextEle[$nextEle.length - 1])) {
-      $nextEle.forEach((e) => {
-        e.style.display = "block";
-      });
-    } else {
-      $nextEle.forEach((e) => {
-        e.style.display = "none";
-      });
-    }
+    ele.classList.toggle("closed");
   };
 
   const highlightToolsFn = function (e) {

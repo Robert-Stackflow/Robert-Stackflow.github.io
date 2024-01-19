@@ -2043,6 +2043,18 @@ figure.highlight pre .javascript .function {
   -ms-animation: 1.2s ease 0s infinite normal none running code-expand-key;
   animation: 1.2s ease 0s infinite normal none running code-expand-key;
 }
+#article-container .code-expand-btn.expand-done i {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+  -webkit-transition: all 0s, background 0.3s;
+  -moz-transition: all 0s, background 0.3s;
+  -o-transition: all 0s, background 0.3s;
+  -ms-transition: all 0s, background 0.3s;
+  transition: all 0s, background 0.3s;
+}
 #article-container .code-expand-btn.expand-done + table,
 #article-container .code-expand-btn.expand-done + pre {
   margin-bottom: 1.8em;
