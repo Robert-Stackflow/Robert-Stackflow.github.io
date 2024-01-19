@@ -107,9 +107,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (Number(saveToLocal.get("translate-chn-cht")) == 1) {
       $("#con-translate > i").attr("class", "iconfont icon-jianti");
     }
-    if (saveToLocal.get("enableAside") == "hide")
-      $("#con-toggleaside").addClass("checked");
-    else $("#con-toggleaside").removeClass("checked");
   };
 
   window.refreshFunction = function () {

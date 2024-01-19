@@ -133,6 +133,9 @@ var vegetablesAndFruits = [
 const cloudchewieFn = {
   day_night_count: 0,
   isReadMode: false,
+  typing: false,
+  keyUpEvent_timeoutId: null,
+  keyUpShiftDelayEvent_timeoutId: null,
   /**
    * =================================================
    *
@@ -854,6 +857,11 @@ const cloudchewieFn = {
       cloudchewieFn.setCookie("browser_version_checked", true, 1);
     }
   },
+  getHostname: (str) => {
+    var durl = /https?:\/\/([^\/]+)\//i;
+    domain = str.match(durl);
+    return domain[1].split(":")[0];
+  },
   /**
    * =================================================
    *
@@ -895,11 +903,16 @@ const cloudchewieFn = {
         if (el.tagName == "A") {
           $("#menu-to").show();
           cloudchewieFn.open = function () {
-            location.href = el.href;
+            if (
+              cloudchewieFn.getHostname(el.href) == window.location.hostname
+            ) {
+              pjax.loadUrl(el.href);
+            } else {
+              location.href = el.href;
+            }
           };
           cloudchewieFn.openWithNewTab = function () {
             window.open(el.href);
-            // window.location.reload();
           };
           cloudchewieFn.copyLink = function () {
             let url = el.href;
@@ -972,10 +985,12 @@ const cloudchewieFn = {
         });
         if (isOnlySmall) $("#menu-general").show();
         //如果是阅读模式，则隐藏所有菜单项
-        if (cloudchewieFn.isReadMode)
+        if (cloudchewieFn.isReadMode) {
           document.querySelectorAll(".rightMenu-line").forEach((item) => {
             $(item).hide();
           });
+          return false;
+        }
         cloudchewieFn.toggleRightMenu(true, pageY, pageX);
         return false;
       };
@@ -983,6 +998,9 @@ const cloudchewieFn = {
         cloudchewieFn.toggleRightMenu(false);
       });
     } else {
+      if (tip) {
+        cloudchewieFn.snackbarShow("已禁用自定义右键菜单");
+      }
       window.oncontextmenu = function () {
         return true;
       };
@@ -1136,29 +1154,22 @@ const cloudchewieFn = {
       document.documentElement.getAttribute("data-theme") === "dark"
         ? "dark"
         : "light";
-    let $rightMenu = $(
-      "#menus > div.menus_items > div:nth-child(7) > a > span"
-    );
-    let $rightMenu_mobile = $(
-      "#sidebar-menus > div.menus_items > div:nth-child(7) > a > span"
-    );
     if (nowMode === "light") {
-      // $rightMenu.html("浅色模式")
-      // $rightMenu_mobile.html("浅色模式")
+      document.querySelector(".menu-toggleDarkMode-text").textContent =
+        "切换为浅色模式";
       activateDarkMode();
       saveToLocal.set("theme", "dark", 2);
       GLOBAL_CONFIG.Snackbar !== undefined &&
         cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night);
     } else {
-      // $rightMenu.html("深色模式")
-      // $rightMenu_mobile.html("深色模式")
+      document.querySelector(".menu-toggleDarkMode-text").textContent =
+        "切换为深色模式";
       activateLightMode();
       saveToLocal.set("theme", "light", 2);
       cloudchewieFn.day_night_count++;
       GLOBAL_CONFIG.Snackbar !== undefined &&
         cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day);
     }
-    // handle some cases
     typeof utterancesTheme === "function" && utterancesTheme();
     typeof FB === "object" && window.loadFBComment();
     window.DISQUS &&
@@ -1211,9 +1222,15 @@ const cloudchewieFn = {
         ? saveToLocal.set("enableAside", "show", 2)
         : saveToLocal.set("enableAside", "hide", 2);
       $htmlDom.toggle("hide-aside");
-      if (saveToLocal.get("enableAside") == "hide")
+      if (saveToLocal.get("enableAside") == "hide") {
         $("#con-toggleaside").addClass("checked");
-      else $("#con-toggleaside").removeClass("checked");
+        document.querySelector(".menu-toggleAside-text").textContent =
+          "切换为双栏";
+      } else {
+        $("#con-toggleaside").removeClass("checked");
+        document.querySelector(".menu-toggleAside-text").textContent =
+          "切换为单栏";
+      }
     }
   },
   /**
@@ -1813,8 +1830,14 @@ const cloudchewieFn = {
         cloudchewieFn.isInViewPortOfOne(document.getElementById("post-comment"))
       ) {
         $("#to_comment").hide();
+        $("#switch_commentBarrage").hide();
+        $("#con-barrage").hide();
+        $("#menuCommentBarrage").hide();
       } else {
         $("#to_comment").show();
+        $("#switch_commentBarrage").show();
+        $("#con-barrage").show();
+        $("#menuCommentBarrage").show();
       }
       cloudchewieFn.percentageScrollFn(a);
     });
@@ -3284,6 +3307,133 @@ const cloudchewieFn = {
       }
     } catch (error) {}
   },
+  toggleSearch: () => {
+    if ($("#algolia-search .search-dialog").css("display") == "none") {
+      document.addEventListener("keydown", function f(event) {
+        if (event.code === "Escape") {
+          if ($("#algolia-search .search-dialog").css("display") != "none") {
+            $("#algolia-search .search-dialog").fadeToggle("fast");
+            $("#search-mask").fadeToggle("fast");
+          }
+          document.removeEventListener("keydown", f);
+        }
+      });
+      setTimeout(() => {
+        document.querySelector("#algolia-search .ais-SearchBox-input").focus();
+      }, 100);
+    }
+    $("#algolia-search .search-dialog").fadeToggle("fast");
+    $("#search-mask").fadeToggle("fast");
+  },
+  shortcutKeyDownEvent: (event) => {
+    const isEscapeKeyPressed = event.keyCode === 27;
+    const isShiftKeyPressed = event.shiftKey;
+    const isKeyboardEnabled =
+      cloudchewieFn.loadData("enableShortcut") == "true";
+    const isInInputField = cloudchewieFn.typing;
+
+    if (isEscapeKeyPressed) {
+      consoleFn.closeConsole();
+      cloudchewieFn.toggleRightMenu(false);
+    }
+    const shortcutKeyDelay = GLOBAL_CONFIG.shortcut.delay
+      ? GLOBAL_CONFIG.shortcut.delay
+      : 100;
+    const shortcutKeyShiftDelay = GLOBAL_CONFIG.shortcut.shiftDelay
+      ? GLOBAL_CONFIG.shortcut.shiftDelay
+      : 200;
+    if (isKeyboardEnabled && isShiftKeyPressed && !isInInputField) {
+      cloudchewieFn.keyUpShiftDelayEvent_timeoutId = setTimeout(() => {
+        switch (event.keyCode) {
+          case 16:
+            cloudchewieFn.keyUpEvent_timeoutId = setTimeout(() => {
+              document.querySelector("#keyboard-tips").classList.add("show");
+            }, shortcutKeyShiftDelay);
+            break;
+          case 67:
+            consoleFn.toggleConsole();
+            break;
+          case 80:
+            cloudchewieFn.toggleMusic();
+            break;
+          // case 75:
+          //   consoleFn.toggleShortcut();
+          //   const keyboardTips = document.querySelector("#keyboard-tips");
+          //   keyboardTips.classList.remove("show");
+          //   break;
+          case 76:
+            pjax.loadUrl("/cloud");
+            break;
+          case 73:
+            consoleFn.toggleContextMenu();
+            break;
+          case 82:
+            cloudchewieFn.randomPost();
+            break;
+          case 83:
+            cloudchewieFn.toggleSearch();
+            break;
+          case 72:
+            pjax.loadUrl("/");
+            break;
+          case 68:
+            cloudchewieFn.toggleDarkMode();
+            break;
+          case 78:
+            pjax.loadUrl("/nowtime/");
+            break;
+          case 71:
+            pjax.loadUrl("/gallery/");
+            break;
+          case 84:
+            pjax.loadUrl("/treasure/");
+            break;
+          case 77:
+            pjax.loadUrl("/music/");
+            break;
+          case 72:
+            pjax.loadUrl("/help/");
+            break;
+          case 65:
+            pjax.loadUrl("/about/");
+            break;
+          default:
+            break;
+        }
+        event.preventDefault();
+      }, shortcutKeyDelay);
+    }
+  },
+  shortcutKeyUpEvent: (event) => {
+    cloudchewieFn.keyUpEvent_timeoutId &&
+      clearTimeout(cloudchewieFn.keyUpEvent_timeoutId);
+    cloudchewieFn.keyUpShiftDelayEvent_timeoutId &&
+      clearTimeout(cloudchewieFn.keyUpShiftDelayEvent_timeoutId);
+    if (event.keyCode === 16) {
+      const keyboardTips = document.querySelector("#keyboard-tips");
+      keyboardTips.classList.remove("show");
+    }
+  },
+  // 是否开启快捷键
+  executeShortcutKeyFunction: () => {
+    if (cloudchewieFn.loadData("enableShortcut") == undefined) {
+      cloudchewieFn.saveData("enableShortcut", "false");
+    }
+    function changeShortcutListener() {
+      window.removeEventListener("keydown", cloudchewieFn.shortcutKeyDownEvent);
+      window.removeEventListener("keyup", cloudchewieFn.shortcutKeyUpEvent);
+      if (cloudchewieFn.loadData("enableShortcut") == "true") {
+        window.addEventListener("keydown", cloudchewieFn.shortcutKeyDownEvent);
+        window.addEventListener("keyup", cloudchewieFn.shortcutKeyUpEvent);
+      }
+    }
+
+    window.onfocus = function () {
+      document.getElementById("keyboard-tips").classList.remove("show");
+    };
+
+    changeShortcutListener();
+  },
 };
 /**
  * =================================================
@@ -3764,6 +3914,16 @@ const consoleFn = {
       $("#universe").hide();
       document.getElementById("con-toggleStarBackground").checked = false;
     }
+    //加载快捷键
+    if (cloudchewieFn.loadData("enableShortcut") == undefined) {
+      cloudchewieFn.saveData("enableShortcut", "false");
+    }
+    if (cloudchewieFn.loadData("enableShortcut") == "true") {
+      $("#con-shortcut").addClass("checked");
+    } else {
+      $("#con-shortcut").removeClass("checked");
+    }
+    cloudchewieFn.executeShortcutKeyFunction();
     //加载播放列表
     if (cloudchewieFn.loadData("playlist") != undefined) {
       var json = JSON.parse(cloudchewieFn.loadData("playlist"));
@@ -3780,6 +3940,26 @@ const consoleFn = {
         $("#con-fullscreen").removeClass("checked");
       }
     };
+    if (saveToLocal.get("enableAside") == "hide") {
+      $("#con-toggleaside").addClass("checked");
+      document.querySelector(".menu-toggleAside-text").textContent =
+        "切换为双栏";
+    } else {
+      $("#con-toggleaside").removeClass("checked");
+      document.querySelector(".menu-toggleAside-text").textContent =
+        "切换为单栏";
+    }
+    const nowMode =
+      document.documentElement.getAttribute("data-theme") === "dark"
+        ? "dark"
+        : "light";
+    if (nowMode === "light") {
+      document.querySelector(".menu-toggleDarkMode-text").textContent =
+        "切换为深色模式";
+    } else {
+      document.querySelector(".menu-toggleDarkMode-text").textContent =
+        "切换为浅色模式";
+    }
     $(document).ready(function () {
       var observer = new MutationObserver(function (mutations) {
         mutations.forEach(function (mutation) {
@@ -3886,17 +4066,19 @@ const consoleFn = {
     }
   },
   /**
-   * 切换单双栏
+   * 切换快捷键
    */
-  toggleAside: () => {
-    const $htmlDom = document.documentElement.classList;
-    $htmlDom.contains("hide-aside")
-      ? saveToLocal.set("enableAside", "show", 2)
-      : saveToLocal.set("enableAside", "hide", 2);
-    $htmlDom.toggle("hide-aside");
-    if (cloudchewieFn.loadData("enableAside") == "hide")
-      $("#con-toggleaside").addClass("checked");
-    else $("#con-toggleaside").removeClass("checked");
+  toggleShortcut: () => {
+    if (cloudchewieFn.loadData("enableShortcut") == "true") {
+      cloudchewieFn.saveData("enableShortcut", "false");
+      $("#con-shortcut").removeClass("checked");
+      cloudchewieFn.snackbarShow("已禁用键盘快捷键");
+    } else {
+      cloudchewieFn.saveData("enableShortcut", "true");
+      $("#con-shortcut").addClass("checked");
+      cloudchewieFn.snackbarShow("已启用键盘快捷键,可长按Shift呼出快捷键菜单");
+    }
+    cloudchewieFn.executeShortcutKeyFunction();
   },
   /**
    * 侧栏位置
