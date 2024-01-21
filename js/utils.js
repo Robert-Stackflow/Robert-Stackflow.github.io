@@ -2314,7 +2314,7 @@ const cloudchewieFn = {
           "[链接]"
         )).replace(/<pre.*?>.*?<\/pre>/g, "[代码块]")).replace(/<.*?>/g, ""));
       }
-      fetch("https://comment.cloudchewie.com/", {
+      fetch("https://comment.api.cloudchewie.com/", {
         method: "POST",
         body: JSON.stringify({
           event: "GET_RECENT_COMMENTS",

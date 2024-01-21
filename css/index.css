@@ -6248,7 +6248,7 @@ maxWidth1400()
   -o-transition: 0.3s;
   -ms-transition: 0.3s;
   transition: 0.3s;
-  top: 55px;
+  top: 50px;
   pointer-events: auto;
   left: 0;
 }
@@ -6320,7 +6320,7 @@ maxWidth1400()
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  width: 120px;
+  width: 140px;
   padding: 8px 0px 4px 0px;
   -webkit-box-pack: justify;
   -moz-box-pack: justify;
