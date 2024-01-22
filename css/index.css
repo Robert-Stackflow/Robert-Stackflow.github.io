@@ -1696,6 +1696,12 @@ img:not([src]) {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
 }
+img[data-lazy-src]:not(.loaded) {
+  filter: blur(8px) brightness(1) !important;
+}
+img[data-lazy-src].error {
+  filter: none;
+}
 .img-alt {
   color: #858585;
 }
@@ -2638,11 +2644,6 @@ figure.highlight pre .javascript .function {
     flex-direction: column;
   }
 }
-@media screen and (max-width: 900px) {
-  .layout {
-    padding: 0px 5px 20x 0px !important;
-  }
-}
 @media screen and (min-width: 2000px) {
   .layout {
     max-width: 1400px;
@@ -2654,7 +2655,7 @@ figure.highlight pre .javascript .function {
   -ms-flex-item-align: start;
   padding: 50px 40px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   .layout > div:first-child:not(.recent-posts) {
     padding: 36px 14px;
   }
@@ -3753,10 +3754,6 @@ body[data-type="categories"] #page {
   body[data-type="categories"] #page .page-title {
     margin: 8px 0 0px;
   }
-}
-body[data-type="tags"] #body-wrap .layout,
-body[data-type="categories"] #body-wrap .layout {
-  padding: 20px 15px;
 }
 body[data-type="tags"] #tag #tag-page-tags,
 body[data-type="categories"] #tag #tag-page-tags {
@@ -5321,7 +5318,6 @@ li.categoryBar-list-item {
   }
 }
 #page-header.not-top-img {
-  margin-bottom: 10px;
   height: 60px;
   background: 0;
 }
@@ -11167,7 +11163,7 @@ p.p.gray {
   filter: brightness(0.8);
 }
 [data-theme='dark'] img {
-  filter: brightness(0.8);
+  filter: blur(0) brightness(0.8);
 }
 [data-theme='dark'] #aside-content .aside-list > .aside-list-item:not(:last-child) {
   border-bottom: 1px dashed rgba(255,255,255,0.1);
@@ -11532,7 +11528,6 @@ p.p.gray {
   left: 50%;
   transform: translate(35px, 45px);
 }
-
 .author-content {
   display: flex;
   flex-wrap: wrap;
@@ -11540,7 +11535,9 @@ p.p.gray {
   width: 100%;
   margin-top: 1rem;
 }
-
+.author-content.first {
+  margin-top: 0px;
+}
 #about-page .myInfoAndSayHello {
   display: flex;
   flex-direction: column;
@@ -12227,8 +12224,8 @@ p.p.gray {
 }
 
 .author-content-item.like-music {
-  background: url(https://picbed.cloudchewie.com/img/index/xusong.jpg!cover) no-repeat
-    top;
+  background: url(https://picbed.cloudchewie.com/img/index/xusong.jpg!cover)
+    no-repeat top;
   background-size: cover;
   min-height: 400px;
   color: var(--cloudchewie-white);
@@ -12240,7 +12237,18 @@ p.p.gray {
   bottom: 1.5rem;
   right: 2rem;
 }
-
+@media screen and (max-width: 900px) {
+  .layout:has(.transparentpage) > div:first-child:not(.recent-posts) {
+    padding: 0px 14px !important;
+    box-shadow: none !important;
+  }
+  .layout:has(.transparentpage) {
+    padding: 10px 0px 20px 0px !important;
+  }
+  .layout:has(.transparentpage):has(#cloudMusic-page) {
+    padding: 10px 10px 20px 10px !important;
+  }
+}
 @media screen and (max-width: 768px) {
   [data-theme="dark"]
     .author-content-item
@@ -12292,11 +12300,6 @@ p.p.gray {
   }
   .layout:not(:has(.transparentpage)) > div:first-child:not(.recent-posts) {
     padding: 1rem 1rem !important;
-    box-shadow: none !important;
-  }
-  .layout:has(.transparentpage) > div:first-child:not(.recent-posts) {
-    /* border-radius: 0; */
-    padding: 0px !important;
     box-shadow: none !important;
   }
   .author-content-item .card-content .banner-button-group .banner-button-text {
@@ -15003,7 +15006,7 @@ body[data-type="tags"] #tag #tag-page-tags {
     border: none !important;
   }
   #body-wrap:has(.not-top-img) .layout {
-    padding-top: 0px;
+    padding-top: 10px;
   }
   #body-wrap:not(:has(.not-top-img)) .layout {
     padding: 0;
@@ -17012,15 +17015,22 @@ AI摘要样式
 [aside-position="left"] #content-inner.layout .recent-posts {
   order: 2;
 }
-[aside-position="left"] #content-inner.layout .aside-content{
+[aside-position="left"] #content-inner.layout .aside-content {
   padding-right: 15px;
   padding-left: 0px;
 }
-[aside-position="right"] #content-inner.layout .aside-content{
+[aside-position="right"] #content-inner.layout .aside-content {
   padding-right: 0px;
   padding-left: 15px;
   order: 2;
 }
+@media screen and (max-width: 1200px) {
+  [aside-position="left"] #content-inner.layout .aside-content,
+  [aside-position="right"] #content-inner.layout .aside-content {
+    padding: 0px;
+  }
+}
+
 #page:has(#cloudMusic-page) {
   border: 0;
   box-shadow: none !important;
@@ -17598,7 +17608,7 @@ a.banner-button:hover {
 @media screen and (max-width: 900px) {
   .page-top-card {
     padding: 10px 1rem;
-    height: 12rem;
+    /* height: 12rem; */
   }
 
   .content-bottom {

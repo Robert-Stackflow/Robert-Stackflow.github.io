@@ -220,7 +220,7 @@ const cloudchewieFn = {
    * 是否为即刻页
    */
   isNowtime: function () {
-    return window.location.pathname == "/nowtime/";
+    return window.location.pathname == "/essay/";
   },
   /**
    * 是否为帖子页
@@ -1608,7 +1608,7 @@ const cloudchewieFn = {
     // 当滚动条小于56时
     if (
       document.body.scrollHeight <= innerHeight &&
-      "/nowtime/" != location.pathname &&
+      "/essay/" != location.pathname &&
       "/guestbook/" != location.pathname
     ) {
       $rightside.style.cssText = "opacity: 1; transform: translateX(-60px)";
@@ -2925,7 +2925,7 @@ const cloudchewieFn = {
                   <div class="talk_spacer"></div>
                   <div class="talk_meta">
                     <img class="no-lightbox no-lazyload avatar" src="${
-                      item.avatar + "!mini"
+                      item.avatar
                     }">
                     <div class="info">
                       <span class="talk_nick">${item.name}</span>
@@ -3445,7 +3445,7 @@ const cloudchewieFn = {
             cloudchewieFn.toggleDarkMode();
             break;
           case 78:
-            pjax.loadUrl("/nowtime/");
+            pjax.loadUrl("/essay/");
             break;
           case 71:
             pjax.loadUrl("/gallery/");
