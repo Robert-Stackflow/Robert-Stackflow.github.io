@@ -1358,7 +1358,7 @@ canvas:not(#ribbon-canvas),
   }
 }
 :root {
-  --global-font-size: 15px;
+  --global-font-size: 16px;
   --theme-color: #3b70fc;
   --global-bg: #f7f9fe;
   --font-color: #4c4948;
@@ -1402,7 +1402,7 @@ canvas:not(#ribbon-canvas),
   --animation-in: cubic-bezier(0.6, 0.2, 0.25, 1);
   --animation-ot: opacity 0.5s var(--animation-in) backwards, transform 1s var(--animation-in) backwards;
   --animation-otf: opacity 0.5s var(--animation-in) backwards, transform 1s var(--animation-in) backwards, filter 0.7s var(--animation-in) backwards;
-  --global-font-size: 15px;
+  --global-font-size: 16px;
   --global-bg: #f7f9fe;
   --font-color: #4c4948;
   --hr-border: #d2ebfd;
@@ -1561,7 +1561,7 @@ body {
   background: var(--global-bg);
   color: var(--font-color);
   font-size: var(--global-font-size);
-  font-family: LXGW WenKai Screen R;
+  font-family: lxgw wenkai screen,-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif;
   line-height: 2;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
@@ -5958,7 +5958,7 @@ maxWidth1400()
   -o-animation-direction: alternate;
   -ms-animation-direction: alternate;
   animation-direction: alternate;
-  background: url("https://picbed.cloudchewie.com/img/index/avatar.png") no-repeat center center;
+  background: url("https://picbed.cloudchewie.com/img/index/avatar.png!mini") no-repeat center center;
   background-size: cover;
 }
 #loading-box .loading-image-dot {
@@ -12351,7 +12351,7 @@ p.p.gray {
 }
 
 .author-content-item.beloved {
-  background: url(https://picbed.cloudchewie.com/img/index/beloved.jpg)
+  background: url(https://picbed.cloudchewie.com/img/index/beloved.jpg!cover)
     no-repeat;
   background-size: cover;
   min-height: 500px;
@@ -12359,7 +12359,7 @@ p.p.gray {
 }
 
 .author-content-item.like-music {
-  background: url(https://picbed.cloudchewie.com/img/index/xusong.jpg) no-repeat
+  background: url(https://picbed.cloudchewie.com/img/index/xusong.jpg!cover) no-repeat
     top;
   background-size: cover;
   min-height: 400px;
@@ -12908,7 +12908,7 @@ p.p.gray {
 #air-conditioner-vue a,
 #air-conditioner-vue h1,
 #air-conditioner-vue span {
-  font-family: LXGW WenKai Screen R;
+  font-family: lxgw wenkai screen,-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif;
 }
 .air-conditioner-main-top-title[data-v-020c5294] {
   font-size: 1.875rem;
@@ -14752,7 +14752,7 @@ template {
 .aplayer .aplayer-lrc,
 .aplayer span,
 .aplayer p {
-  font-family: LXGW WenKai Screen R;
+  font-family: lxgw wenkai screen,-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif;
 }
 
 .download-list-item {
@@ -14762,7 +14762,7 @@ template {
   margin-bottom: 0 !important;
   margin: 0 0 20px;
   text-align: center;
-  font-family: "LXGW WenKai Screen R";
+  font-family: "lxgw wenkai screen,-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif";
 }
 .download-list-item-button,
 .error-back-button {
@@ -14845,10 +14845,10 @@ template {
   background-color: var(--theme-color);
 }
 .cal-title {
-  font-family: LXGW WenKai Screen R;
+  font-family: lxgw wenkai screen,-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif;
 }
 body > div.snackbar-container.snackbar-css.snackbar-pos.top-right > p {
-  font-family: LXGW WenKai Screen R;
+  font-family: lxgw wenkai screen,-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif;
 }
 
 .cal-title a:hover {
@@ -15476,7 +15476,7 @@ $light-text: #24B1FF $border-radius: .5rem */
 
 .settings .content {
   margin-left: 20px;
-  font-family: LXGW WenKai Screen R;
+  font-family: lxgw wenkai screen,-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif;
 }
 .settings {
   margin: 15px;
@@ -16251,7 +16251,7 @@ body[data-type="tags"] #tag #tag-page-tags {
 }
 .social-share .icon-wechat .wechat-qrcode h4,
 .social-share .icon-wechat .wechat-qrcode .help p {
-  font-family: LXGW WenKai Screen R !important;
+  font-family: lxgw wenkai screen,-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif !important;
 }
 .social-share .icon-wechat .wechat-qrcode h4 {
   color: var(--font-color) !important;
@@ -16432,12 +16432,12 @@ body[data-type="tags"] #tag #tag-page-tags {
   background-color: var(--theme-color);
 }
 .snackbar-container {
-  font-family: LXGW WenKai Screen R !important;
+  font-family: lxgw wenkai screen,-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif !important;
   border-radius: 5px !important;
   text-align: center;
 }
 blockquote {
-  font-family: LXGW WenKai Screen R;
+  font-family: lxgw wenkai screen,-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif;
 }
 blockquote > :first-child {
   margin-top: 0 !important;
@@ -16664,7 +16664,7 @@ blockquote > :last-child {
   -webkit-text-size-adjust: 100%;
   color: var(--font-color);
   font-size: var(--global-font-size);
-  font-family: LXGW WenKai Screen R;
+  font-family: lxgw wenkai screen,-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   box-sizing: border-box;
   border-radius: 10px;
@@ -18821,7 +18821,7 @@ span.talk_tag {
 }
 .music-wrapper span,
 .music-wrapper p {
-  font-family: LXGW WenKai Screen R !important;
+  font-family: lxgw wenkai screen,-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif !important;
 }
 .talk_content ul,
 .talk_content pre,
@@ -19249,7 +19249,7 @@ span.talk_tag {
   padding: 6px 6px;
   box-shadow: var(--card-box-shadow);
   border: var(--card-border);
-  font-family: LXGW WenKai Screen R;
+  font-family: lxgw wenkai screen,-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif;
   font-size: var(--global-font-size);
 }
 .CtxtMenu_InfoContent {
@@ -19264,7 +19264,7 @@ span.talk_tag {
   padding: 6px 6px;
   box-shadow: var(--card-box-shadow);
   border: var(--card-border);
-  font-family: LXGW WenKai Screen R;
+  font-family: lxgw wenkai screen,-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif;
   font-size: var(--global-font-size);
   color: var(--font-color);
 }
@@ -19314,7 +19314,7 @@ span.talk_tag {
   background-color: var(--text-bg-hover);
 }
 .CtxtMenu_MenuArrow {
-  font-family: LXGW WenKai Screen R;
+  font-family: lxgw wenkai screen,-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif;
   margin-right: 10px !important;
 }
 .CtxtMenu_MenuRule {

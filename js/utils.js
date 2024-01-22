@@ -2853,7 +2853,7 @@ const cloudchewieFn = {
       date: new Date(1700452319000).toLocaleString(),
       text: "",
       name: "余湍",
-      avatar: "https://picbed.cloudchewie.com/img/index/avatar.png",
+      avatar: "https://picbed.cloudchewie.com/img/index/avatar.png!mini",
     });
     items.forEach((item) => {
       html += `
@@ -2861,7 +2861,7 @@ const cloudchewieFn = {
                   <div class="talk_content">${item.content}</div>
                   <div class="talk_spacer"></div>
                   <div class="talk_meta">
-                    <img class="no-lightbox no-lazyload avatar" src="${item.avatar}">
+                    <img class="no-lightbox no-lazyload avatar" src="${item.avatar+'!mini'}">
                     <div class="info">
                       <span class="talk_nick">${item.name}</span>
                       <span class="talk_dot">·</span>
@@ -4277,8 +4277,7 @@ function runOne() {
   //加载lately.js
   if (typeof Lately === "undefined") {
     const script = document.createElement("script");
-    script.src =
-      "https://npm.elemecdn.com/hexo-theme-cloudchewie@latest/source/js/third-party/lately.min.js";
+    script.src ="https://cdn.cbd.int/hexo-theme-cloudchewie@2.5.0/source/js/third-party/lately.min.js";
     script.onload = () => {
       Lately.init({ target: ".talk_date" });
     };

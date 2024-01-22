@@ -25,7 +25,7 @@ body {
     rgba(80, 65, 95, 1) 0%,
     rgba(35, 20, 50, 1) 100%
   );
-  font-family: LXGW WenKai Screen R;
+  font-family: lxgw wenkai screen,-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif;
   letter-spacing: 0px;
   line-height: 1.5em;
   font-size: 14px;
@@ -37,7 +37,7 @@ span,
 div,
 td,
 a {
-  font-family: LXGW WenKai Screen R;
+  font-family: lxgw wenkai screen,-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif;
 }
 /* Menu Icons */
 
@@ -115,7 +115,7 @@ a {
   left: 20px;
   color: #fff;
   opacity: 0.7;
-  font-family: LXGW WenKai Screen R;
+  font-family: lxgw wenkai screen,-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif;
 
   font-size: 16px;
   z-index: 1003;
@@ -291,7 +291,7 @@ a:hover {
 }
 
 .testimonial {
-  font-family: LXGW WenKai Screen R;
+  font-family: lxgw wenkai screen,-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif;
   font-size: 17px;
 }
 
