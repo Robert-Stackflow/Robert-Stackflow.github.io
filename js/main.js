@@ -113,6 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initAdjust();
     addHighlight();
     messFunction();
+    cloudchewieFn.injectAccessKey(document,window);
     cloudchewieFn.waitBlank();
     cloudchewieFn.changeDataType();
     cloudchewieFn.tabToTop();
@@ -126,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
     cloudchewieFn.scrollFunctionOfToc();
     enableGPT && cloudchewieFn.isPost() && cloudchewieFn.checkURLAndRunGPT();
     cloudchewieFn.checkVersion();
-    cloudchewieFn.switchComments();
+    cloudchewieFn.moveToComments();
     cloudchewieFn.sweetSnack();
     cloudchewieFn.enhanceTwikoo();
     cloudchewieFn.bindRightSideBtn();

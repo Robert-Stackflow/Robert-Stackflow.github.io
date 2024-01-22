@@ -134,6 +134,7 @@ const cloudchewieFn = {
   day_night_count: 0,
   isReadMode: false,
   typing: false,
+  downloadimging: false,
   keyUpEvent_timeoutId: null,
   keyUpShiftDelayEvent_timeoutId: null,
   /**
@@ -285,6 +286,37 @@ const cloudchewieFn = {
     document.execCommand("Copy", false, null);
     GLOBAL_CONFIG.Snackbar !== undefined &&
       cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success);
+  },
+  /**
+   * 引用至评论
+   */
+  referToComment: (selectedText) => {
+    cloudchewieFn.moveToComments();
+    if (selectedText == "undefined" || selectedText == "null")
+      selectedText = "好棒！";
+
+    function replaceAll(string, search, replace) {
+      return string.split(search).join(replace);
+    }
+
+    function setText() {
+      setTimeout(() => {
+        var input = document.getElementsByClassName("el-textarea__inner")[0];
+        if (!input) setText();
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("input", true, true);
+        let inputValue = replaceAll(selectedText, "\n", "\n> ");
+        input.value = "> " + inputValue + "\n\n";
+        input.dispatchEvent(evt);
+        input.focus();
+        input.setSelectionRange(-1, -1);
+        if (document.getElementById("comment-tips")) {
+          document.getElementById("comment-tips").classList.add("show");
+        }
+      }, 100);
+    }
+
+    setText();
   },
   /**
    * 在光标处插入
@@ -673,7 +705,7 @@ const cloudchewieFn = {
                 "flipX",
                 "flipY",
               ],
-              right: ["slideshow", "download", "thumbs", "fullscreen", "close"],
+              right: ["slideshow", "thumbs", "fullscreen", "close"],
             },
           },
         });
@@ -933,7 +965,32 @@ const cloudchewieFn = {
             window.open(el.src);
           };
           cloudchewieFn.downloadImage = function () {
-            el.click();
+            if (cloudchewieFn.downloadimging == false) {
+              cloudchewieFn.downloadimging = true;
+              cloudchewieFn.snackbarShow("正在下载中，请稍后", false, 10000);
+              setTimeout(function () {
+                let image = new Image();
+                image.setAttribute("crossOrigin", "anonymous");
+                image.onload = function () {
+                  let canvas = document.createElement("canvas");
+                  canvas.width = image.width;
+                  canvas.height = image.height;
+                  let context = canvas.getContext("2d");
+                  context.drawImage(image, 0, 0, image.width, image.height);
+                  let url = canvas.toDataURL("image/png"); //得到图片的base64编码数据
+                  let a = document.createElement("a"); // 生成一个a元素
+                  let event = new MouseEvent("click"); // 创建一个单击事件
+                  a.download = name || "photo"; // 设置图片名称
+                  a.href = url; // 将生成的URL设置为a.href属性
+                  a.dispatchEvent(event); // 触发a的单击事件
+                };
+                image.src = el.src;
+                cloudchewieFn.snackbarShow("图片已添加盲水印，请遵守版权协议");
+                cloudchewieFn.downloadimging = false;
+              }, "10000");
+            } else {
+              cloudchewieFn.snackbarShow("有正在进行中的下载，请稍后再试");
+            }
           };
           cloudchewieFn.click = function () {
             el.click();
@@ -1156,14 +1213,16 @@ const cloudchewieFn = {
         : "light";
     if (nowMode === "light") {
       document.querySelector(".menu-toggleDarkMode-text").textContent =
-        "切换为浅色模式";
+        "浅色模式";
+      $("#con-mode").attr("title", "切换为浅色模式");
       activateDarkMode();
       saveToLocal.set("theme", "dark", 2);
       GLOBAL_CONFIG.Snackbar !== undefined &&
         cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night);
     } else {
       document.querySelector(".menu-toggleDarkMode-text").textContent =
-        "切换为深色模式";
+        "深色模式";
+      $("#con-mode").attr("title", "切换为深色模式");
       activateLightMode();
       saveToLocal.set("theme", "light", 2);
       cloudchewieFn.day_night_count++;
@@ -1194,7 +1253,7 @@ const cloudchewieFn = {
    * 翻译
    */
   translate: () => {
-    document.getElementById("con-translate").click();
+    window.translateFn.translatePage();
   },
   /**
    * 显示/隐藏侧边按钮
@@ -1310,31 +1369,6 @@ const cloudchewieFn = {
       subtree: true,
       childList: true,
     });
-  },
-  /**
-   * 跳转到评论
-   */
-  switchComments: () => {
-    let switchDone = false;
-    const $switchBtn = document.querySelector("#comment-switch > .switch-btn");
-    $switchBtn &&
-      $switchBtn.addEventListener("click", () => {
-        this.classList.toggle("move");
-        document
-          .querySelectorAll("#post-comment > .comment-wrap > div")
-          .forEach((item) => {
-            if (cloudchewieFn.isHidden(item)) {
-              item.style.cssText = "display: block;animation: tabshow .5s";
-            } else {
-              item.style.cssText = "display: none;animation: ''";
-            }
-          });
-
-        if (!switchDone && typeof loadOtherComment === "function") {
-          switchDone = true;
-          loadOtherComment();
-        }
-      });
   },
   /**
    * 增强Twikoo评论
@@ -1846,6 +1880,31 @@ const cloudchewieFn = {
     } else {
       document.querySelector("#go-down").style.display = "none";
     }
+  },
+  /**
+   * 跳转到评论
+   */
+  moveToComments: () => {
+    let switchDone = false;
+    const $switchBtn = document.querySelector("#comment-switch > .switch-btn");
+    $switchBtn &&
+      $switchBtn.addEventListener("click", () => {
+        this.classList.toggle("move");
+        document
+          .querySelectorAll("#post-comment > .comment-wrap > div")
+          .forEach((item) => {
+            if (cloudchewieFn.isHidden(item)) {
+              item.style.cssText = "display: block;animation: tabshow .5s";
+            } else {
+              item.style.cssText = "display: none;animation: ''";
+            }
+          });
+
+        if (!switchDone && typeof loadOtherComment === "function") {
+          switchDone = true;
+          loadOtherComment();
+        }
+      });
   },
   qrcodeCreate: function () {
     if (document.getElementById("qrcode")) {
@@ -2525,7 +2584,7 @@ const cloudchewieFn = {
       const navMetingAplayer = navMusic.querySelector("meting-js").aplayer;
       navMetingAplayer.play();
     } else {
-      const anMusicPage = document.getElementById("anMusic-page");
+      const anMusicPage = document.getElementById("cloudMusic-page");
       const metingAplayer = anMusicPage.querySelector("meting-js").aplayer;
       metingAplayer.play();
     }
@@ -2534,14 +2593,18 @@ const cloudchewieFn = {
    * 天籁界面更改背景
    */
   changeMusicBg: function (isChangeBg = true) {
-    const anMusicBg = document.getElementById("an_music_bg");
+    const anMusicBg = document.getElementById("cloud_music_bg");
     if (isChangeBg) {
-      const musiccover = document.querySelector("#anMusic-page .aplayer-pic");
+      const musiccover = document.querySelector(
+        "#cloudMusic-page .aplayer-pic"
+      );
       anMusicBg.style.backgroundImage = musiccover.style.backgroundImage;
       $web_container.style.background = "none";
     } else {
       let timer = setInterval(() => {
-        const musiccover = document.querySelector("#anMusic-page .aplayer-pic");
+        const musiccover = document.querySelector(
+          "#cloudMusic-page .aplayer-pic"
+        );
         if (musiccover) {
           clearInterval(timer);
           cloudchewieFn.addEventListenerMusic();
@@ -2556,13 +2619,13 @@ const cloudchewieFn = {
       }, 100);
     }
     if (
-      document.querySelector("#anMusic-page .aplayer-title") != null &&
-      document.querySelector("#anMusic-page .aplayer-title").innerHTML !=
+      document.querySelector("#cloudMusic-page .aplayer-title") != null &&
+      document.querySelector("#cloudMusic-page .aplayer-title").innerHTML !=
         undefined &&
-      document.querySelector("#anMusic-page .aplayer-title").innerHTML != ""
+      document.querySelector("#cloudMusic-page .aplayer-title").innerHTML != ""
     ) {
       document.title =
-        document.querySelector("#anMusic-page .aplayer-title").innerHTML +
+        document.querySelector("#cloudMusic-page .aplayer-title").innerHTML +
         " - 天籁 | Cloudchewie";
     }
   },
@@ -2581,7 +2644,7 @@ const cloudchewieFn = {
       userId = json.id;
       userServer = json.server;
     }
-    const anMusicPageMeting = document.getElementById("anMusic-page-meting");
+    const anMusicPageMeting = document.getElementById("cloudMusic-page-meting");
     if (urlParams.get("id") && urlParams.get("server")) {
       const id = urlParams.get("id");
       const server = urlParams.get("server");
@@ -2595,7 +2658,7 @@ const cloudchewieFn = {
    * 天籁界面播放器事件
    */
   addEventListenerMusic: function () {
-    const anMusicPage = document.getElementById("anMusic-page");
+    const anMusicPage = document.getElementById("cloudMusic-page");
     const aplayerIconMenu = anMusicPage.querySelector(
       ".aplayer-info .aplayer-time .aplayer-icon-menu"
     );
@@ -2681,7 +2744,7 @@ const cloudchewieFn = {
           }
         });
     } else {
-      const anMusicPage = document.getElementById("anMusic-page");
+      const anMusicPage = document.getElementById("cloudMusic-page");
       if (anMusicPage == null || anMusicPage.querySelector("meting-js") == null)
         return;
       const metingAplayer = anMusicPage.querySelector("meting-js").aplayer;
@@ -2861,7 +2924,9 @@ const cloudchewieFn = {
                   <div class="talk_content">${item.content}</div>
                   <div class="talk_spacer"></div>
                   <div class="talk_meta">
-                    <img class="no-lightbox no-lazyload avatar" src="${item.avatar+'!mini'}">
+                    <img class="no-lightbox no-lazyload avatar" src="${
+                      item.avatar + "!mini"
+                    }">
                     <div class="info">
                       <span class="talk_nick">${item.name}</span>
                       <span class="talk_dot">·</span>
@@ -3434,6 +3499,245 @@ const cloudchewieFn = {
 
     changeShortcutListener();
   },
+  // 注入辅助功能按键
+  injectAccessKey: (doc, win) => {
+    // 操作系统和浏览器设备检测
+    var ua = navigator.userAgent;
+
+    var system = "windows";
+
+    if (/Mac\sOS\sX/i.test(ua)) {
+      system = "mac";
+    }
+
+    // 浏览器判断
+    var browser = "chrome";
+    if (typeof doc.mozFullScreen != "undefined") {
+      browser = "moz";
+    } else if (
+      typeof doc.msHidden != "undefined" ||
+      typeof doc.hidden == "undefined"
+    ) {
+      browser = "ie";
+    }
+
+    // 快捷键组合
+    var keyPrefix = {
+      windows:
+        browser == "moz"
+          ? {
+              ctrlKey: false,
+              altKey: true,
+              shiftKey: true,
+            }
+          : {
+              ctrlKey: false,
+              altKey: true,
+              shiftKey: false,
+            },
+      mac: {
+        ctrlKey: true,
+        altKey: true,
+        shiftKey: false,
+      },
+    }[system];
+
+    // 获取字符Unicode值方法
+    var U = function (a, b) {
+      if (!a) return "";
+      for (var b = b || "x", c = "", d = 0, e; d < a.length; d += 1)
+        a.charCodeAt(d) >= 55296 && a.charCodeAt(d) <= 56319
+          ? ((e = (
+              65536 +
+              1024 * (Number(a.charCodeAt(d)) - 55296) +
+              Number(a.charCodeAt(d + 1)) -
+              56320
+            ).toString(16)),
+            (d += 1))
+          : (e = a.charCodeAt(d).toString(16)),
+          (c += b + e);
+      return c.substr(b.length);
+    };
+
+    // 提示当前元素快捷键的方法
+    var timerTips = null;
+    var tips = function (arrEles) {
+      // 已经显示中，忽略
+      if (doc.hasTipsShow) {
+        return;
+      }
+      // 页面的滚动高度
+      var scrollTop = doc.documentElement.scrollTop || doc.body.scrollTop;
+      var scrollLeft = doc.documentElement.scrollLeft || doc.body.scrollLeft;
+
+      // 遍历创建提示元素
+      arrEles.forEach(function (ele) {
+        // 如果元素隐藏，也忽略
+        if (ele.clientHeight * ele.clientWidth == 0) {
+          return;
+        }
+
+        var accesskey = ele.getAttribute("accesskey");
+        var arrAccesskey = [];
+        for (var key in keyPrefix) {
+          if (keyPrefix[key]) {
+            arrAccesskey.push(key);
+          }
+        }
+        arrAccesskey.push(accesskey);
+
+        // 当前元素相对于文档的偏移
+        var bounding = ele.getBoundingClientRect();
+
+        // 创建tips提示元素
+        var div = document.createElement("div");
+        div.className = "AK_Tips";
+        div.setAttribute(
+          "style",
+          "position:fixed;top:" +
+            bounding.top +
+            "px;left:" +
+            (bounding.left + scrollLeft) +
+            'px;z-index:9999;font-family:consolas,"Liberation Mono",courier,monospace;font-size:12px;border-radius:8px;color:#fff;background:rgba(0,0,0,.75);opacity:0.8;line-height:13px;padding:3px 3px;user-select: none;pointer-events: none;'
+        );
+        div.innerHTML = arrAccesskey
+          .map(function (key) {
+            return (
+              '<kbd style="font-family:inherit;">' +
+              key.replace("Key", "") +
+              "</kbd>"
+            );
+          })
+          .join("+");
+
+        document.body.appendChild(div);
+
+        div.fromTarget = ele;
+      });
+
+      // 标记，避免重复生成
+      doc.hasTipsShow = true;
+
+      // 一段时间隐藏
+      timerTips = setTimeout(function () {
+        removeTips();
+      }, 3000);
+    };
+    // 隐藏tips
+    var removeTips = function () {
+      clearTimeout(timerTips);
+      // 移除所有的快捷键提示
+      var elesTips = doc.querySelectorAll(".AK_Tips");
+      [].slice.call(elesTips).forEach(function (ele) {
+        if (ele.fromTarget) {
+          ele.fromTarget.hasTipsShow = null;
+        }
+        doc.body.removeChild(ele);
+      });
+      doc.hasTipsShow = null;
+    };
+
+    if (doc.addEventListener) {
+      // IE9+
+      doc.addEventListener("keydown", function (event) {
+        // 当前元素是否是可输入的input或者textarea
+        var isTargetInputable = false;
+        var eleTarget = event.target || doc.activeElement;
+        var tagName = eleTarget.tagName.toLowerCase();
+        if (
+          tagName == "textarea" ||
+          (tagName == "input" &&
+            /checkbox|radio|select|file|button|image|hidden/.test(
+              eleTarget.type
+            ) == false)
+        ) {
+          isTargetInputable = true;
+        }
+
+        // 遍历所有设置了accesskey的符合HTML4.0.1规范的元素
+        // 包括<a>, <area>, <button>, <input>, <label>, <legend>以及<textarea>
+        var elesOwnAccesskey = doc.querySelectorAll(
+          "a[accesskey],area[accesskey],button[accesskey],input[accesskey],label[accesskey],legend[accesskey],textarea[accesskey]"
+        );
+        if (elesOwnAccesskey.length == 0) {
+          return;
+        }
+        // 对象列表转换成数组
+        var arrElesOwnAccesskey = [].slice.call(elesOwnAccesskey);
+        // 进行遍历
+        var arrAcceeekey = arrElesOwnAccesskey.map(function (ele) {
+          return ele.getAttribute("accesskey");
+        });
+        // windows下图下直接event.key就是按下的键对于的内容，但OS X系统却没有key属性，有的是event.keyIdentifier，表示字符的Unicode值
+        // 根据这个判断按键是否有对应的匹配
+        var indexMatch = -1;
+        arrAcceeekey.forEach(function (accesskey, index) {
+          if (
+            (event.key && event.key == accesskey) ||
+            (event.keyIdentifier &&
+              parseInt(
+                event.keyIdentifier.toLowerCase().replace("u+", ""),
+                16
+              ) == parseInt(U(accesskey), 16))
+          ) {
+            indexMatch = index;
+            return false;
+          }
+        });
+
+        // 1. 单独按下某个键的匹配支持
+        if (
+          event.altKey == false &&
+          event.shiftKey == false &&
+          event.ctrlKey == false
+        ) {
+          if (isTargetInputable) {
+            return;
+          }
+          // focus高亮
+          if (arrElesOwnAccesskey[indexMatch]) {
+            arrElesOwnAccesskey[indexMatch].focus();
+            // 阻止内容输入
+            event.preventDefault();
+          }
+          // 2. shift + '?'(keyCode=191)键的提示行为支持
+        } else if (
+          event.altKey == false &&
+          event.shiftKey == true &&
+          event.ctrlKey == false
+        ) {
+          if (event.keyCode == 191 && !isTargetInputable) {
+            doc.hasTipsShow ? removeTips() : tips(arrElesOwnAccesskey);
+          }
+          // 3. 增加accesskey生效的前置键按下的提示行为
+        } else if (
+          event.altKey == keyPrefix.altKey &&
+          event.shiftKey == keyPrefix.shiftKey &&
+          event.ctrlKey == keyPrefix.ctrlKey
+        ) {
+          if (indexMatch == -1) {
+            event.preventDefault();
+            doc.hasTipsShow ? removeTips() : tips(arrElesOwnAccesskey);
+          } else {
+            removeTips();
+          }
+
+          // 4. IE浏览器和其他浏览器行为一致的处理
+          if (
+            browser == "ie" &&
+            arrElesOwnAccesskey[indexMatch] &&
+            !isTargetInputable
+          ) {
+            // click行为触发
+            arrElesOwnAccesskey[indexMatch].click();
+          }
+        }
+      });
+      doc.addEventListener("mousedown", function (event) {
+        removeTips();
+      });
+    }
+  },
 };
 /**
  * =================================================
@@ -3725,11 +4029,11 @@ const consoleFn = {
    * 打开/关闭功能
    */
   toggleConsole: () => {
-    $("#settingWindow").fadeToggle("fast");
+    $("#consoleWindow").fadeToggle("fast");
     $("#console-mask").fadeToggle("fast");
-    if ($("#settingWindow").css("display") != "none")
-      $("#settingWindow").css("display", "flex");
-    if ($("#settingWindow").css("display") == "none") {
+    if ($("#consoleWindow").css("display") != "none")
+      $("#consoleWindow").css("display", "flex");
+    if ($("#consoleWindow").css("display") == "none") {
       //取消模糊效果
       document.getElementById("settingStyle").innerText = `
     *,*:not(.card-info)::before,*::after{
@@ -3743,11 +4047,11 @@ const consoleFn = {
     }
   },
   showConsole: () => {
-    $("#settingWindow").fadeIn("fast");
+    $("#consoleWindow").fadeIn("fast");
     $("#console-mask").fadeIn("fast");
-    if ($("#settingWindow").css("display") != "none")
-      $("#settingWindow").css("display", "flex");
-    if ($("#settingWindow").css("display") == "none") {
+    if ($("#consoleWindow").css("display") != "none")
+      $("#consoleWindow").css("display", "flex");
+    if ($("#consoleWindow").css("display") == "none") {
       //取消模糊效果
       document.getElementById("settingStyle").innerText = `
   *,*:not(.card-info)::before,*::after{
@@ -3761,11 +4065,11 @@ const consoleFn = {
     }
   },
   closeConsole: () => {
-    $("#settingWindow").fadeOut("fast");
+    $("#consoleWindow").fadeOut("fast");
     $("#console-mask").fadeOut("fast");
-    if ($("#settingWindow").css("display") != "none")
-      $("#settingWindow").css("display", "flex");
-    if ($("#settingWindow").css("display") == "none") {
+    if ($("#consoleWindow").css("display") != "none")
+      $("#consoleWindow").css("display", "flex");
+    if ($("#consoleWindow").css("display") == "none") {
       //取消模糊效果
       document.getElementById("settingStyle").innerText = `
   *,*:not(.card-info)::before,*::after{
@@ -3783,9 +4087,9 @@ const consoleFn = {
    */
   // 加载设置
   loadSetting: () => {
-    $("#backer").hide();
-    $(".asetting").hide();
-    $("#settingWindow").hide();
+    $("#consoleBackButton").css("visibility", "hidden");
+    $(".consoleSetting").hide();
+    $("#consoleWindow").hide();
     //加载是否适应文章封面颜色
     if (cloudchewieFn.loadData("enableAutoColor") == undefined) {
       cloudchewieFn.saveData("enableAutoColor", "false");
@@ -3810,6 +4114,16 @@ const consoleFn = {
       $("#name-container").show();
       $("#page-header").addClass("nav-fixed nav-visible");
       document.getElementById("con-toggleFixedNav").checked = true;
+    }
+    //侧栏居左
+    if (cloudchewieFn.loadData("asideLeft") == undefined) {
+      cloudchewieFn.saveData("asideLeft", "true");
+    }
+    if (cloudchewieFn.loadData("asideLeft") == "false") {
+      document.documentElement.setAttribute("aside-position", "right");
+    } else {
+      document.documentElement.setAttribute("aside-position", "left");
+      document.getElementById("con-toggleAsidePosition").checked = true;
     }
     //加载是否打开右键菜单功能
     if (cloudchewieFn.loadData("enableContextMenu") == undefined) {
@@ -3849,7 +4163,7 @@ const consoleFn = {
         }
       }
     }
-    //加载是否显示右侧边栏
+    //加载是否显示侧边按钮
     if (cloudchewieFn.loadData("enableRightSide") == undefined) {
       cloudchewieFn.saveData("enableRightSide", "true");
     }
@@ -3945,10 +4259,12 @@ const consoleFn = {
         : "light";
     if (nowMode === "light") {
       document.querySelector(".menu-toggleDarkMode-text").textContent =
-        "切换为深色模式";
+        "深色模式";
+      $("#con-mode").attr("title", "切换为深色模式");
     } else {
       document.querySelector(".menu-toggleDarkMode-text").textContent =
-        "切换为浅色模式";
+        "浅色模式";
+      $("#con-mode").attr("title", "切换为浅色模式");
     }
     $(document).ready(function () {
       var observer = new MutationObserver(function (mutations) {
@@ -4135,6 +4451,18 @@ const consoleFn = {
     }
   },
   /**
+   * 是否侧栏居左
+   */
+  toggleAsidePosition: () => {
+    if (cloudchewieFn.loadData("asideLeft") == "false") {
+      cloudchewieFn.saveData("asideLeft", "true");
+      document.documentElement.setAttribute("aside-position", "left");
+    } else {
+      cloudchewieFn.saveData("asideLeft", "false");
+      document.documentElement.setAttribute("aside-position", "right");
+    }
+  },
+  /**
    * 是否自动主题色
    */
   toggleAutoColor: () => {
@@ -4277,7 +4605,8 @@ function runOne() {
   //加载lately.js
   if (typeof Lately === "undefined") {
     const script = document.createElement("script");
-    script.src ="https://cdn.cbd.int/hexo-theme-cloudchewie@2.5.0/source/js/third-party/lately.min.js";
+    script.src =
+      "https://cdn.cbd.int/hexo-theme-cloudchewie@2.5.0/source/js/third-party/lately.min.js";
     script.onload = () => {
       Lately.init({ target: ".talk_date" });
     };
@@ -4307,4 +4636,5 @@ function runOne() {
   cloudchewieFn.resizeTop();
   cloudchewieFn.categoriesBarActive();
   cloudchewieFn.topCategoriesBarScroll();
+  cloudchewieFn.injectAccessKey(document, window);
 }
