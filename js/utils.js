@@ -2813,8 +2813,6 @@ const cloudchewieFn = {
     cloudchewieFn.snackbarShow("无需删除空行，直接输入评论即可", !1, 2e3);
   },
   fetchMemos: async () => {
-    cloudchewieFn.loadMemos([]);
-    return;
     var items = [],
       item = {},
       nextDatas = [],
@@ -2910,14 +2908,14 @@ const cloudchewieFn = {
     data.forEach((item) => {
       items.push(cloudchewieFn.formatMemo(item));
     });
-    items.push({
-      content:
-        "服务器到期了，等明年9月份研究生入学了再买服务器，这段时间Memos就暂停营业啦。",
-      date: new Date(1700452319000).toLocaleString(),
-      text: "",
-      name: "余湍",
-      avatar: "https://picbed.cloudchewie.com/img/index/avatar.png!mini",
-    });
+    // items.push({
+    //   content:
+    //     "服务器到期了，等明年9月份研究生入学了再买服务器，这段时间Memos就暂停营业啦。",
+    //   date: new Date(1700452319000).toLocaleString(),
+    //   text: "",
+    //   name: "余湍",
+    //   avatar: "https://picbed.cloudchewie.com/img/index/avatar.png!mini",
+    // });
     items.forEach((item) => {
       html += `
                 <div class="talk_item">
