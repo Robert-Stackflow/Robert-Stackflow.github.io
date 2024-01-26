@@ -130,6 +130,21 @@ var vegetablesAndFruits = [
   "柚子",
   "火龙果",
 ];
+
+var noiseCSS=`
+body:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: url(https://picbed.cloudchewie.com/index/noise.png);
+  position: fixed;
+  z-index: 10;
+  opacity: .036;
+  pointer-events: none;
+  touch-action: none;
+}`;
+
 const cloudchewieFn = {
   day_night_count: 0,
   isReadMode: false,
@@ -2885,7 +2900,7 @@ const cloudchewieFn = {
                     avatar:
                       avatarUrl && avatarUrl != ""
                         ? avatarUrl
-                        : "https://picbed.cloudchewie.com/img/badge/memos.webp",
+                        : "https://picbed.cloudchewie.com/blog/badge/memos.webp",
                     updatedTs: resValue.updatedTs,
                     creatorId: resValue.creatorId,
                     creator: resValue.creatorName,
@@ -2914,7 +2929,7 @@ const cloudchewieFn = {
     //   date: new Date(1700452319000).toLocaleString(),
     //   text: "",
     //   name: "余湍",
-    //   avatar: "https://picbed.cloudchewie.com/img/index/avatar.png!mini",
+    //   avatar: "https://picbed.cloudchewie.com/index/avatar.png!mini",
     // });
     items.forEach((item) => {
       html += `
@@ -2922,9 +2937,7 @@ const cloudchewieFn = {
                   <div class="talk_content">${item.content}</div>
                   <div class="talk_spacer"></div>
                   <div class="talk_meta">
-                    <img class="no-lightbox no-lazyload avatar" src="${
-                      item.avatar
-                    }">
+                    <img class="no-lightbox no-lazyload avatar" src="${item.avatar}">
                     <div class="info">
                       <span class="talk_nick">${item.name}</span>
                       <span class="talk_dot">·</span>
@@ -4216,6 +4229,17 @@ const consoleFn = {
       $("#universe").hide();
       document.getElementById("con-toggleStarBackground").checked = false;
     }
+    //加载噪点效果
+    if (cloudchewieFn.loadData("enableNoise") == undefined) {
+      cloudchewieFn.saveData("enableNoise", "true");
+    }
+    if (cloudchewieFn.loadData("enableNoise") == "true") {
+      document.getElementById("con-toggleNoise").checked = true;
+      $("#noiseStyle").html(noiseCSS);
+    } else {
+      document.getElementById("con-toggleNoise").checked = false;
+      $("#noiseStyle").html("");
+    }
     //加载快捷键
     if (cloudchewieFn.loadData("enableShortcut") == undefined) {
       cloudchewieFn.saveData("enableShortcut", "false");
@@ -4340,6 +4364,18 @@ const consoleFn = {
     } else {
       cloudchewieFn.saveData("enableStarBackground", "true");
       $("#universe").show();
+    }
+  },
+  /**
+   * 打开/关闭噪点效果
+   */
+  toggleNoise: () => {
+    if (cloudchewieFn.loadData("enableNoise") == "true") {
+      cloudchewieFn.saveData("enableNoise", "false");
+      $("#noiseStyle").html("");
+    } else {
+      cloudchewieFn.saveData("enableNoise", "true");
+      $("#noiseStyle").html(noiseCSS);
     }
   },
   /**

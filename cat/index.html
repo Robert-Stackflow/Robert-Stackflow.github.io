@@ -17,14 +17,15 @@
 	<meta name="description"
 		content="Not just a cat purr, but a cat purring next to you. Purrli recreates the sound and the presence of a cat, online. It's soothing, it's free, and it's purrfect!">
 	<meta name="author" content="Dr. Ir. Stéphane Pigeon">
-	<link rel="apple-touch-icon" sizes="180x180" href="https://picbed.cloudchewie.com/cat/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="https://picbed.cloudchewie.com/cat/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="https://picbed.cloudchewie.com/cat/favicon-16x16.png">
+    <link rel="shortcut icon" href="https://picbed.cloudchewie.com/blog/cat/apple-touch-icon.png!mini" type="image/x-icon">
+	<link rel="apple-touch-icon" sizes="180x180" href="https://picbed.cloudchewie.com/blog/cat/apple-touch-icon.png!mini">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://picbed.cloudchewie.com/blog/cat/favicon-32x32.png!mini">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://picbed.cloudchewie.com/blog/cat/favicon-16x16.png!mini">
 	<link rel="manifest" href="./manifest.json">
-	<link rel="mask-icon" href="https://picbed.cloudchewie.com/cat/safari-pinned-tab.svg" color="#483858">
+	<link rel="mask-icon" href="https://picbed.cloudchewie.com/blog/cat/safari-pinned-tab.svg" color="#483858">
 	<meta name="theme-color" content="#ffffff">
-	<link rel="image_src" href="https://picbed.cloudchewie.com/cat/purrliScreenshot_sqr.png">
-	<meta property="og:image" content="https://picbed.cloudchewie.com/cat/purrliScreenshot_fb.png">
+	<link rel="image_src" href="https://picbed.cloudchewie.com/blog/cat/purrliScreenshot_sqr.png">
+	<meta property="og:image" content="https://picbed.cloudchewie.com/blog/cat/purrliScreenshot_fb.png">
 	<meta property="og:url" content="https://purrli.com">
 	<meta property="og:title" content="The Internet has a Cat! Meet Purrli, the online cat purr generator.">
 	<meta property="og:description"
@@ -38,7 +39,7 @@
 	<div class=" caption"><span id="featuredCat"></span></div>
 		<div id="warning" class="navCentered" style="visibility: hidden;">
 			<p>需要佩戴耳机或使用外部扬声器：小型手机或笔记本电脑扬声器不兼容猫发出的低频率的呼噜声！</p>
-			<p><img id="myFsImg" src="https://picbed.cloudchewie.com/cat/headphone.png" width="25%"
+			<p><img id="myFsImg" src="https://picbed.cloudchewie.com/blog/cat/headphone.png!mini" width="25%"
 					style="opacity:1;cursor:pointer;"></p>
 			<p>轻按关闭</p>
 		</div>
@@ -46,20 +47,20 @@
 
 	<div class="tile1">
 		<div class="anchor" id="anchor_player"></div>
-		<div id="title"><img src="https://picbed.cloudchewie.com/cat/purrliCat.png" width="32px"> Purrli<span
+		<div id="title"><img src="https://picbed.cloudchewie.com/blog/cat/purrliCat.png!mini" width="32px"> Purrli<span
 				class="reg">®</span> </div>
 		<div id="subtitle">The Internet has a Cat</div>
 		<div class="ctrSection">
-			<img src="https://picbed.cloudchewie.com/cat/volDown.png" class="ctrlImg" onclick="volDown()"
+			<img src="https://picbed.cloudchewie.com/blog/cat/volDown.png!mini" class="ctrlImg" onclick="volDown()"
 				onmouseover="msg('降低音量')" alt="Volume Down">
-			<img id="levelBars" src="https://picbed.cloudchewie.com/cat/level1.png" class="lvlImg" alt="Level Bars">
-			<img src="https://picbed.cloudchewie.com/cat/volUp.png" class="ctrlImg" onclick="volUp()"
+			<img id="levelBars" src="https://picbed.cloudchewie.com/blog/cat/level1.png!mini" class="lvlImg" alt="Level Bars">
+			<img src="https://picbed.cloudchewie.com/blog/cat/volUp.png!mini" class="ctrlImg" onclick="volUp()"
 				onmouseover="msg('增大音量')" alt="Volume Up">
-			<img src="https://picbed.cloudchewie.com/cat/mute.png" id="mute" class="ctrlImg" onclick="toggleMute()"
+			<img src="https://picbed.cloudchewie.com/blog/cat/mute.png!mini" id="mute" class="ctrlImg" onclick="toggleMute()"
 				onmouseover="msg('最后一声呼噜后我就停下来啦，保证！')" alt="Mute">
-			<img src="https://picbed.cloudchewie.com/cat/fullscreen.png" id="fullscreen" class="ctrlImg"
+			<img src="https://picbed.cloudchewie.com/blog/cat/fullscreen.png!mini" id="fullscreen" class="ctrlImg"
 				onclick="toggleFullScreen()" onmouseover="msg('沉浸式听呼噜声！')" alt="FullScreen">
-			<div class="timer"><img src="https://picbed.cloudchewie.com/cat/timer.png" id="timer" class="ctrlImg ctrlOn"
+			<div class="timer"><img src="https://picbed.cloudchewie.com/blog/cat/timer.png!mini" id="timer" class="ctrlImg ctrlOn"
 					onclick="cycleTimer()" onmouseover="msg('设置定时器以静音/取消静音')" alt="Timer"><br><span
 					id="remainingTime">14</span>
 			</div>
@@ -327,8 +328,8 @@
 
 		function buildUI() {
 
-			$("#volIco").html("<img src='https://picbed.cloudchewie.com/cat/slider_vol-.png' class='sliderIcon pTn' alt='Volume' title='Volume Down' onclick='$(\"#volume\").slider(\"value\",$(\"#volume\").slider(\"option\",\"value\")-10);'>");
-			$("#volIcoR").html("<img src='https://picbed.cloudchewie.com/cat/slider_vol+.png' class='sliderIcon pTn' alt='Volume' title='Volume Up' onclick='$(\"#volume\").slider(\"value\",$(\"#volume\").slider(\"option\",\"value\")+10);'>");
+			$("#volIco").html("<img src='https://picbed.cloudchewie.com/blog/cat/slider_vol-.png!mini' class='sliderIcon pTn' alt='Volume' title='Volume Down' onclick='$(\"#volume\").slider(\"value\",$(\"#volume\").slider(\"option\",\"value\")-10);'>");
+			$("#volIcoR").html("<img src='https://picbed.cloudchewie.com/blog/cat/slider_vol+.png!mini' class='sliderIcon pTn' alt='Volume' title='Volume Up' onclick='$(\"#volume\").slider(\"value\",$(\"#volume\").slider(\"option\",\"value\")+10);'>");
 			$(function () {
 				$("#tempo").slider({
 					animate: "slow",
@@ -430,7 +431,7 @@
 				masterGain.gain.cancelScheduledValues(context.currentTime);
 				masterGain.gain.setValueAtTime(masterGain.gain.value, context.currentTime);
 				masterGain.gain.linearRampToValueAtTime(Math.pow(globalLevel, 1), context.currentTime + 0.2);
-				$('#levelBars').attr("src", "https://picbed.cloudchewie.com/cat/level" + VOL + ".png");
+				$('#levelBars').attr("src", "https://picbed.cloudchewie.com/blog/cat/level" + VOL + ".png!mini");
 			}
 		}
 
@@ -442,7 +443,7 @@
 				masterGain.gain.cancelScheduledValues(context.currentTime);
 				masterGain.gain.setValueAtTime(masterGain.gain.value, context.currentTime);
 				masterGain.gain.linearRampToValueAtTime(Math.pow(globalLevel, 1), context.currentTime + 0.2);
-				$('#levelBars').attr("src", "https://picbed.cloudchewie.com/cat/level" + VOL + ".png");
+				$('#levelBars').attr("src", "https://picbed.cloudchewie.com/blog/cat/level" + VOL + ".png!mini");
 			}
 		}
 		function isFullScreen() {
