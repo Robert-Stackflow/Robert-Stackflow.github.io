@@ -2887,7 +2887,7 @@ const cloudchewieFn = {
               for (var j = 0; j < resultsRes.length; j++) {
                 var resValue = resultsRes[j];
                 var dayDiff = Math.floor(
-                  (new Date().getTime() - resValue.updatedTs * 1000) /
+                  (new Date().getTime() - resValue.createdTs * 1000) /
                     (24 * 3600 * 1000)
                 );
                 if (dayDiff < 365) {
@@ -2901,7 +2901,7 @@ const cloudchewieFn = {
                       avatarUrl && avatarUrl != ""
                         ? avatarUrl
                         : "https://picbed.cloudchewie.com/blog/badge/memos.webp",
-                    updatedTs: resValue.updatedTs,
+                    createdTs: resValue.createdTs,
                     creatorId: resValue.creatorId,
                     creator: resValue.creatorName,
                     content: resValue.content,
@@ -2912,7 +2912,7 @@ const cloudchewieFn = {
               }
             }
           }
-          items.sort(compare("updatedTs"));
+          items.sort(compare("createdTs"));
           cloudchewieFn.loadMemos(items);
         });
       });
@@ -3066,7 +3066,7 @@ const cloudchewieFn = {
     }
     return {
       content: content,
-      date: new Date(item.updatedTs * 1000).toLocaleString(),
+      date: new Date(item.createdTs * 1000).toLocaleString(),
       text: text.replace(
         /\[(.*?)\]\((.*?)\)/g,
         "[链接]" + `${imgls ? "[图片]" : ""}`
