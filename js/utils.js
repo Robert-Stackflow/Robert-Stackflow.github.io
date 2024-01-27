@@ -139,7 +139,7 @@ body:before {
   height: 100%;
   background-image: url(https://picbed.cloudchewie.com/index/noise.png);
   position: fixed;
-  z-index: 10;
+  z-index: 10000;
   opacity: .036;
   pointer-events: none;
   touch-action: none;
@@ -2663,9 +2663,9 @@ const cloudchewieFn = {
     if (urlParams.get("id") && urlParams.get("server")) {
       const id = urlParams.get("id");
       const server = urlParams.get("server");
-      anMusicPageMeting.innerHTML = `<meting-js id="${id}" server=${server} type="playlist" type="playlist" mutex="true" preload="auto" theme="var(--theme-color)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
+      anMusicPageMeting.innerHTML = `<meting-js id="${id}" server=${server} type="playlist" type="playlist" mutex="true" preload="auto" theme="var(--cloudchewie-theme)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
     } else {
-      anMusicPageMeting.innerHTML = `<meting-js id="${userId}" server="${userServer}" type="playlist" mutex="true" preload="auto" theme="var(--theme-color)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
+      anMusicPageMeting.innerHTML = `<meting-js id="${userId}" server="${userServer}" type="playlist" mutex="true" preload="auto" theme="var(--cloudchewie-theme)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
     }
     cloudchewieFn.changeMusicBg(false);
   },
@@ -3438,7 +3438,7 @@ const cloudchewieFn = {
           //   keyboardTips.classList.remove("show");
           //   break;
           case 76:
-            pjax.loadUrl("/cloud");
+            pjax.loadUrl("/love");
             break;
           case 73:
             consoleFn.toggleContextMenu();
@@ -4004,7 +4004,7 @@ const mobileSidebarFn = {
     if (cloudchewieFn.isMusic()) {
       $web_container.style.background = "rgb(255 255 255 / 20%)";
     } else {
-      $web_container.style.background = "var(--global-bg)";
+      $web_container.style.background = "var(--cloudchewie-background)";
     }
   },
   close: () => {
@@ -4352,7 +4352,7 @@ const consoleFn = {
   setThemeColor: (r, g, b) => {
     document.getElementById(
       "themeColor"
-    ).innerText = `:root{--theme-color:rgb(${r}, ${g}, ${b})!important;--btn-bg:rgb(${r}, ${g}, ${b})!important;--btn-hover-color:rgba(${r}, ${g}, ${b},0.7)!important;--text-bg-hover:rgba(${r}, ${g}, ${b},0.7)!important;--km-toc-active:rgba(${r}, ${g}, ${b},0.7)!important;--km-toc-hover:rgba(${r}, ${g}, ${b},0.6)!important;}`;
+    ).innerText = `:root{--cloudchewie-theme:rgb(${r}, ${g}, ${b})!important;--btn-bg:rgb(${r}, ${g}, ${b})!important;--btn-hover-color:rgba(${r}, ${g}, ${b},0.7)!important;--text-bg-hover:rgba(${r}, ${g}, ${b},0.7)!important;--km-toc-active:rgba(${r}, ${g}, ${b},0.7)!important;--km-toc-hover:rgba(${r}, ${g}, ${b},0.6)!important;}`;
   },
   /**
    * 打开/关闭繁星效果

@@ -800,7 +800,7 @@ button.swiper-pagination-bullet {
   position: relative;
   border-radius: 12px 8px 8px 12px;
   margin: auto;
-  background: var(--global-bg);
+  background: var(--cloudchewie-background);
   padding: 10px;
   transition: all 0.3s;
 }
@@ -948,7 +948,7 @@ button.swiper-pagination-bullet {
   transition: all 0.4s;
 }
 .blog-slider__code {
-  color: var(--font-color);
+  color: var(--cloudchewie-font-color);
   margin-bottom: 0px;
   display: block;
   font-weight: 500;
@@ -956,7 +956,7 @@ button.swiper-pagination-bullet {
 .blog-slider__title {
   font-size: 18px;
   font-weight: 700;
-  color: var(--font-color);
+  color: var(--cloudchewie-font-color);
   margin-bottom: 15px;
   -webkit-line-clamp: 1;
   display: -webkit-box;
@@ -964,7 +964,7 @@ button.swiper-pagination-bullet {
   -webkit-box-orient: vertical;
 }
 .blog-slider__text {
-  color: var(--font-color);
+  color: var(--cloudchewie-font-color);
   -webkit-line-clamp: 3;
   display: -webkit-box;
   overflow: hidden;

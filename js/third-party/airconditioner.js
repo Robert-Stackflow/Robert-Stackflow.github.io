@@ -4042,7 +4042,7 @@ var __defProp = Object.defineProperty,
           "clod" === t && e < 26
             ? gr.show({
                 text: n("clod", 26),
-                backgroundColor: "var(--theme-color)",
+                backgroundColor: "var(--cloudchewie-theme)",
                 duration: 2e3,
                 pos: "top-right",
                 showAction: !1,
@@ -4051,7 +4051,7 @@ var __defProp = Object.defineProperty,
               e > 20 &&
               gr.show({
                 text: n("hot", 20),
-                backgroundColor: "var(--theme-color)",
+                backgroundColor: "var(--cloudchewie-theme)",
                 duration: 2e3,
                 pos: "top-right",
                 showAction: !1,
@@ -4062,7 +4062,7 @@ var __defProp = Object.defineProperty,
             ? this.temperature++
             : gr.show({
                 text: "已经达最大温度啦",
-                backgroundColor: "var(--theme-color)",
+                backgroundColor: "var(--cloudchewie-theme)",
                 duration: 2e3,
                 pos: "top-right",
                 showAction: !1,
@@ -4073,7 +4073,7 @@ var __defProp = Object.defineProperty,
             ? this.temperature--
             : gr.show({
                 text: "已经是最小温度啦",
-                backgroundColor: "var(--theme-color)",
+                backgroundColor: "var(--cloudchewie-theme)",
                 duration: 2e3,
                 pos: "top-right",
                 showAction: !1,
