@@ -16877,7 +16877,9 @@ blockquote code {
   border: var(--card-border);
   margin: 0px 5px;
 }
-
+.talk_content ul li{
+  margin: 8px 0px;
+}
 #page:has(#cloudMusic-page) {
   border: 0;
   box-shadow: none !important;
