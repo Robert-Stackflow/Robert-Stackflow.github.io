@@ -145,6 +145,8 @@ body:before {
   touch-action: none;
 }`;
 
+var trailingUrl="https://www.travellings.cn/go.html";
+
 const cloudchewieFn = {
   day_night_count: 0,
   isReadMode: false,
@@ -2213,6 +2215,12 @@ const cloudchewieFn = {
           saveToLocal.set("postLinks", n, 0.02),
           cloudchewieFn.randomPost();
       });
+  },
+  /**
+   * 跳转到开往
+   */
+  trailingBlog: () => {
+    window.open(trailingUrl);
   },
   /**
    * 彩蛋

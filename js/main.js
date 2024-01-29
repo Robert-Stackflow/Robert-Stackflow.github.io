@@ -149,6 +149,9 @@ document.addEventListener("DOMContentLoaded", function () {
       .querySelector("#wander-button")
       .addEventListener("click", cloudchewieFn.randomPost);
     document
+      .querySelector("#trailing-button")
+      .addEventListener("click", cloudchewieFn.trailingBlog);
+    document
       .getElementById("toggle-menu")
       .addEventListener("click", mobileSidebarFn.open);
     document
