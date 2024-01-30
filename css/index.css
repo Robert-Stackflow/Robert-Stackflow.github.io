@@ -15813,7 +15813,7 @@ mjx-container[display],
   line-height: 2 !important;
 }
 @media screen and (max-width: 1200px) {
-  #aside-content .card-widget {
+  #aside-content .card-widget:not(#card-toc) {
     max-width: none !important;
     display: none;
   }
