@@ -6403,14 +6403,14 @@ maxWidth1400()
   -ms-transition: 0.2s !important;
   transition: 0.2s !important;
 }
-.back-menu-list-groups .back-menu-list .back-menu-item .back-menu-item-text {
+.back-home-button .back-menu-list-groups .back-menu-list .back-menu-item .back-menu-item-text {
   font-size: var(--global-font-size);
   margin-left: 0.5rem;
   color: var(--cloudchewie-font-color);
   white-space: nowrap;
 }
 @media screen and (max-width: 768px) {
-  .back-menu-list-groups .back-menu-list .back-menu-item .back-menu-item-text {
+  .back-home-button .back-menu-list-groups .back-menu-list .back-menu-item .back-menu-item-text {
     font-size: 14px;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
@@ -17473,6 +17473,7 @@ body.pace-done:has(#cloudMusic-page) #rightside {
   background-color: var(--card-bg);
   margin-bottom: 12px;
 }
+
 .content-item-tips {
   position: relative;
   z-index: 1;
@@ -17534,7 +17535,7 @@ a.banner-button:hover {
 @media screen and (max-width: 900px) {
   .page-top-card {
     padding: 10px 1rem;
-    /* height: 12rem; */
+    height: 15rem;
   }
 
   .content-bottom {
