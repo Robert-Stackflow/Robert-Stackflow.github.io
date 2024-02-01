@@ -15962,7 +15962,6 @@ mjx-container[display],
 }
 .CtxtMenu_MenuClose {
   border: none !important;
-  margin: 5px 5px;
 }
 .CtxtMenu_MenuLabel:focus {
   background-color: unset !important;
