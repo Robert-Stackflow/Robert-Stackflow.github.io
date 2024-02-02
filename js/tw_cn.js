@@ -34,18 +34,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (targetEncoding === 1) {
         translateButtonObject
-          .querySelector("i.iconfont")
-          .classList.remove("icon-fanti");
+          .querySelector("i.cloudchewiefont")
+          .classList.remove("cloudchewie-icon-fanti");
         translateButtonObject
-          .querySelector("i.iconfont")
-          .classList.add("icon-jianti");
+          .querySelector("i.cloudchewiefont")
+          .classList.add("cloudchewie-icon-jianti");
       } else if (targetEncoding === 2) {
         translateButtonObject
-          .querySelector("i.iconfont")
-          .classList.remove("icon-jianti");
+          .querySelector("i.cloudchewiefont")
+          .classList.remove("cloudchewie-icon-jianti");
         translateButtonObject
-          .querySelector("i.iconfont")
-          .classList.add("icon-fanti");
+          .querySelector("i.cloudchewiefont")
+          .classList.add("cloudchewie-icon-fanti");
       }
       $(translateButtonObject).attr("title", textContent);
     }

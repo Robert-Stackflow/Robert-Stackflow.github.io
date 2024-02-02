@@ -239,7 +239,7 @@ span.categoryBar-list-count::before,
 .cloudchewiefont,
 .note:not(.no-icon)::before {
   font-family: "cloudchewiefont";
-  font-size: 16px;
+  font-size: 20px !important;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -5600,6 +5600,7 @@ li.categoryBar-list-item {
   text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
   font-weight: bold;
   cursor: pointer;
+  height: 35px;
 }
 #nav .menus_items {
   display: inline;
@@ -5825,9 +5826,6 @@ li.categoryBar-list-item {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
   filter: alpha(opacity=80);
   margin-right: 8px;
-}
-#post-firstinfo .meta-firstline .cloudchewie-icon-hashtag:before {
-  font-size: 17px;
 }
 #post-firstinfo .meta-firstline .cloudchewie-icon-location-dot {
   margin-right: 4px;
@@ -6238,7 +6236,7 @@ maxWidth1400()
   -o-transition: 0.3s;
   -ms-transition: 0.3s;
   transition: 0.3s;
-  border-radius: 8px;
+  border-radius: 40px;
   z-index: 101;
 }
 .back-home-button:hover .back-menu-list-groups {
@@ -6425,7 +6423,6 @@ maxWidth1400()
   background: var(--cloudchewie-secondbg);
 }
 #page-header #nav .back-home-button {
-  cursor: pointer;
   position: relative;
 }
 #page-header:not(.not-top-img) #nav .back-home-button {
@@ -6495,7 +6492,7 @@ maxWidth1400()
   overflow: hidden;
 }
 #site-name {
-  padding: 0 8px;
+  padding: 0 2px;
   position: relative;
   display: -webkit-box;
   display: -moz-box;
@@ -13144,7 +13141,7 @@ template {
 }
 @font-face {
   font-family: Digital-7 Mono;
-  src: url(https://npm.elemecdn.com/hexo-theme-cloudchewie@2.2.7/source/icon/digital-7-mono.ttf)
+  src: url(https://npm.elemecdn.com/hexo-theme-cloudchewie@latest/source/icon/digital-7-mono.ttf)
     format("truetype");
 }
 .air-conditioner-vue {
@@ -14446,12 +14443,6 @@ template {
 #consoleShortcutsRight {
   white-space: nowrap;
 }
-.rightMenu-item .iconfont::before {
-  font-size: 20px !important;
-}
-.iconfont::before {
-  font-size: 23px !important;
-}
 .consoleShortcut.checked {
   background: var(--cloudchewie-theme) !important;
   color: white !important;
@@ -14462,9 +14453,6 @@ consoleShortcutsRight {
 @media screen and (max-width: 900px) {
   .consoleShortcut i::before {
     font-size: 16px !important;
-  }
-  .consoleShortcut .iconfont::before {
-    font-size: 17px !important;
   }
   .consoleShortcut {
     height: 20px !important;
@@ -14640,25 +14628,6 @@ consoleShortcutsRight {
   flex-wrap: wrap;
 }
 
-@font-face {
-  font-family: "iconfont";
-  src: url("../fonts/iconfont.woff2") format("woff2"),
-    url("../fonts/iconfont.woff") format("woff"),
-    url("../fonts/iconfont.ttf") format("truetype");
-}
-.iconfont {
-  font-family: "iconfont" !important;
-  font-size: 20px;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.icon-danmu:before {
-  content: "\e612";
-}
-.icon-jianti:before {
-  content: "\e6d7";
-}
 .pagination-post img {
   border-radius: 0px;
 }
@@ -14770,8 +14739,8 @@ consoleShortcutsRight {
 .article-sort-item-info .article-sort-item-tags a:hover {
   color: var(--cloudchewie-theme);
 }
-i.cloudchewie-icon-hashtag {
-  font-size: 12px;
+i.cloudchewiefont.cloudchewie-icon-hashtag {
+  font-size: 15px !important;
 }
 @media screen and (max-width: 768px) {
   .article-sort .article-sort-item .article-sort-item-img {
@@ -19859,60 +19828,6 @@ button.fixed-card-active-btn {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
     filter: alpha(opacity=30);
   }
-}
-@font-face {
-  font-family: "iconfont";
-  font-display: auto;
-  src: url("https://npm.elemecdn.com/@kmar/fonts@1.1.3/icon/iconfont.woff2") format('woff2'), url("https://npm.elemecdn.com/@kmar/fonts@1.1.3/icon/iconfont.woff") format('woff'), url("https://npm.elemecdn.com/@kmar/fonts@1.1.3/icon/iconfont.ttf") format('truetype');
-}
-.iconfont {
-  font-family: "iconfont" !important;
-  font-size: 1.25em;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.icon-recommend:before {
-  content: "\e728";
-}
-.icon-clear:before {
-  content: "\e639";
-}
-.icon-auto-fresh:before {
-  content: "\e625";
-}
-.icon-push:before {
-  content: "\e64f";
-}
-.icon-afd:before {
-  content: "\e674";
-}
-.icon-footprint:before {
-  content: "\e663";
-}
-.icon-bilibili:before {
-  content: "\e8b1";
-}
-.icon-links:before {
-  content: "\e66f";
-}
-.icon-message:before {
-  content: "\e606";
-}
-.icon-categories:before {
-  content: "\e623";
-}
-.icon-home:before {
-  content: "\e64d";
-}
-.icon-tags:before {
-  content: "\e885";
-}
-.icon-github:before {
-  content: "\e741";
-}
-.icon-email:before {
-  content: "\e612";
 }
 .card-tag {
   position: absolute;

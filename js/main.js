@@ -103,9 +103,9 @@ document.addEventListener("DOMContentLoaded", function () {
       '{"zoom":"Click","scale":"1"}'
     );
     if (Number(saveToLocal.get("translate-chn-cht")) == 2) {
-      $("#con-translate > i").attr("class", "iconfont icon-fanti");
+      $("#con-translate > i").attr("class", "cloudchewiefont cloudchewie-icon-fanti");
     } else if (Number(saveToLocal.get("translate-chn-cht")) == 1) {
-      $("#con-translate > i").attr("class", "iconfont icon-jianti");
+      $("#con-translate > i").attr("class", "cloudchewiefont cloudchewie-icon-jianti");
     }
   };
 

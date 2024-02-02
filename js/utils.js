@@ -4322,6 +4322,7 @@ const consoleFn = {
     cloudchewieFn.removeData("enableAutoColor");
     cloudchewieFn.removeData("enableContextMenu");
     cloudchewieFn.removeData("enableAPlayer");
+    cloudchewieFn.removeData("enableNoise");
     window.location.reload();
   },
   /**
@@ -4648,7 +4649,7 @@ function runOne() {
   if (typeof Lately === "undefined") {
     const script = document.createElement("script");
     script.src =
-      "https://cdn.cbd.int/hexo-theme-cloudchewie@2.5.0/source/js/third-party/lately.min.js";
+      "https://cdn.cbd.int/hexo-theme-cloudchewie@latest/source/js/third-party/lately.min.js";
     script.onload = () => {
       Lately.init({ target: ".talk_date" });
     };
