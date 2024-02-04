@@ -2808,7 +2808,7 @@ const cloudchewieFn = {
         case "readmode":
           cloudchewieFn.toggleReadMode();
           break;
-        case "darkmode":
+        case "toggle-dark-mode":
           cloudchewieFn.toggleDarkMode();
           break;
         case "hide-aside-btn":
@@ -3438,7 +3438,11 @@ const cloudchewieFn = {
             consoleFn.toggleConsole();
             break;
           case 80:
-            cloudchewieFn.toggleMusic();
+            if (cloudchewieFn.loadData("enableAPlayer") == true) {
+              cloudchewieFn.toggleMusic();
+            }else{
+              cloudchewieFn.snackbarShow("已禁用APlayer，该快捷键不生效");
+            }
             break;
           // case 75:
           //   consoleFn.toggleShortcut();
@@ -3447,9 +3451,6 @@ const cloudchewieFn = {
           //   break;
           case 76:
             pjax.loadUrl("/love");
-            break;
-          case 73:
-            consoleFn.toggleContextMenu();
             break;
           case 82:
             cloudchewieFn.randomPost();
@@ -3463,7 +3464,7 @@ const cloudchewieFn = {
           case 68:
             cloudchewieFn.toggleDarkMode();
             break;
-          case 78:
+          case 69:
             pjax.loadUrl("/essay/");
             break;
           case 71:
@@ -3474,9 +3475,6 @@ const cloudchewieFn = {
             break;
           case 77:
             pjax.loadUrl("/music/");
-            break;
-          case 72:
-            pjax.loadUrl("/help/");
             break;
           case 65:
             pjax.loadUrl("/about/");

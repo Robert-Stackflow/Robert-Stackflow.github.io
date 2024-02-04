@@ -6,7 +6,7 @@
   <link href="https://blog.cloudchewie.com/atom.xml" rel="self"/>
   
   <link href="https://blog.cloudchewie.com/"/>
-  <updated>2024-02-02T05:51:01.675Z</updated>
+  <updated>2024-02-04T05:54:08.530Z</updated>
   <id>https://blog.cloudchewie.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>【撰写中】博客搭建指南(一)</title>
+    <title>博客搭建指南(一)</title>
     <link href="https://blog.cloudchewie.com/posts/2024/02/01/tutorial/Blog-Building-Guide-1/"/>
     <id>https://blog.cloudchewie.com/posts/2024/02/01/tutorial/Blog-Building-Guide-1/</id>
     <published>2024-02-01T10:32:11.000Z</published>
-    <updated>2024-02-02T05:51:01.675Z</updated>
+    <updated>2024-02-04T05:54:08.530Z</updated>
     
     
     <summary type="html">我的博客搭建指南之一，主要介绍博客功能的演变升级历程，如控制台、导航栏、右键菜单等实现过程。</summary>
@@ -80,7 +80,7 @@
     <link href="https://blog.cloudchewie.com/posts/2023/09/11/tutorial/Install-WSL2-on-Windows/"/>
     <id>https://blog.cloudchewie.com/posts/2023/09/11/tutorial/Install-WSL2-on-Windows/</id>
     <published>2023-09-11T10:09:05.000Z</published>
-    <updated>2024-01-31T11:56:25.481Z</updated>
+    <updated>2024-02-04T05:13:50.115Z</updated>
     
     
     <summary type="html">Windows下安装Linux子系统教程</summary>
