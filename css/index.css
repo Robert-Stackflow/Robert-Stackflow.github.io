@@ -1539,7 +1539,7 @@ canvas:not(#ribbon-canvas),
   --cloudchewie-ahoverbg: #fff;
   --cloudchewie-scrollbar: rgba(200,200,223,0.4);
   --cloudchewie-lighttext: #f2b94b;
-  --cloudchewie-secondtext: #a1a2b8;
+  --cloudchewie-secondtext: #a8a9aa;
   --cloudchewie-scrollbar: rgba(200,200,223,0.4);
   --cloudchewie-card-btn-bg: #30343f;
   --cloudchewie-post-blockquote-bg: #000;
@@ -14919,7 +14919,7 @@ body[data-type="tags"] #tag #tag-page-tags {
   width: 70px;
 }
 .social-share .icon-wechat .wechat-qrcode h4,
-.social-share .icon-wechat .wechat-qrcode .help p {
+.social-share .icon-wechat .wechat-qrcode .help p,.comment {
   font-family: lxgw wenkai screen, -apple-system, BlinkMacSystemFont, Roboto,
     Segoe UI, Helvetica, Arial, sans-serif !important;
 }
