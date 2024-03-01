@@ -14252,6 +14252,7 @@ template {
   user-select: none;
   outline: none;
   transform: translateY(5px);
+  cursor: pointer;
 }
 [data-theme="dark"] .consoleContent input[type="checkbox"] {
   border: 1px solid white;
@@ -14279,9 +14280,6 @@ template {
 .consoleContent input[type="checkbox"]:checked:before {
   left: 19px;
   background-color: white !important;
-}
-.consoleContent input[type="checkbox"] {
-  transition: border background-color box-shadow;
 }
 .consoleContent input[type="checkbox"]:before {
   transition: left 0.2s;
@@ -14571,6 +14569,7 @@ consoleShortcutsRight {
   height: 2.5em;
   line-height: 2.5em;
   text-align: center;
+  cursor: pointer;
   color: var(--cloudchewie-font-color);
 }
 #url-btn:hover {
@@ -19471,10 +19470,6 @@ div.tk-submit > div.tk-row.actions > a {
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   width: fit-content;
-  cursor: pointer;
-}
-.equipment-item .equipment-item-content .equipment-item-content-item .equipment-item-content-item-name:hover {
-  color: var(--cloudchewie-main);
 }
 .equipment-item .equipment-item-content .equipment-item-content-item .equipment-item-content-item-specification {
   font-size: 12px;
