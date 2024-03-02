@@ -4237,7 +4237,7 @@ const consoleFn = {
     }
     //加载噪点效果
     if (cloudchewieFn.loadData("enableNoise") == undefined) {
-      cloudchewieFn.saveData("enableNoise", "true");
+      cloudchewieFn.saveData("enableNoise", "false");
     }
     if (cloudchewieFn.loadData("enableNoise") == "true") {
       document.getElementById("con-toggleNoise").checked = true;
