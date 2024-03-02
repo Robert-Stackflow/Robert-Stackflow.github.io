@@ -11024,6 +11024,9 @@ p.p.gray {
 [data-theme='dark'] #article-container code {
   background: var(--cloudchewie-code-stress);
 }
+[data-theme='dark'] #article-container a:not(.banner-button):not(.tag-Link) {
+  color: var(--text-highlight-color);
+}
 [data-theme='dark'] #article-container pre > code {
   background: #171717;
 }
@@ -11041,6 +11044,58 @@ p.p.gray {
   border-color: #696969;
   background-color: #525252;
   color: #e2f1ff;
+}
+[data-theme='dark'] #post ol a:not(.no-custom),
+[data-theme='dark'] #page ol a:not(.no-custom),
+[data-theme='dark'] .CtxtMenu_MenuFrame ol a:not(.no-custom),
+[data-theme='dark'] #post ul a:not(.no-custom),
+[data-theme='dark'] #page ul a:not(.no-custom),
+[data-theme='dark'] .CtxtMenu_MenuFrame ul a:not(.no-custom),
+[data-theme='dark'] #post p a,
+[data-theme='dark'] #page p a,
+[data-theme='dark'] .CtxtMenu_MenuFrame p a,
+[data-theme='dark'] #post .post-copyright a:not(.post-copyright__original):not(.post-copyright__author_img):not(.post-copyright-title):not(.post-meta__box__tags):not(.share-button),
+[data-theme='dark'] #page .post-copyright a:not(.post-copyright__original):not(.post-copyright__author_img):not(.post-copyright-title):not(.post-meta__box__tags):not(.share-button),
+[data-theme='dark'] .CtxtMenu_MenuFrame .post-copyright a:not(.post-copyright__original):not(.post-copyright__author_img):not(.post-copyright-title):not(.post-meta__box__tags):not(.share-button),
+[data-theme='dark'] #post .bangumi-title a,
+[data-theme='dark'] #page .bangumi-title a,
+[data-theme='dark'] .CtxtMenu_MenuFrame .bangumi-title a,
+[data-theme='dark'] #post .announcement_content a,
+[data-theme='dark'] #page .announcement_content a,
+[data-theme='dark'] .CtxtMenu_MenuFrame .announcement_content a,
+[data-theme='dark'] #post #settings .helper a,
+[data-theme='dark'] #page #settings .helper a,
+[data-theme='dark'] .CtxtMenu_MenuFrame #settings .helper a,
+[data-theme='dark'] #post .CtxtMenu_InfoSignature a,
+[data-theme='dark'] #page .CtxtMenu_InfoSignature a,
+[data-theme='dark'] .CtxtMenu_MenuFrame .CtxtMenu_InfoSignature a {
+  border-bottom: solid 2px var(--text-highlight-color);
+}
+[data-theme='dark'] #post ol a:not(.no-custom):hover,
+[data-theme='dark'] #page ol a:not(.no-custom):hover,
+[data-theme='dark'] .CtxtMenu_MenuFrame ol a:not(.no-custom):hover,
+[data-theme='dark'] #post ul a:not(.no-custom):hover,
+[data-theme='dark'] #page ul a:not(.no-custom):hover,
+[data-theme='dark'] .CtxtMenu_MenuFrame ul a:not(.no-custom):hover,
+[data-theme='dark'] #post p a:hover,
+[data-theme='dark'] #page p a:hover,
+[data-theme='dark'] .CtxtMenu_MenuFrame p a:hover,
+[data-theme='dark'] #post .post-copyright a:not(.post-copyright__original):not(.post-copyright__author_img):not(.post-copyright-title):not(.post-meta__box__tags):not(.share-button):hover,
+[data-theme='dark'] #page .post-copyright a:not(.post-copyright__original):not(.post-copyright__author_img):not(.post-copyright-title):not(.post-meta__box__tags):not(.share-button):hover,
+[data-theme='dark'] .CtxtMenu_MenuFrame .post-copyright a:not(.post-copyright__original):not(.post-copyright__author_img):not(.post-copyright-title):not(.post-meta__box__tags):not(.share-button):hover,
+[data-theme='dark'] #post .bangumi-title a:hover,
+[data-theme='dark'] #page .bangumi-title a:hover,
+[data-theme='dark'] .CtxtMenu_MenuFrame .bangumi-title a:hover,
+[data-theme='dark'] #post .announcement_content a:hover,
+[data-theme='dark'] #page .announcement_content a:hover,
+[data-theme='dark'] .CtxtMenu_MenuFrame .announcement_content a:hover,
+[data-theme='dark'] #post #settings .helper a:hover,
+[data-theme='dark'] #page #settings .helper a:hover,
+[data-theme='dark'] .CtxtMenu_MenuFrame #settings .helper a:hover,
+[data-theme='dark'] #post .CtxtMenu_InfoSignature a:hover,
+[data-theme='dark'] #page .CtxtMenu_InfoSignature a:hover,
+[data-theme='dark'] .CtxtMenu_MenuFrame .CtxtMenu_InfoSignature a:hover {
+  border-bottom: solid 2px var(--cloudchewie-theme);
 }
 [data-theme='dark'] #page-header.nav-fixed > #nav,
 [data-theme='dark'] #page-header.not-top-img {
@@ -14330,7 +14385,7 @@ template {
   background-color: var(--text-bg-hover);
   color: white;
 }
- .consoleContentEntry:hover {
+.consoleContentEntry:hover {
   color: white;
   background-color: var(--btn-hover-color);
 }
@@ -14494,9 +14549,15 @@ consoleShortcutsRight {
   margin: 10px;
   background-size: cover;
 }
+.boxt {
+  display: flex;
+  width: 166px;
+  margin: 10px;
+  transition: all 0.3s;
+}
 .boxl {
+  display: block;
   width: 83px;
-  margin: 10px 0px 10px 10px;
   background-size: cover;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -14504,8 +14565,8 @@ consoleShortcutsRight {
   border-bottom-right-radius: 0px;
 }
 .boxr {
+  display: block;
   width: 83px;
-  margin: 10px 10px 10px 0px;
   background-size: cover;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
@@ -14522,16 +14583,15 @@ consoleShortcutsRight {
   height: 240px;
 }
 
-.imgbox {
-  height: 95px;
-}
-
+.imgbox,
 .box,
+.boxt,
 .playlist-item,
 .boxl,
 .boxr {
-  height: 100px;
+  height: 95px;
 }
+
 .playlist-item {
   display: flex;
   align-items: center;
@@ -14625,6 +14685,13 @@ consoleShortcutsRight {
 .playlist-container {
   display: flex;
   flex-wrap: wrap;
+}
+a.box:hover,
+a.imgbox:hover,
+a.playlist-item:hover,
+.boxt:hover {
+  transition: all 0.3s;
+  scale: 1.05;
 }
 
 .pagination-post img {
@@ -14919,7 +14986,8 @@ body[data-type="tags"] #tag #tag-page-tags {
   width: 70px;
 }
 .social-share .icon-wechat .wechat-qrcode h4,
-.social-share .icon-wechat .wechat-qrcode .help p,.comment {
+.social-share .icon-wechat .wechat-qrcode .help p,
+.comment {
   font-family: lxgw wenkai screen, -apple-system, BlinkMacSystemFont, Roboto,
     Segoe UI, Helvetica, Arial, sans-serif !important;
 }
@@ -15001,7 +15069,7 @@ body[data-type="tags"] #tag #tag-page-tags {
 [data-theme="light"] .nav-fixed #nav a {
   color: var(--cloudchewie-font-color) !important;
 }
-.back-home-button a.back-menu-item{
+.back-home-button a.back-menu-item {
   color: var(--cloudchewie-font-color) !important;
 }
 [data-theme="dark"] #pagination > div > a.page-number {
@@ -15532,7 +15600,7 @@ div.fj-gallery > p > div > a > img {
   text-align: center;
 }
 #rightside-button-list > button.checked {
-  background: #46c868 !important;
+  background: #3b70fc !important;
 }
 #card-toc {
   box-shadow: var(--card-box-shadow) !important;
@@ -16026,7 +16094,7 @@ button#go-up:hover #percent {
   display: none !important;
 }
 #rightside-button-list > a.checked {
-  background-color: #46c868;
+  background-color: #3b70fc;
 }
 /*****************************************
 留言板弹幕
@@ -16683,12 +16751,12 @@ AI摘要样式
   #nav #love-button {
     display: none;
   }
-  .back-menu-list-groups.collapse-menu{
+  .back-menu-list-groups.collapse-menu {
     display: block;
   }
 }
 @media screen and (min-width: 768px) {
-  .back-menu-list-groups.collapse-menu{
+  .back-menu-list-groups.collapse-menu {
     display: none;
   }
 }
@@ -16923,9 +16991,16 @@ blockquote code {
   border: var(--card-border);
   margin: 0px 5px;
 }
-.talk_content ul li{
+.talk_content ul li {
   margin: 8px 0px;
 }
+details.folding-tag > summary {
+  color: var(--cloudchewie-font-color) !important;
+}
+[data-theme="dark"] details.folding-tag > summary:hover {
+  color: var(--cloudchewie-white) !important;
+}
+
 #page:has(#cloudMusic-page) {
   border: 0;
   box-shadow: none !important;

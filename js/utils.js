@@ -4359,7 +4359,7 @@ const consoleFn = {
   setThemeColor: (r, g, b) => {
     document.getElementById(
       "themeColor"
-    ).innerText = `:root{--cloudchewie-theme:rgb(${r}, ${g}, ${b})!important;--btn-bg:rgb(${r}, ${g}, ${b})!important;--btn-hover-color:rgba(${r}, ${g}, ${b},0.7)!important;--text-bg-hover:rgba(${r}, ${g}, ${b},0.7)!important;--km-toc-active:rgba(${r}, ${g}, ${b},0.7)!important;--km-toc-hover:rgba(${r}, ${g}, ${b},0.6)!important;}`;
+    ).innerText = `:root{--cloudchewie-theme:rgb(${r}, ${g}, ${b})!important;--btn-bg:rgb(${r}, ${g}, ${b})!important;--btn-hover-color:rgba(${r}, ${g}, ${b},0.8)!important;--text-bg-hover:rgba(${r}, ${g}, ${b},0.5)!important;--km-toc-active:rgba(${r}, ${g}, ${b},0.8)!important;--km-toc-hover:rgba(${r}, ${g}, ${b},0.6)!important;}`;
   },
   /**
    * 打开/关闭繁星效果
