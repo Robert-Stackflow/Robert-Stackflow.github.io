@@ -2017,7 +2017,6 @@ figure.highlight pre .javascript .function {
 #article-container .code-expand-btn {
   position: absolute;
   bottom: 0px;
-  z-index: 10;
   width: 100%;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
@@ -5099,6 +5098,9 @@ li.categoryBar-list-item {
 #post-comment .comment-head a {
   color: var(--cloudchewie-font-color);
 }
+#post-comment .comment-head a:hover {
+  color: var(--cloudchewie-theme);
+}
 #post-comment .comment-head .comment-headline {
   display: inline-block;
   vertical-align: middle;
@@ -5183,7 +5185,7 @@ li.categoryBar-list-item {
 }
 #footer-wrap {
   position: relative;
-  padding: 30px 20px;
+  padding: 20px;
   color: var(--black);
   text-align: center;
   font-weight: 600;
@@ -8154,7 +8156,6 @@ ul.menus_item_child {
   border-radius: 100px;
   background-color: var(--btn-bg);
   color: var(--btn-color);
-  border: var(--card-border);
   text-align: center;
   font-size: 16px;
   line-height: 35px;
@@ -11684,9 +11685,6 @@ p.p.gray {
 .read-mode #article-container .note .note-icon {
   color: var(--cloudchewie-font-color);
 }
-.author-content {
-  color: white;
-}
 .author-content.analysis {
   background: var(--card-bg);
   border: var(--card-border) !important;
@@ -11961,47 +11959,11 @@ p.p.gray {
   color: var(--cloudchewie-white) !important;
   border: none !important;
 }
-.author-content-item .card-content .banner-button-group {
-  position: absolute;
-  bottom: 1.5rem;
-  right: 2rem;
-}
-.author-content-item .card-content .banner-button-group .banner-button {
-  height: 40px;
-  width: 124px;
-  border-radius: 20px;
-  justify-content: center;
-  background: var(--cloudchewie-card-bg);
-  color: var(--cloudchewie-font-color);
-  display: flex;
-  align-items: center;
-  z-index: 1;
-  transition: 0.3s;
-  cursor: pointer;
-  border-bottom: 0 !important;
-}
-.author-content-item .card-content .banner-button-group .banner-button i {
-  margin-right: 8px;
-  font-size: 1rem;
-}
-#about-page
-  .author-content-item
-  .card-content
-  .banner-button-group
-  .banner-button
-  i {
-  font-size: 1.5rem;
-}
-
-.author-content-item .card-content .banner-button-group .banner-button:hover {
-  background: var(--cloudchewie-main);
-  color: var(--cloudchewie-white);
-  border-radius: 20px !important;
-}
 .author-content-item.personalities {
   min-height: 240px;
   position: relative;
   background: linear-gradient(120deg, #ff27e8 0, #ff8000 100%);
+  color: var(--cloudchewie-white);
   width: 32%;
 }
 
@@ -12069,26 +12031,26 @@ p.p.gray {
 }
 .author-content-item.selfInfo {
   display: flex;
-  max-height: 400px;
-  background: linear-gradient(120deg, #5b27ff 0, #20809f 100%);
-  background-size: 200%;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  min-height: 200px;
   width: 59%;
 }
+
 .author-content-item.selfInfo div {
   display: flex;
   flex-direction: column;
   margin: 0.5rem 2rem 0.5rem 0;
+  min-width: 120px;
 }
+
 .author-content-item.selfInfo .selfInfo-title {
   opacity: 0.8;
-  font-size: 0.6rem;
+  font-size: 14px;
   line-height: 1;
   margin-bottom: 8px;
 }
+
 .author-content-item.selfInfo .selfInfo-content {
   font-weight: 700;
   font-size: 34px;
@@ -12335,51 +12297,10 @@ p.p.gray {
 .post-reward .reward-main .reward-all:after {
   content: none !important;
 }
-.author-content-item.maxim {
-  font-size: 36px;
-  font-weight: 700;
-  line-height: 1.1;
-  display: flex;
-  background: linear-gradient(120deg, #ff27e8 0, #ff8000 100%);
-  align-items: flex-start;
-  flex-direction: column;
-  justify-content: center;
-  width: 39%;
-}
 .author-content-item .author-content-item-tips {
   opacity: 0.8;
-  font-size: 0.6rem;
+  font-size: 13px;
   margin-bottom: 0.5rem;
-}
-.author-content-item.maxim .maxim-title {
-  display: flex;
-  flex-direction: column;
-}
-.author-content-item.buff {
-  height: 200px;
-  font-size: 36px;
-  font-weight: 700;
-  line-height: 1.1;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  justify-content: center;
-  background: linear-gradient(120deg, #ff27e8 0, #ff8000 100%);
-  color: var(--cloudchewie-white);
-  background-size: 200%;
-  animation: gradient 15s ease infinite;
-  min-height: 200px;
-  height: fit-content;
-  width: 59%;
-}
-.author-content-item.buff .card-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.author-content-item.buff .buff-title {
-  display: flex;
-  flex-direction: column;
 }
 .card-background-icon {
   font-size: 12rem;
@@ -12399,7 +12320,9 @@ p.p.gray {
   color: var(--cloudchewie-white);
   width: 66%;
 }
-
+.author-content-item.create-site-post{
+  padding: 1rem 2rem;
+}
 .author-content-item .content-bottom {
   margin-top: auto;
   display: flex;
@@ -12419,34 +12342,6 @@ p.p.gray {
 .icon-pos-mid {
   background: url(https://img02.anzhiy.cn/adminuploads/1/2022/09/25/632fb9cecfc8c.png);
 }
-.author-content-item.game-yuanshen::after {
-  box-shadow: 0 -69px 203px 11px #575d8b inset;
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-}
-
-.author-content-item.comic-content {
-  width: 39%;
-  background: url(https://npm.elemecdn.com/cloudchewie-blog@1.1.6https://picbed.cloudchewie.com/blog/post/common/violet.jpg)
-    no-repeat top;
-  background-size: cover;
-  min-height: 300px;
-  overflow: hidden;
-  color: violet;
-}
-.author-content-item.comic-content::after {
-  box-shadow: 0 -48px 203px 11px #fbe9b8 inset;
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-}
 
 .author-content-item.beloved {
   background: url(https://picbed.cloudchewie.com/index/beloved.jpg!cover)
@@ -12464,12 +12359,6 @@ p.p.gray {
   color: var(--cloudchewie-white);
   overflow: hidden;
 }
-
-.author-content-item .card-content .banner-button-group {
-  position: absolute;
-  bottom: 1.5rem;
-  right: 2rem;
-}
 @media screen and (max-width: 900px) {
   .layout:has(.transparentpage) > div:first-child:not(.recent-posts) {
     padding: 0px 14px !important;
@@ -12483,16 +12372,6 @@ p.p.gray {
   }
 }
 @media screen and (max-width: 768px) {
-  [data-theme="dark"]
-    .author-content-item
-    .card-content
-    .banner-button-group
-    .banner-button {
-    color: var(--cloudchewie-black) !important;
-  }
-  .author-content-item .card-content .banner-button-group .banner-button:hover {
-    background: none !important;
-  }
   .author-content-item.game-yuanshen .content-bottom {
     padding-bottom: 10px;
   }
@@ -12535,93 +12414,39 @@ p.p.gray {
     padding: 1rem 1rem !important;
     box-shadow: none !important;
   }
-  .author-content-item .card-content .banner-button-group .banner-button-text {
-    display: none;
-  }
-  .author-content-item .card-content .banner-button-group {
-    right: 1rem;
-    bottom: 1rem;
-  }
-  .author-content-item .card-content .banner-button-group .banner-button {
-    background: 0 0;
-    padding: 0;
-  }
-  .author-content-item .card-content .banner-button-group .banner-button i {
-    margin-right: 0;
-    font-size: 1.5rem;
-    background: white;
-    border-radius: 50%;
-    padding: 6px;
-    margin-left: 80px;
-  }
-  .author-content-item
-    .card-content
-    .banner-button-group
-    .banner-button:hover
-    i {
-    background: var(--cloudchewie-background) !important;
-    color: var(--cloudchewie-theme);
-  }
   #selfInfo-content-year {
     width: 90px;
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 896px) {
-  .author-content-item.like-music .content-bottom .tips {
-    display: none;
-  }
+.author-content-item.beloved::after {
+  box-shadow: 0 -69px 203px 11px #eaa398 inset;
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0
 }
 
-/* 赞赏的css */
-
-.reward-list-all {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-  margin-left: -0.25rem;
-  margin-right: -0.25rem;
+.author-content-item.like-music::after {
+  box-shadow: 0 -69px 203px 11px #746c61 inset;
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0
 }
 
-.reward-list-item {
-  padding: 1rem;
-  border-radius: 12px;
-  border: var(--card-border);
-  width: calc((100% / 3) - 0.5rem);
-  margin: 0 0.25rem 0.5rem 0.25rem;
-  box-shadow: var(--cloudchewie-shadow-border);
-}
-
-.reward-list-item .reward-list-item-name {
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1;
-  margin-bottom: 0.5rem;
-}
-
-.reward-list-item .reward-list-bottom-group {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.reward-list-item .reward-list-item-money {
-  padding: 4px;
-  background: var(--cloudchewie-font-color);
-  color: var(--card-bg);
-  font-size: 12px;
-  line-height: 1;
-  border-radius: 4px;
-  margin-right: 4px;
-  white-space: nowrap;
-}
-
-.reward-list-item .reward-list-item-time {
-  font-size: 12px;
-  color: var(--cloudchewie-secondtext);
-  white-space: nowrap;
+.author-content-item.game-yuanshen::after {
+  box-shadow: 0 -69px 203px 11px #515985 inset;
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0
 }
 
 .hello-about {
@@ -15449,9 +15274,18 @@ body[data-type="tags"] #tag #tag-page-tags {
   border-radius: 5px !important;
   text-align: center;
 }
+@media (max-width: 640px) {
+  .snackbar-container {
+      border-radius: 0px !important;
+      justify-content: center !important;
+  }
+}
 blockquote {
   font-family: lxgw wenkai screen, -apple-system, BlinkMacSystemFont, Roboto,
     Segoe UI, Helvetica, Arial, sans-serif;
+}
+b, strong {
+  color: var(--cloudchewie-font-color);
 }
 blockquote > :first-child {
   margin-top: 0 !important;
@@ -15840,7 +15674,7 @@ li.categoryBar-list-item {
 }
 @media screen and (min-width: 900px) {
   .transparentpage {
-    padding: 0px 40px !important;
+    padding: 0px 0px !important;
   }
 }
 .transparentpage .page-title {
@@ -17844,6 +17678,10 @@ a.banner-button:hover {
     width: calc(100% - 2rem);
   }
 
+  .author-content-item .content-bottom {
+    width: calc(100% - 3.5rem);
+  }
+
   a.banner-button {
     width: 50px;
     height: 35px;
@@ -18137,8 +17975,16 @@ span.talk_tag {
 .talk_content {
   padding-bottom: 3px !important;
 }
+.tag-div{
+  display: inline;
+  padding: 6px 0px 1px 0px;
+}
 .tag-span {
+  border: var(--card-border);
   color: var(--cloudchewie-theme);
+  border-radius: 8px;
+  background: var(--cloudchewie-background);
+  padding: 3px 6px;
 }
 .music-wrapper .aplayer {
   margin: 0.5rem 0 !important;

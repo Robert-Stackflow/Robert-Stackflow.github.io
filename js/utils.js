@@ -246,6 +246,12 @@ const cloudchewieFn = {
     return window.location.pathname.indexOf("/posts/") != -1;
   },
   /**
+   * 是否包含评论
+   */
+  containCommentDom: function () {
+    return document.querySelector("#post-comment") != undefined;
+  },
+  /**
    * 是否为留言板页
    */
   isGuestbook: function () {
@@ -937,6 +943,9 @@ const cloudchewieFn = {
         //如果有文字选中，则显示文字选中相关的菜单项
         if (document.getSelection().toString()) {
           $("#menu-text").show();
+          if(!cloudchewieFn.containCommentDom()){
+            $("#refer-to-comment").hide();
+          }
         }
         //如果是文章，则显示文章相关的菜单项
         if (document.getElementById("post")) {
@@ -978,6 +987,9 @@ const cloudchewieFn = {
         //如果是图片
         if (el.tagName == "IMG") {
           $("#menu-img").show();
+          if($(el).parent().attr("class")==undefined||$(el).parent().attr("class").indexOf("fj-gallery-item")==-1){
+            $("#fullscreen-image").hide();
+          }
           cloudchewieFn.openWithNewTab = function () {
             window.open(el.src);
           };
@@ -1009,8 +1021,9 @@ const cloudchewieFn = {
               cloudchewieFn.snackbarShow("有正在进行中的下载，请稍后再试");
             }
           };
-          cloudchewieFn.click = function () {
-            el.click();
+          cloudchewieFn.fullScreenImage = function () {
+            if($(el).parent().attr("class").indexOf("fj-gallery-item")!=-1)
+              el.click();
           };
           cloudchewieFn.copyLink = function () {
             let url = el.src;
@@ -2970,7 +2983,7 @@ const cloudchewieFn = {
   },
   formatMemo: (item) => {
     //正则式
-    const TAG_REG = /#([^\s#]+)/;
+    const TAG_REG = /#([^\s#]+)/g;
     const IMG_REG = /\!\[(.*?)\]\((.*?)\)/g;
     BILIBILI_REG =
       /<a.*?href="https:\/\/www\.bilibili\.com\/video\/((av[\d]{1,10})|(BV([\w]{10})))\/?".*?>.*<\/a>/g;
@@ -3013,7 +3026,7 @@ const cloudchewieFn = {
       imgls = [],
       text = "";
     content = content
-      .replace(TAG_REG, "<span class='tag-span'>#$1</span> ")
+      .replace(TAG_REG, "<div class='tag-div'><span class='tag-span'><i class='cloudchewiefont cloudchewie-icon-hashtag'></i>$1</span></div>")
       .replace(
         IMG_REG,
         `<a href="$2" data-fancybox="gallery" class="fancybox" data-thumb="$2"><img class="no-lazyload" src="$2"></a>`
