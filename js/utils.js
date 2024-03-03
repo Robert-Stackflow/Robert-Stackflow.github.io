@@ -131,7 +131,7 @@ var vegetablesAndFruits = [
   "火龙果",
 ];
 
-var noiseCSS=`
+var noiseCSS = `
 body:before {
   content: "";
   display: block;
@@ -145,7 +145,7 @@ body:before {
   touch-action: none;
 }`;
 
-var trailingUrl="https://www.travellings.cn/go.html";
+var trailingUrl = "https://www.travellings.cn/go.html";
 
 const cloudchewieFn = {
   day_night_count: 0,
@@ -943,7 +943,7 @@ const cloudchewieFn = {
         //如果有文字选中，则显示文字选中相关的菜单项
         if (document.getSelection().toString()) {
           $("#menu-text").show();
-          if(!cloudchewieFn.containCommentDom()){
+          if (!cloudchewieFn.containCommentDom()) {
             $("#refer-to-comment").hide();
           }
         }
@@ -987,7 +987,10 @@ const cloudchewieFn = {
         //如果是图片
         if (el.tagName == "IMG") {
           $("#menu-img").show();
-          if($(el).parent().attr("class")==undefined||$(el).parent().attr("class").indexOf("fj-gallery-item")==-1){
+          if (
+            $(el).parent().attr("class") == undefined ||
+            $(el).parent().attr("class").indexOf("fj-gallery-item") == -1
+          ) {
             $("#fullscreen-image").hide();
           }
           cloudchewieFn.openWithNewTab = function () {
@@ -1022,7 +1025,7 @@ const cloudchewieFn = {
             }
           };
           cloudchewieFn.fullScreenImage = function () {
-            if($(el).parent().attr("class").indexOf("fj-gallery-item")!=-1)
+            if ($(el).parent().attr("class").indexOf("fj-gallery-item") != -1)
               el.click();
           };
           cloudchewieFn.copyLink = function () {
@@ -2850,22 +2853,7 @@ const cloudchewieFn = {
   },
   fetchMemos: async () => {
     var items = [],
-      item = {},
-      nextDatas = [],
-      nextData = {},
-      limit = 2;
-    var page = 1,
-      offset = 0,
-      nextLength = 0,
-      nextDom = "",
-      bbUrlNow = "",
-      imgsrcNow = "",
-      hostNow = "",
-      creIdNow = "",
-      commentNow = "",
-      twiEnvNow = "",
-      artEnvNow = "",
-      artSiteNow = "";
+      item = {};
     const withTimeout = (millis, promise) => {
       const timeout = new Promise((resolve, reject) =>
         setTimeout(() => reject(`Timed out after ms.`), millis)
@@ -2953,17 +2941,22 @@ const cloudchewieFn = {
     //   avatar: "https://picbed.cloudchewie.com/index/avatar.png!mini",
     // });
     items.forEach((item) => {
-      html += `
+      html += String.raw`
                 <div class="talk_item">
                   <div class="talk_content">${item.content}</div>
                   <div class="talk_spacer"></div>
-                  <div class="talk_meta">
-                    <img class="no-lightbox no-lazyload avatar" src="${item.avatar}">
-                    <div class="info">
-                      <span class="talk_nick">${item.name}</span>
-                      <span class="talk_dot">·</span>
-                      <span class="talk_date">${item.date}</span>
+                  <div class="talk_bottom">
+                    <div class="talk_meta">
+                      <div class="talk_meta_user">
+                        <img class="no-lightbox no-lazyload talk_avatar" src="${item.avatar}">
+                        <span class="talk_nick">${item.name}</span>
+                      </div>
+                      <div class="talk_meta_date">
+                        <i class="fa fa-clock"></i>
+                        <span class="talk_date">${item.date}</span>
+                      </div>
                     </div>
+                    <span class="talk_reply" onclick="cloudchewieFn.referToComment('${item.raw_content}')"><i class="fas fa-message"></i></div>
                   </div>
                 </div>
                 `;
@@ -2984,6 +2977,7 @@ const cloudchewieFn = {
   formatMemo: (item) => {
     //正则式
     const TAG_REG = /#([^\s#]+)/g;
+    const SPACE_REG = /\s+/g;
     const IMG_REG = /\!\[(.*?)\]\((.*?)\)/g;
     BILIBILI_REG =
       /<a.*?href="https:\/\/www\.bilibili\.com\/video\/((av[\d]{1,10})|(BV([\w]{10})))\/?".*?>.*<\/a>/g;
@@ -3023,10 +3017,25 @@ const cloudchewieFn = {
     marked.use({ renderer });
     //处理内容
     let content = item.content,
+      raw_content = item.content,
       imgls = [],
       text = "";
+    tags = content.match(TAG_REG);
+    tag_group_html = "<div class='tag-group'>";
+    if (tags != null) {
+      tags.forEach((e) => {
+        tag_group_html += `<div class='tag-div'><span class='tag-span'><i class='cloudchewiefont cloudchewie-icon-hashtag'></i>${e.replace(
+          "#",
+          ""
+        )}</span></div>`;
+      });
+    }
+    tag_group_html += "</div>";
+    raw_content = raw_content.replaceAll("`","\\`").replaceAll("\n","\\n").replace(TAG_REG, "").replace(IMG_REG,"");
+    console.log(String.raw`${raw_content}`)
+    raw_content = raw_content.replace(BILIBILI_REG,"").replace(NETEASE_MUSIC_REG,"").replace(QQMUSIC_REG,"").replace(QQVIDEO_REG,"").replace(YOUKU_REG,"").replace(YOUTUBE_REG,"");
     content = content
-      .replace(TAG_REG, "<div class='tag-div'><span class='tag-span'><i class='cloudchewiefont cloudchewie-icon-hashtag'></i>$1</span></div>")
+      .replace(TAG_REG, "")
       .replace(
         IMG_REG,
         `<a href="$2" data-fancybox="gallery" class="fancybox" data-thumb="$2"><img class="no-lazyload" src="$2"></a>`
@@ -3085,8 +3094,10 @@ const cloudchewieFn = {
         );
       content += "</div>";
     }
+    content += tag_group_html;
     return {
       content: content,
+      raw_content: raw_content,
       date: new Date(item.createdTs * 1000).toLocaleString(),
       text: text.replace(
         /\[(.*?)\]\((.*?)\)/g,
@@ -3453,7 +3464,7 @@ const cloudchewieFn = {
           case 80:
             if (cloudchewieFn.loadData("enableAPlayer") == true) {
               cloudchewieFn.toggleMusic();
-            }else{
+            } else {
               cloudchewieFn.snackbarShow("已禁用APlayer，该快捷键不生效");
             }
             break;
