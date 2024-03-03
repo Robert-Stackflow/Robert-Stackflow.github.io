@@ -452,6 +452,20 @@
 
   
   <url>
+    <loc>https://blog.cloudchewie.com/tags/%E6%95%A3%E6%96%87/</loc>
+    <lastmod>2024-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cloudchewie.com/tags/%E5%B0%8F%E8%AF%B4/</loc>
+    <lastmod>2024-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.cloudchewie.com/tags/API%E6%96%87%E6%A1%A3/</loc>
     <lastmod>2024-03-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -542,21 +556,14 @@
     <priority>0.2</priority>
   </url>
   
-  <url>
-    <loc>https://blog.cloudchewie.com/tags/%E6%95%A3%E6%96%87/</loc>
-    <lastmod>2024-03-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.cloudchewie.com/tags/%E5%B0%8F%E8%AF%B4/</loc>
-    <lastmod>2024-03-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
 
+  
+  <url>
+    <loc>https://blog.cloudchewie.com/categories/%E7%8F%A0%E7%8E%91/</loc>
+    <lastmod>2024-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
   <url>
     <loc>https://blog.cloudchewie.com/categories/%E6%96%87%E6%A1%A3/</loc>
@@ -574,13 +581,6 @@
   
   <url>
     <loc>https://blog.cloudchewie.com/categories/%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2024-03-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.cloudchewie.com/categories/%E7%8F%A0%E7%8E%91/</loc>
     <lastmod>2024-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
