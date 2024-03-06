@@ -1,17 +1,20 @@
 [
     {
         "id": 2,
-        "name": "cloudchewie",
-        "avatar": "https://picbed.cloudchewie.com/memos/avatar/cloudchewie.jpg!mini"
+        "name": "users/cloudchewie",
+        "nickname": "cloudchewie",
+        "avatarUrl": "https://picbed.cloudchewie.com/memos/avatar/cloudchewie.jpg!mini"
     },
     {
         "id": 3,
-        "name": "jike",
-        "avatar": ""
+        "name": "users/jike",
+        "nickname": "jike",
+        "avatarUrl": ""
     },
     {
         "id": 1,
-        "name": "Ruida",
-        "avatar": "https://picbed.cloudchewie.com/index/avatar.png!mini"
+        "name": "users/Robert-Stackflow",
+        "nickname": "Ruida",
+        "avatarUrl": "https://picbed.cloudchewie.com/index/avatar.png!mini"
     }
 ]

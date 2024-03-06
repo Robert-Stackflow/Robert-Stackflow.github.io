@@ -7241,11 +7241,11 @@ ul.menus_item_child {
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
-#twikoo .tk-comments a:not(.banner-button):not(.tag-Link):not(.tk-action-link) {
+#twikoo .tk-comments a:not(.banner-button):not(.tag-Link):not(.tk-action-link):not(.tk-ruser):not(.tk-nick-link):not(small.tk-actions a) {
   color: var(--cloudchewie-theme);
   padding: 3px;
 }
-#twikoo .tk-comments a:not(.banner-button):not(.tag-Link):not(.tk-action-link):hover {
+#twikoo .tk-comments a:not(.banner-button):not(.tag-Link):not(.tk-action-link):not(.tk-ruser):not(.tk-nick-link):not(small.tk-actions a):hover {
   text-decoration: none;
   border-radius: 5px;
   background: var(--cloudchewie-theme);
@@ -17874,11 +17874,16 @@ a.talk_comment:hover {
   width: 100%;
   line-height: 1.5;
 }
+.talk_meta{
+  margin-right: 20px;
+  flex-flow:row wrap;
+  row-gap: 6px;
+}
 .talk_reply{
   transition: all 0.3s;
   cursor: pointer;
 }
-.talk_meta_user,.talk_meta_date{
+.talk_meta_user,.talk_meta_date,.talk_meta_tag{
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -17890,11 +17895,18 @@ a.talk_comment:hover {
   color: var(--cloudchewie-font-color);
   font-size: .8rem;
   background-color: var(--cloudchewie-code-stress);
-  padding: 2px 8px;
+  padding: 2px 10px;
   border-radius: 20px;
   margin-right: 6px;
+  transition: all 0.3s;
 }
-.talk_meta_user:hover,.talk_meta_date:hover{
+.talk_meta_user,.talk_meta_tag,.talk_meta_date{
+  cursor: pointer;
+}
+.talk_meta_tag i.cloudchewie-icon-hashtag{
+  font-size: 13px !important;
+}
+.talk_meta_user:hover,.talk_meta_date:hover,.talk_meta_tag:hover{
   background-color: var(--cloudchewie-theme);
   color:var(--cloudchewie-white);
 }
@@ -17914,6 +17926,11 @@ span.talk_nick {
   line-height: 2.2;
 }
 span.talk_date {
+  margin-left: 3px;
+  font-weight: 400;
+  line-height: 2.2;
+}
+span.talk_tag {
   margin-left: 3px;
   font-weight: 400;
   line-height: 2.2;
@@ -17960,11 +17977,6 @@ img.no-lazyload {
   color: #ffffff;
 
   background-color: transparent !important;
-}
-
-span.talk_tag {
-  margin-top: 20px;
-  font-size: 14px;
 }
 .talk_content > a {
   margin: 0 3px;
@@ -18666,7 +18678,7 @@ span.talk_tag {
   background: none !important;
 }
 .music-wrapper span,
-.music-wrapper p {
+.music-wrapper p,.fancybox__toolbar {
   font-family: lxgw wenkai screen, -apple-system, BlinkMacSystemFont, Roboto,
     Segoe UI, Helvetica, Arial, sans-serif !important;
 }
@@ -18747,109 +18759,44 @@ span.talk_tag {
   background: var(--cloudchewie-theme) !important;
   color: #fff !important;
 }
-div.tk-main > div.tk-content p {
-  margin: 2.6px 0px 12.6px 0px !important;
-}
 .tk-footer {
   display: none;
+}
+small.tk-actions{
+  transition: all 0.3s;
 }
 /* 小角标 */
 .el-input.el-input--small.el-input-group.el-input-group--prepend::after {
   display: none;
   content: "";
   position: absolute;
-  /* 内容大小（宽高）为0且边框大小不为0的情况下，每一条边（4个边）都是一个三角形，组成一个正方形。
-    我们先将所有边框透明，再给其中的一条边添加颜色就可以实现小三角图标 */
   border: 12px solid transparent;
   border-top-color: #444;
   left: 50%;
   transform: translate(-50%, -48px);
 }
-
-/* 评论设备名称常态隐藏，悬停评论时显示 */
-.tk-extras {
-  opacity: 0;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  filter: alpha(opacity=0);
+.tk-extras{
+  margin-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
-
-.tk-content:hover + .tk-extras {
-  -webkit-animation: tk-extras-fadeIn 0.5s linear;
-  -moz-animation: tk-extras-fadeIn 0.5s linear;
-  -o-animation: tk-extras-fadeIn 0.5s linear;
-  -ms-animation: tk-extras-fadeIn 0.5s linear;
-  animation: tk-extras-fadeIn 0.5s linear;
-  -webkit-animation-fill-mode: forwards;
-  -moz-animation-fill-mode: forwards;
-  -o-animation-fill-mode: forwards;
-  -ms-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
+.tk-extra .tk-icon {
+  display: none;
 }
-
-@-moz-keyframes tk-extras-fadeIn {
-  from {
-    opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    filter: alpha(opacity=0);
-  }
-  to {
-    opacity: 1;
-    -ms-filter: none;
-    filter: none;
-  }
+.tk-extra{
+  background: var(--cloudchewie-background);
+  border: var(--card-border);
+  color: var(--cloudchewie-secondtext) !important;
+  margin-right: 6px !important;
+  margin-top: 4px !important;
+  border-radius: 8px;
+  padding: 4px 8px 4px 3px;
 }
-
-@-webkit-keyframes tk-extras-fadeIn {
-  from {
-    opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    filter: alpha(opacity=0);
-  }
-  to {
-    opacity: 1;
-    -ms-filter: none;
-    filter: none;
-  }
-}
-
-@-o-keyframes tk-extras-fadeIn {
-  from {
-    opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    filter: alpha(opacity=0);
-  }
-  to {
-    opacity: 1;
-    -ms-filter: none;
-    filter: none;
-  }
-}
-
-@keyframes tk-extras-fadeIn {
-  from {
-    opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    filter: alpha(opacity=0);
-  }
-  to {
-    opacity: 1;
-    -ms-filter: none;
-    filter: none;
-  }
-}
-
-div.tk-row.actions > div > div:nth-child(2) {
-  visibility: hidden;
-}
-
 div.tk-submit > div.tk-row.actions > a {
   visibility: hidden;
 }
-/* 输入框最小高度 */
 .el-textarea__inner {
   min-height: 200px !important;
 }
-/* 隐藏logo */
 #twikoo > div.tk-footer {
   visibility: visible;
 }
@@ -18948,6 +18895,18 @@ div.tk-submit > div.tk-row.actions > a {
 }
 a.tk-action-link,small.tk-actions a{
   cursor: pointer;
+}
+.transparentpage .tk-comments-container>.tk-comment {
+  background: var(--card-bg);
+  padding: 1rem;
+  padding-bottom: 1rem;
+  border: var(--card-border);
+  box-shadow: var(--card-box-shadow);
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+.transparentpage .tk-comments-container>.tk-comment:hover {
+  box-shadow: var(--card-hover-box-shadow);
 }
 .search-dialog {
   position: fixed;
@@ -20311,11 +20270,6 @@ img.inline.entered.loaded {
 #footer-wrap a {
   display: inline-block;
   margin: 3px;
-}
-.tk-main .tk-content {
-  background-color: rgba(144,147,153,0.1);
-  border-radius: 10px;
-  padding: 10px 15px 0 15px;
 }
 [data-theme="dark"] #footer:before {
   background-color: transparent !important;

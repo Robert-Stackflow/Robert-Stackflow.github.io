@@ -2882,8 +2882,6 @@ const cloudchewieFn = {
               )
                 .then((response) => response.json())
                 .then((resdata) => {
-                  // var qsLive = ".bbs-urls.bbs-url[data-hostid='"+url.host+"u/"+url.creatorId+"']"
-                  // document.querySelector(qsLive).classList.add("liveon");
                   return resdata;
                 })
             )
@@ -2902,7 +2900,7 @@ const cloudchewieFn = {
                 if (dayDiff < 365) {
                   let avatarUrl = "";
                   users.forEach((user) => {
-                    if (user.id == resValue.creatorId) avatarUrl = user.avatar;
+                    if (user.id == resValue.creatorId) avatarUrl = user.avatarUrl;
                   });
                   item = {
                     id: resValue.id,
@@ -2913,8 +2911,10 @@ const cloudchewieFn = {
                     createdTs: resValue.createdTs,
                     creatorId: resValue.creatorId,
                     creator: resValue.creatorName,
+                    creatorUsername: resValue.creatorUsername,
                     content: resValue.content,
                     resourceList: resValue.resourceList,
+                    hash:resValue.name,
                   };
                   items.push(item);
                 }
@@ -2926,43 +2926,54 @@ const cloudchewieFn = {
         });
       });
   },
+  onUserClicked:(user)=>{
+    window.open(`https://memos.cloudchewie.com/u/${user}`);
+  },
+  onTagClicked:(tag)=>{
+    window.open(`https://memos.cloudchewie.com/?tag=${tag}`);
+  },
+  onTimeClicked:(hash)=>{
+    window.open(`https://memos.cloudchewie.com/m/${hash}`);
+  },
   loadMemos: (data) => {
     let items = [],
       html = "";
     data.forEach((item) => {
       items.push(cloudchewieFn.formatMemo(item));
     });
-    // items.push({
-    //   content:
-    //     "服务器到期了，等明年9月份研究生入学了再买服务器，这段时间Memos就暂停营业啦。",
-    //   date: new Date(1700452319000).toLocaleString(),
-    //   text: "",
-    //   name: "余湍",
-    //   avatar: "https://picbed.cloudchewie.com/index/avatar.png!mini",
-    // });
     items.forEach((item) => {
+      tagHtml=""
+      if(item.tags!=null){
+        item.tags.forEach((e)=>{
+          tagHtml+=`<div class="talk_meta_tag" onclick="cloudchewieFn.onTagClicked('${e.replaceAll('#','')}')"><i class="cloudchewiefont cloudchewie-icon-hashtag"></i><span class="talk_tag">${e.replaceAll("#","")}</span></div>`
+        })
+      }
+      dateString=item.date.split(" ")[0].replaceAll("/","-");
+      dateList=dateString.split("-");
+      if(dateList.length==3)
+        dateString=dateList[0]+"年"+dateList[1]+"月"+dateList[1]+"日";
       html += String.raw`
                 <div class="talk_item">
                   <div class="talk_content">${item.content}</div>
                   <div class="talk_spacer"></div>
                   <div class="talk_bottom">
                     <div class="talk_meta">
-                      <div class="talk_meta_user">
+                      <div class="talk_meta_user" onclick="cloudchewieFn.onUserClicked('${item.username}')">
                         <img class="no-lightbox no-lazyload talk_avatar" src="${item.avatar}">
-                        <span class="talk_nick">${item.name}</span>
+                        <span class="talk_nick">${item.nickname}</span>
                       </div>
-                      <div class="talk_meta_date">
+                      <div class="talk_meta_date" onclick="cloudchewieFn.onTimeClicked('${item.hash}')">
                         <i class="fa fa-clock"></i>
-                        <span class="talk_date">${item.date}</span>
+                        <span class="talk_date">${dateString}</span>
                       </div>
-                    </div>
+                      ${tagHtml}
+                      </div>
                     <span class="talk_reply" onclick="cloudchewieFn.referToComment('${item.raw_content}')"><i class="fas fa-message"></i></div>
                   </div>
                 </div>
                 `;
     });
     document.getElementById("talk").innerHTML = html;
-    window.Lately && Lately.init({ target: ".talk_date" });
     var times = 0;
     var relayout = setInterval(function () {
       cloudchewieFn.isNowtime() &&
@@ -2973,6 +2984,20 @@ const cloudchewieFn = {
       times++;
       if (times > 5) clearInterval(relayout);
     }, 300);
+  },
+  fetchMemoTags: () => {
+    fetch('https://memos.cloudchewie.com/memos.api.v2.TagService/ListTags', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://memos.cloudchewie.com'
+      },
+    }).then(response => {
+      console.log(response.text)
+    }).catch(err => {
+      // 处理错误
+    });
   },
   formatMemo: (item) => {
     //正则式
@@ -3032,7 +3057,6 @@ const cloudchewieFn = {
     }
     tag_group_html += "</div>";
     raw_content = raw_content.replaceAll("`","\\`").replaceAll("\n","\\n").replace(TAG_REG, "").replace(IMG_REG,"");
-    console.log(String.raw`${raw_content}`)
     raw_content = raw_content.replace(BILIBILI_REG,"").replace(NETEASE_MUSIC_REG,"").replace(QQMUSIC_REG,"").replace(QQVIDEO_REG,"").replace(YOUKU_REG,"").replace(YOUTUBE_REG,"");
     content = content
       .replace(TAG_REG, "")
@@ -3094,17 +3118,20 @@ const cloudchewieFn = {
         );
       content += "</div>";
     }
-    content += tag_group_html;
+    // content += tag_group_html;
     return {
       content: content,
+      tags: tags,
       raw_content: raw_content,
       date: new Date(item.createdTs * 1000).toLocaleString(),
       text: text.replace(
         /\[(.*?)\]\((.*?)\)/g,
         "[链接]" + `${imgls ? "[图片]" : ""}`
       ),
-      name: item.creator,
+      nickname: item.creator,
+      username:item.creatorUsername,
       avatar: item.avatar,
+      hash:item.hash,
     };
   },
   /**
@@ -4667,18 +4694,6 @@ const consoleFn = {
  * =================================================
  */
 function runOne() {
-  //加载lately.js
-  if (typeof Lately === "undefined") {
-    const script = document.createElement("script");
-    script.src =
-      "https://cdn.cbd.int/hexo-theme-cloudchewie@latest/source/js/third-party/lately.min.js";
-    script.onload = () => {
-      Lately.init({ target: ".talk_date" });
-    };
-    document.head.appendChild(script);
-  } else {
-    Lately.init({ target: ".talk_date" });
-  }
   document.getElementById("con-mode").addEventListener("click", function () {
     setTimeout(cloudchewieFn.switchPostChart, 100);
   });
