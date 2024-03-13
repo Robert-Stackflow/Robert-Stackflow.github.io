@@ -1210,10 +1210,8 @@ const cloudchewieFn = {
       cloudchewieFn.isReadMode = false;
       $(".aplayer").show();
       $("#con-readmode").removeClass("checked");
-      $(document.getElementById("post-meta")).show();
-      // if (visible != "none") {
-      //   $(commentBarrage).fadeToggle();
-      // }
+      $("#post-meta").show();
+      $("#post-firstinfo").show();
     };
     const $body = document.body;
     $body.classList.add("read-mode");
@@ -1224,16 +1222,11 @@ const cloudchewieFn = {
     newEle.removeEventListener("click", clickFn);
     $body.appendChild(newEle);
     consoleFn.closeConsole();
-    $(document.getElementById("post-meta")).hide();
+    $("#post-meta").hide();
+    $("#post-firstinfo").hide();
     cloudchewieFn.isReadMode = true;
     $("#con-readmode").addClass("checked");
     $(".aplayer").hide();
-
-    // let commentBarrage = document.querySelector(".barrageswiper");
-    // let visible = $(commentBarrage).css("display");
-    // if (commentBarrage && !(visible == null || visible == "none")) {
-    //   $(commentBarrage).fadeToggle();
-    // }
     newEle.addEventListener("click", clickFn);
   },
   /**
@@ -4206,7 +4199,7 @@ const consoleFn = {
     }
     //加载是否打开APlayer
     if (cloudchewieFn.loadData("enableAPlayer") == undefined) {
-      cloudchewieFn.saveData("enableAPlayer", "false");
+      cloudchewieFn.saveData("enableAPlayer", "true");
     }
     const navMusic = $("#nav-music");
     if (navMusic != null && navMusic.find("meting-js") != null) {

@@ -15340,6 +15340,9 @@ blockquote {
 b, strong {
   color: var(--cloudchewie-font-color);
 }
+.note b,strong{
+  color: #4c4948;
+}
 blockquote > :first-child {
   margin-top: 0 !important;
 }
@@ -17707,6 +17710,7 @@ a.banner-button {
   padding: 3px 15px;
   border-radius: 100px;
   text-decoration: none !important;
+  transition: all 0.3s;
 }
 
 a.banner-button i {
