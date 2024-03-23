@@ -1,0 +1,274 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta content="width=device-width" name="viewport" />
+    <title>响应式布局截图工具 | Cloudchewie</title>
+    <meta
+      name="keywords"
+      content="网站缩略图生成,在线生成网站缩略图,生成网站缩略图,网站缩略图在线生成"
+    />
+    <meta
+      name="description"
+      content="网站缩略图在线生成工具，是一个强大实用的免费多端多设备网站缩略图在线生成服务站，它能在几秒钟内，透过您所输入的网址，在线生成该网站或网页的多设备端缩图。"
+    />
+    <style>
+      @charset "UTF-8";
+      @import url("https://npm.elemecdn.com/lxgw-wenkai-screen-webfont@1.7.0/lxgwwenkaiscreen.css");
+      body,
+      input,
+      select,
+      textarea,
+      button {
+        font-family: lxgw wenkai screen, -apple-system, BlinkMacSystemFont,
+          Roboto, Segoe UI, Helvetica, Arial, sans-serif;
+      }
+      body {
+        background-color: #fff;
+        background: #ffffff;
+        margin: 0;
+        padding: 50px;
+        overflow: hidden;
+      }
+      .title {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .title h1 {
+        font-size: 24px;
+        color: #333;
+      }
+      .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+      }
+      .submit-form {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-self: center;
+        margin-bottom: 20px;
+      }
+      .submit-input {
+        padding: 10px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        caret-color: #20809f;
+        width: 300px;
+        height: 35px;
+        font-size: 1em;
+        transition: -webkit-text-fill-color 0.3s var(--n-bezier),
+          caret-color 0.3s var(--n-bezier), color 0.3s var(--n-bezier),
+          text-decoration-color 0.3s var(--n-bezier);
+      }
+      .submit-input:hover {
+        outline: 1px solid #20809f;
+      }
+      .submit-button {
+        padding: 10px 20px;
+        border-radius: 5px;
+        height: 35px;
+        width: 80px;
+        background-color: #20809f;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .submit-button:hover {
+        background: #6e95b0;
+      }
+      /* @media screen and (max-width: 1200px) {
+        .main {
+          width: 90%;
+        }
+      } */
+      .wrapper {
+        width: 764px;
+        padding: 0px 0px 0 265px;
+        height: 555px;
+      }
+      .display {
+        position: relative;
+        left: 0px;
+        height: 530px;
+      }
+      .wrapper iframe {
+        transform-origin: top left;
+        -webkit-transform-origin: top left;
+        -o-transform-origin: top left;
+        -ms-transform-origin: top left;
+        -moz-transform-origin: top left;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        background-color: #fff;
+        border-color: #000;
+      }
+      .mobile {
+        background-image: url("https://picbed.cloudchewie.com/blog/responsive/iphone-optimised.png");
+        position: absolute;
+        width: 130px;
+        height: 268px;
+        top: 230px;
+        left: 395px;
+        z-index: 5;
+      }
+      .mobile iframe {
+        width: 375px;
+        height: 763px;
+        top: 8px;
+        left: 7px;
+        overflow-y: hidden;
+        transform: scale(0.31);
+      }
+      .tablet {
+        background-image: url("https://picbed.cloudchewie.com/blog/responsive/ipad-optimised.png");
+        background-repeat: no-repeat;
+        width: 246px;
+        height: 400px;
+        z-index: 3;
+        position: absolute;
+        left: 436px;
+        top: 160px;
+      }
+      .tablet iframe {
+        width: 768px;
+        height: 994px;
+        top: 18px;
+        left: 24px;
+        overflow-y: hidden;
+        transform: scale(0.273);
+      }
+      .laptop {
+        background-image: url("https://picbed.cloudchewie.com/blog/responsive/laptop-screen-optimised.png");
+        width: 477px;
+        height: 307px;
+        top: 220px;
+        left: -255px;
+        position: absolute;
+        z-index: 2;
+      }
+      .laptop iframe {
+        width: 1280px;
+        height: 802px;
+        top: 26px;
+        left: 60px;
+        transform: scale(0.277);
+        transform-origin: top left;
+      }
+      .desktop {
+        position: absolute;
+        width: 566px;
+        height: 538px;
+        background-image: url("https://picbed.cloudchewie.com/blog/responsive/large-screen-optimised.png");
+        top: 0px;
+        left: 0px;
+        z-index: 1;
+      }
+      .desktop iframe {
+        left: 12px;
+        top: 25px;
+        width: 1600px;
+        height: 1045px;
+        transform: scale(0.337);
+        transform-origin: top left;
+      }
+    </style>
+  </head>
+  <body
+    x-data="{style:'',url:'',murl:'',mobile:'/',desktop:'/'}"
+  >
+    <div class="title">
+      <h1>响应式布局截图工具</h1>
+      <caption>F12捕获.wrapper节点屏幕截图</caption>
+    </div>
+    <div class="main">
+      <div class="submit-form">
+        <input
+          x-model="url"
+          class="submit-input"
+          type="text"
+          placeholder="输入电脑端网址(需包含https前缀)"
+          name="url"
+        />
+        <input
+          x-model="murl"
+          class="submit-input"
+          type="text"
+          placeholder="输入手机端网址(如支持自适应可置空)"
+          name="murl"
+        />
+        <button
+          class="submit-button"
+          type="button"
+          @click="if(url){mobile=url;desktop=url;}else{alert('电脑端网址不能为空');}if(murl){mobile=murl;}"
+        >
+          预览
+        </button>
+      </div>
+
+      <div class="wrapper" title="F12捕获该节点屏幕截图即可">
+        <section class="display">
+          <div class="mobile ui-draggable">
+            <iframe
+              :src="mobile"
+              id="mobile"
+              frameborder="no"
+              border="0"
+              marginwidth="0"
+              marginheight="0"
+              scrolling="no"
+            >
+            </iframe>
+          </div>
+
+          <div class="tablet ui-draggable">
+            <iframe
+              :src="desktop"
+              id="tablet"
+              frameborder="no"
+              border="0"
+              marginwidth="0"
+              marginheight="0"
+              scrolling="no"
+            >
+            </iframe>
+          </div>
+
+          <div class="laptop ui-draggable">
+            <iframe
+              :src="desktop"
+              id="laptop"
+              frameborder="no"
+              border="0"
+              marginwidth="0"
+              marginheight="0"
+              scrolling="no"
+            >
+            </iframe>
+          </div>
+
+          <div class="desktop ui-draggable">
+            <iframe
+              :src="desktop"
+              id="desktop"
+              frameborder="no"
+              border="0"
+              marginwidth="0"
+              marginheight="0"
+              scrolling="no"
+            >
+            </iframe>
+          </div>
+        </section>
+      </div>
+      <script
+        src="https://cdn.staticfile.org/alpinejs/3.9.6/cdn.min.js"
+        defer=""
+      />
+    </div>
+  </body>
+</html>

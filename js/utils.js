@@ -1,3 +1,5 @@
+window.meting_api =
+  "https://meting.qjqq.cn/?server=:server&type=:type&id=:id&r=:r";
 var adjectives = [
   "美丽的",
   "英俊的",
@@ -2669,7 +2671,7 @@ const cloudchewieFn = {
       return;
     }
     const urlParams = new URLSearchParams(window.location.search);
-    var userId = "7185982924";
+    var userId = "9516481572";
     var userServer = "netease";
     if (cloudchewieFn.loadData("playlist") != undefined) {
       var json = JSON.parse(cloudchewieFn.loadData("playlist"));
@@ -2762,6 +2764,8 @@ const cloudchewieFn = {
       if (navMusic == null || navMusic.querySelector("meting-js") == null)
         return;
       const navMetingAplayer = navMusic.querySelector("meting-js").aplayer;
+      if (!navMetingAplayer)
+        navMusic.querySelector("meting-js").connectedCallback();
       navMusic
         .querySelector("meting-js")
         ._fetchSongs(server, id, type)
@@ -2893,7 +2897,8 @@ const cloudchewieFn = {
                 if (dayDiff < 365) {
                   let avatarUrl = "";
                   users.forEach((user) => {
-                    if (user.id == resValue.creatorId) avatarUrl = user.avatarUrl;
+                    if (user.id == resValue.creatorId)
+                      avatarUrl = user.avatarUrl;
                   });
                   item = {
                     id: resValue.id,
@@ -2907,7 +2912,7 @@ const cloudchewieFn = {
                     creatorUsername: resValue.creatorUsername,
                     content: resValue.content,
                     resourceList: resValue.resourceList,
-                    hash:resValue.name,
+                    hash: resValue.name,
                   };
                   items.push(item);
                 }
@@ -2919,13 +2924,13 @@ const cloudchewieFn = {
         });
       });
   },
-  onUserClicked:(user)=>{
+  onUserClicked: (user) => {
     window.open(`https://memos.cloudchewie.com/u/${user}`);
   },
-  onTagClicked:(tag)=>{
+  onTagClicked: (tag) => {
     window.open(`https://memos.cloudchewie.com/?tag=${tag}`);
   },
-  onTimeClicked:(hash)=>{
+  onTimeClicked: (hash) => {
     window.open(`https://memos.cloudchewie.com/m/${hash}`);
   },
   loadMemos: (data) => {
@@ -2935,16 +2940,22 @@ const cloudchewieFn = {
       items.push(cloudchewieFn.formatMemo(item));
     });
     items.forEach((item) => {
-      tagHtml=""
-      if(item.tags!=null){
-        item.tags.forEach((e)=>{
-          tagHtml+=`<div class="talk_meta_tag" onclick="cloudchewieFn.onTagClicked('${e.replaceAll('#','')}')"><i class="cloudchewiefont cloudchewie-icon-hashtag"></i><span class="talk_tag">${e.replaceAll("#","")}</span></div>`
-        })
+      tagHtml = "";
+      if (item.tags != null) {
+        item.tags.forEach((e) => {
+          tagHtml += `<div class="talk_meta_tag" onclick="cloudchewieFn.onTagClicked('${e.replaceAll(
+            "#",
+            ""
+          )}')"><i class="cloudchewiefont cloudchewie-icon-hashtag"></i><span class="talk_tag">${e.replaceAll(
+            "#",
+            ""
+          )}</span></div>`;
+        });
       }
-      dateString=item.date.split(" ")[0].replaceAll("/","-");
-      dateList=dateString.split("-");
-      if(dateList.length==3)
-        dateString=dateList[0]+"年"+dateList[1]+"月"+dateList[1]+"日";
+      dateString = item.date.split(" ")[0].replaceAll("/", "-");
+      dateList = dateString.split("-");
+      if (dateList.length == 3)
+        dateString = dateList[0] + "/" + dateList[1] + "/" + dateList[1];
       html += String.raw`
                 <div class="talk_item">
                   <div class="talk_content">${item.content}</div>
@@ -2979,18 +2990,20 @@ const cloudchewieFn = {
     }, 300);
   },
   fetchMemoTags: () => {
-    fetch('https://memos.cloudchewie.com/memos.api.v2.TagService/ListTags', {
-      method: 'GET',
+    fetch("https://memos.cloudchewie.com/memos.api.v2.TagService/ListTags", {
+      method: "GET",
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://memos.cloudchewie.com'
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "https://memos.cloudchewie.com",
       },
-    }).then(response => {
-      console.log(response.text)
-    }).catch(err => {
-      // 处理错误
-    });
+    })
+      .then((response) => {
+        console.log(response.text);
+      })
+      .catch((err) => {
+        // 处理错误
+      });
   },
   formatMemo: (item) => {
     //正则式
@@ -3049,8 +3062,18 @@ const cloudchewieFn = {
       });
     }
     tag_group_html += "</div>";
-    raw_content = raw_content.replaceAll("`","\\`").replaceAll("\n","\\n").replace(TAG_REG, "").replace(IMG_REG,"");
-    raw_content = raw_content.replace(BILIBILI_REG,"").replace(NETEASE_MUSIC_REG,"").replace(QQMUSIC_REG,"").replace(QQVIDEO_REG,"").replace(YOUKU_REG,"").replace(YOUTUBE_REG,"");
+    raw_content = raw_content
+      .replaceAll("`", "\\`")
+      .replaceAll("\n", "\\n")
+      .replace(TAG_REG, "")
+      .replace(IMG_REG, "");
+    raw_content = raw_content
+      .replace(BILIBILI_REG, "")
+      .replace(NETEASE_MUSIC_REG, "")
+      .replace(QQMUSIC_REG, "")
+      .replace(QQVIDEO_REG, "")
+      .replace(YOUKU_REG, "")
+      .replace(YOUTUBE_REG, "");
     content = content
       .replace(TAG_REG, "")
       .replace(
@@ -3122,9 +3145,9 @@ const cloudchewieFn = {
         "[链接]" + `${imgls ? "[图片]" : ""}`
       ),
       nickname: item.creator,
-      username:item.creatorUsername,
+      username: item.creatorUsername,
       avatar: item.avatar,
-      hash:item.hash,
+      hash: item.hash,
     };
   },
   /**
@@ -4305,6 +4328,7 @@ const consoleFn = {
       var json = JSON.parse(cloudchewieFn.loadData("playlist"));
       consoleFn.changeAPlayerList(json.id, json.server, false);
     }
+    consoleFn.loadCustomPlaylists();
     document
       .getElementById("console-mask")
       .addEventListener("click", consoleFn.closeConsole);
@@ -4432,7 +4456,7 @@ const consoleFn = {
   /**
    * 切换歌单
    */
-  changeAPlayerList: (id, server, reload = true) => {
+  changeAPlayerList: (id, server, zhudong = false) => {
     if (window.aplayers)
       for (let i = 0; i < window.aplayers.length; i++)
         window.aplayers[i].pause();
@@ -4442,7 +4466,70 @@ const consoleFn = {
     );
     $("meting-js").attr("id", id);
     $("meting-js").attr("server", server);
-    if (reload) cloudchewieFn.changeMusicList(server, id);
+    if (zhudong)
+      GLOBAL_CONFIG.Snackbar !== undefined &&
+        cloudchewieFn.snackbarShow("歌单切换成功");
+    cloudchewieFn.changeMusicList(server, id);
+  },
+  /**
+   * 保存自定义歌单
+   */
+  saveCustomPlaylist: (id, server) => {
+    var customPlayLists = JSON.parse(cloudchewieFn.loadData("customPlaylists"));
+    if (!customPlayLists) customPlayLists = [];
+    var saved = false;
+    customPlayLists.forEach((e) => {
+      if (e.id == id && e.server == server) saved = true;
+    });
+    if (saved) {
+      GLOBAL_CONFIG.Snackbar !== undefined &&
+        cloudchewieFn.snackbarShow("歌单已存在");
+    } else {
+      consoleFn.appendPlaylist(id, server, customPlayLists.length + 1);
+      GLOBAL_CONFIG.Snackbar !== undefined &&
+        cloudchewieFn.snackbarShow("歌单保存成功");
+      customPlayLists.push({ id: id, server: server });
+    }
+    cloudchewieFn.saveData("customPlaylists", JSON.stringify(customPlayLists));
+  },
+  /**
+   * 删除自定义歌单
+   */
+  removeCustomPlaylist: (id, server) => {
+    var customPlayLists = JSON.parse(cloudchewieFn.loadData("customPlaylists"));
+    if (!customPlayLists) customPlayLists = [];
+    var delete_index = -1;
+    customPlayLists.forEach((e, index) => {
+      if (e.id == id && e.server == server) delete_index = index;
+    });
+    console.log(delete_index)
+    if (delete_index>=0) {
+      customPlayLists.splice(delete_index, 1);
+      $(
+        `.playlist-container > div:nth-child(${delete_index+4})`
+      ).remove();
+      cloudchewieFn.saveData(
+        "customPlaylists",
+        JSON.stringify(customPlayLists)
+      );
+      GLOBAL_CONFIG.Snackbar !== undefined &&
+        cloudchewieFn.snackbarShow("歌单删除成功");
+    }
+  },
+  /**
+   * 加载自定义歌单
+   */
+  loadCustomPlaylists: (id, server) => {
+    var customPlayLists = JSON.parse(cloudchewieFn.loadData("customPlaylists"));
+    if (!customPlayLists) customPlayLists = [];
+    customPlayLists.forEach((e, index) => {
+      consoleFn.appendPlaylist(e.id, e.server, index + 1);
+    });
+  },
+  appendPlaylist(id, server, index) {
+    $(".playlist-container").append(
+      `<div class="custom-playlist-item-wrapper"><div class="playlist-item custom-playlist-item" style="background-image:url(https://picbed.cloudchewie.com/index/archives.jpg!mini)" onclick="consoleFn.changeAPlayerList(${id},&quot;${server}&quot;,true)" data-pjax-state=""><span>歌单${id}</span></div><a href="javascript:;" onclick="consoleFn.removeCustomPlaylist(${id},&quot;${server}&quot;)"><i class="cloudchewiefont cloudchewie-icon-xmark custom-playlist-item-close"></i></a></div>`
+    );
   },
   /**
    * 切换全屏
@@ -4625,7 +4712,7 @@ const consoleFn = {
       return;
     }
     var t =
-      "https://api.i-meto.com/meting/api?server=" +
+      "https://meting.api.cloudchewie.com/api?server=" +
       server +
       "&type=playlist&id=" +
       id;
@@ -4639,7 +4726,8 @@ const consoleFn = {
           $("#url-btn").html("解析成功");
           $("#url-btn").addClass("success");
           $("#url-btn").removeClass("fail");
-          consoleFn.changeAPlayerList(id, server, true);
+          consoleFn.saveCustomPlaylist(id, server);
+          consoleFn.changeAPlayerList(id, server, false);
         } else {
           $("#url-btn").html("解析失败");
           $("#url-btn").removeClass("success");
