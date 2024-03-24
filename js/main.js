@@ -51,10 +51,11 @@ document.addEventListener("DOMContentLoaded", function () {
     GLOBAL_CONFIG.navMusic && cloudchewieFn.listenNavMusicPause();
     GLOBAL_CONFIG.copyright !== undefined && cloudchewieFn.addCopyright();
 
-    cloudchewieFn.isNowtime() &&
+    cloudchewieFn.isMemos() &&
+      waterfall &&
       (waterfall("#talk"),
       setTimeout(() => {
-        cloudchewieFn.isNowtime() && waterfall("#talk");
+        cloudchewieFn.isMemos() && waterfall("#talk");
       }, 300));
 
     window.addEventListener("resize", () => {
@@ -62,10 +63,10 @@ document.addEventListener("DOMContentLoaded", function () {
       cloudchewieFn.isHidden(document.getElementById("toggle-menu")) &&
         mobileSidebarFn.mobileSidebarOpen &&
         mobileSidebarFn.close();
-      cloudchewieFn.isNowtime() &&
+      cloudchewieFn.isMemos() &&
         (waterfall("#talk"),
         setTimeout(() => {
-          cloudchewieFn.isNowtime() && waterfall("#talk");
+          cloudchewieFn.isMemos() && waterfall("#talk");
         }, 300));
     });
   };
@@ -83,14 +84,14 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
     setInterval(() => {
-      $(".CtxtMenu_MenuArrow").each((index,element) => {
+      $(".CtxtMenu_MenuArrow").each((index, element) => {
         if ($(element).html() == "►") {
           $(element).html(
             "<i class='cloudchewiefont cloudchewie-icon-angle-right'></i>"
           );
         }
       });
-      $(".CtxtMenu_MenuClose").each((index,element) => {
+      $(".CtxtMenu_MenuClose").each((index, element) => {
         if ($(element).html() == "<span>×</span>") {
           $(element).html(
             "<i class='cloudchewiefont cloudchewie-icon-xmark'></i>"
@@ -103,9 +104,15 @@ document.addEventListener("DOMContentLoaded", function () {
       '{"zoom":"Click","scale":"1"}'
     );
     if (Number(saveToLocal.get("translate-chn-cht")) == 2) {
-      $("#con-translate > i").attr("class", "cloudchewiefont cloudchewie-icon-fanti");
+      $("#con-translate > i").attr(
+        "class",
+        "cloudchewiefont cloudchewie-icon-fanti"
+      );
     } else if (Number(saveToLocal.get("translate-chn-cht")) == 1) {
-      $("#con-translate > i").attr("class", "cloudchewiefont cloudchewie-icon-jianti");
+      $("#con-translate > i").attr(
+        "class",
+        "cloudchewiefont cloudchewie-icon-jianti"
+      );
     }
   };
 
@@ -113,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initAdjust();
     addHighlight();
     messFunction();
-    cloudchewieFn.injectAccessKey(document,window);
+    cloudchewieFn.injectAccessKey(document, window);
     cloudchewieFn.waitBlank();
     cloudchewieFn.changeDataType();
     cloudchewieFn.tabToTop();
@@ -135,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.scrollCollect && window.scrollCollect();
     window.addEventListener("scroll", window.scrollCollect);
-    cloudchewieFn.isNowtime() && cloudchewieFn.fetchMemos();
+    cloudchewieFn.isMemos() && cloudchewieFn.fetchMemos();
     GLOBAL_CONFIG.isPhotoFigcaption && cloudchewieFn.addPhotoFigcaption();
     document.getElementById("post-comment") && cloudchewieFn.enlargeEmoji();
 
@@ -194,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
     cloudchewieFn.isGuestbook() &&
       cloudchewieFn.addScript(
         "Danmaku",
-        "/js/third-party/Danmaku.min.js",
+        "https://cdn.cbd.int/hexo-theme-cloudchewie@3.2.4/source/js/third-party/danmaku.min.js",
         cloudchewieFn.loadDamaku
       );
 

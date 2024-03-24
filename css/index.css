@@ -431,6 +431,27 @@ canvas:not(#ribbon-canvas),
   -ms-animation: sidebarItem 0.8s;
   animation: sidebarItem 0.8s;
 }
+#sidebar-menus.open > :nth-child(5) {
+  -webkit-animation: sidebarItem 0.8s;
+  -moz-animation: sidebarItem 0.8s;
+  -o-animation: sidebarItem 0.8s;
+  -ms-animation: sidebarItem 0.8s;
+  animation: sidebarItem 0.8s;
+}
+#sidebar-menus.open > :nth-child(6) {
+  -webkit-animation: sidebarItem 0.8s;
+  -moz-animation: sidebarItem 0.8s;
+  -o-animation: sidebarItem 0.8s;
+  -ms-animation: sidebarItem 0.8s;
+  animation: sidebarItem 0.8s;
+}
+#sidebar-menus.open > :nth-child(7) {
+  -webkit-animation: sidebarItem 0.8s;
+  -moz-animation: sidebarItem 0.8s;
+  -o-animation: sidebarItem 0.8s;
+  -ms-animation: sidebarItem 0.8s;
+  animation: sidebarItem 0.8s;
+}
 .scroll-down-effects {
   -webkit-animation: scroll-down-effect 1.5s infinite;
   -moz-animation: scroll-down-effect 1.5s infinite;
@@ -6362,7 +6383,7 @@ rect[data-level="4"] {
 #nav .menus_items .menus_item {
   position: relative;
   display: inline-block;
-  padding: 0 0 0 14px;
+  padding: 0 0 0 0px;
 }
 #nav .menus_items .menus_item:hover .menus_item_child {
   display: block;
@@ -6893,7 +6914,6 @@ maxWidth1400()
   line-height: 35px;
 }
 #nav .menus_items .menus_item {
-  padding: 0 0.4rem;
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flex;
@@ -6992,6 +7012,11 @@ maxWidth1400()
   transition: 0.3s;
   border-radius: 40px;
   z-index: 101;
+}
+@media screen and (max-width: 768px) {
+  .back-home-button {
+    display: none;
+  }
 }
 .back-home-button:hover .back-menu-list-groups {
   display: -webkit-box;
@@ -13789,7 +13814,7 @@ template {
 }
 @font-face {
   font-family: Digital-7 Mono;
-  src: url(https://cdn.cbd.int/hexo-theme-cloudchewie@latest/source/icon/digital-7-mono.ttf)
+  src: url(https://cdn.cbd.int/hexo-theme-cloudchewie@3.2.4/source/icon/digital-7-mono.ttf)
     format("truetype");
 }
 .air-conditioner-vue {
@@ -17644,488 +17669,6 @@ video::-webkit-media-controls {
   display: none !important;
 }
 
-#page:has(#cloudMusic-page) {
-  border: 0;
-  box-shadow: none !important;
-  padding: 0 !important;
-  background: transparent !important;
-}
-#cloud_music_bg {
-  display: none;
-  filter: blur(63px) !important;
-  opacity: 0.6;
-  position: fixed;
-  z-index: -999;
-  background-attachment: local;
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-  transform: rotate(0deg);
-}
-body:has(#cloudMusic-page) #cloud_music_bg {
-  display: block;
-}
-
-body:has(#cloudMusic-page) {
-  background: rgb(13, 13, 13);
-}
-
-#cloudMusic-page meting-js .aplayer {
-  display: flex;
-  flex-direction: row-reverse;
-  background: rgba(0, 0, 0, 0);
-  border: none;
-  box-shadow: none;
-}
-
-body:has(#cloudMusic-page) #web_bg {
-  display: none;
-}
-body:has(#cloudMusic-page) #footer,
-body:has(#cloudMusic-page) #nav-music {
-  display: none;
-}
-
-#cloudMusic-page .aplayer-body {
-  width: 40%;
-  height: 75vh;
-}
-
-#cloudMusic-page ol > li:hover {
-  background: #ffffff33;
-  border-radius: 6px;
-}
-#cloudMusic-page .aplayer-pic {
-  float: none;
-  width: 180px;
-  height: 180px;
-  border-radius: 12px;
-  margin: auto;
-  left: 0;
-  right: 0;
-}
-
-#cloudMusic-page .aplayer-info {
-  margin: 0 20px 0 20px;
-  border-bottom: none;
-}
-
-#cloudMusic-page .aplayer-info .aplayer-music {
-  text-align: center;
-  height: auto;
-  margin: 15px;
-}
-
-#cloudMusic-page .aplayer-info .aplayer-music .aplayer-author,
-#cloudMusic-page .aplayer-info .aplayer-music .aplayer-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #fff;
-}
-
-#cloudMusic-page .aplayer-info .aplayer-lrc {
-  height: 800%;
-  margin-top: 80px;
-  mask-image: linear-gradient(
-    to bottom,
-    #000,
-    #000,
-    #000,
-    #000,
-    #000,
-    #000,
-    #000,
-    #000,
-    #000,
-    #000,
-    #0000,
-    #0000
-  );
-}
-#cloudMusic-page .aplayer-info .aplayer-lrc p {
-  font-size: 15px !important;
-  color: #fff;
-}
-#cloudMusic-page .aplayer .aplayer-lrc:after,
-#cloudMusic-page .aplayer .aplayer-lrc:before {
-  display: none;
-}
-
-/* 控制器 */
-#cloudMusic-page .aplayer-info .aplayer-controller {
-  position: fixed;
-  max-width: 1400px;
-  margin: auto;
-  left: 0;
-  right: 0;
-  bottom: 30px;
-}
-#cloudMusic-page .aplayer-info .aplayer-controller .aplayer-bar-wrap {
-  margin: 0 160px 0 150px;
-}
-#cloudMusic-page .aplayer-info .aplayer-controller .aplayer-played {
-  background: var(--white) !important;
-}
-#cloudMusic-page .aplayer-info .aplayer-controller .aplayer-thumb {
-  -webkit-transform: none;
-  transform: none;
-  background: #fff !important;
-}
-#cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-back,
-#cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-forward,
-#cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-play {
-  display: inline;
-  position: fixed;
-}
-#cloudMusic-page .aplayer-info .aplayer-time {
-  position: absolute;
-  width: 100%;
-  bottom: 21px;
-  height: 0;
-  display: flex;
-  justify-content: flex-end;
-}
-#cloudMusic-page .aplayer-info .aplayer-time .aplayer-time-inner {
-  margin-right: 18px;
-  margin-top: -8px;
-}
-#cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-back {
-  position: absolute;
-  left: 0;
-}
-#cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-play {
-  position: absolute;
-  left: 40px;
-}
-#cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-forward {
-  position: absolute;
-  left: 80px;
-}
-
-#cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon {
-  width: 2rem;
-  height: 2rem;
-  margin-left: 15px;
-}
-
-#cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-menu {
-  display: none;
-}
-
-#cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon path {
-  fill: var(--white);
-}
-
-#cloudMusic-page .aplayer-list {
-  width: 60%;
-  max-height: none !important;
-  height: 100%;
-}
-#cloudMusic-page #cloudMusic-page-meting.collapsed meting-js .aplayer .aplayer-list {
-  width: 0%;
-}
-#cloudMusic-page #cloudMusic-page-meting.collapsed meting-js .aplayer .aplayer-body {
-  width: 100%;
-}
-#cloudMusic-page ol {
-  max-height: 75vh !important;
-  padding-right: 25px;
-}
-#cloudMusic-page ol > li {
-  border-top: 1px solid transparent;
-  font-size: 14px;
-}
-#cloudMusic-page ol > li.aplayer-list-light {
-  background: rgb(255 255 255 / 20%);
-  border-radius: 6px;
-}
-
-#cloudMusic-page ol > li span {
-  color: var(--white);
-}
-
-#cloudMusic-page ol > li.aplayer-list-light .aplayer-list-cur {
-  display: none;
-}
-#cloudMusic-page ol > li span.aplayer-list-author {
-  opacity: 0.6;
-}
-
-/* 导航栏 */
-.page:has(#cloudMusic-page) #nav {
-  backdrop-filter: none !important;
-  background: 0 0 !important;
-  border-bottom: none !important;
-}
-
-.page:has(#cloudMusic-page)
-  #page-header.not-top-img
-  #nav
-  a.site-page:not(.child),
-.page:has(#cloudMusic-page) #page-header.not-top-img #nav a#site-name,
-.page:has(#cloudMusic-page) #page-header #nav .back-home-button i {
-  color: var(--white) !important;
-  fill: var(--white) !important;
-}
-
-body:has(#cloudMusic-page) .s-sticker div {
-  color: var(--white) !important;
-}
-
-body:has(#cloudMusic-page)
-  .aplayer
-  .aplayer-info
-  .aplayer-controller
-  .aplayer-time
-  .aplayer-icon.aplayer-icon-loop {
-  margin-right: 15px;
-}
-body:has(#cloudMusic-page) .aplayer .aplayer-info .aplayer-music {
-  overflow: hidden;
-  white-space: unset;
-  margin: 0 0 13px 5px;
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
-  cursor: default;
-  padding-bottom: 2px;
-  height: 20px;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  color: #fff;
-}
-.aplayer-list ol::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-.aplayer-list ol::-webkit-scrollbar-thumb {
-  border-radius: 3px;
-  background-color: #eee;
-}
-[data-theme="dark"] .page:has(#cloudMusic-page) #page-header:before {
-  background-color: transparent;
-}
-
-/* **** 移动端样式 ***** */
-@media screen and (max-width: 768px) {
-  body:has(#cloudMusic-page) #rightside {
-    display: none !important;
-  }
-  body:has(#cloudMusic-page) #content-inner,
-  body:has(#cloudMusic-page) #page {
-    z-index: auto;
-  }
-  /* 歌曲列表 */
-  #cloudMusic-page .aplayer-list {
-    position: fixed;
-    z-index: 1002;
-    width: 100%;
-    bottom: -76%;
-    left: 0;
-    background: var(--sidebar-bg);
-    height: auto;
-    border-radius: 15px 15px 0px 0px;
-    padding: 15px 0px;
-  }
-  #cloudMusic-page .aplayer-list.aplayer-list-hide {
-    bottom: 0% !important;
-  }
-  #cloudMusic-page ol {
-    max-height: 60vh !important;
-    padding-right: 0px;
-  }
-  #cloudMusic-page ol > li {
-    display: flex;
-    margin: 0 10px;
-  }
-  #cloudMusic-page ol > li span {
-    color: var(--cloudchewie-font-color);
-  }
-  #cloudMusic-page ol > li span.aplayer-list-title {
-    width: 30%;
-  }
-  #cloudMusic-page ol > li.aplayer-list-light {
-    background: var(--cloudchewie-theme);
-    padding: 5px 20px;
-    border-radius: 10px;
-  }
-  #cloudMusic-page ol > li.aplayer-list-light span {
-    color: #fff;
-  }
-  #cloudMusic-page ol > li span.aplayer-list-title {
-    max-width: 55%;
-    width: auto;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-  }
-  #cloudMusic-page ol > li span.aplayer-list-author {
-    position: absolute;
-    right: 10px;
-    width: auto;
-    max-width: 35%;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-  }
-  #cloudMusic-page ol > li.aplayer-list-light span.aplayer-list-author {
-    right: 15px;
-  }
-  /* 歌词信息 */
-  #cloudMusic-page .aplayer-body {
-    width: 100%;
-
-    position: fixed;
-    margin: auto;
-    left: 0;
-    right: 0;
-    top: 100px;
-  }
-  #cloudMusic-page .aplayer-info .aplayer-lrc {
-    margin-top: 40px;
-    height: auto;
-    max-height: 200%;
-    min-height: 100%;
-    mask-image: linear-gradient(
-      to bottom,
-      #000,
-      #000,
-      #000,
-      #000,
-      #0000,
-      #0000
-    );
-  }
-  #cloudMusic-page .aplayer-info .aplayer-lrc p.aplayer-lrc-current {
-    color: var(--cloudchewie-theme);
-  }
-  /* 控制按键和进度条 */
-  #cloudMusic-page .aplayer-info .aplayer-controller {
-    width: 100%;
-    bottom: 100px;
-  }
-  #cloudMusic-page .aplayer-info .aplayer-controller .aplayer-bar-wrap {
-    margin: 0 30px;
-  }
-  #cloudMusic-page .aplayer-info .aplayer-time {
-    bottom: -40px;
-  }
-  #cloudMusic-page .aplayer-info .aplayer-time .aplayer-time-inner {
-    position: absolute;
-    width: 100%;
-    margin-right: 0;
-    margin-top: -33px;
-  }
-  #cloudMusic-page
-    .aplayer-info
-    .aplayer-time
-    .aplayer-time-inner
-    .aplayer-dtime {
-    position: absolute;
-    right: 30px;
-  }
-  #cloudMusic-page
-    .aplayer-info
-    .aplayer-time
-    .aplayer-time-inner
-    .aplayer-ptime {
-    position: absolute;
-    left: 35px;
-  }
-  #cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-back {
-    margin: auto;
-    right: 110px;
-  }
-  #cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-play {
-    margin: auto;
-    right: 0;
-    left: 0;
-  }
-  #cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-forward {
-    margin: auto;
-    left: 110px;
-    right: 0;
-  }
-  #cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-order {
-    position: absolute;
-    left: 22px;
-  }
-  #cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-loop {
-    position: absolute;
-    right: 25px;
-  }
-  #cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-menu {
-    display: inline;
-    position: absolute;
-    right: 25px;
-    top: -90px;
-  }
-  #cloudMusic-page .aplayer-volume-bar-wrap {
-    bottom: 0px;
-    right: 7px;
-  }
-  #cloudMusic-page
-    .aplayer
-    .aplayer-info
-    .aplayer-controller
-    .aplayer-volume-wrap {
-    left: -66px;
-  }
-}
-body.pace-done:has(#cloudMusic-page) #rightside {
-  display: none !important;
-}
-#cloudMusic-page meting-js svg,
-#cloudMusic-page meting-js .aplayer ol > li {
-  fill: var(--white) !important;
-  color: var(--white) !important;
-}
-#cloudMusic-page #anMusicBtnGetSong,
-#cloudMusic-page #anMusicRefreshBtn,
-#cloudMusic-page #anMusicSwitching {
-  position: fixed;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: box;
-  display: flex;
-  width: 50px;
-  height: 50px;
-  bottom: 100px;
-  padding: 5px;
-  background: rgba(222, 222, 222, 0.3);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 50%;
-  color: #fff;
-  text-align: center;
-  -webkit-box-pack: center;
-  -moz-box-pack: center;
-  -o-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  -o-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  cursor: pointer;
-  z-index: 2;
-}
-#cloudMusic-page .aplayer .aplayer-info .aplayer-controller .aplayer-time {
-  color: var(--white);
-}
-
 /*****************************************
 即刻
 *****************************************/
@@ -18148,7 +17691,7 @@ body.pace-done:has(#cloudMusic-page) #rightside {
 [data-them="dark"] .page-top-card::after {
   background: rgba(0, 0, 0, 0.3);
 }
-.video-card{
+.video-card {
   height: 20rem;
 }
 .page-top-card {
@@ -18223,7 +17766,7 @@ a.banner-button:hover {
 }
 
 @media screen and (max-width: 900px) {
-  .video-card{
+  .video-card {
     height: 15rem;
   }
   .page-top-card {
@@ -18378,16 +17921,18 @@ a.talk_comment:hover {
   width: 100%;
   line-height: 1.5;
 }
-.talk_meta{
+.talk_meta {
   margin-right: 20px;
-  flex-flow:row wrap;
+  flex-flow: row wrap;
   row-gap: 6px;
 }
-.talk_reply{
+.talk_reply {
   transition: all 0.3s;
   cursor: pointer;
 }
-.talk_meta_user,.talk_meta_date,.talk_meta_tag{
+.talk_meta_user,
+.talk_meta_date,
+.talk_meta_tag {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -18397,24 +17942,28 @@ a.talk_comment:hover {
   align-self: center;
   justify-self: center;
   color: var(--cloudchewie-font-color);
-  font-size: .8rem;
+  font-size: 0.8rem;
   background-color: var(--cloudchewie-code-stress);
   padding: 2px 10px;
   border-radius: 20px;
   margin-right: 6px;
   transition: all 0.3s;
 }
-.talk_meta_user,.talk_meta_tag,.talk_meta_date{
+.talk_meta_user,
+.talk_meta_tag,
+.talk_meta_date {
   cursor: pointer;
 }
-.talk_meta_tag i.cloudchewie-icon-hashtag{
+.talk_meta_tag i.cloudchewie-icon-hashtag {
   font-size: 13px !important;
 }
-.talk_meta_user:hover,.talk_meta_date:hover,.talk_meta_tag:hover{
+.talk_meta_user:hover,
+.talk_meta_date:hover,
+.talk_meta_tag:hover {
   background-color: var(--cloudchewie-theme);
-  color:var(--cloudchewie-white);
+  color: var(--cloudchewie-white);
 }
-.talk_reply:hover{
+.talk_reply:hover {
   color: var(--cloudchewie-theme);
 }
 .talk_bottom {
@@ -18546,11 +18095,11 @@ img.no-lazyload {
 .talk_content {
   padding-bottom: 3px !important;
 }
-.tag-group{
+.tag-group {
   margin: 3px 0px;
   display: flex;
 }
-.tag-div{
+.tag-div {
   display: inline;
   padding: 6px 6px 1px 0px;
 }
@@ -19182,7 +18731,8 @@ img.no-lazyload {
   background: none !important;
 }
 .music-wrapper span,
-.music-wrapper p,.fancybox__toolbar {
+.music-wrapper p,
+.fancybox__toolbar {
   font-family: lxgw wenkai screen, -apple-system, BlinkMacSystemFont, Roboto,
     Segoe UI, Helvetica, Arial, sans-serif !important;
 }
@@ -19197,6 +18747,566 @@ img.no-lazyload {
 .talk_content a:has(img) {
   padding: 0px !important;
 }
+.user-now {
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem !important;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--card-bg);
+  border: var(--card-border);
+  box-shadow: var(--card-box-shadow);
+  cursor: default;
+  transition: all 0.6s ease-out;
+  margin-right: 0;
+  margin-left: 0;
+  overflow: hidden;
+  height: 3.5rem;
+  padding: 0px 8px 0px 0px;
+  display: none;
+}
+.user-now .user-now-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+.user-now .user-now-right .iconfont,
+.load-memos-editor .iconfont {
+  font-size: 1.25rem;
+}
+.user-now .item-avatar {
+  background-size: contain;
+  flex: 0 0 auto;
+  padding: 1rem !important;
+  border-radius: unset;
+  background-color: transparent;
+  width: 3.5rem;
+  height: 3.5rem;
+  cursor: pointer;
+}
+.user-now .item-avatar img {
+  border-radius: 30px !important;
+  display: inline-block;
+  max-width: 100%;
+}
+.user-now-name {
+  height: 3.5rem;
+  line-height: 3.5rem;
+}
+.user-now-name,
+.item-creator,
+.item-footer {
+  font-size: 0.875rem;
+}
+.user-button-span span,
+.search-memos-btn {
+  padding: 0.5rem !important;
+}
+.item-footer svg {
+  opacity: 0.4;
+}
+.item-footer .item span {
+  color: var(--light-color-secondary);
+}
+.dark .item-footer .item span {
+  color: var(--dark-color-secondary);
+}
+.load-memos-editor {
+  background: var(--light-background-secondary) !important;
+}
+.dark .load-memos-editor {
+  background: var(--dark-background-secondary) !important;
+}
+@media (max-width: 550px) {
+  input.search-memos-input {
+    display: none !important;
+  }
+}
+
+#page:has(#cloudMusic-page) {
+  border: 0;
+  box-shadow: none !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+#cloud_music_bg {
+  display: none;
+  filter: blur(63px) !important;
+  opacity: 0.6;
+  position: fixed;
+  z-index: -999;
+  background-attachment: local;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  transform: rotate(0deg);
+}
+body:has(#cloudMusic-page) #cloud_music_bg {
+  display: block;
+}
+
+body:has(#cloudMusic-page) {
+  background: rgb(13, 13, 13);
+}
+
+#cloudMusic-page meting-js .aplayer {
+  display: flex;
+  flex-direction: row-reverse;
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  box-shadow: none;
+}
+
+body:has(#cloudMusic-page) #web_bg {
+  display: none;
+}
+body:has(#cloudMusic-page) #footer,
+body:has(#cloudMusic-page) #nav-music {
+  display: none;
+}
+
+#cloudMusic-page .aplayer-body {
+  width: 40%;
+  height: 75vh;
+}
+
+#cloudMusic-page ol > li:hover {
+  background: #ffffff33;
+  border-radius: 6px;
+}
+#cloudMusic-page .aplayer-pic {
+  float: none;
+  width: 180px;
+  height: 180px;
+  border-radius: 12px;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+
+#cloudMusic-page .aplayer-info {
+  margin: 0 20px 0 20px;
+  border-bottom: none;
+}
+
+#cloudMusic-page .aplayer-info .aplayer-music {
+  text-align: center;
+  height: auto;
+  margin: 15px;
+}
+
+#cloudMusic-page .aplayer-info .aplayer-music .aplayer-author,
+#cloudMusic-page .aplayer-info .aplayer-music .aplayer-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+#cloudMusic-page .aplayer-info .aplayer-lrc {
+  height: 800%;
+  margin-top: 80px;
+  mask-image: linear-gradient(
+    to bottom,
+    #000,
+    #000,
+    #000,
+    #000,
+    #000,
+    #000,
+    #000,
+    #000,
+    #000,
+    #000,
+    #0000,
+    #0000
+  );
+}
+#cloudMusic-page .aplayer-info .aplayer-lrc p {
+  font-size: 15px !important;
+  color: #fff;
+}
+#cloudMusic-page .aplayer .aplayer-lrc:after,
+#cloudMusic-page .aplayer .aplayer-lrc:before {
+  display: none;
+}
+
+/* 控制器 */
+#cloudMusic-page .aplayer-info .aplayer-controller {
+  position: fixed;
+  max-width: 1400px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 30px;
+}
+#cloudMusic-page .aplayer-info .aplayer-controller .aplayer-bar-wrap {
+  margin: 0 160px 0 150px;
+}
+#cloudMusic-page .aplayer-info .aplayer-controller .aplayer-played {
+  background: var(--white) !important;
+}
+#cloudMusic-page .aplayer-info .aplayer-controller .aplayer-thumb {
+  -webkit-transform: none;
+  transform: none;
+  background: #fff !important;
+}
+#cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-back,
+#cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-forward,
+#cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-play {
+  display: inline;
+  position: fixed;
+}
+#cloudMusic-page .aplayer-info .aplayer-time {
+  position: absolute;
+  width: 100%;
+  bottom: 21px;
+  height: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+#cloudMusic-page .aplayer-info .aplayer-time .aplayer-time-inner {
+  margin-right: 18px;
+  margin-top: -8px;
+}
+#cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-back {
+  position: absolute;
+  left: 0;
+}
+#cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-play {
+  position: absolute;
+  left: 40px;
+}
+#cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-forward {
+  position: absolute;
+  left: 80px;
+}
+
+#cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 15px;
+}
+
+#cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-menu {
+  display: none;
+}
+
+#cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon path {
+  fill: var(--white);
+}
+
+#cloudMusic-page .aplayer-list {
+  width: 60%;
+  max-height: none !important;
+  height: 100%;
+}
+#cloudMusic-page #cloudMusic-page-meting.collapsed meting-js .aplayer .aplayer-list {
+  width: 0%;
+}
+#cloudMusic-page #cloudMusic-page-meting.collapsed meting-js .aplayer .aplayer-body {
+  width: 100%;
+}
+#cloudMusic-page ol {
+  max-height: 75vh !important;
+  padding-right: 25px;
+}
+#cloudMusic-page ol > li {
+  border-top: 1px solid transparent;
+  font-size: 14px;
+}
+#cloudMusic-page ol > li.aplayer-list-light {
+  background: rgb(255 255 255 / 20%);
+  border-radius: 6px;
+}
+
+#cloudMusic-page ol > li span {
+  color: var(--white);
+}
+
+#cloudMusic-page ol > li.aplayer-list-light .aplayer-list-cur {
+  display: none;
+}
+#cloudMusic-page ol > li span.aplayer-list-author {
+  opacity: 0.6;
+}
+
+/* 导航栏 */
+.page:has(#cloudMusic-page) #nav {
+  backdrop-filter: none !important;
+  background: 0 0 !important;
+  border-bottom: none !important;
+}
+
+.page:has(#cloudMusic-page)
+  #page-header.not-top-img
+  #nav
+  a.site-page:not(.child),
+.page:has(#cloudMusic-page) #page-header.not-top-img #nav a#site-name,
+.page:has(#cloudMusic-page) #page-header #nav .back-home-button i {
+  color: var(--white) !important;
+  fill: var(--white) !important;
+}
+
+body:has(#cloudMusic-page) .s-sticker div {
+  color: var(--white) !important;
+}
+
+body:has(#cloudMusic-page)
+  .aplayer
+  .aplayer-info
+  .aplayer-controller
+  .aplayer-time
+  .aplayer-icon.aplayer-icon-loop {
+  margin-right: 15px;
+}
+body:has(#cloudMusic-page) .aplayer .aplayer-info .aplayer-music {
+  overflow: hidden;
+  white-space: unset;
+  margin: 0 0 13px 5px;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  cursor: default;
+  padding-bottom: 2px;
+  height: 20px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  color: #fff;
+}
+.aplayer-list ol::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.aplayer-list ol::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: #eee;
+}
+[data-theme="dark"] .page:has(#cloudMusic-page) #page-header:before {
+  background-color: transparent;
+}
+
+/* **** 移动端样式 ***** */
+@media screen and (max-width: 768px) {
+  body:has(#cloudMusic-page) #rightside {
+    display: none !important;
+  }
+  body:has(#cloudMusic-page) #content-inner,
+  body:has(#cloudMusic-page) #page {
+    z-index: auto;
+  }
+  /* 歌曲列表 */
+  #cloudMusic-page .aplayer-list {
+    position: fixed;
+    z-index: 1002;
+    width: 100%;
+    bottom: -76%;
+    left: 0;
+    background: var(--sidebar-bg);
+    height: auto;
+    border-radius: 15px 15px 0px 0px;
+    padding: 15px 0px;
+  }
+  #cloudMusic-page .aplayer-list.aplayer-list-hide {
+    bottom: 0% !important;
+  }
+  #cloudMusic-page ol {
+    max-height: 60vh !important;
+    padding-right: 0px;
+  }
+  #cloudMusic-page ol > li {
+    display: flex;
+    margin: 0 10px;
+  }
+  #cloudMusic-page ol > li span {
+    color: var(--cloudchewie-font-color);
+  }
+  #cloudMusic-page ol > li span.aplayer-list-title {
+    width: 30%;
+  }
+  #cloudMusic-page ol > li.aplayer-list-light {
+    background: var(--cloudchewie-theme);
+    padding: 5px 20px;
+    border-radius: 10px;
+  }
+  #cloudMusic-page ol > li.aplayer-list-light span {
+    color: #fff;
+  }
+  #cloudMusic-page ol > li span.aplayer-list-title {
+    max-width: 55%;
+    width: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+  }
+  #cloudMusic-page ol > li span.aplayer-list-author {
+    position: absolute;
+    right: 10px;
+    width: auto;
+    max-width: 35%;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+  }
+  #cloudMusic-page ol > li.aplayer-list-light span.aplayer-list-author {
+    right: 15px;
+  }
+  /* 歌词信息 */
+  #cloudMusic-page .aplayer-body {
+    width: 100%;
+
+    position: fixed;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 100px;
+  }
+  #cloudMusic-page .aplayer-info .aplayer-lrc {
+    margin-top: 40px;
+    height: auto;
+    max-height: 200%;
+    min-height: 100%;
+    mask-image: linear-gradient(
+      to bottom,
+      #000,
+      #000,
+      #000,
+      #000,
+      #0000,
+      #0000
+    );
+  }
+  #cloudMusic-page .aplayer-info .aplayer-lrc p.aplayer-lrc-current {
+    color: var(--cloudchewie-theme);
+  }
+  /* 控制按键和进度条 */
+  #cloudMusic-page .aplayer-info .aplayer-controller {
+    width: 100%;
+    bottom: 100px;
+  }
+  #cloudMusic-page .aplayer-info .aplayer-controller .aplayer-bar-wrap {
+    margin: 0 30px;
+  }
+  #cloudMusic-page .aplayer-info .aplayer-time {
+    bottom: -40px;
+  }
+  #cloudMusic-page .aplayer-info .aplayer-time .aplayer-time-inner {
+    position: absolute;
+    width: 100%;
+    margin-right: 0;
+    margin-top: -33px;
+  }
+  #cloudMusic-page
+    .aplayer-info
+    .aplayer-time
+    .aplayer-time-inner
+    .aplayer-dtime {
+    position: absolute;
+    right: 30px;
+  }
+  #cloudMusic-page
+    .aplayer-info
+    .aplayer-time
+    .aplayer-time-inner
+    .aplayer-ptime {
+    position: absolute;
+    left: 35px;
+  }
+  #cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-back {
+    margin: auto;
+    right: 110px;
+  }
+  #cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-play {
+    margin: auto;
+    right: 0;
+    left: 0;
+  }
+  #cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-forward {
+    margin: auto;
+    left: 110px;
+    right: 0;
+  }
+  #cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-order {
+    position: absolute;
+    left: 22px;
+  }
+  #cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-loop {
+    position: absolute;
+    right: 25px;
+  }
+  #cloudMusic-page .aplayer-info .aplayer-time .aplayer-icon-menu {
+    display: inline;
+    position: absolute;
+    right: 25px;
+    top: -90px;
+  }
+  #cloudMusic-page .aplayer-volume-bar-wrap {
+    bottom: 0px;
+    right: 7px;
+  }
+  #cloudMusic-page
+    .aplayer
+    .aplayer-info
+    .aplayer-controller
+    .aplayer-volume-wrap {
+    left: -66px;
+  }
+}
+body.pace-done:has(#cloudMusic-page) #rightside {
+  display: none !important;
+}
+#cloudMusic-page meting-js svg,
+#cloudMusic-page meting-js .aplayer ol > li {
+  fill: var(--white) !important;
+  color: var(--white) !important;
+}
+#cloudMusic-page #anMusicBtnGetSong,
+#cloudMusic-page #anMusicRefreshBtn,
+#cloudMusic-page #anMusicSwitching {
+  position: fixed;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  width: 50px;
+  height: 50px;
+  bottom: 100px;
+  padding: 5px;
+  background: rgba(222, 222, 222, 0.3);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 2;
+}
+#cloudMusic-page .aplayer .aplayer-info .aplayer-controller .aplayer-time {
+  color: var(--white);
+}
+
 /* 设置文字内容 :nth-child(1)的作用是选择第几个 */
 .el-input.el-input--small.el-input-group.el-input-group--prepend:nth-child(
     1

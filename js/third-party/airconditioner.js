@@ -4127,7 +4127,7 @@ var __defProp = Object.defineProperty,
       Li(
         "img",
         {
-          src: "https://cdn.cbd.int/hexo-theme-cloudchewie@latest/source/icon/svg/07/air-conditioner.svg",
+          src: "https://cdn.cbd.int/hexo-theme-cloudchewie@3.2.4/source/icon/svg/07/air-conditioner.svg",
           alt: "",
           class: "air-conditioner-main-content-bottom-logo",
         },
@@ -4286,11 +4286,11 @@ var __defProp = Object.defineProperty,
             Ri("div", Lr, [
               Li("audio", { id: "di" }, [
                 Li("source", {
-                  src: "https://cdn.cbd.int/hexo-theme-cloudchewie@latest/source/voice/di.m4a",
+                  src: "https://cdn.cbd.int/hexo-theme-cloudchewie@3.2.4/source/voice/di.m4a",
                   preload: "auto",
                 }),
                 Li("source", {
-                  src: "https://cdn.cbd.int/hexo-theme-cloudchewie@latest/source/voice/di.mp3",
+                  src: "https://cdn.cbd.int/hexo-theme-cloudchewie@3.2.4/source/voice/di.mp3",
                   type: "audio/mpeg",
                   preload: "auto",
                 }),
@@ -4298,11 +4298,11 @@ var __defProp = Object.defineProperty,
               ]),
               Li("audio", { id: "ac-work" }, [
                 Li("source", {
-                  src: "https://cdn.cbd.int/hexo-theme-cloudchewie@latest/source/voice/ac-work.m4a",
+                  src: "https://cdn.cbd.int/hexo-theme-cloudchewie@3.2.4/source/voice/ac-work.m4a",
                   preload: "auto",
                 }),
                 Li("source", {
-                  src: "https://cdn.cbd.int/hexo-theme-cloudchewie@latest/source/voice/ac-work.mp3",
+                  src: "https://cdn.cbd.int/hexo-theme-cloudchewie@3.2.4/source/voice/ac-work.mp3",
                   type: "audio/mpeg",
                   preload: "auto",
                 }),
@@ -4310,11 +4310,11 @@ var __defProp = Object.defineProperty,
               ]),
               Li("audio", { id: "air-extractor-fan" }, [
                 Li("source", {
-                  src: "https://cdn.cbd.int/hexo-theme-cloudchewie@latest/source/voice/air-extractor-fan.m4a",
+                  src: "https://cdn.cbd.int/hexo-theme-cloudchewie@3.2.4/source/voice/air-extractor-fan.m4a",
                   preload: "auto",
                 }),
                 Li("source", {
-                  src: "https://cdn.cbd.int/hexo-theme-cloudchewie@latest/source/voice/air-extractor-fan.mp3",
+                  src: "https://cdn.cbd.int/hexo-theme-cloudchewie@3.2.4/source/voice/air-extractor-fan.mp3",
                   type: "audio/mpeg",
                   preload: "auto",
                 }),

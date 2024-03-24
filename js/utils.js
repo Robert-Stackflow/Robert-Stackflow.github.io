@@ -1,5 +1,5 @@
 window.meting_api =
-  "https://meting.qjqq.cn/?server=:server&type=:type&id=:id&r=:r";
+  "https://meting.api.cloudchewie.com/api?server=:server&type=:type&id=:id&r=:r";
 var adjectives = [
   "美丽的",
   "英俊的",
@@ -238,8 +238,8 @@ const cloudchewieFn = {
   /**
    * 是否为即刻页
    */
-  isNowtime: function () {
-    return window.location.pathname == "/essay/";
+  isMemos: function () {
+    return window.location.pathname == "/memos/";
   },
   /**
    * 是否为帖子页
@@ -1143,7 +1143,7 @@ const cloudchewieFn = {
    * 操作文章中的图片
    */
   addPhotoFigcaption: () => {
-    document.querySelectorAll("#article-container img").forEach((item) => {
+    document.querySelectorAll("#article-container img:not(.user-now-avatar)").forEach((item) => {
       const parentEle = item.parentNode;
       const altValue = item.title || item.alt;
       if (
@@ -1162,7 +1162,7 @@ const cloudchewieFn = {
    */
   runJustifiedGallery: (ele) => {
     ele.forEach((item) => {
-      const $imgList = item.querySelectorAll("img");
+      const $imgList = item.querySelectorAll("img:not(.user-now-avatar)");
       $imgList.forEach((i) => {
         const dataLazySrc = i.getAttribute("data-lazy-src");
         if (dataLazySrc) i.src = dataLazySrc;
@@ -1189,7 +1189,7 @@ const cloudchewieFn = {
   runLightbox: () => {
     cloudchewieFn.loadLightbox(
       document.querySelectorAll(
-        "#article-container img:not(.no-lightbox):not(.air-conditioner-main-content-bottom-logo)"
+        "#article-container img:not(.no-lightbox):not(.air-conditioner-main-content-bottom-logo):not(.user-now-avatar)"
       )
     );
   },
@@ -1242,6 +1242,7 @@ const cloudchewieFn = {
     if (nowMode === "light") {
       document.querySelector(".menu-toggleDarkMode-text").textContent =
         "浅色模式";
+      $("#darkmode-button").attr("title", "切换为浅色模式");
       $("#con-mode").attr("title", "切换为浅色模式");
       activateDarkMode();
       saveToLocal.set("theme", "dark", 2);
@@ -1250,6 +1251,7 @@ const cloudchewieFn = {
     } else {
       document.querySelector(".menu-toggleDarkMode-text").textContent =
         "深色模式";
+      $("#darkmode-button").attr("title", "切换为深色模式");
       $("#con-mode").attr("title", "切换为深色模式");
       activateLightMode();
       saveToLocal.set("theme", "light", 2);
@@ -1636,8 +1638,8 @@ const cloudchewieFn = {
     // 当滚动条小于56时
     if (
       document.body.scrollHeight <= innerHeight &&
-      "/essay/" != location.pathname &&
-      "/guestbook/" != location.pathname
+      cloudchewieFn.isMemos() &&
+      cloudchewieFn.isGuestbook()
     ) {
       $rightside.style.cssText = "opacity: 1; transform: translateX(-60px)";
       return;
@@ -2632,7 +2634,8 @@ const cloudchewieFn = {
       const musiccover = document.querySelector(
         "#cloudMusic-page .aplayer-pic"
       );
-      anMusicBg.style.backgroundImage = musiccover.style.backgroundImage;
+      if(musiccover)
+        anMusicBg.style.backgroundImage = musiccover.style.backgroundImage;
       $web_container.style.background = "none";
     } else {
       let timer = setInterval(() => {
@@ -2762,7 +2765,7 @@ const cloudchewieFn = {
     server,
     id,
     reload = true,
-    type = "playlist",
+    type = "playlist"
   ) {
     if (!cloudchewieFn.isMusic()) {
       const navMusic = document.getElementById("nav-music");
@@ -2791,8 +2794,9 @@ const cloudchewieFn = {
       if (anMusicPage == null || anMusicPage.querySelector("meting-js") == null)
         return;
       const metingAplayer = anMusicPage.querySelector("meting-js").aplayer;
-      if (!metingAplayer)
+      if (!metingAplayer) {
         anMusicPage.querySelector("meting-js").connectedCallback();
+      }
       if (reload) {
         anMusicPage
           .querySelector("meting-js")
@@ -2991,7 +2995,7 @@ const cloudchewieFn = {
     document.getElementById("talk").innerHTML = html;
     var times = 0;
     var relayout = setInterval(function () {
-      cloudchewieFn.isNowtime() &&
+      cloudchewieFn.isMemos() &&
         (waterfall("#talk"),
         setTimeout(() => {
           waterfall("#talk");
@@ -3543,7 +3547,7 @@ const cloudchewieFn = {
             cloudchewieFn.toggleDarkMode();
             break;
           case 69:
-            pjax.loadUrl("/essay/");
+            pjax.loadUrl("/memos/");
             break;
           case 71:
             pjax.loadUrl("/gallery/");
@@ -4346,6 +4350,9 @@ const consoleFn = {
     document
       .getElementById("console-button")
       .addEventListener("click", consoleFn.showConsole);
+    document
+      .getElementById("darkmode-button")
+      .addEventListener("click", cloudchewieFn.toggleDarkMode);
     window.onresize = () => {
       if (!cloudchewieFn.isFullScreen()) {
         $("#con-fullscreen").removeClass("checked");
@@ -4367,10 +4374,12 @@ const consoleFn = {
     if (nowMode === "light") {
       document.querySelector(".menu-toggleDarkMode-text").textContent =
         "深色模式";
+      $("#darkmode-button").attr("title", "切换为深色模式");
       $("#con-mode").attr("title", "切换为深色模式");
     } else {
       document.querySelector(".menu-toggleDarkMode-text").textContent =
         "浅色模式";
+      $("#darkmode-button").attr("title", "切换为浅色模式");
       $("#con-mode").attr("title", "切换为浅色模式");
     }
     $(document).ready(function () {
