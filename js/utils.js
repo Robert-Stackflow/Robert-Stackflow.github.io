@@ -2758,7 +2758,12 @@ const cloudchewieFn = {
   /**
    * 切换歌单
    */
-  changeMusicList: async function (server, id, type = "playlist") {
+  changeMusicList: async function (
+    server,
+    id,
+    reload = true,
+    type = "playlist",
+  ) {
     if (!cloudchewieFn.isMusic()) {
       const navMusic = document.getElementById("nav-music");
       if (navMusic == null || navMusic.querySelector("meting-js") == null)
@@ -2766,37 +2771,43 @@ const cloudchewieFn = {
       const navMetingAplayer = navMusic.querySelector("meting-js").aplayer;
       if (!navMetingAplayer)
         navMusic.querySelector("meting-js").connectedCallback();
-      navMusic
-        .querySelector("meting-js")
-        ._fetchSongs(server, id, type)
-        .then((songs) => {
-          if (navMetingAplayer != null) {
-            let isPaused = navMetingAplayer.audio.paused;
-            navMetingAplayer.list.clear();
-            navMetingAplayer.list.add(songs);
-            if (!isPaused) {
-              cloudchewieFn.playMusic();
+      if (reload) {
+        navMusic
+          .querySelector("meting-js")
+          ._fetchSongs(server, id, type)
+          .then((songs) => {
+            if (navMetingAplayer != null) {
+              let isPaused = navMetingAplayer.audio.paused;
+              navMetingAplayer.list.clear();
+              navMetingAplayer.list.add(songs);
+              if (!isPaused) {
+                cloudchewieFn.playMusic();
+              }
             }
-          }
-        });
+          });
+      }
     } else {
       const anMusicPage = document.getElementById("cloudMusic-page");
       if (anMusicPage == null || anMusicPage.querySelector("meting-js") == null)
         return;
       const metingAplayer = anMusicPage.querySelector("meting-js").aplayer;
-      anMusicPage
-        .querySelector("meting-js")
-        ._fetchSongs(server, id, type)
-        .then((songs) => {
-          if (metingAplayer != null) {
-            let isPaused = metingAplayer.audio.paused;
-            metingAplayer.list.clear();
-            metingAplayer.list.add(songs);
-            if (!isPaused) {
-              cloudchewieFn.playMusic();
+      if (!metingAplayer)
+        anMusicPage.querySelector("meting-js").connectedCallback();
+      if (reload) {
+        anMusicPage
+          .querySelector("meting-js")
+          ._fetchSongs(server, id, type)
+          .then((songs) => {
+            if (metingAplayer != null) {
+              let isPaused = metingAplayer.audio.paused;
+              metingAplayer.list.clear();
+              metingAplayer.list.add(songs);
+              if (!isPaused) {
+                cloudchewieFn.playMusic();
+              }
             }
-          }
-        });
+          });
+      }
     }
   },
   /**
@@ -4326,7 +4337,7 @@ const consoleFn = {
     //加载播放列表
     if (cloudchewieFn.loadData("playlist") != undefined) {
       var json = JSON.parse(cloudchewieFn.loadData("playlist"));
-      consoleFn.changeAPlayerList(json.id, json.server, false);
+      consoleFn.changeAPlayerList(json.id, json.server, false, false);
     }
     consoleFn.loadCustomPlaylists();
     document
@@ -4456,7 +4467,7 @@ const consoleFn = {
   /**
    * 切换歌单
    */
-  changeAPlayerList: (id, server, zhudong = false) => {
+  changeAPlayerList: (id, server, zhudong = false, reload = true) => {
     if (window.aplayers)
       for (let i = 0; i < window.aplayers.length; i++)
         window.aplayers[i].pause();
@@ -4469,14 +4480,14 @@ const consoleFn = {
     if (zhudong)
       GLOBAL_CONFIG.Snackbar !== undefined &&
         cloudchewieFn.snackbarShow("歌单切换成功");
-    cloudchewieFn.changeMusicList(server, id);
+    cloudchewieFn.changeMusicList(server, id, reload);
   },
   /**
    * 保存自定义歌单
    */
   saveCustomPlaylist: (id, server) => {
-    var customPlayLists = JSON.parse(cloudchewieFn.loadData("customPlaylists"));
-    if (!customPlayLists) customPlayLists = [];
+    var raw = cloudchewieFn.loadData("customPlaylists");
+    var customPlayLists = raw ? JSON.parse(raw) : [];
     var saved = false;
     customPlayLists.forEach((e) => {
       if (e.id == id && e.server == server) saved = true;
@@ -4496,18 +4507,15 @@ const consoleFn = {
    * 删除自定义歌单
    */
   removeCustomPlaylist: (id, server) => {
-    var customPlayLists = JSON.parse(cloudchewieFn.loadData("customPlaylists"));
-    if (!customPlayLists) customPlayLists = [];
+    var raw = cloudchewieFn.loadData("customPlaylists");
+    var customPlayLists = raw ? JSON.parse(raw) : [];
     var delete_index = -1;
     customPlayLists.forEach((e, index) => {
       if (e.id == id && e.server == server) delete_index = index;
     });
-    console.log(delete_index)
-    if (delete_index>=0) {
+    if (delete_index >= 0) {
       customPlayLists.splice(delete_index, 1);
-      $(
-        `.playlist-container > div:nth-child(${delete_index+4})`
-      ).remove();
+      $(`.playlist-container > div:nth-child(${delete_index + 4})`).remove();
       cloudchewieFn.saveData(
         "customPlaylists",
         JSON.stringify(customPlayLists)
@@ -4520,8 +4528,8 @@ const consoleFn = {
    * 加载自定义歌单
    */
   loadCustomPlaylists: (id, server) => {
-    var customPlayLists = JSON.parse(cloudchewieFn.loadData("customPlaylists"));
-    if (!customPlayLists) customPlayLists = [];
+    var raw = cloudchewieFn.loadData("customPlaylists");
+    var customPlayLists = raw ? JSON.parse(raw) : [];
     customPlayLists.forEach((e, index) => {
       consoleFn.appendPlaylist(e.id, e.server, index + 1);
     });

@@ -15180,12 +15180,12 @@ consoleShortcutsRight {
 .box,
 .boxt,
 .playlist-item,
+.custom-playlist-item-close
 .boxl,
 .boxr {
   transition: all 0.3s;
   height: 95px;
 }
-
 .playlist-item {
   display: flex;
   align-items: center;
