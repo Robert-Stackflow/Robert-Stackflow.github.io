@@ -1631,7 +1631,7 @@ input::placeholder {
   z-index: -999;
   width: 100%;
   height: 100%;
-  background: https://picbed.cloudchewie.com/index/index.png;
+  background: https://picbed.cloudchewie.com/blog/other/index.png;
   background-attachment: local;
   background-position: center;
   background-size: cover;
@@ -6721,7 +6721,7 @@ maxWidth1400()
   -o-animation-direction: alternate;
   -ms-animation-direction: alternate;
   animation-direction: alternate;
-  background: url("https://picbed.cloudchewie.com/index/avatar.png!mini") no-repeat center center;
+  background: url("https://picbed.cloudchewie.com/blog/index/avatar.png!mini") no-repeat center center;
   background-size: cover;
 }
 #loading-box .loading-image-dot {
@@ -12835,7 +12835,7 @@ p.p.gray {
   transition: 2s ease-in-out;
 }
 .author-content-item.game-yuanshen {
-  background: url(https://picbed.cloudchewie.com/index/yuanshen.webp)
+  background: url(https://picbed.cloudchewie.com/blog/other/yuanshen.webp)
     no-repeat top;
   background-size: cover;
   min-height: 240px;
@@ -12867,7 +12867,7 @@ p.p.gray {
 }
 
 .author-content-item.beloved {
-  background: url(https://picbed.cloudchewie.com/index/beloved.jpg!cover)
+  background: url(https://picbed.cloudchewie.com/blog/other/beloved.jpg!cover)
     no-repeat;
   background-size: cover;
   min-height: 500px;
@@ -12875,7 +12875,7 @@ p.p.gray {
 }
 
 .author-content-item.like-music {
-  background: url(https://picbed.cloudchewie.com/index/xusong.jpg!cover)
+  background: url(https://picbed.cloudchewie.com/blog/other/xusong.jpg!cover)
     no-repeat top;
   background-size: cover;
   min-height: 400px;
@@ -13101,7 +13101,7 @@ p.p.gray {
   filter: drop-shadow(0 -500px 0 var(--loadingbar-prospect-color));
   width: 500px;
   height: 62.5px;
-  background: url("https://picbed.cloudchewie.com/blog/badge/yuanshen-loading-bar.webp!cover")
+  background: url("https://picbed.cloudchewie.com/blog/other/yuanshen-loading-bar.webp!cover")
     no-repeat left 100%;
   background-size: 500px 62.5px;
   background-position-x: 0;

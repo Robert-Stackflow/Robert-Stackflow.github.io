@@ -155,11 +155,11 @@ document.addEventListener("DOMContentLoaded", function () {
     cloudchewieFn.$memos_userlist = document.getElementById("memos-userlist");
     cloudchewieFn.$memos_query = document.getElementById("memos-query");
     cloudchewieFn.$memos_button_list = document.getElementById("memos-button-list");
-    cloudchewieFn.$total_memos.addEventListener("click",cloudchewieFn.onTotalMemosClicked);
-    cloudchewieFn.$mine_memos.addEventListener("click",cloudchewieFn.onMineMemosClicked);
-    cloudchewieFn.$randomuser_memos.addEventListener("click",cloudchewieFn.onRandomUserMemosClicked);
-    cloudchewieFn.$userlist_memos.addEventListener("click",cloudchewieFn.onUserListMemosClicked);
-    cloudchewieFn.$search_memos.addEventListener("click",cloudchewieFn.onSearchMemosClicked);
+    cloudchewieFn.$total_memos&&cloudchewieFn.$total_memos.addEventListener("click",cloudchewieFn.onTotalMemosClicked);
+    cloudchewieFn.$mine_memos&&cloudchewieFn.$mine_memos.addEventListener("click",cloudchewieFn.onMineMemosClicked);
+    cloudchewieFn.$randomuser_memos&&cloudchewieFn.$randomuser_memos.addEventListener("click",cloudchewieFn.onRandomUserMemosClicked);
+    cloudchewieFn.$userlist_memos&&cloudchewieFn.$userlist_memos.addEventListener("click",cloudchewieFn.onUserListMemosClicked);
+    cloudchewieFn.$search_memos&&cloudchewieFn.$search_memos.addEventListener("click",cloudchewieFn.onSearchMemosClicked);
     cloudchewieFn.isMemos() && cloudchewieFn.fetchMemos();
 
     GLOBAL_CONFIG.isPhotoFigcaption && cloudchewieFn.addPhotoFigcaption();

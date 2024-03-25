@@ -1,7 +1,8 @@
 window.meting_api =
   "https://meting.api.cloudchewie.com/api?server=:server&type=:type&id=:id&r=:r";
 var default_memos_avatar =
-  "https://picbed.cloudchewie.com/blog/badge/memos.webp";
+  "https://picbed.cloudchewie.com/icon/memos-user.webp!mini";
+var memos_logo = "https://picbed.cloudchewie.com/icon/memos.webp!mini";
 var blank_memos = {
   id: -1,
   creatorId: -1,
@@ -151,7 +152,7 @@ body:before {
   display: block;
   width: 100%;
   height: 100%;
-  background-image: url(https://picbed.cloudchewie.com/index/noise.png);
+  background-image: url(https://picbed.cloudchewie.com/blog/index/noise.png);
   position: fixed;
   z-index: 10000;
   opacity: .036;
@@ -2923,7 +2924,10 @@ const cloudchewieFn = {
         `https://memos.cloudchewie.com/u/${username}`
       );
     } else {
-      $(cloudchewieFn.$memos_bar_avatar_link).attr("href", "https://memos.cloudchewie.com/");
+      $(cloudchewieFn.$memos_bar_avatar_link).attr(
+        "href",
+        "https://memos.cloudchewie.com/"
+      );
     }
     $(cloudchewieFn.$memos_bar_name).html(nickname);
   },
@@ -3044,7 +3048,7 @@ const cloudchewieFn = {
     }
     switch (cloudchewieFn.memos_current_option) {
       case 0:
-        cloudchewieFn.updateMemosBarMeta("https://memos.cloudchewie.com/logo.webp", "Memos");
+        cloudchewieFn.updateMemosBarMeta(memos_logo, "Memos");
         cloudchewieFn.fetchAllMemos();
         break;
       case 1:
@@ -4795,7 +4799,7 @@ const consoleFn = {
   },
   appendPlaylist(id, server, index) {
     $(".playlist-container").append(
-      `<div class="custom-playlist-item-wrapper"><div class="playlist-item custom-playlist-item" style="background-image:url(https://picbed.cloudchewie.com/index/archives.jpg!mini)" onclick="consoleFn.changeAPlayerList(${id},&quot;${server}&quot;,true)" data-pjax-state=""><span>歌单${id}</span></div><a href="javascript:;" onclick="consoleFn.removeCustomPlaylist(${id},&quot;${server}&quot;)"><i class="cloudchewiefont cloudchewie-icon-xmark custom-playlist-item-close"></i></a></div>`
+      `<div class="custom-playlist-item-wrapper"><div class="playlist-item custom-playlist-item" style="background-image:url(https://picbed.cloudchewie.com/blog/other/archives.jpg!mini)" onclick="consoleFn.changeAPlayerList(${id},&quot;${server}&quot;,true)" data-pjax-state=""><span>歌单${id}</span></div><a href="javascript:;" onclick="consoleFn.removeCustomPlaylist(${id},&quot;${server}&quot;)"><i class="cloudchewiefont cloudchewie-icon-xmark custom-playlist-item-close"></i></a></div>`
     );
   },
   /**
