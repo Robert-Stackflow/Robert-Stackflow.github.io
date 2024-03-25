@@ -217,40 +217,7 @@ if (true) {
 <li>Python 的默认包管理器，通常与虚拟环境一起使用</li>
 <li>pip 提供了大量的第三方包，并且与 Python 官方发行版一起发布</li>
 </ul>
-<table>
-<thead>
-<tr>
-<th align="center">特点</th>
-<th align="center">pip</th>
-<th align="center">conda</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">包管理器</td>
-<td align="center">Python默认的包管理器</td>
-<td align="center">Anaconda发行版提供的包管理器</td>
-</tr>
-<tr>
-<td align="center">包源</td>
-<td align="center">默认从PyPI下载包</td>
-<td align="center">可从Anaconda仓库和其他channels下载包</td>
-</tr>
-<tr>
-<td align="center">环境管理</td>
-<td align="center">不直接提供环境管理功能</td>
-<td align="center">提供创建、管理和激活环境的功能</td>
-</tr>
-<tr>
-<td align="center">支持语言</td>
-<td align="center">Python</td>
-<td align="center">Python、R、C&#x2F;C++、Java、Lua</td>
-</tr>
-<tr>
-<td align="center">使用场景</td>
-<td align="center">管理Python包</td>
-<td align="center">可用于科学计算和数据处理等领域</td>
-</tr>
-</tbody></table>
+<p>|   特点   |          pip           |                conda                 |<br>| :———: | :——————————: | :—————————————————: |<br>| 包管理器 |  Python默认的包管理器  |     Anaconda发行版提供的包管理器     |<br>|   包源   |    默认从PyPI下载包    | 可从Anaconda仓库和其他channels下载包 |<br>| 环境管理 | 不直接提供环境管理功能 |    提供创建、管理和激活环境的功能    |<br>| 支持语言 |         Python         |     Python、R、C/C++、Java、Lua      |<br>| 使用场景 |      管理Python包      |    可用于科学计算和数据处理等领域    |</p>
 </li>
 <li><p><strong>virtualenv</strong>:</p>
 <ul>
@@ -286,7 +253,6 @@ if (true) {
 </li>
 <li><p>验证安装是否成功：在Anaconda Prompt内输入命令，如果安装成功将显示conda版本号，如<code>conda 24.1.2</code></p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda <span class="literal">--version</span></span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>如果你在“选择可选项”步骤勾选了“将Anaconda3添加到环境变量”，则可以打开Powershell或cmd输入命令</p>
 </blockquote>
@@ -300,7 +266,8 @@ if (true) {
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda update conda</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>显示有关当前安装的Anaconda版本和环境的信息</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda info</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda info</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <h3 id="环境相关"><a href="#环境相关" class="headerlink" title="环境相关"></a>环境相关</h3><ol>
 <li><p>创建新环境</p>
@@ -319,7 +286,8 @@ if (true) {
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda deactivate</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>列出所有已创建的环境</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda env list</span><br><span class="line">conda info <span class="literal">-e</span></span><br><span class="line">conda info <span class="literal">--envs</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda env list</span><br><span class="line">conda info <span class="literal">-e</span></span><br><span class="line">conda info <span class="literal">--envs</span></span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <h3 id="包相关"><a href="#包相关" class="headerlink" title="包相关"></a>包相关</h3><ol>
 <li><p>列出当前环境中安装的所有包</p>

@@ -1,5 +1,17 @@
 window.meting_api =
   "https://meting.api.cloudchewie.com/api?server=:server&type=:type&id=:id&r=:r";
+var default_memos_avatar =
+  "https://picbed.cloudchewie.com/blog/badge/memos.webp";
+var blank_memos = {
+  id: -1,
+  creatorId: -1,
+  createdTs: new Date().getTime() / 1000,
+  content: "暂无Memos",
+  creatorName: "暂无Memos",
+  creatorUsername: "暂无Memos",
+  resourceList: [],
+  name: "",
+};
 var adjectives = [
   "美丽的",
   "英俊的",
@@ -1143,26 +1155,28 @@ const cloudchewieFn = {
    * 操作文章中的图片
    */
   addPhotoFigcaption: () => {
-    document.querySelectorAll("#article-container img:not(.user-now-avatar)").forEach((item) => {
-      const parentEle = item.parentNode;
-      const altValue = item.title || item.alt;
-      if (
-        altValue &&
-        !parentEle.parentNode.classList.contains("justified-gallery")
-      ) {
-        const ele = document.createElement("div");
-        ele.className = "img-alt is-center";
-        ele.textContent = altValue;
-        parentEle.insertBefore(ele, item.nextSibling);
-      }
-    });
+    document
+      .querySelectorAll("#article-container img:not(.memos-bar-avatar)")
+      .forEach((item) => {
+        const parentEle = item.parentNode;
+        const altValue = item.title || item.alt;
+        if (
+          altValue &&
+          !parentEle.parentNode.classList.contains("justified-gallery")
+        ) {
+          const ele = document.createElement("div");
+          ele.className = "img-alt is-center";
+          ele.textContent = altValue;
+          parentEle.insertBefore(ele, item.nextSibling);
+        }
+      });
   },
   /**
    * 图片排版
    */
   runJustifiedGallery: (ele) => {
     ele.forEach((item) => {
-      const $imgList = item.querySelectorAll("img:not(.user-now-avatar)");
+      const $imgList = item.querySelectorAll("img:not(.memos-bar-avatar)");
       $imgList.forEach((i) => {
         const dataLazySrc = i.getAttribute("data-lazy-src");
         if (dataLazySrc) i.src = dataLazySrc;
@@ -1189,7 +1203,7 @@ const cloudchewieFn = {
   runLightbox: () => {
     cloudchewieFn.loadLightbox(
       document.querySelectorAll(
-        "#article-container img:not(.no-lightbox):not(.air-conditioner-main-content-bottom-logo):not(.user-now-avatar)"
+        "#article-container img:not(.no-lightbox):not(.air-conditioner-main-content-bottom-logo):not(.memos-bar-avatar)"
       )
     );
   },
@@ -2634,7 +2648,7 @@ const cloudchewieFn = {
       const musiccover = document.querySelector(
         "#cloudMusic-page .aplayer-pic"
       );
-      if(musiccover)
+      if (musiccover)
         anMusicBg.style.backgroundImage = musiccover.style.backgroundImage;
       $web_container.style.background = "none";
     } else {
@@ -2854,6 +2868,22 @@ const cloudchewieFn = {
    *
    * =================================================
    */
+  memos_userlist: [],
+  memos_current_option: 0, //0-total,1-user,2-randomuser
+  memos_current_userId: -1,
+  memos_current_query_content: undefined,
+  $search_memos: undefined,
+  $search_input: undefined,
+  $total_memos: undefined,
+  $mine_memos: undefined,
+  $memos_button_list: undefined,
+  $randomuser_memos: undefined,
+  $userlist_memos: undefined,
+  $memos_bar_avatar: undefined,
+  $memos_bar_avatar_link: undefined,
+  $memos_bar_name: undefined,
+  $memos_userlist: undefined,
+  $memos_query: undefined,
   parseImage: (e) => {
     return `<a href="${e}" data-fancybox="gallery" class="fancybox" data-thumb="${e}"><img class="no-lazyload" src="${e}"></a>`;
   },
@@ -2863,81 +2893,110 @@ const cloudchewieFn = {
     n.focus();
     cloudchewieFn.snackbarShow("无需删除空行，直接输入评论即可", !1, 2e3);
   },
-  fetchMemos: async () => {
-    var items = [],
-      item = {};
-    const withTimeout = (millis, promise) => {
-      const timeout = new Promise((resolve, reject) =>
-        setTimeout(() => reject(`Timed out after ms.`), millis)
-      );
-      return Promise.race([promise, timeout]);
-    };
-    function compare(p) {
-      return function (m, n) {
-        var a = m[p];
-        var b = n[p];
-        return b - a;
-      };
+  updateSelectMemosState: () => {
+    cloudchewieFn.$total_memos &&
+      cloudchewieFn.$total_memos.classList.remove("checked");
+    cloudchewieFn.$mine_memos &&
+      cloudchewieFn.$mine_memos.classList.remove("checked");
+    cloudchewieFn.$randomuser_memos &&
+      cloudchewieFn.$randomuser_memos.classList.remove("checked");
+    switch (cloudchewieFn.memos_current_option) {
+      case 0:
+        cloudchewieFn.$total_memos &&
+          cloudchewieFn.$total_memos.classList.add("checked");
+        break;
+      case 1:
+        cloudchewieFn.$mine_memos &&
+          cloudchewieFn.$mine_memos.classList.add("checked");
+        break;
+      case 2:
+        cloudchewieFn.$randomuser_memos &&
+          cloudchewieFn.$randomuser_memos.classList.add("checked");
+        break;
     }
-    fetch("/memos_user.json")
-      .then((res) => res.json())
-      .then(async (users) => {
-        const results = await Promise.allSettled(
-          users.map((user) =>
-            withTimeout(
-              2000,
-              fetch(
-                "https://memos.cloudchewie.com/api/v1/memo?creatorId=" +
-                  user.id +
-                  "&rowStatus=NORMAL&limit=" +
-                  10
-              )
-                .then((response) => response.json())
-                .then((resdata) => {
-                  return resdata;
-                })
-            )
-          )
-        ).then((results) => {
-          for (var i = 0; i < results.length; i++) {
-            var status = results[i].status;
-            if (status == "fulfilled") {
-              var resultsRes = results[i].value;
-              for (var j = 0; j < resultsRes.length; j++) {
-                var resValue = resultsRes[j];
-                var dayDiff = Math.floor(
-                  (new Date().getTime() - resValue.createdTs * 1000) /
-                    (24 * 3600 * 1000)
-                );
-                if (dayDiff < 365) {
-                  let avatarUrl = "";
-                  users.forEach((user) => {
-                    if (user.id == resValue.creatorId)
-                      avatarUrl = user.avatarUrl;
-                  });
-                  item = {
-                    id: resValue.id,
-                    avatar:
-                      avatarUrl && avatarUrl != ""
-                        ? avatarUrl
-                        : "https://picbed.cloudchewie.com/blog/badge/memos.webp",
-                    createdTs: resValue.createdTs,
-                    creatorId: resValue.creatorId,
-                    creator: resValue.creatorName,
-                    creatorUsername: resValue.creatorUsername,
-                    content: resValue.content,
-                    resourceList: resValue.resourceList,
-                    hash: resValue.name,
-                  };
-                  items.push(item);
-                }
-              }
-            }
-          }
-          items.sort(compare("createdTs"));
-          cloudchewieFn.loadMemos(items);
-        });
-      });
+  },
+  updateMemosBarMeta: (avatar, nickname, username = "") => {
+    $(cloudchewieFn.$memos_bar_avatar).attr("src", avatar);
+    if (username != "") {
+      $(cloudchewieFn.$memos_bar_avatar_link).attr(
+        "href",
+        `https://memos.cloudchewie.com/u/${username}`
+      );
+    } else {
+      $(cloudchewieFn.$memos_bar_avatar_link).attr("href", "https://memos.cloudchewie.com/");
+    }
+    $(cloudchewieFn.$memos_bar_name).html(nickname);
+  },
+  onTotalMemosClicked: () => {
+    cloudchewieFn.memos_current_option = 0;
+    cloudchewieFn.fetchMemos();
+  },
+  onMineMemosClicked: () => {
+    cloudchewieFn.memos_current_option = 1;
+    cloudchewieFn.memos_current_userId = 1;
+    cloudchewieFn.fetchMemos();
+  },
+  onRandomUserMemosClicked: () => {
+    cloudchewieFn.memos_current_option = 2;
+    var tmp = cloudchewieFn.memos_current_userId;
+    while (tmp == cloudchewieFn.memos_current_userId) {
+      tmp =
+        cloudchewieFn.memos_userlist[
+          Math.round(Math.random() * cloudchewieFn.memos_userlist.length) %
+            cloudchewieFn.memos_userlist.length
+        ].id;
+    }
+    cloudchewieFn.memos_current_userId = tmp;
+    cloudchewieFn.fetchMemos();
+  },
+  onUserListMemosClicked: () => {
+    $(cloudchewieFn.$memos_userlist).toggle();
+    cloudchewieFn.$userlist_memos &&
+      cloudchewieFn.$userlist_memos.classList.toggle("checked");
+  },
+  searchNow: (clear = false) => {
+    if (clear) {
+      cloudchewieFn.memos_current_query_content = undefined;
+      $(".memos-query-name").remove();
+      cloudchewieFn.$memos_query.classList.add("no-query");
+    } else {
+      cloudchewieFn.memos_current_query_content =
+        cloudchewieFn.$search_input.value;
+      cloudchewieFn.$memos_query.classList.remove("no-query");
+      $(".memos-query-name").remove();
+      $(cloudchewieFn.$memos_query).append(
+        `<div class="memos-query-name" onclick="cloudchewieFn.searchNow(true)"><span>${cloudchewieFn.memos_current_query_content}</span><i class="cloudchewiefont cloudchewie-icon-xmark"></i></div>`
+      );
+    }
+    cloudchewieFn.fetchMemos();
+  },
+  onSearchMemosClicked: () => {
+    function search() {
+      if (cloudchewieFn.$search_input.classList.contains("d-none")) {
+        cloudchewieFn.$memos_button_list.classList.add("d-none");
+        cloudchewieFn.$search_input.classList.remove("d-none");
+        cloudchewieFn.$search_input.focus();
+      } else if (
+        !cloudchewieFn.$search_input.classList.contains("d-none") &&
+        cloudchewieFn.$search_input.value == ""
+      ) {
+        cloudchewieFn.searchNow(true);
+        cloudchewieFn.$search_input.classList.add("animate__fadeOutRight");
+        setTimeout(function () {
+          cloudchewieFn.$memos_button_list.classList.remove("d-none");
+          cloudchewieFn.$search_input.classList.add("d-none");
+          cloudchewieFn.$search_input.classList.remove("animate__fadeOutRight");
+        }, 500);
+      } else if (cloudchewieFn.$search_input.value !== "") {
+        cloudchewieFn.searchNow();
+      }
+    }
+    search();
+    cloudchewieFn.$search_input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        search();
+      }
+    });
   },
   onUserClicked: (user) => {
     window.open(`https://memos.cloudchewie.com/u/${user}`);
@@ -2947,6 +3006,188 @@ const cloudchewieFn = {
   },
   onTimeClicked: (hash) => {
     window.open(`https://memos.cloudchewie.com/m/${hash}`);
+  },
+  withTimeout: (millis, promise) => {
+    const timeout = new Promise((resolve, reject) =>
+      setTimeout(() => reject(`Timed out after ms.`), millis)
+    );
+    return Promise.race([promise, timeout]);
+  },
+  compare: (p) => {
+    return function (m, n) {
+      var a = m[p];
+      var b = n[p];
+      return b - a;
+    };
+  },
+  fetchMemos: async () => {
+    cloudchewieFn.updateSelectMemosState();
+    if (cloudchewieFn.memos_userlist.length <= 0) {
+      await fetch("/memos_user.json")
+        .then((res) => res.json())
+        .then(async (users) => {
+          cloudchewieFn.memos_userlist = users;
+          var userlistDom = $(cloudchewieFn.$memos_userlist);
+          userlistDom.empty();
+          users.forEach((user) => {
+            userlistDom.append(
+              `<div onclick="cloudchewieFn.memos_current_option = 2;cloudchewieFn.memos_current_userId = ${
+                user.id
+              };cloudchewieFn.fetchMemos();" class="item-avatar" style="background-image:url(${
+                user.avatarUrl && user.avatarUrl != ""
+                  ? user.avatarUrl
+                  : default_memos_avatar
+              })"></div>`
+            );
+          });
+        });
+    }
+    switch (cloudchewieFn.memos_current_option) {
+      case 0:
+        cloudchewieFn.updateMemosBarMeta("https://memos.cloudchewie.com/logo.webp", "Memos");
+        cloudchewieFn.fetchAllMemos();
+        break;
+      case 1:
+      case 2:
+        cloudchewieFn.memos_userlist.forEach((user) => {
+          if (user.id == cloudchewieFn.memos_current_userId) {
+            cloudchewieFn.updateMemosBarMeta(
+              user.avatarUrl && user.avatarUrl != ""
+                ? user.avatarUrl
+                : default_memos_avatar,
+              user.nickname,
+              user.name.replace("users/", "")
+            );
+          }
+        });
+        cloudchewieFn.fetchUserMemos(cloudchewieFn.memos_current_userId);
+        break;
+    }
+  },
+  fetchUserMemos: async (id) => {
+    var items = [],
+      item = {};
+    cloudchewieFn
+      .withTimeout(
+        2000,
+        fetch(
+          `https://memos.cloudchewie.com/api/v1/memo?creatorId=${id}&rowStatus=NORMAL&limit=50${
+            cloudchewieFn.memos_current_query_content &&
+            cloudchewieFn.memos_current_query_content != ""
+              ? `&content=${cloudchewieFn.memos_current_query_content}`
+              : ""
+          }`
+        )
+          .then((response) => response.json())
+          .then((resdata) => {
+            return resdata;
+          })
+      )
+      .then((results) => {
+        if (results.length == 0) {
+          results.push(blank_memos);
+        }
+        for (var j = 0; j < results.length; j++) {
+          var resValue = results[j];
+          var dayDiff = Math.floor(
+            (new Date().getTime() - resValue.createdTs * 1000) /
+              (24 * 3600 * 1000)
+          );
+          if (dayDiff < 365) {
+            let avatarUrl = "";
+            cloudchewieFn.memos_userlist.forEach((user) => {
+              if (user.id == resValue.creatorId) avatarUrl = user.avatarUrl;
+            });
+            item = {
+              id: resValue.id,
+              avatar:
+                avatarUrl && avatarUrl != "" ? avatarUrl : default_memos_avatar,
+              createdTs: resValue.createdTs,
+              creatorId: resValue.creatorId,
+              creator: resValue.creatorName,
+              creatorUsername: resValue.creatorUsername,
+              content: resValue.content,
+              resourceList: resValue.resourceList,
+              hash: resValue.name,
+            };
+            items.push(item);
+          }
+        }
+        items.sort(cloudchewieFn.compare("createdTs"));
+        cloudchewieFn.loadMemos(items);
+      });
+  },
+  fetchAllMemos: async () => {
+    var items = [],
+      item = {};
+    await Promise.allSettled(
+      cloudchewieFn.memos_userlist.map((user) =>
+        cloudchewieFn.withTimeout(
+          2000,
+          fetch(
+            `https://memos.cloudchewie.com/api/v1/memo?creatorId=${
+              user.id
+            }&rowStatus=NORMAL&limit=50${
+              cloudchewieFn.memos_current_query_content &&
+              cloudchewieFn.memos_current_query_content != ""
+                ? `&content=${cloudchewieFn.memos_current_query_content}`
+                : ""
+            }`
+          )
+            .then((response) => response.json())
+            .then((resdata) => {
+              return resdata;
+            })
+        )
+      )
+    ).then((results) => {
+      var count = 0;
+      for (var i = 0; i < results.length; i++) {
+        var status = results[i].status;
+        if (status == "fulfilled") {
+          count += results[i].value.length;
+        }
+      }
+      if (count <= 0) {
+        results.push({ status: "fulfilled", value: [blank_memos] });
+      }
+      for (var i = 0; i < results.length; i++) {
+        var status = results[i].status;
+        if (status == "fulfilled") {
+          var resultsRes = results[i].value;
+          for (var j = 0; j < resultsRes.length; j++) {
+            var resValue = resultsRes[j];
+            var dayDiff = Math.floor(
+              (new Date().getTime() - resValue.createdTs * 1000) /
+                (24 * 3600 * 1000)
+            );
+            if (dayDiff < 365) {
+              let avatarUrl = "";
+              cloudchewieFn.memos_userlist.forEach((user) => {
+                if (user.id == resValue.creatorId) avatarUrl = user.avatarUrl;
+              });
+              item = {
+                id: resValue.id,
+                avatar:
+                  avatarUrl && avatarUrl != ""
+                    ? avatarUrl
+                    : default_memos_avatar,
+                createdTs: resValue.createdTs,
+                creatorId: resValue.creatorId,
+                creator: resValue.creatorName,
+                creatorUsername: resValue.creatorUsername,
+                content: resValue.content,
+                resourceList: resValue.resourceList,
+                hash: resValue.name,
+              };
+              items.push(item);
+            }
+          }
+        }
+      }
+      items.sort(cloudchewieFn.compare("createdTs"));
+      cloudchewieFn.loadMemos(items);
+    });
   },
   loadMemos: (data) => {
     let items = [],
@@ -2971,26 +3212,35 @@ const cloudchewieFn = {
       dateList = dateString.split("-");
       if (dateList.length == 3)
         dateString = dateList[0] + "/" + dateList[1] + "/" + dateList[1];
-      html += String.raw`
-                <div class="talk_item">
-                  <div class="talk_content">${item.content}</div>
-                  <div class="talk_spacer"></div>
-                  <div class="talk_bottom">
-                    <div class="talk_meta">
-                      <div class="talk_meta_user" onclick="cloudchewieFn.onUserClicked('${item.username}')">
-                        <img class="no-lightbox no-lazyload talk_avatar" src="${item.avatar}">
-                        <span class="talk_nick">${item.nickname}</span>
-                      </div>
-                      <div class="talk_meta_date" onclick="cloudchewieFn.onTimeClicked('${item.hash}')">
-                        <i class="fa fa-clock"></i>
-                        <span class="talk_date">${dateString}</span>
-                      </div>
-                      ${tagHtml}
-                      </div>
-                    <span class="talk_reply" onclick="cloudchewieFn.referToComment('${item.raw_content}')"><i class="fas fa-message"></i></div>
-                  </div>
-                </div>
-                `;
+      if (item.hash == "") {
+        html += String.raw`
+        <div class="talk_item">
+          <div class="talk_content">${item.content}</div>
+        </div>
+        `;
+      } else {
+        html += String.raw`
+        <div class="talk_item">
+          <div class="talk_content">${item.content}</div>
+          <div class="talk_spacer"></div>
+          <div class="talk_bottom">
+            <div class="talk_meta">
+              <div class="talk_meta_user" onclick="cloudchewieFn.onUserClicked('${item.username}')">
+                <img class="no-lightbox no-lazyload talk_avatar" src="${item.avatar}">
+                <span class="talk_nick">${item.nickname}</span>
+              </div>
+              
+              <div class="talk_meta_date" onclick="cloudchewieFn.onTimeClicked('${item.hash}')">
+                <i class="fa fa-clock"></i>
+                <span class="talk_date">${dateString}</span>
+              </div>
+              ${tagHtml}
+            </div>
+            <span class="talk_reply" onclick="cloudchewieFn.referToComment('${item.raw_content}')"><i class="fas fa-message"></i></span>
+          </div>
+        </div>
+        `;
+      }
     });
     document.getElementById("talk").innerHTML = html;
     var times = 0;

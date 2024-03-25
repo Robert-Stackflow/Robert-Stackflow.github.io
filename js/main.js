@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
     GLOBAL_CONFIG.copyright !== undefined && cloudchewieFn.addCopyright();
 
     cloudchewieFn.isMemos() &&
-      waterfall &&
+      waterfall != undefined &&
       (waterfall("#talk"),
       setTimeout(() => {
         cloudchewieFn.isMemos() && waterfall("#talk");
@@ -142,7 +142,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.scrollCollect && window.scrollCollect();
     window.addEventListener("scroll", window.scrollCollect);
+
+    cloudchewieFn.$search_input = document.getElementById("search-memos-input");
+    cloudchewieFn.$search_memos = document.getElementById("search-memos");
+    cloudchewieFn.$total_memos = document.getElementById("total-memos");
+    cloudchewieFn.$mine_memos = document.getElementById("mine-memos");
+    cloudchewieFn.$randomuser_memos = document.getElementById("randomuser-memos");
+    cloudchewieFn.$userlist_memos = document.getElementById("userlist-memos");
+    cloudchewieFn.$memos_bar_avatar = document.getElementById("memos-bar-avatar");
+    cloudchewieFn.$memos_bar_avatar_link = document.getElementById("memos-bar-avatar-link");
+    cloudchewieFn.$memos_bar_name = document.getElementById("memos-bar-name");
+    cloudchewieFn.$memos_userlist = document.getElementById("memos-userlist");
+    cloudchewieFn.$memos_query = document.getElementById("memos-query");
+    cloudchewieFn.$memos_button_list = document.getElementById("memos-button-list");
+    cloudchewieFn.$total_memos.addEventListener("click",cloudchewieFn.onTotalMemosClicked);
+    cloudchewieFn.$mine_memos.addEventListener("click",cloudchewieFn.onMineMemosClicked);
+    cloudchewieFn.$randomuser_memos.addEventListener("click",cloudchewieFn.onRandomUserMemosClicked);
+    cloudchewieFn.$userlist_memos.addEventListener("click",cloudchewieFn.onUserListMemosClicked);
+    cloudchewieFn.$search_memos.addEventListener("click",cloudchewieFn.onSearchMemosClicked);
     cloudchewieFn.isMemos() && cloudchewieFn.fetchMemos();
+
     GLOBAL_CONFIG.isPhotoFigcaption && cloudchewieFn.addPhotoFigcaption();
     document.getElementById("post-comment") && cloudchewieFn.enlargeEmoji();
 

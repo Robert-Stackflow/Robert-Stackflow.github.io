@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>即刻 | Cloudchewie</title><meta name="keywords" content="Cloudchewie,CloudchewieBlog,Cloudchewie博客,Cloudchewie的博客,博客,Blog,Cloudchewie`Blog,hexo"><meta name="author" content="余湍"><meta name="copyright" content="余湍"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="即刻     生活思絮              所见、所思、所感                      Memos                      林木木">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>即刻 | Cloudchewie</title><meta name="keywords" content="Cloudchewie,CloudchewieBlog,Cloudchewie博客,Cloudchewie的博客,博客,Blog,Cloudchewie`Blog,hexo"><meta name="author" content="余湍"><meta name="copyright" content="余湍"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="即刻     生活思絮              所见、所思、所感                      Memos">
 <meta property="og:type" content="website">
 <meta property="og:title" content="即刻">
 <meta property="og:url" content="https://blog.cloudchewie.com/memos/">
 <meta property="og:site_name" content="Cloudchewie">
-<meta property="og:description" content="即刻     生活思絮              所见、所思、所感                      Memos                      林木木">
+<meta property="og:description" content="即刻     生活思絮              所见、所思、所感                      Memos">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://picbed.cloudchewie.com/index/index.png">
-<meta property="article:published_time" content="2024-03-24T10:37:40.761Z">
-<meta property="article:modified_time" content="2024-03-24T10:37:40.761Z">
+<meta property="article:published_time" content="2024-03-25T04:02:50.954Z">
+<meta property="article:modified_time" content="2024-03-25T04:02:50.954Z">
 <meta property="article:author" content="余湍">
 <meta property="article:tag" content="Cloudchewie,CloudchewieBlog,Cloudchewie博客,Cloudchewie的博客,博客,Blog,Cloudchewie&#96;Blog,hexo">
 <meta name="twitter:card" content="summary">
@@ -55,7 +55,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-03-24 18:37:40'
+  postUpdate: '2024-03-25 12:02:50'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -205,35 +205,35 @@ if (true) {
         </a>
     </div>
 </div>
-<div class="user-now">
-  <div class="call-memos-editor item-avatar"><img class="user-now-avatar" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gravatar.memobbs.app/avatar/ba83fa02fc4b2ba621514941307e21be?s=80" style="pointer-events: none;"></div>
-  <span class="user-now-name">林木木</span>
-  <div class="user-now-right">
-    <input class="search-memos-input border-b input-text py-2 animate__animated animate__fadeIn animate__fadeInRight d-none" type="text" placeholder="想搜点啥？" id="">
-    <span class="search-memos-btn button d-md-flex p-2 mr-2">
+<div class="memos-bar">
+  <div class="memos-bar-avatar-wrapper">
+    <a id="memos-bar-avatar-link" class="memos-bar-avatar-link" target="_blank"><img id="memos-bar-avatar" class="memos-bar-avatar" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gravatar.memobbs.app/avatar/ba83fa02fc4b2ba621514941307e21be?s=80" style="pointer-events: none;"></a>
+  </div>
+  <span id="memos-bar-name"></span>
+  <div class="memos-bar-right">
+    <input id="search-memos-input" class="search-memos-input d-none animate__animated   animate__fadeInRight" type="text" placeholder="搜索内容">
+    <span id="search-memos" class="memos-btn" title="搜索">
       <svg xmlns="http://www.w3.org/2000/svg" width="1.15rem" height="1.15rem" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21l-4.3-4.3"></path></g></svg>
     </span>
-    <div class="user-button-span row-fill">
-    <span class="memos-theme-toggle button d-md-flex p-2 mr-2">
-      <svg xmlns="http://www.w3.org/2000/svg" width="1.15rem" height="1.15rem" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8a2.83 2.83 0 0 0 4 4a4 4 0 1 1-4-4m0-6v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4l1.4 1.4M2 12h2m16 0h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"></path></svg>
+    <div id="memos-button-list" class="memos-button-list">
+    <span id="total-memos" class="memos-btn"  title="Memos">
+      <svg xmlns="http://www.w3.org/2000/svg" width="1.15rem" height="1.15rem" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.8 20v-4.1l1.9.2a2.3 2.3 0 0 0 2.164-2.1V8.3A5.37 5.37 0 0 0 2 8.25c0 2.8.656 3.054 1 4.55a5.77 5.77 0 0 1 .029 2.758L2 20m17.8-2.2a7.5 7.5 0 0 0 .003-10.603M17 15a3.5 3.5 0 0 0-.025-4.975"></path></svg>
     </span>
-    <span class="my-blog-feeds button d-md-flex p-2 mr-2">
-      <svg xmlns="http://www.w3.org/2000/svg" width="1.15rem" height="1.15rem" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 10v.2A3 3 0 0 1 8.9 16v0H5v0h0a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0m-3 6v6m6-3v3"></path><path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5"></path></g></svg>
+    <span id="mine-memos" class="memos-btn" title="我的">
+      <svg xmlns="http://www.w3.org/2000/svg" width="1.15rem" height="1.15rem" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m3 9l9-7l9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><path d="M9 22V12h6v10"></path></g></svg>
     </span>
-    <span class="userlist-memos button d-md-flex p-2 mr-2">
-      <svg xmlns="http://www.w3.org/2000/svg" width="1.15rem" height="1.15rem" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87m-3-12a4 4 0 0 1 0 7.75"></path></g></svg>
-    </span>
-    <span class="randomuser-memos button d-md-flex p-2 mr-2">
+    <span id="randomuser-memos" class="memos-btn" title="随机用户">
       <svg xmlns="http://www.w3.org/2000/svg" width="1.15rem" height="1.15rem" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0m16 4v-2.38c0-2.12 1.03-3.12 1-5.62c-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0m-4-3h4M4 13h4"></path></svg>
     </span>
-    <span class="gobbs-memos button d-md-flex p-2 mr-2">
-      <svg xmlns="http://www.w3.org/2000/svg" width="1.15rem" height="1.15rem" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.8 20v-4.1l1.9.2a2.3 2.3 0 0 0 2.164-2.1V8.3A5.37 5.37 0 0 0 2 8.25c0 2.8.656 3.054 1 4.55a5.77 5.77 0 0 1 .029 2.758L2 20m17.8-2.2a7.5 7.5 0 0 0 .003-10.603M17 15a3.5 3.5 0 0 0-.025-4.975"></path></svg>
-    </span> 
-    <span class="gohome-memos button d-md-flex p-2 mr-3 current">
-      <svg xmlns="http://www.w3.org/2000/svg" width="1.15rem" height="1.15rem" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m3 9l9-7l9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><path d="M9 22V12h6v10"></path></g></svg>
+    <span id="userlist-memos" class="memos-btn" title="用户列表">
+      <svg xmlns="http://www.w3.org/2000/svg" width="1.15rem" height="1.15rem" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87m-3-12a4 4 0 0 1 0 7.75"></path></g></svg>
     </span>
     </div>
   </div>
+</div>
+<div id="memos-userlist" style="display: none;"></div>
+<div id="memos-query" class="no-query">
+<div class="memos-query-title">当前搜索:</div>
 </div>
 <div id="talk">
 <div class='loading'><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/index/loading.svg" alt="加载中..."></div>
