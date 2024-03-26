@@ -7711,11 +7711,11 @@ ul.menus_item_child {
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
-#twikoo .tk-comments a:not(.banner-button):not(.tag-Link):not(.tk-action-link):not(.video_title_link):not(.bangumi_title_link):not(.memos-bar-avatar-link):not(.tk-ruser):not(.tk-nick-link):not(small.tk-actions a) {
+#twikoo .tk-comments a:not(.banner-button):not(.tag-Link):not(:has(img)):not(.tk-action-link):not(.video_title_link):not(.bangumi_title_link):not(.memos-bar-avatar-link):not(.tk-ruser):not(.tk-nick-link):not(small.tk-actions a) {
   color: var(--cloudchewie-theme);
   padding: 3px;
 }
-#twikoo .tk-comments a:not(.banner-button):not(.tag-Link):not(.tk-action-link):not(.video_title_link):not(.bangumi_title_link):not(.memos-bar-avatar-link):not(.tk-ruser):not(.tk-nick-link):not(small.tk-actions a):hover {
+#twikoo .tk-comments a:not(.banner-button):not(.tag-Link):not(:has(img)):not(.tk-action-link):not(.video_title_link):not(.bangumi_title_link):not(.memos-bar-avatar-link):not(.tk-ruser):not(.tk-nick-link):not(small.tk-actions a):hover {
   text-decoration: none;
   border-radius: 5px;
   background: var(--cloudchewie-theme);
@@ -19477,8 +19477,12 @@ body.pace-done:has(#cloudMusic-page) #rightside {
 .tk-footer {
   display: none;
 }
-small.tk-actions{
+small.tk-actions,small.tk-actions a {
   transition: all 0.3s;
+  color: var(--cloudchewie-font-color);
+}
+small.tk-actions a:hover{
+  color: var(--cloudchewie-theme);
 }
 /* 小角标 */
 .el-input.el-input--small.el-input-group.el-input-group--prepend::after {
@@ -19490,14 +19494,14 @@ small.tk-actions{
   left: 50%;
   transform: translate(-50%, -48px);
 }
-.tk-extras{
+.tk-extras {
   margin-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
 .tk-extra .tk-icon {
   display: none;
 }
-.tk-extra{
+.tk-extra {
   background: var(--cloudchewie-background);
   border: var(--card-border);
   color: var(--cloudchewie-secondtext) !important;
@@ -19608,10 +19612,11 @@ div.tk-submit > div.tk-row.actions > a {
 .el-button--primary {
   border: var(--card-border) !important;
 }
-a.tk-action-link,small.tk-actions a{
+a.tk-action-link,
+small.tk-actions a {
   cursor: pointer;
 }
-.transparentpage .tk-comments-container>.tk-comment {
+.transparentpage .tk-comments-container > .tk-comment {
   background: var(--card-bg);
   padding: 1rem;
   padding-bottom: 1rem;
@@ -19620,9 +19625,10 @@ a.tk-action-link,small.tk-actions a{
   border-radius: 8px;
   transition: all 0.3s;
 }
-.transparentpage .tk-comments-container>.tk-comment:hover {
+.transparentpage .tk-comments-container > .tk-comment:hover {
   box-shadow: var(--card-hover-box-shadow);
 }
+
 .search-dialog {
   position: fixed;
   top: 10%;
