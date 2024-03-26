@@ -1,0 +1,749 @@
+{
+  "颜文字": {
+    "type": "emoticon",
+    "container": [
+      { "icon": "ᗢᕡᓗ", "text": "猫猫" },
+      { "icon": "(´O｀)", "text": "呆" },
+      { "icon": "OωO", "text": "Author: DIYgod" },
+      { "icon": "|´・ω・)ノ", "text": "Hi" },
+      { "icon": "ヾ(≧∇≦*)ゝ", "text": "开心" },
+      { "icon": "(☆ω☆)", "text": "星星眼" },
+      { "icon": "（╯‵□′）╯︵┴─┴", "text": "掀桌" },
+      { "icon": "￣﹃￣", "text": "流口水" },
+      { "icon": "(/ω＼)", "text": "捂脸" },
+      { "icon": "∠( ᐛ 」∠)＿", "text": "给跪" },
+      { "icon": "(๑•̀ㅁ•́ฅ)", "text": "Hi" },
+      { "icon": "→_→", "text": "斜眼" },
+      { "icon": "୧(๑•̀⌄•́๑)૭", "text": "加油" },
+      { "icon": "٩(ˊᗜˋ*)و", "text": "有木有WiFi" },
+      { "icon": "(ノ°ο°)ノ", "text": "前方高能预警" },
+      { "icon": "(´இ皿இ｀)", "text": "我从未见过如此厚颜无耻之人" },
+      { "icon": "⌇●﹏●⌇", "text": "吓死宝宝惹" },
+      { "icon": "(ฅ´ω`ฅ)", "text": "已阅留爪" },
+      { "icon": "(╯°A°)╯︵○○○", "text": "去吧大师球" },
+      { "icon": "φ(￣∇￣o)", "text": "太萌惹" },
+      { "icon": "ヾ(´･ ･｀｡)ノ\"", "text": "咦咦咦" },
+      { "icon": "( ง ᵒ̌皿ᵒ̌)ง⁼³₌₃", "text": "气呼呼" },
+      { "icon": "(ó﹏ò｡)", "text": "我受到了惊吓" },
+      { "icon": "Σ(っ °Д °;)っ", "text": "什么鬼" },
+      { "icon": "( ,,´･ω･)ﾉ\"(´っω･｀｡)", "text": "摸摸头" },
+      { "icon": "╮(╯▽╰)╭ ", "text": "无奈" },
+      { "icon": "o(*////▽////*)q ", "text": "脸红" },
+      { "icon": "＞﹏＜", "text": "" },
+      { "icon": "( ๑´•ω•) \"(ㆆᴗㆆ)", "text": "" }
+    ]
+  },
+  "Emoji": {
+    "type": "emoji",
+    "container": [
+      { "icon": "😂", "text": "" },
+      { "icon": "😀", "text": "" },
+      { "icon": "😅", "text": "" },
+      { "icon": "😊", "text": "" },
+      { "icon": "🙂", "text": "" },
+      { "icon": "🙃", "text": "" },
+      { "icon": "😌", "text": "" },
+      { "icon": "😍", "text": "" },
+      { "icon": "😘 ", "text": "" },
+      { "icon": "😜", "text": "" },
+      { "icon": "😝", "text": "" },
+      { "icon": "😏", "text": "" },
+      { "icon": "😒", "text": "" },
+      { "icon": "🙄", "text": "" },
+      { "icon": "😳 ", "text": "" },
+      { "icon": "😡", "text": "" },
+      { "icon": "😔", "text": "" },
+      { "icon": "😫", "text": "" },
+      { "icon": "😱", "text": "" },
+      { "icon": "😭", "text": "" },
+      { "icon": "💩", "text": "" },
+      { "icon": "👻", "text": "" },
+      { "icon": "🙌", "text": "" },
+      { "icon": "🖕", "text": "" },
+      { "icon": "👍", "text": "" },
+      { "icon": "👫", "text": "" },
+      { "icon": "👬", "text": "" },
+      { "icon": "👭", "text": "" },
+      { "icon": "🌚", "text": "" },
+      { "icon": "🌝", "text": "" },
+      { "icon": "🙈", "text": "" },
+      { "icon": "💊", "text": "" },
+      { "icon": "😶", "text": "" },
+      { "icon": "🙏", "text": "" },
+      { "icon": "🍦", "text": "" },
+      { "icon": "🍉", "text": "" },
+      { "icon": "😣", "text": "" }
+    ]
+  },
+  "丹恒": {
+    "type": "image",
+    "container": [
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/danheng/danheng_0.png!cover'>",
+        "text": "丹恒_思考"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/danheng/danheng_1.png!cover'>",
+        "text": "丹恒_惊"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/danheng/danheng_2.png!cover'>",
+        "text": "饮月_听不见"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/danheng/danheng_3.png!cover'>",
+        "text": "饮月_想开了"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/danheng/danheng_4.png!cover'>",
+        "text": "饮月_打一架"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/danheng/danheng_5.png!cover'>",
+        "text": "饮月_摸摸"
+      }
+    ]
+  },
+  "魈&叶": {
+    "type": "image",
+    "container": [
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/xiaoye/xiaoye_0.png!cover'>",
+        "text": "枫原万叶_偷笑"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/xiaoye/xiaoye_1.png!cover'>",
+        "text": "枫原万叶_吃惊"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/xiaoye/xiaoye_2.png!cover'>",
+        "text": "枫原万叶_嗨"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/xiaoye/xiaoye_3.png!cover'>",
+        "text": "枫原万叶_惬意"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/xiaoye/xiaoye_4.png!cover'>",
+        "text": "枫原万叶_来点晶核"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/xiaoye/xiaoye_5.png!cover'>",
+        "text": "枫原万叶_汗"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/xiaoye/xiaoye_6.png!cover'>",
+        "text": "枫原万叶_鼓励"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/xiaoye/xiaoye_7.png!cover'>",
+        "text": "魈_冷漠"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/xiaoye/xiaoye_8.png!cover'>",
+        "text": "魈_发呆"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/xiaoye/xiaoye_9.png!cover'>",
+        "text": "魈_吃"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/xiaoye/xiaoye_10.png!cover'>",
+        "text": "魈_吃雪"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/xiaoye/xiaoye_11.png!cover'>",
+        "text": "魈_坐"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/xiaoye/xiaoye_12.png!cover'>",
+        "text": "魈_战斗准备"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/xiaoye/xiaoye_13.png!cover'>",
+        "text": "魈_揉眼"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/xiaoye/xiaoye_14.png!cover'>",
+        "text": "魈_来吧"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/xiaoye/xiaoye_15.png!cover'>",
+        "text": "魈_现身"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/xiaoye/xiaoye_16.png!cover'>",
+        "text": "魈_疑问"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/xiaoye/xiaoye_17.png!cover'>",
+        "text": "魈_皱眉"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/xiaoye/xiaoye_18.png!cover'>",
+        "text": "魈_难以置信"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/xiaoye/xiaoye_19.png!cover'>",
+        "text": "魈_静坐"
+      }
+    ]
+  },
+  "可爱": {
+    "type": "image",
+    "container": [
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/cute/cute_0.png!cover'>",
+        "text": "五郎_呲牙"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/cute/cute_1.png!cover'>",
+        "text": "五郎_开心"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/cute/cute_2.png!cover'>",
+        "text": "五郎_星星眼"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/cute/cute_3.png!cover'>",
+        "text": "五郎_痛哭"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/cute/cute_4.png!cover'>",
+        "text": "提纳里_大尾巴"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/cute/cute_5.png!cover'>",
+        "text": "提纳里_惊吓"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/cute/cute_6.png!cover'>",
+        "text": "提纳里_敲黑板"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/cute/cute_7.png!cover'>",
+        "text": "提纳里_观察"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/cute/cute_8.png!cover'>",
+        "text": "空_开心"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/cute/cute_9.gif!cover'>",
+        "text": "空_开心_gif"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/cute/cute_10.png!cover'>",
+        "text": "空_晕眩"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/cute/cute_11.gif!cover'>",
+        "text": "空_晕眩_gif"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/cute/cute_12.png!cover'>",
+        "text": "空_睡着了"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/cute/cute_13.png!cover'>",
+        "text": "空_警觉"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/cute/cute_14.png!cover'>",
+        "text": "雷泽_超凶"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/cute/cute_15.png!cover'>",
+        "text": "鹿野院平藏_不愧是我"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/cute/cute_16.png!cover'>",
+        "text": "鹿野院平藏_出拳"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/cute/cute_17.png!cover'>",
+        "text": "鹿野院平藏_叹气"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/cute/cute_18.png!cover'>",
+        "text": "鹿野院平藏_察觉"
+      }
+    ]
+  },
+  "帕姆": {
+    "type": "image",
+    "container": [
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_0.png!cover'>",
+        "text": "帕姆_不可以"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_1.png!cover'>",
+        "text": "帕姆_举牌"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_2.png!cover'>",
+        "text": "帕姆_出金"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_3.png!cover'>",
+        "text": "帕姆_加班"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_4.png!cover'>",
+        "text": "帕姆_叉腰"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_5.png!cover'>",
+        "text": "帕姆_哭"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_6.png!cover'>",
+        "text": "帕姆_哭哭"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_7.png!cover'>",
+        "text": "帕姆_喝茶"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_8.png!cover'>",
+        "text": "帕姆_嗨"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_9.png!cover'>",
+        "text": "帕姆_奋斗"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_10.png!cover'>",
+        "text": "帕姆_好奇"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_11.png!cover'>",
+        "text": "帕姆_好耶"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_12.png!cover'>",
+        "text": "帕姆_害羞"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_13.png!cover'>",
+        "text": "帕姆_干饭"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_14.png!cover'>",
+        "text": "帕姆_惊"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_15.png!cover'>",
+        "text": "帕姆_打咩"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_16.png!cover'>",
+        "text": "帕姆_收到"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_17.png!cover'>",
+        "text": "帕姆_比心"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_18.png!cover'>",
+        "text": "帕姆_比心心"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_19.png!cover'>",
+        "text": "帕姆_注意"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_20.png!cover'>",
+        "text": "帕姆_点赞"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_21.png!cover'>",
+        "text": "帕姆_疑惑"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_22.png!cover'>",
+        "text": "帕姆_瘫倒"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_23.png!cover'>",
+        "text": "帕姆_睡觉"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_24.png!cover'>",
+        "text": "帕姆_礼物"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_25.png!cover'>",
+        "text": "帕姆_自闭"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_26.png!cover'>",
+        "text": "帕姆_舞动"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_27.png!cover'>",
+        "text": "帕姆_记笔记"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_28.png!cover'>",
+        "text": "帕姆_送礼物"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/pompom/pompom_29.png!cover'>",
+        "text": "帕姆_震惊"
+      }
+    ]
+  },
+  "派蒙": {
+    "type": "image",
+    "container": [
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_0.png!cover'>",
+        "text": "派蒙_交给我吧"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_1.png!cover'>",
+        "text": "派蒙_伪装"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_2.png!cover'>",
+        "text": "派蒙_做梦"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_3.png!cover'>",
+        "text": "派蒙_吃惊"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_4.png!cover'>",
+        "text": "派蒙_咕咕咕"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_5.png!cover'>",
+        "text": "派蒙_哭"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_6.png!cover'>",
+        "text": "派蒙_哼哼"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_7.png!cover'>",
+        "text": "派蒙_好耶"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_8.png!cover'>",
+        "text": "派蒙_干杯"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_9.png!cover'>",
+        "text": "派蒙_开心"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_10.gif!cover'>",
+        "text": "派蒙_开心_gif"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_11.png!cover'>",
+        "text": "派蒙_微笑"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_12.png!cover'>",
+        "text": "派蒙_心情复杂"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_13.png!cover'>",
+        "text": "派蒙_心情简单"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_14.png!cover'>",
+        "text": "派蒙_怎会如此"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_15.png!cover'>",
+        "text": "派蒙_惊吓"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_16.gif!cover'>",
+        "text": "派蒙_惊吓_gif"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_17.png!cover'>",
+        "text": "派蒙_愤怒"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_18.png!cover'>",
+        "text": "派蒙_我们走"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_19.png!cover'>",
+        "text": "派蒙_抱大腿"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_20.png!cover'>",
+        "text": "派蒙_救命啊"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_21.png!cover'>",
+        "text": "派蒙_星星眼"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_22.png!cover'>",
+        "text": "派蒙_晕眩"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_23.gif!cover'>",
+        "text": "派蒙_晕眩_gif"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_24.png!cover'>",
+        "text": "派蒙_期待"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_25.png!cover'>",
+        "text": "派蒙_该吃饭了"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_26.png!cover'>",
+        "text": "派蒙_问号"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_27.png!cover'>",
+        "text": "派蒙_馋"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/paimon/paimon_28.png!cover'>",
+        "text": "派蒙_黑线"
+      }
+    ]
+  },
+  "史莱姆": {
+    "type": "image",
+    "container": [
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_0.png!cover'>",
+        "text": "冰史莱姆_惊"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_1.gif!cover'>",
+        "text": "冰史莱姆_惊_gif"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_2.png!cover'>",
+        "text": "冰史莱姆_瞌睡"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_3.gif!cover'>",
+        "text": "冰史莱姆_瞌睡_gif"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_4.png!cover'>",
+        "text": "史莱姆气球&空"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_5.gif!cover'>",
+        "text": "史莱姆气球&空_gif"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_6.png!cover'>",
+        "text": "史莱姆气球与空"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_7.gif!cover'>",
+        "text": "史莱姆气球与空_gif"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_8.png!cover'>",
+        "text": "岩史莱姆_惊"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_9.gif!cover'>",
+        "text": "岩史莱姆_惊_gif"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_10.png!cover'>",
+        "text": "岩史莱姆_我顶"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_11.gif!cover'>",
+        "text": "岩史莱姆_我顶_gif"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_12.png!cover'>",
+        "text": "水史莱姆_wink"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_13.gif!cover'>",
+        "text": "水史莱姆_wink_gif"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_14.png!cover'>",
+        "text": "水史莱姆_哭哭"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_15.gif!cover'>",
+        "text": "水史莱姆_哭哭_gif"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_16.png!cover'>",
+        "text": "火史莱姆_开心~"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_17.gif!cover'>",
+        "text": "火史莱姆_开心~_gif"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_18.png!cover'>",
+        "text": "火史莱姆_火炎焱"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_19.gif!cover'>",
+        "text": "火史莱姆_火炎焱_gif"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_20.png!cover'>",
+        "text": "草史来姆"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_21.gif!cover'>",
+        "text": "草史来姆_gif"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_22.png!cover'>",
+        "text": "草史莱姆_开心~"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_23.gif!cover'>",
+        "text": "草史莱姆_开心~_gif"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_24.png!cover'>",
+        "text": "草史莱姆_躲猫猫"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_25.gif!cover'>",
+        "text": "草史莱姆_躲猫猫_gif"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_26.png!cover'>",
+        "text": "雷史莱姆_挨揍"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_27.gif!cover'>",
+        "text": "雷史莱姆_挨揍_gif"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_28.png!cover'>",
+        "text": "雷史莱姆_放电"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_29.gif!cover'>",
+        "text": "雷史莱姆_放电_gif"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_30.png!cover'>",
+        "text": "风史莱姆_挨揍"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_31.gif!cover'>",
+        "text": "风史莱姆_挨揍_gif"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_32.png!cover'>",
+        "text": "风史莱姆_飞咯"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/slime/slime_33.gif!cover'>",
+        "text": "风史莱姆_飞咯_gif"
+      }
+    ]
+  },
+  "哔哩哔哩": {
+    "type": "image",
+    "container": [
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/bilibili/bilibili_0.png!cover'>",
+        "text": "tv_doge"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/bilibili/bilibili_1.png!cover'>",
+        "text": "tv_亲亲"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/bilibili/bilibili_2.png!cover'>",
+        "text": "tv_偷笑"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/bilibili/bilibili_3.png!cover'>",
+        "text": "tv_再见"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/bilibili/bilibili_4.png!cover'>",
+        "text": "tv_冷漠"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/bilibili/bilibili_5.png!cover'>",
+        "text": "tv_发怒"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/bilibili/bilibili_6.png!cover'>",
+        "text": "tv_发财"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/bilibili/bilibili_7.png!cover'>",
+        "text": "tv_可爱"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/bilibili/bilibili_8.png!cover'>",
+        "text": "tv_吐血"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/bilibili/bilibili_9.png!cover'>",
+        "text": "tv_呆"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/bilibili/bilibili_10.png!cover'>",
+        "text": "tv_呕吐"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/bilibili/bilibili_11.png!cover'>",
+        "text": "tv_困"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/bilibili/bilibili_12.png!cover'>",
+        "text": "tv_坏笑"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/bilibili/bilibili_13.png!cover'>",
+        "text": "tv_大佬"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/bilibili/bilibili_14.png!cover'>",
+        "text": "tv_大哭"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/bilibili/bilibili_15.png!cover'>",
+        "text": "tv_委屈"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/bilibili/bilibili_16.png!cover'>",
+        "text": "tv_害羞"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/bilibili/bilibili_17.png!cover'>",
+        "text": "tv_尴尬"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/bilibili/bilibili_18.png!cover'>",
+        "text": "tv_微笑"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/bilibili/bilibili_19.png!cover'>",
+        "text": "tv_思考"
+      },
+      {
+        "icon": "<img src='https://picbed.cloudchewie.com/emoji/bilibili/bilibili_20.png!cover'>",
+        "text": "tv_惊吓"
+      }
+    ]
+  }
+}

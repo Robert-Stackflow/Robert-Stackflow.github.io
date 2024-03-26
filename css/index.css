@@ -19477,11 +19477,12 @@ body.pace-done:has(#cloudMusic-page) #rightside {
 .tk-footer {
   display: none;
 }
-small.tk-actions,small.tk-actions a {
+small.tk-actions,
+small.tk-actions a {
   transition: all 0.3s;
   color: var(--cloudchewie-font-color);
 }
-small.tk-actions a:hover{
+small.tk-actions a:hover {
   color: var(--cloudchewie-theme);
 }
 /* 小角标 */
@@ -19583,6 +19584,7 @@ div.tk-submit > div.tk-row.actions > a {
   border: var(--card-border) !important;
   backdrop-filter: blur(20px) !important;
   background: var(--card-bg) !important;
+  max-width: 550px !important;
 }
 .OwO .OwO-body .OwO-items .OwO-item:hover {
   background: var(--text-bg-hover) !important;
@@ -19590,7 +19592,7 @@ div.tk-submit > div.tk-row.actions > a {
   box-shadow: none !important;
 }
 .OwO .OwO-body .OwO-bar .OwO-packages li:nth-child(1) {
-  border-radius: 0px 0px 0px 10px !important;
+  border-radius: 0px !important;
 }
 .OwO .OwO-body .OwO-bar .OwO-packages li {
   margin: 0px !important;

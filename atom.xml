@@ -111,11 +111,11 @@
     <category term="教程" scheme="https://blog.cloudchewie.com/categories/%E6%95%99%E7%A8%8B/"/>
     
     
-    <category term="WSL" scheme="https://blog.cloudchewie.com/tags/WSL/"/>
-    
     <category term="安装教程" scheme="https://blog.cloudchewie.com/tags/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
     
     <category term="环境配置" scheme="https://blog.cloudchewie.com/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    
+    <category term="WSL" scheme="https://blog.cloudchewie.com/tags/WSL/"/>
     
   </entry>
   
