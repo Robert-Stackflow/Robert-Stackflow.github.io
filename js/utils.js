@@ -2416,6 +2416,7 @@ const cloudchewieFn = {
     else {
       let n = [];
       function a(e) {
+        if (!e) return "";
         return (e = (e = (e = (e = (e = e.replace(
           /<\/*br>|[\s\uFEFF\xA0]+/g,
           ""
@@ -2424,11 +2425,11 @@ const cloudchewieFn = {
           "[链接]"
         )).replace(/<pre.*?>.*?<\/pre>/g, "[代码块]")).replace(/<.*?>/g, ""));
       }
-      fetch("https://comment.api.cloudchewie.com/", {
+      fetch("https://twikoo.api.cloudchewie.com/", {
         method: "POST",
         body: JSON.stringify({
           event: "GET_RECENT_COMMENTS",
-          accessToken: "df242fe099bf81ec336572476fbdc208",
+          accessToken: "ac9a92b959dc9fc6dda6974ced6759fc",
           includeReply: !1,
           pageSize: 100,
         }),
@@ -2441,16 +2442,21 @@ const cloudchewieFn = {
           t.forEach((e) => {
             null == e.avatar &&
               (e.avatar =
-                "https://cravatar.cn/avatar/d615d5793929e8c7d70eab5f00f7f5f1?d=mp"),
+                "https://cravatar.cn/avatar/d615d5793929e8c7d70eab5f00f7f5f1?d=mp");
+            if (e.comment) {
               n.push({
                 avatar: e.avatar,
                 content: e.nick + "：" + a(e.comment),
               });
+            }
           }),
             e.batchSend(n, !0),
             saveToLocal.set("danmu", n, 0.02);
         })
-        .catch(() => cloudchewieFn.snackbarShow("评论系统过载,请稍后访问"));
+        .catch((e) => {
+          cloudchewieFn.snackbarShow("评论系统过载,请稍后访问");
+          console.log(e);
+        });
     }
     document.getElementById("danmuBtn").innerHTML =
       "<button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.remove('hidedanmu')\">显示弹幕</button> <button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.add('hidedanmu')\">隐藏弹幕</button>";
