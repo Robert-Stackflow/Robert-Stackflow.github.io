@@ -152,7 +152,7 @@ body:before {
   display: block;
   width: 100%;
   height: 100%;
-  background-image: url(https://picbed.cloudchewie.com/blog/index/noise.png);
+  background-image: url(https://picbed.cloudchewie.com/blog/index/noise-blue.png);
   position: fixed;
   z-index: 10000;
   opacity: .036;
@@ -1249,7 +1249,7 @@ const cloudchewieFn = {
   /**
    * 切换深浅色模式
    */
-  toggleDarkMode: () => {
+  toggleDarkMode: (useTransition) => {
     const nowMode =
       document.documentElement.getAttribute("data-theme") === "dark"
         ? "dark"
@@ -1259,19 +1259,21 @@ const cloudchewieFn = {
         "浅色模式";
       $("#darkmode-button").attr("title", "切换为浅色模式");
       $("#con-mode").attr("title", "切换为浅色模式");
-      activateDarkMode();
+      !useTransition && activateDarkMode();
       saveToLocal.set("theme", "dark", 2);
-      GLOBAL_CONFIG.Snackbar !== undefined &&
+      !useTransition &&
+        GLOBAL_CONFIG.Snackbar !== undefined &&
         cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night);
     } else {
       document.querySelector(".menu-toggleDarkMode-text").textContent =
         "深色模式";
       $("#darkmode-button").attr("title", "切换为深色模式");
       $("#con-mode").attr("title", "切换为深色模式");
-      activateLightMode();
+      !useTransition && activateLightMode();
       saveToLocal.set("theme", "light", 2);
       cloudchewieFn.day_night_count++;
-      GLOBAL_CONFIG.Snackbar !== undefined &&
+      !useTransition &&
+        GLOBAL_CONFIG.Snackbar !== undefined &&
         cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day);
     }
     typeof utterancesTheme === "function" && utterancesTheme();
@@ -4610,9 +4612,9 @@ const consoleFn = {
     document
       .getElementById("console-button")
       .addEventListener("click", consoleFn.showConsole);
-    document
-      .getElementById("darkmode-button")
-      .addEventListener("click", cloudchewieFn.toggleDarkMode);
+    // document
+    //   .getElementById("darkmode-button")
+    //   .addEventListener("click", cloudchewieFn.toggleDarkMode);
     window.onresize = () => {
       if (!cloudchewieFn.isFullScreen()) {
         $("#con-fullscreen").removeClass("checked");
@@ -5076,3 +5078,64 @@ function runOne() {
   cloudchewieFn.topCategoriesBarScroll();
   cloudchewieFn.injectAccessKey(document, window);
 }
+class d extends HTMLElement {
+  button;
+  constructor() {
+    super(), (this.button = this.querySelector("button"));
+    const i = (n) => {
+      const o = !this.isDark();
+      if (!document.startViewTransition || this.isReducedMotion()) {
+        this.toggleTheme(o);
+        return;
+      }
+      const a = document.startViewTransition(() => {
+        this.toggleTheme(o);
+      });
+      let t, e;
+      typeof n > "u"
+        ? ((t = this.button.getBoundingClientRect().x),
+          (e = this.button.getBoundingClientRect().y))
+        : ((t = n.clientX), (e = n.clientY));
+      const r = Math.hypot(
+        Math.max(t, innerWidth - t),
+        Math.max(e, innerHeight - e)
+      );
+      a.ready.then(() => {
+        const s = [
+          `circle(0px at ${t}px ${e}px)`,
+          `circle(${r}px at ${t}px ${e}px)`,
+        ];
+        document.documentElement.animate(
+          {
+            clipPath: o ? s : [...s].reverse(),
+          },
+          {
+            duration: 500,
+            easing: "ease-in",
+            pseudoElement: o
+              ? "::view-transition-new(root)"
+              : "::view-transition-old(root)",
+          }
+        );
+      });
+    };
+    this.button.addEventListener("click", (n) => i(n));
+  }
+  toggleTheme(i) {
+    document.documentElement.setAttribute("data-theme", i ? "dark" : "light");
+    cloudchewieFn.toggleDarkMode(true);
+    if (i) {
+      saveToLocal.set("theme", "dark", 2);
+    } else {
+      saveToLocal.set("theme", "light", 2);
+    }
+  }
+  isDark() {
+    return document.documentElement.getAttribute("data-theme") == "dark";
+  }
+  isReducedMotion() {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches === !0;
+  }
+}
+customElements.define("theme-toggle", d);
+document.startViewTransition();
