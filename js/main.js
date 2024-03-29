@@ -51,11 +51,11 @@ document.addEventListener("DOMContentLoaded", function () {
     GLOBAL_CONFIG.navMusic && cloudchewieFn.listenNavMusicPause();
     GLOBAL_CONFIG.copyright !== undefined && cloudchewieFn.addCopyright();
 
-    cloudchewieFn.isMemos() &&
+    utilsFn.isMemos() &&
       waterfall != undefined &&
       (waterfall("#talk"),
       setTimeout(() => {
-        cloudchewieFn.isMemos() && waterfall("#talk");
+        utilsFn.isMemos() && waterfall("#talk");
       }, 300));
 
     window.addEventListener("resize", () => {
@@ -63,10 +63,10 @@ document.addEventListener("DOMContentLoaded", function () {
       cloudchewieFn.isHidden(document.getElementById("toggle-menu")) &&
         mobileSidebarFn.mobileSidebarOpen &&
         mobileSidebarFn.close();
-      cloudchewieFn.isMemos() &&
+      utilsFn.isMemos() &&
         (waterfall("#talk"),
         setTimeout(() => {
-          cloudchewieFn.isMemos() && waterfall("#talk");
+          utilsFn.isMemos() && waterfall("#talk");
         }, 300));
     });
   };
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $(
       "#aside-content > div.card-widget.card-info > div.card-info-social-icons.is-center > a:nth-child(1)"
     ).attr("target", "");
-    if (cloudchewieFn.isHome()) {
+    if (utilsFn.isHome()) {
       $("#hide-aside-btn").hide();
       const $htmlDom = document.documentElement.classList;
       if ($htmlDom.contains("hide-aside")) {
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
     cloudchewieFn.clickFnOfTagHide();
     cloudchewieFn.scrollFunction();
     cloudchewieFn.scrollFunctionOfToc();
-    enableGPT && cloudchewieFn.isPost() && cloudchewieFn.checkURLAndRunGPT();
+    enableGPT && utilsFn.isPost() && cloudchewieFn.checkURLAndRunGPT();
     cloudchewieFn.checkVersion();
     cloudchewieFn.moveToComments();
     cloudchewieFn.sweetSnack();
@@ -143,24 +143,24 @@ document.addEventListener("DOMContentLoaded", function () {
     window.scrollCollect && window.scrollCollect();
     window.addEventListener("scroll", window.scrollCollect);
 
-    cloudchewieFn.$search_input = document.getElementById("search-memos-input");
-    cloudchewieFn.$search_memos = document.getElementById("search-memos");
-    cloudchewieFn.$total_memos = document.getElementById("total-memos");
-    cloudchewieFn.$mine_memos = document.getElementById("mine-memos");
-    cloudchewieFn.$randomuser_memos = document.getElementById("randomuser-memos");
-    cloudchewieFn.$userlist_memos = document.getElementById("userlist-memos");
-    cloudchewieFn.$memos_bar_avatar = document.getElementById("memos-bar-avatar");
-    cloudchewieFn.$memos_bar_avatar_link = document.getElementById("memos-bar-avatar-link");
-    cloudchewieFn.$memos_bar_name = document.getElementById("memos-bar-name");
-    cloudchewieFn.$memos_userlist = document.getElementById("memos-userlist");
-    cloudchewieFn.$memos_query = document.getElementById("memos-query");
-    cloudchewieFn.$memos_button_list = document.getElementById("memos-button-list");
-    cloudchewieFn.$total_memos&&cloudchewieFn.$total_memos.addEventListener("click",cloudchewieFn.onTotalMemosClicked);
-    cloudchewieFn.$mine_memos&&cloudchewieFn.$mine_memos.addEventListener("click",cloudchewieFn.onMineMemosClicked);
-    cloudchewieFn.$randomuser_memos&&cloudchewieFn.$randomuser_memos.addEventListener("click",cloudchewieFn.onRandomUserMemosClicked);
-    cloudchewieFn.$userlist_memos&&cloudchewieFn.$userlist_memos.addEventListener("click",cloudchewieFn.onUserListMemosClicked);
-    cloudchewieFn.$search_memos&&cloudchewieFn.$search_memos.addEventListener("click",cloudchewieFn.onSearchMemosClicked);
-    cloudchewieFn.isMemos() && cloudchewieFn.fetchMemos();
+    MEMOS_DOM.$search_input = document.getElementById("search-memos-input");
+    MEMOS_DOM.$search_memos = document.getElementById("search-memos");
+    MEMOS_DOM.$total_memos = document.getElementById("total-memos");
+    MEMOS_DOM.$mine_memos = document.getElementById("mine-memos");
+    MEMOS_DOM.$randomuser_memos = document.getElementById("randomuser-memos");
+    MEMOS_DOM.$userlist_memos = document.getElementById("userlist-memos");
+    MEMOS_DOM.$memos_bar_avatar = document.getElementById("memos-bar-avatar");
+    MEMOS_DOM.$memos_bar_avatar_link = document.getElementById("memos-bar-avatar-link");
+    MEMOS_DOM.$memos_bar_name = document.getElementById("memos-bar-name");
+    MEMOS_DOM.$memos_userlist = document.getElementById("memos-userlist");
+    MEMOS_DOM.$memos_query = document.getElementById("memos-query");
+    MEMOS_DOM.$memos_button_list = document.getElementById("memos-button-list");
+    MEMOS_DOM.$total_memos&&MEMOS_DOM.$total_memos.addEventListener("click",memosFn.onTotalMemosClicked);
+    MEMOS_DOM.$mine_memos&&MEMOS_DOM.$mine_memos.addEventListener("click",memosFn.onMineMemosClicked);
+    MEMOS_DOM.$randomuser_memos&&MEMOS_DOM.$randomuser_memos.addEventListener("click",memosFn.onRandomUserMemosClicked);
+    MEMOS_DOM.$userlist_memos&&MEMOS_DOM.$userlist_memos.addEventListener("click",memosFn.onUserListMemosClicked);
+    MEMOS_DOM.$search_memos&&MEMOS_DOM.$search_memos.addEventListener("click",memosFn.onSearchMemosClicked);
+    utilsFn.isMemos() && memosFn.fetchMemos();
 
     GLOBAL_CONFIG.isPhotoFigcaption && cloudchewieFn.addPhotoFigcaption();
     document.getElementById("post-comment") && cloudchewieFn.enlargeEmoji();
@@ -186,10 +186,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.onkeydown = (e) => {
       123 === e.keyCode &&
-        cloudchewieFn.snackbarShow("开发者模式已打开，请遵循GPL协议");
+        utilsFn.snack("开发者模式已打开，请遵循GPL协议");
     };
 
-    if (cloudchewieFn.isHome()) {
+    if (utilsFn.isHome()) {
       $("#hide-aside-btn").hide();
       const $htmlDom = document.documentElement.classList;
       $htmlDom.contains("hide-aside")
@@ -217,8 +217,8 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("resize", cloudchewieFn.resizeTop);
     setInterval(cloudchewieFn.resizeTop, 1000);
 
-    cloudchewieFn.isGuestbook() &&
-      cloudchewieFn.addScript(
+    utilsFn.isGuestbook() &&
+      utilsFn.addScript(
         "Danmaku",
         "https://cdn.cbd.int/hexo-theme-cloudchewie@3.2.4/source/js/third-party/danmaku.min.js",
         cloudchewieFn.loadDamaku

@@ -94,11 +94,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (targetEncoding === 1) {
       currentEncoding = 1;
       targetEncoding = 2;
-      isSnackbar && cloudchewieFn.snackbarShow(snackbarData.cht_to_chs);
+      isSnackbar && utilsFn.snack(snackbarData.cht_to_chs);
     } else if (targetEncoding === 2) {
       currentEncoding = 2;
       targetEncoding = 1;
-      isSnackbar && cloudchewieFn.snackbarShow(snackbarData.chs_to_cht);
+      isSnackbar && utilsFn.snack(snackbarData.chs_to_cht);
     }
     refreshState(targetEncoding);
     saveToLocal.set(targetEncodingCookie, targetEncoding, 2);

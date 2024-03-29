@@ -14384,7 +14384,7 @@ template {
   line-height: 16px !important;
   height: 16px !important;
   padding: 0 !important;
-  margin: 0;
+  margin: 0 !important;
   transition: all 0.5s ease-out;
   opacity: 0.4;
   overflow: hidden;
@@ -14552,7 +14552,7 @@ template {
 }
 
 /* 导航栏音乐 */
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 900px) {
   #nav-music {
     display: none !important;
   }
@@ -14848,7 +14848,6 @@ template {
   }
 }
 
-/* 歌词 */
 #nav-music .aplayer.aplayer-withlrc .aplayer-lrc {
   width: 0;
   opacity: 0;
@@ -14875,10 +14874,13 @@ template {
 
 #nav-music .aplayer .aplayer-lrc p {
   color: #ffffffb3;
-  line-height: 40px !important;
-  height: 40px !important;
-  margin: 0px 0;
+  line-height: 16px !important;
+  height: 16px !important;
+  margin: 0px;
   vertical-align: top;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #nav-music .aplayer .aplayer-pic {
@@ -14902,7 +14904,15 @@ template {
 .aplayer p {
   font-family: lxgw wenkai screen,-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif;
 }
-
+#nav-music .aplayer .aplayer-lrc .aplayer-lrc-contents{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#nav-music .aplayer .aplayer-lrc{
+  margin: -7px 0px 7px;
+}
 .consoleContent .content {
   margin-left: 20px;
   font-family: lxgw wenkai screen, -apple-system, BlinkMacSystemFont, Roboto,
@@ -17918,14 +17928,17 @@ a.talk_comment:hover {
   margin-top: 1rem;
 }
 
-#talk .loading {
+#talk .talk-loading {
+  position: relative !important;
   display: flex;
+  justify-content: center;
+  align-content: center;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
-#talk .loading img {
+#talk .talk-loading img {
   width: 200px;
 }
 
@@ -17954,6 +17967,8 @@ a.talk_comment:hover {
 }
 .talk_meta_user,
 .talk_meta_date,
+.talk_meta_reaction,
+.talk_meta_pinned,
 .talk_meta_tag {
   display: flex;
   flex-direction: row;
@@ -17970,17 +17985,15 @@ a.talk_comment:hover {
   border-radius: 20px;
   margin-right: 6px;
   transition: all 0.3s;
-}
-.talk_meta_user,
-.talk_meta_tag,
-.talk_meta_date {
   cursor: pointer;
 }
 .talk_meta_tag i.cloudchewie-icon-hashtag {
   font-size: 13px !important;
 }
+.talk_meta_pinned,
 .talk_meta_user:hover,
 .talk_meta_date:hover,
+.talk_meta_reaction:hover,
 .talk_meta_tag:hover {
   background-color: var(--cloudchewie-theme);
   color: var(--cloudchewie-white);
@@ -17993,22 +18006,19 @@ a.talk_comment:hover {
 }
 .talk_spacer {
   border: var(--style-border-dashed);
-  margin: 8px 0;
+  margin: 8px 0 15px;
 }
-span.talk_nick {
+span.talk_pinned,
+span.talk_nick,
+span.talk_date,
+span.talk_tag,
+span.talk_reaction {
   margin-left: 3px;
   font-weight: 400;
   line-height: 2.2;
 }
-span.talk_date {
-  margin-left: 3px;
-  font-weight: 400;
-  line-height: 2.2;
-}
-span.talk_tag {
-  margin-left: 3px;
-  font-weight: 400;
-  line-height: 2.2;
+span.talk_reaction_icon {
+  font-size: 15px !important;
 }
 .zone_imgbox {
   display: flex;
@@ -18042,7 +18052,6 @@ img.no-lazyload {
 }
 .talk_bottom .icon {
   padding: 5px;
-
   color: var(--cloudchewie-font-color);
   float: right;
   transition: all 0.3s;
@@ -18060,24 +18069,6 @@ img.no-lazyload {
 .talk_content > a:hover {
   text-decoration: none !important;
   color: #ff5143 !important;
-}
-
-/* 提醒 */
-
-.limit {
-  transition: all 0.3s ease-in-out;
-  color: rgba(76, 73, 72, 0.6);
-}
-
-[data-theme="dark"] .limit {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.limit {
-  display: none;
-  text-align: center;
-  margin-top: 20px;
-  color: var(--cloudchewie-font-color);
 }
 @media screen and (max-width: 900px) {
   .zone_imgbox {
@@ -18154,9 +18145,9 @@ img.no-lazyload {
   line-height: normal;
   position: relative;
 }
-[data-theme="light"] .music-wrapper .aplayer {
+/* [data-theme="light"] .music-wrapper .aplayer {
   background: #333 !important;
-}
+} */
 .music-wrapper .aplayer-miniswitcher {
   background: none !important;
   border: none !important;
@@ -18232,10 +18223,6 @@ img.no-lazyload {
 .music-wrapper .aplayer .aplayer-icon-forward {
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.music-wrapper .aplayer .aplayer-lrc-content {
-  display: none;
 }
 
 .music-wrapper .aplayer .aplayer-pic {
@@ -18322,13 +18309,13 @@ img.no-lazyload {
 }
 
 .music-wrapper .aplayer .aplayer-info .aplayer-music .aplayer-title {
-  color: #fff;
+  color: var(--cloudchewie-font-color);
   font-size: 14px;
 }
 
 .music-wrapper .aplayer .aplayer-info .aplayer-music .aplayer-author {
   font-size: 12px;
-  color: #fff;
+  color: var(--cloudchewie-font-color);
   opacity: 0.8;
 }
 
@@ -18366,6 +18353,10 @@ img.no-lazyload {
   width: 100%;
   background: #cdcdcd;
   border-radius: 100px;
+}
+
+.music-wrapper .aplayer-played,.music-wrapper .aplayer-thumb{
+  background-color: var(--cloudchewie-theme) !important;
 }
 
 .music-wrapper
@@ -18601,6 +18592,8 @@ img.no-lazyload {
   overflow: visible;
   height: auto !important;
   min-height: 16px;
+  color: var(--cloudchewie-font-color);
+  opacity: 0.9;
 }
 
 .music-wrapper .aplayer .aplayer-lrc.aplayer-lrc-hide {
@@ -18914,6 +18907,7 @@ img.no-lazyload {
   margin-bottom: 1rem;
   align-items: center;
   justify-items: center;
+  column-gap: 8px;
 }
 #memos-query.no-query {
   display: none;
@@ -18921,7 +18915,7 @@ img.no-lazyload {
 .memos-query-title {
   margin-right: 1rem !important;
 }
-.memos-query-name {
+.memos-query-item {
   background: var(--card-bg);
   border: var(--card-border);
   box-shadow: var(--card-box-shadow);
@@ -18932,13 +18926,13 @@ img.no-lazyload {
   justify-self: center;
   cursor: pointer;
 }
-.memos-query-name span {
-  margin-right: 3px;
+.memos-query-item span {
+  margin: 0px 3px;
 }
-.memos-query-name .cloudchewiefont {
+.memos-query-item .cloudchewiefont {
   font-size: 16px !important;
 }
-.memos-query-name:hover span {
+.memos-query-item:hover span {
   text-decoration: line-through;
 }
 .d-none {

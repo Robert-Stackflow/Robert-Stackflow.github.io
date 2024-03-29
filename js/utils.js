@@ -1,18 +1,5 @@
 window.meting_api =
   "https://meting.api.cloudchewie.com/api?server=:server&type=:type&id=:id&r=:r";
-var default_memos_avatar =
-  "https://picbed.cloudchewie.com/icon/memos-user.webp!mini";
-var memos_logo = "https://picbed.cloudchewie.com/icon/memos.webp!mini";
-var blank_memos = {
-  id: -1,
-  creatorId: -1,
-  createdTs: new Date().getTime() / 1000,
-  content: "暂无Memos",
-  creatorName: "暂无Memos",
-  creatorUsername: "暂无Memos",
-  resourceList: [],
-  name: "",
-};
 var adjectives = [
   "美丽的",
   "英俊的",
@@ -162,13 +149,14 @@ body:before {
 
 var trailingUrl = "https://www.travellings.cn/go.html";
 
-const cloudchewieFn = {
-  day_night_count: 0,
-  isReadMode: false,
-  typing: false,
-  downloadimging: false,
-  keyUpEvent_timeoutId: null,
-  keyUpShiftDelayEvent_timeoutId: null,
+/**
+ * =================================================
+ *
+ * 辅助函数
+ *
+ * =================================================
+ */
+const utilsFn = {
   /**
    * =================================================
    *
@@ -179,22 +167,22 @@ const cloudchewieFn = {
   /**
    * 操作LocalStorage
    */
-  saveData: function (name, data) {
+  setLocalStorage: function (name, data) {
     localStorage.setItem(
       name,
       JSON.stringify({ time: Date.now(), data: data })
     );
   },
-  removeData: function (name) {
-    localStorage.removeItem(name);
-  },
-  loadData: function (name, time) {
+  getLocalStorage: function (name, time) {
     let d = JSON.parse(localStorage.getItem(name));
     if (d) {
       let t = Date.now() - d.time;
       if (t < time * 60 * 1000 && t > -1) return d.data;
     }
     return d ? d.data : undefined;
+  },
+  removeLocalStorage: function (name) {
+    localStorage.removeItem(name);
   },
   /**
    * 操作Cookie
@@ -204,13 +192,6 @@ const cloudchewieFn = {
     d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 10000);
     var expires = "expires=" + d.toGMTString();
     document.cookie = cname + "=" + cvalue + "; " + expires;
-  },
-  delCookie: (name) => {
-    var exp = new Date();
-    exp.setTime(exp.getTime() - 1);
-    var cval = getCookie(name);
-    if (cval != null)
-      document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
   },
   getCookie: (cname) => {
     var name = cname + "=";
@@ -223,10 +204,17 @@ const cloudchewieFn = {
     }
     return "";
   },
+  removeCookie: (name) => {
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval = getCookie(name);
+    if (cval != null)
+      document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+  },
   /**
    * =================================================
    *
-   * 辅助函数
+   * 有关页面判断的函数
    *
    * =================================================
    */
@@ -273,27 +261,28 @@ const cloudchewieFn = {
     return window.location.pathname == "/guestbook/";
   },
   /**
+   * =================================================
+   *
+   * 其他辅助函数
+   *
+   * =================================================
+   */
+  /**
+   * 是否为空
+   */
+  isEmpty: (e) => {
+    return e == undefined || e == null || e === "";
+  },
+  isNotEmpty: (e) => {
+    return !utilsFn.isEmpty(e);
+  },
+  /**
    * 是否为全屏
    */
   isFullScreen: () => {
     var isFull = document.fullScreen || document.fullscreenElement !== null;
     if (isFull === undefined) isFull = false;
     return isFull;
-  },
-  /**
-   * 挂载小猫
-   */
-  loadCat: () => {
-    window.game = new CatchTheCatGame({
-      w: 11,
-      h: 11,
-      r: 20,
-      initialWallCount: 8,
-      backgroundColor: 0xeeeeee,
-      parent: "catch-the-cat",
-      statusBarAlign: "center",
-      credit: "github.com/ganlvtech",
-    });
   },
   /**
    * 添加脚本
@@ -322,9 +311,223 @@ const cloudchewieFn = {
    */
   copySelect: () => {
     document.execCommand("Copy", false, null);
-    GLOBAL_CONFIG.Snackbar !== undefined &&
-      cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success);
+    utilsFn.snack(GLOBAL_CONFIG.Snackbar.copy_success);
   },
+  /**
+   * 消息弹窗
+   */
+  snackbarShow: (text, showAction = false, duration = 2000) => {
+    const { position, bgLight, bgDark } = GLOBAL_CONFIG.Snackbar;
+    const bg =
+      document.documentElement.getAttribute("data-theme") === "light"
+        ? bgLight
+        : bgDark;
+    Snackbar.show({
+      text: text,
+      backgroundColor: bg,
+      showAction: showAction,
+      duration: duration,
+      pos: position,
+      customClass: "snackbar-css",
+    });
+  },
+  /**
+   * 长时间消息弹窗
+   */
+  snackbarShowLong: (text, showAction = false, duration = 10000) => {
+    const { position, bgLight, bgDark } = GLOBAL_CONFIG.Snackbar;
+    const bg =
+      document.documentElement.getAttribute("data-theme") === "light"
+        ? bgLight
+        : bgDark;
+    Snackbar.show({
+      text: text,
+      backgroundColor: bg,
+      showAction: showAction,
+      duration: duration,
+      pos: position,
+      customClass: "snackbar-css",
+    });
+  },
+  /**
+   * 消息弹窗
+   */
+  snack: (str) => {
+    GLOBAL_CONFIG.Snackbar !== undefined && utilsFn.snackbarShow(str);
+  },
+  /**
+   * 消息弹窗
+   */
+  snackLong: (str) => {
+    GLOBAL_CONFIG.Snackbar !== undefined && utilsFn.snackbarShowLong(str);
+  },
+  /**
+   * 超时事件
+   */
+  withTimeout: (millis, promise) => {
+    const timeout = new Promise((resolve, reject) =>
+      setTimeout(() => reject(`Timed out after ms.`), millis)
+    );
+    return Promise.race([promise, timeout]);
+  },
+  /**
+   * 比较两者
+   */
+  compare: (p) => {
+    return function (m, n) {
+      var a = m[p];
+      var b = n[p];
+      return b - a;
+    };
+  },
+  /**
+   * =================================================
+   *
+   * 有关防抖节流的函数
+   *
+   * =================================================
+   */
+  /**
+   * 防抖
+   */
+  debounce: function (func, wait, immediate) {
+    let timeout;
+    return function () {
+      const context = this;
+      const args = arguments;
+      const later = function () {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      const callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  },
+  /**
+   * 节流
+   */
+  throttle: function (func, wait, options) {
+    let timeout, context, args;
+    let previous = 0;
+    if (!options) options = {};
+
+    const later = function () {
+      previous = options.leading === false ? 0 : new Date().getTime();
+      timeout = null;
+      func.apply(context, args);
+      if (!timeout) context = args = null;
+    };
+
+    const throttled = function () {
+      const now = new Date().getTime();
+      if (!previous && options.leading === false) previous = now;
+      const remaining = wait - (now - previous);
+      context = this;
+      args = arguments;
+      if (remaining <= 0 || remaining > wait) {
+        if (timeout) {
+          clearTimeout(timeout);
+          timeout = null;
+        }
+        previous = now;
+        func.apply(context, args);
+        if (!timeout) context = args = null;
+      } else if (!timeout && options.trailing !== false) {
+        timeout = setTimeout(later, remaining);
+      }
+    };
+
+    return throttled;
+  },
+  /**
+   * =================================================
+   *
+   * 有关动画的函数
+   *
+   * =================================================
+   */
+  /**
+   * 淡入
+   */
+  fadeIn: (ele, time) => {
+    ele.style.cssText = `display:block;animation: to_show ${time}s`;
+  },
+  /**
+   * 淡出
+   */
+  fadeOut: (ele, time) => {
+    ele.addEventListener("animationend", function f() {
+      ele.style.cssText = "display: none; animation: '' ";
+      ele.removeEventListener("animationend", f);
+    });
+    ele.style.animation = `to_hide ${time}s`;
+  },
+  /**
+   * 动画进入
+   */
+  animateIn: (ele, text) => {
+    ele.style.display = "block";
+    ele.style.animation = text;
+  },
+  /**
+   * 动画离开
+   */
+  animateOut: (ele, text) => {
+    ele.addEventListener("animationend", function f() {
+      ele.style.display = "";
+      ele.style.animation = "";
+      ele.removeEventListener("animationend", f);
+    });
+    ele.style.animation = text;
+  },
+  /**
+   *  日期之差
+   */
+  diffDate: (d, more = false) => {
+    const dateNow = new Date();
+    const datePost = new Date(d);
+    const dateDiff = dateNow.getTime() - datePost.getTime();
+    const minute = 1000 * 60;
+    const hour = minute * 60;
+    const day = hour * 24;
+    const month = day * 30;
+
+    let result;
+    if (more) {
+      const monthCount = dateDiff / month;
+      const dayCount = dateDiff / day;
+      const hourCount = dateDiff / hour;
+      const minuteCount = dateDiff / minute;
+
+      if (monthCount > 12) {
+        result = datePost.toLocaleDateString().replace(/\//g, "-");
+      } else if (monthCount >= 1) {
+        result = parseInt(monthCount) + " " + GLOBAL_CONFIG.date_suffix.month;
+      } else if (dayCount >= 1) {
+        result = parseInt(dayCount) + " " + GLOBAL_CONFIG.date_suffix.day;
+      } else if (hourCount >= 1) {
+        result = parseInt(hourCount) + " " + GLOBAL_CONFIG.date_suffix.hour;
+      } else if (minuteCount >= 1) {
+        result = parseInt(minuteCount) + " " + GLOBAL_CONFIG.date_suffix.min;
+      } else {
+        result = GLOBAL_CONFIG.date_suffix.just;
+      }
+    } else {
+      result = parseInt(dateDiff / day);
+    }
+    return result;
+  },
+};
+
+const cloudchewieFn = {
+  day_night_count: 0,
+  isReadMode: false,
+  typing: false,
+  downloadimging: false,
+  keyUpEvent_timeoutId: null,
+  keyUpShiftDelayEvent_timeoutId: null,
   /**
    * 引用至评论
    */
@@ -404,95 +607,6 @@ const cloudchewieFn = {
       }));
   },
   /**
-   * 防抖
-   */
-  debounce: function (func, wait, immediate) {
-    let timeout;
-    return function () {
-      const context = this;
-      const args = arguments;
-      const later = function () {
-        timeout = null;
-        if (!immediate) func.apply(context, args);
-      };
-      const callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-      if (callNow) func.apply(context, args);
-    };
-  },
-  /**
-   * 节流
-   */
-  throttle: function (func, wait, options) {
-    let timeout, context, args;
-    let previous = 0;
-    if (!options) options = {};
-
-    const later = function () {
-      previous = options.leading === false ? 0 : new Date().getTime();
-      timeout = null;
-      func.apply(context, args);
-      if (!timeout) context = args = null;
-    };
-
-    const throttled = function () {
-      const now = new Date().getTime();
-      if (!previous && options.leading === false) previous = now;
-      const remaining = wait - (now - previous);
-      context = this;
-      args = arguments;
-      if (remaining <= 0 || remaining > wait) {
-        if (timeout) {
-          clearTimeout(timeout);
-          timeout = null;
-        }
-        previous = now;
-        func.apply(context, args);
-        if (!timeout) context = args = null;
-      } else if (!timeout && options.trailing !== false) {
-        timeout = setTimeout(later, remaining);
-      }
-    };
-
-    return throttled;
-  },
-  /**
-   * 淡入
-   */
-  fadeIn: (ele, time) => {
-    ele.style.cssText = `display:block;animation: to_show ${time}s`;
-  },
-  /**
-   * 淡出
-   */
-  fadeOut: (ele, time) => {
-    ele.addEventListener("animationend", function f() {
-      ele.style.cssText = "display: none; animation: '' ";
-      ele.removeEventListener("animationend", f);
-    });
-    ele.style.animation = `to_hide ${time}s`;
-  },
-  /**
-   * 动画进入
-   */
-  animateIn: (ele, text) => {
-    ele.style.display = "block";
-    ele.style.animation = text;
-  },
-  /**
-   * 动画离开
-   */
-  animateOut: (ele, text) => {
-    ele.addEventListener("animationend", function f() {
-      ele.style.display = "";
-      ele.style.animation = "";
-      ele.removeEventListener("animationend", f);
-    });
-    ele.style.animation = text;
-  },
-
-  /**
    * 侧边栏移出页面
    */
   sidebarPaddingR: () => {
@@ -502,79 +616,6 @@ const cloudchewieFn = {
     if (innerWidth !== clientWidth) {
       document.body.style.paddingRight = paddingRight + "px";
     }
-  },
-  /**
-   * 消息弹窗
-   */
-  snackbarShow: (text, showAction = false, duration = 2000) => {
-    const { position, bgLight, bgDark } = GLOBAL_CONFIG.Snackbar;
-    const bg =
-      document.documentElement.getAttribute("data-theme") === "light"
-        ? bgLight
-        : bgDark;
-    Snackbar.show({
-      text: text,
-      backgroundColor: bg,
-      showAction: showAction,
-      duration: duration,
-      pos: position,
-      customClass: "snackbar-css",
-    });
-  },
-  /**
-   * 长时间消息弹窗
-   */
-  snackbarShowLong: (text, showAction = false, duration = 10000) => {
-    const { position, bgLight, bgDark } = GLOBAL_CONFIG.Snackbar;
-    const bg =
-      document.documentElement.getAttribute("data-theme") === "light"
-        ? bgLight
-        : bgDark;
-    Snackbar.show({
-      text: text,
-      backgroundColor: bg,
-      showAction: showAction,
-      duration: duration,
-      pos: position,
-      customClass: "snackbar-css",
-    });
-  },
-  /**
-   *  日期之差
-   */
-  diffDate: (d, more = false) => {
-    const dateNow = new Date();
-    const datePost = new Date(d);
-    const dateDiff = dateNow.getTime() - datePost.getTime();
-    const minute = 1000 * 60;
-    const hour = minute * 60;
-    const day = hour * 24;
-    const month = day * 30;
-
-    let result;
-    if (more) {
-      const monthCount = dateDiff / month;
-      const dayCount = dateDiff / day;
-      const hourCount = dateDiff / hour;
-      const minuteCount = dateDiff / minute;
-
-      if (monthCount > 12) {
-        result = datePost.toLocaleDateString().replace(/\//g, "-");
-      } else if (monthCount >= 1) {
-        result = parseInt(monthCount) + " " + GLOBAL_CONFIG.date_suffix.month;
-      } else if (dayCount >= 1) {
-        result = parseInt(dayCount) + " " + GLOBAL_CONFIG.date_suffix.day;
-      } else if (hourCount >= 1) {
-        result = parseInt(hourCount) + " " + GLOBAL_CONFIG.date_suffix.hour;
-      } else if (minuteCount >= 1) {
-        result = parseInt(minuteCount) + " " + GLOBAL_CONFIG.date_suffix.min;
-      } else {
-        result = GLOBAL_CONFIG.date_suffix.just;
-      }
-    } else {
-      result = parseInt(dateDiff / day);
-    }
-    return result;
   },
   /**
    * 加载评论
@@ -825,11 +866,11 @@ const cloudchewieFn = {
    * 固定导航栏
    */
   fixNav: () => {
-    if (cloudchewieFn.loadData("enableFixedNav") == "true") {
+    if (utilsFn.getLocalStorage("enableFixedNav") == "true") {
       $("#name-container").show();
       var position = $(window).scrollTop();
       $(window).scroll(function () {
-        if (cloudchewieFn.loadData("enableFixedNav") == "true") {
+        if (utilsFn.getLocalStorage("enableFixedNav") == "true") {
           var scroll = $(window).scrollTop();
           if (scroll > position) {
             $("#page-header").addClass("nav-down");
@@ -879,8 +920,7 @@ const cloudchewieFn = {
    * =================================================
    */
   alertTooLow: () => {
-    GLOBAL_CONFIG.Snackbar !== undefined &&
-      cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.browser_version_low);
+    utilsFn.snack(GLOBAL_CONFIG.Snackbar.browser_version_low);
   },
   browserVersion: () => {
     var userAgent = navigator.userAgent;
@@ -922,9 +962,9 @@ const cloudchewieFn = {
     }
   },
   checkVersion: () => {
-    if (cloudchewieFn.getCookie("browser_version_checked") != true) {
+    if (utilsFn.getCookie("browser_version_checked") != true) {
       cloudchewieFn.browserVersion();
-      cloudchewieFn.setCookie("browser_version_checked", true, 1);
+      utilsFn.setCookie("browser_version_checked", true, 1);
     }
   },
   getHostname: (str) => {
@@ -945,7 +985,7 @@ const cloudchewieFn = {
   bindContextMenu: (enable, tip) => {
     if (enable && document.body.clientWidth > 900) {
       if (tip) {
-        cloudchewieFn.snackbarShow(
+        utilsFn.snack(
           "已启用自定义右键菜单,可使用Ctrl+右键单击呼出默认右键菜单"
         );
       }
@@ -958,7 +998,7 @@ const cloudchewieFn = {
         //如果有文字选中，则显示文字选中相关的菜单项
         if (document.getSelection().toString()) {
           $("#menu-text").show();
-          if (!cloudchewieFn.containCommentDom()) {
+          if (!utilsFn.containCommentDom()) {
             $("#refer-to-comment").hide();
           }
         }
@@ -996,7 +1036,7 @@ const cloudchewieFn = {
             document.execCommand("Copy");
             document.body.removeChild(txa);
             GLOBAL_CONFIG.Snackbar !== undefined &&
-              cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success);
+              utilsFn.snack(GLOBAL_CONFIG.Snackbar.copy_success);
           };
         }
         //如果是图片
@@ -1014,7 +1054,7 @@ const cloudchewieFn = {
           cloudchewieFn.downloadImage = function () {
             if (cloudchewieFn.downloadimging == false) {
               cloudchewieFn.downloadimging = true;
-              cloudchewieFn.snackbarShow("正在下载中，请稍后", false, 10000);
+              utilsFn.snack("正在下载中，请稍后", false, 10000);
               setTimeout(function () {
                 let image = new Image();
                 image.setAttribute("crossOrigin", "anonymous");
@@ -1032,11 +1072,11 @@ const cloudchewieFn = {
                   a.dispatchEvent(event); // 触发a的单击事件
                 };
                 image.src = el.src;
-                cloudchewieFn.snackbarShow("图片已添加盲水印，请遵守版权协议");
+                utilsFn.snack("图片已添加盲水印，请遵守版权协议");
                 cloudchewieFn.downloadimging = false;
               }, "10000");
             } else {
-              cloudchewieFn.snackbarShow("有正在进行中的下载，请稍后再试");
+              utilsFn.snack("有正在进行中的下载，请稍后再试");
             }
           };
           cloudchewieFn.fullScreenImage = function () {
@@ -1052,7 +1092,7 @@ const cloudchewieFn = {
             document.execCommand("Copy");
             document.body.removeChild(txa);
             GLOBAL_CONFIG.Snackbar !== undefined &&
-              cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success);
+              utilsFn.snack(GLOBAL_CONFIG.Snackbar.copy_success);
           };
         } else if (el.tagName == "TEXTAREA" || el.tagName == "INPUT") {
           //如果是输入框/文本框
@@ -1104,7 +1144,7 @@ const cloudchewieFn = {
       });
     } else {
       if (tip) {
-        cloudchewieFn.snackbarShow("已禁用自定义右键菜单");
+        utilsFn.snack("已禁用自定义右键菜单");
       }
       window.oncontextmenu = function () {
         return true;
@@ -1263,7 +1303,7 @@ const cloudchewieFn = {
       saveToLocal.set("theme", "dark", 2);
       !useTransition &&
         GLOBAL_CONFIG.Snackbar !== undefined &&
-        cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night);
+        utilsFn.snack(GLOBAL_CONFIG.Snackbar.day_to_night);
     } else {
       document.querySelector(".menu-toggleDarkMode-text").textContent =
         "深色模式";
@@ -1274,7 +1314,7 @@ const cloudchewieFn = {
       cloudchewieFn.day_night_count++;
       !useTransition &&
         GLOBAL_CONFIG.Snackbar !== undefined &&
-        cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day);
+        utilsFn.snack(GLOBAL_CONFIG.Snackbar.night_to_day);
     }
     typeof utterancesTheme === "function" && utterancesTheme();
     typeof FB === "object" && window.loadFBComment();
@@ -1293,8 +1333,7 @@ const cloudchewieFn = {
     txa.select();
     document.execCommand("Copy");
     document.body.removeChild(txa);
-    GLOBAL_CONFIG.Snackbar !== undefined &&
-      cloudchewieFn.snackbarShow(GLOBAL_CONFIG.Snackbar.copy_success);
+    utilsFn.snack(GLOBAL_CONFIG.Snackbar.copy_success);
   },
   /**
    * 翻译
@@ -1322,7 +1361,7 @@ const cloudchewieFn = {
    * 显示/隐藏左/右侧栏
    */
   toggleAside: () => {
-    if (!cloudchewieFn.isHome()) {
+    if (!utilsFn.isHome()) {
       const $htmlDom = document.documentElement.classList;
       $htmlDom.contains("hide-aside")
         ? saveToLocal.set("enableAside", "show", 2)
@@ -1655,8 +1694,8 @@ const cloudchewieFn = {
     // 当滚动条小于56时
     if (
       document.body.scrollHeight <= innerHeight &&
-      cloudchewieFn.isMemos() &&
-      cloudchewieFn.isGuestbook()
+      utilsFn.isMemos() &&
+      utilsFn.isGuestbook()
     ) {
       $rightside.style.cssText = "opacity: 1; transform: translateX(-60px)";
       return;
@@ -1675,7 +1714,7 @@ const cloudchewieFn = {
     const isChatBtnShow = typeof chatBtnShow === "function";
 
     window.scrollCollect = () => {
-      return cloudchewieFn.throttle((e) => {
+      return utilsFn.throttle((e) => {
         const currentTop = window.scrollY || document.documentElement.scrollTop;
         const isDown = scrollDirection(currentTop);
         if (currentTop < 10) {
@@ -1684,7 +1723,7 @@ const cloudchewieFn = {
           $("#page-header").removeClass("nav-top");
         }
         if (currentTop > 56) {
-          if (cloudchewieFn.loadData("enableFixedNav") == "false") {
+          if (utilsFn.getLocalStorage("enableFixedNav") == "false") {
             if (isDown) {
               if ($header.classList.contains("nav-visible"))
                 $header.classList.remove("nav-visible");
@@ -1705,25 +1744,25 @@ const cloudchewieFn = {
           if (
             window.getComputedStyle($rightside).getPropertyValue("opacity") ===
               "0" &&
-            cloudchewieFn.loadData("enableRightSide") == "true"
+            utilsFn.getLocalStorage("enableRightSide") == "true"
           ) {
             $rightside.style.cssText =
               "opacity: 0.8; transform: translateX(-60px)";
           }
         } else {
           if (currentTop === 0) {
-            if (cloudchewieFn.loadData("enableFixedNav") == "false") {
+            if (utilsFn.getLocalStorage("enableFixedNav") == "false") {
               $header.classList.remove("nav-fixed", "nav-visible");
             }
           }
-          if (cloudchewieFn.loadData("enableRightSide") == "true") {
+          if (utilsFn.getLocalStorage("enableRightSide") == "true") {
             $rightside.style.cssText = "opacity: ''; transform: ''";
           }
         }
 
         if (
           document.body.scrollHeight <= innerHeight &&
-          cloudchewieFn.loadData("enableRightSide") == "true"
+          utilsFn.getLocalStorage("enableRightSide") == "true"
         ) {
           $rightside.style.cssText =
             "opacity: 0.8; transform: translateX(-60px)";
@@ -1866,7 +1905,7 @@ const cloudchewieFn = {
     };
 
     window.resolveTocScrollFunction = () => {
-      return cloudchewieFn.throttle(() => {
+      return utilsFn.throttle(() => {
         const currentTop = window.scrollY || document.documentElement.scrollTop;
         isToc && scrollPercent(currentTop);
         findHeadPosition(currentTop);
@@ -2054,7 +2093,7 @@ const cloudchewieFn = {
     if ($runtimeCount) {
       const publishDate = $runtimeCount.getAttribute("data-publishDate");
       $runtimeCount.innerText =
-        cloudchewieFn.diffDate(publishDate) + " " + GLOBAL_CONFIG.runtime;
+        utilsFn.diffDate(publishDate) + " " + GLOBAL_CONFIG.runtime;
     }
   },
   /**
@@ -2064,7 +2103,7 @@ const cloudchewieFn = {
     const $lastPushDateItem = document.getElementById("last-push-date");
     if ($lastPushDateItem) {
       const lastPushDate = $lastPushDateItem.getAttribute("data-lastPushDate");
-      $lastPushDateItem.innerText = cloudchewieFn.diffDate(lastPushDate, true);
+      $lastPushDateItem.innerText = utilsFn.diffDate(lastPushDate, true);
     }
   },
   /**
@@ -2176,7 +2215,7 @@ const cloudchewieFn = {
    */
   addPostOutdateNotice: () => {
     const data = GLOBAL_CONFIG.noticeOutdate;
-    const diffDay = cloudchewieFn.diffDate(GLOBAL_CONFIG_SITE.postUpdate);
+    const diffDay = utilsFn.diffDate(GLOBAL_CONFIG_SITE.postUpdate);
     if (diffDay >= data.limitDay) {
       const ele = document.createElement("div");
       ele.className = "post-outdate-notice";
@@ -2207,7 +2246,7 @@ const cloudchewieFn = {
     selector.forEach((item) => {
       const $this = item;
       const timeVal = $this.getAttribute("datetime");
-      $this.innerText = cloudchewieFn.diffDate(timeVal, true);
+      $this.innerText = utilsFn.diffDate(timeVal, true);
       $this.style.display = "inline";
     });
   },
@@ -2256,48 +2295,41 @@ const cloudchewieFn = {
    * 彩蛋
    */
   sweetSnack: () => {
-    if (cloudchewieFn.getCookie("daynight") == "NaN")
+    if (utilsFn.getCookie("daynight") == "NaN")
       cloudchewieFn.day_night_count = 0;
     else
-      cloudchewieFn.day_night_count = new Number(
-        cloudchewieFn.getCookie("daynight")
-      );
+      cloudchewieFn.day_night_count = new Number(utilsFn.getCookie("daynight"));
     setInterval(() => {
       var initDay = -3;
       if (cloudchewieFn.day_night_count + initDay == 0)
         GLOBAL_CONFIG.Snackbar !== undefined &&
-          cloudchewieFn.snackbarShowLong(
+          utilsFn.snackLong(
             "冬至·伊始:我的心与爱是不是能够这般纯粹，经受住时空的考验"
           ),
           cloudchewieFn.day_night_count++;
       if (cloudchewieFn.day_night_count + initDay == 20)
         GLOBAL_CONFIG.Snackbar !== undefined &&
-          cloudchewieFn.snackbarShowLong(
+          utilsFn.snackLong(
             "交替·新生:月徊而霜凝兮，良人伴我侧；月斜而影绰兮，明镜照我心"
           ),
           cloudchewieFn.day_night_count++;
       if (cloudchewieFn.day_night_count + initDay == 60)
         GLOBAL_CONFIG.Snackbar !== undefined &&
-          cloudchewieFn.snackbarShowLong(
+          utilsFn.snackLong(
             "风起·渴盼:桐絮扰动着尘世，恋人缔造着世界；细腻不语的青苔，是我对你的爱恋"
           ),
           cloudchewieFn.day_night_count++;
       if (cloudchewieFn.day_night_count + initDay == 120)
         GLOBAL_CONFIG.Snackbar !== undefined &&
-          cloudchewieFn.snackbarShowLong(
+          utilsFn.snackLong(
             "雾霭·探索:越来越浓的雾霭模糊着彼此的视线，越来越厚的障壁阻隔着彼此的心儿"
           ),
           cloudchewieFn.day_night_count++;
       if (cloudchewieFn.day_night_count + initDay == 200)
         GLOBAL_CONFIG.Snackbar !== undefined &&
-          cloudchewieFn.snackbarShowLong(
-            "拨云·成长:生活不全都是恋爱，恋爱却全都是生活"
-          ),
+          utilsFn.snackLong("拨云·成长:生活不全都是恋爱，恋爱却全都是生活"),
           cloudchewieFn.day_night_count++;
-      cloudchewieFn.setCookie(
-        "daynight",
-        cloudchewieFn.day_night_count.toString()
-      );
+      utilsFn.setCookie("daynight", cloudchewieFn.day_night_count.toString());
     }, 500);
   },
   /**
@@ -2353,7 +2385,7 @@ const cloudchewieFn = {
     if (commentBarrage) {
       if (window.getComputedStyle(commentBarrage).display === "flex") {
         commentBarrage.style.display = "none";
-        cloudchewieFn.snackbarShow("已关闭评论弹幕");
+        utilsFn.snack("已关闭评论弹幕");
         document.querySelector(".menu-commentBarrage-text").textContent =
           "显示弹幕";
         document.getElementById("con-barrage") &&
@@ -2362,7 +2394,7 @@ const cloudchewieFn = {
           document
             .getElementById("switch_commentBarrage")
             .classList.remove("checked");
-        cloudchewieFn.saveData("enableCommentBarrage", "false");
+        utilsFn.setLocalStorage("enableCommentBarrage", "false");
       } else {
         commentBarrage.style.display = "flex";
         document.querySelector(".menu-commentBarrage-text").textContent =
@@ -2373,8 +2405,8 @@ const cloudchewieFn = {
           document
             .getElementById("switch_commentBarrage")
             .classList.add("checked");
-        cloudchewieFn.snackbarShow("已开启评论弹幕");
-        cloudchewieFn.saveData("enableCommentBarrage", "true");
+        utilsFn.snack("已开启评论弹幕");
+        utilsFn.setLocalStorage("enableCommentBarrage", "true");
       }
     }
     cloudchewieFn.toggleRightMenu(false);
@@ -2456,7 +2488,7 @@ const cloudchewieFn = {
             saveToLocal.set("danmu", n, 0.02);
         })
         .catch((e) => {
-          cloudchewieFn.snackbarShow("评论系统过载,请稍后访问");
+          utilsFn.snack("评论系统过载,请稍后访问");
           console.log(e);
         });
     }
@@ -2468,7 +2500,7 @@ const cloudchewieFn = {
    */
   waitBlank: () => {
     let blankTextEle = $("#blank-text");
-    if (cloudchewieFn.isBlank() && blankTextEle) {
+    if (utilsFn.isBlank() && blankTextEle) {
       setTimeout(function () {
         blankTextEle.html("你找到了我，等一等吧");
       }, 30000);
@@ -2512,7 +2544,7 @@ const cloudchewieFn = {
    * 播放/暂停音乐
    */
   toggleMusic: function (changePlay = true) {
-    if (!cloudchewieFn.isMusic()) {
+    if (!utilsFn.isMusic()) {
       if (!cloudchewie_musicFirst) {
         cloudchewieFn.musicBindEvent();
         cloudchewie_musicFirst = true;
@@ -2638,7 +2670,7 @@ const cloudchewieFn = {
    * 播放音乐
    */
   playMusic() {
-    if (!cloudchewieFn.isMusic()) {
+    if (!utilsFn.isMusic()) {
       const navMusic = document.getElementById("nav-music");
       const navMetingAplayer = navMusic.querySelector("meting-js").aplayer;
       navMetingAplayer.play();
@@ -2680,9 +2712,9 @@ const cloudchewieFn = {
     }
     if (
       document.querySelector("#cloudMusic-page .aplayer-title") != null &&
-      document.querySelector("#cloudMusic-page .aplayer-title").innerHTML !=
-        undefined &&
-      document.querySelector("#cloudMusic-page .aplayer-title").innerHTML != ""
+      utilsFn.isNotEmpty(
+        document.querySelector("#cloudMusic-page .aplayer-title").innerHTML
+      )
     ) {
       document.title =
         document.querySelector("#cloudMusic-page .aplayer-title").innerHTML +
@@ -2693,14 +2725,14 @@ const cloudchewieFn = {
    * 天籁界面播放器初始化
    */
   initAnPlayer: function () {
-    if (!cloudchewieFn.isMusic()) {
+    if (!utilsFn.isMusic()) {
       return;
     }
     const urlParams = new URLSearchParams(window.location.search);
     var userId = "9516481572";
     var userServer = "netease";
-    if (cloudchewieFn.loadData("playlist") != undefined) {
-      var json = JSON.parse(cloudchewieFn.loadData("playlist"));
+    if (utilsFn.getLocalStorage("playlist") != undefined) {
+      var json = JSON.parse(utilsFn.getLocalStorage("playlist"));
       userId = json.id;
       userServer = json.server;
     }
@@ -2738,7 +2770,7 @@ const cloudchewieFn = {
     });
 
     function anMusicPageMenuMask() {
-      if (!cloudchewieFn.isMusic()) {
+      if (!utilsFn.isMusic()) {
         document
           .getElementById("menu-mask")
           .removeEventListener("click", anMusicPageMenuMask);
@@ -2790,7 +2822,7 @@ const cloudchewieFn = {
     reload = true,
     type = "playlist"
   ) {
-    if (!cloudchewieFn.isMusic()) {
+    if (!utilsFn.isMusic()) {
       const navMusic = document.getElementById("nav-music");
       if (navMusic == null || navMusic.querySelector("meting-js") == null)
         return;
@@ -2869,563 +2901,6 @@ const cloudchewieFn = {
           break;
       }
     });
-  },
-  /**
-   * =================================================
-   *
-   * Memos
-   *
-   * =================================================
-   */
-  memos_userlist: [],
-  memos_current_option: 0, //0-total,1-user,2-randomuser
-  memos_current_userId: -1,
-  memos_current_query_content: undefined,
-  $search_memos: undefined,
-  $search_input: undefined,
-  $total_memos: undefined,
-  $mine_memos: undefined,
-  $memos_button_list: undefined,
-  $randomuser_memos: undefined,
-  $userlist_memos: undefined,
-  $memos_bar_avatar: undefined,
-  $memos_bar_avatar_link: undefined,
-  $memos_bar_name: undefined,
-  $memos_userlist: undefined,
-  $memos_query: undefined,
-  parseImage: (e) => {
-    return `<a href="${e}" data-fancybox="gallery" class="fancybox" data-thumb="${e}"><img class="no-lazyload" src="${e}"></a>`;
-  },
-  jumpToComment: (e) => {
-    var n = document.querySelector(".el-textarea__inner");
-    n.value = `> ${e}\n\n`;
-    n.focus();
-    cloudchewieFn.snackbarShow("无需删除空行，直接输入评论即可", !1, 2e3);
-  },
-  updateSelectMemosState: () => {
-    cloudchewieFn.$total_memos &&
-      cloudchewieFn.$total_memos.classList.remove("checked");
-    cloudchewieFn.$mine_memos &&
-      cloudchewieFn.$mine_memos.classList.remove("checked");
-    cloudchewieFn.$randomuser_memos &&
-      cloudchewieFn.$randomuser_memos.classList.remove("checked");
-    switch (cloudchewieFn.memos_current_option) {
-      case 0:
-        cloudchewieFn.$total_memos &&
-          cloudchewieFn.$total_memos.classList.add("checked");
-        break;
-      case 1:
-        cloudchewieFn.$mine_memos &&
-          cloudchewieFn.$mine_memos.classList.add("checked");
-        break;
-      case 2:
-        cloudchewieFn.$randomuser_memos &&
-          cloudchewieFn.$randomuser_memos.classList.add("checked");
-        break;
-    }
-  },
-  updateMemosBarMeta: (avatar, nickname, username = "") => {
-    $(cloudchewieFn.$memos_bar_avatar).attr("src", avatar);
-    if (username != "") {
-      $(cloudchewieFn.$memos_bar_avatar_link).attr(
-        "href",
-        `https://memos.cloudchewie.com/u/${username}`
-      );
-    } else {
-      $(cloudchewieFn.$memos_bar_avatar_link).attr(
-        "href",
-        "https://memos.cloudchewie.com/"
-      );
-    }
-    $(cloudchewieFn.$memos_bar_name).html(nickname);
-  },
-  onTotalMemosClicked: () => {
-    cloudchewieFn.memos_current_option = 0;
-    cloudchewieFn.fetchMemos();
-  },
-  onMineMemosClicked: () => {
-    cloudchewieFn.memos_current_option = 1;
-    cloudchewieFn.memos_current_userId = 1;
-    cloudchewieFn.fetchMemos();
-  },
-  onRandomUserMemosClicked: () => {
-    cloudchewieFn.memos_current_option = 2;
-    var tmp = cloudchewieFn.memos_current_userId;
-    while (tmp == cloudchewieFn.memos_current_userId) {
-      tmp =
-        cloudchewieFn.memos_userlist[
-          Math.round(Math.random() * cloudchewieFn.memos_userlist.length) %
-            cloudchewieFn.memos_userlist.length
-        ].id;
-    }
-    cloudchewieFn.memos_current_userId = tmp;
-    cloudchewieFn.fetchMemos();
-  },
-  onUserListMemosClicked: () => {
-    $(cloudchewieFn.$memos_userlist).toggle();
-    cloudchewieFn.$userlist_memos &&
-      cloudchewieFn.$userlist_memos.classList.toggle("checked");
-  },
-  searchNow: (clear = false) => {
-    if (clear) {
-      cloudchewieFn.memos_current_query_content = undefined;
-      $(".memos-query-name").remove();
-      cloudchewieFn.$memos_query.classList.add("no-query");
-    } else {
-      cloudchewieFn.memos_current_query_content =
-        cloudchewieFn.$search_input.value;
-      cloudchewieFn.$memos_query.classList.remove("no-query");
-      $(".memos-query-name").remove();
-      $(cloudchewieFn.$memos_query).append(
-        `<div class="memos-query-name" onclick="cloudchewieFn.searchNow(true)"><span>${cloudchewieFn.memos_current_query_content}</span><i class="cloudchewiefont cloudchewie-icon-xmark"></i></div>`
-      );
-    }
-    cloudchewieFn.fetchMemos();
-  },
-  onSearchMemosClicked: () => {
-    function search() {
-      if (cloudchewieFn.$search_input.classList.contains("d-none")) {
-        cloudchewieFn.$memos_button_list.classList.add("d-none");
-        cloudchewieFn.$search_input.classList.remove("d-none");
-        cloudchewieFn.$search_input.focus();
-      } else if (
-        !cloudchewieFn.$search_input.classList.contains("d-none") &&
-        cloudchewieFn.$search_input.value == ""
-      ) {
-        cloudchewieFn.searchNow(true);
-        cloudchewieFn.$search_input.classList.add("animate__fadeOutRight");
-        setTimeout(function () {
-          cloudchewieFn.$memos_button_list.classList.remove("d-none");
-          cloudchewieFn.$search_input.classList.add("d-none");
-          cloudchewieFn.$search_input.classList.remove("animate__fadeOutRight");
-        }, 500);
-      } else if (cloudchewieFn.$search_input.value !== "") {
-        cloudchewieFn.searchNow();
-      }
-    }
-    search();
-    cloudchewieFn.$search_input.addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        search();
-      }
-    });
-  },
-  onUserClicked: (user) => {
-    window.open(`https://memos.cloudchewie.com/u/${user}`);
-  },
-  onTagClicked: (tag) => {
-    window.open(`https://memos.cloudchewie.com/?tag=${tag}`);
-  },
-  onTimeClicked: (hash) => {
-    window.open(`https://memos.cloudchewie.com/m/${hash}`);
-  },
-  withTimeout: (millis, promise) => {
-    const timeout = new Promise((resolve, reject) =>
-      setTimeout(() => reject(`Timed out after ms.`), millis)
-    );
-    return Promise.race([promise, timeout]);
-  },
-  compare: (p) => {
-    return function (m, n) {
-      var a = m[p];
-      var b = n[p];
-      return b - a;
-    };
-  },
-  fetchMemos: async () => {
-    cloudchewieFn.updateSelectMemosState();
-    if (cloudchewieFn.memos_userlist.length <= 0) {
-      await fetch("/memos_user.json")
-        .then((res) => res.json())
-        .then(async (users) => {
-          cloudchewieFn.memos_userlist = users;
-          var userlistDom = $(cloudchewieFn.$memos_userlist);
-          userlistDom.empty();
-          users.forEach((user) => {
-            userlistDom.append(
-              `<div onclick="cloudchewieFn.memos_current_option = 2;cloudchewieFn.memos_current_userId = ${
-                user.id
-              };cloudchewieFn.fetchMemos();" class="item-avatar" style="background-image:url(${
-                user.avatarUrl && user.avatarUrl != ""
-                  ? user.avatarUrl
-                  : default_memos_avatar
-              })"></div>`
-            );
-          });
-        });
-    }
-    switch (cloudchewieFn.memos_current_option) {
-      case 0:
-        cloudchewieFn.updateMemosBarMeta(memos_logo, "Memos");
-        cloudchewieFn.fetchAllMemos();
-        break;
-      case 1:
-      case 2:
-        cloudchewieFn.memos_userlist.forEach((user) => {
-          if (user.id == cloudchewieFn.memos_current_userId) {
-            cloudchewieFn.updateMemosBarMeta(
-              user.avatarUrl && user.avatarUrl != ""
-                ? user.avatarUrl
-                : default_memos_avatar,
-              user.nickname,
-              user.name.replace("users/", "")
-            );
-          }
-        });
-        cloudchewieFn.fetchUserMemos(cloudchewieFn.memos_current_userId);
-        break;
-    }
-  },
-  fetchUserMemos: async (id) => {
-    var items = [],
-      item = {};
-    cloudchewieFn
-      .withTimeout(
-        2000,
-        fetch(
-          `https://memos.cloudchewie.com/api/v1/memo?creatorId=${id}&rowStatus=NORMAL&limit=50${
-            cloudchewieFn.memos_current_query_content &&
-            cloudchewieFn.memos_current_query_content != ""
-              ? `&content=${cloudchewieFn.memos_current_query_content}`
-              : ""
-          }`
-        )
-          .then((response) => response.json())
-          .then((resdata) => {
-            return resdata;
-          })
-      )
-      .then((results) => {
-        if (results.length == 0) {
-          results.push(blank_memos);
-        }
-        for (var j = 0; j < results.length; j++) {
-          var resValue = results[j];
-          var dayDiff = Math.floor(
-            (new Date().getTime() - resValue.createdTs * 1000) /
-              (24 * 3600 * 1000)
-          );
-          if (dayDiff < 365) {
-            let avatarUrl = "";
-            cloudchewieFn.memos_userlist.forEach((user) => {
-              if (user.id == resValue.creatorId) avatarUrl = user.avatarUrl;
-            });
-            item = {
-              id: resValue.id,
-              avatar:
-                avatarUrl && avatarUrl != "" ? avatarUrl : default_memos_avatar,
-              createdTs: resValue.createdTs,
-              creatorId: resValue.creatorId,
-              creator: resValue.creatorName,
-              creatorUsername: resValue.creatorUsername,
-              content: resValue.content,
-              resourceList: resValue.resourceList,
-              hash: resValue.name,
-            };
-            items.push(item);
-          }
-        }
-        items.sort(cloudchewieFn.compare("createdTs"));
-        cloudchewieFn.loadMemos(items);
-      });
-  },
-  fetchAllMemos: async () => {
-    var items = [],
-      item = {};
-    await Promise.allSettled(
-      cloudchewieFn.memos_userlist.map((user) =>
-        cloudchewieFn.withTimeout(
-          2000,
-          fetch(
-            `https://memos.cloudchewie.com/api/v1/memo?creatorId=${
-              user.id
-            }&rowStatus=NORMAL&limit=50${
-              cloudchewieFn.memos_current_query_content &&
-              cloudchewieFn.memos_current_query_content != ""
-                ? `&content=${cloudchewieFn.memos_current_query_content}`
-                : ""
-            }`
-          )
-            .then((response) => response.json())
-            .then((resdata) => {
-              return resdata;
-            })
-        )
-      )
-    ).then((results) => {
-      var count = 0;
-      for (var i = 0; i < results.length; i++) {
-        var status = results[i].status;
-        if (status == "fulfilled") {
-          count += results[i].value.length;
-        }
-      }
-      if (count <= 0) {
-        results.push({ status: "fulfilled", value: [blank_memos] });
-      }
-      for (var i = 0; i < results.length; i++) {
-        var status = results[i].status;
-        if (status == "fulfilled") {
-          var resultsRes = results[i].value;
-          for (var j = 0; j < resultsRes.length; j++) {
-            var resValue = resultsRes[j];
-            var dayDiff = Math.floor(
-              (new Date().getTime() - resValue.createdTs * 1000) /
-                (24 * 3600 * 1000)
-            );
-            if (dayDiff < 365) {
-              let avatarUrl = "";
-              cloudchewieFn.memos_userlist.forEach((user) => {
-                if (user.id == resValue.creatorId) avatarUrl = user.avatarUrl;
-              });
-              item = {
-                id: resValue.id,
-                avatar:
-                  avatarUrl && avatarUrl != ""
-                    ? avatarUrl
-                    : default_memos_avatar,
-                createdTs: resValue.createdTs,
-                creatorId: resValue.creatorId,
-                creator: resValue.creatorName,
-                creatorUsername: resValue.creatorUsername,
-                content: resValue.content,
-                resourceList: resValue.resourceList,
-                hash: resValue.name,
-              };
-              items.push(item);
-            }
-          }
-        }
-      }
-      items.sort(cloudchewieFn.compare("createdTs"));
-      cloudchewieFn.loadMemos(items);
-    });
-  },
-  loadMemos: (data) => {
-    let items = [],
-      html = "";
-    data.forEach((item) => {
-      items.push(cloudchewieFn.formatMemo(item));
-    });
-    items.forEach((item) => {
-      tagHtml = "";
-      if (item.tags != null) {
-        item.tags.forEach((e) => {
-          tagHtml += `<div class="talk_meta_tag" onclick="cloudchewieFn.onTagClicked('${e.replaceAll(
-            "#",
-            ""
-          )}')"><i class="cloudchewiefont cloudchewie-icon-hashtag"></i><span class="talk_tag">${e.replaceAll(
-            "#",
-            ""
-          )}</span></div>`;
-        });
-      }
-      dateString = item.date.split(" ")[0].replaceAll("/", "-");
-      dateList = dateString.split("-");
-      if (dateList.length == 3)
-        dateString = dateList[0] + "/" + dateList[1] + "/" + dateList[1];
-      if (item.hash == "") {
-        html += String.raw`
-        <div class="talk_item">
-          <div class="talk_content">${item.content}</div>
-        </div>
-        `;
-      } else {
-        html += String.raw`
-        <div class="talk_item">
-          <div class="talk_content">${item.content}</div>
-          <div class="talk_spacer"></div>
-          <div class="talk_bottom">
-            <div class="talk_meta">
-              <div class="talk_meta_user" onclick="cloudchewieFn.onUserClicked('${item.username}')">
-                <img class="no-lightbox no-lazyload talk_avatar" src="${item.avatar}">
-                <span class="talk_nick">${item.nickname}</span>
-              </div>
-              
-              <div class="talk_meta_date" onclick="cloudchewieFn.onTimeClicked('${item.hash}')">
-                <i class="fa fa-clock"></i>
-                <span class="talk_date">${dateString}</span>
-              </div>
-              ${tagHtml}
-            </div>
-            <span class="talk_reply" onclick="cloudchewieFn.referToComment('${item.raw_content}')"><i class="fas fa-message"></i></span>
-          </div>
-        </div>
-        `;
-      }
-    });
-    document.getElementById("talk").innerHTML = html;
-    var times = 0;
-    var relayout = setInterval(function () {
-      cloudchewieFn.isMemos() &&
-        (waterfall("#talk"),
-        setTimeout(() => {
-          waterfall("#talk");
-        }, 300));
-      times++;
-      if (times > 5) clearInterval(relayout);
-    }, 300);
-  },
-  fetchMemoTags: () => {
-    fetch("https://memos.cloudchewie.com/memos.api.v2.TagService/ListTags", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "https://memos.cloudchewie.com",
-      },
-    })
-      .then((response) => {
-        console.log(response.text);
-      })
-      .catch((err) => {
-        // 处理错误
-      });
-  },
-  formatMemo: (item) => {
-    //正则式
-    const TAG_REG = /#([^\s#]+)/g;
-    const SPACE_REG = /\s+/g;
-    const IMG_REG = /\!\[(.*?)\]\((.*?)\)/g;
-    BILIBILI_REG =
-      /<a.*?href="https:\/\/www\.bilibili\.com\/video\/((av[\d]{1,10})|(BV([\w]{10})))\/?".*?>.*<\/a>/g;
-    NETEASE_MUSIC_REG =
-      /<a.*?href="https:\/\/music\.163\.com\/.*id=([0-9]+)".*?>.*<\/a>/g;
-    // QQMUSIC_REG = /<a.*?href="https\:\/\/y\.qq\.com\/.*(\/[0-9a-zA-Z]+)(\.html)?".*?>.*?<\/a>/g;
-    QQMUSIC_REG =
-      /<a.*?href="https\:\/\/y\.qq\.com\/n\/ryqq\/songDetail.*\/([0-9a-zA-Z]+)?".*?>.*?<\/a>/g;
-    QQVIDEO_REG =
-      /<a.*?href="https:\/\/v\.qq\.com\/.*\/([a-z|A-Z|0-9]+)\.html".*?>.*<\/a>/g;
-    YOUKU_REG =
-      /<a.*?href="https:\/\/v\.youku\.com\/.*\/id_([a-z|A-Z|0-9|==]+)\.html".*?>.*<\/a>/g;
-    YOUTUBE_REG =
-      /<a.*?href="https:\/\/www\.youtube\.com\/watch\?v\=([a-z|A-Z|0-9]{11})\".*?>.*<\/a>/g;
-    //marked设置
-    marked.setOptions({
-      breaks: true,
-      smartypants: false,
-      langPrefix: "language-",
-      mangle: false,
-      headerIds: false,
-    });
-    const renderer = new marked.Renderer();
-    const linkRenderer = renderer.link;
-    renderer.link = (href, title, text) => {
-      const localLink = href.startsWith(
-        `${location.protocol}//${location.hostname}`
-      );
-      const html = linkRenderer.call(renderer, href, title, text);
-      return localLink
-        ? html
-        : html.replace(
-            /^<a /,
-            `<a target="_blank" rel="noreferrer noopener nofollow" `
-          );
-    };
-    marked.use({ renderer });
-    //处理内容
-    let content = item.content,
-      raw_content = item.content,
-      imgls = [],
-      text = "";
-    tags = content.match(TAG_REG);
-    tag_group_html = "<div class='tag-group'>";
-    if (tags != null) {
-      tags.forEach((e) => {
-        tag_group_html += `<div class='tag-div'><span class='tag-span'><i class='cloudchewiefont cloudchewie-icon-hashtag'></i>${e.replace(
-          "#",
-          ""
-        )}</span></div>`;
-      });
-    }
-    tag_group_html += "</div>";
-    raw_content = raw_content
-      .replaceAll("`", "\\`")
-      .replaceAll("\n", "\\n")
-      .replace(TAG_REG, "")
-      .replace(IMG_REG, "");
-    raw_content = raw_content
-      .replace(BILIBILI_REG, "")
-      .replace(NETEASE_MUSIC_REG, "")
-      .replace(QQMUSIC_REG, "")
-      .replace(QQVIDEO_REG, "")
-      .replace(YOUKU_REG, "")
-      .replace(YOUTUBE_REG, "");
-    content = content
-      .replace(TAG_REG, "")
-      .replace(
-        IMG_REG,
-        `<a href="$2" data-fancybox="gallery" class="fancybox" data-thumb="$2"><img class="no-lazyload" src="$2"></a>`
-      );
-    content = marked
-      .parse(content)
-      .replace(
-        BILIBILI_REG,
-        "<div class='video-wrapper'><iframe src='//www.bilibili.com/blackboard/html5mobileplayer.html?bvid=$1&as_wide=1&high_quality=1&danmaku=1' scrolling='no' border='0' frameborder='no' framespacing='0' allowfullscreen='true'></iframe></div>"
-      )
-      .replace(
-        NETEASE_MUSIC_REG,
-        "<meting-js class='music-wrapper' auto='https://music.163.com/#/song?id=$1'></meting-js>"
-      )
-      .replace(
-        QQMUSIC_REG,
-        "<meting-js class='music-wrapper' auto='https://y.qq.com/n/yqq/song/$1.html'></meting-js>"
-      )
-      .replace(
-        QQVIDEO_REG,
-        "<div class='video-wrapper'><iframe src='//v.qq.com/iframe/player.html?vid=$1' allowFullScreen='true' frameborder='no'></iframe></div>"
-      )
-      .replace(
-        YOUKU_REG,
-        "<div class='video-wrapper'><iframe src='https://player.youku.com/embed/$1' frameborder=0 'allowfullscreen'></iframe></div>"
-      )
-      .replace(
-        YOUTUBE_REG,
-        "<div class='video-wrapper'><iframe src='https://www.youtube.com/embed/$1' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen title='YouTube Video'></iframe></div>"
-      );
-    //处理资源文件
-    if (item.resourceList != undefined) {
-      item.resourceList.forEach((e) => {
-        if (
-          e.externalLink != undefined &&
-          e.externalLink != null &&
-          e.externalLink != ""
-        ) {
-          imgls.push(e.externalLink);
-        } else {
-          imgls.push(
-            `https://memos.cloudchewie.com/o/r/${e.id}/${e.publicId}/${e.filename}`
-          );
-        }
-      });
-    }
-    if (imgls.length > 0) {
-      content += `<div class="zone_imgbox">`;
-      imgls
-        .map((item) => {
-          return item.replace(/!\[.*\]\((.*?)\)/, "$1");
-        })
-        .forEach(
-          (e) =>
-            (content += `<a href="${e}" data-fancybox="gallery" class="fancybox" data-thumb="${e}"><img class="no-lazyload" src="${e}"></a>`)
-        );
-      content += "</div>";
-    }
-    // content += tag_group_html;
-    return {
-      content: content,
-      tags: tags,
-      raw_content: raw_content,
-      date: new Date(item.createdTs * 1000).toLocaleString(),
-      text: text.replace(
-        /\[(.*?)\]\((.*?)\)/g,
-        "[链接]" + `${imgls ? "[图片]" : ""}`
-      ),
-      nickname: item.creator,
-      username: item.creatorUsername,
-      avatar: item.avatar,
-      hash: item.hash,
-    };
   },
   /**
    * =================================================
@@ -3757,7 +3232,7 @@ const cloudchewieFn = {
     const isEscapeKeyPressed = event.keyCode === 27;
     const isShiftKeyPressed = event.shiftKey;
     const isKeyboardEnabled =
-      cloudchewieFn.loadData("enableShortcut") == "true";
+      utilsFn.getLocalStorage("enableShortcut") == "true";
     const isInInputField = cloudchewieFn.typing;
 
     if (isEscapeKeyPressed) {
@@ -3782,10 +3257,10 @@ const cloudchewieFn = {
             consoleFn.toggleConsole();
             break;
           case 80:
-            if (cloudchewieFn.loadData("enableAPlayer") == true) {
+            if (utilsFn.getLocalStorage("enableAPlayer") == true) {
               cloudchewieFn.toggleMusic();
             } else {
-              cloudchewieFn.snackbarShow("已禁用APlayer，该快捷键不生效");
+              utilsFn.snack("已禁用APlayer，该快捷键不生效");
             }
             break;
           // case 75:
@@ -3842,13 +3317,13 @@ const cloudchewieFn = {
   },
   // 是否开启快捷键
   executeShortcutKeyFunction: () => {
-    if (cloudchewieFn.loadData("enableShortcut") == undefined) {
-      cloudchewieFn.saveData("enableShortcut", "false");
+    if (utilsFn.getLocalStorage("enableShortcut") == undefined) {
+      utilsFn.setLocalStorage("enableShortcut", "false");
     }
     function changeShortcutListener() {
       window.removeEventListener("keydown", cloudchewieFn.shortcutKeyDownEvent);
       window.removeEventListener("keyup", cloudchewieFn.shortcutKeyUpEvent);
-      if (cloudchewieFn.loadData("enableShortcut") == "true") {
+      if (utilsFn.getLocalStorage("enableShortcut") == "true") {
         window.addEventListener("keydown", cloudchewieFn.shortcutKeyDownEvent);
         window.addEventListener("keyup", cloudchewieFn.shortcutKeyUpEvent);
       }
@@ -4147,7 +3622,7 @@ const addHighlight = function () {
     ) {
       document.execCommand("copy");
       if (GLOBAL_CONFIG.Snackbar !== undefined) {
-        cloudchewieFn.snackbarShow(GLOBAL_CONFIG.copy.success);
+        utilsFn.snack(GLOBAL_CONFIG.copy.success);
       } else {
         const prevEle = ctx.previousElementSibling;
         prevEle.innerText = GLOBAL_CONFIG.copy.success;
@@ -4158,7 +3633,7 @@ const addHighlight = function () {
       }
     } else {
       if (GLOBAL_CONFIG.Snackbar !== undefined) {
-        cloudchewieFn.snackbarShow(GLOBAL_CONFIG.copy.noSupport);
+        utilsFn.snack(GLOBAL_CONFIG.copy.noSupport);
       } else {
         ctx.previousElementSibling.innerText = GLOBAL_CONFIG.copy.noSupport;
       }
@@ -4340,10 +3815,7 @@ const mobileSidebarFn = {
     $sidebarMenus.classList.add("open");
     $rightside.classList.add("hide");
     document.body.style.overflow = "hidden";
-    cloudchewieFn.animateIn(
-      document.getElementById("menu-mask"),
-      "to_show 0.5s"
-    );
+    utilsFn.animateIn(document.getElementById("menu-mask"), "to_show 0.5s");
     document.getElementById("sidebar-menus").classList.add("open");
     mobileSidebarFn.mobileSidebarOpen = true;
     $web_box.classList.add("open");
@@ -4351,7 +3823,7 @@ const mobileSidebarFn = {
     $web_box.addEventListener("touchstart", mobileSidebarFn.onDragStart, {
       passive: false,
     });
-    if (cloudchewieFn.isMusic()) {
+    if (utilsFn.isMusic()) {
       $web_container.style.background = "rgb(255 255 255 / 20%)";
     } else {
       $web_container.style.background = "var(--cloudchewie-background)";
@@ -4363,10 +3835,7 @@ const mobileSidebarFn = {
     $body.style.overflow = "";
     $rightside.classList.remove("hide");
     $body.style.paddingRight = "";
-    cloudchewieFn.animateOut(
-      document.getElementById("menu-mask"),
-      "to_hide 0.5s"
-    );
+    utilsFn.animateOut(document.getElementById("menu-mask"), "to_hide 0.5s");
     document.getElementById("sidebar-menus").classList.remove("open");
     mobileSidebarFn.mobileSidebarOpen = false;
     $web_box.classList.remove("open");
@@ -4452,10 +3921,10 @@ const consoleFn = {
     $(".consoleSetting").hide();
     $("#consoleWindow").hide();
     //加载是否适应文章封面颜色
-    if (cloudchewieFn.loadData("enableAutoColor") == undefined) {
-      cloudchewieFn.saveData("enableAutoColor", "false");
+    if (utilsFn.getLocalStorage("enableAutoColor") == undefined) {
+      utilsFn.setLocalStorage("enableAutoColor", "false");
     }
-    if (cloudchewieFn.loadData("enableAutoColor") == "true") {
+    if (utilsFn.getLocalStorage("enableAutoColor") == "true") {
       document.getElementById("con-toggleAutoColor").checked = true;
       if (GLOBAL_CONFIG_SITE.isPost) {
         consoleFn.changeAutoColor(true);
@@ -4465,10 +3934,10 @@ const consoleFn = {
       consoleFn.setDefaultThemeColor();
     }
     //固定导航栏
-    if (cloudchewieFn.loadData("enableFixedNav") == undefined) {
-      cloudchewieFn.saveData("enableFixedNav", "false");
+    if (utilsFn.getLocalStorage("enableFixedNav") == undefined) {
+      utilsFn.setLocalStorage("enableFixedNav", "false");
     }
-    if (cloudchewieFn.loadData("enableFixedNav") == "false") {
+    if (utilsFn.getLocalStorage("enableFixedNav") == "false") {
       $("#page-header").removeClass("nav-fixed nav-visible");
       $("#name-container").hide();
     } else {
@@ -4477,20 +3946,20 @@ const consoleFn = {
       document.getElementById("con-toggleFixedNav").checked = true;
     }
     //侧栏居左
-    if (cloudchewieFn.loadData("asideLeft") == undefined) {
-      cloudchewieFn.saveData("asideLeft", "true");
+    if (utilsFn.getLocalStorage("asideLeft") == undefined) {
+      utilsFn.setLocalStorage("asideLeft", "true");
     }
-    if (cloudchewieFn.loadData("asideLeft") == "false") {
+    if (utilsFn.getLocalStorage("asideLeft") == "false") {
       document.documentElement.setAttribute("aside-position", "right");
     } else {
       document.documentElement.setAttribute("aside-position", "left");
       document.getElementById("con-toggleAsidePosition").checked = true;
     }
     //加载是否打开右键菜单功能
-    if (cloudchewieFn.loadData("enableContextMenu") == undefined) {
-      cloudchewieFn.saveData("enableContextMenu", "true");
+    if (utilsFn.getLocalStorage("enableContextMenu") == undefined) {
+      utilsFn.setLocalStorage("enableContextMenu", "true");
     }
-    if (cloudchewieFn.loadData("enableContextMenu") == "true") {
+    if (utilsFn.getLocalStorage("enableContextMenu") == "true") {
       $("#con-rightmouse").addClass("checked");
       cloudchewieFn.bindContextMenu(true, false);
     } else {
@@ -4498,16 +3967,16 @@ const consoleFn = {
       cloudchewieFn.bindContextMenu(false, false);
     }
     //加载是否打开APlayer
-    if (cloudchewieFn.loadData("enableAPlayer") == undefined) {
-      cloudchewieFn.saveData("enableAPlayer", "true");
+    if (utilsFn.getLocalStorage("enableAPlayer") == undefined) {
+      utilsFn.setLocalStorage("enableAPlayer", "true");
     }
     const navMusic = $("#nav-music");
     if (navMusic != null && navMusic.find("meting-js") != null) {
       const navMetingAplayer = navMusic.find("meting-js").aplayer;
-      if (cloudchewieFn.loadData("enableAPlayer") == "true") {
+      if (utilsFn.getLocalStorage("enableAPlayer") == "true") {
         $("#con-music").show();
         $("#menuMusic").show();
-        if (!cloudchewieFn.isMusic()) {
+        if (!utilsFn.isMusic()) {
           navMusic.show();
         } else {
           navMusic.hide();
@@ -4525,20 +3994,20 @@ const consoleFn = {
       }
     }
     //加载是否显示侧边按钮
-    if (cloudchewieFn.loadData("enableRightSide") == undefined) {
-      cloudchewieFn.saveData("enableRightSide", "true");
+    if (utilsFn.getLocalStorage("enableRightSide") == undefined) {
+      utilsFn.setLocalStorage("enableRightSide", "true");
     }
-    if (cloudchewieFn.loadData("enableRightSide") == "false") {
+    if (utilsFn.getLocalStorage("enableRightSide") == "false") {
       $("#rightside").hide();
     } else {
       $("#rightside").show();
       document.getElementById("con-toggleRightSide").checked = true;
     }
     //加载是否显示弹幕
-    if (cloudchewieFn.loadData("enableCommentBarrage") == undefined) {
-      cloudchewieFn.saveData("enableCommentBarrage", "true");
+    if (utilsFn.getLocalStorage("enableCommentBarrage") == undefined) {
+      utilsFn.setLocalStorage("enableCommentBarrage", "true");
     }
-    if (cloudchewieFn.loadData("enableCommentBarrage") == "false") {
+    if (utilsFn.getLocalStorage("enableCommentBarrage") == "false") {
     } else {
       document.getElementById("con-barrage") &&
         document.getElementById("con-barrage").classList.add("checked");
@@ -4549,30 +4018,30 @@ const consoleFn = {
     }
     // 加载网页背景
     try {
-      let data = cloudchewieFn.loadData("blogBackground", 1440);
+      let data = utilsFn.getLocalStorage("blogBackground", 1440);
       if (data) consoleFn.changeBackground(data, 1);
-      else cloudchewieFn.removeData("blogBackground");
+      else utilsFn.removeLocalStorage("blogBackground");
     } catch (error) {
-      cloudchewieFn.removeData("blogBackground");
+      utilsFn.removeLocalStorage("blogBackground");
     }
     // 自动主题色
-    if (cloudchewieFn.loadData("enableAutoTheme") == "true") {
+    if (utilsFn.getLocalStorage("enableAutoTheme") == "true") {
       document.getElementById("con-toggleAutoTheme").checked = true;
       $("#con-mode,.rightMenu-item:has(.fa-adjust)").hide();
       var time = new Date();
       if (time.getHours() <= 7 || time.getHours() >= 19) {
         consoleFn.activateDarkMode();
-        cloudchewieFn.removeData("theme");
+        utilsFn.removeLocalStorage("theme");
       } else {
         consoleFn.activateLightMode();
-        cloudchewieFn.removeData("theme");
+        utilsFn.removeLocalStorage("theme");
       }
     }
     //加载繁星效果
-    if (cloudchewieFn.loadData("enableStarBackground") == undefined) {
-      cloudchewieFn.saveData("enableStarBackground", "true");
+    if (utilsFn.getLocalStorage("enableStarBackground") == undefined) {
+      utilsFn.setLocalStorage("enableStarBackground", "true");
     }
-    if (cloudchewieFn.loadData("enableStarBackground") == "true") {
+    if (utilsFn.getLocalStorage("enableStarBackground") == "true") {
       $("#universe").show();
       document.getElementById("con-toggleStarBackground").checked = true;
     } else {
@@ -4580,10 +4049,10 @@ const consoleFn = {
       document.getElementById("con-toggleStarBackground").checked = false;
     }
     //加载噪点效果
-    if (cloudchewieFn.loadData("enableNoise") == undefined) {
-      cloudchewieFn.saveData("enableNoise", "false");
+    if (utilsFn.getLocalStorage("enableNoise") == undefined) {
+      utilsFn.setLocalStorage("enableNoise", "false");
     }
-    if (cloudchewieFn.loadData("enableNoise") == "true") {
+    if (utilsFn.getLocalStorage("enableNoise") == "true") {
       document.getElementById("con-toggleNoise").checked = true;
       $("#noiseStyle").html(noiseCSS);
     } else {
@@ -4591,18 +4060,18 @@ const consoleFn = {
       $("#noiseStyle").html("");
     }
     //加载快捷键
-    if (cloudchewieFn.loadData("enableShortcut") == undefined) {
-      cloudchewieFn.saveData("enableShortcut", "false");
+    if (utilsFn.getLocalStorage("enableShortcut") == undefined) {
+      utilsFn.setLocalStorage("enableShortcut", "false");
     }
-    if (cloudchewieFn.loadData("enableShortcut") == "true") {
+    if (utilsFn.getLocalStorage("enableShortcut") == "true") {
       $("#con-shortcut").addClass("checked");
     } else {
       $("#con-shortcut").removeClass("checked");
     }
     cloudchewieFn.executeShortcutKeyFunction();
     //加载播放列表
-    if (cloudchewieFn.loadData("playlist") != undefined) {
-      var json = JSON.parse(cloudchewieFn.loadData("playlist"));
+    if (utilsFn.getLocalStorage("playlist") != undefined) {
+      var json = JSON.parse(utilsFn.getLocalStorage("playlist"));
       consoleFn.changeAPlayerList(json.id, json.server, false, false);
     }
     consoleFn.loadCustomPlaylists();
@@ -4616,7 +4085,7 @@ const consoleFn = {
     //   .getElementById("darkmode-button")
     //   .addEventListener("click", cloudchewieFn.toggleDarkMode);
     window.onresize = () => {
-      if (!cloudchewieFn.isFullScreen()) {
+      if (!utilsFn.isFullScreen()) {
         $("#con-fullscreen").removeClass("checked");
       }
     };
@@ -4661,23 +4130,23 @@ const consoleFn = {
    * 重置设置
    */
   resetSettings: () => {
-    cloudchewieFn.removeData("blogBackground");
-    cloudchewieFn.removeData("enableStarBackground");
-    cloudchewieFn.removeData("isLeftAside");
-    cloudchewieFn.removeData("enableRightSide");
-    cloudchewieFn.removeData("enableAutoTheme");
-    cloudchewieFn.removeData("enableFixedNav");
-    cloudchewieFn.removeData("enableAutoColor");
-    cloudchewieFn.removeData("enableContextMenu");
-    cloudchewieFn.removeData("enableAPlayer");
-    cloudchewieFn.removeData("enableNoise");
+    utilsFn.removeLocalStorage("blogBackground");
+    utilsFn.removeLocalStorage("enableStarBackground");
+    utilsFn.removeLocalStorage("isLeftAside");
+    utilsFn.removeLocalStorage("enableRightSide");
+    utilsFn.removeLocalStorage("enableAutoTheme");
+    utilsFn.removeLocalStorage("enableFixedNav");
+    utilsFn.removeLocalStorage("enableAutoColor");
+    utilsFn.removeLocalStorage("enableContextMenu");
+    utilsFn.removeLocalStorage("enableAPlayer");
+    utilsFn.removeLocalStorage("enableNoise");
     window.location.reload();
   },
   /**
    * 重置为默认背景
    */
   setDefaultBackground: () => {
-    cloudchewieFn.removeData("blogBackground");
+    utilsFn.removeLocalStorage("blogBackground");
     window.location.reload();
   },
   /**
@@ -4694,7 +4163,7 @@ const consoleFn = {
       bg.style.background = s;
     }
     if (!flag) {
-      cloudchewieFn.saveData("blogBackground", s);
+      utilsFn.setLocalStorage("blogBackground", s);
     }
   },
   /**
@@ -4715,11 +4184,11 @@ const consoleFn = {
    * 打开/关闭繁星效果
    */
   toggleStarBackground: () => {
-    if (cloudchewieFn.loadData("enableStarBackground") == "true") {
-      cloudchewieFn.saveData("enableStarBackground", "false");
+    if (utilsFn.getLocalStorage("enableStarBackground") == "true") {
+      utilsFn.setLocalStorage("enableStarBackground", "false");
       $("#universe").hide();
     } else {
-      cloudchewieFn.saveData("enableStarBackground", "true");
+      utilsFn.setLocalStorage("enableStarBackground", "true");
       $("#universe").show();
     }
   },
@@ -4727,11 +4196,11 @@ const consoleFn = {
    * 打开/关闭噪点效果
    */
   toggleNoise: () => {
-    if (cloudchewieFn.loadData("enableNoise") == "true") {
-      cloudchewieFn.saveData("enableNoise", "false");
+    if (utilsFn.getLocalStorage("enableNoise") == "true") {
+      utilsFn.setLocalStorage("enableNoise", "false");
       $("#noiseStyle").html("");
     } else {
-      cloudchewieFn.saveData("enableNoise", "true");
+      utilsFn.setLocalStorage("enableNoise", "true");
       $("#noiseStyle").html(noiseCSS);
     }
   },
@@ -4742,43 +4211,40 @@ const consoleFn = {
     if (window.aplayers)
       for (let i = 0; i < window.aplayers.length; i++)
         window.aplayers[i].pause();
-    cloudchewieFn.saveData(
+    utilsFn.setLocalStorage(
       "playlist",
       JSON.stringify({ id: id, server: server })
     );
     $("meting-js").attr("id", id);
     $("meting-js").attr("server", server);
     if (zhudong)
-      GLOBAL_CONFIG.Snackbar !== undefined &&
-        cloudchewieFn.snackbarShow("歌单切换成功");
+      GLOBAL_CONFIG.Snackbar !== undefined && utilsFn.snack("歌单切换成功");
     cloudchewieFn.changeMusicList(server, id, reload);
   },
   /**
    * 保存自定义歌单
    */
   saveCustomPlaylist: (id, server) => {
-    var raw = cloudchewieFn.loadData("customPlaylists");
+    var raw = utilsFn.getLocalStorage("customPlaylists");
     var customPlayLists = raw ? JSON.parse(raw) : [];
     var saved = false;
     customPlayLists.forEach((e) => {
       if (e.id == id && e.server == server) saved = true;
     });
     if (saved) {
-      GLOBAL_CONFIG.Snackbar !== undefined &&
-        cloudchewieFn.snackbarShow("歌单已存在");
+      GLOBAL_CONFIG.Snackbar !== undefined && utilsFn.snack("歌单已存在");
     } else {
       consoleFn.appendPlaylist(id, server, customPlayLists.length + 1);
-      GLOBAL_CONFIG.Snackbar !== undefined &&
-        cloudchewieFn.snackbarShow("歌单保存成功");
+      GLOBAL_CONFIG.Snackbar !== undefined && utilsFn.snack("歌单保存成功");
       customPlayLists.push({ id: id, server: server });
     }
-    cloudchewieFn.saveData("customPlaylists", JSON.stringify(customPlayLists));
+    utilsFn.setLocalStorage("customPlaylists", JSON.stringify(customPlayLists));
   },
   /**
    * 删除自定义歌单
    */
   removeCustomPlaylist: (id, server) => {
-    var raw = cloudchewieFn.loadData("customPlaylists");
+    var raw = utilsFn.getLocalStorage("customPlaylists");
     var customPlayLists = raw ? JSON.parse(raw) : [];
     var delete_index = -1;
     customPlayLists.forEach((e, index) => {
@@ -4787,19 +4253,18 @@ const consoleFn = {
     if (delete_index >= 0) {
       customPlayLists.splice(delete_index, 1);
       $(`.playlist-container > div:nth-child(${delete_index + 4})`).remove();
-      cloudchewieFn.saveData(
+      utilsFn.setLocalStorage(
         "customPlaylists",
         JSON.stringify(customPlayLists)
       );
-      GLOBAL_CONFIG.Snackbar !== undefined &&
-        cloudchewieFn.snackbarShow("歌单删除成功");
+      GLOBAL_CONFIG.Snackbar !== undefined && utilsFn.snack("歌单删除成功");
     }
   },
   /**
    * 加载自定义歌单
    */
   loadCustomPlaylists: (id, server) => {
-    var raw = cloudchewieFn.loadData("customPlaylists");
+    var raw = utilsFn.getLocalStorage("customPlaylists");
     var customPlayLists = raw ? JSON.parse(raw) : [];
     customPlayLists.forEach((e, index) => {
       consoleFn.appendPlaylist(e.id, e.server, index + 1);
@@ -4814,7 +4279,7 @@ const consoleFn = {
    * 切换全屏
    */
   toggleFullScreen: () => {
-    if (cloudchewieFn.isFullScreen()) {
+    if (utilsFn.isFullScreen()) {
       document.exitFullscreen();
       $("#con-fullscreen").removeClass("checked");
     } else {
@@ -4826,14 +4291,14 @@ const consoleFn = {
    * 切换快捷键
    */
   toggleShortcut: () => {
-    if (cloudchewieFn.loadData("enableShortcut") == "true") {
-      cloudchewieFn.saveData("enableShortcut", "false");
+    if (utilsFn.getLocalStorage("enableShortcut") == "true") {
+      utilsFn.setLocalStorage("enableShortcut", "false");
       $("#con-shortcut").removeClass("checked");
-      cloudchewieFn.snackbarShow("已禁用键盘快捷键");
+      utilsFn.snack("已禁用键盘快捷键");
     } else {
-      cloudchewieFn.saveData("enableShortcut", "true");
+      utilsFn.setLocalStorage("enableShortcut", "true");
       $("#con-shortcut").addClass("checked");
-      cloudchewieFn.snackbarShow("已启用键盘快捷键,可长按Shift呼出快捷键菜单");
+      utilsFn.snack("已启用键盘快捷键,可长按Shift呼出快捷键菜单");
     }
     cloudchewieFn.executeShortcutKeyFunction();
   },
@@ -4844,13 +4309,13 @@ const consoleFn = {
     if (left) {
       $("#aside-content").addClass("right");
       $(".layout > div:first-child").addClass("left");
-      cloudchewieFn.saveData("isLeftAside", "false");
+      utilsFn.setLocalStorage("isLeftAside", "false");
     } else {
       $("aside-content").className = "aside-content";
       $(".layout > div:first-child").className = "";
       if ($("#recent-posts") != null)
         $("#recent-posts").className = "recent-posts";
-      cloudchewieFn.saveData("isLeftAside", "true");
+      utilsFn.setLocalStorage("isLeftAside", "true");
     }
     left = !left;
   },
@@ -4858,11 +4323,11 @@ const consoleFn = {
    * 显示隐藏右侧边栏
    */
   toggleRightSide: () => {
-    if (cloudchewieFn.loadData("enableRightSide") == "true") {
-      cloudchewieFn.saveData("enableRightSide", "false");
+    if (utilsFn.getLocalStorage("enableRightSide") == "true") {
+      utilsFn.setLocalStorage("enableRightSide", "false");
       $("#rightside").hide();
     } else {
-      cloudchewieFn.saveData("enableRightSide", "true");
+      utilsFn.setLocalStorage("enableRightSide", "true");
       $("#rightside").show();
     }
   },
@@ -4870,11 +4335,11 @@ const consoleFn = {
    * 设置深浅色跟随系统模式
    */
   toggleAutoTheme: () => {
-    if (cloudchewieFn.loadData("enableAutoTheme") == "true") {
-      cloudchewieFn.saveData("enableAutoTheme", "false");
+    if (utilsFn.getLocalStorage("enableAutoTheme") == "true") {
+      utilsFn.setLocalStorage("enableAutoTheme", "false");
       $("#con-mode,.rightMenu-item:has(.fa-adjust)").show();
     } else {
-      cloudchewieFn.saveData("enableAutoTheme", "true");
+      utilsFn.setLocalStorage("enableAutoTheme", "true");
       var time = new Date();
       if (time.getHours() <= 7 || time.getHours() >= 19) {
         activateDarkMode();
@@ -4890,13 +4355,13 @@ const consoleFn = {
    * 是否固定导航栏
    */
   toggleFixedNav: () => {
-    if (cloudchewieFn.loadData("enableFixedNav") == "false") {
-      cloudchewieFn.saveData("enableFixedNav", "true");
+    if (utilsFn.getLocalStorage("enableFixedNav") == "false") {
+      utilsFn.setLocalStorage("enableFixedNav", "true");
       $("#page-header").addClass("nav-fixed nav-visible");
       $("#name-container").show();
       cloudchewieFn.fixNav();
     } else {
-      cloudchewieFn.saveData("enableFixedNav", "false");
+      utilsFn.setLocalStorage("enableFixedNav", "false");
       $("#page-header").removeClass("nav-fixed nav-visible");
       $("#name-container").hide();
     }
@@ -4905,11 +4370,11 @@ const consoleFn = {
    * 是否侧栏居左
    */
   toggleAsidePosition: () => {
-    if (cloudchewieFn.loadData("asideLeft") == "false") {
-      cloudchewieFn.saveData("asideLeft", "true");
+    if (utilsFn.getLocalStorage("asideLeft") == "false") {
+      utilsFn.setLocalStorage("asideLeft", "true");
       document.documentElement.setAttribute("aside-position", "left");
     } else {
-      cloudchewieFn.saveData("asideLeft", "false");
+      utilsFn.setLocalStorage("asideLeft", "false");
       document.documentElement.setAttribute("aside-position", "right");
     }
   },
@@ -4917,21 +4382,21 @@ const consoleFn = {
    * 是否自动主题色
    */
   toggleAutoColor: () => {
-    if (cloudchewieFn.loadData("enableAutoColor") == "true")
-      cloudchewieFn.saveData("enableAutoColor", "false");
-    else cloudchewieFn.saveData("enableAutoColor", "true");
+    if (utilsFn.getLocalStorage("enableAutoColor") == "true")
+      utilsFn.setLocalStorage("enableAutoColor", "false");
+    else utilsFn.setLocalStorage("enableAutoColor", "true");
     consoleFn.changeAutoColor(false);
   },
   /**
    * 是否打开右键菜单
    */
   toggleContextMenu: () => {
-    if (cloudchewieFn.loadData("enableContextMenu") == "true") {
-      cloudchewieFn.saveData("enableContextMenu", "false");
+    if (utilsFn.getLocalStorage("enableContextMenu") == "true") {
+      utilsFn.setLocalStorage("enableContextMenu", "false");
       $("#con-rightmouse").removeClass("checked");
       cloudchewieFn.bindContextMenu(false, true);
     } else {
-      cloudchewieFn.saveData("enableContextMenu", "true");
+      utilsFn.setLocalStorage("enableContextMenu", "true");
       $("#con-rightmouse").addClass("checked");
       cloudchewieFn.bindContextMenu(true, true);
     }
@@ -4943,8 +4408,8 @@ const consoleFn = {
     const navMusic = $("#nav-music");
     if (navMusic == null || navMusic.find("meting-js") == null) return;
     const navMetingAplayer = navMusic.find("meting-js").aplayer;
-    if (cloudchewieFn.loadData("enableAPlayer") == "true") {
-      cloudchewieFn.saveData("enableAPlayer", "false");
+    if (utilsFn.getLocalStorage("enableAPlayer") == "true") {
+      utilsFn.setLocalStorage("enableAPlayer", "false");
       navMusic.hide();
       $("#con-music").hide();
       $("#menuMusic").hide();
@@ -4953,10 +4418,10 @@ const consoleFn = {
         navMetingAplayer.pause();
       }
     } else {
-      cloudchewieFn.saveData("enableAPlayer", "true");
+      utilsFn.setLocalStorage("enableAPlayer", "true");
       $("#con-music").show();
       $("#menuMusic").show();
-      if (!cloudchewieFn.isMusic()) {
+      if (!utilsFn.isMusic()) {
         navMusic.show();
       } else {
         navMusic.hide();
@@ -5019,7 +4484,7 @@ const consoleFn = {
   },
   changeAutoColor: async (first) => {
     if (
-      cloudchewieFn.loadData("enableAutoColor") == "true" &&
+      utilsFn.getLocalStorage("enableAutoColor") == "true" &&
       document.querySelector("#page-header") != null &&
       document.querySelector("#page-header").style.backgroundImage != null &&
       document
@@ -5078,7 +4543,14 @@ function runOne() {
   cloudchewieFn.topCategoriesBarScroll();
   cloudchewieFn.injectAccessKey(document, window);
 }
-class d extends HTMLElement {
+/**
+ * =================================================
+ *
+ * 深浅色模式过渡动画
+ *
+ * =================================================
+ */
+class ThemeToggle extends HTMLElement {
   button;
   constructor() {
     super(), (this.button = this.querySelector("button"));
@@ -5137,5 +4609,604 @@ class d extends HTMLElement {
     return window.matchMedia("(prefers-reduced-motion: reduce)").matches === !0;
   }
 }
-customElements.define("theme-toggle", d);
+customElements.define("theme-toggle", ThemeToggle);
 document.startViewTransition();
+/**
+ * =================================================
+ *
+ * Memos
+ *
+ * =================================================
+ */
+const RANDOM_MEMO_SETTINGS = {
+  memosApi: "https://memos.cloudchewie.com",
+  // Amount of memos to cache
+  memoAmount: 100,
+  // Kinds of memos to cache: PUBLIC = visible to everyone, PROTECTED = logged in users, PRIVATE = only the creator
+  memoKinds: ["PUBLIC", "PROTECTED", "PRIVATE"],
+  // Time in minutes to cache the memos
+  memoCacheTimeMinutes: 60,
+  // Username of the memo creator to filter the memos
+  memoCreatorUsername: "",
+  // Button text
+  buttonText: "Random",
+  // Button tooltip
+  buttonTooltip: "Show a random memo",
+  // Local storage key to store the memo uids
+  cacheKey: "randomMemoUuidCache",
+  // Local storage key to store the last update timestamp
+  cacheLastUpdateKey: "randomMemoUuidCacheLastUpdate",
+  memos_logo: "https://picbed.cloudchewie.com/icon/memos.webp!mini",
+  default_memos_avatar:
+    "https://picbed.cloudchewie.com/icon/memos-user.webp!mini",
+};
+const MEMOS_QUERY = {
+  userlist: [],
+  current_option: 0, //0-total,1-user,2-randomuser
+  current_uid: -1,
+  query: [],
+};
+const MEMOS_REACTIONS = new Map([
+  ["THUMBS_UP", "👍"],
+  ["THUMBS_DOWN", "👎"],
+  ["HEART", "💛"],
+  ["FIRE", "🔥"],
+  ["CLAPPING_HANDS", "👏"],
+  ["LAUGH", "😂"],
+  ["OK_HAND", "👌"],
+  ["ROCKET", "🚀"],
+  ["EYES", "👀"],
+  ["THINKING_FACE", "🤔"],
+  ["CLOWN_FACE", "🤡"],
+  ["QUESTION_MARK", "❓"],
+]);
+const MEMOS_DOM = {
+  $search_memos: undefined,
+  $search_input: undefined,
+  $total_memos: undefined,
+  $mine_memos: undefined,
+  $memos_button_list: undefined,
+  $randomuser_memos: undefined,
+  $userlist_memos: undefined,
+  $memos_bar_avatar: undefined,
+  $memos_bar_avatar_link: undefined,
+  $memos_bar_name: undefined,
+  $memos_userlist: undefined,
+  $memos_query: undefined,
+};
+var blank_memos = {
+  id: -1,
+  creatorId: -1,
+  content: "暂无Memos",
+  creatorNickName: "暂无Memos",
+  creatorUsername: "暂无Memos",
+  avatar: RANDOM_MEMO_SETTINGS.default_memos_avatar,
+  hash: "",
+};
+const memosFn = {
+  updateSelectMemosState: () => {
+    MEMOS_DOM.$total_memos &&
+      MEMOS_DOM.$total_memos.classList.remove("checked");
+    MEMOS_DOM.$mine_memos && MEMOS_DOM.$mine_memos.classList.remove("checked");
+    MEMOS_DOM.$randomuser_memos &&
+      MEMOS_DOM.$randomuser_memos.classList.remove("checked");
+    switch (MEMOS_QUERY.current_option) {
+      case 0:
+        MEMOS_DOM.$total_memos &&
+          MEMOS_DOM.$total_memos.classList.add("checked");
+        break;
+      case 1:
+        MEMOS_DOM.$mine_memos && MEMOS_DOM.$mine_memos.classList.add("checked");
+        break;
+      case 2:
+        MEMOS_DOM.$randomuser_memos &&
+          MEMOS_DOM.$randomuser_memos.classList.add("checked");
+        break;
+    }
+  },
+  updateMemosBarMeta: (avatar, nickname, username = "") => {
+    $(MEMOS_DOM.$memos_bar_avatar).attr("src", avatar);
+    if (username != "") {
+      $(MEMOS_DOM.$memos_bar_avatar_link).attr(
+        "href",
+        `${RANDOM_MEMO_SETTINGS.memosApi}/u/${username}`
+      );
+    } else {
+      $(MEMOS_DOM.$memos_bar_avatar_link).attr(
+        "href",
+        `${RANDOM_MEMO_SETTINGS.memosApi}/`
+      );
+    }
+    $(MEMOS_DOM.$memos_bar_name).html(nickname);
+  },
+  onTotalMemosClicked: () => {
+    if (MEMOS_QUERY.current_option == 0) return;
+    MEMOS_QUERY.current_option = 0;
+    memosFn.fetchMemos();
+  },
+  onMineMemosClicked: () => {
+    if (MEMOS_QUERY.current_option == 1) return;
+    MEMOS_QUERY.current_option = 1;
+    MEMOS_QUERY.current_uid = 1;
+    memosFn.fetchMemos();
+  },
+  onRandomUserMemosClicked: async () => {
+    await memosFn.fetchUserList();
+    MEMOS_QUERY.current_option = 2;
+    var tmp = MEMOS_QUERY.current_uid;
+    console.log(MEMOS_QUERY.current_uid);
+    while (tmp == MEMOS_QUERY.current_uid) {
+      var r =
+        Math.round(Math.random() * MEMOS_QUERY.userlist.length) %
+        MEMOS_QUERY.userlist.length;
+      console.log(r);
+      console.log(MEMOS_QUERY.userlist.length);
+      tmp = MEMOS_QUERY.userlist[r].id;
+    }
+    MEMOS_QUERY.current_uid = tmp;
+    memosFn.fetchMemos();
+  },
+  onUserListMemosClicked: () => {
+    $(MEMOS_DOM.$memos_userlist).toggle();
+    MEMOS_DOM.$userlist_memos &&
+      MEMOS_DOM.$userlist_memos.classList.toggle("checked");
+  },
+  onUserClicked: (user) => {
+    window.open(
+      `${RANDOM_MEMO_SETTINGS.memosApi}/u/${user.replace("users/", "")}`
+    );
+  },
+  onTagClicked: (tag) => {
+    if (!memosFn.pushQuery({ type: "tag", content: tag })) {
+      utilsFn.snack(`筛选过标签「${tag}」啦`);
+    }
+    // window.open(`${RANDOM_MEMO_SETTINGS.memosApi}/?tag=${tag}`);
+  },
+  onTimeClicked: (hash) => {
+    window.open(`${RANDOM_MEMO_SETTINGS.memosApi}/m/${hash}`);
+  },
+  pushQuery: (n) => {
+    var exist = false;
+    MEMOS_QUERY.query.forEach((e) => {
+      if (e.type == n.type && e.content == n.content) {
+        exist = true;
+      }
+    });
+    if (!exist) {
+      MEMOS_QUERY.query.push(n);
+      memosFn.performSearch();
+    }
+    return !exist;
+  },
+  removeQuery: (type, content) => {
+    var index = -1;
+    for (var i = 0; i < MEMOS_QUERY.query.length; i++) {
+      var e = MEMOS_QUERY.query[i];
+      if (e.type == type && e.content == content) {
+        index = e;
+      }
+    }
+    if (index != -1) {
+      MEMOS_QUERY.query.splice(index, 1);
+      memosFn.performSearch();
+    }
+  },
+  performSearch: () => {
+    if (MEMOS_QUERY.query.length <= 0) {
+      ``;
+      MEMOS_DOM.$memos_query.classList.add("no-query");
+    } else {
+      MEMOS_DOM.$memos_query.classList.remove("no-query");
+      $(".memos-query-item").remove();
+      MEMOS_QUERY.query.forEach((e) => {
+        if (e.type == "content") {
+          $(MEMOS_DOM.$memos_query).append(
+            `<div class="memos-query-item memos-query-content" onclick="memosFn.removeQuery('${e.type}','${e.content}');"><i class="fas fa-search fa-fw"></i><span>${e.content}</span><i class="cloudchewiefont cloudchewie-icon-xmark"></i></div>`
+          );
+        } else if (e.type == "tag") {
+          $(MEMOS_DOM.$memos_query).append(
+            `<div class="memos-query-item memos-query-tag" onclick="memosFn.removeQuery('${e.type}','${e.content}');"><i class="cloudchewiefont cloudchewie-icon-hashtag"></i><span>${e.content}</span><i class="cloudchewiefont cloudchewie-icon-xmark"></i></div>`
+          );
+        }
+      });
+    }
+    memosFn.fetchMemos();
+  },
+  onSearchMemosClicked: () => {
+    function search() {
+      if (MEMOS_DOM.$search_input.classList.contains("d-none")) {
+        MEMOS_DOM.$memos_button_list.classList.add("d-none");
+        MEMOS_DOM.$search_input.classList.remove("d-none");
+        MEMOS_DOM.$search_input.focus();
+      } else if (
+        !MEMOS_DOM.$search_input.classList.contains("d-none") &&
+        MEMOS_DOM.$search_input.value == ""
+      ) {
+        MEMOS_DOM.$search_input.classList.add("animate__fadeOutRight");
+        setTimeout(function () {
+          MEMOS_DOM.$memos_button_list.classList.remove("d-none");
+          MEMOS_DOM.$search_input.classList.add("d-none");
+          MEMOS_DOM.$search_input.classList.remove("animate__fadeOutRight");
+        }, 500);
+      } else if (MEMOS_DOM.$search_input.value !== "") {
+        if (
+          !memosFn.pushQuery({
+            type: "content",
+            content: MEMOS_DOM.$search_input.value,
+          })
+        ) {
+          utilsFn.snack(`搜索过内容「${MEMOS_DOM.$search_input.value}」啦`);
+        }
+      }
+    }
+    search();
+    MEMOS_DOM.$search_input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        search();
+      }
+    });
+  },
+  getUser: (uid) => {
+    var find = {};
+    MEMOS_QUERY.userlist.forEach((user) => {
+      if (user.id == uid) find = user;
+    });
+    return find;
+  },
+  fetchUserList: async () => {
+    if (MEMOS_QUERY.userlist.length > 0) return;
+    await fetch("/memos_user.json")
+      .then((res) => res.json())
+      .then(async (users) => {
+        MEMOS_QUERY.userlist = users;
+        var userlistDom = $(MEMOS_DOM.$memos_userlist);
+        userlistDom.empty();
+        users.forEach((user) => {
+          userlistDom.append(
+            `<div onclick="MEMOS_QUERY.current_option = 2;MEMOS_QUERY.current_uid = ${
+              user.id
+            };memosFn.fetchMemos();" class="item-avatar" style="background-image:url(${
+              utilsFn.isNotEmpty(user.avatarUrl)
+                ? user.avatarUrl
+                : RANDOM_MEMO_SETTINGS.default_memos_avatar
+            })"></div>`
+          );
+        });
+      });
+  },
+  fetchMemos: async () => {
+    memosFn.updateSelectMemosState();
+    await memosFn.fetchUserList();
+    switch (MEMOS_QUERY.current_option) {
+      case 0:
+        memosFn.updateMemosBarMeta(RANDOM_MEMO_SETTINGS.memos_logo, "Memos");
+        memosFn.fetchUserMemos();
+        break;
+      case 1:
+      case 2:
+        var current_user = memosFn.getUser(MEMOS_QUERY.current_uid);
+        memosFn.updateMemosBarMeta(
+          utilsFn.isNotEmpty(current_user.avatarUrl)
+            ? current_user.avatarUrl
+            : RANDOM_MEMO_SETTINGS.default_memos_avatar,
+          current_user.nickname,
+          current_user.username
+        );
+        memosFn.fetchUserMemos(current_user.name);
+        break;
+    }
+  },
+  getApiUrl: (creator) => {
+    const memoAmount = RANDOM_MEMO_SETTINGS.memoAmount || 100;
+    let filters = [
+      `row_status == "NORMAL"`,
+      `visibilities == ${JSON.stringify(RANDOM_MEMO_SETTINGS.memoKinds)}`,
+      `order_by_pinned == true`,
+    ];
+    let search_query = [];
+    MEMOS_QUERY.query.forEach((e) => {
+      if (e.type == "content") {
+        search_query.push(e.content);
+      } else if (e.type == "tag") {
+        search_query.push(`#${e.content}`);
+      }
+    });
+    if (search_query.length > 0) {
+      filters.push(`content_search == ${JSON.stringify(search_query)}`);
+    }
+    if (utilsFn.isNotEmpty(creator)) {
+      filters.push(`creator=="${creator}"`);
+    }
+    var apiUrl = `${
+      RANDOM_MEMO_SETTINGS.memosApi
+    }/api/v2/memos?pageSize=${memoAmount}&filter=${encodeURIComponent(
+      filters.join(" && ")
+    )}`;
+    return apiUrl;
+  },
+  fetchUserMemos: async (creator) => {
+    var items = [],
+      item = {};
+    utilsFn
+      .withTimeout(
+        2000,
+        fetch(memosFn.getApiUrl(creator))
+          .then((response) => response.json())
+          .then((resdata) => {
+            return resdata;
+          })
+      )
+      .then((resdata) => {
+        var result_memos = resdata.memos;
+        var nextPageToken = resdata.nextPageToken;
+        if (result_memos.length <= 0) {
+          items.push(blank_memos);
+        } else {
+          for (var j = 0; j < result_memos.length; j++) {
+            var resValue = result_memos[j];
+            var resCreateTs = Date.parse(resValue.createTime);
+            var resReactions = new Map();
+            var reactions = new Map();
+            resValue.reactions.forEach((e) => {
+              if (resReactions.get(e.reactionType) == undefined) {
+                resReactions.set(e.reactionType, 0);
+              }
+              resReactions.set(
+                e.reactionType,
+                resReactions.get(e.reactionType) + 1
+              );
+            });
+            resReactions.forEach((v, k, m) =>
+              reactions.set(MEMOS_REACTIONS.get(k), v)
+            );
+            var resUpdateTs = Date.parse(resValue.updateTime);
+            var resDisplayTs = Date.parse(resValue.displayTime);
+            var dayDiff = Math.floor(
+              (new Date().getTime() - resCreateTs) / (24 * 3600 * 1000)
+            );
+            if (dayDiff < 365) {
+              let current_user = memosFn.getUser(resValue.creatorId);
+              item = {
+                id: resValue.id,
+                avatar: utilsFn.isNotEmpty(current_user.avatarUrl)
+                  ? current_user.avatarUrl
+                  : RANDOM_MEMO_SETTINGS.default_memos_avatar,
+                createTs: resCreateTs,
+                creatorId: resValue.creatorId,
+                creatorNickname: current_user.nickname,
+                creatorUsername: resValue.creator,
+                content: resValue.content,
+                resourceList: resValue.resources,
+                hash: resValue.name,
+                reactions: reactions,
+                pinned: resValue.pinned,
+              };
+              items.push(item);
+            }
+          }
+          items.sort(utilsFn.compare("createTs"));
+          items.sort(utilsFn.compare("pinned"));
+        }
+        memosFn.loadMemos(items);
+      });
+  },
+  loadMemos: (data) => {
+    let items = [],
+      html = "";
+    data.forEach((item) => {
+      items.push(memosFn.formatMemo(item));
+    });
+    items.forEach((item) => {
+      tagHtml = "";
+      if (item.tags != null) {
+        item.tags.forEach((e) => {
+          tagHtml += `<div class="talk_meta_tag" onclick="memosFn.onTagClicked('${e.replaceAll(
+            "#",
+            ""
+          )}')"><i class="cloudchewiefont cloudchewie-icon-hashtag"></i><span class="talk_tag">${e.replaceAll(
+            "#",
+            ""
+          )}</span></div>`;
+        });
+      }
+      reactionsHtml = "";
+      if (item.reactions != null) {
+        item.reactions.forEach((v, k, m) => {
+          reactionsHtml += `<div class="talk_meta_reaction"><span class="talk_reaction_icon">${k}</span><span class="talk_reaction">${v}</span></div>`;
+        });
+      }
+      pinnedHtml = item.pinned
+        ? `<div class="talk_meta_pinned"><i class="fas fa-thumbtack"></i><span class="talk_pinned"/>置顶</div>`
+        : "";
+      dateString = item.date.split(" ")[0].replaceAll("/", "-");
+      dateList = dateString.split("-");
+      if (dateList.length == 3)
+        dateString = dateList[0] + "/" + dateList[1] + "/" + dateList[1];
+      if (item.hash == "") {
+        html += String.raw`
+        <div class="talk_item">
+          <div class="talk_content">${item.content}</div>
+        </div>
+        `;
+      } else {
+        html += String.raw`
+        <div class="talk_item">
+          <div class="talk_content">${item.content}</div>
+          <div class="talk_spacer"></div>
+          <div class="talk_bottom">
+            <div class="talk_meta">
+             ${pinnedHtml}
+              <div class="talk_meta_user" onclick="memosFn.onUserClicked('${item.username}')">
+                <img class="no-lightbox no-lazyload talk_avatar" src="${item.avatar}">
+                <span class="talk_nick">${item.nickname}</span>
+              </div>
+              <div class="talk_meta_date" onclick="memosFn.onTimeClicked('${item.hash}')">
+                <i class="fa fa-clock"></i>
+                <span class="talk_date">${dateString}</span>
+              </div>
+              ${tagHtml}
+              ${reactionsHtml}
+            </div>
+            <span class="talk_reply" onclick="cloudchewieFn.referToComment('${item.raw_content}')"><i class="fas fa-message"></i></span>
+          </div>
+        </div>
+        `;
+      }
+    });
+    $("#talk").html(html);
+    var times = 0;
+    var relayout = setInterval(function () {
+      utilsFn.isMemos() &&
+        (waterfall("#talk"),
+        setTimeout(() => {
+          waterfall("#talk");
+        }, 300));
+      times++;
+      if (times > 5) clearInterval(relayout);
+    }, 300);
+  },
+  formatMemo: (item) => {
+    //正则式
+    const TAG_REG = /#([^\s#]+)/g;
+    const SPACE_REG = /\s+/g;
+    const IMG_REG = /\!\[(.*?)\]\((.*?)\)/g;
+    BILIBILI_REG =
+      /<a.*?href="https:\/\/www\.bilibili\.com\/video\/((av[\d]{1,10})|(BV([\w]{10})))\/?".*?>.*<\/a>/g;
+    NETEASE_MUSIC_REG =
+      /<a.*?href="https:\/\/music\.163\.com\/.*id=([0-9]+)".*?>.*<\/a>/g;
+    // QQMUSIC_REG = /<a.*?href="https\:\/\/y\.qq\.com\/.*(\/[0-9a-zA-Z]+)(\.html)?".*?>.*?<\/a>/g;
+    QQMUSIC_REG =
+      /<a.*?href="https\:\/\/y\.qq\.com\/n\/ryqq\/songDetail.*\/([0-9a-zA-Z]+)?".*?>.*?<\/a>/g;
+    QQVIDEO_REG =
+      /<a.*?href="https:\/\/v\.qq\.com\/.*\/([a-z|A-Z|0-9]+)\.html".*?>.*<\/a>/g;
+    YOUKU_REG =
+      /<a.*?href="https:\/\/v\.youku\.com\/.*\/id_([a-z|A-Z|0-9|==]+)\.html".*?>.*<\/a>/g;
+    YOUTUBE_REG =
+      /<a.*?href="https:\/\/www\.youtube\.com\/watch\?v\=([a-z|A-Z|0-9]{11})\".*?>.*<\/a>/g;
+    marked.setOptions({
+      breaks: true,
+      smartypants: false,
+      langPrefix: "language-",
+      mangle: false,
+      headerIds: false,
+    });
+    const renderer = new marked.Renderer();
+    const linkRenderer = renderer.link;
+    renderer.link = (href, title, text) => {
+      const localLink = href.startsWith(
+        `${location.protocol}//${location.hostname}`
+      );
+      const html = linkRenderer.call(renderer, href, title, text);
+      return localLink
+        ? html
+        : html.replace(
+            /^<a /,
+            `<a target="_blank" rel="noreferrer noopener nofollow" `
+          );
+    };
+    marked.use({ renderer });
+    //处理内容
+    let content = item.content,
+      raw_content = item.content,
+      text = item.content,
+      imgsWithCaption = [],
+      tags = content.match(TAG_REG);
+    raw_content = raw_content
+      .replaceAll("`", "\\`")
+      .replaceAll("\n", "\\n")
+      .replace(TAG_REG, "")
+      .replace(IMG_REG, "")
+      .replace(BILIBILI_REG, "")
+      .replace(NETEASE_MUSIC_REG, "")
+      .replace(QQMUSIC_REG, "")
+      .replace(QQVIDEO_REG, "")
+      .replace(YOUKU_REG, "")
+      .replace(YOUTUBE_REG, "");
+    text = text
+      .replaceAll("`", "")
+      .replaceAll("\n", "")
+      .replace(TAG_REG, "")
+      .replace(IMG_REG, "")
+      .replace(BILIBILI_REG, "")
+      .replace(NETEASE_MUSIC_REG, "")
+      .replace(QQMUSIC_REG, "")
+      .replace(QQVIDEO_REG, "")
+      .replace(YOUKU_REG, "")
+      .replace(YOUTUBE_REG, "");
+    content = content
+      .replace(TAG_REG, "")
+      .replace(
+        IMG_REG,
+        `<a href="$2" data-fancybox="gallery" class="fancybox" data-thumb="$2"><img class="no-lazyload" src="$2"></a>`
+      );
+    content = marked
+      .parse(content)
+      .replace(
+        BILIBILI_REG,
+        "<div class='video-wrapper'><iframe src='//www.bilibili.com/blackboard/html5mobileplayer.html?bvid=$1&as_wide=1&high_quality=1&danmaku=1' scrolling='no' border='0' frameborder='no' framespacing='0' allowfullscreen='true'></iframe></div>"
+      )
+      .replace(
+        NETEASE_MUSIC_REG,
+        "<meting-js class='music-wrapper' auto='https://music.163.com/#/song?id=$1'></meting-js>"
+      )
+      .replace(
+        QQMUSIC_REG,
+        "<meting-js class='music-wrapper' auto='https://y.qq.com/n/yqq/song/$1.html'></meting-js>"
+      )
+      .replace(
+        QQVIDEO_REG,
+        "<div class='video-wrapper'><iframe src='//v.qq.com/iframe/player.html?vid=$1' allowFullScreen='true' frameborder='no'></iframe></div>"
+      )
+      .replace(
+        YOUKU_REG,
+        "<div class='video-wrapper'><iframe src='https://player.youku.com/embed/$1' frameborder=0 'allowfullscreen'></iframe></div>"
+      )
+      .replace(
+        YOUTUBE_REG,
+        "<div class='video-wrapper'><iframe src='https://www.youtube.com/embed/$1' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen title='YouTube Video'></iframe></div>"
+      );
+    if (item.resourceList != undefined) {
+      item.resourceList.forEach((e) => {
+        if (utilsFn.isNotEmpty(e.externalLink)) {
+          imgsWithCaption.push({ caption: text, url: e.externalLink });
+        } else {
+          imgsWithCaption.push({
+            caption: text,
+            url: `${RANDOM_MEMO_SETTINGS.memosApi}/o/r/${e.id}/${e.publicId}/${e.filename}`,
+          });
+        }
+      });
+    }
+    if (imgsWithCaption.length > 0) {
+      content += `<div class="zone_imgbox">`;
+      imgsWithCaption
+        .map((item) => {
+          return {
+            caption: item.caption,
+            url: item.url.replace(/!\[.*\]\((.*?)\)/, "$1"),
+          };
+        })
+        .forEach(
+          (e) =>
+            (content += `<a href="${e.url}" data-fancybox="gallery" class="fancybox" data-thumb="${e.url}" data-caption="${e.caption}"><img alt="${e.caption}" class="no-lazyload" src="${e.url}"></a>`)
+        );
+      content += "</div>";
+    }
+    return {
+      content: content,
+      tags: tags,
+      reactions: item.reactions,
+      raw_content: raw_content,
+      date: new Date(item.createTs).toLocaleString(),
+      text: text.replace(
+        /\[(.*?)\]\((.*?)\)/g,
+        "[链接]" + `${imgsWithCaption ? "[图片]" : ""}`
+      ),
+      nickname: item.creatorNickname,
+      username: item.creatorUsername,
+      avatar: item.avatar,
+      hash: item.hash,
+      pinned: item.pinned,
+    };
+  },
+};

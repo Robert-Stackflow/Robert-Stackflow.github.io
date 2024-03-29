@@ -7,8 +7,8 @@ window.addEventListener('load', () => {
     const bodyStyle = document.body.style
     bodyStyle.width = '100%'
     bodyStyle.overflow = 'hidden'
-    cloudchewieFn.animateIn($searchMask, 'to_show 0.5s')
-    cloudchewieFn.animateIn(document.querySelector('#local-search .search-dialog'), 'titleScale 0.5s')
+    utilsFn.animateIn($searchMask, 'to_show 0.5s')
+    utilsFn.animateIn(document.querySelector('#local-search .search-dialog'), 'titleScale 0.5s')
     setTimeout(() => { document.querySelector('#local-search-input input').focus() }, 100)
     if (!loadFlag) {
       search()
@@ -27,8 +27,8 @@ window.addEventListener('load', () => {
     const bodyStyle = document.body.style
     bodyStyle.width = ''
     bodyStyle.overflow = ''
-    cloudchewieFn.animateOut(document.querySelector('#local-search .search-dialog'), 'search_close .5s')
-    cloudchewieFn.animateOut($searchMask, 'to_hide 0.5s')
+    utilsFn.animateOut(document.querySelector('#local-search .search-dialog'), 'search_close .5s')
+    utilsFn.animateOut($searchMask, 'to_hide 0.5s')
   }
 
   const searchClickFn = () => {
