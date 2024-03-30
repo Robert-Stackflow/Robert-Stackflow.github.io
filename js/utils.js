@@ -2489,7 +2489,6 @@ const cloudchewieFn = {
         })
         .catch((e) => {
           utilsFn.snack("评论系统过载,请稍后访问");
-          console.log(e);
         });
     }
     document.getElementById("danmuBtn").innerHTML =
@@ -4734,13 +4733,10 @@ const memosFn = {
     await memosFn.fetchUserList();
     MEMOS_QUERY.current_option = 2;
     var tmp = MEMOS_QUERY.current_uid;
-    console.log(MEMOS_QUERY.current_uid);
     while (tmp == MEMOS_QUERY.current_uid) {
       var r =
         Math.round(Math.random() * MEMOS_QUERY.userlist.length) %
         MEMOS_QUERY.userlist.length;
-      console.log(r);
-      console.log(MEMOS_QUERY.userlist.length);
       tmp = MEMOS_QUERY.userlist[r].id;
     }
     MEMOS_QUERY.current_uid = tmp;
