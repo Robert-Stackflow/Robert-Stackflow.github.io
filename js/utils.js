@@ -2580,7 +2580,7 @@ const cloudchewieFn = {
         document.querySelector("#con-music i").classList = "fas fa-pause";
         cloudchewie_musicPlaying = true;
       }
-      if (changePlay) anMusicEl.querySelector("meting-js").aplayer.toggle();
+      if (changePlay) cloudMusicEl.querySelector("meting-js").aplayer.toggle();
     }
   },
   /**
@@ -2674,8 +2674,8 @@ const cloudchewieFn = {
       const navMetingAplayer = navMusic.querySelector("meting-js").aplayer;
       navMetingAplayer.play();
     } else {
-      const anMusicPage = document.getElementById("cloudMusic-page");
-      const metingAplayer = anMusicPage.querySelector("meting-js").aplayer;
+      const cloudMusicPage = document.getElementById("cloudMusic-page");
+      const metingAplayer = cloudMusicPage.querySelector("meting-js").aplayer;
       metingAplayer.play();
     }
   },
@@ -2683,13 +2683,13 @@ const cloudchewieFn = {
    * 天籁界面更改背景
    */
   changeMusicBg: function (isChangeBg = true) {
-    const anMusicBg = document.getElementById("cloud_music_bg");
+    const cloudMusicBg = document.getElementById("cloud_music_bg");
     if (isChangeBg) {
       const musiccover = document.querySelector(
         "#cloudMusic-page .aplayer-pic"
       );
       if (musiccover)
-        anMusicBg.style.backgroundImage = musiccover.style.backgroundImage;
+        cloudMusicBg.style.backgroundImage = musiccover.style.backgroundImage;
       $web_container.style.background = "none";
     } else {
       let timer = setInterval(() => {
@@ -2735,13 +2735,13 @@ const cloudchewieFn = {
       userId = json.id;
       userServer = json.server;
     }
-    const anMusicPageMeting = document.getElementById("cloudMusic-page-meting");
+    const cloudMusicPageMeting = document.getElementById("cloudMusic-page-meting");
     if (urlParams.get("id") && urlParams.get("server")) {
       const id = urlParams.get("id");
       const server = urlParams.get("server");
-      anMusicPageMeting.innerHTML = `<meting-js id="${id}" server=${server} type="playlist" type="playlist" mutex="true" preload="auto" theme="var(--cloudchewie-theme)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
+      cloudMusicPageMeting.innerHTML = `<meting-js id="${id}" server=${server} type="playlist" type="playlist" mutex="true" preload="auto" theme="var(--cloudchewie-theme)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
     } else {
-      anMusicPageMeting.innerHTML = `<meting-js id="${userId}" server="${userServer}" type="playlist" mutex="true" preload="auto" theme="var(--cloudchewie-theme)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
+      cloudMusicPageMeting.innerHTML = `<meting-js id="${userId}" server="${userServer}" type="playlist" mutex="true" preload="auto" theme="var(--cloudchewie-theme)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
     }
     cloudchewieFn.changeMusicBg(false);
   },
@@ -2749,11 +2749,11 @@ const cloudchewieFn = {
    * 天籁界面播放器事件
    */
   addEventListenerMusic: function () {
-    const anMusicPage = document.getElementById("cloudMusic-page");
-    const aplayerIconMenu = anMusicPage.querySelector(
+    const cloudMusicPage = document.getElementById("cloudMusic-page");
+    const aplayerIconMenu = cloudMusicPage.querySelector(
       ".aplayer-info .aplayer-time .aplayer-icon-menu"
     );
-    const metingAplayer = anMusicPage.querySelector("meting-js").aplayer;
+    const metingAplayer = cloudMusicPage.querySelector("meting-js").aplayer;
     //初始化音量
     metingAplayer.volume(0.8, true);
     metingAplayer.on("loadeddata", function () {
@@ -2763,27 +2763,27 @@ const cloudchewieFn = {
       document.getElementById("menu-mask").style.display = "block";
       document.getElementById("menu-mask").style.animation =
         "0.5s ease 0s 1 normal none running to_show";
-      anMusicPage.querySelector(
+      cloudMusicPage.querySelector(
         ".aplayer.aplayer-withlist .aplayer-list"
       ).style.opacity = "1";
     });
 
-    function anMusicPageMenuMask() {
+    function cloudMusicPageMenuMask() {
       if (!utilsFn.isMusic()) {
         document
           .getElementById("menu-mask")
-          .removeEventListener("click", anMusicPageMenuMask);
+          .removeEventListener("click", cloudMusicPageMenuMask);
         return;
       }
-      anMusicPage.querySelector(".aplayer-list") != null &&
-        anMusicPage
+      cloudMusicPage.querySelector(".aplayer-list") != null &&
+        cloudMusicPage
           .querySelector(".aplayer-list")
           .classList.remove("aplayer-list-hide");
     }
 
     document
       .getElementById("menu-mask")
-      .addEventListener("click", anMusicPageMenuMask);
+      .addEventListener("click", cloudMusicPageMenuMask);
 
     document.addEventListener("keydown", function (event) {
       if (event.code === "Space") {
@@ -2844,15 +2844,15 @@ const cloudchewieFn = {
           });
       }
     } else {
-      const anMusicPage = document.getElementById("cloudMusic-page");
-      if (anMusicPage == null || anMusicPage.querySelector("meting-js") == null)
+      const cloudMusicPage = document.getElementById("cloudMusic-page");
+      if (cloudMusicPage == null || cloudMusicPage.querySelector("meting-js") == null)
         return;
-      const metingAplayer = anMusicPage.querySelector("meting-js").aplayer;
+      const metingAplayer = cloudMusicPage.querySelector("meting-js").aplayer;
       if (!metingAplayer) {
-        anMusicPage.querySelector("meting-js").connectedCallback();
+        cloudMusicPage.querySelector("meting-js").connectedCallback();
       }
       if (reload) {
-        anMusicPage
+        cloudMusicPage
           .querySelector("meting-js")
           ._fetchSongs(server, id, type)
           .then((songs) => {
