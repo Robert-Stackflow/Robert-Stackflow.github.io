@@ -1,0 +1,1024 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>计算机网络与通信笔记(二) | Cloudchewie</title><meta name="keywords" content="课程笔记,计算机网络"><meta name="author" content="余湍"><meta name="copyright" content="余湍"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="华中科技大学计算机科学与技术学院计算机网络与通信课程笔记，包括应用层">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络与通信笔记(二)">
+<meta property="og:url" content="https://blog.cloudchewie.com/posts/2022/11/12/notes/Computer-Network-and-Communication-2/">
+<meta property="og:site_name" content="Cloudchewie">
+<meta property="og:description" content="华中科技大学计算机科学与技术学院计算机网络与通信课程笔记，包括应用层">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://picbed.cloudchewie.com/blog/cover/network.png!cover">
+<meta property="article:published_time" content="2022-11-12T01:08:11.000Z">
+<meta property="article:modified_time" content="2024-03-23T08:14:10.365Z">
+<meta property="article:author" content="余湍">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://picbed.cloudchewie.com/blog/cover/network.png!cover"><link rel="shortcut icon" href="https://picbed.cloudchewie.com/icon/blog-transparent.png!mini"><link rel="canonical" href="https://blog.cloudchewie.com/posts/2022/11/12/notes/Computer-Network-and-Communication-2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="codeva-NPu2Lb2oyZ"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.20/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: {"appId":"TUIG4FFSGJ","apiKey":"2a88d55d94627f6f1c89930c6a5fbdf0","indexName":"search_index_cloudchewie","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  navMusic: true,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"copy_success":"复制成功","chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","comment_barrage_open":"打开评论弹幕","comment_barrage_close":"关闭评论弹幕","browser_version_low":"浏览器版本过低，网站样式可能错乱","welcome":"欢迎访问Cloudchewie","cookie_notice":"本站使用Cookie和本地/会话存储保证浏览体验和网站统计","bgLight":"#20809f","bgDark":"#1f1f1f","position":"top-right"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  shortcut: {"enable":true,"delay":100,"shiftDelay":500},
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '计算机网络与通信笔记(二)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-23 16:14:10'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          data: value,
+          time: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.time) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.data
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('enableAside')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><canvas id="universe"></canvas><style id="noiseStyle"></style><style id="settingStyle"></style><style id="barragesColor"></style><style id="themeColor"></style><meta name="baidu-site-verification" content="codeva-KoHQLKwmYl" /><script>let cloudGPT_postSelector = '\#post \#article-container';let cloudGPT_key = 'bdd33bb6bd96c908b41f';let enableGPT=true;let enableAside=true;</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Cloudchewie" type="application/atom+xml">
+</head><body data-type="cloudchewie"><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="cloud_music_bg"></div><div id="web_box"><div id="web_container"><div id="menu-mask"></div><div class="post" id="body-wrap"><header class="post-bg  nav-top" id="page-header" style="background-image: url('https://picbed.cloudchewie.com/blog/cover/network.png!cover')"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="cloudchewiefont cloudchewie-icon-apps"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title"><span>站点</span><div class="back-menu-list"><a class="back-menu-item" href="https://www.cloudchewie.com" rel="external nofollow noreferrer" title="主页" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/index/favicon.png!mini" alt="主页"/><span class="back-menu-item-text">主页</span></a><a class="back-menu-item" href="https://moment.cloudchewie.com" rel="external nofollow noreferrer" title="时光" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/moment-transparent.png!mini" alt="时光"/><span class="back-menu-item-text">时光</span></a><a class="back-menu-item" href="https://memos.cloudchewie.com" rel="external nofollow noreferrer" title="Memos" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/memos.webp!mini" alt="Memos"/><span class="back-menu-item-text">Memos</span></a><a class="back-menu-item" href="https://chat.cloudchewie.com" rel="external nofollow noreferrer" title="云上茶室" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/chat.png!mini" alt="云上茶室"/><span class="back-menu-item-text">云上茶室</span></a><a class="back-menu-item" href="https://status.cloudchewie.com" rel="external nofollow noreferrer" title="站点监测" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/uptime.png!mini" alt="站点监测"/><span class="back-menu-item-text">站点监测</span></a></div></div></div><div class="back-menu-list-group"><div class="back-menu-list-title"><span>应用</span><div class="back-menu-list"><a class="back-menu-item" href="https://purrli.cloudchewie.com" rel="external nofollow noreferrer" title="Purrli" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/cat/apple-touch-icon.png!mini" alt="Purrli"/><span class="back-menu-item-text">Purrli</span></a><a class="back-menu-item" href="https://pan.cloudchewie.com" rel="external nofollow noreferrer" title="Cloud云盘" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/cloud-transparent.png!mini" alt="Cloud云盘"/><span class="back-menu-item-text">Cloud云盘</span></a><a class="back-menu-item" href="https://lsky.cloudchewie.com" rel="external nofollow noreferrer" title="Cloud图床" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/lsky.ico" alt="Cloud图床"/><span class="back-menu-item-text">Cloud图床</span></a><a class="back-menu-item" href="/responsive" title="网站截图" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/index/favicon.png!mini" alt="网站截图"/><span class="back-menu-item-text">网站截图</span></a><a class="back-menu-item" href="https://apps.cloudchewie.com" rel="external nofollow noreferrer" title="App Center" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/index/favicon.png!mini" alt="App Center"/><span class="back-menu-item-text">App Center</span></a></div></div></div><div class="back-menu-list-group"><div class="back-menu-list-title"><span>线路</span><div class="back-menu-list"><a class="back-menu-item" href="https://blog.cloudchewie.com" title="腾讯云" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/cos.svg" alt="腾讯云"/><span class="back-menu-item-text">腾讯云</span></a><a class="back-menu-item" href="https://vercel.blog.cloudchewie.com" rel="external nofollow noreferrer" title="Vercel" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/vercel.png!mini" alt="Vercel"/><span class="back-menu-item-text">Vercel</span></a><a class="back-menu-item" href="https://gh.blog.cloudchewie.com" rel="external nofollow noreferrer" title="GitHub" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/github.svg" alt="GitHub"/><span class="back-menu-item-text">GitHub</span></a></div></div></div><div class="back-menu-list-group"><div class="back-menu-list-title"><span>友链</span><div class="back-menu-list"><a class="back-menu-item" href="https://bf.zzxworld.com/s/1152" rel="external nofollow noreferrer" title="Blog Finder" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/blogfinder.png!mini" alt="Blog Finder"/><span class="back-menu-item-text">Blog Finder</span></a><a class="back-menu-item" href="https://www.travellings.cn/go.html" rel="external nofollow noreferrer" title="开往" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/travellings.png!mini" alt="开往"/><span class="back-menu-item-text">开往</span></a></div></div></div></div></div><a id="site-name" href="/" accesskey="h">Cloudchewie</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 专栏</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 空间</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/memos/"><i class="fa-fw fas fa-rocket"></i><span> 即刻</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 画廊</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 天籁</span></a></li><li><a class="site-page child" href="/air/"><i class="fa-fw fas fa-wind"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 分享</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/bangumi/"><i class="fa-fw fab fa-bilibili"></i><span> 追番</span></a></li><li><a class="site-page child" href="/video/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/treasure/"><i class="fa-fw fas fa-gem"></i><span> 藏宝</span></a></li><li><a class="site-page child" href="/equipment/"><i class="fa-fw fas fa-laptop-code"></i><span> 装备</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 站点</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/atom.xml"><i class="fa-fw fas fa-rss"></i><span> RSS</span></a></li><li><a class="site-page child" href="/log/"><i class="fa-fw fa-fw fas fa-wrench"></i><span> 日志</span></a></li><li><a class="site-page child" href="/term/"><i class="fa-fw fa-fw fas fa-balance-scale"></i><span> 协议</span></a></li><li><a class="site-page child" href="/help/"><i class="fa-fw fa-fw fas fa-circle-question"></i><span> 指南</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-circle-info"></i><span> 关于我</span></a></li><li><a class="site-page child" href="/guestbook/"><i class="fa-fw fas fa-address-book"></i><span> 留言板</span></a></li></ul></div></div></div><center id="name-container"><a id="page-name" href="javascript:cloudchewieFn.scrollToTop()" rel="external nofollow noreferrer"></a></center><div id="nav-right"><div id="search-button" title="搜索站内文章"><a class="site-page social-icon search" accesskey="s"><i class="fas fa-search fa-fw"></i></a></div><theme-toggle><button id="darkmode-button" title="深色/浅色模式"> <a class="site-page social-icon"><i class="fas fa-adjust"></i></a></button></theme-toggle><div id="trailing-button" title="随机开往一个项目网站"><a class="site-page social-icon trailing"><i class="fas fa-subway fa-fw"></i></a></div><div id="wander-button" title="随机前往一篇文章"> <a class="site-page social-icon wander" accesskey="r"><i class="fas fa-dice fa-fw"></i></a></div><div id="console-button" title="打开控制台"> <a class="site-page social-icon console" accesskey="c"><i class="fas fa-cog fa-fw"></i></a></div><div id="love-button" title="噬云兽的主页"> <a class="site-page social-icon love" href="/love" accesskey="l"><i class="fas fa-heart fa-fw"></i></a></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-arrow-up"></i><span id="percent" onclick="cloudchewieFn.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="cloudchewiefont cloudchewie-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%B8%93%E4%B8%9A%E6%A0%B8%E5%BF%83/" itemprop="url">专业核心</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" tabindex="-1" itemprop="url"> <span> <i class="cloudchewiefont cloudchewie-icon-hashtag"></i>课程笔记</span></a><a class="article-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" tabindex="-1" itemprop="url"> <span> <i class="cloudchewiefont cloudchewie-icon-hashtag"></i>计算机网络</span></a></span></div></div><h1 class="post-title" itemprop="name headline">计算机网络与通信笔记(二)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="cloudchewiefont cloudchewie-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2022-11-12T01:08:11.000Z" title="发表于 2022-11-12 09:08:11">2022-11-12</time><span class="post-meta-separator"></span><i class="cloudchewiefont cloudchewie-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-03-23T08:14:10.365Z" title="更新于 2024-03-23 16:14:10">2024-03-23</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="cloudchewiefont cloudchewie-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">3.5k</span><span class="post-meta-separator"></span><i class="cloudchewiefont cloudchewie-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="计算机网络与通信笔记(二)"><i class="cloudchewiefont cloudchewie-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="cloudchewiefont cloudchewie-icon-spinner cloudchewie-spin"></i></span></span><span class="post-meta-separator"></span><span class="post-meta-commentcount"><i class="cloudchewiefont cloudchewie-icon-comments post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/2022/11/12/notes/Computer-Network-and-Communication-2/#post-comment" tabindex="-1"><span id="twikoo-count"><i class="cloudchewiefont cloudchewie-icon-spinner cloudchewie-spin"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div calss='cloudchewie-tag-link'><a class="tag-Link" target="_blank" href="/downloads/Notes-on-Computer-Network-and-Communication.pdf">
+    <div class="tag-link-tips">站内地址</div>
+    <div class="tag-link-bottom">
+        <div class="tag-link-left" style="background-image: url(https://picbed.cloudchewie.com/icon/blog-transparent.png!mini);"></div>
+        <div class="tag-link-right">
+            <div class="tag-link-title">计算机网络与通信笔记</div>
+            <div class="tag-link-sitename"> 点击下载计算机网络与通信笔记PDF版 </div>
+        </div>
+        <i class="cloudchewiefont cloudchewie-icon-angle-right"></i>
+    </div>
+    </a></div>
+
+<h2 id="二、应用层"><a href="#二、应用层" class="headerlink" title="二、应用层"></a>二、应用层</h2><h3 id="2-1-应用层协议原理"><a href="#2-1-应用层协议原理" class="headerlink" title="2.1 应用层协议原理"></a>2.1 应用层协议原理</h3><h4 id="2-1-1-进程通信"><a href="#2-1-1-进程通信" class="headerlink" title="2.1.1 进程通信"></a>2.1.1 进程通信</h4><ul>
+<li><p>客户与服务器进程</p>
+<ul>
+<li><p>网络应用程序运行后，就变成了网络应用进程</p>
+</li>
+<li><p>两个在不同端系统的进程，通过跨越计算机网络交换报文而相互通信</p>
+</li>
+<li><p>网络应用程序由成对进程组成，在一对进程的通信会话场景中，发起通信的进程称为<strong>客户</strong>，等待联系的进程称为<strong>服务器</strong></p>
+</li>
+</ul>
+</li>
+<li><p>进程与计算机网络的接口</p>
+<ul>
+<li>进程通过一个称为<strong>套接字</strong>$(Socket)$的软件接口向网络发送报文和从网络接收报文</li>
+<li>套接字是同一台主机内应用层与运输层的接口，也成为应用程序和网络之间的<strong>应用程序编程窗口</strong></li>
+</ul>
+</li>
+<li><p>进程寻址</p>
+<ul>
+<li>为了与目的主机上进程的通信，需要定义<strong>目的主机的地址</strong>和<strong>目的主机中指定接收进程的标识符</strong></li>
+<li>目的主机地址由$32$位的$IP$地址标识</li>
+<li>目的进程地址由$16$位目的地端口号$Port\enspace Number$标识，如$Web$服务器的端口号为$80$，$SMTP$的端口号为$25$</li>
+<li>套接字长度为$48$位</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-1-2-运输服务简介"><a href="#2-1-2-运输服务简介" class="headerlink" title="2.1.2 运输服务简介"></a>2.1.2 运输服务简介</h4><ul>
+<li><p>$TCP$服务</p>
+<ul>
+<li><strong>面向连接</strong>：在报文流动前，$TCP$让客户和服务器互相交换运输层控制信息以为分组运输做好准备（握手），此时，一个$TCP$连接在两个进程的套接字直接建立</li>
+<li><strong>可靠性</strong>：无差错、无字节丢失与冗余、顺序地传输分组</li>
+<li><strong>拥塞控制机制</strong>：当网络拥塞时，抑制发送进程</li>
+<li>不提供加密机制</li>
+</ul>
+</li>
+<li><p>$UDP$服务</p>
+<ul>
+<li>没有握手过程</li>
+<li>不可靠数据传送服务</li>
+<li>没有拥塞控制机制</li>
+<li>不提供加密机制</li>
+</ul>
+</li>
+<li><p>$SSL$安全套接字层</p>
+<ul>
+<li>提供加密的$TCP$连接</li>
+<li>提供数据完整性和端点鉴别</li>
+</ul>
+</li>
+<li><p>应用层协议与支撑的运输层协议</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">应用</th>
+<th align="center">应用层协议</th>
+<th align="center">支撑的运输层协议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">电子邮件</td>
+<td align="center">$SMTP$</td>
+<td align="center">$TCP$</td>
+</tr>
+<tr>
+<td align="center">远程终端访问</td>
+<td align="center">$Telnet$</td>
+<td align="center">$TCP$</td>
+</tr>
+<tr>
+<td align="center">$Web$、流式多媒体</td>
+<td align="center">$HTTP$</td>
+<td align="center">$TCP$</td>
+</tr>
+<tr>
+<td align="center">文件传输</td>
+<td align="center">$FTP$</td>
+<td align="center">$TCP$</td>
+</tr>
+<tr>
+<td align="center">因特网电话</td>
+<td align="center">$SIP$、$RTP$</td>
+<td align="center">$UDP$或$TCP$</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-Web-和-HTTP"><a href="#2-2-Web-和-HTTP" class="headerlink" title="2.2 $Web$和$HTTP$"></a>2.2 $Web$和$HTTP$</h3><h4 id="2-2-1-HTTP-概述"><a href="#2-2-1-HTTP-概述" class="headerlink" title="2.2.1 $HTTP$概述"></a>2.2.1 $HTTP$概述</h4><ul>
+<li><p>相关概念</p>
+<ul>
+<li><p>$HTTP$全称为超文本传输协议$(HyperText\enspace Transfer\enspace Protocol)$</p>
+</li>
+<li><p>$Web$页面由<strong>对象</strong>组成，如$HTML$文件，$JPEG$图像</p>
+</li>
+<li><p>通过$URL$地址引用对象，$URL$地址由<strong>存放对象的服务器地址</strong>和<strong>对象的路径</strong>组成</p>
+<blockquote>
+<p> 如对于$URL$地址<a target="_blank" rel="noopener external nofollow noreferrer" href="http://cloudchewie.com/index.html%EF%BC%9A">http://cloudchewie.com/index.html：</a></p>
+<p>$cloudchewie.com$为主机名，$&#x2F;index.html$为对象路径</p>
+</blockquote>
+</li>
+<li><p>$Web\enspace Browser$实现了$HTTP$的客户端，$Web\enspace Server$实现了$HTTP$的服务端，用于存储$Web$对象，每个对象由$URL$路径访问，因此$Web$是典型的$C&#x2F;S$模式</p>
+</li>
+<li><p>$HTTP$负责定义客户向服务器请求$Web$页面的方式以及服务器向客户返回$Web$页面的方式，其传递的报文称为$HTTP$报文</p>
+</li>
+<li><p>客户向其套接字接口发送$HTTP$请求报文并从其套接字接口接收$HTTP$响应报文；当客户发送报文后，该报文即脱离客户控制而进入$TCP$控制，从而使得应用层协议$HTTP$无需关心报文丢失和运输层的实现细节</p>
+</li>
+<li><p>$HTTP$服务器不保存关于客户的任何信息，是一个<strong>无状态协议</strong></p>
+</li>
+</ul>
+</li>
+<li><p>非持续连接</p>
+<ul>
+<li><p>每个$TCP$连接只传输一个请求报文和一个响应报文</p>
+</li>
+<li><p>当客户接收$HTTP$响应报文后，$TCP$连接关闭</p>
+</li>
+<li><p>如果需要继续发送请求，需要建立全新的$TCP$连接</p>
+</li>
+<li><p>可以使用<strong>并行的连接</strong>改善缩短响应时间</p>
+<blockquote>
+<p>$TCP$服务是建立在连接之上的，每次建立连接前，都需要进行三次握手过程，如下图所示：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/post/Computer-Network-and-Communication-2/Chp2-HTTP%E6%A8%A1%E5%9E%8B.png!blogimg" class="" width="400" title="HTTP模型">
+
+<ol>
+<li>客户端向服务器发送一个小的$TCP$报文段</li>
+<li>服务器用一个小的$TCP$报文段进行确认和响应</li>
+<li>客户向服务器返回确认并发送$HTTP$请求报文</li>
+<li>在这之后，服务器开始发送文件到客户</li>
+</ol>
+<p>其中，环节$1-2$占用了一个往返时间$RTT$，环节$3-4$占用了一个往返时间$RTT$并且耗费了传输文件的时间</p>
+<p><strong>因此，在非持续连接的HTTP下，每传送一个对象，就需要经受两个RTT的交付时延</strong></p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>持续连接</p>
+<ul>
+<li>服务器发送$HTTP$响应报文后保持$TCP$连接，使得客户的后续请求继续使用该连接进行传送</li>
+<li>当该连接经过一定时间间隔（可配置的超时间隔）仍未使用，其服务器就将关闭该连接</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-2-2-HTTP-报文"><a href="#2-2-2-HTTP-报文" class="headerlink" title="2.2.2 $HTTP$报文"></a>2.2.2 $HTTP$报文</h4><ul>
+<li><p>$HTTP$请求报文（<a target="_blank" rel="noopener external nofollow noreferrer" href="https://gaia.cs.umass.edu/kurose_ross/interactive/http-get.php">在线交互程序</a>）</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#典型的HTTP请求报文</span><br><span class="line">GET /index.html HTTP/1.1\r\n</span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>www-net.cs.umass.edu\r\n</span><br><span class="line"><span class="attribute">User-Agent</span><span class="punctuation">: </span>Mozilla/5.0\r\n</span><br><span class="line"><span class="attribute">Accept</span><span class="punctuation">: </span>text/html,application/xhtml+xml\r\n</span><br><span class="line"><span class="attribute">Accept-Language</span><span class="punctuation">: </span>en-us,en;q=0.5\r\n</span><br><span class="line"><span class="attribute">Accept-Encoding</span><span class="punctuation">: </span>gzip,deflate\r\n</span><br><span class="line"><span class="attribute">Accept-Charset</span><span class="punctuation">: </span>ISO-8859-1,utf-8;q=0.7\r\n</span><br><span class="line"><span class="attribute">Keep-Alive</span><span class="punctuation">: </span>115\r\n</span><br><span class="line"><span class="attribute">Connection</span><span class="punctuation">: </span>keep-alive\r\n</span><br><span class="line">\r\n</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>请求报文的第一行称为<strong>请求行</strong>，包括方法字段、$URL$字段、$HTTP$版本字段</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">方法字段</th>
+<th align="center">主要作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$GET$</td>
+<td align="center">向服务器请求指定$URL$的对象</td>
+</tr>
+<tr>
+<td align="center">$POST$</td>
+<td align="center">用于向服务器提交表单数据也可以同时请求一个$Web$页面</td>
+</tr>
+<tr>
+<td align="center">$DELETE$</td>
+<td align="center">返回响应报文，不包含请求的对象</td>
+</tr>
+<tr>
+<td align="center">$PUT$</td>
+<td align="center">上传的文件放在实体主体字段中，目标路径由$URL$字段标明</td>
+</tr>
+<tr>
+<td align="center">$HEAD$</td>
+<td align="center">删除$URL$字段中指定的文件</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>其余行称为<strong>首部行</strong></p>
+<ul>
+<li>$Host$指明了对象所在的主机</li>
+<li>$Connection$指明非持续连接$(Close)$和持续连接$(keep-alive)$</li>
+<li>$Keep-Alive$指明持续连接的超时间隔</li>
+<li>$User-agent$指明用户浏览器类型，有助于服务器根据不同的用户代理发送相同对象的不同版本</li>
+<li>$Accept-*$指用户想要得到特定语言、编码格式、字符集的该对象</li>
+</ul>
+</li>
+<li><p>结尾单独一行回车、换行表示报文首部结束</p>
+</li>
+<li><p><strong>实体体</strong>，在首部行之后的请求体</p>
+<ul>
+<li>当发送$GET$请求时，实体体为空；</li>
+<li>当用户填写表单并发送$POST$请求时，实体体即为用户填写的表单；</li>
+<li>当用户填写表单时，也可以使用$GET$方法，如<code>/learning/search?key=banana&amp;lang=zh</code></li>
+</ul>
+</li>
+<li><p>$HTTP$请求报文的通用格式</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/post/Computer-Network-and-Communication-2/Chp2-HTTP%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87%E9%80%9A%E7%94%A8%E6%A0%BC%E5%BC%8F.png!blogimg" class="" width="400" title="HTTP请求报文通用格式">
+</li>
+<li><p>$HTTP$响应报文（<a target="_blank" rel="noopener external nofollow noreferrer" href="https://gaia.cs.umass.edu/kurose_ross/interactive/http-response.php">在线交互程序</a>）</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#典型的HTTP响应报文</span><br><span class="line"><span class="meta">HTTP/1.1</span> <span class="number">200</span> OK\r\n</span><br><span class="line"><span class="attribute">Date</span><span class="punctuation">: </span>Sun, 26 Sep 2010 20:09:20 GMT\r\n</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>Apache/2.0.52 (CentOS)\r\n</span><br><span class="line"><span class="attribute">Last-Modified</span><span class="punctuation">: </span>Tue, 30 Oct 2007 17:00:02 GMT\r\n</span><br><span class="line"><span class="attribute">ETag</span><span class="punctuation">: </span>&quot;17dc6-a5c-bf716880&quot;\r\n</span><br><span class="line"><span class="attribute">Accept-Ranges</span><span class="punctuation">: </span>bytes\r\n</span><br><span class="line"><span class="attribute">Content-Length</span><span class="punctuation">: </span>2652\r\n</span><br><span class="line"><span class="attribute">Keep-Alive</span><span class="punctuation">: </span>timeout=10, max=100\r\n</span><br><span class="line"><span class="attribute">Connection</span><span class="punctuation">: </span>Keep-Alive\r\n</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>text/html; charset=ISO-8859-1\r\n</span><br><span class="line">\r\n</span><br><span class="line">data data data data data ...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>响应报文的第一行称为<strong>初始状态行</strong>，包括协议版本字段、状态码、状态信息</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">状态码</th>
+<th align="center">状态信息</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$200$</td>
+<td align="center">$OK$</td>
+<td align="center">请求成功</td>
+</tr>
+<tr>
+<td align="center">$301$</td>
+<td align="center">$Moved\enspace Permanently$</td>
+<td align="center">请求的对象被永久转移，新的$URL$定义在$Location$首部行</td>
+</tr>
+<tr>
+<td align="center">$400$</td>
+<td align="center">$Bad\enspace Request$</td>
+<td align="center">通用差错代码，请求不能被服务器理解</td>
+</tr>
+<tr>
+<td align="center">$404$</td>
+<td align="center">$Not\enspace Found$</td>
+<td align="center">被请求的对象不在服务器</td>
+</tr>
+<tr>
+<td align="center">$500$</td>
+<td align="center">$HTTP\enspace Version\enspace Not\enspace Supported$</td>
+<td align="center">服务器不支持请求报文中的$HTTP$协议版本</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>其余行称为首部行</p>
+<ul>
+<li>$Date$指示服务器发送响应报文的日期时间</li>
+<li>$Server$指示服务器类型，类似于请求报文中的$User-agent$</li>
+<li>$Last\enspace Modified$指示对象创建或最后修改的日期时间</li>
+<li>$Content-Length$指示被发送对象的字节数</li>
+<li>$Content-Type$指示实体体中对象为$HTML$文本</li>
+</ul>
+</li>
+<li><p>实体体包含被请求的对象</p>
+</li>
+<li><p>$HTTP$响应报文的通用格式</p>
+</li>
+</ul>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/post/Computer-Network-and-Communication-2/Chp2-HTTP%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E9%80%9A%E7%94%A8%E6%A0%BC%E5%BC%8F.png!blogimg" class="" width="400" title="HTTP响应报文通用格式">
+
+<h4 id="2-2-3-Cookie"><a href="#2-2-3-Cookie" class="headerlink" title="2.2.3 $Cookie$"></a>2.2.3 $Cookie$</h4><ul>
+<li>$Cookie$的意义<ul>
+<li>限制用户的访问</li>
+<li>将内容与用户身份相关联</li>
+<li>在无状态的$HTTP$上建立用户会话层</li>
+</ul>
+</li>
+<li>$Cookie$的组成<ul>
+<li>$HTTP$响应报文中的$Cookie$首部行</li>
+<li>$HTTP$请求报文中的$Cookie$首部行</li>
+<li>端系统中保留$Cookie$文件</li>
+<li>$Web$服务器的$Cookie$数据库</li>
+</ul>
+</li>
+<li>$Cookie$的使用<ul>
+<li>客户向服务器发送<u>普通请求报文</u></li>
+<li>服务器为客户创建$ID$如<code>U202073245</code>并放置在响应报文的首部行</li>
+<li>客户存储$Cookie$</li>
+<li>客户将$Cookie$放置在请求报文的首部行</li>
+<li>服务器根据$Cookie$<strong>采取指定动作</strong>，并返回普通响应报文</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-3-电子邮件"><a href="#2-3-电子邮件" class="headerlink" title="2.3 电子邮件"></a>2.3 电子邮件</h3><h4 id="2-3-1-电子邮件系统的构成"><a href="#2-3-1-电子邮件系统的构成" class="headerlink" title="2.3.1 电子邮件系统的构成"></a>2.3.1 电子邮件系统的构成</h4><ul>
+<li>用户代理<ul>
+<li>用户可以撰写编辑邮件、查看邮件</li>
+<li>如网易邮箱大师、$FoxMail$</li>
+</ul>
+</li>
+<li>邮件服务器<ul>
+<li>存储用户邮件的服务器</li>
+<li>在报文队列中维护需要发送的邮件报文</li>
+</ul>
+</li>
+<li>简单邮件传输协议$SMTP$<ul>
+<li>将邮件从发送方的客户端发送到发送方的邮件服务器</li>
+<li>将邮件从发送方的邮件服务器发送到接收方的邮件服务器</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-3-2-SMTP-协议"><a href="#2-3-2-SMTP-协议" class="headerlink" title="2.3.2 $SMTP$协议"></a>2.3.2 $SMTP$协议</h4><ul>
+<li><p>基本介绍（<a target="_blank" rel="noopener external nofollow noreferrer" href="https://gaia.cs.umass.edu/kurose_ross/interactive/smtp.php">在线交互程序</a>）</p>
+<ul>
+<li>使用$TCP$运输协议进行可靠的邮件传送，端口号为$25$</li>
+<li>不使用中间邮件服务器发送邮件，而是<strong>直接在发送方服务器和接收方服务器间进行传输</strong></li>
+<li>使用持续连接</li>
+<li>要求报文（首部和信体）全部使用$ 7-bit\enspace ASCII$码</li>
+<li>$SMTP$服务器用$CRLF.CRLF $表示邮件报文的结束</li>
+</ul>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/post/Computer-Network-and-Communication-2/Chp2-SMTP%E6%B5%81%E7%A8%8B.png!blogimg" class="" width="400" title="SMTP流程">
+</li>
+<li><p>报文格式</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">From</span><span class="punctuation">: </span>alice@qq.com</span><br><span class="line"><span class="attribute">To</span><span class="punctuation">: </span>Bob@google.com</span><br><span class="line"><span class="attribute">Subject</span><span class="punctuation">: </span>Searching for the meaning of life.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>与$HTTP$协议的对比</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">$HTTP$</th>
+<th align="center">$SMTP$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">协议类型</td>
+<td align="center">拉协议</td>
+<td align="center">推协议</td>
+</tr>
+<tr>
+<td align="center">报文编码格式</td>
+<td align="center">不限制</td>
+<td align="center">$ 7-bit\enspace ASCII$</td>
+</tr>
+<tr>
+<td align="center">多对象</td>
+<td align="center">每个对象分装在各自的响应报文中</td>
+<td align="center">多个对象在多分部的报文中</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>使用$telnet$指令访问$QQ$邮箱</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">telnet smtp.qq.com 25</span><br><span class="line">auth login</span><br><span class="line">base64-mail</span><br><span class="line">base64-authentication-code</span><br><span class="line">helo qq.com</span><br><span class="line">mail from:&lt;xxx@xx.xx&gt;</span><br><span class="line">rcpt to:&lt;xxx@xx.xx&gt;</span><br><span class="line">data</span><br><span class="line">Hello World!</span><br><span class="line">Hello World!</span><br><span class="line">.</span><br><span class="line">quit</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="2-3-3-POP3-协议"><a href="#2-3-3-POP3-协议" class="headerlink" title="2.3.3 $POP3$协议"></a>2.3.3 $POP3$协议</h4><ul>
+<li><p>运行在端口$110$的邮件访问协议</p>
+</li>
+<li><p>运行方式</p>
+<ul>
+<li><p>特许阶段：用户代理发送用户名和口令以鉴别用户</p>
+<blockquote>
+<p>主要命令：user <username>和pass  <password></p>
+<p>服务器的响应回答有$+OK$、$-ERR$</p>
+</blockquote>
+</li>
+<li><p>事务处理阶段：用户代理取回报文，同时可以对报文做删除标记的更改，获取邮件统计信息</p>
+<blockquote>
+<p>$list$——列出报文号码</p>
+<p>$retr$——用报文号码取回报文</p>
+<p>$dele$——用报文号码删除邮件</p>
+</blockquote>
+</li>
+<li><p>更新阶段</p>
+<blockquote>
+<p>$quit$——结束$POP3$会话，服务器删除被标记为删除的邮件</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>使用$telnet$指令访问$QQ$邮箱</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">telnet pop.qq.com 110</span><br><span class="line">user QQ-ID</span><br><span class="line">pass authentication-code</span><br><span class="line">list</span><br><span class="line">retr 1</span><br><span class="line">dele 1</span><br><span class="line">quit</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="2-3-4-IMAP-协议"><a href="#2-3-4-IMAP-协议" class="headerlink" title="2.3.4 $IMAP$协议"></a>2.3.4 $IMAP$协议</h4><ul>
+<li><p>允许用户在服务器上组织自己的<strong>邮件目录</strong></p>
+</li>
+<li><p>维护$IMAP$会话的用户信息：目录名以及报文$ID$与目录名之间的映射关系</p>
+</li>
+<li><p>使用$telnet$指令访问$QQ$邮箱</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">telnet imap.qq.com 143</span><br><span class="line">a01 login QQ-ID authentication-code</span><br><span class="line">a02 list &quot;&quot; *</span><br><span class="line">a03 select inbox</span><br><span class="line">a04 create folder</span><br><span class="line">a05 delete folder</span><br><span class="line">a06 rename oldfolder new folder</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-4-DNS"><a href="#2-4-DNS" class="headerlink" title="2.4 $DNS$"></a>2.4 $DNS$</h3><h4 id="2-4-1-DNS-服务"><a href="#2-4-1-DNS-服务" class="headerlink" title="2.4.1 $DNS$服务"></a>2.4.1 $DNS$服务</h4><ul>
+<li>$DNS$简况（<a target="_blank" rel="noopener external nofollow noreferrer" href="https://gaia.cs.umass.edu/kurose_ross/interactive/dns.php">在线交互程序</a>）<ul>
+<li>$DNS$能够将主机名解析为主机的$IP$地址</li>
+<li>$DNS$是一个分布式数据库，由很多$DNS$服务器按照层次结构组织</li>
+<li>$DNS$运行在端到端系统上，且使用$UDP$协议（$53$号端口）进行报文传输</li>
+</ul>
+</li>
+<li>$DNS$解析过程<ul>
+<li>用户请求$URL$<code>http://cloudchewie.com/index.html</code></li>
+<li>浏览器抽取出主机名<code>cloudchewie.com</code>并发送给$DNS$客户端</li>
+<li>$DNS$客户端向$DNS$服务器发送查询请求报文</li>
+<li>$DNS$服务器返回包含主机名对应$IP$地址的响应报文</li>
+<li>$DNS$客户端将$IP$地址传送给浏览器</li>
+<li>浏览器向$IP$地址所在$Web$服务器发起$TCP$连接</li>
+</ul>
+</li>
+<li>其他服务<ul>
+<li>主机别名：获取主机别名对应的主机规范名</li>
+<li>邮件服务器别名：获取邮件服务器主机别名对应的主机规范名</li>
+<li>负载分配：将一个$IP$地址<strong>集合</strong>与<strong>同一个规范主机名</strong>相联系</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-4-2-DNS-工作机理"><a href="#2-4-2-DNS-工作机理" class="headerlink" title="2.4.2 $DNS$工作机理"></a>2.4.2 $DNS$工作机理</h4><ul>
+<li><p>采用单台$DNS$服务器</p>
+<ul>
+<li>单点故障：一旦崩溃，因特网瘫痪</li>
+<li>通信容量：该台服务器不得不处理所有$HTTP$请求报文和电子邮件报文</li>
+<li>时延严重：集中式数据库将造成严重的拥塞与时延</li>
+<li>难以维护：不得不持续更新以适应数据更改</li>
+</ul>
+</li>
+<li><p>采用分布式层次化数据库</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/post/Computer-Network-and-Communication-2/Chp2-DNS%E5%AE%9E%E7%8E%B0.png!blogimg" class="" width="400" title="DNS实现">
+
+<ul>
+<li>根服务器提供$TLD$服务器的$IP$地址</li>
+<li>$TLD$服务器提供权威服务器的$IP$地址，负责所有顶级域名和所有国家顶级域</li>
+<li>权威服务器提供域名到$IP$地址的映射服务</li>
+<li>本地$DNS$服务器（默认$DNS$服务器）<ul>
+<li>当一台主机需要做一个域名查询的时候，查询请求首先被发送到本地域名服务器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>递归查询与迭代查询（<a target="_blank" rel="noopener external nofollow noreferrer" href="https://gaia.cs.umass.edu/kurose_ross/interactive/dns_query.php">在线交互程序</a>）</p>
+</li>
+<li><p>$DNS$缓存（<a target="_blank" rel="noopener external nofollow noreferrer" href="https://gaia.cs.umass.edu/kurose_ross/interactive/DNS_HTTP_delay.php">在线交互程序</a>）</p>
+<ul>
+<li>一旦 (任何) 域名服务器得知了某个映射, 就将其缓存</li>
+<li>在一定的时间间隔后缓存的条目将会过期（自动消除）</li>
+<li>$TLD$服务器的地址通常被缓存在本地$DNS$服务器中，以减少根服务器负载</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-4-3-DNS-记录"><a href="#2-4-3-DNS-记录" class="headerlink" title="2.4.3 $DNS$记录"></a>2.4.3 $DNS$记录</h4><p>格式为四元组$(Name,Value,Type,TTL)$，其中$TTL$表示记录的生存时间</p>
+<table>
+<thead>
+<tr>
+<th align="center">$Type$</th>
+<th align="center">$Name$</th>
+<th align="center">$Value$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$A$</td>
+<td align="center">主机名</td>
+<td align="center">$IP$地址</td>
+</tr>
+<tr>
+<td align="center">$CNAME$</td>
+<td align="center">主机别名</td>
+<td align="center">规范主机名</td>
+</tr>
+<tr>
+<td align="center">$NS$</td>
+<td align="center">域</td>
+<td align="center">该域权威域名服务器的<strong>主机名</strong></td>
+</tr>
+<tr>
+<td align="center">$MX$</td>
+<td align="center">邮件服务器的主机别名</td>
+<td align="center">邮件服务器的规范主机名</td>
+</tr>
+</tbody></table>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#使用nslookup进行DNS解析</span></span><br><span class="line"><span class="comment">#进入交互模式</span></span><br><span class="line">nslookup</span><br><span class="line">server www.net.cn</span><br><span class="line">server dns.hust.edu.cn</span><br><span class="line"><span class="built_in">set</span> ty=A</span><br><span class="line">cloudchewie.com</span><br><span class="line">hust.edu.cn</span><br><span class="line"><span class="built_in">set</span> ty=ns</span><br><span class="line">cloudchewie.com</span><br><span class="line"><span class="built_in">set</span> ty=cname</span><br><span class="line">cloudchewie.com</span><br><span class="line"><span class="built_in">set</span> ty=mx</span><br><span class="line">hust.edu.com</span><br></pre></td></tr></table></figure>
+</article><script>enableGPT=true;</script><script>enableAside=true;</script><div class="post-copyright"><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/index/avatar.png!mini" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/index/avatar.png!mini" title="头像" alt="头像"></a><div class="post-copyright__author_name">余湍</div><div class="post-copyright__author_desc">我之心扉，早已蒙尘；幸有良人，辟尘生辉</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://blog.cloudchewie.com/posts/2022/11/12/notes/Computer-Network-and-Communication-2/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://blog.cloudchewie.com/posts/2022/11/12/notes/Computer-Network-and-Communication-2/')">计算机网络与通信笔记(二)</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="fas fa-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://blog.cloudchewie.com/posts/2022/11/12/notes/Computer-Network-and-Communication-2/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=计算机网络与通信笔记(二)&amp;url=https://blog.cloudchewie.com/posts/2022/11/12/notes/Computer-Network-and-Communication-2/&amp;pic=https://picbed.cloudchewie.com/blog/cover/network.png!cover" rel="external nofollow noreferrer noopener"><i class="fa-brands fa-weibo"></i></a></div><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="cloudchewieFn.copyArticleLink()"><i class="fas fa-link"></i></div></div></div></div><div class="post-tools-right"><div class="post_share"></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.cloudchewie.com" target="_blank">Cloudchewie</a>！</span></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/2022/11/12/notes/Computer-Network-and-Communication-1/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/cover/network.png!cover" onerror="onerror=null;src='https://picbed.cloudchewie.com/blog/index/404.png!cover'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">计算机网络与通信笔记(一)</div></div></a></div><div class="next-post pull-right"><a href="/posts/2022/11/12/notes/Computer-Network-and-Communication-3/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/cover/network.png!cover" onerror="onerror=null;src='https://picbed.cloudchewie.com/blog/index/404.png!cover'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机网络与通信笔记(三)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><span>阅读建议</span></div><div class="relatedPosts-list"><div class="relatedPosts-list-item"><a href="/posts/2022/11/12/notes/Computer-Network-and-Communication-1/" title="计算机网络与通信笔记(一)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/cover/network.png!cover" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-12</div><div class="title">计算机网络与通信笔记(一)</div></div></a></div><div class="relatedPosts-list-item"><a href="/posts/2022/11/12/notes/Computer-Network-and-Communication-3/" title="计算机网络与通信笔记(三)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/cover/network.png!cover" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-12</div><div class="title">计算机网络与通信笔记(三)</div></div></a></div><div class="relatedPosts-list-item"><a href="/posts/2022/11/12/notes/Computer-Network-and-Communication-4/" title="计算机网络与通信笔记(四)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/cover/network.png!cover" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-12</div><div class="title">计算机网络与通信笔记(四)</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><span> 评论</span></div><div class="comment-randomInfo"><a onclick="cloudchewieFn.addRandomCommentInfo()" href="javascript:void(0)" rel="external nofollow noreferrer">匿名评论</a></div><div class="comment-commentTerm"><a href="javascript:pjax.loadUrl(&quot;/term&quot;);" rel="external nofollow noreferrer">评论条例</a></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/index/avatar.png!mini" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/blog/index/404.png!cover'" alt="avatar"/></div><div class="author-info__name">余湍</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">归档</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">专栏</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Robert-stackflow"><i class="fab fa-github"></i><span>GitHub</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://space.bilibili.com/651449217" rel="external nofollow noreferrer" target="_blank" title="Bilibili"><i class="fab fa-bilibili"></i></a><a class="social-icon" href="mailto:2014027378@qq.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-square-rss"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%BA%94%E7%94%A8%E5%B1%82"><span class="toc-text">二、应用层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86"><span class="toc-text">2.1 应用层协议原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1"><span class="toc-text">2.1.1 进程通信</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-%E8%BF%90%E8%BE%93%E6%9C%8D%E5%8A%A1%E7%AE%80%E4%BB%8B"><span class="toc-text">2.1.2 运输服务简介</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Web-%E5%92%8C-HTTP"><span class="toc-text">2.2 $Web$和$HTTP$</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-HTTP-%E6%A6%82%E8%BF%B0"><span class="toc-text">2.2.1 $HTTP$概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-HTTP-%E6%8A%A5%E6%96%87"><span class="toc-text">2.2.2 $HTTP$报文</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-3-Cookie"><span class="toc-text">2.2.3 $Cookie$</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6"><span class="toc-text">2.3 电子邮件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%9E%84%E6%88%90"><span class="toc-text">2.3.1 电子邮件系统的构成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-SMTP-%E5%8D%8F%E8%AE%AE"><span class="toc-text">2.3.2 $SMTP$协议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-3-POP3-%E5%8D%8F%E8%AE%AE"><span class="toc-text">2.3.3 $POP3$协议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-4-IMAP-%E5%8D%8F%E8%AE%AE"><span class="toc-text">2.3.4 $IMAP$协议</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-DNS"><span class="toc-text">2.4 $DNS$</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-1-DNS-%E6%9C%8D%E5%8A%A1"><span class="toc-text">2.4.1 $DNS$服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-2-DNS-%E5%B7%A5%E4%BD%9C%E6%9C%BA%E7%90%86"><span class="toc-text">2.4.2 $DNS$工作机理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-3-DNS-%E8%AE%B0%E5%BD%95"><span class="toc-text">2.4.3 $DNS$记录</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/2024/03/07/tutorial/Anaconda/" title="Anaconda安装教程及命令"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/cover/anaconda.jpg!cover" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/blog/index/404.png!cover'" alt="Anaconda安装教程及命令"/></a><div class="content"><a class="title" href="/posts/2024/03/07/tutorial/Anaconda/" title="Anaconda安装教程及命令">Anaconda安装教程及命令</a><time datetime="2024-03-07T09:46:35.000Z" title="发表于 2024-03-07 17:46:35">2024-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2024/02/01/tutorial/Blog-Building-Guide-1/" title="博客搭建指南(一)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/gallery/xiao/xiao7.jpg!cover" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/blog/index/404.png!cover'" alt="博客搭建指南(一)"/></a><div class="content"><a class="title" href="/posts/2024/02/01/tutorial/Blog-Building-Guide-1/" title="博客搭建指南(一)">博客搭建指南(一)</a><time datetime="2024-02-01T10:32:11.000Z" title="发表于 2024-02-01 18:32:11">2024-02-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2023/11/30/documention/Pytest-Learning/" title="Pytest文档学习笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/cover/pytest.jpg!cover" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/blog/index/404.png!cover'" alt="Pytest文档学习笔记"/></a><div class="content"><a class="title" href="/posts/2023/11/30/documention/Pytest-Learning/" title="Pytest文档学习笔记">Pytest文档学习笔记</a><time datetime="2023-11-30T03:15:05.000Z" title="发表于 2023-11-30 11:15:05">2023-11-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2023/11/20/essay/Colorful-Season/" title="Colorful Season"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/gallery/umibe-no-etranger/yibang6.png!cover" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/blog/index/404.png!cover'" alt="Colorful Season"/></a><div class="content"><a class="title" href="/posts/2023/11/20/essay/Colorful-Season/" title="Colorful Season">Colorful Season</a><time datetime="2023-11-20T02:58:05.000Z" title="发表于 2023-11-20 10:58:05">2023-11-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2023/09/11/tutorial/Install-WSL2-on-Windows/" title="Windows下安装WSL 2"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/cover/wsl.jpg!cover" onerror="this.onerror=null;this.src='https://picbed.cloudchewie.com/blog/index/404.png!cover'" alt="Windows下安装WSL 2"/></a><div class="content"><a class="title" href="/posts/2023/09/11/tutorial/Install-WSL2-on-Windows/" title="Windows下安装WSL 2">Windows下安装WSL 2</a><time datetime="2023-09-11T10:09:05.000Z" title="发表于 2023-09-11 18:09:05">2023-09-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2024 By 余湍</div><div class="footer_custom_text">昼夜交替的低语，暗藏着谁人的心迹</div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站使用Hexo博客框架" title="本站使用Hexo博客框架"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/badge/Frame-Hexo.svg" alt="本站使用Hexo博客框架"/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站使用Butterfly主题" title="本站使用Butterfly主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/badge/Theme-Butterfly.svg" alt="本站使用Butterfly主题"/></a><a class="github-badge" target="_blank" href="https://github.com/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站项目由GitHub托管" title="本站项目由GitHub托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/badge/Source-GitHub.svg" alt="本站项目由GitHub托管"/></a><a class="github-badge" target="_blank" href="https://cloud.tencent.com/product/cos" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站使用腾讯云对象存储提供服务" title="本站使用腾讯云对象存储提供服务"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/badge/COS-Tencent%20Cloud.svg" alt="本站使用腾讯云对象存储提供服务"/></a><a class="github-badge" target="_blank" href="http://beian.miit.gov.cn/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站备案号为鄂ICP备2023005999号" title="本站备案号为鄂ICP备2023005999号"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/badge/ICP-鄂ICP备2023005999号.svg" alt="本站备案号为鄂ICP备2023005999号"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div></footer></div></div></div><div id="sidebar"><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/index/avatar.png!mini" onerror="onerror=null;src='https://picbed.cloudchewie.com/blog/index/404.png!cover'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">站点</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.cloudchewie.com" title="主页"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/index/favicon.png!mini" alt="主页"/><span class="back-menu-item-text">主页</span></a><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://moment.cloudchewie.com" title="时光"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/moment-transparent.png!mini" alt="时光"/><span class="back-menu-item-text">时光</span></a><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://memos.cloudchewie.com" title="Memos"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/memos.webp!mini" alt="Memos"/><span class="back-menu-item-text">Memos</span></a><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://chat.cloudchewie.com" title="云上茶室"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/chat.png!mini" alt="云上茶室"/><span class="back-menu-item-text">云上茶室</span></a><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://status.cloudchewie.com" title="站点监测"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/uptime.png!mini" alt="站点监测"/><span class="back-menu-item-text">站点监测</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">应用</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://purrli.cloudchewie.com" title="Purrli"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/cat/apple-touch-icon.png!mini" alt="Purrli"/><span class="back-menu-item-text">Purrli</span></a><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://pan.cloudchewie.com" title="Cloud云盘"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/cloud-transparent.png!mini" alt="Cloud云盘"/><span class="back-menu-item-text">Cloud云盘</span></a><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://lsky.cloudchewie.com" title="Cloud图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/lsky.ico" alt="Cloud图床"/><span class="back-menu-item-text">Cloud图床</span></a><a class="back-menu-item" href="/responsive" title="网站截图"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/index/favicon.png!mini" alt="网站截图"/><span class="back-menu-item-text">网站截图</span></a><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://apps.cloudchewie.com" title="App Center"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/blog/index/favicon.png!mini" alt="App Center"/><span class="back-menu-item-text">App Center</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">线路</div><div class="back-menu-list"><a class="back-menu-item" href="https://blog.cloudchewie.com" title="腾讯云"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/cos.svg" alt="腾讯云"/><span class="back-menu-item-text">腾讯云</span></a><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://vercel.blog.cloudchewie.com" title="Vercel"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/vercel.png!mini" alt="Vercel"/><span class="back-menu-item-text">Vercel</span></a><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://gh.blog.cloudchewie.com" title="GitHub"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/github.svg" alt="GitHub"/><span class="back-menu-item-text">GitHub</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">友链</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://bf.zzxworld.com/s/1152" title="Blog Finder"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/blogfinder.png!mini" alt="Blog Finder"/><span class="back-menu-item-text">Blog Finder</span></a><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.travellings.cn/go.html" title="开往"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.cloudchewie.com/icon/travellings.png!mini" alt="开往"/><span class="back-menu-item-text">开往</span></a></div></div></div><div class="back-menu-list-groups collapse-menu"><div class="back-menu-list-group"><div class="back-menu-list-title">导航</div><div class="back-menu-list"><a class="back-menu-item" href="javascript:cloudchewieFn.trailingBlog()" rel="external nofollow noreferrer" title="开往"><i class="fas fa-subway"></i><span class="back-menu-item-text">开往</span></a><a class="back-menu-item" href="javascript:cloudchewieFn.randomPost()" rel="external nofollow noreferrer" title="随机文章"><i class="fas fa-dice"></i><span class="back-menu-item-text">随机文章</span></a><a class="back-menu-item" href="/love/" title="挚爱"><i class="fas fa-heart"></i><span class="back-menu-item-text">挚爱</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 专栏</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 空间</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/memos/"><i class="fa-fw fas fa-rocket"></i><span> 即刻</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 画廊</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 天籁</span></a></li><li><a class="site-page child" href="/air/"><i class="fa-fw fas fa-wind"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 分享</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/bangumi/"><i class="fa-fw fab fa-bilibili"></i><span> 追番</span></a></li><li><a class="site-page child" href="/video/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/treasure/"><i class="fa-fw fas fa-gem"></i><span> 藏宝</span></a></li><li><a class="site-page child" href="/equipment/"><i class="fa-fw fas fa-laptop-code"></i><span> 装备</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 站点</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/atom.xml"><i class="fa-fw fas fa-rss"></i><span> RSS</span></a></li><li><a class="site-page child" href="/log/"><i class="fa-fw fa-fw fas fa-wrench"></i><span> 日志</span></a></li><li><a class="site-page child" href="/term/"><i class="fa-fw fa-fw fas fa-balance-scale"></i><span> 协议</span></a></li><li><a class="site-page child" href="/help/"><i class="fa-fw fa-fw fas fa-circle-question"></i><span> 指南</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-circle-info"></i><span> 关于我</span></a></li><li><a class="site-page child" href="/guestbook/"><i class="fa-fw fas fa-address-book"></i><span> 留言板</span></a></li></ul></div></div></div></div><div id="keyboard-tips"><div class="keyboardTitle">键盘快捷键</div><div class="keybordList"><div class="keybordItem"><div class="keyGroup"><div class="key">shift ？</div></div><div class="keyContent"><div class="content">查看辅助功能</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift S</div></div><div class="keyContent"><div class="content">站内搜索</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift R</div></div><div class="keyContent"><div class="content">随机访问</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift H</div></div><div class="keyContent"><div class="content">返回首页</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift C</div></div><div class="keyContent"><div class="content">打开/关闭控制台</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift P</div></div><div class="keyContent"><div class="content">播放/暂停音乐</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift D</div></div><div class="keyContent"><div class="content">深色/浅色显示模式</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift L</div></div><div class="keyContent"><div class="content">「挚爱」页面</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift E</div></div><div class="keyContent"><div class="content">「即刻」页面</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift G</div></div><div class="keyContent"><div class="content">「画廊」页面</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift T</div></div><div class="keyContent"><div class="content">「藏宝」页面</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift M</div></div><div class="keyContent"><div class="content">「天籁」页面</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift A</div></div><div class="keyContent"><div class="content">「关于」页面</div></div></div></div></div><div class="js-pjax" id="rightside"><div id="rightside-button-list"><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><a id="switch_commentBarrage" href="javascript:cloudchewieFn.switchCommentBarrage();" rel="external nofollow noreferrer" title="打开/关闭评论弹幕"><i class="cloudchewiefont cloudchewie-icon-danmu"></i></a><button id="go-down" type="button" title="直达底部"><i class="fas fa-arrow-down"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="cloudchewieFn.toggleMusic()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js type="playlist" mutex="true" preload="none" theme="var(--cloudchewie-theme)" data-lrctype="0" order="random"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:pjax.loadUrl(&quot;/&quot;);" rel="external nofollow noreferrer"><i class="fas fa-home"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();" rel="external nofollow noreferrer"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="javascript:consoleFn.showConsole();" rel="external nofollow noreferrer"><i class="fas fa-cog"></i></a><a class="rightMenu-item" href="javascript:cloudchewieFn.scrollToTop();" rel="external nofollow noreferrer"><i class="fa fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line" id="menu-general"><a class="rightMenu-item" href="javascript:window.location.href=&quot;/archives/&quot;;" rel="external nofollow noreferrer"><i class="fas fa-archive"></i><span>归档</span></a><a class="rightMenu-item" href="javascript:window.location.href=&quot;/tags/&quot;;" rel="external nofollow noreferrer"><i class="fas fa-tags"></i><span>标签</span></a><a class="rightMenu-item" href="javascript:window.location.href=&quot;/categories/&quot;;" rel="external nofollow noreferrer"><i class="fas fa-folder-open"></i><span>专栏</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-text"><a class="rightMenu-item" href="javascript:utilsFn.copySelect();" rel="external nofollow noreferrer"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" id="refer-to-comment" href="javascript:cloudchewieFn.referToComment(window.getSelection().toString());" rel="external nofollow noreferrer"><i class="fa fa-comment-medical"></i><span>引用至评论</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://google.com/search?q=&quot;+window.getSelection().toString());" rel="external nofollow noreferrer"><i class="fas fa-magnifying-glass"></i><span>Google搜索</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://www.bing.com/search?q=&quot;+window.getSelection().toString());" rel="external nofollow noreferrer"><i class="fas fa-magnifying-glass"></i><span>Bing搜索</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://www.baidu.com/s?wd=&quot;+window.getSelection().toString());" rel="external nofollow noreferrer"><i class="fas fa-magnifying-glass"></i><span>百度搜索</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-paste"><a class="rightMenu-item" href="javascript:cloudchewieFn.paste()" rel="external nofollow noreferrer"><i class="fa fa-copy"></i><span>粘贴</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-post"><a class="rightMenu-item" href="#post-comment"><i class="fas fa-comments"></i><span>转到评论</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.copyArticleLink()" rel="external nofollow noreferrer"><i class="fa fa-link"></i><span>复制本文地址</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-to"><a class="rightMenu-item" href="javascript:cloudchewieFn.openWithNewTab()" rel="external nofollow noreferrer"><i class="fa fa-window-restore"></i><span>在新标签页打开</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.copyLink()" rel="external nofollow noreferrer"><i class="fa fa-copy"></i><span>复制链接地址</span></a><a class="rightMenu-item" id="menu-too" href="javascript:cloudchewieFn.open()" rel="external nofollow noreferrer"><i class="fa fa-link"></i><span>转到链接</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-img"><a class="rightMenu-item" id="fullscreen-image" href="javascript:cloudchewieFn.fullScreenImage()" rel="external nofollow noreferrer"><i class="fa fa-arrows-alt"></i><span>全屏显示</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.downloadImage()" rel="external nofollow noreferrer"><i class="fa fa-download"></i><span>保存图片</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.openWithNewTab()" rel="external nofollow noreferrer"><i class="fa fa-window-restore"></i><span>在新标签页打开</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.copyLink()" rel="external nofollow noreferrer"><i class="fa fa-copy"></i><span>复制图片链接地址</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-other"><a class="rightMenu-item" href="javascript:cloudchewieFn.toggleReadMode();" rel="external nofollow noreferrer"><i class="fas fa-book-open"></i><span>阅读模式</span></a><a class="rightMenu-item" id="menuCommentBarrage" href="javascript:cloudchewieFn.switchCommentBarrage();" rel="external nofollow noreferrer"><i class="cloudchewiefont cloudchewie-icon-danmu"></i><span class="menu-commentBarrage-text">打开弹幕</span></a><a class="rightMenu-item" id="menuAside" href="javascript:cloudchewieFn.toggleAside();" rel="external nofollow noreferrer"><i class="fas fa-arrows-alt-h"></i><span class="menu-toggleAside-text">显示/隐藏侧栏</span></a></div><div class="rightMenu-group rightMenu-line" id="menu-global"><a class="rightMenu-item" id="menuMusic" href="javascript:cloudchewieFn.toggleMusic();" rel="external nofollow noreferrer"><i class="fas fa-play"></i><span>播放音乐</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.translate();" rel="external nofollow noreferrer"><i class="fas fa-language"></i><span class="menu-translate-text">轉為繁體</span></a><a class="rightMenu-item" href="javascript:cloudchewieFn.toggleDarkMode();" rel="external nofollow noreferrer"><i class="fas fa-adjust"></i><span class="menu-toggleDarkMode-text">深色/浅色模式</span></a><a class="rightMenu-item" href="javascript:pjax.loadUrl(&quot;/term/&quot;);" rel="external nofollow noreferrer"><i class="fa fa-info-circle"></i><span>协议声明</span></a></div></div><div id="console-page"><div class="js-pjax" id="consoleWindow"><span class="consoleTitle"><button id="consoleBackButton" onclick="$('.consoleSetting').hide();$('.consoleContentEntry').show();$('#consoleBackButton').css('visibility','hidden');"><i class="cloudchewiefont cloudchewie-icon-arrow-left"></i></button><span id="consoleTitleText">控制台</span><button id="consoleCloseButton" onclick="consoleFn.closeConsole();"><i class="cloudchewiefont cloudchewie-icon-xmark"></i></button></span><div class="consoleContent"><div id="consoleContentEntries"><button class="consoleContentEntry" onclick="$('#theme-settings').show();$('.consoleContentEntry').hide();$('#consoleBackButton').css('visibility','visible');"><i class="fas fa-layer-group"></i><span>外观</span></button><button class="consoleContentEntry" onclick="$('#background-settings').show();$('.consoleContentEntry').hide();$('#consoleBackButton').css('visibility','visible');"><i class="far fa-image"></i><span>背景</span></button><button class="consoleContentEntry" onclick="$('#aplayer-settings').show();$('.consoleContentEntry').hide();$('#consoleBackButton').css('visibility','visible');"><i class="fas fa-music"></i><span> APlayer</span></button></div><div id="consoleContentHidden"><div class="consoleSetting" id="theme-settings"><p><h2 class="content-head">主题设置</h2><div class="content" style="display:flex"><input id="con-toggleFixedNav" type="checkbox" onclick="consoleFn.toggleFixedNav()"/><div class="content-text">固定导航栏</div></div><div class="content" style="display:flex"><input id="con-toggleRightSide" type="checkbox" onclick="consoleFn.toggleRightSide()"/><div class="content-text">显示侧边按钮</div></div><div class="content" style="display:flex"><input id="con-toggleAsidePosition" type="checkbox" onclick="consoleFn.toggleAsidePosition()"/><div class="content-text">侧栏居左（关闭则居右）</div></div><div class="content" style="display:flex"><input id="con-toggleAutoTheme" type="checkbox" onclick="consoleFn.toggleAutoTheme()"/><div class="content-text">深色模式跟随系统设置</div></div><div class="content" style="display:flex"><input id="con-toggleStarBackground" type="checkbox" onclick="consoleFn.toggleStarBackground()"/><div class="content-text">繁星效果(深色模式下)</div></div><div class="content" style="display:flex"><input id="con-toggleNoise" type="checkbox" onclick="consoleFn.toggleNoise()"/><div class="content-text">噪点效果</div></div></p><p><h2 class="content-head">实验特性</h2><div class="content" style="display:flex"><input id="con-toggleAutoColor" type="checkbox" onclick="consoleFn.toggleAutoColor()"/><div class="content-text">文章页自动主题色</div></div></p></div><div class="consoleSetting" id="aplayer-settings"><p><h2 class="content-head">播放设置</h2><div class="content" style="display:flex"><input id="con-toggleAPlayer" type="checkbox" onclick="consoleFn.toggleAPlayer()"/><div class="content-text">打开APlayer</div></div></p><p><h2 class="content-head">切换歌单</h2><div class="playlist-container"><div class="playlist-item" style="background-image:url(https://picbed.cloudchewie.com/blog/other/index.png!mini)" onclick="consoleFn.changeAPlayerList(9516481572,&quot;netease&quot;,true)"><span>默认歌单</span></div><div class="playlist-item" style="background-image:url(https://picbed.cloudchewie.com/blog/other/xusong.jpg!mini)" onclick="consoleFn.changeAPlayerList(7081513713,&quot;netease&quot;,true)"><span>许嵩专辑</span></div><div class="playlist-item" style="background-image:url(https://picbed.cloudchewie.com/blog/gallery/kaedehara-kazuha/wanye1.jpeg!mini)" onclick="consoleFn.changeAPlayerList(7366289244,&quot;netease&quot;,true)"><span>噬云兽特辑</span></div></div></p><p><h2 class="content-head">自定义歌单</h2><input id="url-input" oninput="$(&quot;#url-btn&quot;).html(&quot;解析&quot;);$(&quot;#url-btn&quot;).removeClass(&quot;success&quot;);$(&quot;#url-btn&quot;).removeClass(&quot;fail&quot;);" placeholder="输入歌单链接"/><a id="url-btn" onclick="consoleFn.resolveUrl()">解析</a></p></div><div class="consoleSetting" id="background-settings"><h2 class="content-head">默认背景</h2><div class="bgbox default-bg"><div class="boxt"><a class="boxl" href="javascript:;" rel="noopener external nofollow" style="background: #f7f9fe" onclick="consoleFn.setDefaultBackground()"></a><a class="boxr" href="javascript:;" rel="noopener external nofollow" style="background: #040404" onclick="consoleFn.setDefaultBackground()"></a></div></div><h2 class="content-head pc-background">图片（PC端）</h2><div class="bgbox pc-background"><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/blog/gallery/shoto/shoto8.jpg!mini)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/blog/gallery/shoto/shoto8.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/blog/gallery/cute/cute14.png!mini)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/blog/gallery/cute/cute14.png)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/blog/gallery/danheng/danheng7.jpg!mini)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/blog/gallery/danheng/danheng7.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/blog/gallery/kaedehara-kazuha/wanye1.jpeg!mini)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/blog/gallery/kaedehara-kazuha/wanye1.jpeg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/blog/gallery/kaedehara-kazuha/wanye2.jpg!mini)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/blog/gallery/kaedehara-kazuha/wanye2.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/blog/gallery/kaedehara-kazuha/wanye3.jpg!mini)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/blog/gallery/kaedehara-kazuha/wanye3.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/blog/gallery/xiao/xiao1.jpeg!mini)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/blog/gallery/xiao/xiao1.jpeg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/blog/gallery/umibe-no-etranger/yibang1.jpg!mini)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/blog/gallery/umibe-no-etranger/yibang1.jpg)')"></a><a class="imgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/blog/gallery/umibe-no-etranger/yibang2.png!mini)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/blog/gallery/umibe-no-etranger/yibang2.png)')"></a></div><h2 class="content-head mobile-background">图片（移动端）</h2><div class="bgbox mobile-background"><a class="pimgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/blog/gallery/kaedehara-kazuha/wanye8.jpg!mini)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/blog/gallery/kaedehara-kazuha/wanye8.jpg)')"></a><a class="pimgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/blog/gallery/xiao/xiao5.jpeg!mini)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/blog/gallery/xiao/xiao5.jpeg)')"></a><a class="pimgbox" href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://picbed.cloudchewie.com/blog/gallery/xiao/xiao10.jpg!mini)" onclick="consoleFn.changeBackground('url(https://picbed.cloudchewie.com/blog/gallery/xiao/xiao10.jpg)')"></a></div><h2 class="content-head">渐变色</h2><div class="bgbox"><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #eecda3, #ef629f)" onclick="consoleFn.changeBackground('linear-gradient(to right, #eecda3, #ef629f)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #B7D31E, #42CE1E)" onclick="consoleFn.changeBackground('linear-gradient(to right, #B7D31E, #42CE1E)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #06DE86, #06A5DE)" onclick="consoleFn.changeBackground('linear-gradient(to right, #06DE86, #06A5DE)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #189BC4, #183DC4)" onclick="consoleFn.changeBackground('linear-gradient(to right, #189BC4, #183DC4)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #C018C4, #C41818)" onclick="consoleFn.changeBackground('linear-gradient(to right, #C018C4, #C41818)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #8B00BB, #030094)" onclick="consoleFn.changeBackground('linear-gradient(to right, #8B00BB, #030094)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(to right, #eecda3, #ef629f)" onclick="consoleFn.changeBackground('linear-gradient(to right, #eecda3, #ef629f)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(90deg, #ffd7e4 0%, #c8f1ff 100%)" onclick="consoleFn.changeBackground('linear-gradient(90deg, #ffd7e4 0%, #c8f1ff 100%)')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: linear-gradient(45deg, #e5737b, #c6999e, #96b9c2, #00d6e8)" onclick="consoleFn.changeBackground('linear-gradient(45deg, #e5737b, #c6999e, #96b9c2, #00d6e8)')"></a></div><h2 class="content-head">纯色</h2><div class="bgbox"><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #f7f9fe" onclick="consoleFn.changeBackground('#f7f9fe')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #18171d" onclick="consoleFn.changeBackground('#18171d')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #7D9D9C" onclick="consoleFn.changeBackground('#7D9D9C')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #49A6E9" onclick="consoleFn.changeBackground('#49A6E9')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #F7CEFF" onclick="consoleFn.changeBackground('#F7CEFF')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #FFFFCE" onclick="consoleFn.changeBackground('#FFFFCE')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #CFFFCE" onclick="consoleFn.changeBackground('#CFFFCE')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #17EFE9" onclick="consoleFn.changeBackground('#17EFE9')"></a><a class="box" href="javascript:;" rel="noopener external nofollow" style="background: #9F17EF" onclick="consoleFn.changeBackground('#9F17EF')"></a></div></div></div></div><div id="consoleShortcuts"><button class="reSettings consoleShortcut" title="恢复默认设置" id="con-reset" onclick="consoleFn.resetSettings();"><i class="fa fa-repeat"></i></button><div id="consoleShortcutsRight"><button class="consoleShortcut" title="简体/繁体" id="con-translate" onclick="cloudchewieFn.translate();"><i class="cloudchewiefont cloudchewie-icon-fanti"></i></button><theme-toggle><button class="consoleShortcut" title="浅色/深色模式" id="con-mode"><i class="fa fa-adjust"></i></button></theme-toggle><button class="consoleShortcut" title="播放/暂停音乐" id="con-music" onclick="cloudchewieFn.toggleMusic();"><i class="fas fa-play"></i></button><button class="consoleShortcut" title="阅读模式" id="con-readmode" onclick="cloudchewieFn.toggleReadMode();"><i class="fa fa-book-open"></i></button><button class="consoleShortcut" title="单栏/双栏" id="con-toggleaside" onclick="cloudchewieFn.toggleAside();"><i class="fas fa-arrows-alt-h"></i></button><button class="consoleShortcut" title="打开/关闭评论弹幕" id="con-barrage" onclick="cloudchewieFn.switchCommentBarrage()"><i class="cloudchewiefont cloudchewie-icon-danmu"></i></button><button class="consoleShortcut" title="全屏" id="con-fullscreen" onclick="consoleFn.toggleFullScreen();"><i class="fas fa-expand"></i></button><button class="consoleShortcut" title="自定义右键菜单" id="con-rightmouse" onclick="consoleFn.toggleContextMenu();"><i class="fas fa-computer-mouse"></i></button><button class="consoleShortcut" title="键盘快捷键" id="con-shortcut" onclick="consoleFn.toggleShortcut();"><i class="fas fa-keyboard"></i></button></div></div></div><div id="console-mask"></div></div><div><script src="https://cdn.cbd.int/jquery@3.6.3/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.cbd.int/hexo-theme-cloudchewie@3.2.5/source/js/third-party/qrcode.min.js"></script><script src="https://cdn.cbd.int/hexo-theme-cloudchewie@3.2.5/source/js/third-party/marked.min.js"></script><script async data-pjax src="https://cdn.cbd.int/hexo-theme-cloudchewie@3.2.5/source/js/third-party/waterfall.min.js"></script><script src="https://cdn.cbd.int/hexo-theme-cloudchewie@3.2.5/source/js/third-party/pace.min.js"></script><script src="https://cdn.cbd.int/hexo-theme-cloudchewie@3.2.5/source/js/third-party/color-thief.js"></script><script src="https://cdn.cbd.int/hexo-theme-cloudchewie@3.2.5/source/js/third-party/aplayer.min.js"></script><script src="https://cdn.cbd.int/hexo-theme-cloudchewie@3.2.5/source/js/third-party/meting.min.js"></script><script src="https://cdn.cbd.int/hexo-theme-cloudchewie@3.2.5/source/js/third-party/universe.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/@fontsource/titillium-web@5.0.18/400.css"><link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont@1.7.0/lxgwwenkaiscreen.css"><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.20/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.1.1/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.3.1/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script src="https://cdn.cbd.int/vue@3.4.21/dist/vue.global.prod.js"></script><script src="https://cdn.cbd.int/algoliasearch@4.14.2/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.46.1/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.cbd.int/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.api.cloudchewie.com/',
+      region: 'ap-shanghai',
+      onCommentLoaded: function () {
+        cloudchewieFn.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.api.cloudchewie.com/',
+      region: 'ap-shanghai',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      utilsFn.snack("评论系统过载,请稍后访问");
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    }
+    getScript('https://cdn.cbd.int/twikoo@1.6.32/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) cloudchewieFn.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script data-pjax>var pageHeaderEl = document.getElementById("page-header");
+var navMusicEl = document.getElementById("nav-music");
+var anMusicEl = document.getElementById("cloudMusic-page");
+var musicVolume = 0.8;
+
+cloudchewieFn.qrcodeCreate();
+cloudchewieFn.initAnPlayer();
+cloudchewieFn.categoriesBarActive();
+cloudchewieFn.topCategoriesBarScroll();
+cloudchewieFn.catalogActive();
+cloudchewieFn.tagsPageActive();</script><script>var visitorMail = "visitor@cloudchewie.com";
+</script><script data-pjax="true">if (document.querySelector(".comment-barrage")){
+  var commentBarrageConfig = {
+    maxBarrage: 1,
+    barrageTime: 4000,
+    twikooUrl: "https://twikoo.api.cloudchewie.com/",
+    accessToken: "",
+    mailMd5: "",
+    pageUrl: window.location.pathname,
+    barrageTimer: [],
+    barrageList: [],
+    barrageIndex: 0,
+    dom: document.querySelector(".comment-barrage"),
+  };
+  var commentInterval = null;
+  var hoverOnCommentBarrage = false;
+
+  document.querySelector(".comment-barrage").addEventListener("mouseenter", function() {
+    hoverOnCommentBarrage = true;
+  });
+  document.querySelector(".comment-barrage").addEventListener("mouseleave", function() {
+    hoverOnCommentBarrage = false;
+  });
+
+  function initCommentBarrage() {
+    if (!commentBarrageConfig.dom) return;
+
+    var data = JSON.stringify({
+      event: "COMMENT_GET",
+      "commentBarrageConfig.accessToken": commentBarrageConfig.accessToken,
+      url: commentBarrageConfig.pageUrl,
+    });
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    xhr.addEventListener("readystatechange", function () {
+      if (this.readyState === 4 && this.responseText) {
+        commentBarrageConfig.barrageList = commentLinkFilter(JSON.parse(this.responseText).data);
+        commentBarrageConfig.dom.innerHTML = "";
+      }
+    });
+    xhr.addEventListener('error',()=>{
+     utilsFn.snack("评论系统过载,请稍后访问");
+    });
+    xhr.open("POST", commentBarrageConfig.twikooUrl);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(data);
+
+    clearInterval(commentInterval);
+    commentInterval = null;
+
+    commentInterval = setInterval(() => {
+      if (commentBarrageConfig.barrageList.length && !hoverOnCommentBarrage) {
+        popCommentBarrage(commentBarrageConfig.barrageList[commentBarrageConfig.barrageIndex]);
+        commentBarrageConfig.barrageIndex += 1;
+        commentBarrageConfig.barrageIndex %= commentBarrageConfig.barrageList.length;
+      }
+      if (
+        commentBarrageConfig.barrageTimer.length >
+          (commentBarrageConfig.barrageList.length > commentBarrageConfig.maxBarrage
+            ? commentBarrageConfig.maxBarrage
+            : commentBarrageConfig.barrageList.length) &&
+        !hoverOnCommentBarrage
+      ) {
+        removeCommentBarrage(commentBarrageConfig.barrageTimer.shift());
+      }
+    }, commentBarrageConfig.barrageTime);
+  }
+
+  function commentLinkFilter(data) {
+    data.sort((a, b) => {
+      return a.created - b.created;
+    });
+    let newData = [];
+    data.forEach(item => {
+      newData.push(...getCommentReplies(item));
+    });
+    return newData;
+  }
+
+  function getCommentReplies(item) {
+    if (item.replies) {
+      let replies = [item];
+      item.replies.forEach(item => {
+        replies.push(...getCommentReplies(item));
+      });
+      return replies;
+    } else {
+      return [];
+    }
+  }
+
+  function popCommentBarrage(data) {
+    let barrage = document.createElement("div");
+    barrage.className = "comment-barrage-item";
+    barrage.innerHTML = `
+        <div class="barrageHead">
+          <a class="barrageTitle ${
+            data.mailMd5 === commentBarrageConfig.mailMd5 ? "barrageBloggerTitle" : ""
+          }" href="javascript:cloudchewieFn.scrollTo('#post-comment')"">
+            ${data.mailMd5 === commentBarrageConfig.mailMd5 ? "博主" : "热评"}
+          </a>
+          <div class="barrageNick">${data.nick}</div>
+          <img class="nolazyload barrageAvatar" src="https://cravatar.cn/avatar/${data.mailMd5}"/>
+          <a class="comment-barrage-close" href="javascript:cloudchewieFn.switchCommentBarrage()" rel="external nofollow noreferrer"><i class="cloudchewiefont cloudchewie-icon-xmark"></i></a>
+        </div>
+        <a class="barrageContent" href="#${data.id}">
+          <object>${data.comment}</object>
+        </a>
+      `;
+    commentBarrageConfig.barrageTimer.push(barrage);
+    commentBarrageConfig.dom.append(barrage);
+  }
+
+  function removeCommentBarrage(barrage) {
+    barrage.className = "comment-barrage-item out";
+
+    setTimeout(() => {
+      if (commentBarrageConfig.dom && commentBarrageConfig.dom.contains(barrage)) {
+        commentBarrageConfig.dom.removeChild(barrage);
+      }
+      }, 1000);
+    }
+
+    // 自动隐藏
+    const commentEntryCallback = (entries) => {
+      const commentBarrage = document.querySelector(".comment-barrage");
+      const postComment = document.getElementById("post-comment");
+
+      entries.forEach(entry => {
+        if (postComment && commentBarrage && document.body.clientWidth > 768) {
+          commentBarrage.style.bottom = entry.isIntersecting ? "-200px" : "0";
+        }
+      });
+    };
+    // 创建IntersectionObserver实例
+    const observer = new IntersectionObserver(commentEntryCallback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0
+    });
+    // 监视目标元素
+    const postCommentTarget = document.getElementById("post-comment");
+    if (postCommentTarget) {
+      observer.observe(postCommentTarget);
+    }
+
+    initCommentBarrage();
+
+    if (utilsFn.getLocalStorage("enableCommentBarrage") == "true") {
+      document.querySelector(".comment-barrage").style.display = "flex";
+      document.querySelector(".menu-commentBarrage-text").textContent = "关闭弹幕";
+    } else {
+      document.querySelector(".comment-barrage").style.display = "none";
+      document.querySelector(".menu-commentBarrage-text").textContent = "打开弹幕";
+    }
+
+    document.addEventListener("pjax:send", function () {
+      clearInterval(commentInterval);
+    });
+
+    //- window.addEventListener("scroll", ()=>{
+    //-         if (
+    //-   cloudchewieFn.isInViewPortOfOne(document.getElementById("post-comment"))
+    //- ) {
+    //-   $("#con-barrage")!=null&&$("#con-barrage").hide();
+    //-   $("#switch_commentBarrage")!=null&&$("#switch_commentBarrage").hide();
+    //-   $("#menuCommentBarrage")!=null&&$("#menuCommentBarrage").hide();
+    //- } else {
+    //-   $("#con-barrage")!=null&&$("#con-barrage").show();
+    //-   $("#switch_commentBarrage")!=null&&$("#switch_commentBarrage").show();
+    //-   $("#menuCommentBarrage")!=null&&$("#menuCommentBarrage").show();
+    //- }
+    //- });
+
+  }</script><link rel="stylesheet" href="https://cdn.cbd.int/hexo-theme-cloudchewie@3.2.5/source/icon/iconfont.css"><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll
+  window.resolveTocScrollFunction && window.removeEventListener('scroll', window.resolveTocScrollFunction)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFunction()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
