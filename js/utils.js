@@ -148,6 +148,10 @@ body:before {
 }`;
 
 var trailingUrl = "https://www.travellings.cn/go.html";
+var pageHeaderEl = document.getElementById("page-header");
+var navMusicEl = document.getElementById("nav-music");
+var cloudMusicEl = document.getElementById("cloudMusic-page");
+var musicVolume = 0.8;
 
 /**
  * =================================================
@@ -2723,7 +2727,7 @@ const cloudchewieFn = {
   /**
    * 天籁界面播放器初始化
    */
-  initAnPlayer: function () {
+  initCloudPlayer: function () {
     if (!utilsFn.isMusic()) {
       return;
     }

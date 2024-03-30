@@ -139,6 +139,12 @@ document.addEventListener("DOMContentLoaded", function () {
     cloudchewieFn.enhanceTwikoo();
     cloudchewieFn.bindRightSideBtn();
     cloudchewieFn.browsingProgress();
+    cloudchewieFn.qrcodeCreate();
+    cloudchewieFn.initCloudPlayer();
+    cloudchewieFn.categoriesBarActive();
+    cloudchewieFn.topCategoriesBarScroll();
+    cloudchewieFn.catalogActive();
+    cloudchewieFn.tagsPageActive();
 
     window.scrollCollect && window.scrollCollect();
     window.addEventListener("scroll", window.scrollCollect);
