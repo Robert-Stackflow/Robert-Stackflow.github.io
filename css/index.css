@@ -9050,7 +9050,7 @@ ul.menus_item_child {
   z-index: 2;
 }
 #web_box.open #menu-mask {
-  display: block !important;
+  display: none !important;
 }
 #web_box.open #post-top-cover {
   display: none;
