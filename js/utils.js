@@ -2584,7 +2584,7 @@ const cloudchewieFn = {
         document.querySelector("#con-music i").classList = "fas fa-pause";
         cloudchewie_musicPlaying = true;
       }
-      if (changePlay) cloudMusicEl.querySelector("meting-js").aplayer.toggle();
+      if (changePlay) cloudMusicEl&&cloudMusicEl.querySelector("meting-js").aplayer.toggle();
     }
   },
   /**
@@ -5021,7 +5021,7 @@ const memosFn = {
       dateString = item.date.split(" ")[0].replaceAll("/", "-");
       dateList = dateString.split("-");
       if (dateList.length == 3)
-        dateString = dateList[0] + "/" + dateList[1] + "/" + dateList[1];
+        dateString = dateList[0] + "/" + dateList[1] + "/" + dateList[2];
       if (item.hash == "") {
         html += String.raw`
         <div class="talk_item">
