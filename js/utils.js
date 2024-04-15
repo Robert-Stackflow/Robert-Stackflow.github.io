@@ -2584,7 +2584,9 @@ const cloudchewieFn = {
         document.querySelector("#con-music i").classList = "fas fa-pause";
         cloudchewie_musicPlaying = true;
       }
-      if (changePlay) cloudMusicEl&&cloudMusicEl.querySelector("meting-js").aplayer.toggle();
+      if (changePlay)
+        cloudMusicEl &&
+          cloudMusicEl.querySelector("meting-js").aplayer.toggle();
     }
   },
   /**
@@ -2739,7 +2741,9 @@ const cloudchewieFn = {
       userId = json.id;
       userServer = json.server;
     }
-    const cloudMusicPageMeting = document.getElementById("cloudMusic-page-meting");
+    const cloudMusicPageMeting = document.getElementById(
+      "cloudMusic-page-meting"
+    );
     if (urlParams.get("id") && urlParams.get("server")) {
       const id = urlParams.get("id");
       const server = urlParams.get("server");
@@ -2849,7 +2853,10 @@ const cloudchewieFn = {
       }
     } else {
       const cloudMusicPage = document.getElementById("cloudMusic-page");
-      if (cloudMusicPage == null || cloudMusicPage.querySelector("meting-js") == null)
+      if (
+        cloudMusicPage == null ||
+        cloudMusicPage.querySelector("meting-js") == null
+      )
         return;
       const metingAplayer = cloudMusicPage.querySelector("meting-js").aplayer;
       if (!metingAplayer) {
@@ -4846,8 +4853,11 @@ const memosFn = {
       }
     });
   },
-  getUser: (uid) => {
+  getUser: (uid, split = false) => {
     var find = {};
+    if (split) {
+      uid = uid.split("/")[1];
+    }
     MEMOS_QUERY.userlist.forEach((user) => {
       if (user.id == uid) find = user;
     });
@@ -4892,7 +4902,7 @@ const memosFn = {
           current_user.nickname,
           current_user.username
         );
-        memosFn.fetchUserMemos(current_user.name);
+        memosFn.fetchUserMemos(`users/${current_user.id}`);
         break;
     }
   },
@@ -4965,19 +4975,19 @@ const memosFn = {
               (new Date().getTime() - resCreateTs) / (24 * 3600 * 1000)
             );
             if (dayDiff < 365) {
-              let current_user = memosFn.getUser(resValue.creatorId);
+              let current_user = memosFn.getUser(resValue.creator,true);
               item = {
-                id: resValue.id,
+                id: resValue.uid,
                 avatar: utilsFn.isNotEmpty(current_user.avatarUrl)
                   ? current_user.avatarUrl
                   : RANDOM_MEMO_SETTINGS.default_memos_avatar,
                 createTs: resCreateTs,
-                creatorId: resValue.creatorId,
+                creatorId: current_user.id,
                 creatorNickname: current_user.nickname,
-                creatorUsername: resValue.creator,
+                creatorUsername: current_user.name,
                 content: resValue.content,
                 resourceList: resValue.resources,
-                hash: resValue.name,
+                hash: resValue.uid,
                 reactions: reactions,
                 pinned: resValue.pinned,
               };
