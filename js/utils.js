@@ -2259,7 +2259,7 @@ const cloudchewieFn = {
    */
   randomPost: () => {
     let e = saveToLocal.get("postLinks");
-    if (e)
+    if (e) {
       for (;;) {
         let t = e[Math.floor(Math.random() * e.length)];
         if (
@@ -2270,24 +2270,26 @@ const cloudchewieFn = {
         )
           return void pjax.loadUrl(t);
       }
-    fetch("/sitemap.xml")
-      .then((e) => e.text())
-      .then((e) => new window.DOMParser().parseFromString(e, "text/xml"))
-      .then((e) => {
-        let t = e.querySelectorAll("url loc"),
-          n = [];
-        t.forEach((e) => {
-          let t = e.innerHTML.split("/");
-          let url = "/";
-          for (var i = 3; i < t.length; i++) {
-            if (i == t.length - 1) url += t[i];
-            else url += t[i] + "/";
-          }
-          n.push(url);
-        }),
-          saveToLocal.set("postLinks", n, 0.02),
-          cloudchewieFn.randomPost();
-      });
+    } else {
+      fetch("/sitemap.xml")
+        .then((e) => e.text())
+        .then((e) => new window.DOMParser().parseFromString(e, "text/xml"))
+        .then((e) => {
+          let t = e.querySelectorAll("url loc"),
+            n = [];
+          t.forEach((e) => {
+            let t = e.innerHTML.split("/");
+            let url = "/";
+            for (var i = 3; i < t.length; i++) {
+              if (i == t.length - 1) url += t[i];
+              else url += t[i] + "/";
+            }
+            n.push(url);
+          }),
+            saveToLocal.set("postLinks", n, 0.02),
+            cloudchewieFn.randomPost();
+        });
+    }
   },
   /**
    * 跳转到开往
@@ -4040,10 +4042,10 @@ const consoleFn = {
       $("#con-mode,.rightMenu-item:has(.fa-adjust)").hide();
       var time = new Date();
       if (time.getHours() <= 7 || time.getHours() >= 19) {
-        consoleFn.activateDarkMode();
+        activateDarkMode();
         utilsFn.removeLocalStorage("theme");
       } else {
-        consoleFn.activateLightMode();
+        activateLightMode();
         utilsFn.removeLocalStorage("theme");
       }
     }
@@ -4975,7 +4977,7 @@ const memosFn = {
               (new Date().getTime() - resCreateTs) / (24 * 3600 * 1000)
             );
             if (dayDiff < 365) {
-              let current_user = memosFn.getUser(resValue.creator,true);
+              let current_user = memosFn.getUser(resValue.creator, true);
               item = {
                 id: resValue.uid,
                 avatar: utilsFn.isNotEmpty(current_user.avatarUrl)
