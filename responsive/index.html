@@ -11,6 +11,7 @@
       name="description"
       content="网站缩略图在线生成工具，是一个强大实用的免费多端多设备网站缩略图在线生成服务站，它能在几秒钟内，透过您所输入的网址，在线生成该网站或网页的多设备端缩图。"
     />
+    <link rel="shortcut icon" href="https://picbed.cloudchewie.com/icon/blog-transparent.png!mini" type="image/x-icon">
     <style>
       @charset "UTF-8";
       @import url("https://npm.elemecdn.com/lxgw-wenkai-screen-webfont@1.7.0/lxgwwenkaiscreen.css");
@@ -177,13 +178,14 @@
         transform-origin: top left;
       }
     </style>
+    <script src="https://cdn.staticfile.org/alpinejs/3.9.6/cdn.min.js" defer=""></script>
   </head>
-  <body
-    x-data="{style:'',url:'',murl:'',mobile:'/',desktop:'/'}"
-  >
+  <body x-data="{style:'',url:'',murl:'',mobile:'/',desktop:'/'}">
     <div class="title">
       <h1>响应式布局截图工具</h1>
-      <caption>F12捕获.wrapper节点屏幕截图</caption>
+      <caption>
+        F12捕获.wrapper节点屏幕截图
+      </caption>
     </div>
     <div class="main">
       <div class="submit-form">
@@ -265,10 +267,6 @@
           </div>
         </section>
       </div>
-      <script
-        src="https://cdn.staticfile.org/alpinejs/3.9.6/cdn.min.js"
-        defer=""
-      />
     </div>
   </body>
 </html>
