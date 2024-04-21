@@ -3537,13 +3537,13 @@ body:has(#console.show) #nav-music {
 }
 #cloudMusic-page meting-js .aplayer .aplayer-body .aplayer-info .aplayer-lrc p {
   font-size: 20px;
-  line-height: 20px !important;
-  height: 20px !important;
+  line-height: 16px !important;
+  height: 16px !important;
   margin: 20px 0 !important;
   color: #fff;
 }
 #cloudMusic-page meting-js .aplayer .aplayer-body .aplayer-info .aplayer-lrc p.aplayer-lrc-current {
-  min-height: 20px;
+  min-height: 16px;
 }
 #cloudMusic-page meting-js .aplayer .aplayer-body .aplayer-info .aplayer-lrc::after,
 #cloudMusic-page meting-js .aplayer .aplayer-body .aplayer-info .aplayer-lrc::before {
@@ -3757,7 +3757,7 @@ body:has(#console.show) #nav-music {
     mask-image: linear-gradient(to bottom, #000, #000, #000, #000, rgba(0,0,0,0), rgba(0,0,0,0));
   }
   #cloudMusic-page meting-js .aplayer .aplayer-body .aplayer-info .aplayer-lrc p.aplayer-lrc-current {
-    color: var(--cloudchewie-theme);
+    color: var(--cloudchewie-white);
   }
   #cloudMusic-page meting-js .aplayer .aplayer-body .aplayer-info .aplayer-controller {
     width: 100%;
@@ -12955,7 +12955,7 @@ p.p.gray {
 }
 
 .author-content-item.beloved::after {
-  box-shadow: 0 -69px 203px 11px #eaa398 inset;
+  box-shadow: 0 -9px 203px 11px #eaa398 inset;
   position: absolute;
   content: '';
   width: 100%;
@@ -12965,7 +12965,7 @@ p.p.gray {
 }
 
 .author-content-item.like-music::after {
-  box-shadow: 0 -69px 203px 11px #746c61 inset;
+  box-shadow: 0 -9px 203px 11px #746c61 inset;
   position: absolute;
   content: '';
   width: 100%;
@@ -12975,7 +12975,7 @@ p.p.gray {
 }
 
 .author-content-item.game-yuanshen::after {
-  box-shadow: 0 -69px 203px 11px #515985 inset;
+  box-shadow: 0 -9px 203px 11px #515985 inset;
   position: absolute;
   content: '';
   width: 100%;
@@ -19227,7 +19227,6 @@ body:has(#cloudMusic-page) .aplayer .aplayer-info .aplayer-music {
   body:has(#cloudMusic-page) #page {
     z-index: auto;
   }
-  /* 歌曲列表 */
   #cloudMusic-page .aplayer-list {
     position: fixed;
     z-index: 1002;
@@ -19310,10 +19309,6 @@ body:has(#cloudMusic-page) .aplayer .aplayer-info .aplayer-music {
       #0000
     );
   }
-  #cloudMusic-page .aplayer-info .aplayer-lrc p.aplayer-lrc-current {
-    color: var(--cloudchewie-theme);
-  }
-  /* 控制按键和进度条 */
   #cloudMusic-page .aplayer-info .aplayer-controller {
     width: 100%;
     bottom: 100px;

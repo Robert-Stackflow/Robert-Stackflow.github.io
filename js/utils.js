@@ -2749,9 +2749,9 @@ const cloudchewieFn = {
     if (urlParams.get("id") && urlParams.get("server")) {
       const id = urlParams.get("id");
       const server = urlParams.get("server");
-      cloudMusicPageMeting.innerHTML = `<meting-js id="${id}" server=${server} type="playlist" type="playlist" mutex="true" preload="auto" theme="var(--cloudchewie-theme)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
+      cloudMusicPageMeting.innerHTML = `<meting-js id="${id}" server=${server} type="playlist" type="playlist" mutex="true" preload="auto" theme="var(--cloudchewie-theme)" order="list" lrc-margin="20" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
     } else {
-      cloudMusicPageMeting.innerHTML = `<meting-js id="${userId}" server="${userServer}" type="playlist" mutex="true" preload="auto" theme="var(--cloudchewie-theme)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
+      cloudMusicPageMeting.innerHTML = `<meting-js id="${userId}" server="${userServer}" type="playlist" mutex="true" preload="auto" theme="var(--cloudchewie-theme)" order="list" lrc-margin="20" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
     }
     cloudchewieFn.changeMusicBg(false);
   },
