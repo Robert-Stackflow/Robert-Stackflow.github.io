@@ -6715,11 +6715,11 @@ maxWidth1400()
   -o-animation-duration: 0.3s;
   -ms-animation-duration: 0.3s;
   animation-duration: 0.3s;
-  -webkit-animation-name: loadingAction;
-  -moz-animation-name: loadingAction;
-  -o-animation-name: loadingAction;
-  -ms-animation-name: loadingAction;
-  animation-name: loadingAction;
+  -webkit-animation-name: loadingActionTemp;
+  -moz-animation-name: loadingActionTemp;
+  -o-animation-name: loadingActionTemp;
+  -ms-animation-name: loadingActionTemp;
+  animation-name: loadingActionTemp;
   -webkit-animation-iteration-count: infinite;
   -moz-animation-iteration-count: infinite;
   -o-animation-iteration-count: infinite;
@@ -17363,6 +17363,7 @@ AI摘要样式
   min-width: 40px;
   height: 40px;
   background-size: cover;
+  border-radius: 8px;
 }
 
 #article-container .tag-Link .tag-link-bottom .tag-link-right {

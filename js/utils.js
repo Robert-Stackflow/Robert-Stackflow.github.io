@@ -2258,6 +2258,9 @@ const cloudchewieFn = {
    * 跳转到随机文章
    */
   randomPost: () => {
+    pjax.loadUrl(posts[Math.floor(Math.random() * posts.length)]);
+  },
+  randomPostDeprecated: () => {
     let e = saveToLocal.get("postLinks");
     if (e) {
       for (;;) {
