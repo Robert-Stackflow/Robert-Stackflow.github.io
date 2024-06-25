@@ -4795,7 +4795,7 @@ const memosFn = {
     for (var i = 0; i < MEMOS_QUERY.query.length; i++) {
       var e = MEMOS_QUERY.query[i];
       if (e.type == type && e.content == content) {
-        index = e;
+        index = i;
       }
     }
     if (index != -1) {

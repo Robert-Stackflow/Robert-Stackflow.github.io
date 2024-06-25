@@ -12987,13 +12987,44 @@ p.p.gray {
 .hello-about {
   margin: 20px auto;
   border-radius: 24px;
-  /* background: var(--card-bg); */
   border: var(--card-border);
   box-shadow: var(--card-box-shadow);
   position: relative;
   overflow: hidden;
   user-select: none;
-  display: none;
+}
+
+.hello-about .content {
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 315px;
+  width: 100%;
+  /* background: var(--card-bg); */
+  mix-blend-mode: screen;
+}
+.hello-about h1 {
+  font-size: 200px;
+  color: var(--cloudchewie-font-color);
+  margin: 0;
+  text-align: center;
+  font: inherit;
+  vertical-align: baseline;
+  line-height: 1;
+  font-size: calc((0.0989119683 * 100vw + (58.5558852621px)));
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 419px) {
+  .hello-about h1 {
+    font-size: calc((0.0989119683 * 100vw + (58.5558852621px)));
+  }
 }
 
 .shapes {
@@ -13030,42 +13061,6 @@ p.p.gray {
   width: 270px;
   height: 270px;
   margin: -135px 0 0 -135px;
-}
-
-.hello-about .content {
-  top: 0;
-  left: 0;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 315px;
-  width: 100%;
-  /* background: #fff; */
-  mix-blend-mode: screen;
-}
-/* [data-theme="dark"] .hello-about .content {
-  background: transparent;
-} */
-.hello-about h1 {
-  font-size: 200px;
-  color: var(--cloudchewie-font-color);
-  margin: 0;
-  text-align: center;
-  font: inherit;
-  vertical-align: baseline;
-  line-height: 1;
-  font-size: calc((0.0989119683 * 100vw + (58.5558852621px)));
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-@media (min-width: 419px) {
-  .hello-about h1 {
-    font-size: calc((0.0989119683 * 100vw + (58.5558852621px)));
-  }
 }
 
 .cursor {
