@@ -58,6 +58,13 @@ document.addEventListener("DOMContentLoaded", function () {
         utilsFn.isMemos() && waterfall("#talk");
       }, 300));
 
+    utilsFn.isRecentComments() &&
+      waterfall != undefined &&
+      (waterfall("#comments-list"),
+      setTimeout(() => {
+        utilsFn.isRecentComments() && waterfall("#comments-list");
+      }, 300));
+
     window.addEventListener("resize", () => {
       adjustMenu(false);
       cloudchewieFn.isHidden(document.getElementById("toggle-menu")) &&
@@ -67,6 +74,12 @@ document.addEventListener("DOMContentLoaded", function () {
         (waterfall("#talk"),
         setTimeout(() => {
           utilsFn.isMemos() && waterfall("#talk");
+        }, 300));
+      utilsFn.isRecentComments() &&
+        waterfall != undefined &&
+        (waterfall("#comments-list"),
+        setTimeout(() => {
+          utilsFn.isRecentComments() && waterfall("#comments-list");
         }, 300));
     });
   };
@@ -156,18 +169,41 @@ document.addEventListener("DOMContentLoaded", function () {
     MEMOS_DOM.$randomuser_memos = document.getElementById("randomuser-memos");
     MEMOS_DOM.$userlist_memos = document.getElementById("userlist-memos");
     MEMOS_DOM.$memos_bar_avatar = document.getElementById("memos-bar-avatar");
-    MEMOS_DOM.$memos_bar_avatar_link = document.getElementById("memos-bar-avatar-link");
+    MEMOS_DOM.$memos_bar_avatar_link = document.getElementById(
+      "memos-bar-avatar-link"
+    );
     MEMOS_DOM.$memos_bar_name = document.getElementById("memos-bar-name");
     MEMOS_DOM.$memos_userlist = document.getElementById("memos-userlist");
     MEMOS_DOM.$memos_query = document.getElementById("memos-query");
     MEMOS_DOM.$memos_button_list = document.getElementById("memos-button-list");
-    MEMOS_DOM.$total_memos&&MEMOS_DOM.$total_memos.addEventListener("click",memosFn.onTotalMemosClicked);
-    MEMOS_DOM.$mine_memos&&MEMOS_DOM.$mine_memos.addEventListener("click",memosFn.onMineMemosClicked);
-    MEMOS_DOM.$randomuser_memos&&MEMOS_DOM.$randomuser_memos.addEventListener("click",memosFn.onRandomUserMemosClicked);
-    MEMOS_DOM.$userlist_memos&&MEMOS_DOM.$userlist_memos.addEventListener("click",memosFn.onUserListMemosClicked);
-    MEMOS_DOM.$search_memos&&MEMOS_DOM.$search_memos.addEventListener("click",memosFn.onSearchMemosClicked);
+    MEMOS_DOM.$total_memos &&
+      MEMOS_DOM.$total_memos.addEventListener(
+        "click",
+        memosFn.onTotalMemosClicked
+      );
+    MEMOS_DOM.$mine_memos &&
+      MEMOS_DOM.$mine_memos.addEventListener(
+        "click",
+        memosFn.onMineMemosClicked
+      );
+    MEMOS_DOM.$randomuser_memos &&
+      MEMOS_DOM.$randomuser_memos.addEventListener(
+        "click",
+        memosFn.onRandomUserMemosClicked
+      );
+    MEMOS_DOM.$userlist_memos &&
+      MEMOS_DOM.$userlist_memos.addEventListener(
+        "click",
+        memosFn.onUserListMemosClicked
+      );
+    MEMOS_DOM.$search_memos &&
+      MEMOS_DOM.$search_memos.addEventListener(
+        "click",
+        memosFn.onSearchMemosClicked
+      );
     utilsFn.isMemos() && memosFn.fetchMemos();
-
+    utilsFn.isRecentComments() && fetchNewestComments();
+    
     GLOBAL_CONFIG.isPhotoFigcaption && cloudchewieFn.addPhotoFigcaption();
     document.getElementById("post-comment") && cloudchewieFn.enlargeEmoji();
 
@@ -191,8 +227,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .addEventListener("click", mobileSidebarFn.close);
 
     window.onkeydown = (e) => {
-      123 === e.keyCode &&
-        utilsFn.snack("开发者模式已打开，请遵循GPL协议");
+      123 === e.keyCode && utilsFn.snack("开发者模式已打开，请遵循GPL协议");
     };
 
     if (utilsFn.isHome()) {

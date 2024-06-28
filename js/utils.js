@@ -152,7 +152,6 @@ var pageHeaderEl = document.getElementById("page-header");
 var navMusicEl = document.getElementById("nav-music");
 var cloudMusicEl = document.getElementById("cloudMusic-page");
 var musicVolume = 0.8;
-
 /**
  * =================================================
  *
@@ -245,6 +244,12 @@ const utilsFn = {
    */
   isMemos: function () {
     return window.location.pathname == "/memos/";
+  },
+  /**
+   * 是否为最新评论页
+   */
+  isRecentComments: function () {
+    return window.location.pathname == "/recentcomments/";
   },
   /**
    * 是否为帖子页
@@ -2258,7 +2263,7 @@ const cloudchewieFn = {
    * 跳转到随机文章
    */
   randomPost: () => {
-    pjax.loadUrl(posts[Math.floor(Math.random() * posts.length)]);
+    pjax.loadUrl(posts[Math.floor(Math.random() * posts.length)].url);
   },
   randomPostDeprecated: () => {
     let e = saveToLocal.get("postLinks");
@@ -4629,6 +4634,96 @@ document.startViewTransition();
 /**
  * =================================================
  *
+ * 最新评论
+ *
+ * =================================================
+ */
+async function fetchNewestComments() {
+  fetch("https://twikoo.api.cloudchewie.com/", {
+    method: "POST",
+    body: JSON.stringify({
+      event: "GET_RECENT_COMMENTS",
+      accessToken: "ac9a92b959dc9fc6dda6974ced6759fc",
+      includeReply: !1,
+      pageSize: 100,
+    }),
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((res) => res.json())
+    .then(async ({ data }) => {
+      try {
+        renderNewestComments(data);
+      } catch (error) {
+        renderNewestComments(data);
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+function getTitle(url) {
+  let a = posts.find((a) => a.url == url);
+  if (a) return a.title;
+  return "该文章/页面不存在";
+}
+function renderNewestComments(data) {
+  function a(e) {
+    if (!e) return "";
+    return (e = (e = (e = (e = (e = e.replace(
+      /<\/*br>|[\s\uFEFF\xA0]+/g,
+      ""
+    )).replace(/<img.*?>/g, "[图片]")).replace(
+      /<a.*?>.*?<\/a>/g,
+      "[链接]"
+    )).replace(/<pre.*?>.*?<\/pre>/g, "[代码块]")).replace(/<.*?>/g, ""));
+  }
+  let html = "";
+  data.forEach((item) => {
+    var isBlogger = item.mailMd5 == "d64992490a4d916305acbbc7ff7eb59f";
+    var title = item.commentText
+      .replaceAll(/<.*?>/g, "")
+      .replaceAll(/[\s\n]/g, "");
+    var url = `${item.url}#${item.id}`;
+    var bloggerHtml = isBlogger
+      ? '<span class="comment_isBlogger">博主</span>'
+      : "";
+    var time = new Date(item.created).toLocaleString().split(" ")[0];
+    var content = a(item.comment)
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;");
+    html += `<div class="comment_item" title="${title}" onclick="pjax.loadUrl('${url}')">
+          <div class="comment_meta">
+                <img src="${
+                  item.avatar
+                }" class="no-lazyload no-fancybox comment_avatar" />
+                <span class="comment_user">${item.nick}${bloggerHtml}</span>
+              <span class="comment_time">${time}</span>
+          </div>
+          <div class="comment_spacer"></div>
+          <div class="comment_content">${content}</div>
+          <div class="comment_title">${getTitle(item.url)}</div>
+      </div>`;
+  });
+  document.getElementById("comments-list").innerHTML = html;
+  var times = 0;
+  utilsFn.isRecentComments() &&
+    (waterfall("#comments-list"),
+    setTimeout(() => {
+      waterfall("#comments-list");
+    }, 300));
+  var relayout = setInterval(function () {
+    utilsFn.isRecentComments() &&
+      (waterfall("#comments-list"),
+      setTimeout(() => {
+        waterfall("#comments-list");
+      }, 300));
+    times++;
+    if (times > 5) clearInterval(relayout);
+  }, 300);
+}
+/**
+ * =================================================
+ *
  * Memos
  *
  * =================================================
@@ -5070,6 +5165,11 @@ const memosFn = {
     });
     $("#talk").html(html);
     var times = 0;
+    utilsFn.isMemos() &&
+      (waterfall("#talk"),
+      setTimeout(() => {
+        waterfall("#talk");
+      }, 300));
     var relayout = setInterval(function () {
       utilsFn.isMemos() &&
         (waterfall("#talk"),
