@@ -51,6 +51,8 @@ document.addEventListener("DOMContentLoaded", function () {
     GLOBAL_CONFIG.navMusic && cloudchewieFn.listenNavMusicPause();
     GLOBAL_CONFIG.copyright !== undefined && cloudchewieFn.addCopyright();
 
+    cloudchewieFn.initFPS();
+
     utilsFn.isMemos() &&
       waterfall != undefined &&
       (waterfall("#talk"),

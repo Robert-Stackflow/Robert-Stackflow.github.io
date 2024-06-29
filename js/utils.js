@@ -538,6 +538,58 @@ const cloudchewieFn = {
   keyUpEvent_timeoutId: null,
   keyUpShiftDelayEvent_timeoutId: null,
   /**
+   * 显示帧率
+   */
+  initFPS: () => {
+    var rAF = (function () {
+      return (
+        window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        function (callback) {
+          window.setTimeout(callback, 1000 / 60);
+        }
+      );
+    })();
+
+    var frame = 0;
+    var allFrameCount = 0;
+    var lastTime = Date.now();
+    var lastFameTime = Date.now();
+
+    var loop = function () {
+      var now = Date.now();
+      var fs = now - lastFameTime;
+      var fps = Math.round(1000 / fs);
+
+      lastFameTime = now;
+      allFrameCount++;
+      frame++;
+
+      if (now > 1000 + lastTime) {
+        var fps = Math.round((frame * 1000) / (now - lastTime));
+        if (fps <= 6) {
+          var kd = `<span style="color:#bd0000">卡成ppt</span>`;
+        } else if (fps <= 10) {
+          var kd = `<span style="color:red">电竞级帧率</span>`;
+        } else if (fps <= 14) {
+          var kd = `<span style="color:#FAFAD2">难受</span>`;
+        } else if (fps < 24) {
+          var kd = `<span style="color:orange">卡</span>`;
+        } else if (fps <= 40) {
+          var kd = `<span style="color:green">有点卡</span>`;
+        } else {
+          var kd = `<span style="color:#425aef">正常</span>`;
+        }
+        document.getElementById("fps").innerHTML = `FPS:${fps} ${kd}`;
+        frame = 0;
+        lastTime = now;
+      }
+      rAF(loop);
+    };
+
+    loop();
+  },
+  /**
    * 引用至评论
    */
   referToComment: (selectedText) => {
@@ -3199,8 +3251,16 @@ const cloudchewieFn = {
     if (!enableGPT) return;
     cloudchewieFn.insertAIDiv(cloudGPT_postSelector);
     const content = cloudchewieFn.getTitleAndContent();
-    cloudchewieFn.fetchcloudGPT(content).then((summary) => {
-      cloudchewieFn.aiShowAnimation(summary);
+    cloudchewieFn.fetchcloudGPT(content).then((res) => {
+      var metaDescription = document.querySelector('meta[name="description"]');
+      var summary = "";
+      if (metaDescription) {
+        summary = `文章简介：${metaDescription.getAttribute(
+          "content"
+        )}<br/>文章摘要：`;
+      }
+      summary += res;
+      cloudchewieFn.aiShowAnimation(res);
     });
   },
   /**
@@ -4068,6 +4128,17 @@ const consoleFn = {
       $("#universe").hide();
       document.getElementById("con-toggleStarBackground").checked = false;
     }
+    //加载是否显示帧率
+    if (utilsFn.getLocalStorage("enableFPS") == undefined) {
+      utilsFn.setLocalStorage("enableFPS", "true");
+    }
+    if (utilsFn.getLocalStorage("enableFPS") == "true") {
+      document.getElementById("con-toggleFPS").checked = true;
+      document.getElementById("fps").style.display = "block";
+    } else {
+      document.getElementById("con-toggleFPS").checked = false;
+      document.getElementById("fps").style.display = "none";
+    }
     //加载噪点效果
     if (utilsFn.getLocalStorage("enableNoise") == undefined) {
       utilsFn.setLocalStorage("enableNoise", "false");
@@ -4160,6 +4231,7 @@ const consoleFn = {
     utilsFn.removeLocalStorage("enableContextMenu");
     utilsFn.removeLocalStorage("enableAPlayer");
     utilsFn.removeLocalStorage("enableNoise");
+    utilsFn.removeLocalStorage("enableFPS");
     window.location.reload();
   },
   /**
@@ -4408,6 +4480,15 @@ const consoleFn = {
     consoleFn.changeAutoColor(false);
   },
   /**
+   * 是否显示帧率
+   */
+  toggleFPS: () => {
+    if (utilsFn.getLocalStorage("enableFPS") == "true")
+      utilsFn.setLocalStorage("enableFPS", "false");
+    else utilsFn.setLocalStorage("enableFPS", "true");
+    consoleFn.changeFPS(false);
+  },
+  /**
    * 是否打开右键菜单
    */
   toggleContextMenu: () => {
@@ -4501,6 +4582,13 @@ const consoleFn = {
     }),
       o.open("get", t, !0),
       o.send(null);
+  },
+  changeFPS: () => {
+    if (utilsFn.getLocalStorage("enableFPS") == "true") {
+      document.getElementById("fps").style.display = "block";
+    } else {
+      document.getElementById("fps").style.display = "none";
+    }
   },
   changeAutoColor: async (first) => {
     if (
