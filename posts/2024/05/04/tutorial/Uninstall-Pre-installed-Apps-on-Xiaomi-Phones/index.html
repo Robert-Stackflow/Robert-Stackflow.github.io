@@ -205,7 +205,6 @@ if (true) {
         <i class="cloudchewiefont cloudchewie-icon-angle-right"></i>
     </div>
     </a></div>
-
 <h2 id="一、手动卸载"><a href="#一、手动卸载" class="headerlink" title="一、手动卸载"></a>一、手动卸载</h2><h3 id="1-1-桌面长按卸载"><a href="#1-1-桌面长按卸载" class="headerlink" title="1.1 桌面长按卸载"></a>1.1 桌面长按卸载</h3><ul>
 <li>如：游戏中心、小米商城、电子邮件、指南针、扫一扫、全球上网、米家、多看读书、喜马拉雅</li>
 <li>可保留：天气、计算器、录音机、笔记</li>
@@ -221,50 +220,50 @@ if (true) {
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm list packages</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>卸载命令</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.android.browser <span class="comment">#卸载小米浏览器</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.android.browser <span class="comment">#卸载小米浏览器</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <h3 id="2-2-应用列表"><a href="#2-2-应用列表" class="headerlink" title="2.2 应用列表"></a>2.2 应用列表</h3><h4 id="2-2-1-替换为其它软件"><a href="#2-2-1-替换为其它软件" class="headerlink" title="2.2.1 替换为其它软件"></a>2.2.1 替换为其它软件</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.sohu.inputmethod.sogou.xiaomi <span class="comment">#小米定制搜狗输入法（替换为Gboard等）</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.android.browser <span class="comment">#浏览器（替换为Via、Chrome等）</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.video <span class="comment">#小米视频（替换为NPlayer等）</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.gallery <span class="comment">#相册（替换为Google相册等）</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.player <span class="comment">#音乐（替换为网易云音乐等）</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.mishare.connectivity <span class="comment">#小米互传（替换为其他互传软件）</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="2-2-2-可卸载（酌情卸载）"><a href="#2-2-2-可卸载（酌情卸载）" class="headerlink" title="2.2.2 可卸载（酌情卸载）"></a>2.2.2 可卸载（酌情卸载）</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.personalassistant <span class="comment">#智能助理（负一屏）</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.android.quicksearchbox <span class="comment">#搜索</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.yellowpage <span class="comment">#生活黄页</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.hybrid <span class="comment">#快应用服务框架</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.miservice <span class="comment">#服务与反馈</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.contentextension <span class="comment">#传送门</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.xiaomi.aiasst.service <span class="comment">#小爱通话</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.voiceassist <span class="comment">#小爱同学</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.xiaomi.aiasst.vision <span class="comment">#小爱翻译</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.xiaomi.gamecenter.sdk.service <span class="comment">#游戏服务</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.bugreport <span class="comment">#用户反馈</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.analytics <span class="comment">#小米广告分析（重启会自动安装）</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="2-2-3-其他可卸载（酌情卸载）"><a href="#2-2-3-其他可卸载（酌情卸载）" class="headerlink" title="2.2.3 其他可卸载（酌情卸载）"></a>2.2.3 其他可卸载（酌情卸载）</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.systemAdSolution <span class="comment">#小米系统广告解决方案</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.translation.kingsoft <span class="comment">#金山翻译</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.translation.youdao <span class="comment">#有道翻译</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.translation.xmcloud <span class="comment">#小米云翻译</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.translationservice <span class="comment">#翻译服务</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.xiaomi.ab <span class="comment">#小米商城系统组件</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.accessibility <span class="comment">#小米闻声</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.xiaomi.migameservice <span class="comment">#游戏高能时刻</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.voicetrigger <span class="comment">#语音唤醒</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.nextpay <span class="comment">#小米支付</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.xiaomi.payment <span class="comment">#米币支付</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.securityadd <span class="comment"># 游戏加速</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.hybrid.accessory <span class="comment"># 智慧生活</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.xiaomi.macro <span class="comment">#自动连招</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.freeform <span class="comment"># 自由窗口</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.carlink <span class="comment">#CarWith</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="2-2-4-不确定能否卸载（尽量不要卸载）"><a href="#2-2-4-不确定能否卸载（尽量不要卸载）" class="headerlink" title="2.2.4 不确定能否卸载（尽量不要卸载）"></a>2.2.4 不确定能否卸载（尽量不要卸载）</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.cit <span class="comment"># CIT手机测试</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.contentcatcher <span class="comment"># 应用程序扩展服务</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.maintenancemode <span class="comment"># 维修模式</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.securityadd <span class="comment"># 游戏加速</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.touchassistant <span class="comment"># 悬浮球</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.tsmclient <span class="comment"># 小米智能卡</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.phrase <span class="comment"># 常用语</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.mipay.wallet <span class="comment"># 小米钱包</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.xiaomi.joyose <span class="comment"># 运动计步</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.xiaomi.mirror <span class="comment"># MIUI+ Beta版</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.xiaomi.mircs <span class="comment"># RCS 增强短信</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.xiaomi.otrpbroker <span class="comment"># OTRP 协议协商程序（物联网）</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.micloudsync <span class="comment"># 小米云同步</span></span><br><span class="line">adb shell pm uninstall <span class="literal">--user</span> <span class="number">0</span> com.miui.cloudservice.sysbase <span class="comment"># 小米云服务系统基础</span></span><br><span class="line"><span class="comment"># 其他不确定：小米智能卡、小米智能卡网页组件、小米互联通信服务、米币中心</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="2-2-5-不可卸载"><a href="#2-2-5-不可卸载" class="headerlink" title="2.2.5 不可卸载"></a>2.2.5 不可卸载</h4><table>
+<h4 id="2-2-5-不可卸载"><a href="#2-2-5-不可卸载" class="headerlink" title="2.2.5 不可卸载"></a>2.2.5 不可卸载</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">*应用商店</th>
-<th align="center">应用包管理组件</th>
-<th align="center">小米服务框架</th>
+<th style="text-align:center">*应用商店</th>
+<th style="text-align:center">应用包管理组件</th>
+<th style="text-align:center">小米服务框架</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">手机管家</td>
-<td align="center">*小米云备份</td>
-<td align="center">*小米云服务</td>
+<tbody>
+<tr>
+<td style="text-align:center">手机管家</td>
+<td style="text-align:center">*小米云备份</td>
+<td style="text-align:center">*小米云服务</td>
 </tr>
 <tr>
-<td align="center">*小米账号</td>
-<td align="center">银联可信服务安全组件小米版本</td>
-<td align="center">短信</td>
+<td style="text-align:center">*小米账号</td>
+<td style="text-align:center">银联可信服务安全组件小米版本</td>
+<td style="text-align:center">短信</td>
 </tr>
 <tr>
-<td align="center">主题壁纸</td>
-<td align="center">*系统界面组件</td>
-<td align="center">日历</td>
+<td style="text-align:center">主题壁纸</td>
+<td style="text-align:center">*系统界面组件</td>
+<td style="text-align:center">日历</td>
 </tr>
 <tr>
-<td align="center">下载管理</td>
-<td align="center">文件管理</td>
-<td align="center">时钟</td>
+<td style="text-align:center">下载管理</td>
+<td style="text-align:center">文件管理</td>
+<td style="text-align:center">时钟</td>
 </tr>
 <tr>
-<td align="center">钱包</td>
-<td align="center">联系人</td>
-<td align="center"></td>
+<td style="text-align:center">钱包</td>
+<td style="text-align:center">联系人</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <blockquote>
 <p>【*】卸载后将无法正常开机</p>
 </blockquote>

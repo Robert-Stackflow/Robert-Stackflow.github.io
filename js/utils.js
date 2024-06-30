@@ -572,7 +572,7 @@ const cloudchewieFn = {
         } else if (fps <= 10) {
           var kd = `<span style="color:red">电竞级帧率</span>`;
         } else if (fps <= 14) {
-          var kd = `<span style="color:#FAFAD2">难受</span>`;
+          var kd = `<span style="color:#FFbb00">难受</span>`;
         } else if (fps < 24) {
           var kd = `<span style="color:orange">卡</span>`;
         } else if (fps <= 40) {
@@ -2315,7 +2315,14 @@ const cloudchewieFn = {
    * 跳转到随机文章
    */
   randomPost: () => {
-    pjax.loadUrl(posts[Math.floor(Math.random() * posts.length)].url);
+    var randomIndex = Math.floor(Math.random() * posts.length);
+    while (
+      posts[randomIndex].url != window.location.pathname &&
+      posts[randomIndex].url.startsWith("/posts/")==false
+    ) {
+      randomIndex = Math.floor(Math.random() * posts.length);
+    }
+    pjax.loadUrl(posts[randomIndex].url);
   },
   randomPostDeprecated: () => {
     let e = saveToLocal.get("postLinks");
@@ -4058,13 +4065,16 @@ const consoleFn = {
         $("#menuMusic").show();
         if (!utilsFn.isMusic()) {
           navMusic.show();
+          document.getElementById("nav-music").classList.remove("hidden");
         } else {
           navMusic.hide();
+          document.getElementById("nav-music").classList.add("hidden");
         }
         $(".music-wrapper .aplayer").show();
         document.getElementById("con-toggleAPlayer").checked = true;
       } else {
         navMusic.hide();
+        document.getElementById("nav-music").classList.add("hidden");
         $("#con-music").hide();
         $("#menuMusic").hide();
         $(".music-wrapper .aplayer").show();
@@ -4512,6 +4522,7 @@ const consoleFn = {
     if (utilsFn.getLocalStorage("enableAPlayer") == "true") {
       utilsFn.setLocalStorage("enableAPlayer", "false");
       navMusic.hide();
+      document.getElementById("nav-music").classList.add("hidden");
       $("#con-music").hide();
       $("#menuMusic").hide();
       $(".music-wrapper .aplayer").show();
@@ -4524,8 +4535,10 @@ const consoleFn = {
       $("#menuMusic").show();
       if (!utilsFn.isMusic()) {
         navMusic.show();
+        document.getElementById("nav-music").classList.remove("hidden");
       } else {
         navMusic.hide();
+        document.getElementById("nav-music").classList.add("hidden");
       }
     }
   },

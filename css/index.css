@@ -15348,8 +15348,12 @@ a.imgbox:hover,
 }
 
 :root {
-  --cloudchewie-main-op: rgb(from var(--cloudchewie-theme) r g b / 10%) !important;
-  --cloudchewie-selection-bg: rgb(from var(--cloudchewie-theme) r g b / 60%) !important;
+  --cloudchewie-main-op: rgb(
+    from var(--cloudchewie-theme) r g b / 10%
+  ) !important;
+  --cloudchewie-selection-bg: rgb(
+    from var(--cloudchewie-theme) r g b / 60%
+  ) !important;
 }
 .pagination-post img {
   border-radius: 0px;
@@ -15694,7 +15698,7 @@ body[data-type="tags"] #tag #tag-page-tags {
 #footer {
   background: transparent;
   user-select: none;
-  z-index: -1;
+  z-index: 0;
 }
 /* 页首*/
 #nav {
@@ -16600,7 +16604,7 @@ mjx-container[display],
   border-radius: 8px;
   backdrop-filter: blur(20px);
   padding: 6px 6px;
-  box-shadow: var(--card-box-shadow);
+  box-shadow: var(--card-hover-box-shadow);
   border: var(--card-border);
   font-family: lxgw wenkai screen, -apple-system, BlinkMacSystemFont, Roboto,
     Segoe UI, Helvetica, Arial, sans-serif;
@@ -16616,7 +16620,7 @@ mjx-container[display],
   border-radius: 8px;
   backdrop-filter: blur(20px);
   padding: 6px 6px;
-  box-shadow: var(--card-box-shadow);
+  box-shadow: var(--card-hover-box-shadow);
   border: var(--card-border);
   font-family: lxgw wenkai screen, -apple-system, BlinkMacSystemFont, Roboto,
     Segoe UI, Helvetica, Arial, sans-serif;
@@ -17722,11 +17726,15 @@ theme-toggle {
   border-radius: 40px;
   padding: 4px 8px;
 }
+body:has(.hidden#nav-music):not(:has(#cloudMusic-page)) #fps {
+  bottom: 20px;
+}
 @media screen and (max-width: 900px) {
   #fps {
     display: none !important;
   }
 }
+
 /*****************************************
 即刻
 *****************************************/
@@ -19850,6 +19858,9 @@ small.tk-actions a {
 }
 .twikoo .tk-comments .tk-preview-container{
   margin-left: 3.52rem;
+}
+.twikoo .tk-comment .tk-preview-container{
+  margin-left: 2.65rem;
 }
 #hexo-card-weather {
   padding: 20px;
