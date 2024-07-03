@@ -92,8 +92,14 @@ window.posts=[{
       title: "装备",
       url: "/equipment/"
     },{
+      title: "砂金",
+      url: "/gallery/aventurine/"
+    },{
       title: "苍岚",
       url: "/gallery/cute/"
+    },{
+      title: "丹穹",
+      url: "/gallery/dancae/"
     },{
       title: "丹恒",
       url: "/gallery/danheng/"
